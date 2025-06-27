@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -107,14 +107,14 @@
 		<p class="cm4">Buscar: <strong>texto1||texto2||texto3</strong><br>Reemplazar con: <strong>cambio1||cambio2||cambio3</strong><br>Al efectuar la búsqueda <strong>texto1</strong> será reemplazado por <strong>cambio1</strong>, al continuar buscando <strong>texto2</strong> será reemplazado con <strong>cambio2</strong> etc.</p>
 		<p class="cm4"><dfn> Limitación:</dfn> No se puede usar el parámetro <strong>[::BigBlock::]</strong> con&bull;|, como tampoco se pueden usar <a href="#subexpresiones">subexpresiones.</a></p>
 		<p class="cm2"><dfn> Búsqueda de Objetos</dfn></p>
-		<p class="cm2"><strong>[::Note::]</strong> - búsqueda de anotaciones (comentarios) en función de su contenido</p>
-		<p class="cm4"><strong>[::Note::]</strong> - busca la siguiente anotación</p>
-		<p class="cm4"><strong>[::Note::]poco.</strong> - buscará las anotaciónes que contengan la subcadena <strong>poco.</strong></p>
+		<p class="cm2"><strong>[::Comment::]</strong> - búsqueda de anotaciones (comentarios) en función de su contenido</p>
+		<p class="cm4"><strong>[::Comment::]</strong> - busca la siguiente anotación</p>
+		<p class="cm4"><strong>[::Comment::]poco.</strong> - buscará las anotaciónes que contengan la subcadena <strong>poco.</strong></p>
 		<p class="cm4"><dfn> Limitación:</dfn> Sólo busca subcadenas en el contenido de notaciones - no se pueden usar expresiones regulares completas.</p>
 		<p class="cm2"><strong>[::Field::]</strong> - busca campos de texto según su contenido</p>
 		<p class="cm4"><strong>[::Field::]</strong> - busca cualquier campo de texto normal</p>
 		<p class="cm4"><strong>[::Field::]oveja</strong> busca un campo de texto que muestre el texto <strong>oveja</strong></p>
-		<p class="cm4"><dfn> Limitación:</dfn> Es la misma que para <strong>[::Note::]</strong>. Ver anteriormente.<br>No se encontrarán campos de texto especiales (p.e. ocultos).</p>
+		<p class="cm4"><dfn> Limitación:</dfn> Es la misma que para <strong>[::Comment::]</strong>. Ver anteriormente.<br>No se encontrarán campos de texto especiales (p.e. ocultos).</p>
 		<p class="cm2"><strong>[::TextFrame::]</strong> - busca marcos de texto según su nombre</p>
 		<p class="cm4"><strong>[::TextFrame::]</strong> - busca cualquier marco de texto</p>
 		<p class="cm4"><strong>[::TextFrame::]marco1</strong> - busca marco s de texto con la subcadena <strong>marco1</strong> en el nombre</p>
@@ -183,7 +183,7 @@
 		<p>Lista desplegable <b>Reemplazar</b></p>
 		<p class="cm2"><strong>&amp; \0 –</strong> ambos parámetros significan lo mismo – representan el texto completo encontrado</p>
 		<p class="cm4">Si la expresión se buscó usando <strong>[::BigBlock::]</strong> estos parámetros representan sólo el bloque de párrafos entre las marcas inicial y final.</p>
-		<p class="cm4">Si el objeto se buscó usando <strong>[::Note::]</strong>, <strong>[::Field::]</strong>, <strong>[::TextFrame::]</strong>, <strong>[::Picture::]</strong>, <strong>[::TextTable::]</strong> estos parámetros representan directamente estos objetos (introducir mediante el portapapeles).</p>
+		<p class="cm4">Si el objeto se buscó usando <strong>[::Comment::]</strong>, <strong>[::Field::]</strong>, <strong>[::TextFrame::]</strong>, <strong>[::Picture::]</strong>, <strong>[::TextTable::]</strong> estos parámetros representan directamente estos objetos (introducir mediante el portapapeles).</p>
 		<p class="cm2"><strong>\b \e –</strong> Si la expresión se buscó usando <strong>[::BigBlock::]</strong> estos parámetros representan el contenido de las marcas inicial y final.</p>
 		<p class="cm2"><dfn> Limitación:</dfn> No se puede usar junto con <a href="#subexpresiones">subexpresiones ().</a></p>
 		<p class="cm2" id="subexpresiones"><br><strong>\1 \2 \3 \4 \5 \6 \7 \8 \9 –</strong> contenido de subexpresiones</p>
@@ -235,13 +235,13 @@
 		<p class="cm4"><strong>\K{}</strong>, <strong>\K</strong> - elimina el marcador si está presente en el bloque de texto seleccionado (elimina solo el marcador, el bloque de textio permanece)</p>
 		<p class="cm6"><strong>\K{w,nuevo_nombre}\K</strong> - renombra el marcador - debe buscarse mediante <strong>[::Bookmark::]</strong> o en el lugar del marcador</p>
 		<p class="cm2"><strong>\o –</strong> inserta el contenido de texto de objeto encontrado</p>
-		<p class="cm4">Si la expresión se buscó usando <strong>[::Note::]</strong>, <strong>[::Footnote::]</strong>, <strong>[::Endnote::]</strong>, <strong>[::TextFrame::]</strong>, <strong>[::Picture::]</strong>, <strong>[::TextTable::]</strong> entonces se insertará el texto que contienen estos objetos. Una tabla se convierte usando tabuladores entre columnas y párrafos entre filas.</p>
+		<p class="cm4">Si la expresión se buscó usando <strong>[::Comment::]</strong>, <strong>[::Footnote::]</strong>, <strong>[::Endnote::]</strong>, <strong>[::TextFrame::]</strong>, <strong>[::Picture::]</strong>, <strong>[::TextTable::]</strong> entonces se insertará el texto que contienen estos objetos. Una tabla se convierte usando tabuladores entre columnas y párrafos entre filas.</p>
 		<p class="cm4"><dfn> Limitación:</dfn> El tamańo máximo resultante del texto antes de su conversión a tabla está limitado a 65 kB.</p>
 		<p class="cm4">Si la expresión se buscó usando <strong>[::Field::]</strong>, <strong>[::Reference::]</strong>, <strong>[::ReferenceMark::]</strong> entonces se insertará el texto mostrado del ancla o del campo.</p>
 		<p class="cm2"><strong>\O –</strong> inserta el Nombre del objeto encontrado</p>
 		<p class="cm4">Si la expresión se buscó con la ayuda de_</p>
 		<p class="cm4"><strong>[::TextFrame::]</strong>, <strong>[::Picture::]</strong>, <strong>[::TextTable::]</strong> - se insertará el nombre de este objeto.</p>
-		<p class="cm4"><strong>[::Note::]</strong>, <strong>[::Field::]</strong> - se insertará el tipo de campo de texto</p>
+		<p class="cm4"><strong>[::Comment::]</strong>, <strong>[::Field::]</strong> - se insertará el tipo de campo de texto</p>
 		<p class="cm4"><strong>[::Reference::]</strong>, <strong>[::ReferenceMark::]</strong> - se insertará el nombre de la marca de referencia</p>
 		<p class="cm4"><strong>[::Footnote::], [::Endnote::]</strong> - se insertará el texto mostrado del ancla</p>
 		<p class="cm2"><strong>\i –</strong> inserta el contador de ocurrencias encontradas – sólo si se usa <var>Reemplazar todos</var></p>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ru">
 
 <head>
@@ -119,14 +119,14 @@
 		<p class="cm4">Найти: <strong>text1||text2||text3</strong><br>Заменить: <strong>neco1||neco2||neco3</strong><br>Сначала будет найден <strong>text1</strong> и заменен на <strong>neco1</strong>, потом найденый <strong>text2</strong> будет заменен на <strong>neco2</strong> и т.д.</p>
 		<p class="cm4"><dfn>Ограничение:</dfn> в этом случае невозможно использовать параметр <strong>[::BigBlock::]</strong>, по той же причине невозможно использовать <a href="#ruskupiny">подвыражения.</a></p>
 		<p class="cm2"><dfn>Поиск некоторых объектов</dfn></p>
-		<p class="cm2"><strong>[::Note::]</strong> - поиск примечаний (желтые выноски) по их содержанию</p>
-		<p class="cm4"><strong>[::Note::]</strong> - будет найдено любое примечание</p>
-		<p class="cm4"><strong>[::Note::]pozn.</strong> - будет найдено примечание, содержащее <strong>pozn.</strong></p>
+		<p class="cm2"><strong>[::Comment::]</strong> - поиск примечаний (желтые выноски) по их содержанию</p>
+		<p class="cm4"><strong>[::Comment::]</strong> - будет найдено любое примечание</p>
+		<p class="cm4"><strong>[::Comment::]pozn.</strong> - будет найдено примечание, содержащее <strong>pozn.</strong></p>
 		<p class="cm4"><dfn>Ограничение:</dfn> Позволяет искать только текст в содержании примечания - невозможно использовать регулярные выражения.</p>
 		<p class="cm2"><strong>[::Field::]</strong> - поиск текстовых полей по их содержанию</p>
 		<p class="cm4"><strong>[::Field::]</strong> - будет найдено любое текстовое поле</p>
 		<p class="cm4"><strong>[::Field::]obsah</strong> - будет найдено текстовое поле, содержащее текст <strong>obsah</strong></p>
-		<p class="cm4"><dfn>Ограничение:</dfn> То же, что и для <strong>[::Note::]</strong>. Смотри выше.<br>Особые поля (например, скрытые) найдены не будут.</p>
+		<p class="cm4"><dfn>Ограничение:</dfn> То же, что и для <strong>[::Comment::]</strong>. Смотри выше.<br>Особые поля (например, скрытые) найдены не будут.</p>
 		<p class="cm2"><strong>[::TextFrame::]</strong> - поиск текстовых врезок по их названиям</p>
 		<p class="cm4"><strong>[::TextFrame::]</strong> - будет найдена любая текстовая врезка</p>
 		<p class="cm4"><strong>[::TextFrame::]rám1 –</strong> будет найдена текстовая врезка, содержащая <strong>rám1</strong> в названии</p>
@@ -177,7 +177,7 @@
 		<p class="cm2"><strong>&amp; \0 –</strong> оба этих параметра имеют одинаковое значение – при замене они представляют весьнайденный текст</p>
 		<p class="cm4">Если был использован параметр со значением <strong>[::BigBlock::]</strong>, то он будет представлять</p>
 		<p class="cm4">только блок абзацев между символами начала и конца.</p>
-		<p class="cm4">Если были использованы параметры со значениями <strong>[::Note::]</strong>, <strong>[::Field::]</strong>, <strong>[::TextFrame::]</strong>, <strong>[::Picture::]</strong>, <strong>[::TextTable::]</strong>, то они будут представлять только указанные объекты (для вставки из буфера обмена).</p>
+		<p class="cm4">Если были использованы параметры со значениями <strong>[::Comment::]</strong>, <strong>[::Field::]</strong>, <strong>[::TextFrame::]</strong>, <strong>[::Picture::]</strong>, <strong>[::TextTable::]</strong>, то они будут представлять только указанные объекты (для вставки из буфера обмена).</p>
 		<p class="cm2"><strong>\b \e</strong> - Если был использован параметр со значением <strong>[::BigBlock::]</strong>, то эти параметры задают символы начала и конца блока. <strong>Ограничение</strong><dfn>:</dfn> невозможно использовать <a href="#ruskupiny">подвыражения ().</a></p>
 		<p class="cm2" id="ruskupiny"><strong>\1 \2 \3 \4 \5 \6 \7 \8 \9 –</strong> содержание подвыражений</p>
 		<p class="cm4">Если в поисковом выражении использовались круглые скобки (), то <strong>\1</strong> представляет содержание первой пары скобок, соответственно <strong>\2</strong> относится ко второй паре () и т.д., максимум до <strong>\9</strong>, что соответствует 9-й паре. Значение имеют только скобки 1-го уровня, вложенные уровни игнорируются.</p>
@@ -221,13 +221,13 @@
 		<p class="cm6"><i>первая цифра</i> – тип ссылки: 0 – номер страницы арабскими цифрами, 1 – номер главы, 2 – текст ссылки, 3 - выше/ниже, 4 – номер страницы со стилем, определенным в стиле страницы, 5 – категория и номер подписи, 6 – текст подписи, 7 – количество последовательных полей (подписей)</p>
 		<p class="cm6"><i>вторая цифра</i> – тип источника ссылки; 0 – знак ссылки, 1 – номер ссылки, 2 - закладка, 3 - сноска, 4 – концевая сноска</p>
 		<p class="cm2"><strong>\o –</strong> вставляет текст, содержащий указанный объект</p>
-		<p class="cm4">В случае поиска при помощи выражений <strong>[::Note::]</strong>, <strong>[::Footnote::]</strong>, <strong>[::Endnote::]</strong>, <strong>[::TextFrame::]</strong>, <strong>[::Picture::]</strong>, <strong>[::TextTable::]</strong> будет произведена замена с использованием указанных объектов. Таблица будет преобразована в текст при помощи разделителей: табуляция для разделения столбцов и знак конца абзаца для разделения строк.</p>
+		<p class="cm4">В случае поиска при помощи выражений <strong>[::Comment::]</strong>, <strong>[::Footnote::]</strong>, <strong>[::Endnote::]</strong>, <strong>[::TextFrame::]</strong>, <strong>[::Picture::]</strong>, <strong>[::TextTable::]</strong> будет произведена замена с использованием указанных объектов. Таблица будет преобразована в текст при помощи разделителей: табуляция для разделения столбцов и знак конца абзаца для разделения строк.</p>
 		<p class="cm4"><dfn>Ограничение:</dfn> Максимальный размер таблицы не должен превышать 65 kB.</p>
 		<p class="cm4">В случае поиска при помощи выражений <strong>[::Field::]</strong>, <strong>[::Reference::]</strong>, <strong>[::ReferenceMark::]</strong> будет произведена вставка соответствующих элементов.</p>
 		<p class="cm2"><strong>\O –</strong> вставляет название объекта</p>
 		<p class="cm4">В случае поиска при помощи выражений</p>
 		<p class="cm4"><strong>[::TextFrame::]</strong>, <strong>[::Picture::]</strong>, <strong>[::TextTable::]</strong> - будет вставлено название этих объектов.</p>
-		<p class="cm4"><strong>[::Note::]</strong>, <strong>[::Field::]</strong> - будет указан тип вставляемых полей</p>
+		<p class="cm4"><strong>[::Comment::]</strong>, <strong>[::Field::]</strong> - будет указан тип вставляемых полей</p>
 		<p class="cm4"><strong>[::Reference::]</strong>, <strong>[::ReferenceMark::]</strong> - будет вставлено название вставляемой ссылки</p>
 		<p class="cm4"><strong>[::Footnote::], [::Endnote::]</strong> - будет вставлен текст-привязка сноски</p>
 		<p class="cm2"><strong>\i –</strong> вставляет счетчик найденных совпадений - только для <var>Заменить все</var></p>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="nl">
 
 <head>
@@ -110,14 +110,14 @@
 		<p class="cm4">Zoeken naar: <strong>tekst1||tekst2||tekst3</strong><br>Vervangen door: <strong>neco1||neco2||neco3</strong><br>Dit zal de zoekactie voortzetten naar <strong>tekst1</strong> en zal die vervangen door <strong>neco1</strong>, doorgaand zoeken naar <strong>tekst2</strong> en die vervangen door <strong>neco2</strong> etc.</p>
 		<p class="cm4"><dfn>Beperking:</dfn> u kunt de parameter <strong>[::BigBlock::]</strong> niet toepassen met, noch kunt u <a href="#nlskupiny">subuitdrukkingen</a> gebruiken.</p>
 		<p class="cm2"><dfn>Zoeken naar objecten:</dfn></p>
-		<p class="cm2"><strong>[::Note::]</strong> - zoeken naar tekstnotities (gele ballonnen) overeenkomstig hun inhoud</p>
-		<p class="cm4"><strong>[::Note::]</strong> - zal alle tekst in een tekstnotitie vinden</p>
-		<p class="cm4"><strong>[::Note::]pozn.</strong> - vindt elke tekstnotitie die de subtekenreeks <strong>pozn</strong> bevat.</p>
+		<p class="cm2"><strong>[::Comment::]</strong> - zoeken naar tekstnotities (gele ballonnen) overeenkomstig hun inhoud</p>
+		<p class="cm4"><strong>[::Comment::]</strong> - zal alle tekst in een tekstnotitie vinden</p>
+		<p class="cm4"><strong>[::Comment::]pozn.</strong> - vindt elke tekstnotitie die de subtekenreeks <strong>pozn</strong> bevat.</p>
 		<p class="cm4"><dfn>Beperking:</dfn> u kunt alleen zoeken naar subtekenreeksen in de inhoud van notities - het is niet mogelijk om volledige reguliere expressies te gebruiken.</p>
 		<p class="cm2"><strong>[::Field::]</strong> - zoekt naar tekstvelden overeenkomstig hun inhoud.</p>
 		<p class="cm4"><strong>[::Field::]</strong> - zal alle gebruikelijke tekstvelden vinden</p>
 		<p class="cm4"><strong>[::Field::]obsah</strong> zal het tekstveld vinden dat in het document de tekst <strong>obsah</strong> weergeeft</p>
-		<p class="cm4"><dfn>Beperking:</dfn> hetzelfde als voor <strong>[::Note::]</strong>; zie boven.<br>Enkele speciale velden (bijv. verborgen) worden niet gevonden.</p>
+		<p class="cm4"><dfn>Beperking:</dfn> hetzelfde als voor <strong>[::Comment::]</strong>; zie boven.<br>Enkele speciale velden (bijv. verborgen) worden niet gevonden.</p>
 		<p class="cm2"><strong>[::TextFrame::]</strong> - zoekt tekstframes overeenkomstig hun naam</p>
 		<p class="cm4"><strong>[::TextFrame::]</strong> - zal elk tekstframe vinden</p>
 		<p class="cm4"><strong>[::TextFrame::]rám1</strong> - zal het tekstframe vinden dat de subtekenreeks <strong>rám1</strong> in de naam bevat</p>
@@ -185,7 +185,7 @@
 		<p>Keuzelijst '<b>Vervangen door'</b></p>
 		<p class="cm2"><strong>&amp; \0</strong> - deze beide parameters betekenen hetzelfde: tijdens vervangingen vertegenwoordigen zij de gehele gevonden tekst</p>
 		<p class="cm4">Als de uitdrukking werd gezocht met behulp van <strong>[::BigBlock::]</strong> vertegenwoordigen deze parameters alleen het blok alinea's tussen de begin- en eindemarkering.</p>
-		<p class="cm4">Als het object werd gezocht met behulp van <strong>[::Note::]</strong>, <strong>[::Field::]</strong>, <strong>[::TextFrame::]</strong>, <strong>[::Picture::]</strong> of <strong>[::TextTable::]</strong>, vertegenwoordigen deze parameters direct deze objecten (die zijn ingevoegd via Klembord).</p>
+		<p class="cm4">Als het object werd gezocht met behulp van <strong>[::Comment::]</strong>, <strong>[::Field::]</strong>, <strong>[::TextFrame::]</strong>, <strong>[::Picture::]</strong> of <strong>[::TextTable::]</strong>, vertegenwoordigen deze parameters direct deze objecten (die zijn ingevoegd via Klembord).</p>
 		<p class="cm2"><strong>\b \e</strong> - Als de uitdrukking werd gezocht met behulp van <strong>[::BigBlock::]</strong> vertegenwoordigen deze parameters de inhoud van begin- en eindmarkering. <dfn>Beperking:</dfn> het is niet mogelijk om deze samen met <a href="#nlskupiny">subuitdrukkingen ()</a> te gebruiken.</p>
 		<p class="cm2" id="nlskupiny"><strong>\1 \2 \3 \4 \5 \6 \7 \8 \9</strong> - inhoud van subexpressies</p>
 		<p class="cm4">Als de zoekuitdrukking werd gezocht met behulp van haakjes (), vertegenwoordigt <strong>\1</strong> de inhoud die overeenkomt met het eerste paar haakjes, <strong>\2</strong> correspondeert met het tweede paar() etc., tot maximaal <strong>\9</strong> dat correspondeert met het 9e paar. Geldig is alleen het eerste niveau haakjes, volgende geneste niveaus daar binnen worden genegeerd.</p>
@@ -235,13 +235,13 @@
 		<p class="cm6">e - bladwijzer verankerd aan einde van tekstblok</p>
 		<p class="cm4"><strong>\K{}</strong>, <strong>\K</strong> - verwijder bladwijzer als die aanwezig is in het geselecteerde tekstblok. Het verwijdert alleen de bladwijzer, het tekstblok blijft staan.<br><strong>\K{w,nieuwe_naam}\K</strong> - hernoem bladwijzer - moet worden gevonden met <strong>[::Bookmark::]</strong> of op een plaats waar een bladwijzer aanwezig is.</p>
 		<p class="cm2"><strong>\o</strong> - voegt de tekstinhoud van het gevonden object in</p>
-		<p class="cm4">Als de uitdrukking werd gezocht met behulp van <strong>[::Note::]</strong>, <strong>[::Footnote::]</strong>, <strong>[::Endnote::]</strong>, <strong>[::TextFrame::]</strong>, <strong>[::Picture::]</strong> of <strong>[::TextTable::]</strong>, zal de tekst die deze objecten bevatten worden ingevoegd. Tabellen worden geconverteerd met behulp van tabulatorstops tussen de kolommen en alinea's tussen rijen.</p>
+		<p class="cm4">Als de uitdrukking werd gezocht met behulp van <strong>[::Comment::]</strong>, <strong>[::Footnote::]</strong>, <strong>[::Endnote::]</strong>, <strong>[::TextFrame::]</strong>, <strong>[::Picture::]</strong> of <strong>[::TextTable::]</strong>, zal de tekst die deze objecten bevatten worden ingevoegd. Tabellen worden geconverteerd met behulp van tabulatorstops tussen de kolommen en alinea's tussen rijen.</p>
 		<p class="cm4"><dfn>Beperking:</dfn> De maximale grootte voor de gehele resulterende tekst na het converteren van een tabel is beperkt tot 65 kB.</p>
 		<p class="cm4">Als de uitdrukking werd gezocht met behulp van <strong>[::Field::]</strong>, <strong>[::Reference::]</strong> of <strong>[::ReferenceMark::]</strong> zal de weergegeven tekst van het anker of veld worden ingevoegd.</p>
 		<p class="cm2"><strong>\O</strong> - voegt de naam van het gevonden object in</p>
 		<p class="cm4">Als de uitdrukking werd gezocht met behulp van:</p>
 		<p class="cm4"><strong>[::TextFrame::]</strong>, <strong>[::Picture::]</strong>, of <strong>[::TextTable::]</strong> - zullen de namen van deze objecten worden ingevoegd.</p>
-		<p class="cm4"><strong>[::Note::]</strong> of <strong>[::Field::]</strong>, het type van het tekstveld zal worden ingevoegd</p>
+		<p class="cm4"><strong>[::Comment::]</strong> of <strong>[::Field::]</strong>, het type van het tekstveld zal worden ingevoegd</p>
 		<p class="cm4"><strong>[::Reference::]</strong> of <strong>[::ReferenceMark::]</strong>, de naam van de verwijzingsmarkering zal worden ingevoegd</p>
 		<p class="cm4"><strong>[::Footnote::]</strong> of <strong>[::Endnote::]</strong>, de weergegeven tekst van het anker zal worden ingevoegd</p>
 		<p class="cm2"><strong>\i</strong> - voegt de telling van het aantal gevonden entiteiten van objecten of tekst van een telling in de tekst in - dit werkt alleen als <var>Alles vervangen</var> werd gebruikt</p>

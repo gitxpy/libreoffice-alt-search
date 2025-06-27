@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="cs">
 
 <head>
@@ -104,14 +104,14 @@
 		<p class="cm4">Hledej: <strong>text1||text2||text3</strong><br>Nahraď: <strong>neco1||neco2||neco3</strong> Provede se hledání <strong>text1</strong> nahradí se <strong>neco1</strong>, pokračuje hledáním <strong>text2</strong> nahradí se <strong>neco2</strong> atd.</p>
 		<p class="cm4"><dfn>Omezení:</dfn> nelze zde zároveň použít parametr <strong>[::BigBlock::]</strong>, nelze používat <a href="#skupiny">seskupení.</a></p>
 		<p class="cm2"><dfn>Hledání objektů</dfn></p>
-		<p class="cm2"><strong>[::Note::]</strong> - hledání textových poznámek (žluté bubliny) podle jejich obsahu</p>
-		<p class="cm4"><strong>[::Note::]</strong> vyhledá se jakákoli textová poznámka</p>
-		<p class="cm4"><strong>[::Note::]pozn.</strong> vyhledá se textová poznámka obsahující podřetězec <strong>pozn.</strong></p>
+		<p class="cm2"><strong>[::Comment::]</strong> - hledání textových poznámek (žluté bubliny) podle jejich obsahu</p>
+		<p class="cm4"><strong>[::Comment::]</strong> vyhledá se jakákoli textová poznámka</p>
+		<p class="cm4"><strong>[::Comment::]pozn.</strong> vyhledá se textová poznámka obsahující podřetězec <strong>pozn.</strong></p>
 		<p class="cm4"><dfn>Omezení:</dfn> Vyhledává se pouze podřetězec v&nbsp;obsahu - nelze použít plné regulární symboly.</p>
 		<p class="cm2"><strong>[::Field::]</strong> - hledání textových polí podle jejich obsahu</p>
 		<p class="cm4"><strong>[::Field::]</strong> vyhledá se jakékoli (neplatí na 100%) textové pole</p>
 		<p class="cm4"><strong>[::Field::]obsah</strong> vyhledá se textové pole zobrazující v&nbsp;dokumentu text <strong>obsah</strong></p>
-		<p class="cm4"><dfn>Omezení:</dfn> Platí obdobná jako pro <strong>[::Note::]</strong>. Viz výše.</p>
+		<p class="cm4"><dfn>Omezení:</dfn> Platí obdobná jako pro <strong>[::Comment::]</strong>. Viz výše.</p>
 		<p class="cm2"><strong>[::TextFrame::]</strong> - hledání textových rámců podle jejich názvu</p>
 		<p class="cm4"><strong>[::TextFrame::]</strong> vyhledá se jakýkoli textový rámec</p>
 		<p class="cm4"><strong>[::TextFrame::]rám1</strong> vyhledá se textový rámec obsahující v&nbsp;názvu podřetězec <strong>rám1</strong></p>
@@ -178,7 +178,7 @@
 		<p>Listbox <b>Nahradit</b></p>
 		<p class="cm2"><strong>&amp; \0</strong> - oba tyto zástupné znaky znamenají totéž - při nahrazení představují celý nalezený text</p>
 		<p class="cm4">Pokud se hledalo pomocí <strong>[::BigBlock::]</strong> tak představují jen blok odstavců mezi značkami začátku a konce.</p>
-		<p class="cm4">Pokud byl hledán objekt pomocí <strong>[::Note::]</strong>, <strong>[::Field::]</strong>, <strong>[::TextFrame::]</strong>, <strong>[::Picture::]</strong>, <strong>[::TextTable::]</strong> tak představují přímo tyto objekty (vkládají se přes schránku).</p>
+		<p class="cm4">Pokud byl hledán objekt pomocí <strong>[::Comment::]</strong>, <strong>[::Field::]</strong>, <strong>[::TextFrame::]</strong>, <strong>[::Picture::]</strong>, <strong>[::TextTable::]</strong> tak představují přímo tyto objekty (vkládají se přes schránku).</p>
 		<p class="cm2"><strong>\b \e</strong> - pokud se hledalo pomocí <strong>[::BigBlock::]</strong> tak představují obsah začáteční a ukončující značky. <dfn>Omezení:</dfn> nelze používat <a href="#skupiny">seskupení ().</a></p>
 		<p class="cm2" id="skupiny"><strong>\1 \2 \3 \4 \5 \6 \7 \8 \9</strong> - obsah seskupení</p>
 		<p class="cm4">Pokud byly v hledaném výrazu použity závorky (), pak <strong>\1</strong> představuje v pořadí první nalezený text, příslušný obsahu prvních (), podobně <strong>\2</strong> přísluší druhému páru () atd, maximálně <strong>\9</strong> přísluší 9. páru. Za platnou je považována pouze 1. úroveň zanoření závorek, další úrovně jsou ignorovány.</p>
@@ -232,13 +232,13 @@
 		<p class="cm6">e - bude vložena záložka ke konci bloku</p>
 		<p class="cm4"><strong>\K{}</strong>, <strong>\K</strong> pokud je v daném místě textu definována záložka tak bude vymazána. Pokud je nalezen blok textu označený jako záložka bude záložka smazána, textový blok zůstane nezměněn.<br><strong>\K{w,nove_jmeno}\K</strong> - přejmenování záložky - musí být ale vyhledána pomocí <strong>[::Bookmark::]</strong></p>
 		<p class="cm2"><strong>\o</strong> - vloží do nahrazovaného výrazu textový obsah nalezeného objektu</p>
-		<p class="cm4">Pokud byl hledán objekt pomocí <strong>[::Note::]</strong>, <strong>[::Footnote::]</strong>, <strong>[::Endnote::]</strong>, <strong>[::TextFrame::]</strong>, <strong>[::Picture::]</strong>, <strong>[::TextTable::]</strong> tak se vloží text který tyto objekty obsahují. Tabulka je převedena pomocí tabulátorů mezi sloupci a odstavců mezi řádky.</p>
+		<p class="cm4">Pokud byl hledán objekt pomocí <strong>[::Comment::]</strong>, <strong>[::Footnote::]</strong>, <strong>[::Endnote::]</strong>, <strong>[::TextFrame::]</strong>, <strong>[::Picture::]</strong>, <strong>[::TextTable::]</strong> tak se vloží text který tyto objekty obsahují. Tabulka je převedena pomocí tabulátorů mezi sloupci a odstavců mezi řádky.</p>
 		<p class="cm4"><dfn>Omezení:</dfn> Maximální velikost převáděné tabulky je omezena na 65 kB výsledného textu celkem.</p>
 		<p class="cm4">Pokud se hledalo pomocí <strong>[::Field::]</strong>, <strong>[::Reference::]</strong>, <strong>[::ReferenceMark::]</strong> tak se vloží zobrazený text kotvy nebo pole.</p>
 		<p class="cm2"><strong>\O</strong> - vloží do nahrazovaného výrazu název nalezeného objektu (pokud byly hledány objekty)</p>
 		<p class="cm4">Pokud byl hledán objekt pomocí:</p>
 		<p class="cm4"><strong>[::TextFrame::]</strong>, <strong>[::Picture::]</strong>, <strong>[::TextTable::]</strong> - vloží se názvy těchto objektů.</p>
-		<p class="cm4"><strong>[::Note::]</strong>, <strong>[::Field::]</strong> - vloží se označení typu textového pole</p>
+		<p class="cm4"><strong>[::Comment::]</strong>, <strong>[::Field::]</strong> - vloží se označení typu textového pole</p>
 		<p class="cm4"><strong>[::Reference::]</strong>, <strong>[::ReferenceMark::]</strong> - vloží se název značky pro odkaz</p>
 		<p class="cm4"><strong>[::Footnote::], [::Endnote::]</strong> - vloží se text kotvy (index poznámky)</p>
 		<p class="cm2"><strong>\i</strong> - vloží do nahrazovaného výrazu počitadlo nahrazení - jen pokud se použije <var>Nahradit&nbsp;vše</var></p>
