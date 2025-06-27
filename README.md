@@ -1,4 +1,4 @@
-<h4 id="top"> <a href="#english">English</a> &bull; <a href="#czech">Česky</a> &bull; <a href="#spanish">Español</a> </h4>
+<h4 id="top"> <a href="#english">English</a> &bull; <a href="#czech">Česky</a> &bull; <a href="#spanish">Español</a> &bull; <a href="#Italian">Italiano</a> </h4>
 <h2 id="english">Download from LibreOffice Extension site</h2>
 <ul><li><b>Stable version:</b> <a href="https://extensions.libreoffice.org/en/extensions/show/70066">https://extensions.libreoffice.org/en/extensions/show/70066</a></li></ul>
 <h3>DOWNLOAD AND INSTALL FROM HERE (latest version)</h3>
@@ -46,4 +46,21 @@
   <li> Finalmente podras instalar la extension OXT</li>
 </ul>
 <p> Si en el archivo ZIP se comprime también el directorio <b>Code</b>, es posible que se inutilice el gestor de extensiones y será necesario eliminar la extensión mal empaquetada corrigiendo el archivo <i>uno_packages.pmap</i> del perfil de usuario <a href="https://ask.libreoffice.org/t/texmath-does-not-install-under-7-2-6/76151/3">manualmente</a>.</p>
+<br>
+
+<a id="Italian" href="#top">&uArr; Inizio</a></p>
+<h2>Scaricamento dal sito dell'estensione AltSearch di LibreOffice</h2>
+<ul><li><b>Versione ufficiale</b> ("stabile"): <a href="https://extensions.libreoffice.org/en/extensions/show/70066">https://extensions.libreoffice.org/en/extensions/show/70066</a></li></ul>
+<h3>SCARICAMENTO E INSTALLAZIONE DA QUI (versione più recente)</h3>
+<ul><li>Scaricare il file <b>AltSearch.oxt</b> e installarlo</li></ul>
+<h3>Compilazione "fai-da-te" dell'estensione</h3>
+<h4>!!!  PER SICUREZZA, PER PRIMA COSA FARE IL BACKUP DEL PROPRIO <a href="https://wiki.documentfoundation.org/UserProfile" target=""_blank>PROFILO UTENTE</a> DI LIBRE OFFICE !!!</h4>
+<ul>
+  <li>Scaricare il file sorgente in formato <b>ZIP</b> facendo clic sul pulsante <b><i>Code <></i></b>. Verrà salvato sul proprio PC un file avente nome: <b>libreoffice-alt-search-main.zip</b></li> 
+  <li>Scompattare questo file ZIP ed entrare nella sua sotto-cartella <b>Code</b></li>
+  <li>Creare nuovamente un file di tipo ZIP a partire dal contenuto dell cartella <b>Code</b> attribuendogli il nome <b>AltSearch.zip</b>
+  <li>Rinominare questo file AltSearch.zip in <b>AltSearch.oxt</b>.</li>
+  <li>A questo punto è possibile installare su Libre Office l'estensione così creata, in quanto LibreOffice riconosce il formato <b>OXT</b></li>
+</ul>
+<p>Se, durante la creazione del pacchetto AltSearch.zip viene compressa anche la cartella <b>Code</b> come cartella-radice del file ZIP, il gestore delle estensioni di Libre Office potrebbe essere incapace di installare l'estensione. A questo punto bisognerà eliminare l'estensione "corrotta" e correggere <a href="https://ask.libreoffice.org/t/texmath-does-not-install-under-7-2-6/76151/3">manualmente</a> il file <i>uno_packages.pmap</i> del profilo-utente</p>
 <br>
