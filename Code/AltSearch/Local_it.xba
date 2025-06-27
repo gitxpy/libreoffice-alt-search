@@ -48,7 +48,7 @@ Sub Load_it
 	&quot; Etichetta (Tag) HTML di apertura  &quot; &amp; chr(160) &amp; &quot;&lt;[^/][^&gt;]+&gt;&quot;, _
 	&quot; Etichetta (Tag) HTML di chiusura &quot; &amp; chr(160) &amp; &quot;&lt;/[^&gt;]+&gt;&quot;, _
 	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Commento (riquadro giallo) – cerca la sottostringa nel contenuto dei commenti &quot; &amp; chr(160) &amp; &quot;[::Commento::]&quot;, _
+	&quot; Commento (riquadro giallo) – cerca la sottostringa nel contenuto dei commenti &quot; &amp; chr(160) &amp; &quot;[::Comment::]&quot;, _
 	&quot; Campi di testo – cerca la sottostringa nel contenuto dei campi di testo &quot; &amp; chr(160) &amp; &quot;[::Field::]&quot;, _
 	&quot; Cornice di testo – cerca la sottostringa nel Nome delle cornici &quot; &amp; chr(160) &amp; &quot;[::TextFrame::]&quot;, _
 	&quot; Tabella – cerca la sottostringa nel Nome delle tabelle  &quot; &amp; chr(160) &amp; &quot;[::TextTable::]&quot;, _
