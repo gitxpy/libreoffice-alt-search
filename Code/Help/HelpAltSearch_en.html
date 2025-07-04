@@ -59,7 +59,7 @@
 			<li>The results of replacement can be redirected to another text file</li>
 			<li>Batch mode: search and replace parameters can be saved and loaded; it is possible to save several search and replace operations in a sequence and quickly execute the whole set later with one command. Execute the batch with more opened text documents together</li>
 			<li>Dialog box for quick assignment of keyboard shortcuts to batch operations that have been saved</li>
-			<li><u>Preserve capitalization</u> - If found text begins with a capital letter, also the text replacement will begin with a capital letter</li>
+			<li>Preserve capitalization - If found text begins with a capital letter, also the text replacement will begin with a capital letter</li>
 			<li>Searching for character style, possibility to choose a style from the menu</li>
 			<li>Searching list and paragraph styles through the list box “Properties”</li>
 			<li>Search and replace of Bookmarks</li>
@@ -81,14 +81,14 @@
 		<p class="center">
 			<img src="img/altsearch_main_en.png" width="455" height="299" alt="Main dialog box of AltSearch">
 	                	<br>
-			<i>Main dialog box of AltSearch</i>
+			<i>AltSearch main dialog box</i>
 		</p>
 		<p>&nbsp;</p>
 		<p><b>The List box menu (above the search string input field)</b></p>
 		<p>This contains frequently used or complicated <i>regular expressions</i> or search parameters that can be used in the search field. After choosing an entry, the corresponding parameters are transferred to the input field (or to both the search and replace fields if the second one is specified). These may be inserted in several ways: before or after the cursor or replacing the text in the input box. At the same time, the “<b>Regular expressions</b>” checkbox must be ticked.</p>
 		<h3><a id="hledaten"></a>Searching</h3>
 		<p><b>A.</b> List box “<b>Regular</b>”</p>
-		<p class="cm2">This box contains some helpful regular expressions. They are described in the <a href="https://help.libreoffice.org/latest/en-US/text/shared/01/02100001.html?&DbPAR=WRITER">LibreOffice Help</a> and searching for <b>List of Regular Expressions</b></p>
+		<p class="cm2">This box contains some helpful regular expressions. They are described in the <a href="https://help.libreoffice.org/latest/en-US/text/shared/01/02100001.html?&DbPAR=WRITER"><b>LibreOffice Help</b></a> searching for <b>List of Regular Expressions</b></p>
 		<p class="cm4" id="enskupiny0"><dfn>Limitation:</dfn> The syntax using regular expressions isn’t fully compatible with OOo original. There are problems especially with searching when using the wildcard <strong>*, +, ?</strong> or <strong>{n,n}</strong> just after subexpressions determined by parentheses <b>()</b>.</p>
 		<p>For example <strong>(Mi)?ster</strong> will not be found (however, when using <var>Count</var> the true count will be returned - this function works only when using the compatible mode).</p>
 		<p>Further, when subexpressions like <strong>(.*)any</strong> or <strong>(.+)any</strong> are searched for, the shortest matching occurrence is found, contrary to the OOo standard search, which will find the longest matching occurrence. If it is necessary to preserve compatibility, you can delimit the whole search expression with an extra pair of parentheses: <strong>((Mi)?ster)</strong>. But this will, of course, lose you the chance to cite the subexpression in the replace expression as a reference, i.e. <strong>\#</strong> where # is a reference number (max. 9) of the subexpressions. Besides, it is not possible to use a reference on a subexpression (determined by parentheses <strong>()</strong>) both for the searched and the replaced expression at the same time. See also <a href="#enskupiny">subexpressions</a>.</p>
@@ -290,6 +290,7 @@
 		<p class="cm2"><strong>\R</strong> - redirects the replace expression to another text file</p>
 		<p class="cm4">This option causes the replace expression to be inserted into <i>new.odt</i> file instead of replacing the found text. The original file will stay as it is, without any change. To enter the name of the output file, use the format <strong>\R{filename}</strong>. The name must have the accurate OOo window header format, including the text “ - OpenOffice.org Writer”. New records from this redirection are always added to the end of the file.</p>
 		<p class="cm4">Example: sf the searched expression was <strong>[:::HyperLinkURL::]</strong> and the replace expression is <strong>Link \i, page \I: &amp; (URL: \u)\p\R</strong>, when you click the <var>Replace all</var> button all the hyperlinks found in original file will be listed in a new file in the form <i>Link</i><i>1, page 1: textOfHyperlink (URL: URLaddress)</i> in separate paragraphs.</p>
+		<p class="cm4"><i>Link1, page 1: textOfHyperlink (URL: URLaddress)</i></p>
 		<p>Button and List box “<b>Pick properties</b>”</p>
 		<p class="cm2">Using the <var>Pick properties</var> button you can update the list of (some) properties and their values for the currently selected object. Then you can browse the list and choose one from the list box next to the button.</p>
 		<p class="cm2"><strong>\A{properties=value}</strong> - sets in the replace expression the value of the specified property. Uses rules analogous to those for the parameter <strong>\C{}</strong> (see above).</p>
