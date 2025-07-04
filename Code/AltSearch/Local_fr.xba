@@ -188,7 +188,7 @@ Sub Load_fr
 	MSG(49) = &quot;No selected documents - select from the list!&quot;
 	MSG(50) = &quot;Execute the selected batch with more opened text documents&quot;
 	&apos;Sub testViewCursor
-	MSG(51) = &quot;Visible cursor is in unsuitable object (for example Comment), click cursor to document.&quot;
+	MSG(51) = &quot;Le curseur est situé dans un objet non supporté (par ex. Commentaire), veuillez cliquer dans le texte.&quot;
 
 	&apos; main dialog
 	with oDIAL.model

@@ -315,7 +315,7 @@ End Sub
 
 	&apos; count the occurences
 sub BtCount
-	testViewCursor &apos;test if Visible cursor isn&apos;t in Comment etc.
+	if NOT testViewCursor then exit sub &apos;test if Visible cursor isn&apos;t in Comment etc.
 	dim info, curinit, curs, i, j, max, hled, pom, bin, oTmp, oAnch, inFoot, oFoot, mode
 	info = &quot;&quot;  &apos;information filed under the inpubox Find
 	nactiVolby(false) &apos; save options of search
@@ -710,7 +710,7 @@ end sub
 
 	&apos;button find all
 sub BtFindAll
-	testViewCursor &apos;test if Visible cursor isn&apos;t in Comment etc.
+	if NOT testViewCursor then exit sub &apos;test if Visible cursor isn&apos;t in Comment etc.
 	dim info, curinit, curs, i, j, max, hled, pom, bin, oAnch, oFoot, inFoot, mode
 	info = &quot;&quot;  &apos; information box under the Find
 	nactiVolby(false) &apos; save the options of search
@@ -1049,7 +1049,7 @@ end sub
 
 	&apos; find next
 sub BtFindNext
-	testViewCursor &apos;test if Visible cursor isn&apos;t in Comment etc.
+	if NOT testViewCursor then exit sub &apos;test if Visible cursor isn&apos;t in Comment etc.
 	dim info, curs,i, pom
 	&apos; problem in Linux - unwanted actualization of cursor after 1st search of objects
 	&apos; if there is loaded TMPPOLE and there is set unempty string ALTsearchFINDLAST, then is supposed it isn&apos;t 1st passing
@@ -1119,7 +1119,7 @@ end sub
 
 	&apos;button replace
 sub BtReplace
-	testViewCursor &apos;test if Visible cursor isn&apos;t in Comment etc.
+	if NOT testViewCursor then exit sub &apos;test if Visible cursor isn&apos;t in Comment etc.
 	dim pom, i
 	&apos; for linux: the search of yellow comments else the muddles during 1st replacement
 	If oSELS.supportsService(&quot;com.sun.star.text.TextRanges&quot;) Then prCURS = oVCURS.text.createTextCursorByRange(oVCURS) &apos; working according to visible
@@ -1153,7 +1153,7 @@ end sub
 
 
 sub BtReplaceAll
-	testViewCursor &apos;test if Visible cursor isn&apos;t in Comment etc.
+	if NOT testViewCursor then exit sub &apos;test if Visible cursor isn&apos;t in Comment etc.
 	dim info, curinit, curs, rest, n, i, j, max, hled, pom, oTmp, oAnch, bin, inFoot, oFoot, mode, oUndoMgr as object, oButtonReplaceAll as object, sUndo$
 	sUndo=oDIAL.Model.getByName(&quot;Bt_replall&quot;).Label &apos;label Replace all for Undo manager
 	oUndoMgr=ALTsearchDOC.UndoManager
@@ -1753,7 +1753,7 @@ End Function
 sub CursorInit(vynutit as boolean) &apos; initialization of positions of cursor and block
 	if (FINDCOUNTER &gt;= 0)and not vynutit then  exit sub &apos; not actualize if the search
 	if NOINIT then exit sub  &apos; hard ban of initialization
-	testViewCursor &apos;test if Visible cursor isn&apos;t in Comment etc.
+	if NOT testViewCursor then exit sub &apos;test if Visible cursor isn&apos;t in Comment etc.
 	FIRSTPASS = true
 
 	on error goto problem
@@ -3397,14 +3397,44 @@ sub Table2Text(oTmp as object) as string
 end sub
 
 
-Sub testViewCursor &apos;test if Visible cursor isn&apos;t in Comment etc.  https://github.com/gitxpy/libreoffice-alt-search/issues/30
+Function testViewCursor() as boolean &apos;test if Visible cursor isn&apos;t in Comment etc.  https://github.com/gitxpy/libreoffice-alt-search/issues/30 (situations A, B)
+	on local error goto bug
 	dim oSel as object
-	oSel = ALTsearchDOC.CurrentController.getSelection()
+	oSel=ALTsearchDOC.CurrentController.Selection
 	if isNull(oSel) then &apos;there isn&apos;t correct selection of visible cursor in document
-		msgbox(MSG(51), 16)
-		stop
-	end if	
-End Sub
+	
+		rem fix: situation A, AltSearch dialog still isn&apos;t run
+		rem simulate press of Esc - it moves ViewCursor to document, but not &quot;updated&quot; its properties in all cases
+		dim oWindow as Object, oToolkit as object, oKeyEvent as new com.sun.star.awt.KeyEvent
+		oWindow=ALTsearchDOC.CurrentController.Frame.ContainerWindow
+		oToolkit=oWindow.Toolkit
+		with oKeyEvent
+			.Modifiers=0
+			.KeyCode=com.sun.star.awt.Key.ESCAPE
+			.KeyChar=chr(27)
+			.Source=oWindow
+		end with
+		with oToolkit
+			.keyPress(oKeyEvent)	
+			wait 10 &apos;1 seems enough, but 10 for sure
+			.keyRelease(oKeyEvent)
+		end with
+		
+		rem situation B, AltSearch dialog is ran, but visible cursor is put to Comment (again and again)
+		rem check .Start of visible cursor
+		&apos;xray ALTsearchDOC.CurrentController.ViewCursor   &apos;functional and property .Start is readable in xray window
+		&apos;xray ALTsearchDOC.CurrentController.ViewCursor.Start   &apos;but this is NOT FUNCTIONAL
+		rem so it seems the visible cursor is &quot;updated&quot; if some new dialog window is shown (like xray window) and probably focused some part of one (or something like this)
+		dim oStart as variant
+		oStart=ALTsearchDOC.CurrentController.ViewCursor.Start &apos;if cursor hasn&apos;t property .Start then cursor is in bad object
+		
+	end if
+ 	testViewCursor=true
+	exit function
+bug:
+	msgbox( MSG(51), 16 ) &apos;show mgsbox to click cursor in document
+	testViewCursor=false
+End Function
 
 
 	&apos; save history of search and replacements from records to the global arrays
@@ -3546,7 +3576,7 @@ End Sub
 
 Sub AltSearchDlg_windowActivated(oEv)
 	&apos; why false ??? - maybe at loss and restore focus without the intervention to document will not rewrite the borders of original selection?
-	CursorInit(false) &apos; initialization of positions of cursor and block
+	if NOT ALTsearchDIALOG.isVisible then CursorInit(false) &apos;initialization of positions of cursor and block; visible dialog hasn&apos;t initialization because of testViewCursor()
 End Sub
 
 Sub AltSearchDlg_windowClosed(oEv)
