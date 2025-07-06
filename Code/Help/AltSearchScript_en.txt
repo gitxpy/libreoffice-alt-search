@@ -16,23 +16,23 @@
 ;      occurrence of command [Name] or [End] for last valid batch.
 ;
 ;  [Find] - searched expression - at execution of batch parameter will be 
-;      transferred to the field "Search for"
+;      transferred to the field “Search for”
 ;  [Replace] - replaced expression - at execution of batch parameter will be 
-;      transferred to the field "Replace"
+;      transferred to the field “Replace”
 ;  [Parameters] - parameters of searching and replacing - empty string matches
-;      setting of all parameters to false, citation the parametr's name
+;      setting of all parameters to false, citation the parametr’s name
 ;      will set to true.  
 ;      Accepted parameters:  
 ;           MatchCase  PreserveCapital  WholeWord  ParaStyles  Regular
 ;           CurrSelection  Backwards  MsgOff  NoSummary  
 ;
 ;      MsgOff - suppress most error messages and information (for one step of search)
-;      NoSummary - suppress the final report of whole batch (usefull if using keyshortcut)  
+;      NoSummary - suppress the final report of whole batch (useful if using keyshortcut)  
 ; 
 ;  [Command] - determine mode of executing searching and replacing -
 ;      Accepted parameters:  Find  FindAll  Replace  ReplaceAll  Count
 ;
-;      In future there could also be instructions for cursor's movement, 
+;      In future there could also be instructions for cursor’s movement, 
 ;      setting of bookmark according to cursor and restoration cursor
 ;      in accordance to bookmark etc.
 ;       
@@ -43,7 +43,7 @@
 
 ************************************************************
 
-[Name] Html [Sel.]	Primitive conversion to Html tags for selected block    	 
+[Name] HTML [Sel.]	Primitive conversion to HTML tags for selected block    	 
   ; the same parameters for all 
   [Parameters] MsgOff Regular CurrSelection
 
@@ -78,7 +78,7 @@
   [Command] ReplaceAll
 
 
-[Name] Text [Sel.]	Convert selected block on the BBcode
+[Name] Text [Sel.]	Convert selected block into BBcode
    ; the same parameters for all 
   [Parameters] MsgOff Regular CurrSelection
 
@@ -148,7 +148,7 @@
   [Parameters] MsgOff Regular CurrSelection 
   [Command] ReplaceAll
 
- ; remove spaces and tabs on the starting and enddin of paragraphs
+ ; remove spaces and tabs on the starting and ending of paragraphs
   [Find](^( *\t*)*|( *\t*)*$)
   [Replace]
   [Command] ReplaceAll
@@ -158,13 +158,13 @@
   [Replace]  
   [Command] ReplaceAll
 
- ; remove space at the beginning paragraph behind of block empty paragraphs 
+ ; remove space at the beginning of the paragraph, behind of a block of empty paragraphs 
   [Find]^ 
   [Replace]
   [Command] ReplaceAll
 
 
-[Name] Text [Sel.]    Separate non empty paragraphs by empty par
+[Name] Text [Sel.]    Separate non empty paragraphs by empty paragraphs
   [Find]^.+$
   [Replace]&\p
   [Parameters]  MsgOff Regular CurrSelection
@@ -188,32 +188,32 @@
   [Command] ReplaceAll
 
 
-[Name] Text [All]	Write out all Hyperlinks to new file
+[Name] Text [All]	Write out all Hyperlinks to a new file
   [Find][:::HyperLinkURL::]
   [Replace]Link \i, on page \I: \D\C{Example}\h&\h{\u}\C (URL: \C{Example}\u\C)\C{Example}\p\h\R
   [Parameters]   MsgOff  Regular  
   [Command] ReplaceAll
 
 
-[Name] Text [All]	Write out all Comments to new file
+[Name] Text [All]	Write out all Comments to a new file
   [Find][::Comment::]
   [Replace]Comment &\i, on page \I,  Content:\D\C{Example}\C\n\o\p\p\R
   [Parameters]   MsgOff  Regular  
   [Command] ReplaceAll
 
-[Name] Text [All]    Write out all Pictures to new file
+[Name] Text [All]    Write out all Pictures to a new file
   [Find][::Picture::]
   [Replace]Picture \i, on page \I, Name of picture: \C\O\C{Example}&\p\p\C\R
   [Parameters]   MsgOff  Regular  
   [Command] ReplaceAll
 
-[Name] Text [All]    Write out all Tables to new file
+[Name] Text [All]    Write out all Tables to a new file
   [Find][::TextTable::]
   [Replace]Table \i, on page \I, Name of table: \C\O\C{Example}\p&\p\p\C\R
   [Parameters]   MsgOff  Regular  
   [Command] ReplaceAll
 
-[Name] Text [All]    Write out all Text Frames to new file
+[Name] Text [All]    Write out all Text Frames to a new file
   [Find][::TextFrame::]
   [Replace]Frame \i, on page \I, Name of Text Frame: \C\O\C{Example}\p&\p\p\C\R
   [Parameters]   MsgOff  Regular  
