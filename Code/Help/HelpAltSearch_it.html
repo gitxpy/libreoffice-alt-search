@@ -30,10 +30,9 @@
 	</div>
 
 	<article id="it" lang="it">
+		
 		<h2>Finestra di dialogo alternativa a Trova e sostituisci di Writer</h2>
-
 		<p class="menu2"><a href="#hledatit">Ricerca</a>&bull;<a href="#nahraditit">Sostituzione</a>&bull;<a href="#davkyit">Modalità Batch</a>&bull;<a href="#multiple">Esecuzione multipla</a>&bull;<a href="#omezeniit">Limitazioni</a></p>
-
 		<details>
 			<summary>&#x2f3;&#x2f3;&#x2f3;</summary>
 			<p>Questa versione della guida è stata tradotta in italiano da Leopoldo Saggin aka Topoldo - © 2009-2025</p>
@@ -83,8 +82,10 @@
 			<i>Finestra principale di AltSearch</i>
 		</p>
 		<p>&nbsp;</p>
+		
 		<p><b>Menu a discesa sopra la casella per la digitazione della stringa da cercare</b></p>
 		<p>I tre menu a discesa posti sopra la casella per la digitazione della stringa da cercare contengono le <i>espressioni regolari</i> complesse o frequentemente usate o altri parametri di ricerca che possono essere automaticamente inseriti nella casella di digitazione dei criteri di ricerca. Dopo avere selezionato una delle opzioni presenti, i relativi parametri vengono trasferiti nella casella di ricerca ed eventualmente anche nella casella di sostituzione, qualora venga specificato anche questo criterio. Le procedure di ricerca/sostituzione possono essere eseguite anche specificando ulteriori opzioni: per es. prima o dopo la posizione del cursore, con sostituzione o meno dell’espressione cercata ecc… Perché ciò sia possibile è in ogni caso necessario che la sottostante casella di controllo “<b>Espressioni regolari</b>” sia contrassegnata.</p>
+		
 		<h3><a id="hledatit"></a>Ricerca</h3>
 		<p><b>A.</b> Menu a discesa “[Espressioni] <b>Regolari</b>”</p>
 		<p>Questo Menu a discesa contiene alcune espressioni regolari molto utili che sono descritte nella <a href="https://help.libreoffice.org/latest/it-IT/text/shared/01/02100001.html?&DbPAR=WRITER"><b>Guida di LibreOffice</b></a> cercando l’<b>Elenco di Espressioni Regolari</b></p>
@@ -108,6 +109,7 @@
 		<p class="cm4"><dfn>Limitazioni:</dfn> La procedura è lenta. Se si usa anche la sotto-espressione <strong>()</strong>, il parametro <strong>\m</strong> deve trovarsi all’inizio della stringa di ricerca e non deve essere solo. È cioè valida l’espressione <strong>\m(…)</strong> ma non <strong>(…)\m</strong>.</p>
 		<p class="cm2"><strong>\s</strong> - rappresenta qualsiasi tipo di spazio: normale, indivisibile, determinato da un carattere di tabulazione o da un’interruzione manuale di riga. Equivale a <strong>[\xA0\x9\xA]</strong></p>
 		<p class="cm2"><strong>\S</strong> - rappresenta uno spazio indivisibile (<strong>\x00A0</strong> oppure <strong>\#160</strong>)</p>
+		
 		<p><b>B.</b> Menu a discesa “[Ricerca] <b>Estesa</b>”</p>
 		<p class="cm2"><strong>[::BigBlock::]</strong> - cerca una serie di paragrafi (di lunghezza illimitata) delimitato da testo noto:</p>
 		<p class="cm4"><strong>start[::BigBlock::]end</strong> – in questo caso viene dapprima ricercata la stringa <strong>start</strong> e una volta trovata, viene ricercata la stringa <strong>end</strong>. Se vengono trovate entrambe, viene selezionato l’intero blocco di testo compreso fra di loro.</p>
@@ -121,7 +123,8 @@
 		<p class="cm4">Ricerca: <strong>text1||text2||text3</strong> - Sostituizione: <strong>neco1||neco2||neco3</strong>.<br>
 		In questo caso viene inizialmente cercata la stringa <strong>text1</strong> che viene sostituita da <strong>neco1</strong>. La ricerca prosegue poi con la stringa <strong>text2</strong> che viene sostituita da <strong>neco2</strong>, ecc…</p>
 		<p class="cm4"><dfn>Limitazioni:</dfn> con <strong>||</strong> non si possono usare né il parametro <strong>[::BigBlock::]</strong> né le <a href="#itskupiny">sotto-espressioni</a></p>
-		<p class="cm2"><u>Ricerca di Oggetti</u></p>
+		
+		<p class="cm2"><b>Ricerca di Oggetti</b></p>
 		<p class="cm2"><strong>[::Comment::]</strong> - cerca i Commenti al testo (riquadri gialli) a seconda del loro contenuto</p>
 		<p class="cm4"><strong>[::Comment::]</strong> - trova il Commento al testo successiva</p>
 		<p class="cm4"><strong>[::Comment::]pozn.</strong> - trova qualsiasi Commento al testo contenente la sotto-stringa <strong>pozn.</strong></p>
@@ -174,6 +177,7 @@
 		<p class="cm4"><strong>[::Bookmark::]</strong> trova il testo o il blocco di testo contrassegnato come Segnalibro</p>
 		<p class="cm4"><strong>[::Bookmark::]text</strong> trova la sotto-stringa <strong>text</strong> se questa si trova all’interno di un blocco di testo contrassegnato come Segnalibro</p>
 		<p class="cm4"><strong>[::Bookmark::]\RefHeading</strong>  trova il testo o il blocco di testo contrassegnato come Segnalibro solo se il nome del segnalibro contiene la sottostringa <strong>RefHeading</strong>. Tale sotto-stringa viene cioè cercata solo nel nome del segnalibro.</p>
+		
 		<p><b>C.</b> Menu a discesa “<b>Proprietà</b>”</p>
 		<p class="cm2">Abilita le ricerche a seconda delle proprietà (attributi) delle stringhe e dei relativi valori.<br>Nella casella di digitazione bisogna dapprima introdurre <strong>[:::</strong> e ciò deve essere seguito dal <strong>nome</strong> della proprietà cercata. Se vi sono più nomi di proprietà, essi possono essere separati con il segno di <i>piping</i> , cioè: <strong>|</strong>. La proprietà ricercata deve necessariamente terminare con l’inserimento dei caratteri <strong>::]</strong>. Dopo di che si possono immettere le specifiche dell’eventuale testo da ricercare. Se invece si cerca il <b>valore</b> della proprietà, bisogna usare una sintassi del tipo: <strong>name=value</strong></p>
 		<p class="cm2"><strong>[:::ParaStyleName::]</strong> - ricerca lo stile di un paragrafo</p>
@@ -196,17 +200,20 @@
 		<p class="cm2"><strong>Formato simile dei caratteri</strong> - carica qualsiasi proprietà/attribuito del carattere della corrente selezione che sia stata modificata manualmente e cerca in tutto il documento quelle parti che abbiano una formattazione <i>simile</i>. Se, per esempio, il cursore si trova su di un testo che ha subito la modifica manuale del nome del carattere (<i>font</i>), verranno trovate tutte quelle parti del documento in cui è stata effettuata una analoga modifica manuale del nome del carattere. In questo caso per esempio, la casella di ricerca conterrà <strong>[:::CharFontName::]</strong></p>
 		<p class="cm2"><strong>Identico formato dei caratteri</strong> - carica qualsiasi proprietà/attribuito del carattere della corrente selezione che sia stata modificata manualmente e cerca in tutto il documento quelle parti che abbiano una <i>identica</i> formattazione. Se, per esempio, il cursore si trova su di un testo che ha subito la modifica manuale del nome del carattere in <strong>Arial</strong>, verranno trovate tutte quelle parti del documento in cui è stata effettuata una analoga modifica manuale del nome del carattere e che abbiano anche lo <b>stesso</b> nome del carattere. Pertanto, in questo caso ad esempio, la casella di ricerca conterrà <strong>[:::CharFontName=Arial::]</strong>.</p>
 		<p class="cm4"><dfn> Limitazioni:</dfn> Il motore di ricerca di Writer non supporta tutte le possibili proprietà di paragrafo e di carattere. Inoltre non tutte le combinazioni funzionano come ci si potrebbe aspettare.</p>
+		
 		<h3 id="nahraditit">Sostituzione</h3>
+		
 		<p>Menu a discesa “<b>Sostituzione</b>”</p>
 		<p class="cm2"><strong>&amp; \0</strong> - entrambi questi parametri hanno lo stesso significato: nella sostituzione rappresentano l’intero testo trovato</p>
 		<p class="cm4">Se l’espressione è stata trovata usando <strong>[::BigBlock::]</strong>, questi parametri rappresentano solo la serie di paragrafi compresa fra il marcatore di inizio e di fine serie.</p>
 		<p class="cm4">Se l’oggetto era stato trovato usando <strong>[::Comment::]</strong>, <strong>[::Field::]</strong>, <strong>[::TextFrame::]</strong>, <strong>[::Picture::]</strong> o <strong>[::TextTable::]</strong>, questi parametri rappresentano esattamente tale oggetto e viene inserito tramite gli Appunti (<i>Clipboard</i>)</p>
 		<p class="cm2"><strong>\b \e</strong> - Se l’espressione è stata trovata usando <strong>[::BigBlock::]</strong>, questi parametri rappresentano il contenuto dei marcatori di inizio e di fine blocco.</p>
 		<p class="cm4"><dfn>Limitazioni:</dfn> questi parametri non possono essere usati insieme alle <a href="#itskupiny">sotto-espressioni</a>.</p>
+		
 		<p><a id="itskupiny"><u>Sotto-espressioni</u></a></p>
 		<p class="cm2"><strong>\1 \2 \3 \4 \5 \6 \7 \8 \9</strong> - rappresentano il possibile contenuto delle sotto-espressioni</p>
 		<p class="cm2">Se l’espressione viene ricercata utilizzando le parentesi rotonde <b>()</b>, <strong>\1</strong> rappresenta il contenuto della prima coppia di parentesi, <strong>\2</strong> corrisponde al contenuto del secondo paio di parentesi ecc…, fino a <strong>\9</strong> che corrisponde al contenuto del nono paio. Il tutto è valido solo per il primo livello di parentesi; parentesi nidificate su più livelli vengono ignorate.</p>
-		<p class="cm2">Esempio:<br>Usando l’espressione <strong>(\d{1,2})\. *(\d{1,2})\. *\d{2,2}(\d{2,2})</strong> è possibile trovare le date che hanno formato <b>01. 12. 2007</b> (gg.mm.aaaa); usando l’espressione di sostituzione <strong>\3-\2-\1</strong> esse vengono sostituite con date nel formato <b>07-12-01</b> (aa-mm-gg).</p>
+		<p class="cm2">Esempio:<br>Usando l’espressione <strong>(\d{1,2})\. *(\d{1,2})\. *\d{2,2}(\d{2,2})</strong> è possibile trovare le date che hanno formato <b>01.12.2007</b> (gg.mm.aaaa); usando l’espressione di sostituzione <strong>\3-\2-\1</strong> esse vengono sostituite con date nel formato <b>07-12-01</b> (aa-mm-gg).</p>
 		<p class="cm2">Se è necessario impedire la processazione delle sotto-espressioni (per esempio per conservare la compatibilità con le espressioni regolari standard ICU), bisogna porre l’intera espressione di ricerca all’interno di una coppia addizionale di parentesi rotonde. In tal modo tutti i livelli nidificati di parentesi di sostituzione saranno ignorati.</p>
 		<p class="cm2"><dfn>Limitazioni:</dfn> La processazione delle sotto-espressioni è relativamente lenta e non è completamente compatibile con Writer.</p>
 		<p class="cm2">C’è anche una incompatibilità nell’uso dei caratteri jolly posti immediatamente dopo una sotto-espressione - ad esempio nel caso di <strong>(opak)*</strong> - dovuta al principio della ricerca sequenziale in blocchi di testo. Per maggiori informazioni si veda <a href="#itskupiny0">qui</a>. Tuttavia le funzioni <var>Conta</var> e <var>Trova tutto</var> consentono di ricavare il numero corretto di occorrenze anche in questa situazione, mentre le altre funzioni non sono in grado di trovare alcunché (a meno che non si passi alla modalità compatibile). Nei casi più complicati è necessario esaminare attentamente ciò che avviene: infatti solo sperimentando si potranno ottenere i migliori risultati</p>
@@ -289,9 +296,11 @@
 		<p class="cm4">Questa opzione comporta l’inserimento dell’espressione di sostituzione nel file <i>new.odt</i> invece della sostituzione del testo trovato nel file originario. Quest’ultimo rimane tal quale, senza alcuna modifica. Per assegnare il nome al nuovo file su cui viene ridiretta l’espressione di sostituzione, usare il parametro <strong>\R{filename}</strong>. Il nome del file deve avere un formato identico a quello del titolo della finestra di Writer e deve includere la stringa: “<i><b>- LibreOffice Writer</b></i>“.  Eventuali salvataggi successivi che utilizzino questa ridirezione vengono sempre aggiunti in coda al file.</p>
 		<p class="cm4">Esempio: Se l’espressione cercata è del tipo: <strong>[:::HyperLinkURL::]</strong> e l’espressione di sostituzione è <strong>Link \i, page \I: &amp; (URL: \u)\p\R</strong>, quando si fa clic sul pulsante <var>Sostituisci tutto</var> tutti i collegamenti ipertestuali (<i>hyperlink</i>) trovati nel file originale verranno inseriti in un nuovo file nella forma:</p>
 		<p class="cm4"><i>Link1, page 1: textOfHyperlink (URL: URLaddress)</i></p>
+		
 		<p>Menu a discesa e pulsante “<b>Scegli proprietà</b>”</p>
 		<p class="cm2">Il pulsante <b>Scegli proprietà</b> consente di aggiornare l’elenco delle proprietà e/o dei valori dell’oggetto attualmente selezionato. Si può quindi scorrere tale elenco dal menu a discesa posto a fianco del pulsante e scegliere una proprietà.</p>
 		<p class="cm2"><strong>\A{properties=value}</strong> - imposta il valore della proprietà specificata nell’espressione di sostituzione.</p>Utilizza regole analoghe a quelle del parametro <strong>\C{}</strong> (v. sopra).</p>
+		
 		<h3><a id="davkyit"></a>Modalità Batch</h3>
  		<p>&nbsp;</p>
 		<p class="center">
@@ -306,6 +315,7 @@
 		<p>Tutti i parametri delle procedure batch vengono salvati nel file di testo <code>AltSearchScript.txt</code> nella cartella dell'utente <code>…/config/</code> del <a href="https://wiki.documentfoundation.org/UserProfile">profilo LibreOffice </a>.<br>Il file può essere aperto e modificato usando il pulsante <var>Modifica</var> della finestra di dialogo <b>Gestione batch</b>. Per operare le modifiche al testo in Microsoft Windows&reg; viene richiamato in maniera predefinita il programma <b>Blocco Note</b> (<i>Notepad.exe</i>). È possibile scegliere qualsiasi altro editor modificando il file <code>AltSearchEditor.ini</code> presente nella stessa directory di <code>AltSearchScript.txt</code>. Dopo avere modificato manualmente e salvato il file di batch con Gestione batch, si può aggiornare l’elenco dei nomi dei file batch usando il pulsante <var>Aggiorna</var>.<br>La sintassi utilizzata nel file <code>AltSearchScript.txt</code> è descritta all’inizio di tale file che utilizza la codifica UTF-8.</p>
 		<p>Quando si clicca due volte su un elemento dell’elenco delle procedure batch o quando si clicca sul pulsante <var>Esegui</var>, la sequenza scelta viene caricata e vengono eseguite le relative operazioni di ricerca e sostituzione. Se si usano delle procedure batch su delle selezioni di testo è consigliabile lasciare 1-2 paragrafi vuoti all’inizio e alla fine della selezione.</p>
 		<p>Il pulsante <var>Trasferisci</var> viene usato per trasferire i parametri di ricerca e di sostituzione e le relative definizioni nella finestra di dialogo, senza che vengano eseguiti. Se però la procedura batch è costituita da una sequenza di numerose ricerche e sostituzioni, verrà trasferita solo l’ultima parte della sequenza.</p>
+		
 		<h3>Scorciatoie da tastiera</h3>
 		<p>Facendo clic sul pulsante <var>Scorciatoie</var> presente nella finestra di <b>Gestione batch</b> si apre una finestra di dialogo che consente di assegnare delle scorciatoie da tastiera alle procedure batch esistenti.</p>
 		<p>&nbsp;</p>
@@ -323,6 +333,7 @@
 			<li>Premere il pulsante <var>Assegna</var></li>
 		</ol>
 		<p>Perché la scorciatoia funzioni, all’atto della sua creazione viene contemporaneamente creata anche una funzione ausiliaria nel modulo Basic denominata <code>Standard.AltSearchBatchs</code> il cui nome, adattato alla sintassi del Basic, viene visualizzato nella seconda casella di menu a discesa della finestra di dialogo. Quando viene lanciata questa procedura ausiliaria, si apre la finestra di dialogo AltSearch e viene immediatamente eseguita la procedura batch specificata. Il funzionamento corretto dipende dalla conformità dei nomi di batch elencati all’interno della procedura e dal nome dei batch esistenti. Se si modifica il nome del batch al quale era stata precedentemente assegnata una scorciatoia, è ovviamente necessario riassegnarla. La vecchia procedura ausiliaria può essere cancellata selezionandola nella seconda casella di menu a discesa facendo clic sul pulsante <var>x</var> posto a fianco di essa. Qualsiasi scorciatoia da tastiera definita in Writer può essere resa disponibile e riassegnata utilizzando il pulsante <var>x</var> posizionato più sotto. Pertanto si faccia molta attenzione a non rimuovere inavvertitamente delle scorciatoie importanti!</p>
+		
 		<h3><a id="multiple"></a>Esecuzione multipla</h3>
 		<p>&nbsp;</p>
 		<p class="center">
@@ -342,6 +353,7 @@
 				<u>ATTENZIONE</u>: durante l’esecuzione della procedura, NON fare nulla in Writer!</li>
 			</ol>
 		<p>La selezione della casella “<b>Disattiva info</b>” impedisce la visualizzazione dei messaggi che mostrano le modifiche eseguite per ogni file processato. In questo caso, al termine di tutta la procedura, verrà comunque mostrato un rapporto completo delle modifiche effettuate a carico di tutti i file.</p>
+		
 		<h3><a id="omezeniit"></a>Limitazioni:</h3>
 		<p>Qualora siano note delle limitazioni di AltSearch, esse sono menzionate assieme alla descrizione dei parametri individuali interessati.</p>
 		<p>Limitazioni di carattere generale sono le seguenti:</p>
