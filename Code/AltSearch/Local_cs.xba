@@ -188,7 +188,7 @@ Sub Load_cs
 	MSG(49) = &quot;Nebyly vybrány žadné dokumenty - vyberte v seznamu!&quot;
 	MSG(50) = &quot;Spuštění dávky na vybraných otevřených textových dokumentech&quot;
 	&apos;Sub testViewCursor
-	MSG(51) = &quot;Viditelný kurzor je v nevhodném objetku (např. komentáři), klikni jej do dokumentu.&quot;
+	MSG(51) = &quot;Viditelný kurzor je v nepodporovaném objetku (např. Komentáři), klikni kurzor do textu v dokumentu.&quot;
 
 	&apos; main dialog
 	with oDIAL.model
