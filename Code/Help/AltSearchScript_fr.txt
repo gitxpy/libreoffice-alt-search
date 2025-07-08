@@ -20,7 +20,7 @@
 ;  [Replace] - replaced expression - at execution of batch parameter will be 
 ;      transferred to the field "Replace"
 ;  [Parameters] - parameters of searching and replacing - empty string matches
-;      setting of all parameters to false, citation the parametr's name
+;      setting of all parameters to false, citation the parameter's name
 ;      will set to true.  
 ;      Accepted parameters:  
 ;           MatchCase  PreserveCapital  WholeWord  ParaStyles  Regular
