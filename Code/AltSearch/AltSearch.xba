@@ -3196,7 +3196,7 @@ pokracuj:
 
 	&apos; redirect of replace (\R) to window/frame ALTsearchPRINTOUT ?
 	if ALTsearchPRINTOUT &lt;&gt; &quot;&quot; then &apos; redirect yes
-		ReastoreFrameName &apos; after write it need to restore the identificator if the file isn&apos;t saved
+		RestoreFrameName &apos; after write it need to restore the identificator if the file isn&apos;t saved
 		&apos;set visible cursor in report according to work one
 		oPOFILE.CurrentController.select(prCURS)    &apos; select end
 

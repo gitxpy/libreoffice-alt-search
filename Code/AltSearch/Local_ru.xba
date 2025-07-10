@@ -49,7 +49,7 @@ Sub Load_ru
 	&quot; Открывающий тэг HTML&quot; &amp; chr(160) &amp; &quot;&lt;[^/][^&gt;]+&gt;&quot;, _
 	&quot; Закрывающий тэг HTML&quot; &amp; chr(160) &amp; &quot;&lt;/[^&gt;]+&gt;&quot;, _
 	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Примечания (желтые выноски) - ищет строку в содержимом примечаний&quot; &amp; chr(160) &amp; &quot;[::Note::]&quot;, _
+	&quot; Примечания (желтые выноски) - ищет строку в содержимом примечаний&quot; &amp; chr(160) &amp; &quot;[::Comment::]&quot;, _
 	&quot; Текстовые поля - ищет строку в содержимом полей&quot; &amp; chr(160) &amp; &quot;[::Field::]&quot;, _
 	&quot; Текстовая врезка – ищет строку в названиях врезок&quot; &amp; chr(160) &amp; &quot;[::TextFrame::]&quot;, _
 	&quot; Таблица – ищет строку в названиях таблиц&quot; &amp; chr(160) &amp; &quot;[::TextTable::]&quot;, _

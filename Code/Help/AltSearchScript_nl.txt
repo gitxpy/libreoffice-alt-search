@@ -198,8 +198,8 @@
 
 
 [Name] Text [All]	Schrijf alle notities weg naar een nieuw bestand
-  [Find][::Note::]
-  [Replace]Note &\i, on pagina \I,  Inhoud:\D\C{Voorbeeld}\C\n\o\p\p\R
+  [Find][::Comment::]
+  [Replace]Comment &\i, on pagina \I,  Inhoud:\D\C{Voorbeeld}\C\n\o\p\p\R
   [Parameters]   MsgOff  Regular  
   [Command] ReplaceAll
 
