@@ -1,0 +1,226 @@
+; File with batchs for alternative Find & Replace
+; for extension AltSearch.oxt for OOo Writer
+; Charset: UTF-8 
+;
+; v1.3  11/09
+;
+; Syntax:
+; Lines which do not begin with some master command will be ignored.
+; Master command must be bounded in [] and must be at the beginning of the line.
+;  There can be spaces in front of master command, everything behind it will be
+;  interpreted as parameters.
+; 
+;  Description of master commands:
+;  [Name] - batch name (referred to as parameter) - single batch begins
+;      always this master command. The end of batch is determinated by next 
+;      occurrence of command [Name] or [End] for last valid batch.
+;
+;  [Find] - searched expression - at execution of batch parameter will be 
+;      transferred to the field “Search for”
+;  [Replace] - replaced expression - at execution of batch parameter will be 
+;      transferred to the field “Replace”
+;  [Parameters] - parameters of searching and replacing - empty string matches
+;      setting of all parameters to false, citation the parameter’s name
+;      will set to true.  
+;      Accepted parameters:  
+;           MatchCase  PreserveCapital  WholeWord  ParaStyles  Regular
+;           CurrSelection  Backwards  MsgOff  NoSummary  
+;
+;      MsgOff - suppress most error messages and information (for one step of search)
+;      NoSummary - suppress the final report of whole batch (useful if using keyshortcut)  
+; 
+;  [Command] - determine mode of executing searching and replacing -
+;      Accepted parameters:  Find  FindAll  Replace  ReplaceAll  Count
+;
+;      In future there could also be instructions for cursor’s movement, 
+;      setting of bookmark according to cursor and restoration cursor
+;      in accordance to bookmark etc.
+;       
+;  [End] - indicates the end of last valid batch - everything which be after
+;      that will be ignored.  
+;
+; 
+
+************************************************************
+
+[Name] HTML [Sel.]	Primitive conversion to HTML tags for selected block    	 
+  ; the same parameters for all 
+  [Parameters] MsgOff Regular CurrSelection
+
+  ; bold
+  [Find][:::CharWeight::]
+  [Replace]<b>&</b>
+  [Command] ReplaceAll 
+
+  ; italic
+  [Find][:::CharPosture::]
+  [Replace]<i>&</i>
+  [Command] ReplaceAll         	
+
+  ; Hyperlinks 
+  [Find][:::HyperLinkURL::]
+  [Replace]<a href="\u">&</a>
+  [Command] ReplaceAll
+
+  ; Footnotes
+  [Find][::Footnote::]
+  [Replace]<b><span Title="\o"><span style="vertical-align: super; font-size: smaller;">\i</span></span></b>
+  [Command] ReplaceAll
+
+  ; Add tags of paragraphs 
+  [Find]^.*$
+  [Replace]<p>&</p>
+  [Command] ReplaceAll
+
+  ; Remove redundant ends-starts of identical tags in sequence
+  [Find]</i><i>|</b><b>|</p><p>
+  [Replace]
+  [Command] ReplaceAll
+
+
+[Name] Text [Sel.]	Convert selected block into BBcode
+   ; the same parameters for all 
+  [Parameters] MsgOff Regular CurrSelection
+
+  [Find][:::CharWeight::]
+  [Replace][b]&[/b]
+  [Command] ReplaceAll
+
+  [Find][:::CharPosture::]
+  [Replace][i]&[/i]
+  [Command] ReplaceAll
+
+  [Find][:::CharUnderline::]
+  [Replace][u]&[/u]
+  [Command] ReplaceAll
+
+  [Find][:::CharAutoEscapement=true|CharEscapementHeight=58|CharEscapement=-101::]
+  [Replace][sub]&[/sub]\d
+  [Command] ReplaceAll
+
+  [Find][:::CharAutoEscapement=true|CharEscapementHeight=58|CharEscapement=101::]
+  [Replace][sup]&[/sup]\d
+  [Command] ReplaceAll
+
+  [Find][:::HyperLinkURL::]
+  [Replace][url=\u]&[/url]
+  [Command] ReplaceAll
+
+  [Find][::Picture::]
+  [Replace][img]\O[/img]
+  [Command] ReplaceAll
+
+  [Find][:::CharFontName=Courier New::]
+  [Replace][code]&[/code]
+  [Command] ReplaceAll
+
+  ; Remove redundant ends-starts of identical tags in sequence
+  [Find]\[/b]\[b]|\[/i]\[i]|\[/u]\[u]|\[/sub]\[sub]|\[/sup]\[sup]|\[/code]\[code]
+  [Replace]
+  [Command] ReplaceAll
+  
+  ; code through paragraph  
+  [Find]\[/code]\p\[code]
+  [Replace]\p
+  [Command] ReplaceAll
+
+  ; code through line break  
+  [Find]\[/code]\n\[code]
+  [Replace]\n
+  [Command] ReplaceAll
+
+  ; lists items
+  [Find][:::NumberingStyleName=::]
+  [Replace][list][*]&[/list]
+  [Command] ReplaceAll
+
+  ; Remove redundant list tags 
+  [Find]\[/list]\p\[list]
+  [Replace]\p
+  [Command] ReplaceAll
+
+ 
+  
+[Name] Text [Sel.]	Join paragraphs non separated by empty paragraphs
+ ; block of empty paragraphs replace by one empty par 
+  [Find]\p{2,}
+  [Replace]\p\p
+  [Parameters] MsgOff Regular CurrSelection 
+  [Command] ReplaceAll
+
+ ; remove spaces and tabs on the starting and ending of paragraphs
+  [Find](^( *\t*)*|( *\t*)*$)
+  [Replace]
+  [Command] ReplaceAll
+
+ ; remove ends of paragraphs   
+  [Find]\p
+  [Replace]  
+  [Command] ReplaceAll
+
+ ; remove space at the beginning of the paragraph, behind of a block of empty paragraphs 
+  [Find]^ 
+  [Replace]
+  [Command] ReplaceAll
+
+
+[Name] Text [Sel.]    Separate non empty paragraphs by empty paragraphs
+  [Find]^.+$
+  [Replace]&\p
+  [Parameters]  MsgOff Regular CurrSelection
+  [Command] ReplaceAll
+
+
+; separator
+[Name] 
+
+[Name] Text [All]	Convert date from  yyyy-mm-dd  to  dd.mm.yy
+  [Find](\d{2,2})(\d{2,2})-(\d{1,2})-(\d{1,2})
+  [Replace]\4.\3.\2
+  [Parameters]   MsgOff  Regular  
+  [Command] ReplaceAll
+
+
+[Name] Text [All]	Convert date from  dd.mm.yyyy  to  yy-mm-dd
+  [Find](\d{1,2})\. *(\d{1,2})\. *(\d{2,2})(\d{2,2})
+  [Replace]\4-\2-\1
+  [Parameters]   MsgOff  Regular  
+  [Command] ReplaceAll
+
+
+[Name] Text [All]	Write out all Hyperlinks to a new file
+  [Find][:::HyperLinkURL::]
+  [Replace]Link \i, on page \I: \D\C{Example}\h&\h{\u}\C (URL: \C{Example}\u\C)\C{Example}\p\h\R
+  [Parameters]   MsgOff  Regular  
+  [Command] ReplaceAll
+
+
+[Name] Text [All]	Write out all Comments to a new file
+  [Find][::Comment::]
+  [Replace]Comment &\i, on page \I,  Content:\D\C{Example}\C\n\o\p\p\R
+  [Parameters]   MsgOff  Regular  
+  [Command] ReplaceAll
+
+[Name] Text [All]    Write out all Pictures to a new file
+  [Find][::Picture::]
+  [Replace]Picture \i, on page \I, Name of picture: \C\O\C{Example}&\p\p\C\R
+  [Parameters]   MsgOff  Regular  
+  [Command] ReplaceAll
+
+[Name] Text [All]    Write out all Tables to a new file
+  [Find][::TextTable::]
+  [Replace]Table \i, on page \I, Name of table: \C\O\C{Example}\p&\p\p\C\R
+  [Parameters]   MsgOff  Regular  
+  [Command] ReplaceAll
+
+[Name] Text [All]    Write out all Text Frames to a new file
+  [Find][::TextFrame::]
+  [Replace]Frame \i, on page \I, Name of Text Frame: \C\O\C{Example}\p&\p\p\C\R
+  [Parameters]   MsgOff  Regular  
+  [Command] ReplaceAll
+
+
+
+
+[End]  
+  

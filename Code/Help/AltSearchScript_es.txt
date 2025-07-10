@@ -193,7 +193,7 @@
   [Command] ReplaceAll
 
 [Name] Comentarios [Todos]    Copia los comentarios en un archivo nuevo
-  [Find][::Note::]
+  [Find][::Comment::]
   [Replace]Comentario \i, en página \I, Contenido:\D\n\o\p\p\R
   [Parameters]   MsgOff  Regular  
   [Command] ReplaceAll

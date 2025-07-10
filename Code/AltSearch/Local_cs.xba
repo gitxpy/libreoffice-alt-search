@@ -46,7 +46,7 @@ Sub Load_cs
 	&quot; Otevírací HTML tag&quot; &amp; chr(160) &amp; &quot;&lt;[^/][^&gt;]+&gt;&quot;, _
 	&quot; Uzavírací HTML tag&quot; &amp; chr(160) &amp; &quot;&lt;/[^&gt;]+&gt;&quot;, _
 	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Poznámku (žluté bubliny) - hledá se podřetězec v jejím obsahu&quot; &amp; chr(160) &amp; &quot;[::Note::]&quot;, _
+	&quot; Poznámku (žluté bubliny) - hledá se podřetězec v jejím obsahu&quot; &amp; chr(160) &amp; &quot;[::Comment::]&quot;, _
 	&quot; Textové pole - hledá se podřetězec v obsahu pole&quot; &amp; chr(160) &amp; &quot;[::Field::]&quot;, _
 	&quot; Textový rámec - hledá se podřetězec v názvu rámce&quot; &amp; chr(160) &amp; &quot;[::TextFrame::]&quot;, _
 	&quot; Tabulku - hledá se podřetězec v názvu tabulky&quot; &amp; chr(160) &amp; &quot;[::TextTable::]&quot;, _

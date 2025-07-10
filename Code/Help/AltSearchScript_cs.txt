@@ -203,7 +203,7 @@
 
 
 [Nazev] Text [Celý]	Vypsat všechny  Poznámky do souboru 
-  [Hledej][::Note::]
+  [Hledej][::Comment::]
   [Nahrad]Poznámka &č.\i, na stránce \I,  Obsah poznámky:\D\C{Example}\C\n\o\p\p\R
   [Parametry]   BezHlaseni  Regularni  
   [Prikaz] NahraditVse

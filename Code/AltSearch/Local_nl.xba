@@ -47,7 +47,7 @@ Sub Load_nl
 	&quot; HTML-tag (openen)&quot; &amp; chr(160) &amp; &quot;&lt;[^/][^&gt;]+&gt;&quot;, _
 	&quot; HTML-tag (sluiten) &quot; &amp; chr(160) &amp; &quot;&lt;/[^&gt;]+&gt;&quot;, _
 	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Notities (gele ballonnen) - zoekt subtekenreeks in inhoud van notities&quot; &amp; chr(160) &amp; &quot;[::Note::]&quot;, _
+	&quot; Notities (gele ballonnen) - zoekt subtekenreeks in inhoud van notities&quot; &amp; chr(160) &amp; &quot;[::Comment::]&quot;, _
 	&quot; Tekstvelden - zoekt subtekenreeks in inhoud van velden&quot; &amp; chr(160) &amp; &quot;[::Field::]&quot;, _
 	&quot; Tekstframe - zoekt subtekenreeks in namen van frames&quot; &amp; chr(160) &amp; &quot;[::TextFrame::]&quot;, _
 	&quot; Tabel - zoekt subtekenreeks in namen van tabellen&quot; &amp; chr(160) &amp; &quot;[::TextTable::]&quot;, _
