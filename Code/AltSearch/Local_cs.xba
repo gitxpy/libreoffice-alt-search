@@ -228,7 +228,7 @@ Sub Load_cs
 		.Ch_zpet.Label       =&quot;Pozpátku&quot;
 		&apos;v1.3
 		.Ch_preservecap.HelpText=&quot;Pokud nalezený text začíná velkým písmenem, bude velkým písmenem začínat i text nahrazený&quot;
-		.Ch_preservecap.Label   =&quot;Zachovat velá písmena&quot;
+		.Ch_preservecap.Label   =&quot;Zachovat velká písmena&quot;
 
 		&apos; Page 2
 		&apos; Title
