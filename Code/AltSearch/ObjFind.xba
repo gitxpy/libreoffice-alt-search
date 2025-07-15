@@ -110,7 +110,7 @@ stranka:
 end sub
 
 
-	&apos; detect current index - find according to position of nachor
+	&apos; detect current index - find according to position of anchor
 	&apos; the max need be set by parameter because if the oAttr() is the collection, then the function ubound() doesn&apos;t funct correctly
 sub getIndexByAnchor(oArr(),oCur, max) as long
 	dim i&amp;
@@ -359,6 +359,7 @@ sub isRegionStart0(curs,anchor) as boolean
 	isRegionStart0 = false
 	if 0 = curs.text.compareRegionStarts(curs.getStart(), anchor.getStart())  then isRegionStart0 = true
 konec:
+	&apos; msgbox &quot;bug #59&quot; &apos; .compareRegionStarts() fail, cursor is in TextFrame and the like
 end sub
 
 
