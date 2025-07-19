@@ -25,12 +25,11 @@ input[type=range]::-webkit-slider-thumb {-webkit-appearance: none; appearance: n
 input[type=range]::-moz-range-thumb {height: 1.5rem; width: 1rem; background-color: var(--bH1); border-radius: var(--rad015); border: none;}
 label {display:block; font-size: small; color:black;}
 
-article {max-width: 65rem; border:0.2rem solid rgb(171, 133, 84); border-radius: 3rem; padding-inline: var(--PADDING); margin-inline: auto; margin-block-start: 0; margin-block-end: 2.5rem; background-color: rgb(254, 251, 237); box-sizing: border-box;}
+article {max-width: 75%; border:0.2rem solid rgb(171, 133, 84); border-radius: 3rem; padding-inline: var(--PADDING); margin-inline: auto; margin-block-start: 0; margin-block-end: 2.5rem; background-color: rgb(254, 251, 237); box-sizing: border-box;}
 
 a {text-decoration: none;}
-a:hover {text-decoration: dashed;}
 
-a#top {display:block; position:fixed; right:0; top:0; color:#acadab; font-size: 120%; float:right; border:0.1rem solid #acadab; padding:0.2rem; border-radius: 0.2rem;}
+a#top {display:block; position:sticky; top:0; right:-5rem; color:#acadab; font-size: 120%; float:right; border:0.3rem solid #acadab; padding:0.2rem; border-radius: 0.2rem;}
 a#top:hover {background-color: #cad2c1; color:white;}
 
 li {margin-block: 1rem;}
@@ -54,6 +53,9 @@ h6{color:#1c0ee9;}
 
 img {display: table; margin-inline: auto;}
 :is(p, h3):has(img) {text-align: center; font-style: italic;}
+article img:hover {transform: scale(1.3); background-color:white;}
+
+article :is(p, h3):has(img) {overflow-x: auto;}
 
 dfn{color:rgb(213,0,38); font-weight: bold;}
 
@@ -64,12 +66,23 @@ strong {color:rgb(33, 167, 33);}
 
 strong, code {font-family: 'Liberation Mono', monospace;}
 
-.cm2{margin-left:2rem;}
-.cm4{margin-left:4rem; color:rgb(78, 78, 78);}
-.cm6{margin-left:6rem; color:rgb(110, 110, 110);}
-
-p.center {text-align:center;}
+p.cm2{margin-left:2rem;}
+p.cm4{margin-left:4rem; color:rgb(78, 78, 78);}
+p.cm6{margin-left:6rem; color:rgb(110, 110, 110);}
 
 span.normal{font-weight:normal;}
 
 .untranslated {background: blanchedalmond;} /*background for untranslated parts*/
+
+@media only screen and (max-width: 50rem){ /* ↔ mobile horizontally */
+body {padding-inline:0;}
+article {max-width: 100%; padding-inline: 0; margin-block: 0; border:0; border-radius: 0;}
+article p {overflow-x: auto;}
+h1 {border-bottom-left-radius: 40vw 1rem; border-bottom-right-radius: 40vw 1rem;}
+h2 {border-top-left-radius: 65vw 1rem; border-top-right-radius: 65vw 1rem;}
+h1 :is(button, input, label){display:none;}
+}
+
+@media only screen and (max-width: 36rem){ /* ↕ mobile vertically */
+
+}
