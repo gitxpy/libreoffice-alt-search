@@ -29,7 +29,8 @@ article {max-width: 75%; border:0.2rem solid rgb(171, 133, 84); border-radius: 3
 
 a {text-decoration: none;}
 
-a#top {display:block; position:sticky; top:0; right:-5rem; color:#acadab; font-size: 120%; float:right; border:0.3rem solid #acadab; padding:0.2rem; border-radius: 0.2rem;}
+
+a#top {display:block; position:fixed; left:90%; top:25;  color:#acadab; font-size: 120%; float:right; border:0.3rem solid #acadab; padding:0.2rem; border-radius: 0.2rem;}
 a#top:hover {background-color: #cad2c1; color:white;}
 
 li {margin-block: 1rem;}
@@ -85,4 +86,3 @@ h1 :is(button, input, label){display:none;}
 
 @media only screen and (max-width: 36rem){ /* ↕ mobile vertically */
 
-}

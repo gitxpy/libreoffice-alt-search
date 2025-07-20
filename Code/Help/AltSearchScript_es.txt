@@ -1,145 +1,41 @@
 ; Archivo con lotes para Buscar y reemplazar Alternativo
-; para la extension AltSearch.oxt para OOo Writer
+; para la extension AltSearch.oxt para Writer
 ; Charset: UTF-8 
-;
-; v1.2  7/08
-; v1.4   12/12/2021
-; -- (Eliminados parámerros de formato por incompatibilidad: 
-; Los modificadores de formato -- explicados en la ayuda: \C{ejemplo} etc... 
-; pueden ocasionar errores por lo que no es recomendable utilizarlos
-; al menos en los procesos por lotes. Uselos con mucha precaución)
 ;
 ; Sintaxis:
 ; Las lineas que no comiencen por algun comando principal se ignorarán.
-; El comando principal debe estar encerrado entre [] y debe estar al principio de la linea.
-;  Puede haber espacios delante del comando principal, todo lo que vaya detrás será
-;  interpretado como parámetros.
+; El comando principal debe estar encerrado entre corchetes [] 
+; y debe estar al principio de la linea. Puede haber espacios delante del
+; comando principal, todo lo que vaya detrás se interpreta como parámetros.
 ; 
 ;  Descripción de comandos principales:
 ;  [Name] - nombre del lote (conocido como parametro) - un lote sencillo comienza
-;      siempre con este comando principal. El final del lote se determina por la siguiente
-;      ocurrencia del comando [Name] o [End] para último lote válido.
+;  siempre con este comando principal. El final del lote se determina por 
+;  el siguiente comando [Name] o [End] para último lote válido.
 ;  Un separador se hace con una sola linea [Name] sin comandos después.
 ;
-;  [Find] - expresión de búsqueda - en la ejecución del lote el parámetro será
-;      transferido a el campo "Buscar"
-;  [Replace] - expresión de reemplazo - en la ejecución del lote el parámetro será 
-;      transferido a el campo "Replace"
-;  [Parameters] - parámetros de búsqueda y de reemplazo - la cadena vacía establece los
-;      valores de todos los parámetros a falso, mencionar el nombre del parámetro
+;  [Find] - expresión de búsqueda - en la ejecución el parámetro se
+;      transfiere al campo "Buscar"
+;  [Replace] - expresión de reemplazo - en la ejecución el parámetro se 
+;      transfiere al campo "Reemplazar"
+;  [Parameters] - parámetros de búsqueda o reemplazo - una cadena vacía establece los
+;      valores de todos los parámetros a falso, mencionar un parámetro
 ;      lo pondrá a verdadero.  
-;  Parametros aceptados:  
-;           MatchCase  PreserveCapital  WholeWord  ParaStyles  Regular
-;           CurrSelection  Backwards  MsgOff  NoSummary  
+;     Parametros aceptados:  
+;        MatchCase  PreserveCapital  WholeWord  ParaStyles  Regular
+;        CurrSelection  Backwards  MsgOff  NoSummary  
 ;
 ;  [Command] - determina el modo de ejecutar la búsqueda y el reemplazo -
-;  Parametetros aceptados:  Find  FindAll  Replace  ReplaceAll  Count
+;    Comandos aceptados:  Find  FindAll  Replace  ReplaceAll  Count
 ;
-;      En el futuro tambien podrá haber instrucciones para movimiento del cursor, 
-;      establecer marcador según el cursor y restaurar el cursor
-;      de acuerdo con el marcador etc.
+;  En el futuro tambien podrá haber instrucciones para movimiento del cursor, 
+;   establecer marcador según el cursor y restaurar el cursor
+;   de acuerdo con el marcador etc.
 ;       
 ;  [End] - indica el final del último lote válido - todo lo que vaya detrás
 ;      será ignorado.  
 ;
-
-********************************************************************
-[Name] *********************** Documentación *********************** 
-
-
-[Name] [Todos]-Remplaza Cuadro(s) de Dialogo(s) por Dialogo(s) (Mayús. y min.)
-; Parámetros comunes para las cuatro instrucciones:
-  [Parameters] MsgOff MatchCase  
-
-; En Mayúsculas
-  [Find]Cuadro de diálogo
-  [Replace]Diálogo
-  [Command] ReplaceAll
-; En minúsculas
-  [Find]cuadro de diálogo
-  [Replace]diálogo
-  [Command] ReplaceAll
-;Plural May
-  [Find]Cuadros de diálogo
-  [Replace]Diálogos
-  [Command] ReplaceAll
-;Plural min
-  [Find]cuadros de diálogo
-  [Replace]diálogos
-  [Command] ReplaceAll
-  
-[Name] [Todos] Barra lateral (May y Destacado)
-  [Find]barra lateral
-  [Replace]\C{Destacado}Barra lateral
-  [Parameters] MsgOff Regular  
-  [Command] ReplaceAll
-  
-[Name] [Todos] Remplaza Presionar por Pulsar May y min
-  [Parameters] MsgOff MatchCase
-  
-  [Find]Presion
-  [Replace]Puls
-  [Command] ReplaceAll
-
-  [Find] presion
-  [Replace] puls
-  [Command] ReplaceAll
-  
-[Name] [Todos]-Remplaza Comillas tip. inglesas por las españolas
-  [Parameters] MsgOff
-  
-  [Find]“
-  [Replace]«
-  [Command] ReplaceAll
-  
-  [Find]”
-  [Replace]»
-  [Command] ReplaceAll
-  
-[Name] [Todos]-Elimina comas antes de conjunciones "o" e "y"
-  [Parameters] MsgOff Regular
-  
-  [Find], y 
-  [Replace] y \C{Ningún estilo de carácter}
-  [Command] ReplaceAll
-  
-  [Find], o 
-  [Replace] o \C{Ningún estilo de carácter}
-  [Command] ReplaceAll
-  
-[Name] [Todos]-Remplaza 2 espacios en blanco por uno solo
-  [Parameters] MsgOff Regular
-  [Find]  
-  [Replace] \C{Ningún estilo de carácter}
-  [Command] ReplaceAll
-  
-[Name] [Todos]-Cambia espacio por noseparación en figura 
-  [Parameters] MsgOff MatchCase
-
-  [Find](figura 
-  [Replace](figura 
-  [Command] ReplaceAll
-
-  [Find] figura 
-  [Replace] figura 
-  [Command] ReplaceAll
-
-[Name] [Todos]-Cambia espacio por noseparación en Capítulo
-  [Find]Capítulo 
-  [Replace]Capítulo 
-  [Parameters]   MsgOff  MatchCase  Regular  
-  [Command] ReplaceAll
-
-[Name] [Todos]- Elimina Keystroke de las tecla de Mac ⌘ y ⌥
-  [Parameters] MsgOff Regular
-
-  [Find]⌘
-  [Replace]\C{Ningún estilo de carácter}
-  [Command] ReplaceAll
-  
-  [Find]⌥
-  [Replace]\C{Ningún estilo de carácter}
-  [Command] ReplaceAll  
+;********************************************************************
   
 [Name] **********************   Texto  ***************************** 
 
@@ -170,6 +66,8 @@
   [Replace] 
   [Command] ReplaceAll
   
+
+
 [Name] Texto [Sel.]    Divide las frases en párrafos ¡¡¡ELimina 1º letra 1er parrafo!!
   [Find]^.[::BigBlock::]\.
   [Replace]\f&\e\p
@@ -185,38 +83,37 @@
 
 
 [Name]*********************** Objetos ****************************** 
-; ******* ELIMINO CUALQUIER FORMATO DE CARACTER  porque sino no funcionan como se espera
 [Name] Hyperenlaces [Todos]    Copia Los Hiperenlaces en un archivo nuevo
   [Find][:::HyperLinkURL::]
-  [Replace]Enlace \i, en página \I:\p\h&\h{\u}\p(URL: \u)\h\p\p\R
-  [Parameters]   MsgOff  Regular  
+  [Replace]\P{Text body}Enlace \i, en página \I: \D\C{Emphasis}\h&\h{\u}\C{}\n(URL:  \C{Emphasis}\u\C{})\h\p \R
+  [Parameters]  MsgOff Regular  
   [Command] ReplaceAll
 
-[Name] Comentarios [Todos]    Copia los comentarios en un archivo nuevo
+
+[Name] Comentarios [Todos]  Copia los comentarios en un archivo nuevo
   [Find][::Comment::]
-  [Replace]Comentario \i, en página \I, Contenido:\D\n\o\p\p\R
-  [Parameters]   MsgOff  Regular  
+  [Replace]\P{Text body}Comentario \i, en página \I, Contenido:\C{Emphasis}\n\o\C{Strong Emphasis}\p\R
+  [Parameters]  MsgOff Regular  
   [Command] ReplaceAll
 
-
-[Name] Imágenes [Todas]    Copia las Imagenes en un archivo nuevo
+[Name] Imágenes [Todas] Copia las Imagenes en un archivo nuevo
   [Find][::Picture::]
-  [Replace]Imagen \i, en página \I, Nombre de imagen: \O\p&\p\p\R
-  [Parameters]   MsgOff Regular
+  [Replace]\P{Text body}Imagen \i, en página \I\n- Nombre de imagen: \C{Emphasis}\O\C{Strong Emphasis}\n- Texto alt: \C{Emphasis}\o\C{Strong Emphasis}\p & \p\R
+  [Parameters]  MsgOff Regular Backwards
   [Command] ReplaceAll
 
 
-[Name] Tablas [Todas]    Copia las Tablas en un archivo nuevo
+[Name] Tablas [Todas]  Copia las Tablas en un archivo nuevo
   [Find][::TextTable::]
-  [Replace]Tabla \i, en página \I, Nombre de tabla: \O\p&\p\p\R
-  [Parameters]   MsgOff Regular
+  [Replace]\P{Text body}Tabla \i, en página \I, Nombre de tabla: \C{Emphasis}\O\C{Strong Emphasis}\p&\p\p\R
+  [Parameters]  MsgOff Regular
   [Command] ReplaceAll
 
 
-[Name] Marcos [Todos]    Copia los Marcos de texto en un archivo nuevo
+[Name] Marcos [Todos]  Copia los Marcos de texto en un archivo nuevo
   [Find][::TextFrame::]
-  [Replace]Marco \i, en página \I, Nombre de Marco de Texto: \O\p&\p\p\R
-  [Parameters]   MsgOff  Regular  
+  [Replace]\P{Text body}Marco \i, en página \I, Nombre del Marco:\C{Emphasis} \O\C{Strong Emphasis}\p&\C{}\p\R
+  [Parameters]  MsgOff Regular
   [Command] ReplaceAll
   
 [Name]**********************   Otros  ****************************** 
@@ -225,27 +122,27 @@
 ; los mismos parámetros para todo
   [Parameters] MsgOff Regular CurrSelection
 
-; bold
+; negrita
   [Find][:::CharWeight::]
   [Replace]<b>&</b>
   [Command] ReplaceAll 
 
-; italic
+; itálica
   [Find][:::CharPosture::]
   [Replace]<i>&</i>
   [Command] ReplaceAll         	
 
-; Hyperlinks 
+; Hyperenlaces 
   [Find][:::HyperLinkURL::]
   [Replace]<a href="\u">&</a>
   [Command] ReplaceAll
 
-; Footnotes
+; Notas al pie
   [Find][::Footnote::]
   [Replace]<b><span Title="\o">…<span style="vertical-align: super; font-size: smaller;">\i</span></span></b>
   [Command] ReplaceAll
 
-; Add tags of paragraphs 
+; agregar etiquetas a los párrafos 
   [Find]^.*$
   [Replace]<p>&</p>
   [Command] ReplaceAll
@@ -342,39 +239,5 @@
   [Parameters]   MsgOff  Regular  
   [Command] ReplaceAll
 
-[Name]*********************** Macros ******************************* 
-
-[Name] [Todos] Espacia Subrutinas
-  [Find][:::ParaStyleName=Code::]End Sub\p
-  [Replace]\P{Cuerpo de texto}
-  [Parameters]   MsgOff  Regular  
-  [Command] ReplaceAll
-
-  [Find][:::ParaStyleName=Cuerpo de texto::]End Sub
-  [Replace]\P{Code}
-  [Parameters]   MsgOff  Regular  
-  [Command] ReplaceAll
-
-
-[Name] [Todos] Espacia Funciones
-  [Find][:::ParaStyleName=Code::]End Function\p
-  [Replace]\P{Cuerpo de texto}
-  [Parameters]   MsgOff  Regular  
-  [Command] ReplaceAll
-
-  [Replace]\P{Code}
-  [Parameters]   MsgOff  Regular  
-  [Command] ReplaceAll
-
 [End]
-
-
-
-
-
-
-
-
-
-
 
