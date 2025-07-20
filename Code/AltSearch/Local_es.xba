@@ -6,15 +6,15 @@ Sub Load_es
 	dim pom as string
 	on error resume next
 	FINDREG = array(&quot; Primer caracter del párrafo     &quot; &amp; chr(160) &amp; &quot;^.&quot;, _
-	&quot; Final de párrafo                &quot; &amp; chr(160) &amp; &quot;$&quot;, _
+	&quot; Fin de párrafo                  &quot; &amp; chr(160) &amp; &quot;$&quot;, _
 	&quot; Párrafo vacio                   &quot; &amp; chr(160) &amp; &quot;^$&quot;, _
 	&quot; Cualquier texto en un párrafo   &quot; &amp; chr(160) &amp; &quot;.*&quot;, _
 	&quot; Cualquier letra  [:alpha:]{1,1} &quot; &amp; chr(160) &amp; &quot;\l&quot;, _
-	&quot; Cualquier dígito decimal  [0-9] &quot; &amp; chr(160) &amp; &quot;\d&quot;, _
+	&quot; Cualquier dígito          [0-9] &quot; &amp; chr(160) &amp; &quot;\d&quot;, _
 	&quot; Principio de palabra            &quot; &amp; chr(160) &amp; &quot;\&lt;&quot;, _
-	&quot; Final de palabra                &quot; &amp; chr(160) &amp; &quot;\&gt;&quot;, _
+	&quot; Fin de palabra                  &quot; &amp; chr(160) &amp; &quot;\&gt;&quot;, _
 	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Parrafo (marca final)           &quot; &amp; chr(160) &amp; &quot;\p&quot;, _
+	&quot; Parrafo (marca de final)        &quot; &amp; chr(160) &amp; &quot;\p&quot;, _
 	&quot; Series de párrafos vacios       &quot; &amp; chr(160) &amp; &quot;^$\p*&quot;, _
 	&quot; Tabulador                       &quot; &amp; chr(160) &amp; &quot;\t&quot;, _
 	&quot; Salto de linea manual           &quot; &amp; chr(160) &amp; &quot;\n&quot;, _
@@ -24,7 +24,7 @@ Sub Load_es
 	&quot; Espacio de no separación (\xA0) &quot; &amp; chr(160) &amp; &quot;\S&quot;, _
 	&quot; Guiones personalizados          &quot; &amp; chr(160) &amp; &quot;\x00AD&quot;, _
 	&quot; Guión de no separación          &quot; &amp; chr(160) &amp; &quot;\x2011&quot;, _
-	&quot; letra A en código decimal       &quot; &amp; chr(160) &amp; &quot;\#65&quot;, _
+	&quot; letra en código decimal (A)     &quot; &amp; chr(160) &amp; &quot;\#65&quot;, _
 	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
 	&quot; Punto                           &quot; &amp; chr(160) &amp; &quot;\.&quot;, _
 	&quot; Paréntesis  ( )                 &quot; &amp; chr(160) &amp; &quot;\(\)&quot;, _
@@ -33,7 +33,7 @@ Sub Load_es
 
 	oDIAL.getcontrol(&quot;Cb_findReg&quot;).addItems(FINDREG,0)
 
-	FINDEXT = array(&quot; Series de párrafos (limitados entre marcas de inicio y final)&quot; &amp; chr(160) &amp; &quot;[::BigBlock::]&quot;, _
+	FINDEXT = array(&quot; Series de párrafos (delimitados por marcas de inicio y final)&quot; &amp; chr(160) &amp; &quot;[::BigBlock::]&quot;, _
 	&quot; Expande selección encontrada un caracter a ambos lados&quot; &amp; chr(160) &amp; &quot;[::Grow 1,1::]&quot;, _
 	&quot; Añade marca || para reemplazo múltiple (en un único paso)&quot; &amp; chr(160) &amp; &quot;||&quot;, _
 	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
@@ -41,7 +41,7 @@ Sub Load_es
 	&quot; Texto entre [ ] (dentro de un párrafo)&quot; &amp; chr(160) &amp; &quot;(\[([^\]])+\])&quot;, _
 	&quot; Texto entre { } (dentro de un párrafo)&quot; &amp; chr(160) &amp; &quot;({([^}])+})&quot;, _
 	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; dirección de e-mail&quot; &amp; chr(160) &amp; &quot;[a-zA-Z0-9_][-._a-zA-Z0-9_]*[a-zA-Z0-9_].?@[a-zA-Z0-9_][-._a-zA-Z0-9_]*[a-zA-Z0-9_]\.[a-zA-Z0-9_]{2,4}&quot;, _
+	&quot; Dirección de e-mail&quot; &amp; chr(160) &amp; &quot;[a-zA-Z0-9_][-._a-zA-Z0-9_]*[a-zA-Z0-9_].?@[a-zA-Z0-9_][-._a-zA-Z0-9_]*[a-zA-Z0-9_]\.[a-zA-Z0-9_]{2,4}&quot;, _
 	&quot; Internet, URL, dirección www&quot; &amp; chr(160) &amp; &quot;(((news|http|ftp|https|file):\/\/|www\.)[a-zA-Z0-9_]+((\.[a-zA-Z0-9_]+)+)(([a-zA-Z0-9_\-\.,@?^=%&amp;:/~\+#]*[a-zA-Z0-9_\-\@?^=%&amp;/~\+#])?))&quot;, _
 	&quot; Etiqueta HTML&quot; &amp; chr(160) &amp; &quot;(&lt;(&quot;&quot;[^&quot;&quot;]*&quot;&quot;|&apos;[^&apos;]*&apos;|[^&apos;&quot;&quot;&gt;])*&gt;)&quot;, _
 	&quot; Etiqueta HTML de apertura&quot; &amp; chr(160) &amp; &quot;&lt;[^/][^&gt;]+&gt;&quot;, _
@@ -49,13 +49,13 @@ Sub Load_es
 	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
 	&quot; Comentarios - busca cadenas dentro de los comentarios&quot; &amp; chr(160) &amp; &quot;[::Comment::]&quot;, _
 	&quot; Campos de texto - busca cadenas en campos&quot; &amp; chr(160) &amp; &quot;[::Field::]&quot;, _
-	&quot; Marco de texto (tipo leyenda) - busca cadenas en Nombre de marcos&quot; &amp; chr(160) &amp; &quot;[::TextFrame::]&quot;, _
+	&quot; Marco de texto (tipo leyenda) - busca cadenas en Nombres de marcos&quot; &amp; chr(160) &amp; &quot;[::TextFrame::]&quot;, _
 	&quot; Tabla - busca cadenas en Nombres de tablas&quot; &amp; chr(160) &amp; &quot;[::TextTable::]&quot;, _
 	&quot; Imagen - busca cadenas en Nombres de imágenes&quot; &amp; chr(160) &amp; &quot;[::Picture::]&quot;, _
-	&quot; Nota al pie - texto de ancla; añade \\ para buscar en notas al pie&quot; &amp; chr(160) &amp; &quot;[::Footnote::]&quot;, _
-	&quot; Nota final - texto de ancla; añade \\ para buscar en notas finales&quot; &amp; chr(160) &amp; &quot;[::Endnote::]&quot;, _
+	&quot; Nota al pie - texto del ancla; añade \\ para buscar en notas al pie&quot; &amp; chr(160) &amp; &quot;[::Footnote::]&quot;, _
+	&quot; Nota final - texto del ancla; añade \\ para buscar en notas finales&quot; &amp; chr(160) &amp; &quot;[::Endnote::]&quot;, _
 	&quot; Marcador de referencia cruzada (texto); \\ para buscar en Nombre; \\\\ para buscar texto vacio&quot; &amp; chr(160) &amp; &quot;[::ReferenceMark::]&quot;, _
-	&quot; Referencia cruzada (texto); \\ para buscar en N. de marcador; \\\\ para busqueda de texto vacio&quot; &amp; chr(160) &amp; &quot;[::Reference::]&quot;, _
+	&quot; Referencia cruzada (texto); \\ para buscar en N. de marcador; \\\\ para buscar texto vacio&quot; &amp; chr(160) &amp; &quot;[::Reference::]&quot;, _
 	&quot; Marcadores - busca cadenas en el texto de los Marcadores;  \\ para buscar en Nombres&quot; &amp; chr(160) &amp; &quot;[::Bookmark::]&quot;, _
 	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;)
 
@@ -74,7 +74,7 @@ Sub Load_es
 	&quot; Cursiva&quot; &amp; chr(160) &amp; &quot;[:::CharPosture::]&quot;, _
 	&quot; Negrita&quot; &amp; chr(160) &amp; &quot;[:::CharWeight::]&quot;, _
 	&quot; Negrita cursiva&quot; &amp; chr(160) &amp; &quot;[:::CharPosture|CharWeight::]&quot;, _
-	&quot; Nombre de fuente (Formato directo)&quot; &amp; chr(160) &amp; &quot;[:::CharFontName::]&quot;, _
+	&quot; Nombre de tipo de letra (Formato directo)&quot; &amp; chr(160) &amp; &quot;[:::CharFontName::]&quot;, _
 	&quot; Tamaño de letra&quot; &amp; chr(160) &amp; &quot;[:::CharHeight::]&quot;, _
 	&quot; Color de letra&quot; &amp; chr(160) &amp; &quot;[:::CharColor::]&quot;, _
 	&quot; Fondo de letra (Resalte)&quot; &amp; chr(160) &amp; &quot;[:::CharBackColor::]&quot;, _
@@ -97,7 +97,7 @@ Sub Load_es
 	&quot; Contenido de marca de inicio (\b) o marca de final (\e), que delimita series de párrafos&quot; &amp; chr(160) &amp; &quot;\b\e&quot;, _
 	&quot; Contenido de 1er grupo, encontrado dentro de ( ) en expresión de búsqueda (max. \9)     &quot; &amp; chr(160) &amp; &quot;\1&quot;, _
 	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Final de párrafo (nuevo párrafo)                      &quot; &amp; chr(160) &amp; &quot;\p&quot;, _
+	&quot; Fin de párrafo (nuevo párrafo)                        &quot; &amp; chr(160) &amp; &quot;\p&quot;, _
 	&quot; Tabulador                                             &quot; &amp; chr(160) &amp; &quot;\t&quot;, _
 	&quot; Espacio de no separación                              &quot; &amp; chr(160) &amp; &quot;\S&quot;, _
 	&quot; Salto de linea manual                                 &quot; &amp; chr(160) &amp; &quot;\n&quot;, _
@@ -113,33 +113,33 @@ Sub Load_es
 	&quot; Estilo de caracter                                    &quot; &amp; chr(160) &amp; &quot;\C{Quotation}&quot;, _
 	&quot; Estilo de lista                                       &quot; &amp; chr(160) &amp; &quot;\N{List 3}&quot;, _
 	&quot; Establecer propiedad de objeto a valor                &quot; &amp; chr(160) &amp; &quot;\A{CharBackColor=&amp;Hffcc00}&quot;, _
-	&quot; Establecer formato por defecto por estilo de caracter &quot; &amp; chr(160) &amp; &quot;\D&quot;, _
+	&quot; Aplicar estilo de carácter predeterminado             &quot; &amp; chr(160) &amp; &quot;\D&quot;, _
 	&quot; Reinicia Atributos en lugar de uso                    &quot; &amp; chr(160) &amp; &quot;\d&quot;, _
 	&quot; Insertar Nota al pie                                  &quot; &amp; chr(160) &amp; &quot;\F{}&quot;, _
 	&quot; Insertar Nota final                                   &quot; &amp; chr(160) &amp; &quot;\E{}&quot;, _
 	&quot; Insertar marcador+texto para referencia cruzada       &quot; &amp; chr(160) &amp; &quot;\B{ref1|text}&quot;, _
 	&quot; Insertar referencia cruzada a marcador                &quot; &amp; chr(160) &amp; &quot;\L{0,0,ref1}&quot;, _
-	&quot; Insertar Marcador (w, b,e - Block, to Start, to End)  &quot; &amp; chr(160) &amp; &quot;\K{w,BookmName}&quot;, _
+	&quot; Insertar Marcador (w,b,e - Bloque,m. inicio,m.final)  &quot; &amp; chr(160) &amp; &quot;\K{w,BookmName}&quot;, _
 	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Contenido de texto en objeto (marco, tabla, )                 &quot; &amp; chr(160) &amp; &quot;\o&quot;, _
-	&quot; Nombre de objeto (marco, tabla, imagen, )                      &quot; &amp; chr(160) &amp; &quot;\O&quot;, _
-	&quot; Pegar contenido del portapapeles (\V texto sin formato)        &quot; &amp; chr(160) &amp; &quot;\v&quot;, _
-	&quot; Conservar formato en reemplazo (reemplazar &amp; por portapapeles) &quot; &amp; chr(160) &amp; &quot;\f&quot;, _
-	&quot; Insertar contador de reemplazo (solo al Reemplazar todo)       &quot; &amp; chr(160) &amp; &quot;\i{1,3}&quot;, _
-	&quot; Insertar número de página                                       &quot; &amp; chr(160) &amp; &quot;\I&quot;, _
-	&quot; Redirigir expresión de reemplazo a otro archivo                 &quot; &amp; chr(160) &amp; &quot;\R&quot;, _
+	&quot; Contenido de texto en objeto (marco, tabla…)          &quot; &amp; chr(160) &amp; &quot;\o&quot;, _
+	&quot; Nombre de objeto (marco, tabla, imagen… )             &quot; &amp; chr(160) &amp; &quot;\O&quot;, _
+	&quot; Pegar contenido del portapapeles (\V texto sin formato)&quot; &amp; chr(160) &amp; &quot;\v&quot;, _
+	&quot; Conservar formato (reemplazar &amp; por portapapeles)  &quot; &amp; chr(160) &amp; &quot;\f&quot;, _
+	&quot; Insertar contador de reemplazos (al "Reemplazar todo")   &quot; &amp; chr(160) &amp; &quot;\i{1,3}&quot;, _
+	&quot; Insertar número de página                              &quot; &amp; chr(160) &amp; &quot;\I&quot;, _
+	&quot; Redirigir la expresión de reemplazo a otro archivo     &quot; &amp; chr(160) &amp; &quot;\R&quot;, _
 	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;)
 
 	oDIAL.getcontrol(&quot;Cb_replExt&quot;).addItems(REPLEXT,0)
 
 	&apos; messages
-	MSG(0)  = &quot;Siguiente ocurrencia de expresión buscada &quot;
-	MSG(1)  = &quot;no encontrada. &quot;
+	MSG(0)  = &quot;Siguiente aparición de la expresión buscada &quot;
+	MSG(1)  = &quot;no se encuentra. &quot;
 	MSG(2)  = &quot;Ha finalizado la busqueda dentro de la selección. &quot;
-	MSG(3)  = &quot;Se ha llegado al final del documento.&quot; &amp; Chr(13) &amp; &quot;¿Reanudar la búsqueda desde el principio? &quot;
-	MSG(4)  = &quot;Se ha llegado al principio del documento.&quot; &amp; Chr(13) &amp; &quot;¿Reanudar la búsqueda desde el final? &quot;
-	MSG(5)  = &quot;No es posible buscar texto en ese objeto. &quot;
-	MSG(6)  = &quot;No hay objetos de ese tipo en el documento actual.&quot;
+	MSG(3)  = &quot;Se ha llegado al final del documento.&quot; &amp; Chr(10) &amp; &quot;¿Reanudar la búsqueda desde el principio? &quot;
+	MSG(4)  = &quot;Se ha llegado al principio del documento.&quot; &amp; Chr(10) &amp; &quot;¿Reanudar la búsqueda desde el final? &quot;
+	MSG(5)  = &quot;No es posible buscar texto en este objeto. &quot;
+	MSG(6)  = &quot;No hay objetos de este tipo en el documento actual.&quot;
 	MSG(7)  = &quot; (ESC en documento para detener) – Parrafos encontrados/bucle: &quot;
 	MSG(8)  = &quot;Detener &quot;
 	MSG(9)  = &quot;Cerrar &quot;
@@ -150,17 +150,17 @@ Sub Load_es
 	MSG(14) = &quot;se encontró  &quot;
 	MSG(15) = &quot;  veces. &quot;
 	MSG(16) = &quot;   Encontrado: &quot;
-	MSG(17) = &quot;Imposible abrir el Archivo de Ayuda &quot;
-	MSG(18) = &quot;Imposible seleccionar más de un objeto de ese tipo &quot;
-	MSG(19) = &quot;La selección de todas las coincidenciass puede llevar bastante tiempo y destruir el &apos;Resaltado&apos; (si se usa en este documento), sin posiblidades de &apos;Deshacer&apos;. &quot;  &amp;  chr(10)  &amp;  chr(10)  &amp;  &quot;¿Quieres usar realente Buscar Todo? &quot;
-	MSG(20) = &quot;Estilo   &apos;&quot;
+	MSG(17) = &quot;No se puede abrir el Archivo de Ayuda &quot;
+	MSG(18) = &quot;No se puede seleccionar más de un objeto de ese tipo &quot;
+	MSG(19) = &quot;La selección de todas las coincidenciass puede llevar bastante tiempo y destruir el &apos;Resaltado&apos; (si se usa en este documento), sin posiblidad de &apos;Deshacer&apos;. &quot;  &amp;  chr(10)  &amp;  chr(10)  &amp;  &quot;¿Quieres usar realente Buscar Todo? &quot;
+	MSG(20) = &quot;El estilo   &apos;&quot;
 	MSG(21) = &quot;   no está incluido en el documento actual. &quot;
-	MSG(22) = &quot;&lt;&lt; usa el boton a la izquierda para actualizar la lista &lt;&lt;&quot;
-	MSG(23) = &quot;Cuenta de ajustes de propiedades fallidos:  &quot;
+	MSG(22) = &quot;&lt;&lt; usa el boton de la izquierda para actualizar la lista &lt;&lt;&quot;
+	MSG(23) = &quot;Cuenta de ajustes fallidos de propiedades:  &quot;
 	MSG(24) = &quot;Nueva búsqueda&quot;
 	MSG(25) = &quot;El lote &quot; &amp; chr(10) &amp;  &quot;&apos;^^&apos;&quot;  &amp; chr(10) &amp;  &quot;ya existe. &quot;
 	MSG(26) = &quot;Error al abrir el archivo: &quot;
-	MSG(27) = &quot;Guardar la configuración actual de Buscar y reemplazar con el nombre: &quot;
+	MSG(27) = &quot;Guardar la configuración actual de Búsqueda y reemplazo con el nombre: &quot;
 	MSG(28) = &quot;Error al iniciar el editor de texto. Establece la ruta a tu editor de texto: &quot;  &amp;  chr(10)  &amp;  &quot;(p.e. en Windows:  notepad      en Linux:  kwrite &quot;
 	MSG(29) = &quot;El lote   &apos;^^1&apos;  ha terminado. &quot; &amp; chr(10) &amp; chr(10) &amp; &quot;se han echo ^^2  reemplazos. &quot;
 	MSG(30) = &quot;se reemplazó  &quot;
@@ -186,9 +186,9 @@ Sub Load_es
 	&apos;v1.4
 	MSG(48) = &quot;¡No has seleccionado un Lote  - selecciona en la lista!&quot;
 	MSG(49) = &quot;¡No has seleccionado documentos - selecciona  en la lista!&quot;
-	MSG(50) = &quot;Ejecutar Lote seleccionado con documentos abiertos&quot;
+	MSG(50) = &quot;Ejecutar Lote seleccionado en los documentos abiertos&quot;
 	&apos;Sub testViewCursor
-	MSG(51) = &quot;The cursor is located in an unsupported object (like Comment), please click in the text.&quot;
+	MSG(51) = &quot;El cursor está en un objeto (ej. en un comentario).&quot;&amp; Chr(10) &amp; &quot;Coloca el cursor en texto del documento.&quot;
 
 	&apos; main dialog
 	with oDIAL.model
@@ -217,13 +217,13 @@ Sub Load_es
 		.T_repl.Label        = &quot;Reemplazar:&quot;
 		.Cb_loadAtr.HelpText = &quot;Cargar lista de propiedades desde objeto seleccionado&quot;
 		.Cb_loadAtr.Label    = &quot;Escoger propiedades&quot;
-		&apos; parameters
+		&apos; parametrs
 		.Fr1.Label           = &quot;Opciones:&quot;
 		.Ch_case.Label       = &quot;Coincidir may/min&quot;
 		.Ch_word.Label       = &quot;Sólo palabras enteras&quot;
 		.Ch_styl.Label       = &quot;Estilos de párrafo&quot;
 		.Ch_reg.Label        = &quot;Expresiones regulares&quot;
-		.Fr2.Label           = &quot;Rango y sentido al buscar:&quot;
+		.Fr2.Label           = &quot;Intervalo y sentido de búsqueda:&quot;
 		.Ch_csele.Label      = &quot;Sólo selección actual&quot;
 		.Ch_zpet.Label       = &quot;Hacia atrás&quot;
 		&apos;v1.3
@@ -239,9 +239,9 @@ Sub Load_es
 		.Bt_tranfer.HelpText = &quot;Pasar sólo parámetros del lote seleccionado, sin Ejecutar&quot;
 		.Bt_tranfer.Label    = &quot;Pasar&quot;
 		.Bt_save2.Label      = &quot;Guardar lote&quot;
-		.Bt_edit.HelpText    = &quot;Abrir archivo con definiciones de lote en editor de texto&quot;
+		.Bt_edit.HelpText    = &quot;Abrir archivo con definiciones de lotes en editor de texto&quot;
 		.Bt_edit.Label       = &quot;Editar&quot;
-		.Bt_refr.HelpText    = &quot;Actualizar lista de lotes&quot;
+		.Bt_refr.HelpText    = &quot;Actualizar la lista de lotes&quot;
 		.Bt_refr.Label       = &quot;Actualizar&quot;
 		.Cb_swfind.Label     = &quot;&lt;&lt; Busqueda&quot;
 		&apos;v1.2
@@ -264,15 +264,15 @@ Sub Load_es
 	&apos; dialog D_keys  &apos;v1.2
 	with oDIALSH.model
 		.Lb1.Label            =&quot;Primero selecciona el nombre del lote en la lista&quot;
-		.Lb2.Label            =&quot;Segundo, si lo prefieres, cambia el nombre de la subrutina auxiliar para Basic&quot;
+		.Lb2.Label            =&quot;Segundo, puedes cambiar el nombre de la macro auxiliar para Basic&quot;
 		.Lb3.Label            =&quot;Tercero establece el atajo de teclado deseado&quot;
 		.Lb4.Label            =&quot;Usado por la función:&quot;
 		.Lb5.Label            =&quot;&quot;
-		.Cb_bas.HelpText      =&quot;Solo se admiten caracteres _ A..Z a..z 0..9 characters, los números no pueden estar al principio&quot;
-		.Bt_assign.HelpText   =&quot;Asignar atajo de teclado a la rutina auxiliar y al lote con nombre&quot;
+		.Cb_bas.HelpText      =&quot;Solo se admiten caracteres _ A..Z a..z 0..9 - Los números no pueden estar al principio&quot;
+		.Bt_assign.HelpText   =&quot;Asignar atajo de teclado a la macro auxiliar y al lote con nombre&quot;
 		.Bt_assign.Label      =&quot;Asignar&quot;
 		.Bt_clear.HelpText    =&quot;Quita el atajo de teclado seleccionado&quot;
-		.Bt_basremove.HelpText=&quot;Elimina la subrutina BASIC auxiliar para el atajo de teclado&quot;
+		.Bt_basremove.HelpText=&quot;Elimina la macro auxiliar para el atajo de teclado&quot;
 		.title           = MSG(41)
 		.Bt_close.Label  = oDIAL.model.Bt_close.Label
 	end with
