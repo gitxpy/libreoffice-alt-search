@@ -125,7 +125,7 @@ Sub Load_es
 	&quot; Nombre de objeto (marco, tabla, imagen… )             &quot; &amp; chr(160) &amp; &quot;\O&quot;, _
 	&quot; Pegar contenido del portapapeles (\V texto sin formato)&quot; &amp; chr(160) &amp; &quot;\v&quot;, _
 	&quot; Conservar formato (reemplazar &amp; por portapapeles)  &quot; &amp; chr(160) &amp; &quot;\f&quot;, _
-	&quot; Insertar contador de reemplazos (al "Reemplazar todo")   &quot; &amp; chr(160) &amp; &quot;\i{1,3}&quot;, _
+	&quot; Insertar contador de reemplazos (al &quot;&quot;Reemplazar todo&quot;&quot;)   &quot; &amp; chr(160) &amp; &quot;\i{1,3}&quot;, _
 	&quot; Insertar número de página                              &quot; &amp; chr(160) &amp; &quot;\I&quot;, _
 	&quot; Redirigir la expresión de reemplazo a otro archivo     &quot; &amp; chr(160) &amp; &quot;\R&quot;, _
 	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;)
