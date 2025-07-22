@@ -84,5 +84,5 @@ h2 {border-top-left-radius: 65vw 1rem; border-top-right-radius: 65vw 1rem;}
 h1 :is(button, input, label){display:none;}
 }
 
-@media only screen and (max-width: 36rem){ /* ↕ mobile vertically */
+@media only screen and (max-width: 36rem){ /* ↕ mobile vertically */}
 

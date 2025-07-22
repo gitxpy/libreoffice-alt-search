@@ -131,10 +131,10 @@
         </prop>
         <node oor:name="UserDefinedImages">
           <prop oor:name="ImageSmallURL" oor:type="xs:string">
-           <value>%origin%/icons/altsearchz_16.bmp</value> 
+           <value>%origin%/icons/AltSearch32.svg</value> 
           </prop>
           <prop oor:name="ImageBigURL" oor:type="xs:string">
-             <value>%origin%/icons/altsearchz_26.bmp</value> 
+             <value>%origin%/icons/AltSearch32.svg</value> 
           </prop>
         </node>
       </node>
