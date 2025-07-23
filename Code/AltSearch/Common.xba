@@ -1076,7 +1076,7 @@ function getFindArray(byval find as string, skupiny as boolean) as  tFind
 			end if
 
 			pom(0).atr = 0  &apos;1 is for search of exact values
-			&apos; zde vytvorit pole pro atributy
+			&apos; create array for attributtes here
 			attrnames() = ArrayOutOfString_(cmd, &quot;|&quot;)
 			dim SrchAtrTmp(ubound(attrnames())) as new com.sun.star.beans.PropertyValue
 			for i = 0 to ubound(attrnames())
@@ -1103,8 +1103,10 @@ function getFindArray(byval find as string, skupiny as boolean) as  tFind
 		end if
 	end if
 
+	rem fix: bug #59 https://github.com/gitxpy/libreoffice-alt-search/issues/59
+	if 1 = instr(cmd,&quot;[::&quot;) then goto noReplace &apos;there is searching of [::SomeObject::]
+	
 preskocAtr:
-
 	&apos; find = replace_(find,&quot;\\&quot;,&quot;\x005C&quot;)  &apos; substitute the special character to hexa codes
 	&apos; find = replace_(find,&quot;\\&quot;,&quot;\&quot;)  &apos; substitute the special character to hexa codes
 	find = replace_(find,&quot;\(&quot;,&quot;\x0028&quot;)  &apos; normal brackets, not for groups ()
@@ -1119,7 +1121,7 @@ preskocAtr:
 	find = replaceC(find,&quot;\d&quot;,&quot;[0-9]&quot;)&apos; abbreviation for search of numbers
 	find = replaceC(find,&quot;\l&quot;,&quot;[:alpha:]{1,1}&quot;)   &apos;abbreviation for some letter
 
-	find = replDec2hex(find)             &apos; substitution dec of assignment \d
+	find = replDec2hex(find) &apos; substitution dec of assignment \d
 	&apos;\n Line Break and \t tabulator don&apos;t need OOo does it automatically
 	find = replaceC(find,&quot;\x000D&quot;,chr(13))   &apos; character of paragraph
 	find = replaceC(find,&quot;\x000d&quot;,chr(13))   &apos; character of paragraph
@@ -1129,6 +1131,8 @@ preskocAtr:
 	&apos; replace directly with character - it was functional for now
 	&apos; not possible to fix - if the regexps are active then it doesn&apos;t find nor \xAD, \u00AD, chr(173)
 	&apos; find = replaceC(find,&quot;\x00AD&quot;,chr(173))
+
+noReplace:
 
 	if ICUcompatability then  find = replace_x2u(find)   &apos; use the syntax of ICU regexp (International Components for Unicode)  \xhhhh =&gt; \uhhhh
 
@@ -1713,23 +1717,26 @@ end sub
 	&apos; mode=2: tries to find the substring REST starting from entered index
 	&apos; -1 is returned if the objects aren&apos;t in document, or the search is from start
 sub getIndexPicture(mode as integer, idx, rest1 as string) as long
-	dim i as long, bin
-	dim oTFr, tf, nam, names, Alttext, count,rest
+	dim i&amp;, bin, oTfr, tf, nam, names, Alttext, count,rest
 	rest = rest1
-	oTFr = ALTsearchDOC.GraphicObjects
-	names = oTFr.ElementNames &apos; array with the names of frames
-	count = oTFr.count
+	oTfr = ALTsearchDOC.GraphicObjects
+	names = oTfr.ElementNames &apos; array with the names of frames
+	
+	reverseArray(names) &apos;ALTsearchDOC.GraphicObjects =&gt; the items in .ElementNames are in reversed order than the items returned with .getByIndex() !
+	&apos;and I hope it is really reversed order and not some chaotic order !
+	
+	count = oTfr.count
 	if AltSearchVolby.kcase=0 then bin = 1  &apos; bin=1 instr(,,bin) isn&apos;t case sensitive; BIN=0 is binary comparison
 
 	if mode = 2 then  &apos; find substring rest in name
 		&apos; search in name or Alt text??
 		Alttext = false
-		if left(rest,2) = &quot;\\&quot; then  &apos;search in Alternative text
+		if left(rest,1) = &quot;\&quot; then  &apos;search in Alternative text
 			for i = 0 to ubound(names)
 				&apos; replace the names with Alt. texts
-				names(i) = oTFr.getByName(names(i)).Title
+				names(i) = oTfr.getByName(names(i)).Title
 			next i
-			rest = rightpast(rest,&quot;\\&quot;)
+			rest = rightpast(rest,&quot;\&quot;)
 			Alttext = true
 		end if
 
@@ -1739,7 +1746,7 @@ sub getIndexPicture(mode as integer, idx, rest1 as string) as long
 		end if
 		if AltSearchVolby.zpet = 1 then  &apos; backward search
 			for i = idx-1 to 0 step -1
-				if ((instr(1,names(i), rest,bin)&gt;0) and (rest&lt;&gt;&quot;&quot;))   or (Alttext and (names(i)= &quot;&quot;) and (rest= &quot;&quot;))  then &apos; substring found - 2nd condition after OR for the search of empty string in alt. text
+				if ((instr(1,names(i), rest,bin)&gt;0) and (rest&lt;&gt;&quot;&quot;))   OR (Alttext and (names(i)= &quot;&quot;) and (rest= &quot;&quot;))  then &apos; substring found - 2nd condition after OR for the search of empty string in alt. text
 					getIndexPicture = i
 					exit sub
 				end if
@@ -1749,7 +1756,7 @@ sub getIndexPicture(mode as integer, idx, rest1 as string) as long
 
 		else &apos; forward
 			for i = idx+1 to ubound(names())
-				if ((instr(1,names(i), rest,bin)&gt;0) and (rest&lt;&gt;&quot;&quot;))   or (Alttext and (names(i)= &quot;&quot;) and (rest= &quot;&quot;))  then &apos; substring found - 2nd condition after OR for the search of empty string in alt. text
+				if ((instr(1,names(i), rest,bin)&gt;0) and (rest&lt;&gt;&quot;&quot;))   OR (Alttext and (names(i)= &quot;&quot;) and (rest= &quot;&quot;))  then &apos; substring found - 2nd condition after OR for the search of empty string in alt. text
 					getIndexPicture = i
 					exit sub
 				end if
@@ -1776,7 +1783,7 @@ hledejBlizke:
 				getIndexPicture = -1 &apos; first
 			end if
 
-		else &apos; je vybran primo obrazek
+		else &apos; directly the image is selected
 			if INITimplNAME &lt;&gt; &quot;SwXTextGraphicObject&quot; then goto hledejBlizke
 			nam = oSELS.name
 			for i = 0 to ubound(names())
@@ -1792,8 +1799,8 @@ hledejBlizke:
 end sub
 
 
-	&apos; mode=0: vrati index ramce kde je kurzor;
-	&apos; mode=1: vratí počet ramcu celkem
+	&apos; mode=0: returns the index of frame where the cursor is
+	&apos; mode=1: returns the total count of frames
 	&apos; mode=2: tries to find the substring REST starting from entered index
 	&apos; -1 is returned if the objects aren&apos;t in document, or the search is from start
 sub getIndexTextFrame(mode as integer, idx, rest as string) as long
@@ -1801,6 +1808,9 @@ sub getIndexTextFrame(mode as integer, idx, rest as string) as long
 	dim oTFr, tf, nam, names, count
 	oTFr = ALTsearchDOC.getTextFrames
 	names = oTFr.ElementNames &apos; array with the names of frames
+
+	reverseArray(names) &apos;fix: bug #59  https://github.com/gitxpy/libreoffice-alt-search/issues/59
+	
 	count = oTFr.count
 	if AltSearchVolby.kcase=0 then bin = 1  &apos; bin=1 instr(,,bin) isn&apos;t case sensitive; BIN=0 is binary comparison
 
@@ -3676,6 +3686,20 @@ sub RestoreFrameName
 		oPOFILE.Title = ALTsearchPRINTOUT
 	end if
 end sub
+
+
+Sub reverseArray(arr()) &apos;reverse the order of items in array
+	dim temp as variant, i&amp;, iLast&amp;, j&amp;, i2&amp;
+	iLast=ubound(arr)
+	i2=iLast \ 2
+	if iLast MOD 2=0 then i2=i2-1 &apos;odd count of items in array doesn&apos;t need swap the middle item
+	for i=0 to i2 &apos;swap 1st with last, 2nd with penultimate etc.
+		temp=arr(i) &apos;1st to temp
+		j=iLast-i &apos;index of last
+		arr(i)=arr(j) &apos;last to 1st
+		arr(j)=temp &apos;temp to last
+	next i
+End Sub
 
 
 	&apos; return the substring from right, after the searched string sHle
