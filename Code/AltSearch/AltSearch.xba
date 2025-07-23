@@ -1530,6 +1530,10 @@ sub BtReplaceAll
 			TMPPOLE()= ALTsearchDOC.getTextFrames.ElementNames
 			if AltSearchVolby.kcase=0 then bin = 1  &apos; bin=1 instr(,,bin) ignore lower/uppercases; BIN=0 binary comparison
 
+			if AltSearchVolby.zpet = 0 then  
+				ReverseArray(TMPPOLE) &apos;fix: bug #59  set order of textframes https://github.com/gitxpy/libreoffice-alt-search/issues/59
+			end If
+
 			for i = 0 to Ubound(TMPPOLE())  &apos; for all objects - array of names of frames
 
 				&apos; the substring is found or find all
