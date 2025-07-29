@@ -30,7 +30,7 @@
 	</div>
 
 	<article id="it" lang="it">
-		
+
 		<h2>Finestra di dialogo alternativa a Trova e sostituisci di Writer</h2>
 		<p class="menu2"><a href="#hledatit">Ricerca</a>&bull;<a href="#nahraditit">Sostituzione</a>&bull;<a href="#davkyit">Modalità Batch</a>&bull;<a href="#multiple">Esecuzione multipla</a>&bull;<a href="#omezeniit">Limitazioni</a></p>
 		<details>
@@ -88,7 +88,7 @@
 		
 		<h3><a id="hledatit"></a>Ricerca</h3>
 		<p><b>A.</b> Menu a discesa “[Espressioni] <b>Regolari</b>”</p>
-		<p>Questo Menu a discesa contiene alcune espressioni regolari molto utili che sono descritte nella <a href="https://help.libreoffice.org/latest/it-IT/text/shared/01/02100001.html?&DbPAR=WRITER"><b>Guida di LibreOffice</b></a> cercando l’<b>Elenco di Espressioni Regolari</b></p>
+		<p class="cm2">Questo Menu a discesa contiene alcune espressioni regolari molto utili che sono descritte nella <a href="https://help.libreoffice.org/latest/it-IT/text/shared/01/02100001.html?&DbPAR=WRITER"><b>Guida di LibreOffice</b></a> cercando l’<b>Elenco di Espressioni Regolari</b></p>
 		<p class="cm4" id="itskupiny0"><dfn>Limitazioni:</dfn> Ci sono differenze con le espressioni regolari di Writer, specialmente nquando si usano i quantificatori <strong>*, +, ?</strong>, <strong>{n,n}</strong> se questi vengono usati subito dopo le sotto-espressioni create utilizzando le parentesi rotonde <b>()</b>.</p>
 		<p>Per esempio non è possibile trovare l’espressione <strong>(Mi)?ster</strong>. In ogni caso però, usando il pulsante <var>Conta</var>, viene restituito il numero reale delle occorrenze.</p>
 		<p>È inoltre possibile cercare delle sotto-espressioni del tipo <strong>(.*)any</strong> oppure <strong>(.+)any</strong>, ma in questo caso viene trovata l’occorrenza <i>più corta</i> corrispondente al criterio, mentre normalmente troverebbe l’occorrenza <i>più lunga</i>. Qualora sia necessario conservare la compatibilità, si può delimitare l’intera espressione di ricerca con un’ulteriore paio di parentesi: <strong>((Mi)?ster)</strong>. L’inconveniente di questa soluzione è che non è possibile citare la sotto-espressione nell’ambito dell’espressione di sostituzione; non è cioè possibile usare <strong>\#</strong> ove # è il numero di riferimento (max. 9) delle sotto-espressioni. Tanto meno si può usare il riferimento a una sotto-espressione mediante l’uso di parentesi <strong>()</strong> quando l’espressione regolare è sia il termine di ricerca che di sostituzione. Per ulteriori infdormazioni si veda <a href="#itskupiny">Sotto-espressioni</a>.</p>
@@ -96,7 +96,7 @@
 		<p class="cm2"><strong>\l</strong> - rappresenta qualsiasi carattere alfabetico; equivale cioè a <strong>[:alpha:]{1,1}</strong></p>
 		<p class="cm2"><strong>\d</strong> - rappresenta una cifra decimale; equivale cioè a <strong>[0-9]</strong></p>
 		<p class="cm2"><strong>\p</strong> - rappresenta il segno di fine paragrafo</p>
-		<p class="cm2"> <strong>$</strong> - rappresenta un paragrafo vuoto, contrariamente allo standard ICU (International Components for Unicode). Assieme a <strong>$</strong> è anche possibile usare caratteri jolly quali <strong>+</strong>, <strong>*</strong>, oppure <strong>{min,max}</strong></p>
+		<p class="cm2"><strong>$</strong> - rappresenta un paragrafo vuoto, contrariamente allo standard ICU (International Components for Unicode). Assieme a <strong>$</strong> è anche possibile usare caratteri jolly quali <strong>+</strong>, <strong>*</strong>, oppure <strong>{min,max}</strong></p>
 		<p class="cm2"><strong>\p{1,}</strong> - trova la fine del paragrafo successivo seguita da un numero illimitato di paragrafi vuoti. Equivale quindi a <strong>\p*</strong></p>
 		<p class="cm2"><strong>\p{2,4}</strong> - trova la fine del paragrafo successivo seguita da almeno uno ma al massimo tre paragrafi vuoti, per un totale complessivo di 2-4 paragrafi, uno dopo l’altro</p>
 		<p class="cm4"><dfn>Limitazioni:</dfn> La procedura è lenta. Possono sorgere dei problemi nel caso di una ricerca a ritroso.</p>
@@ -123,10 +123,10 @@
 		<p class="cm4">Ricerca: <strong>text1||text2||text3</strong> - Sostituizione: <strong>neco1||neco2||neco3</strong>.<br>
 		In questo caso viene inizialmente cercata la stringa <strong>text1</strong> che viene sostituita da <strong>neco1</strong>. La ricerca prosegue poi con la stringa <strong>text2</strong> che viene sostituita da <strong>neco2</strong>, ecc…</p>
 		<p class="cm4"><dfn>Limitazioni:</dfn> con <strong>||</strong> non si possono usare né il parametro <strong>[::BigBlock::]</strong> né le <a href="#itskupiny">sotto-espressioni</a></p>
-		
+
 		<p class="cm2"><b>Ricerca di Oggetti</b></p>
-		<p class="cm2"><strong>[::Comment::]</strong> - cerca i Commenti al testo (riquadri gialli) a seconda del loro contenuto</p>
-		<p class="cm4"><strong>[::Comment::]</strong> - trova il Commento al testo successiva</p>
+		<p class="cm2"><strong>[::Comment::]</strong> - trova i Commenti al testo a seconda dei loro contenuti</p>
+		<p class="cm4"><strong>[::Comment::]</strong> - trova il Commento al testo successivo</p>
 		<p class="cm4"><strong>[::Comment::]pozn.</strong> - trova qualsiasi Commento al testo contenente la sotto-stringa <strong>pozn.</strong></p>
 		<p class="cm4"><dfn>Limitazioni:</dfn> nel contenuto dei Commenti si possono cercare solo sotto-stringhe. Non è invece possibile usare le espressioni regolari standard.</p>
 		<p class="cm2"><strong>[::Field::]</strong> - cerca nei Campi di Testo a seconda del loro contenuto</p>
@@ -353,7 +353,7 @@
 				<u>ATTENZIONE</u>: durante l’esecuzione della procedura, NON fare nulla in Writer!</li>
 			</ol>
 		<p>La selezione della casella “<b>Disattiva info</b>” impedisce la visualizzazione dei messaggi che mostrano le modifiche eseguite per ogni file processato. In questo caso, al termine di tutta la procedura, verrà comunque mostrato un rapporto completo delle modifiche effettuate a carico di tutti i file.</p>
-		
+	
 		<h3><a id="omezeniit"></a>Limitazioni:</h3>
 		<p>Qualora siano note delle limitazioni di AltSearch, esse sono menzionate assieme alla descrizione dei parametri individuali interessati.</p>
 		<p>Limitazioni di carattere generale sono le seguenti:</p>
