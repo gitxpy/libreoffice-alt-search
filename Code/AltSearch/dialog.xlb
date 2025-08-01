@@ -3,7 +3,7 @@
 <library:library xmlns:library="http://openoffice.org/2000/library" library:name="AltSearch" library:readonly="false" library:passwordprotected="false">
  <library:element library:name="D_alts"/>
  <library:element library:name="D_choice"/>
- <library:element library:name="D_keys"/>
  <library:element library:name="D_styl"/>
+ <library:element library:name="D_keys"/>
  <library:element library:name="D_morefiles"/>
 </library:library>

@@ -44,28 +44,28 @@
     <node oor:name="OfficeToolBar">
       <node oor:name="name.TomBil.addon.AltSearch" oor:op="replace">
         <prop oor:name="Title" oor:type="xs:string" oor:localized="true">
-            <value xml:lang="en-GB">Alternative searching</value>  
-            <value xml:lang="cs-CZ">Alt. najít a nahradit</value>
-            <value xml:lang="ru-RU">Альтернативный поиск</value>
-            <value xml:lang="es-ES">Búsqueda alternativa</value>
-            <value xml:lang="de-DE">Suchen &amp; Ersetzen-Alternative für Writer</value>
-            <value xml:lang="fr-FR">Recherche alternative</value>
-            <value xml:lang="nl-NL">Alternatieve Zoeken</value>
-            <value xml:lang="it-IT">Trova e Sostituisci alternativo</value>
+            <value xml:lang="en">Alternative searching</value>  
+            <value xml:lang="cs">Alt. najít a nahradit</value>
+            <value xml:lang="ru">Альтернативный поиск</value>
+            <value xml:lang="es">Búsqueda alternativa</value>
+            <value xml:lang="de">Suchen &amp; Ersetzen-Alternative für Writer</value>
+            <value xml:lang="fr">Recherche alternative</value>
+            <value xml:lang="nl">Alternatieve Zoeken</value>
+            <value xml:lang="it">Trova e Sostituisci alternativo</value>
         </prop>
         <node oor:name="btn01" oor:op="replace">
           <prop oor:name="Context" oor:type="xs:string">
             <value>com.sun.star.text.GlobalDocument,com.sun.star.text.TextDocument,com.sun.star.text.WebDocument</value>
           </prop>
           <prop oor:name="Title" oor:type="xs:string">
-            <value xml:lang="en-GB">Alternative searching</value>  
-            <value xml:lang="cs-CZ">Alt. najít a nahradit</value>
-            <value xml:lang="ru-RU">Альтернативный поиск</value>
-            <value xml:lang="es-ES">Búsqueda alternativa</value>
-            <value xml:lang="de-DE">Suchen &amp; Ersetzen-Alternative für Writer</value>
-            <value xml:lang="fr-FR">Recherche alternative</value>
-            <value xml:lang="nl-NL">Alternatieve Zoeken</value>
-            <value xml:lang="it-IT">Trova e Sostituisci alternativo</value>
+            <value xml:lang="en">Alternative searching</value>  
+            <value xml:lang="cs">Alt. najít a nahradit</value>
+            <value xml:lang="ru">Альтернативный поиск</value>
+            <value xml:lang="es">Búsqueda alternativa</value>
+            <value xml:lang="de">Suchen &amp; Ersetzen-Alternative für Writer</value>
+            <value xml:lang="fr">Recherche alternative</value>
+            <value xml:lang="nl">Alternatieve Zoeken</value>
+            <value xml:lang="it">Trova e Sostituisci alternativo</value>
           </prop>
           <prop oor:name="URL" oor:type="xs:string">
             <value>macro:///AltSearch.AltSearch._AltSearch</value>
@@ -95,14 +95,14 @@
             <value>com.sun.star.text.GlobalDocument,com.sun.star.text.TextDocument,com.sun.star.text.WebDocument</value> 
           </prop>
           <prop oor:name="Title" oor:type="xs:string">
-            <value xml:lang="en-GB">Alternative searching</value>  
-            <value xml:lang="cs-CZ">Alt. najÃ­t a nahradit</value>
-            <value xml:lang="ru-RU">Альтернативный поиск</value>
-            <value xml:lang="es-ES">Búsqueda alternativa</value>
-            <value xml:lang="de-DE">Suchen &amp; Ersetzen-Alternative für Writer</value>
-            <value xml:lang="fr-FR">Recherche alternative</value>
-            <value xml:lang="nl-NL">Alternatieve Zoeken</value>
-            <value xml:lang="it-IT">Trova e Sostituisci alternativo</value>
+            <value xml:lang="en">Alternative searching</value>  
+            <value xml:lang="cs">Alt. najÃ­t a nahradit</value>
+            <value xml:lang="ru">Альтернативный поиск</value>
+            <value xml:lang="es">Búsqueda alternativa</value>
+            <value xml:lang="de">Suchen &amp; Ersetzen-Alternative für Writer</value>
+            <value xml:lang="fr">Recherche alternative</value>
+            <value xml:lang="nl">Alternatieve Zoeken</value>
+            <value xml:lang="it">Trova e Sostituisci alternativo</value>
           </prop>            
           <prop oor:name="URL" oor:type="xs:string">
             <value>macro:///AltSearch.AltSearch._AltSearch</value>
