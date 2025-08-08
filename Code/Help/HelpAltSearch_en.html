@@ -138,12 +138,12 @@
 		<p class="cm4"><strong>[::TextFrame::]rám1</strong> - will find text frames containing the substring <strong>rám1</strong> in their name</p>
 		<p class="cm4"><dfn>Limitations:</dfn></p>
             	<ol class="cm4">
-			<li>When using the <var>Find</var> button, you will find the next text frame only if the frame is selected or if the cursor is inside the frame. If the cursor is a long way away in the text, then the first text frame from the internal list of frames inside the document is found.<br>
-        		<b>Warning</b>: The option “Current selection only” currently doesn’t work.</li>
-			<li>As a consequence of the previous point, the use of the <var>Replace</var> button is very limited.</li>
-			<li>The order of searching unfortunately matches (I hope only provisionally) the order in which the text frames have been inserted into the document and <b>not</b> the order within the page(s) of the document from the start to the end.</li>
-	        	<li>You can search only for a substring in the name of the frame - you cannot use full regular expressions.</li>
-	            	</ol>
+					<li>When using the <var>Find</var> button, you will find the next text frame only if the frame is selected or if the cursor is inside the frame. If the cursor is a long way away in the text, then the first text frame from the internal list of frames inside the document is found.<br>
+        			<b>Warning</b>: The option “Current selection only” currently doesn’t work.</li>
+					<li>As a consequence of the previous point, the use of the <var>Replace</var> button is very limited.</li>
+					<li>The order of searching unfortunately matches (I hope only provisionally) the order in which the text frames have been inserted into the document and <b>not</b> the order within the page(s) of the document from the start to the end.</li>
+	        		<li>You can search only for a substring in the name of the frame - you cannot use full regular expressions.</li>
+	            </ol>
 		<p class="cm2"><var>Find all</var> and <var>Replace all</var> are fully functional, including when used with the option “Current selection only”</p>
 		<p class="cm2"><strong>[::Picture::]</strong> - searches pictures according to their name</p>
 		<p class="cm4"><strong>[::Picture::]</strong> - will find any picture</p>
@@ -247,23 +247,23 @@
 		<ul>
 			<li><i>First number</i> (= type of reference):</li>
 				<ol start="0">
-				<li> - Page number in Arabic numerals</li>
-				<li> - Chapter number</li>
-				<li> - The reference text</li>
-				<li> - Above/below</li>
-				<li> - Page number using the numbering type defined in the page style</li>
-				<li> - Category and number of a caption</li>
-				<li> - Caption text</li>
-				<li> - Number of a sequence field (caption)</li>
+				<li> - Page number (unstyled) </li>
+				<li> - Chapter</li>
+				<li> - Referenced text</li>
+				<li> - “Above”/“Below”</li>
+				<li> - Page number (styled)</li>
+				<li> - Number</li>
+				<li> - Number (no context)</li>
+				<li> - Number (full context)</li>
 				</ol>
-		        <li><i>Second number</i> (= type of the source of a reference field). The source is:</li>
-	                	<ol start="0">
-			        <li> - A reference mark</li>
-			        <li> - A number sequence field</li>
-                   		<li> - A bookmark</li>
-			        <li> - A footnote</li>
-			        <li> - An endnote</li>
-			        </ol>
+		    <li><i>Second number</i> (= type of the source of a reference field). The source is:</li>
+	            <ol start="0">
+			    <li> - A reference mark</li>
+			    <li> - A number sequence field</li>
+                <li> - A bookmark</li>
+			    <li> - A footnote</li>
+			    <li> - An endnote</li>
+			    </ol>
 	        </ul>
 		<p class="cm2"><strong>\K{w,bookmark_name}</strong> - insert bookmark named <strong>bookmark_name</strong>.</p>
 		<p class="cm4">First parameter is the mode of anchor</p>
@@ -294,7 +294,7 @@
 		<p class="cm4">If <strong>&mp;</strong> or <strong>\0</strong> is used in the replace expression, itt will be achieved using the clipboard. If the found text contains text fields, notes, references etc., they will be preserved in their original state.</p>
 		<p class="cm2"><strong>\R</strong> - redirects the replace expression to another text file</p>
 		<p class="cm4">This option causes the replace expression to be inserted into <i>new.odt</i> file instead of replacing the found text. The original file will stay as it is, without any change. To enter the name of the output file, use the format <strong>\R{filename}</strong>. The name must have the accurate Writer window title format, including the text “ - LibreOffice Writer”. New records from this redirection are always added to the end of the file.</p>
-		<p class="cm4">Example: sf the searched expression was <strong>[:::HyperLinkURL::]</strong> and the replace expression is <strong>Link \i, page \I: &amp; (URL: \u)\p\R</strong>, when you click the <var>Replace all</var> button all the hyperlinks found in original file will be listed in a new file in the form <i>Link</i><i>1, page 1: textOfHyperlink (URL: URLaddress)</i> in separate paragraphs.</p>
+		<p class="cm4">Example: if the searched expression was <strong>[:::HyperLinkURL::]</strong> and the replace expression is <strong>Link \i, page \I: &amp; (URL: \u)\p\R</strong>, when you click the <var>Replace all</var> button all the hyperlinks found in original file will be listed in a new file in the form <i>Link</i><i>1, page 1: textOfHyperlink (URL: URLaddress)</i> in separate paragraphs.</p>
 		<p class="cm4"><i>Link1, page 1: textOfHyperlink (URL: URLaddress)</i></p>
 		
 		<p>Button and List box “<b>Pick properties</b>”</p>
