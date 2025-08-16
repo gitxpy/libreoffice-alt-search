@@ -49,7 +49,7 @@
 <br>
 
 <a id="Italian" href="#top">&uArr; Inizio</a></p>
-<h2>Scaricamento di AltSearch dal sito dell eestensioni di LibreOffice</h2>
+<h2>Scaricamento di AltSearch dal sito dell estensioni di LibreOffice</h2>
 <ul><li><b>Versione ufficiale</b> ("stabile"): <a href="https://extensions.libreoffice.org/en/extensions/show/70066">https://extensions.libreoffice.org/en/extensions/show/70066</a></li></ul>
 <h3>SCARICAMENTO E INSTALLAZIONE DA QUI (versione più recente)</h3>
 <ul><li>Scaricare il file <b>AltSearch.oxt</b> e installarlo</li></ul>
