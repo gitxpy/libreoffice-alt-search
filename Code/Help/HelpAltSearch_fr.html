@@ -28,7 +28,7 @@
 	</div>
 
 	<article id="fr" lang="fr">
-		<h2>Autre boite de dialogue chercher &amp; remplacer pour Writer</h2>
+		<h2>Alternative pour la boite de dialogue Rechercher &amp; Remplacer pour Writer</h2>
 
 		<p class="menu2"><a href="#hledatfr">Rechercher</a>&bull;<a href="#nahraditfr">Remplacer</a>&bull;<a href="#davkyfr">Traitement par lot</a>&bull;<a href="#omezenifr">Limitation</a></p>
 
@@ -39,19 +39,19 @@
 			-->
 		</details>
 
-		<h3><a id="hlavniffr"></a>Qu'offre cette extension par rapport à la boîte de dialogue standard de&nbsp;OOo:</h3>
+		<h3><a id="hlavniffr"></a>Qu'offre cette extension par rapport à la boîte de dialogue standard de Writer :</h3>
 		<ul>
-			<li>La possibilité d'expressions régulières pré sélectionnées et étendues.</li>
+			<li>La possibilité d'expressions régulières pré-sélectionnées et étendues.</li>
 			<li>Compter les occurences trouvées par le bouton <var>Nombre</var></li>
-			<li>le texte Cherché ou remplacé peut contenir un ou plusieurs paragraphes</li>
+			<li>Le texte Cherché ou remplacé peut contenir un ou plusieurs paragraphes</li>
 			<li>La possibilité de rechercher et remplacer un caractère décimal ou hexadécimal</li>
 			<li>Chercher un saut de page et de colonne manuel pour les paramétrer ou les supprimer</li>
-			<li>chercher un bloc de paragraphes délimités par deux marques de texte</li>
+			<li>Chercher un bloc de paragraphes délimités par deux marques de texte</li>
 			<li>La possibilité d'étendre ou de réduire la sélection de texte trouvé du nombre de caractères spécifié</li>
 			<li>Rechercher et remplacer multiples en une seule commande</li>
 			<li>Recherche: Les notes, les champs de&nbsp;texte, les marques de&nbsp;renvois et référence à leur contenu, leur nom ou leur marque et leur insertion</li>
-			<li>recherche de l'objet de tableaux, les images et les textes des cadres selon leur nom; il est possible de les substituer par n'importe quel texte, n'importe quel contenu de texte, le nom de l'objet, les contenus du presse-papiers</li>
-			<li>Recherche et insertion d'une note de bas de page et une note de fin (à partir de la version 2.3 d'OOo seulement). Il est possible de choisir en une fois les textes de toutes les notes de bas de page ou de toutes les notes de fin et leur assigner n'importe quel style</li>
+			<li>Recherche de l'objet de tableaux, les images et les textes des cadres selon leur nom; il est possible de les substituer par n'importe quel texte, n'importe quel contenu de texte, le nom de l'objet, les contenus du presse-papiers</li>
+			<li>Recherche et insertion d'une note de bas de page et une note de fin. Il est possible de choisir en une fois les textes de toutes les notes de bas de page ou de toutes les notes de fin et leur assigner n'importe quel style</li>
 			<li>La possibilité de recherche d'un texte ou d'une partie de texte semblable ou de même format à l'endroit du curseur</li>
 			<li>Traiter une chaîne entre parenthèses <strong>()</strong> comme un <strong>\#</strong> de référence dans le texte remplacé</li>
 			<li>La possibilité de changer dans le texte trouvé ou remplacé&nbsp;: un style de paragraphe, un style de caractère, un style de liste et un URL d'Hyperlien et de mettre des propriétés de texte</li>
@@ -81,8 +81,12 @@
 		<p>contient des expressions régulières ou des paramètres, fréquemment utilisés ou compliqués. Après avoir choisi les paramètres correspondants, ils sont transférés au champ d'entrée (ou des deux champs). Ceux-ci pourraient être insérés de plusieurs façons&nbsp;: au début, à la fin, à l'endroit du curseur ou remplacer entièrement le texte original. En même temps la case à cocher «&nbsp;Expressions Régulières&nbsp;» doit être cochée.</p>
 		<h3 id="hledatfr">Chercher:</h3>
 		<p>Liste déroulante <b>Exp. régulières</b></p>
-		<p>contient quelques expressions régulières utiles. Leur description est disponible dans l'aide d'OOo dans la <a href="https://help.libreoffice.org/latest/fr/text/shared/01/02100001.html?&DbPAR=WRITER"> Liste des Expressions Régulières</a>.</p>
-		<p id="frskupiny0"><dfn>Limitation&nbsp;:</dfn> La syntaxe utilisée pour les expressions régulières n'est pas entièrement compatible avec celle d' OOo. Les problèmes sont surtout avec rechercher, en utilisant un joker <strong><b>* +&nbsp;? {n, n}</b></strong> près d'une sous chaîne entre parenthèses ().<br>Par ex. <strong>(Mi)?ster</strong> ne sera pas trouvé (cependant, en utilisant <var>Nombre</var> il sera retourné la vraie valeur - cette fonction utilisant le mode compatible seulement). [En] De plus, s'il est cherché le type de sous chaîne <strong>(.*)N'importe lequel</strong> ou <strong>(.+) N'importe quel</strong> alors l'occurence la plus courte sera trouvée, contrairement à la norme d'OOo, qui trouvera l'occurence la plus longue correspondante. Si il est nécessaire de conserver la compatibilité, il est possible de délimiter l'ensemble de l'expression cherchée avec une paire supplémentaire de parenthèse&nbsp;: <strong>((Mi)?ster).</strong> Ce sera une chance perdue de citer la sous-chaîne dans l'expression remplacée comme référence, <strong>\#</strong> où # est le nombre de références (max. 9) de la sous-chaîne. Il est aussi impossible d'utiliser en même temps une référence sur une sous-chaîne (déterminée entre parenthèses() ) dans l'expression recherchée aussi bien que dans celle remplacée. <a href="#frskupiny">Voir aussi sous chaîne</a>.</p>
+		<p>contient quelques expressions régulières utiles. Leur description est disponible dans l'aide de LibreOffice, sous <a href="https://help.libreoffice.org/latest/fr/text/shared/01/02100001.html?&DbPAR=WRITER"> Liste des Expressions Régulières</a>.</p>
+		<p id="frskupiny0"><dfn>Limitation&nbsp;:</dfn> La syntaxe utilisée pour les expressions régulières n'est pas entièrement équivalente à celle de Writer. Les différences sont surtout avec l'utilisation de jokers <strong><b>* +&nbsp;? {n, n}</b></strong> après des sous chaînes entre parenthèses ().
+
+		<p>Par exemple, <strong>(Mi)?ster</strong> ne sera pas trouvé (cependant, en utilisant <var>Nombre</var> il sera retourné la vraie valeur - cette fonction utilisant le mode compatible seulement).</p>
+
+		<p>De plus, si on cherche une sous chaîne du type <strong>(.*)N'importe lequel</strong> ou <strong>(.+) N'importe quel</strong>, l'occurence la plus courte sera trouvée, contrairement à la norme, où serait trouvée l'occurence la plus longue. Si il est nécessaire de conserver la compatibilité, il est possible de délimiter l'ensemble de l'expression cherchée avec une paire supplémentaire de parenthèse&nbsp;: <strong>((Mi)?ster).</strong> Ce sera une chance perdue de citer la sous-chaîne dans l'expression remplacée comme référence, <strong>\#</strong> où # est le nombre de références (max. 9) de la sous-chaîne. Il est aussi impossible d'utiliser en même temps une référence sur une sous-chaîne (déterminée entre parenthèses() ) dans l'expression recherchée aussi bien que dans celle remplacée. <a href="#frskupiny">Voir aussi sous chaîne</a>.</p>
 		<p>Autres paramètres spéciaux "joker"&nbsp;:</p>
 		<p><strong>\l</strong> - représente le caractère alphabétique&nbsp;; comme <strong>[:alpha:]{1,1}</strong>.</p>
 		<p><strong>\d</strong> - représente le chiffre décimal&nbsp;; comme <strong>[0-9]</strong>.</p>
