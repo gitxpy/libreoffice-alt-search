@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,7 +10,6 @@
 	<link rel="stylesheet" href="HelpAltSearch.css" type="text/css">
 	<script src="HelpAltSearch.js"></script>
 </head>
-
 <body>
 	<a href="#logo" id="top">&bigtriangleup;</a>
 
@@ -35,8 +33,10 @@
 		<p class="menu2"><a href="#hledatfr">Rechercher</a>&bull;<a href="#nahraditfr">Remplacer</a>&bull;<a href="#davkyfr">Traitement par lot</a>&bull;<a href="#omezenifr">Limitation</a></p>
 
 		<details>
+			<!--
 			<summary>&#x2f3;&#x2f3;&#x2f3;</summary>
 			<p>Notes from translators</p>
+			-->
 		</details>
 
 		<h3><a id="hlavniffr"></a>Qu'offre cette extension par rapport à la boîte de dialogue standard de&nbsp;OOo:</h3>
@@ -51,45 +51,38 @@
 			<li>Rechercher et remplacer multiples en une seule commande</li>
 			<li>Recherche: Les notes, les champs de&nbsp;texte, les marques de&nbsp;renvois et référence à leur contenu, leur nom ou leur marque et leur insertion</li>
 			<li>recherche de l'objet de tableaux, les images et les textes des cadres selon leur nom; il est possible de les substituer par n'importe quel texte, n'importe quel contenu de texte, le nom de l'objet, les contenus du presse-papiers</li>
-			<li>Recherche et insertion d' une note de bas de page et une note de fin (à partir de la version 2.3 d'OOo seulement). Il est possible de choisir en une fois les textes de toutes les notes de bas de page ou de toutes les notes de fin et leur assigner n'importe quel style</li>
+			<li>Recherche et insertion d'une note de bas de page et une note de fin (à partir de la version 2.3 d'OOo seulement). Il est possible de choisir en une fois les textes de toutes les notes de bas de page ou de toutes les notes de fin et leur assigner n'importe quel style</li>
 			<li>La possibilité de recherche d'un texte ou d'une partie de texte semblable ou de même format à l'endroit du curseur</li>
 			<li>Traiter une chaîne entre parenthèses <strong>()</strong> comme un <strong>\#</strong> de référence dans le texte remplacé</li>
 			<li>La possibilité de changer dans le texte trouvé ou remplacé&nbsp;: un style de paragraphe, un style de caractère, un style de liste et un URL d'Hyperlien et de mettre des propriétés de texte</li>
 			<li>La possibilité d'insertion avec remplacement&nbsp;: les contenus du presse-papiers, le nombre de remplacement d'insertion et le nombre de page</li>
 			<li>La possibilité de faire suivre le résultat d'expression remplacée vers un autre fichier texte</li>
 			<li>Mode Lot&nbsp;: sauvegarder et charger des paramètres de recherche et remplacement ; il est possible de les sauvegarder en une séquence pour les exécuter rapidement après.</li>
-			<li class="untranslated">
-				<p>Dialog for quick assignment of keyboard shortcuts to batch operations that have been saved</p>
-			</li>
-			<li class="untranslated">
-				<p>Preserve capitalization - If found text begins with a capital letter, also the text replacement will begin with a capital letter</p>
-			</li>
-			<li class="untranslated">
-				<p>Searching for character style, possibility to choose a style from the menu.</p>
-			</li>
-			<li class="untranslated">
-				<p>Searching list and paragraph styles through the list box 'Properties'</p>
-			</li>
-			<li class="untranslated">
-				<p>Search and replace of Bookmarks</p>
-			</li>
-		</ul>
-		<p>Raccourcis clavier pour un usage fréquent&nbsp;:</p>
-		<p><b>1.</b> Aller à <b>Outils - Personnaliser... - Clavier</b></p>
-		<p><b>2.</b> Dans le champ Catégorie trouvé en cliquant sur <b>Macros OpenOffice.org - User - AltSearch - Altsearch</b></p>
-		<p><b>3.</b> Puis dans le champ <b>Fonction</b> choisir la commande Modifier [et] aller dans raccourcis clavier [et], descendre sur le raccourcis correspondant et cliquer sur le bouton <b>Modifier</b>:</p>
-		<ul>
+			<li> Boîte de dialogue pour l'attribution rapide de raccourcis clavier aux opérations par lots qui ont été enregistrées</li>
+			<li> Conserver les majuscules - Si le texte trouvé commence par une majuscule, le texte de remplacement commencera également par une majuscule</li>
+			<li> Recherche de style de caractère, possibilité de choisir un style dans le menu</li>
+			<li> Recherche de styles de liste et de paragraphe via la liste « Propriétés »</li>
+			<li> Rechercher et remplacer des signets </li>
+
+		<li>Raccourcis clavier pour un usage fréquent&nbsp;:</li>
+		<ol><li> Aller à <b>Outils - Personnaliser... - Clavier</b></li>
+		<li> Dans le champ Catégorie trouvé en cliquant sur <b>Macros OpenOffice.org - User - AltSearch - Altsearch</b></li>
+		<li> Puis dans le champ <b>Fonction</b> choisir la commande Modifier [et] aller dans raccourcis clavier [et], descendre sur le raccourcis correspondant et cliquer sur le bouton <b>Modifier</b>:</li>
+		  <ul>
 			<li>_AltSearch et mettre le raccourci Ctrl + H (ouvre le dialogue de Rechercher);</li>
 			<li>_FindNext et mettre le raccourcis Ctrl + L (trouver après le point de curseur, sans ouvrir la boite de dialogue)&nbsp;;</li>
 			<li>_FindBack et mettre le raccourcis Ctrl+shift+L (trouver le suivant devant le point de curseur, sans ouvrir la boite de dialogue)&nbsp;;</li>
+		  </ul>
+		</ol>
 		</ul>
+
 		<p><img src="img/altsearch_main_fr.png" width="455" height="289" alt="PNG"></p>
 		<h3>Fenêtre (au-dessus des champs chercher et remplacer pour mettre l'expression)</h3>
-		<p>contient expressions ou des paramètres fréquemment utilisés réguliers ou compliqués. Après avoir choisi les paramètres correspondants ils sont transférés au champ d'entrée (ou des deux champs). Ceux-ci pourraient être insérés de plusieurs façons&nbsp;: au début, à la fin,<br>à l'endroit du curseur ou remplacer entièrement le texte original. En même temps le commutateur «&nbsp;Expressions Régulières&nbsp;» est fonctionnel.</p>
+		<p>contient des expressions régulières ou des paramètres, fréquemment utilisés ou compliqués. Après avoir choisi les paramètres correspondants, ils sont transférés au champ d'entrée (ou des deux champs). Ceux-ci pourraient être insérés de plusieurs façons&nbsp;: au début, à la fin, à l'endroit du curseur ou remplacer entièrement le texte original. En même temps la case à cocher «&nbsp;Expressions Régulières&nbsp;» doit être cochée.</p>
 		<h3 id="hledatfr">Chercher:</h3>
 		<p>Liste déroulante <b>Exp. régulières</b></p>
-		<p>contient quelques expressions régulières utiles. Leur description est disponible dans l'aide d'OOo dans la <a href="vnd.sun.star.help://sbasic/text%2Fshared%2F01%2F02100001.xhp?Language=fr&amp;System=UNIX"> Liste Expressions Régulières</a>.</p>
-		<p id="frskupiny0"><dfn>Limitation&nbsp;:</dfn> La syntaxe utilisée pour les expressions régulières n'est pas entièrement compatible avec celle d' OOo. Les problèmes sont surtout avec rechercher, en utilisant un joker <strong><b>* +&nbsp;? {n, n}</b></strong> près d'une sous chaîne entre parenthèses ().<br>Par ex. <strong>(Mi)?ster</strong> ne sera pas trouvé (cependant, en utilisant <var>Nombre</var> il sera retourné la vraie valeur - cette fonction utilisant le mode compatible seulement). [En] De plus, s'il est cherché le type de sous chaîne <strong>(.*)N'importe lequel</strong> ou <strong>(.+) N'importe quel</strong> alors l' occurence la plus courte sera trouvée, contrairement à la norme d'OOo, qui trouvera l'occurence la plus longue correspondante. Si il est nécessaire de conserver la compatibilité, il est possible de délimiter l'ensemble de l' expression cherchée avec une paire supplémentaire de parenthèse&nbsp;: <strong>((Mi)?ster).</strong> Ce sera une chance perdue de citer la sous-chaîne dans l'expression remplacée comme référence, <strong>\#</strong> où # est le nombre de références (max. 9) de la sous-chaîne. Il est aussi impossible d'utiliser en même temps une référence sur une sous-chaîne (déterminée entre parenthèses() ) dans l'expression recherchée aussi bien que dans celle remplacée. <a href="#frskupiny">Voir aussi sous chaîne</a>.</p>
+		<p>contient quelques expressions régulières utiles. Leur description est disponible dans l'aide d'OOo dans la <a href="https://help.libreoffice.org/latest/fr/text/shared/01/02100001.html?&DbPAR=WRITER"> Liste des Expressions Régulières</a>.</p>
+		<p id="frskupiny0"><dfn>Limitation&nbsp;:</dfn> La syntaxe utilisée pour les expressions régulières n'est pas entièrement compatible avec celle d' OOo. Les problèmes sont surtout avec rechercher, en utilisant un joker <strong><b>* +&nbsp;? {n, n}</b></strong> près d'une sous chaîne entre parenthèses ().<br>Par ex. <strong>(Mi)?ster</strong> ne sera pas trouvé (cependant, en utilisant <var>Nombre</var> il sera retourné la vraie valeur - cette fonction utilisant le mode compatible seulement). [En] De plus, s'il est cherché le type de sous chaîne <strong>(.*)N'importe lequel</strong> ou <strong>(.+) N'importe quel</strong> alors l'occurence la plus courte sera trouvée, contrairement à la norme d'OOo, qui trouvera l'occurence la plus longue correspondante. Si il est nécessaire de conserver la compatibilité, il est possible de délimiter l'ensemble de l'expression cherchée avec une paire supplémentaire de parenthèse&nbsp;: <strong>((Mi)?ster).</strong> Ce sera une chance perdue de citer la sous-chaîne dans l'expression remplacée comme référence, <strong>\#</strong> où # est le nombre de références (max. 9) de la sous-chaîne. Il est aussi impossible d'utiliser en même temps une référence sur une sous-chaîne (déterminée entre parenthèses() ) dans l'expression recherchée aussi bien que dans celle remplacée. <a href="#frskupiny">Voir aussi sous chaîne</a>.</p>
 		<p>Autres paramètres spéciaux "joker"&nbsp;:</p>
 		<p><strong>\l</strong> - représente le caractère alphabétique&nbsp;; comme <strong>[:alpha:]{1,1}</strong>.</p>
 		<p><strong>\d</strong> - représente le chiffre décimal&nbsp;; comme <strong>[0-9]</strong>.</p>
@@ -168,8 +161,8 @@
 		<p><strong>[:::HyperLinkURL::]</strong> - Cherche la partie de texte avec un attribut <strong>HyperLinkURL</strong></p>
 		<p class="cm2"><strong>[:::HyperLinkURL::]</strong> - trouvera tout hyperlien</p>
 		<p class="cm2"><strong>[:::HyperLinkURL::]link</strong> - trouvera la partie de l'hyperlien correspondant au texte <strong>link</strong>.</p>
-		<p class="cm2"><strong>[:::HyperLinkURL=file:///c:/pokus.odt::]</strong> - trouvera l'hyperlien dans l' URL où se trouve la sous chaîne <strong>file:///c:/pokus.odt</strong>.</p>
-		<p class="cm2"><strong>[:::HyperLinkURL=file:///c:/pokus.odt::]link</strong> trouvera l'hyperlien dans l' URL où se trouve la sous chaîne <strong>file:///c:/pokus.odt</strong> et contenant le text link.</p>
+		<p class="cm2"><strong>[:::HyperLinkURL=file:///c:/pokus.odt::]</strong> - trouvera l'hyperlien dans l'URL où se trouve la sous chaîne <strong>file:///c:/pokus.odt</strong>.</p>
+		<p class="cm2"><strong>[:::HyperLinkURL=file:///c:/pokus.odt::]link</strong> trouvera l'hyperlien dans l'URL où se trouve la sous chaîne <strong>file:///c:/pokus.odt</strong> et contenant le text link.</p>
 		<p class="cm2">La liste des attributs de texte disponibles avec leurs valeurs courantes (selon la sélection actuelle) il est possible de la charger à l'aide du bouton <var>Propriété de la sélection</var> et elle s'affichera dans une liste latérale. Une courte description peut être trouvée <a href="http://api.openoffice.org/docs/common/ref/com/sun/star/style/module-ix.html"> ici</a>.</p>
 		<p><strong>L'attribut de caractère similaire</strong> - cette fonction charge n'importe quels attributs du caractère modifiés manuellement (selon la sélection actuelle) pour chercher des zones formattées de façon similaires. Si par exemple le curseur est sur un nom dont le jeu de caractères a été changé manuellement, tous les endroits avec le nom dont le jeu de caractères a été changé seront cherchés - <strong>[:::CharFontName::]</strong>.</p>
 		<p><strong>L'attribut mêmes caractères</strong> - cette fonction charge n'importe quels attributs du caractère manuellement changés (selon la sélection actuelle) pour chercher les zones formattées de la même façon. Si par exemple le curseur est sur un nom dont le jeu de caractères a été changé manuellement, tous les endroits avec le nom dont le jeu de caractères a été changé seront cherchés <strong>[:::CharFontName=Arial::]</strong>.</p>
