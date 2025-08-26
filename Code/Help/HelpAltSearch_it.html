@@ -1,6 +1,5 @@
 za stile)<!DOCTYPE html>
 <html lang="it">
-
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,7 +10,6 @@ za stile)<!DOCTYPE html>
 	<link rel="stylesheet" href="HelpAltSearch.css" type="text/css">
 	<script src="HelpAltSearch.js"></script>
 </head>
-
 <body>
 	<a href="#logo" id="top">&bigtriangleup;</a>
 
@@ -33,12 +31,15 @@ za stile)<!DOCTYPE html>
 
 		<h2>Finestra di dialogo alternativa a Trova e sostituisci di Writer</h2>
 		<p class="menu2"><a href="#hledatit">Ricerca</a>&bull;<a href="#nahraditit">Sostituzione</a>&bull;<a href="#davkyit">Modalità Batch</a>&bull;<a href="#multiple">Esecuzione multipla</a>&bull;<a href="#omezeniit">Limitazioni</a></p>
+
+		<!--
 		<details>
 			<summary>&#x2f3;&#x2f3;&#x2f3;</summary>
 			<p>Questa versione della guida è stata tradotta in italiano da Leopoldo Saggin aka Topoldo - © 2009-2025</p>
 		</details>
-
-		<h3><a id="hlavnifit"></a>Che cosa offre in più questa estensione rispetto alla finestra di dialogo “Trova e sostituisci” standard di Writer:</h3>
+		-->
+		
+		<h3><a id="hlavnifit"></a>Extensions to the standard Find and Replace dialog box of Writer:</h3>
 		<ul>
 			<li>Selezione rapida di espressioni regolari predefinite e/o complesse</li>
 			<li>Conteggio del numero di occorrenze delle espressioni trovate usando il pulsante <var>Conta</var></li>
@@ -354,16 +355,14 @@ za stile)<!DOCTYPE html>
 			</ol>
 		<p>La selezione della casella “<b>Disattiva info</b>” impedisce la visualizzazione dei messaggi che mostrano le modifiche eseguite per ogni file processato. In questo caso, al termine di tutta la procedura, verrà comunque mostrato un rapporto completo delle modifiche effettuate a carico di tutti i file.</p>
 	
-		<h3><a id="omezeniit"></a>Limitazioni:</h3>
-		<p>Qualora siano note delle limitazioni di AltSearch, esse sono menzionate assieme alla descrizione dei parametri individuali interessati.</p>
-		<p>Limitazioni di carattere generale sono le seguenti:</p>
+		<h3><a id="omezeniit"></a>Limitazioni</h3>
+		<p>Gran parte delle limitazioni note è menzionata nella descrizione dei parametri individuali.</p>
+		<p>Applicabili generalmente:</p>
 		<ul>
 			<li>Se è attiva l’opzione “Solo nella selezione corrente” non è possibile fare ricerche di testo all’interno di cornici o di tabelle anche se poste all’interno di blocchi di testo selezionati. La ricerca all’interno dei blocchi è limitata solamente all’area del blocco selezionato e non è supportata la selezione multipla del blocco di testo selezionato.</li>
 			<li>La funzione “Trova tutto” non è in grado di selezionare il marcatore di paragrafo <strong>\p</strong> perché per la selezione viene usata la proprietà “Sfondo carattere (Evidenziato)” e non è possibile usarla per evidenziare un marcatore di paragrafo. Ne consegue anche che la funzione “Trova tutto” si limita a quei testi che <b>non usano l’evidenziazione</b>. Quando si usa l’opzione “Trova tutto”, se il documento contiene delle evidenziazioni, appare una finestra di avvertimento.</li>
 			<li>Nella sostituzione delle espressioni più complesse, la funzione “Annulla” (<i>Undo</i>) viene frammentata in più operazioni di sostituzione parziale, così che può facilmente accadere che il numero di operazioni “Annulla” necessarie per ripristinare il documento allo stato originale non corrisponda al numero atteso di operazioni.</li>
 		</ul>
 	</article>
-
 </body>
-
 </html>
