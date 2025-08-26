@@ -1,5 +1,5 @@
 ; Datei mit vordefinierten Batch-Parametern für Suchen & Ersetzen-Alternative für Writer
-; für die Erweiterung AltSearch.oxt für OOo Writer
+; für die Erweiterung AltSearch.oxt für Writer
 ; Zeichenkodierung: UTF-8 
 ;
 ; v1.2  7/08

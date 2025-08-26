@@ -1,5 +1,5 @@
 ; Soubor s dávkami pro alternativní vyhledávání a nahrazování
-; pro rozšíření AltSearch.oxt pro OOo Writer
+; pro rozšíření AltSearch.oxt pro Writer
 ; Kódování: UTF-8 (pro správnou funkci v národních abecedách)
 ;
 ; v1.3  11/09

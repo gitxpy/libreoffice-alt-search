@@ -1,5 +1,5 @@
 ; File with batchs for alternative Find & Replace
-; for extension AltSearch.oxt for OOo Writer
+; for extension AltSearch.oxt for Writer
 ; Charset: UTF-8 
 ;
 ; v1.3  11/09

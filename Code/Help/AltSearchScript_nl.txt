@@ -1,5 +1,5 @@
 ; Bestand met batchs voor alternatief Zoek&vervangen
-; voor de extensie AltSearch.oxt voor OOo Writer
+; voor de extensie AltSearch.oxt voor Writer
 ; Tekenset: UTF-8
 ;
 ; v1.3  11/09
