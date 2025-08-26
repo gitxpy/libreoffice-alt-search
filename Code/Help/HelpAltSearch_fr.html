@@ -30,16 +30,16 @@
 	<article id="fr" lang="fr">
 		<h2>Alternative pour la boite de dialogue Rechercher &amp; Remplacer pour Writer</h2>
 
-		<p class="menu2"><a href="#hledatfr">Rechercher</a>&bull;<a href="#nahraditfr">Remplacer</a>&bull;<a href="#davkyfr">Traitement par lot</a>&bull;<a href="#omezenifr">Limitation</a></p>
+		<p class="menu2"><a href="#hledatfr">Rechercher</a>&bull;<a href="#nahraditfr">Remplacer</a>&bull;<a href="#davkyfr">Traitement par lot</a>&bull;<a href="#omezenifr">Limitations</a></p>
 
-		<details>
 			<!--
+		<details>
 			<summary>&#x2f3;&#x2f3;&#x2f3;</summary>
 			<p>Notes from translators</p>
-			-->
 		</details>
+			-->
 
-		<h3><a id="hlavniffr"></a>Qu'offre cette extension par rapport à la boîte de dialogue standard de Writer :</h3>
+		<h3><a id="hlavniffr"></a>Extensions par rapport à la boîte de dialogue standard de Writer :</h3>
 		<ul>
 			<li>La possibilité d'expressions régulières pré-sélectionnées et étendues.</li>
 			<li>Compter les occurences trouvées par le bouton <var>Nombre</var></li>
@@ -77,11 +77,11 @@
 		</ul>
 
 		<p><img src="img/altsearch_main_fr.png" width="455" height="289" alt="PNG"></p>
-		<h3>Fenêtre (au-dessus des champs chercher et remplacer pour mettre l'expression)</h3>
+		<h3>Listes déroulantes (au-dessus du champ Chercher)</h3>
 		<p>contient des expressions régulières ou des paramètres, fréquemment utilisés ou compliqués. Après avoir choisi les paramètres correspondants, ils sont transférés au champ d'entrée (ou des deux champs). Ceux-ci pourraient être insérés de plusieurs façons&nbsp;: au début, à la fin, à l'endroit du curseur ou remplacer entièrement le texte original. En même temps la case à cocher «&nbsp;Expressions Régulières&nbsp;» doit être cochée.</p>
-		<h3 id="hledatfr">Chercher:</h3>
-		<p>Liste déroulante <b>Exp. régulières</b></p>
-		<p>contient quelques expressions régulières utiles. Leur description est disponible dans l'aide de LibreOffice, sous <a href="https://help.libreoffice.org/latest/fr/text/shared/01/02100001.html?&DbPAR=WRITER"> Liste des Expressions Régulières</a>.</p>
+		<h3 id="hledatfr">Rechercher</h3>
+		<h4>Liste déroulante « Exp. régulières »</h4>
+		<p>Contient quelques expressions régulières utiles. Leur description est disponible dans l'aide de LibreOffice, sous <a href="https://help.libreoffice.org/latest/fr/text/shared/01/02100001.html?&DbPAR=WRITER"> Liste des Expressions Régulières</a>.</p>
 		<p id="frskupiny0"><dfn>Limitation&nbsp;:</dfn> La syntaxe utilisée pour les expressions régulières n'est pas entièrement équivalente à celle de Writer. Les différences sont surtout avec l'utilisation de jokers <strong><b>* +&nbsp;? {n, n}</b></strong> après des sous chaînes entre parenthèses ().
 
 		<p>Par exemple, <strong>(Mi)?ster</strong> ne sera pas trouvé (cependant, en utilisant <var>Nombre</var> il sera retourné la vraie valeur - cette fonction utilisant le mode compatible seulement).</p>
@@ -104,7 +104,7 @@
 		<p class="cm2"><dfn>Limitation&nbsp;:</dfn> lent en utilisation séparée. Si une sous chaîne <strong>()</strong> est utilisée, donc le paramètre \m doit être au début de chaîne cherchée, ou ne peut pas être seul&nbsp;: <strong>\m(...)</strong> mais non <strong>(...)\m</strong>.</p>
 		<p><strong>\s</strong> - représente n'importe quel espace&nbsp;: l'espace, l'espace insécable, une tabulation, un saut de ligne manuel. Comme <strong>[xA0\x9\xA]</strong>.</p>
 		<p><strong>\S</strong> - représente le caractère espace insécable(<strong>\x00A0</strong> ou <strong>\#160</strong>)</p>
-		<p>Liste déroulante <b>Étendue</b></p>
+		<h4>Liste déroulante « Étendu »</h4>
 		<p><strong>[::BigBlock::]</strong> - cherche un ensemble de paragraphes (illimité long), délimité par du texte connu</p>
 		<p><strong>start[::BigBlock::]end</strong> - En premier il cherche le <i>début</i> puis après avoir trouvé le résultat, recherche la <i>fin</i>.. Si les deux sont trouvés, le bloc entier est marqué.</p>
 		<p class="cm2">Pour remplacer une chaîne il est possible d'utiliser les paramètres <strong>\b</strong>, <strong>&mp;</strong>, <strong>\e</strong> pour insérer les contenus de <strong>début</strong>, de <strong>bloc de paragraphes trouvés</strong>, de <strong>fin</strong>.</p>
@@ -159,19 +159,20 @@
 		<p class="cm2"><strong>[::Reference&nbsp;::]above</strong> trouvera un renvoi qui contient la sous chaîne <strong>above</strong></p>
 		<p class="cm2"><strong>[::Reference::]\ref1</strong> trouvera le renvoie dont le nom contient la sous chaîne <i>ref1</i></p>
 		<p class="cm2"><strong>[::Reference::]\\</strong> trouvera le renvoi dont le texte est vide</p>
-		<p class="cm2">Si&nbsp;<i>Référence</i> est choisi à partir de la liste déroulante <b>Etendue</b> et qu'en même temps le curseur est dans un texte qui est une marque de référence, alors le nom de la source correspondante sera ajoutée à la boite <b>Rechercher</b> automatiquement et il&nbsp;est alors possible de procéder à la recherche immédiatement..</p>
-		<p>Liste déroulante <b>Propriétés de la sélection</b></p>
-		<p>Elles permettent la recherche selon les propriétés (les attributs) et&nbsp; éventuellement aussi leurs valeurs.<br>L'entrée doit commencer par la chaine <strong>[:::</strong>, suit le <strong>nom</strong> de propriété (noms supplémentaires séparés à l'aide du signe <strong>|</strong> ) et la fin de chaîne&nbsp; <strong>::]</strong>. Peut suivre ensuite la spécification du texte recherché. Si la valeur propre de propriétés devait être recherchée, la construction <strong>nom=valeur</strong> sera alors utilisée.</p>
+		<p class="cm2">Si&nbsp;<i>Référence</i> est choisi à partir de la liste déroulante <b>Etendu</b> et qu'en même temps le curseur est dans un texte qui est une marque de référence, alors le nom de la source correspondante sera ajoutée à la boite <b>Rechercher</b> automatiquement et il&nbsp;est alors possible de procéder à la recherche immédiatement..</p>
+		<h4>Liste déroulante « Propriétés »</h4>
+		<p>Permet la recherche selon les propriétés (les attributs) et éventuellement leurs valeurs.
+		<br>L'entrée doit commencer par la chaine <strong>[:::</strong>, suit le <strong>nom</strong> de propriété (noms supplémentaires séparés à l'aide du signe <strong>|</strong> ) et la fin de chaîne&nbsp; <strong>::]</strong>. Peut suivre ensuite la spécification du texte recherché. Si la valeur propre de propriétés devait être recherchée, la construction <strong>nom=valeur</strong> sera alors utilisée.</p>
 		<p><strong>[:::HyperLinkURL::]</strong> - Cherche la partie de texte avec un attribut <strong>HyperLinkURL</strong></p>
 		<p class="cm2"><strong>[:::HyperLinkURL::]</strong> - trouvera tout hyperlien</p>
 		<p class="cm2"><strong>[:::HyperLinkURL::]link</strong> - trouvera la partie de l'hyperlien correspondant au texte <strong>link</strong>.</p>
 		<p class="cm2"><strong>[:::HyperLinkURL=file:///c:/pokus.odt::]</strong> - trouvera l'hyperlien dans l'URL où se trouve la sous chaîne <strong>file:///c:/pokus.odt</strong>.</p>
 		<p class="cm2"><strong>[:::HyperLinkURL=file:///c:/pokus.odt::]link</strong> trouvera l'hyperlien dans l'URL où se trouve la sous chaîne <strong>file:///c:/pokus.odt</strong> et contenant le text link.</p>
-		<p class="cm2">La liste des attributs de texte disponibles avec leurs valeurs courantes (selon la sélection actuelle) il est possible de la charger à l'aide du bouton <var>Propriété de la sélection</var> et elle s'affichera dans une liste latérale. Une courte description peut être trouvée <a href="http://api.openoffice.org/docs/common/ref/com/sun/star/style/module-ix.html"> ici</a>.</p>
-		<p><strong>L'attribut de caractère similaire</strong> - cette fonction charge n'importe quels attributs du caractère modifiés manuellement (selon la sélection actuelle) pour chercher des zones formattées de façon similaires. Si par exemple le curseur est sur un nom dont le jeu de caractères a été changé manuellement, tous les endroits avec le nom dont le jeu de caractères a été changé seront cherchés - <strong>[:::CharFontName::]</strong>.</p>
-		<p><strong>L'attribut mêmes caractères</strong> - cette fonction charge n'importe quels attributs du caractère manuellement changés (selon la sélection actuelle) pour chercher les zones formattées de la même façon. Si par exemple le curseur est sur un nom dont le jeu de caractères a été changé manuellement, tous les endroits avec le nom dont le jeu de caractères a été changé seront cherchés <strong>[:::CharFontName=Arial::]</strong>.</p>
+		<p class="cm2">La liste des attributs de texte disponibles avec leurs valeurs courantes (selon la sélection actuelle) il est possible de la charger à l'aide du bouton <var>Propriété de la sélection</var> et elle s'affichera dans une liste latérale. Une courte description peut être trouvée <a href="https://api.libreoffice.org/docs/idl/ref/dir_02c10f744696785b64d031a937f6c999.html"> ici</a>.</p>
+		<p><strong>L'attribut de caractère similaire</strong> - cette fonction charge n'importe quels attributs du caractère modifiés manuellement (selon la sélection actuelle) pour chercher des zones formatées de façon similaires. Si par exemple le curseur est sur un nom dont le jeu de caractères a été changé manuellement, tous les endroits avec le nom dont le jeu de caractères a été changé seront cherchés - <strong>[:::CharFontName::]</strong>.</p>
+		<p><strong>L'attribut mêmes caractères</strong> - cette fonction charge n'importe quels attributs du caractère manuellement changés (selon la sélection actuelle) pour chercher les zones formatées de la même façon. Si par exemple le curseur est sur un nom dont le jeu de caractères a été changé manuellement, tous les endroits avec le nom dont le jeu de caractères a été changé seront cherchés <strong>[:::CharFontName=Arial::]</strong>.</p>
 		<p class="cm2"><dfn>Limitation&nbsp;:</dfn> Le moteur de recherche d'OOo ne convient pas pour toutes les propriétés de paragraphes et de caractère existants. Leur combinaison ne fonctionne pas comme attendu et correctement.</p>
-		<h3><a id="nahraditfr"></a><b>Remplacer&nbsp;:</b></h3>
+		<h3><a id="nahraditfr"></a><b>Remplacer</b></h3>
 		<p>La liste déroulante <b>Remplacer</b></p>
 		<p><strong>&amp; \0</strong> - ces deux paramètres signifient la même chose - au remplacement ils représentent tout le texte&nbsp;trouvé.</p>
 		<p>Si l'expression a été recherchée à l'aide de <strong>[::BigBlock::]</strong> alors ces paramètres représentent seulement un bloc de paragraphes entre les marques de début et de fin.</p>
@@ -252,8 +253,8 @@
 		<p>Tous les paramètres de traitement par lot sont sauvés vers le fichier texte <code>AltSearchScript.txt</code> dans le dossier de l'utilisateur <code>&hellip;/OpenOffice.org2/user/config/</code>, qu'il est possible avec l'aide du bouton <var>Editer</var> dans la fenêtre Gestionnaire de traitement par lot, d'ouvrir et d'éditer. Le bloc-notes d'éditeur de texte (Notepad) est paramétré d'origine, il est cependant possible de mettre tout autre éditeur de texte, en éditant le fichier <code>AltSearchEditor.ini</code> dans le même dossier. Après les changements manuels et la sauvegarde du lot il est possible de rafraichir la liste de nom de lot avec l'aide du bouton <var>Rafraîchir</var>. La syntaxe à utiliser dans le fichier <code>AltSearchScript.txt</code> est décrit à son tout début, codé en UTF-8 (à partir de v1.1.1).</p>
 		<p>Après le double clique sur un article de la liste, ou par le bouton <var>Exécuter</var>, la séquence choisie sera chargée, et les recherches et remplacements seront exécutés. En utilisant des traitements par lot sur une partie choisie je conseille de laisser au début et après la fin de la sélection 1 - 2 paragraphes vides.</p>
 		<p><img src="img/altsearch_shortcuts_fr.png" width="396" height="273" alt="PNG"><br>Le bouton <var>Transférer</var> est utilisé pour transférer les paramètres de Rechercher Remplacer et mise en place vers le dialogue de Rechercher sans exécution réelle. Si le traitement contient une séquence de plusieurs Rechercher et remplacer seule la dernière partie de la séquence sera transférée.</p>
-		<h3><a id="omezenifr"></a>Limitations:</h3>
-		<p>Si des limitations sont connues, elles sont alors notées dans la description des paramètres individuels. S'applique généralement.</p>
+		<h3><a id="omezenifr"></a>Limitations</h3>
+		<p>Les limitations connues sont notées dans la description des paramètres individuels. S'applique généralement :</p>
 		<ul>
 			<li>Si l'option «&nbsp;Sélection actuelle seulement&nbsp;» est active, alors aucun texte ne sera trouvé dans les cadres ou dans les tableaux même si ce sont des blocs sélectionnés. La recherche à l'intérieur d'un bloc est délimitée seulement à la même zone de texte que le bloc sélectionné. Le choix multiple de bloc n'est pas implémenté.</li>
 			<li>La fonction « Tout rechercher [Rechercher tout] » ne sélectionnera pas la marque de paragraphe \p car la propriété de "soulignage/surbrillande" (la couleur de fond du caractère) n'est pas utilisable sur la marque de paragraphe. [choisira pas la marque de paragraphe <strong>\p</strong>, pa rce que pour la sélection la propriété «&nbsp;Souligner&nbsp;/ surbrillance» (la couleur de fond du caractère) est utilisée qu'il est impossible d'utiliser comme marque de paragraphe.] Il s'en suit[De là il suit], par ailleurs, la limitation que cela ne fonctionnent que pour les textes, dont la propriété souligner/surbrillance n'est pas utilisée. Si le document contient un soulignage, un dialogue d'avertissement apparaît quand « Tout rechercher » est utilisé.</li>

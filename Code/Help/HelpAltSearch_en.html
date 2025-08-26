@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,7 +10,6 @@
 	<link rel="stylesheet" href="HelpAltSearch.css" type="text/css">
 	<script src="HelpAltSearch.js"></script>
 </head>
-
 <body>
 	<a href="#logo" id="top">&bigtriangleup;</a>
 
@@ -33,12 +31,15 @@
 		
 		<h2>Alternative Find and Replace dialog box for Writer</h2>
 		<p class="menu2"><a href="#hledaten">Searching</a>&bull;<a href="#nahraditen">Replacing</a>&bull;<a href="#davkyen">Batch mode</a>&bull;<a href="#multiple">Multiple execute</a>&bull;<a href="#omezenien">Limitations</a></p>
+ 
+		<!--
 		<details>
 			<summary>&#x2f3;&#x2f3;&#x2f3;</summary>
 			<p>Notes from translators</p>
 		</details>
+		-->
 
-		<h3><a id="hlavnifen"></a>What this extension offers in comparison with the standard Find and Replace dialog box of Writer:</h3>
+		<h3><a id="hlavnifen"></a>Extensions to the standard Find and Replace dialog box of Writer:</h3>
 		<ul>
 			<li>Fast selection of preset regular expressions and extended regular expressions</li>
 			<li>Counting of the number of occurrences of the found expression using the <var>Count</var> button</li>
@@ -354,16 +355,14 @@
 			</ol>
 		<p>Selecting “<b>Disable message</b>” suppress messages about changes after each file is executed. Anyway, as soon as processing is over, the final report will be displayed.</p>
 		
-		<h3><a id="omezenien"></a>Limitations:</h3>
-		<p>If limitations are known, they are mostly mentioned near to the the description of the individual parameters.</p>
-		<p>Generally applicable limitations:</p>
+		<h3><a id="omezenien"></a>Limitations</h3>
+		<p>Known limitations are mostly mentioned within the description of individual parameters.</p>
+		<p>Generally applicable:</p>
 		<ul>
 		<li>If the option “Current selection only” is active, pieces of text that are inside frames or tables will not be found, even if they are inside selected blocks. Searching inside blocks is limited to only the same text area as the selected block. Multiple selection of blocks isn’t supported.</li>
 		<li>The function “Find all” will fail to select the paragraph mark <strong>\p</strong>, because the property “Highlighting” (the character’s background colour) is used for the selection and you cannot use this to highlight a paragraph mark. It follows that, in addition, this function is limited to texts in which <b>highlighting isn’t used</b>. If the document contains highlighting, a warning dialog box appears when “Find all” is used.</li>
 		<li>When the replacement is used in more complicated expressions, the function “Undo” is fragmented into partial replacement steps, so that it can easily happen that the number of undo steps needed to restore the document to its original state will not match the expected number.</li>
 		</ul>
 	</article>
-
 </body>
-
 </html>
