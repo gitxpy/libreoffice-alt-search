@@ -161,7 +161,7 @@ Sub Load_fr
 	MSG(25) = &quot;Le lot &quot; &amp; chr(10) &amp;  &quot;&apos;^^&apos;&quot;  &amp; chr(10) &amp;  &quot;existe déjà &quot;
 	MSG(26) = &quot;Erreur à l&apos;ouverture du fichier : &quot;
 	MSG(27) = &quot;Enregistrer les paramètres actuels de recherche et remplacement sous le nom : &quot;
-	MSG(28) = &quot;Erreur au lancement de l&apos;éditeur de texte. Paramétrer le chemin de votre éditeur de texte: &quot;  &amp;  chr(10)  &amp;  &quot;(e.g. dans Windows:  notepad      pour Linux:  kwrite &quot;
+	MSG(28) = &quot;Erreur au lancement de l&apos;éditeur de texte. Paramétrer le chemin de votre éditeur de texte: &quot;  &amp;  chr(10)  &amp;  &quot;(e.g. dans Windows:  notepad      pour Linux:  kwrite or gnome-text-editor)  &quot;
 	MSG(29) = &quot;Lot    &apos;^^1&apos;    est terminé. &quot; &amp; chr(10) &amp; chr(10) &amp; &quot;^^2 remplacements ont été effectués. &quot;
 	MSG(30) = &quot;a été remplacé &quot;
 	MSG(31) = &quot;   Nombre de remplacements : &quot;

@@ -162,7 +162,7 @@ Sub Load_it
 	MSG(25) = &quot;Il Batch &quot; &amp; chr(10) &amp;  &quot;&apos;^^&apos;&quot;  &amp; chr(10) &amp;  &quot;esiste già.&quot;
 	MSG(26) = &quot;Errore nell’apertura del file:&quot;
 	MSG(27) = &quot;Salva le impostazioni correnti di ricerca e sostituzione con il nome: &quot;
-	MSG(28) = &quot;Errore di avvio per l’editor di testo. Impostarne il percorso: &quot;  &amp;  chr(10)  &amp;  &quot;(per es. in Windows:  notepad      in Linux:  kwrite&quot;
+	MSG(28) = &quot;Errore di avvio per l’editor di testo. Impostarne il percorso: &quot;  &amp;  chr(10)  &amp;  &quot;(per es. in Windows:  notepad      in Linux:  kwrite or gnome-text-editor) &quot;
 	MSG(29) = &quot;Batch   &apos;^^1&apos;  terminato. Eseguite &quot; &amp; chr(10) &amp; chr(10) &amp; &quot;^^2  sostituzioni.&quot;
 	MSG(30) = &quot;è stato sostituito  &quot;
 	MSG(31) = &quot;Numero di sostituzioni: &quot;

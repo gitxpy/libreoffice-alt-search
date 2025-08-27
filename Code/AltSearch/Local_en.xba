@@ -162,7 +162,7 @@ Sub Load_en
 	MSG(25) = &quot;Batch &quot; &amp; chr(10) &amp;  &quot;&apos;^^&apos;&quot;  &amp; chr(10) &amp;  &quot;already exists.&quot;
 	MSG(26) = &quot;Error while opening the file:&quot;
 	MSG(27) = &quot;Save current setting search and replace its name: &quot;
-	MSG(28) = &quot;Error at start of text editor. Set up path for you text editor: &quot;  &amp;  chr(10)  &amp;  &quot;(e.g. in Windows:  notepad      for Linux:  kwrite&quot;
+	MSG(28) = &quot;Error at start of text editor. Set up path for you text editor: &quot;  &amp;  chr(10)  &amp;  &quot;(e.g. in Windows:  notepad      for Linux:  kwrite or gnome-text-editor) &quot;
 	MSG(29) = &quot;Batch   &apos;^^1&apos;   is ended. &quot; &amp; chr(10) &amp; chr(10) &amp; &quot;^^2  replacements have been done.&quot;
 	MSG(30) = &quot;was replaced   &quot;
 	MSG(31) = &quot;   Number of replace: &quot;

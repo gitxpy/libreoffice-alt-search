@@ -161,7 +161,7 @@ Sub Load_cs
 	MSG(25) = &quot;Dávka &quot;  &amp; chr(10) &amp;  &quot;&apos;^^&apos;&quot;  &amp; chr(10) &amp;  &quot;už existuje. &quot;
 	MSG(26) = &quot;Problémy s načtením souboru: &quot;
 	MSG(27) = &quot;Uložit současné nastavení hledání a nahrazení pod jménem: &quot;
-	MSG(28) = &quot;Chyba při spuštění editoru textů. Nastavte cestu k vašemu editoru textů: &quot;  &amp;  chr(10)  &amp;  &quot;(např. pro Windows:  notepad    nebo pro Linux:  kwrite &quot;
+	MSG(28) = &quot;Chyba při spuštění editoru textů. Nastavte cestu k vašemu editoru textů: &quot;  &amp;  chr(10)  &amp;  &quot;(např. pro Windows:  notepad    nebo pro Linux:  kwrite or gnome-text-editor)  &quot;
 	MSG(29) = &quot;Dávka   &apos;^^1&apos;   skončila. &quot; &amp; chr(10) &amp; chr(10) &amp; &quot;Celkem bylo provedeno  ^^2  záměn. &quot;
 	MSG(30) = &quot;byl nahrazen   &quot;
 	MSG(31) = &quot;   Počet náhrad: &quot;

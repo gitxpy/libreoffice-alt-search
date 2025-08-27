@@ -161,7 +161,7 @@ Sub Load_es
 	MSG(25) = &quot;El lote &quot; &amp; chr(10) &amp;  &quot;&apos;^^&apos;&quot;  &amp; chr(10) &amp;  &quot;ya existe. &quot;
 	MSG(26) = &quot;Error al abrir el archivo: &quot;
 	MSG(27) = &quot;Guardar la configuración actual de Búsqueda y reemplazo con el nombre: &quot;
-	MSG(28) = &quot;Error al iniciar el editor de texto. Establece la ruta a tu editor de texto: &quot;  &amp;  chr(10)  &amp;  &quot;(p.e. en Windows:  notepad      en Linux:  kwrite &quot;
+	MSG(28) = &quot;Error al iniciar el editor de texto. Establece la ruta a tu editor de texto: &quot;  &amp;  chr(10)  &amp;  &quot;(p.e. en Windows:  notepad      en Linux:  kwrite or gnome-text-editor)  &quot;
 	MSG(29) = &quot;El lote   &apos;^^1&apos;  ha terminado. &quot; &amp; chr(10) &amp; chr(10) &amp; &quot;se han echo ^^2  reemplazos. &quot;
 	MSG(30) = &quot;se reemplazó  &quot;
 	MSG(31) = &quot;   Numero de reemplazo: &quot;

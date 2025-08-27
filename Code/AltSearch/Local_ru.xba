@@ -163,7 +163,7 @@ Sub Load_ru
 	MSG(25) = &quot;Группа &quot; &amp; chr(10) &amp;  &quot;&apos;^^&apos;&quot;  &amp; chr(10) &amp;  &quot;уже существует.&quot;
 	MSG(26) = &quot;Ошибка открытия файла:&quot;
 	MSG(27) = &quot;Сохранить текущие установки поиска и замены под именем: &quot;
-	MSG(28) = &quot;Ошибка запуска текстового редактора. Укажите путь к текстовому редактору: &quot;  &amp;  chr(10)  &amp;  &quot;(напр., в Windows:  notepad      для Linux:  kwrite &quot;
+	MSG(28) = &quot;Ошибка запуска текстового редактора. Укажите путь к текстовому редактору: &quot;  &amp;  chr(10)  &amp;  &quot;(напр., в Windows:  notepad      для Linux:  kwrite or gnome-text-editor)  &quot;
 	MSG(29) = &quot;Группа   &apos;^^1&apos;   закончена. &quot; &amp; chr(10) &amp; chr(10) &amp; &quot;^^2  замен совершено.&quot;
 	MSG(30) = &quot;заменен   &quot;
 	MSG(31) = &quot;   Число замен: &quot;
