@@ -162,7 +162,7 @@ Sub Load_de
 	MSG(25) = &quot;Batch &quot; &amp; chr(10) &amp;  &quot;&apos;^^&apos;&quot;  &amp; chr(10) &amp;  &quot;existiert bereits.&quot;
 	MSG(26) = &quot;Datei-Öffnungs-Fehler:&quot;
 	MSG(27) = &quot;Aktuelle Einstellungen Suchen &amp; Ersetzen sichern unter: &quot;
-	MSG(28) = &quot;Fehler beim Start des Text-Editors. Pfad für den Text-Editor: &quot;  &amp;  chr(10)  &amp;  &quot;(z.B. in Windows:  Notepad      für Linux:  Kwrite&quot;
+	MSG(28) = &quot;Fehler beim Start des Text-Editors. Pfad für den Text-Editor: &quot;  &amp;  chr(10)  &amp;  &quot;(z.B. in Windows:  Notepad      für Linux:  Kwrite or gnome-text-editor) &quot;
 	MSG(29) = &quot;Batch   &apos;^^1&apos;   ist fertig. &quot; &amp; chr(10) &amp; chr(10) &amp; &quot;^^2  Ersetzungen durchgeführt.&quot;
 	MSG(30) = &quot;ersetzt   &quot;
 	MSG(31) = &quot;   Zahl der Ersetzungen: &quot;

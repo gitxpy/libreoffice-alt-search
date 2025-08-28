@@ -161,7 +161,7 @@ Sub Load_nl
 	MSG(25) = &quot;Batch &quot; &amp; chr(10) &amp;  &quot;&apos;^^&apos;&quot;  &amp; chr(10) &amp;  &quot;bestaat al.&quot;
 	MSG(26) = &quot;Fout bij openen van bestand:&quot;
 	MSG(27) = &quot;Sla de huidige instelling van zoeken en vervangen op als naam: &quot;
-	MSG(28) = &quot;Fout bij starten van tekstbewerker. Stel het pad voor uw tekstbewerker in: &quot;  &amp;  chr(10)  &amp;  &quot;(bijvoorbeeld in Windows:  notepad      voor Linux:  kwrite&quot;
+	MSG(28) = &quot;Fout bij starten van tekstbewerker. Stel het pad voor uw tekstbewerker in: &quot;  &amp;  chr(10)  &amp;  &quot;(bijvoorbeeld in Windows:  notepad      voor Linux:  kwrite or gnome-text-editor) &quot;
 	MSG(29) = &quot;Batch   &apos;^^1&apos;   is beëindigd. &quot; &amp; chr(10) &amp; chr(10) &amp; &quot;^^2  vervangingen zijn gemaakt.&quot;
 	MSG(30) = &quot;werd vervangen   &quot;
 	MSG(31) = &quot;   Aantal vervangingen: &quot;
