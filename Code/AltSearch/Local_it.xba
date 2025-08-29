@@ -21,10 +21,10 @@ Sub Load_it
 	&quot; Interruzione manuale di riga     &quot; &amp; chr(160) &amp; &quot;\n&quot;, _
 	&quot; Interruzione manuale di colonna  &quot; &amp; chr(160) &amp; &quot;\c&quot;, _
 	&quot; Interruzione manuale di pagina   &quot; &amp; chr(160) &amp; &quot;\m&quot;, _
-	&quot; Spazio qualsiasi [ \xA0\x9\xA]   &quot; &amp; chr(160) &amp; &quot;\s&quot;, _
-	&quot; Spazio indivisibile (\xA0)       &quot; &amp; chr(160) &amp; &quot;\S&quot;, _
+	&quot; Spazio qualsiasi [\xA0\x9\xA]    &quot; &amp; chr(160) &amp; &quot;\s&quot;, _
+	&quot; Spazio unificatore (\xA0)        &quot; &amp; chr(160) &amp; &quot;\S&quot;, _
 	&quot; Trattino di divisione sillabica  &quot; &amp; chr(160) &amp; &quot;\x00AD&quot;, _
-	&quot; Trattino unificatore             &quot; &amp; chr(160) &amp; &quot;\x2011&quot;, _
+	&quot; Trattino non divisibile          &quot; &amp; chr(160) &amp; &quot;\x2011&quot;, _
 	&quot; Lettera A in codifica decimale   &quot; &amp; chr(160) &amp; &quot;\#65&quot;, _
 	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
 	&quot; Punto                            &quot; &amp; chr(160) &amp; &quot;\.&quot;, _
@@ -44,7 +44,7 @@ Sub Load_it
 	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
 	&quot; Indirizzo di e-mail &quot; &amp; chr(160) &amp; &quot;[a-zA-Z0-9_][-._a-zA-Z0-9_]*[a-zA-Z0-9_].?@[a-zA-Z0-9_][-._a-zA-Z0-9_]*[a-zA-Z0-9_]\.[a-zA-Z0-9_]{2,4}&quot;, _
 	&quot; Indirizzo Web, URL, internet&quot; &amp; chr(160) &amp; &quot;(((news|http|ftp|https|file):\/\/|www\.)[a-zA-Z0-9_]+((\.[a-zA-Z0-9_]+)+)(([a-zA-Z0-9_\-\.,@?^=%&amp;:/~\+#]*[a-zA-Z0-9_\-\@?^=%&amp;/~\+#])?))&quot;, _
-	&quot; Etichetta (Tag) HTML         &quot; &amp; chr(160) &amp; &quot;(&lt;(&quot;&quot;[^&quot;&quot;]*&quot;&quot;|&apos;[^&apos;]*&apos;|[^&apos;&quot;&quot;&gt;])*&gt;)&quot;, _
+	&quot; Etichetta (Tag) HTML &quot; &amp; chr(160) &amp; &quot;(&lt;(&quot;&quot;[^&quot;&quot;]*&quot;&quot;|&apos;[^&apos;]*&apos;|[^&apos;&quot;&quot;&gt;])*&gt;)&quot;, _
 	&quot; Etichetta (Tag) HTML di apertura  &quot; &amp; chr(160) &amp; &quot;&lt;[^/][^&gt;]+&gt;&quot;, _
 	&quot; Etichetta (Tag) HTML di chiusura &quot; &amp; chr(160) &amp; &quot;&lt;/[^&gt;]+&gt;&quot;, _
 	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
@@ -100,10 +100,10 @@ Sub Load_it
 	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
 	&quot; Fine del paragrafo (nuovo paragrafo)                  &quot; &amp; chr(160) &amp; &quot;\p&quot;, _
 	&quot; Tabulazione                                           &quot; &amp; chr(160) &amp; &quot;\t&quot;, _
-	&quot; Spazio indivisibile                                   &quot; &amp; chr(160) &amp; &quot;\S&quot;, _
+	&quot; Spazio unificatore                                    &quot; &amp; chr(160) &amp; &quot;\S&quot;, _
 	&quot; Interruzione manuale di riga                          &quot; &amp; chr(160) &amp; &quot;\n&quot;, _
-	&quot; Interruzione manuale della colonna precedente         &quot; &amp; chr(160) &amp; &quot;\c&quot;, _
-	&quot; Interruzione manuale della pagina precedente (dopo \M)&quot; &amp; chr(160) &amp; &quot;\m&quot;, _
+	&quot; Interruzione manuale di colonna                       &quot; &amp; chr(160) &amp; &quot;\c&quot;, _
+	&quot; Interruzione manuale di pagina (dopo \M)              &quot; &amp; chr(160) &amp; &quot;\m&quot;, _
 	&quot; Eliminaz. interruzione manuale di pagina o di colonna &quot; &amp; chr(160) &amp; &quot;\r&quot;, _
 	&quot; A in codifica esadecimale (decimale \#65)             &quot; &amp; chr(160) &amp; &quot;\x0041&quot;, _
 	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
@@ -134,7 +134,7 @@ Sub Load_it
 	oDIAL.getcontrol(&quot;Cb_replExt&quot;).addItems(REPLEXT,0)
 
 	&apos; messages
-	MSG(0)  = &quot;Prossima occorrenza dell’espressione ricercata&quot;
+	MSG(0)  = &quot;Occorrenza successiva dell’espressione ricercata&quot;
 	MSG(1)  = &quot;non trovata. &quot;
 	MSG(2)  = &quot;La ricerca all’interno della selezione è terminata. &quot;
 	MSG(3)  = &quot;Raggiunta la fine del documento. Continuare la ricerca dall’inizio? &quot;
@@ -162,7 +162,7 @@ Sub Load_it
 	MSG(25) = &quot;Il Batch &quot; &amp; chr(10) &amp;  &quot;&apos;^^&apos;&quot;  &amp; chr(10) &amp;  &quot;esiste già.&quot;
 	MSG(26) = &quot;Errore nell’apertura del file:&quot;
 	MSG(27) = &quot;Salva le impostazioni correnti di ricerca e sostituzione con il nome: &quot;
-	MSG(28) = &quot;Errore di avvio per l’editor di testo. Impostarne il percorso: &quot;  &amp;  chr(10)  &amp;  &quot;(per es. in Windows:  notepad      in Linux:  kwrite or gnome-text-editor) &quot;
+	MSG(28) = &quot;Errore di avvio per l’editor di testo. Impostarne il percorso: &quot;  &amp;  chr(10)  &amp;  &quot;(per es. in Windows: notepad - in Linux: kwrite o un editor di testo gnome) &quot;
 	MSG(29) = &quot;Batch   &apos;^^1&apos;  terminato. Eseguite &quot; &amp; chr(10) &amp; chr(10) &amp; &quot;^^2  sostituzioni.&quot;
 	MSG(30) = &quot;è stato sostituito  &quot;
 	MSG(31) = &quot;Numero di sostituzioni: &quot;
