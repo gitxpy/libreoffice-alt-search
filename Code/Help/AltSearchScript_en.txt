@@ -2,69 +2,67 @@
 ; for extension AltSearch.oxt for Writer
 ; Charset: UTF-8 
 ;
-; v1.3  11/09
+;  1.5.2 last modified 2025-08-29
 ;
 ; Syntax:
 ; Lines which do not begin with some master command will be ignored.
 ; Master command must be bounded in [] and must be at the beginning of the line.
-;  There can be spaces in front of master command, everything behind it will be
+;  There can be spaces in front of the master command, everything behind it will be
 ;  interpreted as parameters.
 ; 
 ;  Description of master commands:
-;  [Name] - batch name (referred to as parameter) - single batch begins
-;      always this master command. The end of batch is determinated by next 
-;      occurrence of command [Name] or [End] for last valid batch.
+;  [Name] - batch name (referred to as parameter) - single batch always begins with this master command.
+;           The end of batch is determinated by next occurrence of command [Name] or [End] for the last valid batch.
 ;
-;  [Find] - searched expression - at execution of batch parameter will be 
-;      transferred to the field “Search for”
-;  [Replace] - replaced expression - at execution of batch parameter will be 
-;      transferred to the field “Replace”
-;  [Parameters] - parameters of searching and replacing - empty string matches
-;      setting of all parameters to false, citation the parameter’s name
-;      will set to true.  
-;      Accepted parameters:  
-;           MatchCase  PreserveCapital  WholeWord  ParaStyles  Regular
-;           CurrSelection  Backwards  MsgOff  NoSummary  
+;  [Find] - searched expression - at the execution of batch parameter it will be transferred to the field "Search for"
+;
+;  [Replace] - replaced expression - at the execution of batch parameter it will be transferred to the field "Replace"
+;
+;  [Parameters] - parameters of searching and replacing
+;               - empty string matches settings of all parameters to ‘false’
+;               - any string following parameter’s name will set it to ‘true’.
+;      Accepted parameters:
+;      --------------------
+;          MatchCase  PreserveCapital  WholeWord  ParaStyles  Regular
+;          CurrSelection  Backwards  MsgOff  NoSummary
 ;
 ;      MsgOff - suppress most error messages and information (for one step of search)
-;      NoSummary - suppress the final report of whole batch (useful if using keyshortcut)  
-; 
-;  [Command] - determine mode of executing searching and replacing -
-;      Accepted parameters:  Find  FindAll  Replace  ReplaceAll  Count
+;      NoSummary - suppress the final report of whole batch (usefull if using key shortcut)  
 ;
-;      In future there could also be instructions for cursor’s movement, 
-;      setting of bookmark according to cursor and restoration cursor
-;      in accordance to bookmark etc.
+;  [Command] - determine the mode of executing searching and replacing
+;      Accepted parameters:
+;      --------------------
+;          Find  FindAll  Replace  ReplaceAll  Count
+;
+;      In the future there could be also instructions for the cursor’s movement,
+;      setting of bookmarks according to cursor, restoration of the cursor
+;      in accordance to bookmark etc…
 ;       
-;  [End] - indicates the end of last valid batch - everything which be after
-;      that will be ignored.  
-;
-; 
-
+;  [End] - indicates the end of last valid batch - everything which is after that, will be ignored.  
 ************************************************************
 
-[Name] HTML [Sel.]	Primitive conversion to HTML tags for selected block    	 
+[Name] HTML [Sel.] Primitive conversion to HTML tags for selected block    	 
   ; the same parameters for all 
   [Parameters] MsgOff Regular CurrSelection
 
-  ; bold
+  ; Bold
   [Find][:::CharWeight::]
   [Replace]<b>&</b>
-  [Command] ReplaceAll 
+  [Command] ReplaceAll
 
-  ; italic
+  ; Italic
   [Find][:::CharPosture::]
   [Replace]<i>&</i>
-  [Command] ReplaceAll         	
+  [Command] ReplaceAll
 
-  ; Hyperlinks 
+  ; Hyperlinks
   [Find][:::HyperLinkURL::]
   [Replace]<a href="\u">&</a>
   [Command] ReplaceAll
 
   ; Footnotes
   [Find][::Footnote::]
-  [Replace]<b><span Title="\o"><span style="vertical-align: super; font-size: smaller;">\i</span></span></b>
+  [Replace]<b><span Title="\o"><span style="vertical-align: super; font-size: smaller;">\i</span></span></b>
   [Command] ReplaceAll
 
   ; Add tags of paragraphs 
@@ -72,44 +70,32 @@
   [Replace]<p>&</p>
   [Command] ReplaceAll
 
-  ; Remove redundant ends-starts of identical tags in sequence
-  [Find]</i><i>|</b><b>|</p><p>
-  [Replace]
-  [Command] ReplaceAll
-
-
-[Name] Text [Sel.]	Convert selected block into BBcode
-   ; the same parameters for all 
-  [Parameters] MsgOff Regular CurrSelection
-
-  [Find][:::CharWeight::]
-  [Replace][b]&[/b]
-  [Command] ReplaceAll
-
-  [Find][:::CharPosture::]
-  [Replace][i]&[/i]
-  [Command] ReplaceAll
-
+  ; Underline
   [Find][:::CharUnderline::]
   [Replace][u]&[/u]
   [Command] ReplaceAll
 
+  ; Underscript
   [Find][:::CharAutoEscapement=true|CharEscapementHeight=58|CharEscapement=-101::]
   [Replace][sub]&[/sub]\d
   [Command] ReplaceAll
 
+  ; Superscript
   [Find][:::CharAutoEscapement=true|CharEscapementHeight=58|CharEscapement=101::]
   [Replace][sup]&[/sup]\d
   [Command] ReplaceAll
 
+  ; Hyperlink
   [Find][:::HyperLinkURL::]
   [Replace][url=\u]&[/url]
   [Command] ReplaceAll
 
+  ; Picture
   [Find][::Picture::]
   [Replace][img]\O[/img]
   [Command] ReplaceAll
 
+  ; Courier font replacement
   [Find][:::CharFontName=Courier New::]
   [Replace][code]&[/code]
   [Command] ReplaceAll
@@ -118,109 +104,207 @@
   [Find]\[/b]\[b]|\[/i]\[i]|\[/u]\[u]|\[/sub]\[sub]|\[/sup]\[sup]|\[/code]\[code]
   [Replace]
   [Command] ReplaceAll
-  
-  ; code through paragraph  
+ 
+  ; Code through paragraph
   [Find]\[/code]\p\[code]
   [Replace]\p
   [Command] ReplaceAll
 
-  ; code through line break  
+  ; Code through line break
   [Find]\[/code]\n\[code]
   [Replace]\n
   [Command] ReplaceAll
 
-  ; lists items
+  ; Items of a list
   [Find][:::NumberingStyleName=::]
   [Replace][list][*]&[/list]
   [Command] ReplaceAll
 
-  ; Remove redundant list tags 
+  ; Remove redundant list tags
   [Find]\[/list]\p\[list]
   [Replace]\p
   [Command] ReplaceAll
 
- 
-  
-[Name] Text [Sel.]	Join paragraphs non separated by empty paragraphs
- ; block of empty paragraphs replace by one empty par 
+
+[Name] Text [Sel.] Join paragraphs non separated by empty paragraphs
+  ; block of empty paragraphs replace by one empty paragraph
   [Find]\p{2,}
   [Replace]\p\p
   [Parameters] MsgOff Regular CurrSelection 
   [Command] ReplaceAll
 
- ; remove spaces and tabs on the starting and ending of paragraphs
+  ; remove spaces and tabs at the begin and at the end of paragraphs
   [Find](^( *\t*)*|( *\t*)*$)
   [Replace]
   [Command] ReplaceAll
 
- ; remove ends of paragraphs   
+  ; remove ends of paragraphs
   [Find]\p
   [Replace]  
   [Command] ReplaceAll
 
- ; remove space at the beginning of the paragraph, behind of a block of empty paragraphs 
+  ; remove space at the beginning of a paragraph behind of a block of empty paragraphs
   [Find]^ 
   [Replace]
   [Command] ReplaceAll
 
 
-[Name] Text [Sel.]    Separate non empty paragraphs by empty paragraphs
+[Name] Text [Sel.] Separate non empty paragraphs by empty paragraph
   [Find]^.+$
   [Replace]&\p
   [Parameters]  MsgOff Regular CurrSelection
   [Command] ReplaceAll
 
-
 ; separator
 [Name] 
 
-[Name] Text [All]	Convert date from  yyyy-mm-dd  to  dd.mm.yy
+[Name] Text [All] Conversion of the date from YYYY-MM-DD to DD.MM.YY
   [Find](\d{2,2})(\d{2,2})-(\d{1,2})-(\d{1,2})
   [Replace]\4.\3.\2
-  [Parameters]   MsgOff  Regular  
+  [Parameters] MsgOff Regular  
   [Command] ReplaceAll
 
-
-[Name] Text [All]	Convert date from  dd.mm.yyyy  to  yy-mm-dd
+[Name] Text [All] Conversion of the date from DD.MM.YYYY to YY-MM-DD
   [Find](\d{1,2})\. *(\d{1,2})\. *(\d{2,2})(\d{2,2})
   [Replace]\4-\2-\1
-  [Parameters]   MsgOff  Regular  
+  [Parameters] MsgOff Regular  
+  [Command] ReplaceAll
+
+[Name] Text [All] Conversion of the date from DD.MM.YYYY to YYYY-MM-DD
+  [Find](\d{1,2})\. *(\d{1,2})\. *(\d{1,4})
+  [Replace]\3-\2-\1
+  [Parameters] MsgOff Regular  
   [Command] ReplaceAll
 
 
-[Name] Text [All]	Write out all Hyperlinks to a new file
+[Name] Text [All] Write out all Hyperlinks to a new file
   [Find][:::HyperLinkURL::]
-  [Replace]Link \i, on page \I: \D\C{Example}\h&\h{\u}\C (URL: \C{Example}\u\C)\C{Example}\p\h\R
-  [Parameters]   MsgOff  Regular  
+  [Replace]\P{Text body}Link \i, on page \I: \D\C{Example}\h&\h{\u}\C (URL: \C{Example}\u\C)\C{Example}\p\h \R
+  [Parameters] MsgOff Regular  
   [Command] ReplaceAll
 
 
-[Name] Text [All]	Write out all Comments to a new file
+[Name] Text [All] Write out all Comments in a new file
   [Find][::Comment::]
-  [Replace]Comment &\i, on page \I,  Content:\D\C{Example}\C\n\o\p\p\R
-  [Parameters]   MsgOff  Regular  
+  [Replace]\P{Text body}Comment \i, on page \I, Content:\C{Emphasis}\n\o\C{Strong Emphasis}\p\R
+  [Parameters] MsgOff Regular  
   [Command] ReplaceAll
 
-[Name] Text [All]    Write out all Pictures to a new file
+
+[Name] Text [All]  Write out all Pictures to new file
   [Find][::Picture::]
-  [Replace]Picture \i, on page \I, Name of picture: \C\O\C{Example}&\p\p\C\R
-  [Parameters]   MsgOff  Regular  
+  [Replace]\P{Text body}Immagine \i, on page \I\n- Name of the picture: \C{Emphasis}\O\C{Strong Emphasis}\n- Alt Text: \C{Emphasis}\o\C{Strong Emphasis}\p & \p\R
+  [Parameters] MsgOff Regular Backwards
   [Command] ReplaceAll
 
-[Name] Text [All]    Write out all Tables to a new file
+
+[Name] Text [All] Write out all Tables to new file
   [Find][::TextTable::]
-  [Replace]Table \i, on page \I, Name of table: \C\O\C{Example}\p&\p\p\C\R
-  [Parameters]   MsgOff  Regular  
+  [Replace]\P{Text body}Table \i, on page \I, Name of the table: \C{Emphasis}\O\C{Strong Emphasis}\p&\p\p\R
+  [Parameters] MsgOff Regular
   [Command] ReplaceAll
 
-[Name] Text [All]    Write out all Text Frames to a new file
+
+[Name] Text [All] Write out all Text Frames to new file
   [Find][::TextFrame::]
-  [Replace]Frame \i, on page \I, Name of Text Frame: \C\O\C{Example}\p&\p\p\C\R
-  [Parameters]   MsgOff  Regular  
+  [Replace]\P{Text body}Frame \i, on page \I, Name of the Text Frame:\C{Emphasis} \O\C{Strong Emphasis}\p&\C{}\p\R
+  [Parameters] MsgOff Regular
   [Command] ReplaceAll
 
 
+[Name] Text [All] Replace the string "dialog window" with the same string matching Upper and Lower case letters, singular and plurals)
+  ; Parametri comuni a tutti quattro i comandi:
+  [Parametri] MsgOff MatchCase
+
+  ; Uppercase
+  [Find] dialog window
+  [Replace] Dialog window
+  [Command] ReplaceAll
+
+  ; Lowercase
+  [Find] Dialog window
+  [Replace] dialog window
+  [Command] ReplaceAll
+
+  ; Uppercase plural
+  [Find] Dialog window
+  [Replace] Dialog windows
+  [Command] ReplaceAll
+
+  ; Lowercase plural
+  [Find] Dialog window
+  [Replace] dialog windows
+  [Command] ReplaceAll
+
+; ***** END OF THE ORIGINAL AltSearchScript_it.txt v.1.4.2 *****
+
+[Name] Text [All] Substitution of “ ” with « » quotation marks
+  [Parametri] MsgOff
+
+  [Find]“
+  [Replace]«
+  [Command] ReplaceAll
+
+  [Find]”
+  [Replace]»
+  [Command] ReplaceAll
 
 
-[End]  
-  
+[Name] Text [All] Substitution of 2 spaces with only one
+  [Find]  
+  [Replace] 
+  [Command] ReplaceAll
+
+
+[Name] Text [All] Remove comma before conjunctions "or" & "and"
+  [Parametri] MsgOff Normale
+
+  [Find], and
+  [Replace] and \C{no character style}
+  [Command] ReplaceAll
+
+  [Find], or
+  [Replace] or \C{no character style}
+  [Command] ReplaceAll
+
+
+[Name] Text [All] Substitution of the standard space (following the string "figure") with a non-breaking space, ie bound to the following string.
+  [Parameters] MsgOff MatchCase
+
+  [Find](figure 
+  [Replace](figure 
+  [Command] ReplaceAll
+
+  [Find] figure 
+  [Replace] figure 
+  [Command] ReplaceAll
+
+
+[Name] Text [All] Substitution of the standard space (following the string "Chapter") with a non-breaking space, ie bound to the following string.
+  [Parameters] MsgOff MatchCase Regular
+
+  [Find]Chapter 
+  [Replace]Chapter 
+  [Command] ReplaceAll
+
+[Name] Mac keys[All] Remove the key sequence ⌘ e ⌥ (Mac-specific)
+  [Parametri] MsgOff Regular
+
+  [Find]⌘
+  [Replace]\C{No character style}
+  [Command] ReplaceAll
+
+  [Find]⌥
+  [Replace]\C{No character style}
+  [Command] ReplaceAll
+
+
+; *** SUB IUDICE ***
+;[Name] Text [Sel.] ??? Separate sentences in the block of paragraphs removing the first letter of the paragraph!
+;  [Find]^.[::BigBlock::]\.
+;  [Replace]\f&\e\p
+; ****** Regulare expression  \f refers to clipboard, otherwise it is not possible to get the text block ??? *****
+;  [Parameters] MsgOff  Regular CurrSelection
+;  [Command] ReplaceAll
+
+[End]
