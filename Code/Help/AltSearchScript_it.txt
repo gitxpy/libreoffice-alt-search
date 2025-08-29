@@ -1,170 +1,175 @@
-; File per i batch del Cerca e Sostituisci alternativo facente parte dell'estensione
-; AltSearch.oxt per Writer
-; Charset: UTF-8 
+; File per i batch di Trova e Sostituisci alternativo
+; Fa parte dell'estensione AltSearch.oxt per Writer
+; Charset: UTF-8
 ;
-; v1.5  25/06
+; v. 1.5.2 modificato  2025-08-29
 ;
 ; Sintassi:
-; Le righe debbono iniziare con i comandi principali altrimenti saranno ignorate.
+; Le righe che non iniziano con un comando principale vengono ignorate.
 ; I comandi principali debbono essere ricompresi fra parentesi quadre [] e debbono trovarsi all'inizio della riga.
-; Prima dei comandi principali possono esserci degli spazi vuoti, mentre qualsiasi cosa dopo di essi verrà
+; I comandi principali possono essere preceduti da spazi vuoti, mentre qualsiasi cosa dopo di essi verrà
 ; interpretato come loro parametro.
 ; 
 ;  Descrizione dei comandi principali:
-;  [Name] - nome del batch (i parametri si riferiscono ad esso) - I singoli batch iniziano
-;      sempre con questo comando principale. La fine del batch coincide con l'occorrenza
-;      successiva del comando [Name] o con l'[End] dell'ultimo batch valido.
+;  [Name] - nome del batch (i parametri si riferiscono ad esso) - I singoli batch iniziano sempre con questo comando principale.
+;           La fine del batch coincide con l'occorrenza successiva del comando [Name] o con [End] dopo l'ultimo comando batch valido
 ;
-;  [Find] - espressione ricercata - All'esecuzione del batch, questo parametro viene
-;      trasferito nel campo "Cerca per"
-;  [Replace] - espressione di sostituzione - All'esecuzione del batch, questo parametro viene
-;      trasferito nel campo "Sostituisci"
-;  [Parameters] - parametri di ricerca e di sostituzione - Una stringa vuota corrisponde
-;      ad una configurazione di tipo 'falso' per tutti i parametri, il nome del parametro della citazione
-;      viene configurato come 'vero'.
+;  [Find] - espressione ricercata - Quando il batch viene eseguito, questo parametro viene trasferito nel campo “Ricerca:”
+;
+;  [Replace] - espressione di sostituzione - Quando il batch viene eseguito, questo parametro viene trasferito nel campo "Sostituzione"
+;
+;  [Parameters] - parametri di ricerca e di sostituzione
+;               - Una stringa vuota comporta l'assegnazione del valore ‘false’ (falso) a tutti i parametri
+;               - Una qualsiasi espressione che accompagni il nome del parametro lo configura invece come ‘true’ (vero)
 ;      Parameteri validi:
-;           MatchCase  PreserveCapital  WholeWord  ParaStyles  Regular
-;           CurrSelection  Backwards  MsgOff  NoSummary  
+;      ------------------
+;          MatchCase  PreserveCapital  WholeWord  ParaStyles  Regular
+;          CurrSelection  Backwards  MsgOff  NoSummary
 ;
-;      NB: MsgOff - sopprime la maggior parte dei messaggi di errore e di informazione (per un livello di ricerca)
-;          NoSummary - sopprime il rapporto (report) finale dell'intero batch (utile se si usano le scorciatoie da tastiera)  
+;          MsgOff    - sopprime la maggior parte dei messaggi informativi o di errore per un certo livello di ricerca
+;          NoSummary - sopprime il rapporto (report) finale dell'intero batch (utile quando si usano le scorciatoie da tastiera)  
 ; 
-;  [Command] - determina le modalità di esecuzione di Ricerca e Sostituzione -
-;      Parameteri validi:  Find  FindAll  Replace  ReplaceAll  Count
+;  [Command] - determina le modalità di esecuzione di Trova e Sostituisci alternativo
+;      Parameteri validi:
+;      ------------------
+;          Find  FindAll  Replace  ReplaceAll  Count
 ;
-;      NB: In futuro potrebbero essere aggiunte altre istruzioni, per esempio quelle per il movimento del cursore, 
+;      In futuro potrebbero essere aggiunte altre istruzioni, per esempio quelle per il movimento del cursore, 
 ;      quelle per la configurazione dei segnalibri in funzione della posizione del cursore, il ripristino del cursore in
 ;      funzione dei segnalibri ecc…
 ;       
-;  [End] - indica la fine dell'ultimo batch valido - Qualsiasi cosa dopo questo comando 
-;      sarà ignorata.
-;
-; 
+;  [End] - indica la conclusione dell'ultimo batch valido - Qualsiasi cosa posta dopo questo comando sarà ignorata.
+;************************************************************
 
-************************************************************
-
-[Name] Html [Sel.] Converte il blocco selezionato in tag Html    	 
-  ; the same parameters for all 
+[Name] HTML [Sel.] Conversione delle tag HTML di vecchio tipo nel nuovo tipo
+; Parametri comuni
   [Parameters] MsgOff Regular CurrSelection
 
-  ; bold
+  ; Grassetto
   [Find][:::CharWeight::]
   [Replace]<b>&</b>
-  [Command] ReplaceAll 
+  [Command] ReplaceAll
 
-  ; italic
+  ; Corsivo
   [Find][:::CharPosture::]
   [Replace]<i>&</i>
-  [Command] ReplaceAll         	
+  [Command] ReplaceAll
 
-  ; Hyperlinks 
+  ; Hyperlinks
   [Find][:::HyperLinkURL::]
   [Replace]<a href="\u">&</a>
   [Command] ReplaceAll
 
-  ; Footnotes
+  ; Note a piè di pagina
   [Find][::Footnote::]
-  [Replace]<b><span Title="\o"><span style="vertical-align: super; font-size: smaller;">\i</span></span></b>
+  [Replace]<b><span Title="\o">…<span style="vertical-align: super; font-size: smaller;">\i</span></span></b>
   [Command] ReplaceAll
 
-  ; Add tags of paragraphs 
+  ; Aggiunta della tag di Paragrafo
   [Find]^.*$
   [Replace]<p>&</p>
   [Command] ReplaceAll
 
-  ; Remove redundant ends-starts of identical tags in sequence
+  ; Rimozione delle tag ridondanti di chiusura->apertura poste in sequenza
   [Find]</i><i>|</b><b>|</p><p>
   [Replace]
   [Command] ReplaceAll
 
 
-[Name] Text [Sel.]	Convert selected block on the BBcode
-   ; the same parameters for all 
+[Name] BBCode [Sel.] Conversione del blocco selezionato in BBcode
+  ; Parametri comuni 
   [Parameters] MsgOff Regular CurrSelection
 
+  ; Grassetto
   [Find][:::CharWeight::]
   [Replace][b]&[/b]
   [Command] ReplaceAll
 
+  ; Corsivo
   [Find][:::CharPosture::]
   [Replace][i]&[/i]
   [Command] ReplaceAll
 
+  ; Sottolineato
   [Find][:::CharUnderline::]
   [Replace][u]&[/u]
   [Command] ReplaceAll
 
+  ; Carattere a pedice
   [Find][:::CharAutoEscapement=true|CharEscapementHeight=58|CharEscapement=-101::]
   [Replace][sub]&[/sub]\d
   [Command] ReplaceAll
 
+  ; Carattere ad apice
   [Find][:::CharAutoEscapement=true|CharEscapementHeight=58|CharEscapement=101::]
   [Replace][sup]&[/sup]\d
   [Command] ReplaceAll
 
+  ; Hyperlink
   [Find][:::HyperLinkURL::]
   [Replace][url=\u]&[/url]
   [Command] ReplaceAll
 
+  ; Picture
   [Find][::Picture::]
   [Replace][img]\O[/img]
   [Command] ReplaceAll
 
+  ; Sostituzione del carattere Courier
   [Find][:::CharFontName=Courier New::]
   [Replace][code]&[/code]
   [Command] ReplaceAll
 
-  ; Remove redundant ends-starts of identical tags in sequence
+  ; Rimozione di tag di chiusura->apertura identiche poste in sequenza, se ridondanti
   [Find]\[/b]\[b]|\[/i]\[i]|\[/u]\[u]|\[/sub]\[sub]|\[/sup]\[sup]|\[/code]\[code]
   [Replace]
   [Command] ReplaceAll
-  
-  ; code through paragraph  
+
+  ; Rimozione delle tag [/code]…[code] con interposto il segno di Fine paragrafo. Lasciato solo il segno di Fine paragrafo
   [Find]\[/code]\p\[code]
   [Replace]\p
   [Command] ReplaceAll
 
-  ; code through line break  
+  ; Rimozione delle tag [/code]…[code] con interposto il segno di Interruzione di linea. Lasciato solo il segno di Interruzione di linea
   [Find]\[/code]\n\[code]
   [Replace]\n
   [Command] ReplaceAll
 
-  ; lists items
+  ; Elencazione degli elementi di una lista
   [Find][:::NumberingStyleName=::]
   [Replace][list][*]&[/list]
   [Command] ReplaceAll
 
-  ; Remove redundant list tags 
+  ; Rimozione di tag [list]...[/list] con interposto il segno di fine paragrafo: lasciato solo il segno di fine paragrafo
   [Find]\[/list]\p\[list]
   [Replace]\p
   [Command] ReplaceAll
 
- 
-  
-[Name] Text [Sel.] Unisce paragrafi non separati da paragrafi vuoti
- ; block of empty paragraphs replace by one empty par 
+
+  [Name] Testo [Sel.] Unisce paragrafi non separati da paragrafi vuoti
+  ; Sostituzione di un blocco di paragrafi vuoti con una sola coppia di paragrafi vuoti
   [Find]\p{2,}
   [Replace]\p\p
   [Parameters] MsgOff Regular CurrSelection 
   [Command] ReplaceAll
 
- ; remove spaces and tabs on the starting and enddin of paragraphs
+  ; Rimozione degli spazi e delle tabulazioni all'inizio e alla fine dei paragrafi
   [Find](^( *\t*)*|( *\t*)*$)
   [Replace]
   [Command] ReplaceAll
 
- ; remove ends of paragraphs   
+  ; Rimozione del segno di fine paragrafo e sua sostituzione con due spazi
   [Find]\p
   [Replace]  
   [Command] ReplaceAll
 
- ; remove space at the beginning paragraph behind of block empty paragraphs 
+  ; Rimozione dello spazio all'inizio di un paragrafo che segue un blocco di paragrafi vuoti 
   [Find]^ 
   [Replace]
   [Command] ReplaceAll
 
 
-[Name] Text [Sel.] Separa paragrafi non vuoti con paragrafi vuoti
+[Name] Testo [Sel.] Separazione di paragrafi non vuoti con una linea vuota
   [Find]^.+$
   [Replace]&\p
   [Parameters]  MsgOff Regular CurrSelection
@@ -172,54 +177,189 @@
 
 
 ; separator
-[Name] 
+[Name]
 
-[Name] Text [All] Converte la data da AAAA-MM-GG in GG.MM.AA
+
+[Name] Data [Tutto] Conversione della data da AAAA-MM-GG in GG.MM.AA
   [Find](\d{2,2})(\d{2,2})-(\d{1,2})-(\d{1,2})
   [Replace]\4.\3.\2
-  [Parameters]   MsgOff  Regular  
+  [Parameters] MsgOff Regular  
   [Command] ReplaceAll
 
 
-[Name] Text [All] Converte la data da GG.MM.AAAA in AA-MM-GG
+[Name] Data [Tutto] Conversione della data da GG.MM.AAAA in AA-MM-GG
   [Find](\d{1,2})\. *(\d{1,2})\. *(\d{2,2})(\d{2,2})
   [Replace]\4-\2-\1
   [Parameters]   MsgOff  Regular  
   [Command] ReplaceAll
 
 
-[Name] Text [All] Ridirige tutti gli Hyperlink in un nuovo file
+[Name] Data [Tutto] Conversione della data da GG.MM.AAAA in AAAA-MM-GG
+  [Find](\d{1,2})\. *(\d{1,2})\. *(\d{1,4})
+  [Replace]\3-\2-\1
+  [Parameters]   MsgOff  Regular  
+  [Command] ReplaceAll
+
+
+[Name] Hyperlink [Tutti] Copia degli Hyperlink in un nuovo file
+  [Find][:::HyperLinkURL::]
+  [Replace]\P{Text body}Collegamento \i, a pagina \I: \D\C{Emphasis}\h&\h{\u}\C{}\n(URL: \C{Emphasis}\u\C{})\h\p \R
+  [Parameters] MsgOff Regular
+  [Command] ReplaceAll
+
+
+[Name] Hyperlink [Tutti] Reindirizzamento degli hyperlink in un nuovo file
   [Find][:::HyperLinkURL::]
   [Replace]Link \i, on page \I: \D\C{Example}\h&\h{\u}\C (URL: \C{Example}\u\C)\C{Example}\p\h\R
-  [Parameters]   MsgOff  Regular  
+  [Parameters] MsgOff Regular  
   [Command] ReplaceAll
 
 
-[Name] Text [All] Ridirige tutti i Commenti in un nuovo file
+[Name] Commento [Tutti] Copia dei Commenti in un nuovo file
   [Find][::Comment::]
-  [Replace]Comment &\i, on page \I,  Content:\D\C{Example}\C\n\o\p\p\R
-  [Parameters]   MsgOff  Regular  
+  [Replace]\P{Text body}Commento \i, a pagina \I, Contenuto:\C{Emphasis}\n\o\C{Strong Emphasis}\p\R
+  [Parameters] MsgOff Regular  
   [Command] ReplaceAll
 
-[Name] Text [All] Ridirige tutte le Immagini in un nuovo file
+
+[Name] Commento [Tutti] Reindirizzamento dei Commenti in un nuovo file
+  [Find][::Comment::]
+  [Replace]Comment &\i, a pagina \I, Contenuto:\D\C{Example}\C\n\o\p\p\R
+  [Parameters] MsgOff Regular  
+  [Command] ReplaceAll
+
+
+[Name] Immagini [Tutte]  Copia delle Immagini in un nuovo file
   [Find][::Picture::]
-  [Replace]Picture \i, on page \I, Name of picture: \C\O\C{Example}&\p\p\C\R
-  [Parameters]   MsgOff  Regular  
+  [Replace]\P{Text body}Immagine \i, a pagina \I\n- Nome dell'immagine: \C{Emphasis}\O\C{Strong Emphasis}\n- Testo alternativo: \C{Emphasis}\o\C{Strong Emphasis}\p & \p\R
+  [Parameters] MsgOff Regular Backwards
   [Command] ReplaceAll
 
-[Name] Text [All] Ridirige tutte le Tabelle in un nuovo file
+[Name] Immagini [Tutte] Reindirizzamento di tutte le Immagini in un nuovo file
+  [Find][::Picture::]
+  [Replace]Picture \i, a pagina \I, Nome dell'Immagine: \C\O\C{Example}&\p\p\C\R
+  [Parameters] MsgOff Regular  
+  [Command] ReplaceAll
+
+
+[Name] Tabelle [Tutte] Copia delle Tabelle in un nuovo file
   [Find][::TextTable::]
-  [Replace]Table \i, on page \I, Name of table: \C\O\C{Example}\p&\p\p\C\R
-  [Parameters]   MsgOff  Regular  
+  [Replace]\P{Text body}Tabella \i, a pagina \I, Nome della tabella: \C{Emphasis}\O\C{Strong Emphasis}\p&\p\p\R
+  [Parameters] MsgOff Regular
   [Command] ReplaceAll
 
-[Name] Text [All] Ridirige tutte le Cornici di testo in un nuovo file
+[Name] Tabelle [Tutte] Reindirizzamento di tutte le Tabelle in un nuovo file
+  [Find][::TextTable::]
+  [Replace]Tabella \i, a pagina \I, Nome della Tabella: \C\O\C{Example}\p&\p\p\C\R
+  [Parameters] MsgOff Regular  
+  [Command] ReplaceAll
+
+
+[Name] Cornici [Tutte] Copia delle Cornici di testo in un nuovo file
   [Find][::TextFrame::]
-  [Replace]Frame \i, on page \I, Name of Text Frame: \C\O\C{Example}\p&\p\p\C\R
-  [Parameters]   MsgOff  Regular  
+  [Replace]\P{Text body}Cornice \i, a pagina \I, Nome della Cornice:\C{Emphasis} \O\C{Strong Emphasis}\p&\C{}\p\R
+  [Parameters] MsgOff Regular
+  [Command] ReplaceAll
+
+[Name] Cornici [Tutte] Reindirizzamento di tutte le Cornici di testo in un nuovo file
+  [Find][::TextFrame::]
+  [Replace]Cornice \i, a pagina \I, Nome della Cornice di testo: \C\O\C{Example}\p&\p\p\C\R
+  [Parameters] MsgOff  Regular  
   [Command] ReplaceAll
 
 
+[Name] Testo [Tutti] Sostituzione della stringa "finestra di dialogo" con la stessa stringa (con distinzione di maiuscole e minuscole, singolare e plurale)
+  ; Parametri comuni a tutti quattro i comandi:
+  [Parametri] MsgOff MatchCase
+
+  ; Maiuscolo
+  [Find] finestra di dialogo
+  [Replace] Finestra di dialogo
+  [Command] ReplaceAll
+
+  ; Minuscolo
+  [Find] Finestra di dialogo
+  [Replace] finestra di dialogo
+  [Command] ReplaceAll
+
+  ; Maiuscolo plurale
+  [Find] Finestra di dialogo
+  [Replace] Finestre di dialogo
+  [Command] ReplaceAll
+
+  ; Minuscolo plurale
+  [Find] Finestra di dialogo
+  [Replace] finestre di dialogo
+  [Command] ReplaceAll
+
+; ***** END OF THE ORIGINAL v.1.4.2 *****
+
+[Name] Testo [Tutti] Sostituzione delle virgolette di tipo “ ” con quelle di tipo « »
+  [Parametri] MsgOff
+
+  [Find]“
+  [Replace]«
+  [Command] ReplaceAll
+
+  [Find]”
+  [Replace]»
+  [Command] ReplaceAll
 
 
-[End]  
+[Name] Testo [Tutto] Sostituzione di 2 spazi con uno solo
+  [Find]  
+  [Replace] 
+  [Command] ReplaceAll
+
+
+[Name] Testo [Tutto] Rimozione della virgola prima delle congiunzioni "o" ed "e"
+  [Parametri] MsgOff Normale
+
+  [Find], e
+  [Replace] e \C{Nessuno stile di carattere}
+  [Command] ReplaceAll
+
+  [Find], o
+  [Replace] o \C{Nessuno stile di carattere}
+  [Command] ReplaceAll
+
+
+[Name] Spazi unificatori [Tutto] Trasformazione di spazi standard in "spazi unificatori" (non-breaking spaces) collegati alle stringa successiva
+  [Parameters] MsgOff MatchCase
+
+  [Find](figura 
+  [Replace](figura 
+  [Command] ReplaceAll
+
+  [Find] figura 
+  [Replace] figura 
+  [Command] ReplaceAll
+
+
+[Name] Spazi unificatori [Tutto] Trasformazione dello spazio standard che segue "Capitolo" in uno "spazio unificatore" (non-breaking space) collegato alle stringa successiva
+  [Parameters] MsgOff MatchCase Regular
+
+  [Find]Capitolo 
+  [Replace]Capitolo 
+  [Command] ReplaceAll
+
+[Name] Tasti Mac [Tutto] Rimozione della sequenza di tasti  ⌘ e ⌥ (Mac-specifici)
+  [Parametri] MsgOff Normale
+
+  [Find]⌘
+  [Replace]\C{Nessuno stile di carattere}
+  [Command] ReplaceAll
+
+  [Find]⌥
+  [Replace]\C{Nessuno stile di carattere}
+  [Command] ReplaceAll
+
+; *** SUB IUDICE ***
+;[Name] Testo [Sel.] ??? Separazione delle frasi in paragrafi ed eliminazione della prima lettera del paragrafo!
+;  [Find]^.[::BigBlock::]\.
+;  [Replace]\f&\e\p
+; ******   L'espressione regolare \f indica gli appunti, altrimenti non si ottiene il blocco di testo ??? *****
+;  [Parameters] MsgOff  Regular  CurrSelection
+;  [Command] ReplaceAll
+
+[End]
