@@ -41,7 +41,7 @@
 ;  [End] - indica la conclusione dell'ultimo batch valido - Qualsiasi cosa posta dopo questo comando sarà ignorata.
 ;************************************************************
 
-[Name] HTML [Sel.] Conversione delle tag HTML di vecchio tipo nel nuovo tipo
+[Name] HTML [Sel.] Conversione delle tag HTML di nuovo tipo in quelle di vecchio tipo 
 ; Parametri comuni
   [Parameters] MsgOff Regular CurrSelection
 
@@ -70,27 +70,7 @@
   [Replace]<p>&</p>
   [Command] ReplaceAll
 
-  ; Rimozione delle tag ridondanti di chiusura->apertura poste in sequenza
-  [Find]</i><i>|</b><b>|</p><p>
-  [Replace]
-  [Command] ReplaceAll
-
-
-[Name] BBCode [Sel.] Conversione del blocco selezionato in BBcode
-  ; Parametri comuni 
-  [Parameters] MsgOff Regular CurrSelection
-
-  ; Grassetto
-  [Find][:::CharWeight::]
-  [Replace][b]&[/b]
-  [Command] ReplaceAll
-
-  ; Corsivo
-  [Find][:::CharPosture::]
-  [Replace][i]&[/i]
-  [Command] ReplaceAll
-
-  ; Sottolineato
+; Sottolineato
   [Find][:::CharUnderline::]
   [Replace][u]&[/u]
   [Command] ReplaceAll
@@ -140,7 +120,7 @@
   [Replace][list][*]&[/list]
   [Command] ReplaceAll
 
-  ; Rimozione di tag [list]...[/list] con interposto il segno di fine paragrafo: lasciato solo il segno di fine paragrafo
+  ; Rimozione di tag [list]…[/list] con interposto il segno di fine paragrafo: lasciato solo il segno di fine paragrafo
   [Find]\[/list]\p\[list]
   [Replace]\p
   [Command] ReplaceAll
@@ -175,10 +155,8 @@
   [Parameters]  MsgOff Regular CurrSelection
   [Command] ReplaceAll
 
-
 ; separator
 [Name]
-
 
 [Name] Data [Tutto] Conversione della data da AAAA-MM-GG in GG.MM.AA
   [Find](\d{2,2})(\d{2,2})-(\d{1,2})-(\d{1,2})
@@ -186,13 +164,11 @@
   [Parameters] MsgOff Regular  
   [Command] ReplaceAll
 
-
 [Name] Data [Tutto] Conversione della data da GG.MM.AAAA in AA-MM-GG
   [Find](\d{1,2})\. *(\d{1,2})\. *(\d{2,2})(\d{2,2})
   [Replace]\4-\2-\1
   [Parameters]   MsgOff  Regular  
   [Command] ReplaceAll
-
 
 [Name] Data [Tutto] Conversione della data da GG.MM.AAAA in AAAA-MM-GG
   [Find](\d{1,2})\. *(\d{1,2})\. *(\d{1,4})
@@ -201,70 +177,38 @@
   [Command] ReplaceAll
 
 
-[Name] Hyperlink [Tutti] Copia degli Hyperlink in un nuovo file
+[Name] Hyperlink [Tutti] Reindirizzamento degli hyperlink in un nuovo file
   [Find][:::HyperLinkURL::]
   [Replace]\P{Text body}Collegamento \i, a pagina \I: \D\C{Emphasis}\h&\h{\u}\C{}\n(URL: \C{Emphasis}\u\C{})\h\p \R
   [Parameters] MsgOff Regular
   [Command] ReplaceAll
 
 
-[Name] Hyperlink [Tutti] Reindirizzamento degli hyperlink in un nuovo file
-  [Find][:::HyperLinkURL::]
-  [Replace]Link \i, on page \I: \D\C{Example}\h&\h{\u}\C (URL: \C{Example}\u\C)\C{Example}\p\h\R
-  [Parameters] MsgOff Regular  
-  [Command] ReplaceAll
-
-
-[Name] Commento [Tutti] Copia dei Commenti in un nuovo file
+[Name] Commento [Tutti] Reindirizzamento dei Commenti in un nuovo file
   [Find][::Comment::]
   [Replace]\P{Text body}Commento \i, a pagina \I, Contenuto:\C{Emphasis}\n\o\C{Strong Emphasis}\p\R
   [Parameters] MsgOff Regular  
   [Command] ReplaceAll
 
 
-[Name] Commento [Tutti] Reindirizzamento dei Commenti in un nuovo file
-  [Find][::Comment::]
-  [Replace]Comment &\i, a pagina \I, Contenuto:\D\C{Example}\C\n\o\p\p\R
-  [Parameters] MsgOff Regular  
-  [Command] ReplaceAll
-
-
-[Name] Immagini [Tutte]  Copia delle Immagini in un nuovo file
+[Name] Immagini [Tutte] Reindirizzamento di tutte le Immagini in un nuovo file
   [Find][::Picture::]
-  [Replace]\P{Text body}Immagine \i, a pagina \I\n- Nome dell'immagine: \C{Emphasis}\O\C{Strong Emphasis}\n- Testo alternativo: \C{Emphasis}\o\C{Strong Emphasis}\p & \p\R
+  [Replace]\P{Text body}Immagine \i, a pagina \I\n- Nome dell'immagine: \C{Emphasis}\O\C{Strong Emphasis}\n- Testo alternativo: \C{Emphasis}\o\C{Strong Emphasis}\p &\p\R
   [Parameters] MsgOff Regular Backwards
   [Command] ReplaceAll
 
-[Name] Immagini [Tutte] Reindirizzamento di tutte le Immagini in un nuovo file
-  [Find][::Picture::]
-  [Replace]Picture \i, a pagina \I, Nome dell'Immagine: \C\O\C{Example}&\p\p\C\R
-  [Parameters] MsgOff Regular  
-  [Command] ReplaceAll
 
-
-[Name] Tabelle [Tutte] Copia delle Tabelle in un nuovo file
+[Name] Tabelle [Tutte] Reindirizzamento di tutte le Tabelle in un nuovo file
   [Find][::TextTable::]
   [Replace]\P{Text body}Tabella \i, a pagina \I, Nome della tabella: \C{Emphasis}\O\C{Strong Emphasis}\p&\p\p\R
   [Parameters] MsgOff Regular
   [Command] ReplaceAll
 
-[Name] Tabelle [Tutte] Reindirizzamento di tutte le Tabelle in un nuovo file
-  [Find][::TextTable::]
-  [Replace]Tabella \i, a pagina \I, Nome della Tabella: \C\O\C{Example}\p&\p\p\C\R
-  [Parameters] MsgOff Regular  
-  [Command] ReplaceAll
-
-
-[Name] Cornici [Tutte] Copia delle Cornici di testo in un nuovo file
-  [Find][::TextFrame::]
-  [Replace]\P{Text body}Cornice \i, a pagina \I, Nome della Cornice:\C{Emphasis} \O\C{Strong Emphasis}\p&\C{}\p\R
-  [Parameters] MsgOff Regular
-  [Command] ReplaceAll
 
 [Name] Cornici [Tutte] Reindirizzamento di tutte le Cornici di testo in un nuovo file
   [Find][::TextFrame::]
-  [Replace]Cornice \i, a pagina \I, Nome della Cornice di testo: \C\O\C{Example}\p&\p\p\C\R
-  [Parameters] MsgOff  Regular  
+  [Replace]\P{Text body}Cornice \i, a pagina \I, Nome della Cornice:\C{Emphasis} \O\C{Strong Emphasis}\p&\C{}\p\R
+  [Parameters] MsgOff Regular
   [Command] ReplaceAll
 
 
@@ -292,7 +236,7 @@
   [Replace] finestre di dialogo
   [Command] ReplaceAll
 
-; ***** END OF THE ORIGINAL v.1.4.2 *****
+; ***** END OF THE ORIGINAL AltSearchScript_it.txt v.1.4.2 *****
 
 [Name] Testo [Tutti] Sostituzione delle virgolette di tipo “ ” con quelle di tipo « »
   [Parametri] MsgOff
@@ -306,13 +250,13 @@
   [Command] ReplaceAll
 
 
-[Name] Testo [Tutto] Sostituzione di 2 spazi con uno solo
+[Name] Testo [Tutto] Sostituzione di due spazi con uno solo
   [Find]  
   [Replace] 
   [Command] ReplaceAll
 
 
-[Name] Testo [Tutto] Rimozione della virgola prima delle congiunzioni "o" ed "e"
+[Name] Testo [Tutto] Rimozione della virgola prima delle congiunzioni "o" & "e"
   [Parametri] MsgOff Normale
 
   [Find], e
@@ -324,7 +268,7 @@
   [Command] ReplaceAll
 
 
-[Name] Spazi unificatori [Tutto] Trasformazione di spazi standard in "spazi unificatori" (non-breaking spaces) collegati alle stringa successiva
+[Name] Spazio unificatore [Tutto] Trasformazione dello spazio standard che segue la stringa "figura" in uno "spazio unificatore" (non-breaking space) legato alle stringa successiva
   [Parameters] MsgOff MatchCase
 
   [Find](figura 
@@ -335,8 +279,7 @@
   [Replace] figura 
   [Command] ReplaceAll
 
-
-[Name] Spazi unificatori [Tutto] Trasformazione dello spazio standard che segue "Capitolo" in uno "spazio unificatore" (non-breaking space) collegato alle stringa successiva
+[Name] Spazio unificatore [Tutto] Trasformazione dello spazio standard che segue la stringa "Capitolo" in uno "spazio unificatore" (non-breaking space) legato alle stringa successiva
   [Parameters] MsgOff MatchCase Regular
 
   [Find]Capitolo 
@@ -344,7 +287,7 @@
   [Command] ReplaceAll
 
 [Name] Tasti Mac [Tutto] Rimozione della sequenza di tasti  ⌘ e ⌥ (Mac-specifici)
-  [Parametri] MsgOff Normale
+  [Parametri] MsgOff Regular
 
   [Find]⌘
   [Replace]\C{Nessuno stile di carattere}
