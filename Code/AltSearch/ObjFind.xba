@@ -128,15 +128,15 @@ end sub
 	&apos; retun the index of unsuccessful searching -1/1 start/end of block, -2/2 start/end of document and set properly prCURS
 sub getNoFoundIndex(blockCur) as integer
 	prCURS = blockCur.text.createTextCursorByRange(blockCur) &apos; according to block
-	if AltSearchVolby.zpet = 1 then
+	if AltSearchPARAMS.zpet = 1 then
 		getNoFoundIndex = -1  &apos; reached the begining of block
-		if AltSearchVolby.csele=0 then     &apos; reached the begining of file
+		if AltSearchPARAMS.csele=0 then     &apos; reached the begining of file
 			getNoFoundIndex = -2
 			prCURS = ALTsearchDOC.text.getEnd()
 		end if
 	else
 		getNoFoundIndex = 1  &apos; reached the end of block
-		if AltSearchVolby.csele=0 then     &apos; reached the end of file
+		if AltSearchPARAMS.csele=0 then     &apos; reached the end of file
 			getNoFoundIndex = 2
 			prCURS = ALTsearchDOC.text.getStart()
 		end if
@@ -326,7 +326,7 @@ end sub
 sub isInsideOfSelection(rozsah) as boolean
 	isInsideOfSelection = false  &apos; it supposed no
 	on error goto konec  &apos; if there will be occured the bug of region, then the result if false = away from RANGE, away from ALTSiniSEL
-	if AltSearchVolby.csele=0 then
+	if AltSearchPARAMS.csele=0 then
 		isInsideOfSelection = true  &apos; if no active the option &quot;find only inside the block&quot; then true
 		exit sub
 	end if
@@ -370,13 +370,13 @@ sub isSubstrInBlock(oObj, Vst$, Hled$, mode as integer) as boolean
 	dim bin as integer, j as long
 	isSubstrInBlock = true
 	bin = 0
-	if AltSearchVolby.kcase=0 then bin = 1  &apos; bin=1 instr(,,bin) ignore lower/uppercases; BIN=0 binary comparison
+	if AltSearchPARAMS.kcase=0 then bin = 1  &apos; bin=1 instr(,,bin) ignore lower/uppercases; BIN=0 binary comparison
 	j = instr(1,Vst,Hled,bin)
 	if hled = &quot;&quot; then j = 0  &apos; else it isnot possible to found empty texts
 
 	if (j&gt;0)or(vst=Hled)or(mode=0) then  &apos; found
 		&apos; the search only inside the block
-		if AltSearchVolby.csele=0 then exit sub &apos; whole document - found
+		if AltSearchPARAMS.csele=0 then exit sub &apos; whole document - found
 		&apos;ascertain the anchor - to oAnch
 		dim oAnch
 		oAnch = oObj.anchor &apos; found object
