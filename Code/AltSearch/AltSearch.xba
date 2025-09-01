@@ -2,7 +2,6 @@
 <!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
 <script:module xmlns:script="http://openoffice.org/2000/script" script:name="AltSearch" script:language="StarBasic">&apos; AltSearch - for LibreOffice Writer
 &apos; licence: CC0 1.0 Universal (CC0 1.0) Public Domain Dedication https://creativecommons.org/publicdomain/zero/1.0/deed.en
-&apos; current version and changes are described in module &apos;changes&apos;
 
 option explicit
 
@@ -10,6 +9,7 @@ Global VERZE &apos;version of AltSearch that is taken with the function &apos;ch
 public const ERRcontrol = true &apos;false &apos;true  &apos; turn on the own service of bugs: false for debugging, else must be true for proper reaction on bugs for region etc in FindNextInBlock
 global ICUcompatability  &apos; = true &apos; reaction on ICU in regular expressions (International Components for Unicode): \xhhhh =&gt; \uhhhh =&gt; accepts both ways
 	dim INITerror &apos; counter of repeated bugs of initialization of cursor
+
 global ALTsearchINI(12)  &apos; item 0 boolean - flag it ran before = load ini values
 global ALTsearchFIND(0) as string  &apos; history of search
 global ALTsearchREPL(0) as string  &apos; history of replacing
@@ -196,7 +196,7 @@ End Sub
 sub _FindBack
 	if ERRcontrol then on error goto konec
 	if ALTSlastFOUND&lt;&gt;4 then
-		if ALTsearchDIALOG_end then nactiVolby(true) &apos; restore the options from Ini
+		if ALTsearchDIALOG_end then loadPARAMS(true) &apos; restore the options from Ini
 		AltSearchPARAMS.zpet = 1
 		if AltSearchPARAMS.find = &quot;&quot; then exit sub
 		FindDo  &apos; search
@@ -211,7 +211,7 @@ end sub
 sub _FindNext
 	if ERRcontrol then on error goto konec
 	if ALTSlastFOUND&lt;&gt;4 then
-		if ALTsearchDIALOG_end then nactiVolby(true) &apos; restore options from Ini
+		if ALTsearchDIALOG_end then loadPARAMS(true) &apos; restore options from Ini
 		AltSearchPARAMS.zpet = 0
 		if AltSearchPARAMS.find = &quot;&quot; then exit sub
 		FindDo  &apos; search
@@ -318,7 +318,7 @@ sub BtCount
 	if NOT testViewCursor then exit sub &apos;test if Visible cursor isn&apos;t in Comment etc.
 	dim info, curinit, curs, i, j, max, hled, pom, bin, oTmp, oAnch, inFoot, oFoot, mode
 	info = &quot;&quot;  &apos;information filed under the inpubox Find
-	nactiVolby(false) &apos; save options of search
+	loadPARAMS(false) &apos; save options of search
 	redim TMPPOLE() &apos; reset the array used for search the frames, notes, footnote, a text field
 	addToHistory(1,0) &apos;add to history the F&amp;R expressions
 
@@ -713,7 +713,7 @@ sub BtFindAll
 	if NOT testViewCursor then exit sub &apos;test if Visible cursor isn&apos;t in Comment etc.
 	dim info, curinit, curs, i, j, max, hled, pom, bin, oAnch, oFoot, inFoot, mode
 	info = &quot;&quot;  &apos; information box under the Find
-	nactiVolby(false) &apos; save the options of search
+	loadPARAMS(false) &apos; save the options of search
 	redim TMPPOLE() &apos; reset the array used for search the frames, notes, footnote, a text field
 	addToHistory(1,0) &apos; &apos;add to history the F&amp;R expressions
 
@@ -1060,7 +1060,7 @@ sub BtFindNext
 	ALTsearchFINDLAST = &quot;&quot;
 
 	info = &quot;&quot;  &apos; information box under the Find
-	nactiVolby(false) &apos; save the options of search
+	loadPARAMS(false) &apos; save the options of search
 
 	if FIRSTPASS then
 		redim TMPPOLE() &apos; reset the array used for search the frames, notes, footnote, a text field
@@ -1128,7 +1128,7 @@ sub BtReplace
 	if ALTSlastFOUND&lt;&gt;0 then goto najdiDalsi
 	if ALTSlastFOUND&lt;&gt;0 then exit sub  &apos; no found, end
 
-	nactiVolby(false) &apos; save, actualization of search options
+	loadPARAMS(false) &apos; save, actualization of search options
 	addToHistory(0,1) &apos; &apos;add to history the F&amp;R expressions
 	REPL() = getReplArray(AltSearchPARAMS.repl) &apos; load the array of replacements
 
@@ -1160,7 +1160,7 @@ sub BtReplaceAll
 	oUndoMgr.enterUndoContext(sUndo) &apos;set Undo manager
 	bin = 0  &apos; set the search of uppercases in substrings
 	info = &quot;&quot;  &apos; information box under the Find
-	nactiVolby(false) &apos; save the options of search
+	loadPARAMS(false) &apos; save the options of search
 	TEXTFIELDS = false &apos; for actualization of fields
 	FO1S = &quot;&quot; :  FO2S = &quot;&quot; : FO3S = &quot;&quot;  &apos; reset of the big-blocks strings
 
@@ -2524,25 +2524,8 @@ sub   loadlanguage  &apos; load the string for language
 end sub
 
 
-sub NactiIni
-	dim pom()
-	if ERRcontrol then on error goto konec
-	GlobalScope.BasicLibraries.LoadLibrary(inilib) &apos; load library
-	pom = TmOption
-	oDialog.Model.step = pom(0)  &apos;current bookmark
-	oDialog.model.Cb_cz.state = pom(1)
-	oDialog.model.Tf_lib.text = pom(2)
-	oDialog.model.Cb_zoom.tag = pom(3)
-	redim makra()
-	makra = MacroList
-	exit sub
-konec:
-	beep
-end sub
-
-
 	&apos; load the options of search to work variable to prevent the potential changes in the progress of search
-sub nactiVolby(obnov as boolean)
+sub loadPARAMS(obnov as boolean)
 	if obnov then &apos; reload the values from array ALTsearchINI - AltSearchPARAMS doesn&apos;t funct globally, probably bug
 		AltSearchPARAMS.kcase = ALTsearchINI(3) &apos; oDIAL.model.Ch_case.state &apos; case sensitive
 		AltSearchPARAMS.word = ALTsearchINI(4) &apos; oDIAL.model.Ch_word.state &apos; whole words
