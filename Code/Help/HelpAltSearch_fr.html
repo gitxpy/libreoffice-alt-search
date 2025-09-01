@@ -66,7 +66,7 @@
 
 		<li>Raccourcis clavier pour un usage fréquent&nbsp;:</li>
 		<ol><li> Aller à <b>Outils - Personnaliser... - Clavier</b></li>
-		<li> Dans le champ Catégorie trouvé en cliquant sur <b>Macros OpenOffice.org - User - AltSearch - Altsearch</b></li>
+		<li> Dans le champ Catégorie trouvé en cliquant sur <b>Application Macros - User - AltSearch - Altsearch</b></li>
 		<li> Puis dans le champ <b>Fonction</b> choisir la commande Modifier [et] aller dans raccourcis clavier [et], descendre sur le raccourcis correspondant et cliquer sur le bouton <b>Modifier</b>:</li>
 		  <ul>
 			<li>_AltSearch et mettre le raccourci Ctrl + H (ouvre le dialogue de Rechercher);</li>
@@ -91,7 +91,7 @@
 		<p><strong>\l</strong> - représente le caractère alphabétique&nbsp;; comme <strong>[:alpha:]{1,1}</strong>.</p>
 		<p><strong>\d</strong> - représente le chiffre décimal&nbsp;; comme <strong>[0-9]</strong>.</p>
 		<p><strong>\p</strong> - représente le signe de fin de paragraphe,</p>
-		<p class="cm2">En contradiction au standard d'OOo $, peut représenter aussi un paragraphe vide. Il est possible d'utiliser un joker <strong>+</strong>, <strong>*</strong>, <strong>{min, max}</strong>.</p>
+		<p class="cm2">En contradiction au standard de Writer, <strong>$</strong> peut représenter aussi un paragraphe vide. Il est possible d'utiliser un joker <strong>+</strong>, <strong>*</strong>, <strong>{min, max}</strong>.</p>
 		<p><strong>\p{1,}</strong> - Trouvera la plus proche fin de paragraphe suivi par le bloc illimité de paragraphes vides. Même comme <strong>\p*</strong>.</p>
 		<p><strong>\p{2,4}</strong> - trouvera la plus proche fin de paragraphe suivi au minimum un, maximum trois paragraphes vides, sur l'ensemble au minimum 2 maximum 4 paragraphes l'un après l'autre.</p>
 		<p class="cm2"><dfn>Limitation&nbsp;:</dfn> lent en utilisation séparée. Quelquefois des problèmes lors de recherche en arrière.</p>
@@ -171,7 +171,7 @@
 		<p class="cm2">La liste des attributs de texte disponibles avec leurs valeurs courantes (selon la sélection actuelle) il est possible de la charger à l'aide du bouton <var>Propriété de la sélection</var> et elle s'affichera dans une liste latérale. Une courte description peut être trouvée <a href="https://api.libreoffice.org/docs/idl/ref/dir_02c10f744696785b64d031a937f6c999.html"> ici</a>.</p>
 		<p><strong>L'attribut de caractère similaire</strong> - cette fonction charge n'importe quels attributs du caractère modifiés manuellement (selon la sélection actuelle) pour chercher des zones formatées de façon similaires. Si par exemple le curseur est sur un nom dont le jeu de caractères a été changé manuellement, tous les endroits avec le nom dont le jeu de caractères a été changé seront cherchés - <strong>[:::CharFontName::]</strong>.</p>
 		<p><strong>L'attribut mêmes caractères</strong> - cette fonction charge n'importe quels attributs du caractère manuellement changés (selon la sélection actuelle) pour chercher les zones formatées de la même façon. Si par exemple le curseur est sur un nom dont le jeu de caractères a été changé manuellement, tous les endroits avec le nom dont le jeu de caractères a été changé seront cherchés <strong>[:::CharFontName=Arial::]</strong>.</p>
-		<p class="cm2"><dfn>Limitation&nbsp;:</dfn> Le moteur de recherche d'OOo ne convient pas pour toutes les propriétés de paragraphes et de caractère existants. Leur combinaison ne fonctionne pas comme attendu et correctement.</p>
+		<p class="cm2"><dfn>Limitation&nbsp;:</dfn> Le moteur de recherche de Writer ne convient pas pour toutes les propriétés de paragraphes et de caractère existants. Leur combinaison ne fonctionne pas comme attendu et correctement.</p>
 		<h3><a id="nahraditfr"></a><b>Remplacer</b></h3>
 		<p>La liste déroulante <b>Remplacer</b></p>
 		<p><strong>&amp; \0</strong> - ces deux paramètres signifient la même chose - au remplacement ils représentent tout le texte&nbsp;trouvé.</p>
@@ -181,8 +181,8 @@
 		<p id="frskupiny"><strong>\1 \2 \3 \4 \5 \6 \7 \8 \9</strong> - contenu des sous expressions</p>
 		<p class="cm2">Si l'expression a été recherchée à l'aide de parenthèses (), alors \1 représente le contenu correspondant à la première paire de parenthèses, de même \2 correspond à la deuxième paire () etc., le \9 maximum correspond à la neuvième paire. Seul le premier niveau de parenthèses est valide, les niveaux suivants sont ignorés.</p>
 		<p class="cm2">Exemple&nbsp;:<br>Par l'expression <strong>(\d{1,2})\. *(\d{1,2})\. *\d{2,2}(\d{2,2})</strong> il est possible de trouver la date au format <i>01. 12. 2007</i> et de la remplacer par 07-12-01 par une expression changée en <strong>\3-\2-\1</strong>.</p>
-		<p class="cm2">Si il est nécessaire de désactiver le traitement de la sous-expression (par exemple pour raison de compatibilité avec les expressions régulières dans le standard OOo) il est nécessaire d'insérer l'expression de recherche entière avec une paire supplémentaire de parenthèses (). Sinon tous les autres niveaux de parenthèses imbriquées pour un remplacement seront ignorés.</p>
-		<p class="cm2"><dfn>Limitation&nbsp;:</dfn> l'utilisation de sous chaînes est relativement lente et pas entièrement compatibile avec l'outil rechercher d'origine de OOo.</p>
+		<p class="cm2">Si il est nécessaire de désactiver le traitement de la sous-expression (par exemple pour raison de compatibilité avec les expressions régulières dans le standard Writer) il est nécessaire d'insérer l'expression de recherche entière avec une paire supplémentaire de parenthèses (). Sinon tous les autres niveaux de parenthèses imbriquées pour un remplacement seront ignorés.</p>
+		<p class="cm2"><dfn>Limitation&nbsp;:</dfn> l'utilisation de sous chaînes est relativement lente et pas entièrement compatible avec l'outil Rechercher de Writer.</p>
 		<p class="cm2">L'incompatibilité avec le joker de recherche tout de suite derrière une sous expression <strong>(opak)*</strong> est due au principe de recherche séquentielle de blocs consécutifs de textes, <a href="#frskupiny0">voir ici</a>. Dans ces cas les fonctions <var>Nombre</var> et <var>Rechercher tout</var> retournent le vrai nombre pendant que l'autre sans changer le mode de compatibilité ne trouvera rien. Dans les cas plus compliqués il sera nécessaire d'examiner le comportement, et de vérifier expérimentalement.</p>
 		<p><strong>\p</strong> - insère un paragraphe vide</p>
 		<p><strong>\t</strong> - insère une tabulation (<strong>\x0009 \#9</strong>)</p>
@@ -239,7 +239,7 @@
 		<p><strong>\f</strong> - conserve le format</p>
 		<p class="cm2">Si dans l'expression remplacée est utilisé <strong>&mp;</strong> ou <strong>\0</strong>, Remplacer sera supérieur au presse-papiers. Si le texte trouvé contient des champs de texte, des notes, des références etc, ces objets seront conservés dans l'état original.</p>
 		<p><strong>\R</strong> - Redirige l'expression de remplacement vers un fichier texte</p>
-		<p class="cm2">Cette option provoque la sortie de l'expression remplacée vers un nouveau fichier.ODT au lieu de faire le remplacement à l'endroit trouvé. Le fichier original ne doit pas être modifié. Il est possible de saisir le nom du cadre du fichier à l'aide de <strong>R{filename}</strong>. Le nom doit avoir précisément le format comme la fenêtre d'OOo l'inclut «- OpenOffice.org&nbsp;Writer». Les enregistrements sont toujours ajoutés à la fin du fichier.</p>
+		<p class="cm2">Cette option provoque la sortie de l'expression remplacée vers un nouveau fichier.ODT au lieu de faire le remplacement à l'endroit trouvé. Le fichier original ne doit pas être modifié. Il est possible de saisir le nom du cadre du fichier à l'aide de <strong>R{filename}</strong>. Le nom doit avoir précisément le format comme la fenêtre de Writer l'inclut «- LibreOffice&nbsp;Writer». Les enregistrements sont toujours ajoutés à la fin du fichier.</p>
 		<p class="cm2">Exemple&nbsp;: Si l'expression de recherche a été recherchée à l'aide de <strong>[:::HyperLinkURL::]</strong> et l'expression remplacée était <strong>Link</strong><strong>\i,</strong><strong>page \I: &amp; (URL: \u)\p\R</strong>, alors après avoir utilisé le bouton <var>Remplacer tout</var> il sera imprimé dans le nouveau dossier tous les hyperliens trouvés dans le dossier original, dans la forme suivante&nbsp;: <i>Link</i><i>1, page 1: textOfHyperlink (URL: URLaddress)</i> dans des paragraphes séparés.</p>
 		<p>La boîte de bouton et Liste <b>Propriétés de la sélection</b></p>
 		<p>À l'aide du bouton <var>Propriétés de la sélection</var>, il est possible de mettre à jour la liste des propriétés et de leurs valeurs des objets sélectionnés. Il est possible de naviguer et de sélectionner dans la zone de liste située à côté.</p>

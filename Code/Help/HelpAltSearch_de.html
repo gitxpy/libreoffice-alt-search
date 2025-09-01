@@ -39,7 +39,7 @@
 			<p>Notes from translators</p>
 		</details>
 
-		<h3 id="hlavnifd">Was diese Erweiterung im Vergleich zum Standard-OOo-Dialog bietet:</h3>
+		<h3 id="hlavnifd">Was diese Erweiterung im Vergleich zum Standard-Writer-Dialog bietet</h3>
 		<ul>
 			<li>Schnelle Auswahl mit Voreinstellungen (reguläre und Erweiterte Ausdrücke)</li>
 			<li>Zählen gefundener Elemente mit der Schaltfläche <var>Zählen</var></li>
@@ -80,20 +80,20 @@
 		</ul>
 		<p>Tipp für Tastatur-Kürzel bei häufiger Benutzung:</p>
 		<p><b>1.</b> Dialog <b>Extras</b><b>- Anpassen - Tastatur</b> öffnen</p>
-		<p><b>2.</b> Im Feld <b>Bereich</b> im unteren Teil des Feldes <b>OpenOffice.org Makros</b><b>- user - AltSearch – AltSearch</b> anklicken</p>
+		<p><b>2.</b> Im Feld <b>Bereich</b> im unteren Teil des Feldes <b>App. Makros</b><b>- user - AltSearch – AltSearch</b> anklicken</p>
 		<p><b>3.</b> Im Feld <b>Funktion</b> die im Folgenden genannten Funktionen wählen, im Feld <b>Tastenkombinationen</b> das genannte Tastatur-Kürzel markieren und mit <b>Speichern</b> bestätigen:<br><i>_AltSearch</i> und Tastatur-Kürzel <i>Ctrl+H</i> zuordnen (Such-Dialog öffnen);<br><i>_FindNext</i> und Tastatur-Kürzel <i>Ctrl+L</i> zuordnen (nächster Fund des Suchbegriffs <b>nach</b> der Cursor-Position, ohne Öffnen des Dialogs);<br><i>_FindBack</i> und Tastatur-Kürzel <i>Ctrl+Shift+L</i> zuordnen (nächster Fund des Suchbegriffs <b>vor</b> der Cursor-Position, ohne Öffnen des Dialogs);</p>
 		<h3><img src="img/altsearch_main_de.png" width="476" height="342" alt="PNG">Auswahlfeld Menü (über dem Eingabefeld Suchen &amp; Ersetzen)</h3>
 		<p>Enthält oft benutzte oder komplizierte reguläre Ausdrücke oder Parameter für die Eingabe. Nach Auswahl eines Eintrags werden die zugehörigen Parameter in das Eingabefeld (oder in beide Felder) übertragen. Sie können auf verschiedene Wiese eingefügt werden: an Anfang oder Ende, an die Cursor-Position oder anstelle des gesamten Original-Textes. Gleichzeitig ist der Schalter "Regulärer Ausdruck" aktiviert.</p>
 		<h3><a id="hledatde"></a>Suchen:</h3>
 		<p>Auswahlfeld <b>Regulär</b></p>
-		<p class="cm2">Enthält hilfreiche reguläre Ausdrücke. Ihre Beschreibung findet sich in der OOo-Hilfe unter der Bezeichnung <a href="vnd.sun.star.help://sbasic/text%2Fshared%2F01%2F02100001.xhp?Language=de&amp;System=UNIX"> Liste der regulären Ausdrücke</a>.</p>
-		<p class="cm2" id="deskupiny0"><dfn>Einschränkungen:</dfn> Syntax der verwendeten regulären Ausdrücke ist nicht voll kompatibel mit der von OOo benutzten. Probleme gibt es vor Allem bei der Suche, bei Verwendung von Platzhaltern wie <strong>* + ? {n,n}</strong> nach Zeichenketten in Klammern ().<br>Z.B. <strong>(Mi)?ster</strong> wird nicht gefunden (wenngleich mit der Schaltfläche <var>Zählen</var> die korrekte Anzahl ausgegeben wird). Wird nach <strong>(.*)any</strong> oder <strong>(.+)any</strong> gesucht, so wird die jüngste passende Entsprechung gefunden, im Gegensatz zum OOo-Standard, der nach der ältesten sucht.</p>
+		<p class="cm2">Enthält hilfreiche reguläre Ausdrücke. Ihre Beschreibung findet sich in der LibreOffice-Hilfe unter der Bezeichnung <a href="https://help.libreoffice.org/latest/de/text/shared/01/02100001.html?&DbPAR=WRITER"> Liste der regulären Ausdrücke</a>.</p>
+		<p class="cm2" id="deskupiny0"><dfn>Einschränkungen:</dfn> Syntax der verwendeten regulären Ausdrücke ist nicht voll kompatibel mit der von Writer benutzten. Probleme gibt es vor Allem bei der Suche, bei Verwendung von Platzhaltern wie <strong>* + ? {n,n}</strong> nach Zeichenketten in Klammern ().<br>Z.B. <strong>(Mi)?ster</strong> wird nicht gefunden (wenngleich mit der Schaltfläche <var>Zählen</var> die korrekte Anzahl ausgegeben wird). Wird nach <strong>(.*)any</strong> oder <strong>(.+)any</strong> gesucht, so wird die jüngste passende Entsprechung gefunden, im Gegensatz zum Writer-Standard, der nach der ältesten sucht.</p>
 		<p class="cm2">Wenn die Kompatibilität gewahrt werden muss, ist es möglich, den gesamten Suchbegriff zusätzlich in Klammern einzuschließen: <strong>((Mi)?ster)</strong>. Allerdings geht dadurch die Möglichkeit verloren, den Unter-Suchbegriff in Ersetzungen als Referenz zu verwenden, <strong>\#</strong> wobei # die Referenz-Nummer (max. 9) des Unter-Suchbegriffs darstellt. Ebenso ist es nicht möglich, gleichzeitig den Unter-Suchbegriff als Referenz (festgelegt durch Klammern <strong>()</strong>) sowohl für Suche als auch für Ersetzung zu benutzen. Siehe auch <a href="#deskupiny">Unter-Suchbegriffe</a>.</p>
 		<p class="cm2">Weitere Parameter für spezielle Platzhalter:</p>
 		<p class="cm2"><strong>\l</strong> – steht für jedes alphabetische Zeichen; ebenso wie <strong>[:alpha:]{1,1}</strong>.</p>
 		<p class="cm2"><strong>\d –</strong> steht für Dezimalzahlen; ebenso wie <strong>[0-9]</strong>.</p>
 		<p class="cm2"><strong>\p –</strong> steht für das Absatz-Ende,</p>
-		<p class="cm4">im Gegensatz zum OOo-Standard $, steht auch für leere Absätze. Die Platzhalter <strong>+</strong>, <strong>*</strong>, <strong>{min,max}</strong> können verwendet werden.</p>
+		<p class="cm4">im Gegensatz zum Writer-Standard $, steht auch für leere Absätze. Die Platzhalter <strong>+</strong>, <strong>*</strong>, <strong>{min,max}</strong> können verwendet werden.</p>
 		<p class="cm4"><strong>\p{1,}</strong> - findet das nächst stehende Absatz-Ende, dem ein unbegrenzter Block leerer Absätze folgt. Genau wie <strong>\p*</strong>.</p>
 		<p class="cm4"><strong>\p{2,4}</strong> - findet das nächst stehende Absatz-Ende, dem mindestens einer, maximal drei leere Absätze folgen, insgesamt also mindestens zwei, maximal vier Absätze nacheinander..</p>
 		<p class="cm4"><dfn>Einschränkungen:</dfn> Langsam bei separater Anwendung. Manchmal Probleme bei der Rückwärts-Suche.</p>
@@ -172,7 +172,7 @@
 		<p class="cm2">Liste verfügbarer Text-Attribute mit ihren aktuellen Werten (bezogen auf die aktuelle Auswahl).Sie können mit der Schaltfläche <var>Eigenschaften&nbsp;aktualisieren</var> geladen werden und werden im Auswahlfeld angezeigt. Eine kurze Beschreibung findet man <a href="https://api.libreoffice.org/docs/idl/ref/dir_02c10f744696785b64d031a937f6c999.html"> hier</a> (nur englisch).</p>
 		<p class="cm2"><strong>Similar character attribute –</strong> diese Funktion lädt alle manuell geänderten Zeichen-Attribute (bezogen auf die aktuelle Auswahl) zur Suche nach ähnlichen Formatierungen. Wenn z.B. der Cursor auf einen manuell geänderten Font-Namen gesetzt ist, werden alle Stellen mit geändertem Font-Namen gefunden – gesucht wird nach <strong>[:::CharFontName::]</strong>.</p>
 		<p class="cm2"><strong>Same characters attribute</strong> - diese Funktion lädt alle manuell geänderten Zeichen-Attribute (bezogen auf die aktuelle Auswahl) zur Suche nach genau gleichen Formatierungen. Wenn z.B. der Cursor auf einen manuell geänderten Font-Namen gesetzt ist, werden alle Stellen mit geändertem Font-Namen und <b>genau demselben</b> Font-Namen gefunden - gesucht wird nach <strong>[:::CharFontName=Arial::]</strong>.</p>
-		<p class="cm2"><dfn>Einschränkungen:</dfn> Nicht alle Absätze und Absatz-Eigenschaften werden von der OOo-Such-Funktion unterstützt. Nicht alle Kombinationen funktionieren erwartungsgemäß und zufriedenstellend.</p>
+		<p class="cm2"><dfn>Einschränkungen:</dfn> Nicht alle Absätze und Absatz-Eigenschaften werden von der Writer-Such-Funktion unterstützt. Nicht alle Kombinationen funktionieren erwartungsgemäß und zufriedenstellend.</p>
 		<h3 id="nahraditde">Ersetzen:</h3>
 		<p>Auswahlfeld <b>Ersetze</b></p>
 		<p class="cm2"><strong>&amp; \0 –</strong> beide Parameter haben dieselbe Bedeutung – nach Ersetzung repräsentieren sie den gesamten gefundenen Text</p>
@@ -183,8 +183,8 @@
 		<p class="cm2" id="deskupiny"><strong>\1 \2 \3 \4 \5 \6 \7 \8 \9 –</strong> Inhalte von „Unter-Suchbegriff“</p>
 		<p class="cm4">Wenn der Suchbegriff in Klammern () gesetzt war, so repräsentiert <strong>\1</strong> den zum ersten Klammernpaar gehörenden Inhalt, sinngemäß <strong>\2</strong> den des zweiten () usw., maximal <strong>\9</strong> für das neunte Paar. Nur die erste Klammer-Ebene gilt, weitere verschachtelte Klammern werden ignoriert.</p>
 		<p class="cm4">Beispiel:<br>Mit dem Ausdruck <strong>(\d{1,2})\. *(\d{1,2})\. *\d{2,2}(\d{2,2})</strong> findet man Daten im Format <i>01. 12. 2007</i> und ersetzt mit 07-12-01 durch den Ersetzungs-Ausdruck <strong>\3-\2-\1</strong>.</p>
-		<p class="cm4">Wenn die Funktion <i>Unter-Suchbegriff</i> ausgeschaltet werden muss (z.B. wegen der Kompatibilität zu regulären Ausdrücken im OOo-Standard) muss der gesamte Such-Begriff in zusätzliche Klammern () gesetzt werden. Dadurch werden alle verschachtelten Klammer-Ebenen zur Ersetzung ignoriert.</p>
-		<p class="cm4"><dfn>Einschränkungen:</dfn> Die Funktion <i>Unter-Suchbegriff</i> ist relativ langsam und nicht voll kompatibel mit der Original-OOo-.Suche.</p>
+		<p class="cm4">Wenn die Funktion <i>Unter-Suchbegriff</i> ausgeschaltet werden muss (z.B. wegen der Kompatibilität zu regulären Ausdrücken im Writer-Standard) muss der gesamte Such-Begriff in zusätzliche Klammern () gesetzt werden. Dadurch werden alle verschachtelten Klammer-Ebenen zur Ersetzung ignoriert.</p>
+		<p class="cm4"><dfn>Einschränkungen:</dfn> Die Funktion <i>Unter-Suchbegriff</i> ist relativ langsam und nicht voll kompatibel mit der Original-Writer-.Suche.</p>
 		<p class="cm4">Inkompatibilität mit Platzhaltern dirket nach dem Unter-Suchbegriff <strong>(opak)*</strong> ist bedingt durch die grundsätzlich sequentielle Suche nach folgenden Text-Blöcken, siehe <a href="#deskupiny0">hier</a>. In diesen Fällen gibt die Funktion <var>Zählen</var> und <var>Suche alle</var> die korrekte Anzahl an während ohne Einstellung des Kompatibilitäts-Modus nichts gefunden wird. In komplizierteren Fällen muss das Verhalten ausgetestet und experimentell ermittelt werden.</p>
 		<p class="cm2"><strong>\p</strong> - fügt leeren Absatz ein</p>
 		<p class="cm2"><strong>\t</strong> - fügt Tabulator ein (<strong>\x0009 \#9</strong>)</p>
@@ -240,7 +240,7 @@
 		<p class="cm2"><strong>\f –</strong> behält Format bei</p>
 		<p class="cm4">Wenn im ersetzen Ausdruck <strong>&mp;</strong> oder <strong>\0</strong> verwendet werden, findet die Ersetzung über die Zwischenablage statt. Wenn der gefundene Text Text-Felder, Notizen, Referenzen usw. enthält, wird deren Formatierung beibehalten.</p>
 		<p class="cm2"><strong>\R –</strong> Umleitung von Ersetzungen in andere Text-Dateien</p>
-		<p class="cm4">Diese Option schreibt den ersetzten Ausdruck in eine neue Datei. ODT anstelle Ersetzung an der gefundenen Stelle. Die Original-Datei bleibt unverändert. Der Datei-Name wird eingegeben mit <strong>\R{jmeno}</strong>. Der Name muss exakt das Format haben wie im OOo-Fenster angezeigt, einschließlich " - OpenOffice.org Writer". Einfügung stets am Ende der Datei.</p>
+		<p class="cm4">Diese Option schreibt den ersetzten Ausdruck in eine neue Datei. ODT anstelle Ersetzung an der gefundenen Stelle. Die Original-Datei bleibt unverändert. Der Datei-Name wird eingegeben mit <strong>\R{jmeno}</strong>. Der Name muss exakt das Format haben wie im Writer-Fenster angezeigt, einschließlich " - LibreOffice.org Writer". Einfügung stets am Ende der Datei.</p>
 		<p class="cm4">Beispiel:<br>Wenn der Such-Begriff gesucht wurde mit Hilfe von <strong>[:::HyperLinkURL::]</strong> und mit dem Ersetzungs-Begriff <strong>Link \i, page \I: &amp; (URL: \u)\p\R</strong>, so werden nach Anwendung Schaltfläche <var>Ersetze alle</var> alle in der Original-Datei gefundenen Hyperlinks in eine neue Datei geschrieben, in folgender Form: <i>Link</i><i>1, page 1: textOfHyperlink (URL: URLaddress)</i> in jeweils eigene Absätze.</p>
 		<p>Schaltfläche und Auswahlfeld <b>Eigenschaften aktualisieren</b></p>
 		<p class="cm2">Mit Hilfe der Schaltfläche <var>Eigenschaften&nbsp;aktualisieren</var> können Listen (einiger) Eigenschaften und ihrer Werte des ausgewählten Objekts aktualisiert werden.</p>
