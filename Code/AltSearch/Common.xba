@@ -90,10 +90,10 @@ sub FindNextInBlock(find(), fromCur, blockCur as object, fcount as boolean, mark
 	if ERRcontrol then on error goto Errobsluha
 	HleDesc = ALTsearchDOC.createReplaceDescriptor()
 
-	if AltSearchPARAMS.kcase = 1 then HleDesc.SearchCaseSensitive = true
-	if AltSearchPARAMS.word = 1 then HleDesc.SearchWords = true
-	if AltSearchPARAMS.styl = 1 then HleDesc.SearchStyles = true
-	if AltSearchPARAMS.reg = 1 then HleDesc.SearchRegularExpression = true
+	if ALTsearchPARAMS.kcase = 1 then HleDesc.SearchCaseSensitive = true
+	if ALTsearchPARAMS.word = 1 then HleDesc.SearchWords = true
+	if ALTsearchPARAMS.styl = 1 then HleDesc.SearchStyles = true
+	if ALTsearchPARAMS.reg = 1 then HleDesc.SearchRegularExpression = true
 	if find(0).atr = 1 then
 		HleDesc.ValueSearch = true &apos; = True searches the exact value prop; False searches only the occurrence of properties
 	else
@@ -109,10 +109,10 @@ sub FindNextInBlock(find(), fromCur, blockCur as object, fcount as boolean, mark
 
 	&apos; count the occurrences quickly, must not be a block
 	FOUNDall = 0  &apos; set to zero, if the search will be used further then it will be the object
-	if fcount and (AltSearchPARAMS.csele = 0) then &apos; switch isn&apos;t active so search in block
+	if fcount and (ALTsearchPARAMS.csele = 0) then &apos; switch isn&apos;t active so search in block
 		&apos; and must not be used spec. functions \p \m \c, groups, potentially according to styles (.atr=3)
 		if (ubound(find())=0)and(find(0).pmode=0)and(find(0).pgBreak=0)and(find(0).pstyl=&quot;&quot;)and(find(0).atr&lt;3) then
-			if AltSearchPARAMS.zpet = 1 then HleDesc.SearchBackwards = true  &apos; moved more down
+			if ALTsearchPARAMS.zpet = 1 then HleDesc.SearchBackwards = true  &apos; moved more down
 			HleDesc.SearchString = find(0).hled &apos; searched string
 			FOUNDall = ALTsearchDOC.findAll(HleDesc) &apos; find all
 			nCOUNT = nCOUNT+FOUNDall.count
@@ -137,7 +137,7 @@ sub FindNextInBlock(find(), fromCur, blockCur as object, fcount as boolean, mark
 	lgrow = find(0).lgrw
 	rgrow = find(0).rgrw
 
-	if AltSearchPARAMS.zpet = 1 then &apos; search reversed cursor at backward search
+	if ALTsearchPARAMS.zpet = 1 then &apos; search reversed cursor at backward search
 		fromCur.collapseToStart
 	else
 		fromCur.collapseToEnd
@@ -149,7 +149,7 @@ sub FindNextInBlock(find(), fromCur, blockCur as object, fcount as boolean, mark
 hledejBlokZnovu:
 
 	redim ALTsearchSKUP(14) &apos; delete the array with groups
-	if AltSearchPARAMS.zpet = 1 then &apos; set for backward direction
+	if ALTsearchPARAMS.zpet = 1 then &apos; set for backward direction
 		HleDesc.SearchBackwards = true
 		finkon = finzac  &apos;for the case of non-found next parts at backward search
 	end if
@@ -182,7 +182,7 @@ hledejBlokZnovu:
 		&apos; search of character style inside the found paragraph - .atr=4 - it finds any part of text of entered style, also the anchors and fields
 		if (not IsNull(Found)) and (find(0).atr = 4) then  &apos; the next isn&apos;t found - end
 			&apos; backward isn&apos;t supported
-			if AltSearchPARAMS.zpet = 1 then
+			if ALTsearchPARAMS.zpet = 1 then
 				FindNextInBlock = -2
 				exit sub
 			end if
@@ -234,7 +234,7 @@ hledejBlokZnovu:
 							if fcount then
 
 								&apos; detect if we aren&apos;t behind the end of block
-								if AltSearchPARAMS.csele=1 then  &apos; search inside the block - after end of block = end
+								if ALTsearchPARAMS.csele=1 then  &apos; search inside the block - after end of block = end
 									if (-1 = blockCur.text.compareRegionEnds(TextPortion, blockCur.getEnd)) then goto konbloku
 								end if
 
@@ -256,7 +256,7 @@ hledejBlokZnovu:
 							if fcount then
 
 								&apos; detect if we aren&apos;t behind the end of block
-								if AltSearchPARAMS.csele=1 then  &apos; search inside the block - after end of block = end
+								if ALTsearchPARAMS.csele=1 then  &apos; search inside the block - after end of block = end
 									if (-1 = blockCur.text.compareRegionEnds(TextPortion, blockCur.getEnd)) then goto konbloku
 								end if
 
@@ -289,7 +289,7 @@ chstylNalezen:
 		&apos; the search of words selected for Index inside the fond paragraph - .atr = 10 - any part of text of current style (also of anchor or field) is searched
 		if (not IsNull(Found)) and (find(0).atr = 10) then  &apos; the next isn&apos;t found - end
 			&apos; backward isn&apos;t supported
-			if AltSearchPARAMS.zpet = 1 then
+			if ALTsearchPARAMS.zpet = 1 then
 				FindNextInBlock = -2
 				exit sub
 			end if
@@ -338,7 +338,7 @@ chstylNalezen:
 							if fcount then
 
 								&apos; detect if we aren&apos;t behind the end of block
-								if AltSearchPARAMS.csele=1 then  &apos; search inside the block - after end of block = end
+								if ALTsearchPARAMS.csele=1 then  &apos; search inside the block - after end of block = end
 									if (-1 = blockCur.text.compareRegionEnds(TextPortion, blockCur.getEnd)) then goto konbloku
 								end if
 
@@ -362,7 +362,7 @@ chstylNalezen:
 							if fcount then
 
 								&apos; detect if we aren&apos;t behind the end of block
-								if AltSearchPARAMS.csele=1 then  &apos; search inside the block - after end of block = end
+								if ALTsearchPARAMS.csele=1 then  &apos; search inside the block - after end of block = end
 									if (-1 = blockCur.text.compareRegionEnds(TextPortion, blockCur.getEnd)) then goto konbloku
 								end if
 
@@ -404,10 +404,10 @@ VyjimkaNalezeno:
 		end if
 
 		&apos; the block was chosen and it is allowed the search in block, so alert to the end of block
-		if AltSearchPARAMS.csele=1 then
+		if ALTsearchPARAMS.csele=1 then
 
 			mistoChyby=1 &apos;the distinguishing of place of bug of comparison of region 1=search in block; 2=search of parts
-			if AltSearchPARAMS.zpet = 1 then &apos; various comparison of region for backward search
+			if ALTsearchPARAMS.zpet = 1 then &apos; various comparison of region for backward search
 				if IsNull(Found) then goto zacbloku: &apos; not found, start
 				if (1 = blockCur.text.compareRegionStarts(Found, blockCur.getStart)) then
 zacbloku:
@@ -442,7 +442,7 @@ pokracujZaBlok:
 		if IsNull(Found) then  &apos; the next isn&apos;t found - end
 nofound:
 			prCURS = ALTsearchDOC.text.createTextCursor()
-			if AltSearchPARAMS.zpet = 1 then &apos; search reversed cursor at backward search
+			if ALTsearchPARAMS.zpet = 1 then &apos; search reversed cursor at backward search
 				prCURS.gotorange(ALTsearchDOC.text.getEnd(),false) &apos; cursor to the end of document
 				FindNextInBlock = -2
 				exit sub
@@ -596,7 +596,7 @@ jakobyNalezeno:
 
 	&apos; if the hyperlink is found then detect the URL contains entered substring
 	if find(0).pstyl&lt;&gt;&quot;&quot; then  &apos; searched substring saved in .pstyl
-		if AltSearchPARAMS.kcase=0 then &apos;bin=1 instr(,,bin) ignores case sensitivity, BIN=0 binary comparison
+		if ALTsearchPARAMS.kcase=0 then &apos;bin=1 instr(,,bin) ignores case sensitivity, BIN=0 binary comparison
 			n = instr(found.HyperLinkURL,find(0).pstyl)     &apos;not functional from version 2.4 with finkon  n = instr(finkon.HyperLinkURL,find(0).pstyl)
 		else  &apos; respect case sensitivity
 			n = instr(1,found.HyperLinkURL,find(0).pstyl,0)  &apos;not functional from version 2.4 with finkon  n = instr(1,finkon.HyperLinkURL,find(0).pstyl,0)
@@ -804,7 +804,7 @@ sub getCapitalType(pCurs as object) as byte
 	on error goto konec
 	pom = pCurs.string
 	if pom = &quot;&quot; then exitsub
-	if AltSearchPARAMS.preservecap &lt;&gt; 1 then exit sub  &apos; not active the choice = away
+	if ALTsearchPARAMS.preservecap &lt;&gt; 1 then exit sub  &apos; not active the choice = away
 
 	for i = 1 to len(pom)
 		ch = mid(pom,i,1)
@@ -959,7 +959,7 @@ function getFindArray(byval find as string, skupiny as boolean) as  tFind
 	&apos;3. search of blocks of paragraphs before 1st text:  .hled = &quot;text&quot;   .pmode = -1  + .pmin a .pmax
 	&apos;4. search the Break of page/column: .hled = &quot;text on Break&quot; nebo .hled = &quot;$&quot; any paragraph;  .pgBreak = 1 or 2
 
-	if AltSearchPARAMS.reg &lt;&gt; 1 then &apos; no regexps
+	if ALTsearchPARAMS.reg &lt;&gt; 1 then &apos; no regexps
 		pom(0).hled = find
 		getFindArray() = pom()
 		exit function
@@ -1029,7 +1029,7 @@ function getFindArray(byval find as string, skupiny as boolean) as  tFind
 			if left(cmd,18) = &quot;NumberingStyleName&quot; then
 				pom(0).cmd = &quot;&quot;
 				if find = &quot;&quot; then
-					if AltSearchPARAMS.zpet = 1 then
+					if ALTsearchPARAMS.zpet = 1 then
 						find = &quot;^.*&quot; &apos; search whole paragraph if isn&apos;t entered
 					else
 						find = &quot;.*&quot; &apos; search whole paragraph if isn&apos;t entered
@@ -1054,7 +1054,7 @@ function getFindArray(byval find as string, skupiny as boolean) as  tFind
 			if left(cmd,13) = &quot;ParaStyleName&quot; then
 				pom(0).cmd = &quot;&quot;
 				if find = &quot;&quot; then
-					if AltSearchPARAMS.zpet = 1 then
+					if ALTsearchPARAMS.zpet = 1 then
 						find = &quot;^.*&quot; &apos; search whole paragraph if isn&apos;t entered
 					else
 						find = &quot;.*&quot; &apos; search whole paragraph if isn&apos;t entered
@@ -1551,14 +1551,14 @@ sub getIndexBookmark(mode as integer, idx, rest1 as string) as long
 	oTFr = ALTsearchDOC.getBookmarks
 	names = oTFr.ElementNames &apos; array with the names of frames
 	count = oTFr.count
-	if AltSearchPARAMS.kcase=0 then bin = 1  &apos; bin=1 instr(,,bin) isn&apos;t case sensitive; BIN=0 is binary comparison
+	if ALTsearchPARAMS.kcase=0 then bin = 1  &apos; bin=1 instr(,,bin) isn&apos;t case sensitive; BIN=0 is binary comparison
 
 	if mode = 2 then  &apos; find substring rest in name
 		if rest = &quot;&quot; then  &apos;find next
 			getIndexBookmark = idx
 			exit sub
 		end if
-		if AltSearchPARAMS.zpet = 1 then  &apos; backward search
+		if ALTsearchPARAMS.zpet = 1 then  &apos; backward search
 			for i = idx-1 to 0 step -1
 				if instr(1,names(i), rest,bin)&gt;0 then  &apos; substring found
 					getIndexBookmark = i
@@ -1602,7 +1602,7 @@ sub getIndexBookmark(mode as integer, idx, rest1 as string) as long
 			else &apos; found the nearest next, previous
 				&apos; for now search from start/end
 hledejBlizke:
-				if AltSearchPARAMS.zpet = 1 then &apos; backward
+				if ALTsearchPARAMS.zpet = 1 then &apos; backward
 					getIndexBookmark = ubound(names())+1 &apos; last
 				else
 					getIndexBookmark = -1 &apos; first
@@ -1628,7 +1628,7 @@ sub getIndexComment(mode as integer, idx, rest as string) as long
 	dim i as long, bin
 	dim oTFs, oTF, nam, names, count
 
-	if AltSearchPARAMS.kcase=0 then bin = 1  &apos; bin=1 instr(,,bin) isn&apos;t case sensitive; BIN=0 is binary comparison
+	if ALTsearchPARAMS.kcase=0 then bin = 1  &apos; bin=1 instr(,,bin) isn&apos;t case sensitive; BIN=0 is binary comparison
 
 	if ubound(TMPPOLE())=-1 then  &apos;1. pass: load tmp array with notes
 		redim TMPPOLE()
@@ -1654,7 +1654,7 @@ sub getIndexComment(mode as integer, idx, rest as string) as long
 			getIndexComment = idx
 			exit sub
 		end if
-		if AltSearchPARAMS.zpet = 1 then  &apos; backward search
+		if ALTsearchPARAMS.zpet = 1 then  &apos; backward search
 			for i = idx-1 to 0 step -1
 				if instr(1,TMPPOLE(i).content, rest,bin)&gt;0 then  &apos; substring found
 					getIndexComment = i
@@ -1697,7 +1697,7 @@ sub getIndexComment(mode as integer, idx, rest as string) as long
 			else &apos; found the nearest next, previous
 				&apos; found the nearest next, previous  &apos; for now search from start/end
 hledejBlizke:
-				if AltSearchPARAMS.zpet = 1 then &apos; backward
+				if ALTsearchPARAMS.zpet = 1 then &apos; backward
 					getIndexComment = ubound(TMPPOLE())+1 &apos; last
 				else
 					getIndexComment = -1 &apos; first
@@ -1726,7 +1726,7 @@ sub getIndexPicture(mode as integer, idx, rest1 as string) as long
 	&apos;and I hope it is really reversed order and not some chaotic order !
 	
 	count = oTfr.count
-	if AltSearchPARAMS.kcase=0 then bin = 1  &apos; bin=1 instr(,,bin) isn&apos;t case sensitive; BIN=0 is binary comparison
+	if ALTsearchPARAMS.kcase=0 then bin = 1  &apos; bin=1 instr(,,bin) isn&apos;t case sensitive; BIN=0 is binary comparison
 
 	if mode = 2 then  &apos; find substring rest in name
 		&apos; search in name or Alt text??
@@ -1744,7 +1744,7 @@ sub getIndexPicture(mode as integer, idx, rest1 as string) as long
 			getIndexPicture = idx
 			exit sub
 		end if
-		if AltSearchPARAMS.zpet = 1 then  &apos; backward search
+		if ALTsearchPARAMS.zpet = 1 then  &apos; backward search
 			for i = idx-1 to 0 step -1
 				if ((instr(1,names(i), rest,bin)&gt;0) and (rest&lt;&gt;&quot;&quot;))   OR (Alttext and (names(i)= &quot;&quot;) and (rest= &quot;&quot;))  then &apos; substring found - 2nd condition after OR for the search of empty string in alt. text
 					getIndexPicture = i
@@ -1777,7 +1777,7 @@ sub getIndexPicture(mode as integer, idx, rest1 as string) as long
 			&apos; found the nearest next, previous
 			&apos; for now search from start/end
 hledejBlizke:
-			if AltSearchPARAMS.zpet = 1 then &apos; backward
+			if ALTsearchPARAMS.zpet = 1 then &apos; backward
 				getIndexPicture = ubound(names())+1 &apos; last
 			else
 				getIndexPicture = -1 &apos; first
@@ -1812,14 +1812,14 @@ sub getIndexTextFrame(mode as integer, idx, rest as string) as long
 	reverseArray(names) &apos;fix: bug #59  https://github.com/gitxpy/libreoffice-alt-search/issues/59
 	
 	count = oTFr.count
-	if AltSearchPARAMS.kcase=0 then bin = 1  &apos; bin=1 instr(,,bin) isn&apos;t case sensitive; BIN=0 is binary comparison
+	if ALTsearchPARAMS.kcase=0 then bin = 1  &apos; bin=1 instr(,,bin) isn&apos;t case sensitive; BIN=0 is binary comparison
 
 	if mode = 2 then  &apos; find substring rest in name
 		if rest = &quot;&quot; then  &apos;find next
 			getIndexTextFrame = idx
 			exit sub
 		end if
-		if AltSearchPARAMS.zpet = 1 then  &apos; backward search
+		if ALTsearchPARAMS.zpet = 1 then  &apos; backward search
 			for i = idx-1 to 0 step -1
 				if instr(1,names(i), rest,bin)&gt;0 then  &apos; substring found
 					getIndexTextFrame = i
@@ -1863,7 +1863,7 @@ sub getIndexTextFrame(mode as integer, idx, rest as string) as long
 			else &apos; found the nearest next, previous
 				&apos; for now search from start/end
 hledejBlizke:
-				if AltSearchPARAMS.zpet = 1 then &apos; backward
+				if ALTsearchPARAMS.zpet = 1 then &apos; backward
 					getIndexTextFrame = ubound(names())+1 &apos; last
 				else
 					getIndexTextFrame = -1 &apos; first
@@ -1896,14 +1896,14 @@ sub getIndexTextTable(mode as integer, idx, rest as string) as long
 	oTFr = ALTsearchDOC.getTextTables
 	names = oTFr.ElementNames &apos; array with the names of tables
 	count = oTFr.count
-	if AltSearchPARAMS.kcase=0 then bin = 1  &apos; bin=1 instr(,,bin) isn&apos;t case sensitive; BIN=0 is binary comparison
+	if ALTsearchPARAMS.kcase=0 then bin = 1  &apos; bin=1 instr(,,bin) isn&apos;t case sensitive; BIN=0 is binary comparison
 
 	if mode = 2 then  &apos; find substring rest in name
 		if rest = &quot;&quot; then  &apos;find next
 			getIndexTextTable = idx
 			exit sub
 		end if
-		if AltSearchPARAMS.zpet = 1 then  &apos; backward search
+		if ALTsearchPARAMS.zpet = 1 then  &apos; backward search
 			for i = idx-1 to 0 step -1
 				if instr(1,names(i), rest,bin)&gt;0 then  &apos; substring found
 					getIndexTextTable = i
@@ -1947,7 +1947,7 @@ sub getIndexTextTable(mode as integer, idx, rest as string) as long
 			else &apos; found the nearest next, previous
 hledejBlizke:
 				&apos; for now search from start/end
-				if AltSearchPARAMS.zpet = 1 then &apos; backward
+				if ALTsearchPARAMS.zpet = 1 then &apos; backward
 					getIndexTextTable = ubound(names())+1 &apos; last
 				else
 					getIndexTextTable = -1 &apos; first
@@ -1972,7 +1972,7 @@ sub getIndexTField(mode as integer, idx, rest as string) as long
 	dim i as long, bin
 	dim oTFs, oTF, nam, names, count
 
-	if AltSearchPARAMS.kcase=0 then bin = 1  &apos; bin=1 instr(,,bin) isn&apos;t case sensitive; BIN=0 is binary comparison
+	if ALTsearchPARAMS.kcase=0 then bin = 1  &apos; bin=1 instr(,,bin) isn&apos;t case sensitive; BIN=0 is binary comparison
 
 	&apos; on error goto Errobsluha
 	if ubound(TMPPOLE())=-1 then  &apos;1. pass: load tmp array with notes
@@ -2000,7 +2000,7 @@ sub getIndexTField(mode as integer, idx, rest as string) as long
 			getIndexTField = idx
 			exit sub
 		end if
-		if AltSearchPARAMS.zpet = 1 then  &apos; backward search
+		if ALTsearchPARAMS.zpet = 1 then  &apos; backward search
 			for i = idx-1 to 0 step -1
 				if instr(1,TMPPOLE(i).anchor.string, rest,bin)&gt;0 then  &apos; substring found
 					getIndexTField = i
@@ -2043,7 +2043,7 @@ sub getIndexTField(mode as integer, idx, rest as string) as long
 			else &apos; found the nearest next, previous
 				&apos; found the nearest next, previous  &apos; for now search from start/end
 hledejBlizke:
-				if AltSearchPARAMS.zpet = 1 then &apos; backward
+				if ALTsearchPARAMS.zpet = 1 then &apos; backward
 					getIndexTField = ubound(TMPPOLE())+1 &apos; last
 				else
 					getIndexTField = -1 &apos; first
@@ -2131,7 +2131,7 @@ sub getNextBookmark(byval find as string, fromCur, blockCur as object, inFoot) a
 	if k&gt;=0 then
 		&apos; cursor is at start of bookmark - there could be more cursors on same place
 		if FOUNDbookmarkNO&gt;=0 then  &apos; last found index
-			if AltSearchPARAMS.zpet = 1 then  &apos; backward search
+			if ALTsearchPARAMS.zpet = 1 then  &apos; backward search
 				if k &gt; FOUNDbookmarkNO then k = FOUNDbookmarkNO
 			else
 				if k &lt; FOUNDbookmarkNO then k = FOUNDbookmarkNO
@@ -2140,7 +2140,7 @@ sub getNextBookmark(byval find as string, fromCur, blockCur as object, inFoot) a
 		end if
 
 		&apos; set 1st index for next search
-		if AltSearchPARAMS.zpet = 1 then  &apos; backward search
+		if ALTsearchPARAMS.zpet = 1 then  &apos; backward search
 			if k = 0 then : goto nenalezeno : else  k = k-1 : end if  &apos; 1st index for backward search
 		else
 			if k = max then : goto nenalezeno : else  k = k+1 : end if &apos; 1st index for forward search
@@ -2151,7 +2151,7 @@ sub getNextBookmark(byval find as string, fromCur, blockCur as object, inFoot) a
 		k1 = findPrevBookm(oVCURS.start,oBookm())  &apos;firstly find the nearest previous in ambit of same region
 		k2 = findNextBookm(oVCURS.start,oBookm())  &apos;firstly find nearest next
 
-		if AltSearchPARAMS.zpet = 1 then  &apos; backward search
+		if ALTsearchPARAMS.zpet = 1 then  &apos; backward search
 			if k=-1 then k = max
 			if (k2-k1)&gt;=1 then k=k2-1
 			if (k1&lt;0)and(k2&lt;=max) then k=k2-1
@@ -2169,7 +2169,7 @@ sub getNextBookmark(byval find as string, fromCur, blockCur as object, inFoot) a
 
 	&apos; OK, search if it is ok for conditions, from the index to starting
 	zac = k &apos; 1st index for search
-	if AltSearchPARAMS.zpet = 1 then
+	if ALTsearchPARAMS.zpet = 1 then
 		kon = 0 : krok = -1  &apos; scour from k to 0
 	else
 		kon = max : krok = 1 &apos; scour from k to max
@@ -2244,7 +2244,7 @@ sub getNextField(byval find as string, fromCur, blockCur as object) as integer
 			if k &lt; 0 then msgbox &quot;getNextField:  field not found although the cursor is on one&quot;
 
 			&apos; set 1st index for next search
-			if AltSearchPARAMS.zpet = 1 then  &apos; backward search
+			if ALTsearchPARAMS.zpet = 1 then  &apos; backward search
 				if k = 0 then : goto nenalezeno : else  k = k-1 : end if  &apos; 1st index for backward search
 			else
 				if k = max then : goto nenalezeno : else  k = k+1 : end if &apos; 1st index for forward search
@@ -2256,7 +2256,7 @@ sub getNextField(byval find as string, fromCur, blockCur as object) as integer
 	else
 kurzorMimo:
 		&apos; cursor out of mark, find nearest next/previous
-		if AltSearchPARAMS.zpet = 1 then  &apos; backward search
+		if ALTsearchPARAMS.zpet = 1 then  &apos; backward search
 			&apos; return index of previous object for search
 			k = findPrevObj(pgno,oVCURS.start,oFoot(),TMPPOLE1())
 		else &apos; 1st index for search
@@ -2270,7 +2270,7 @@ kurzorMimo:
 
 	&apos; OK, search if it is ok for conditions, from the index to starting
 	zac = k &apos; 1st index for search
-	if AltSearchPARAMS.zpet = 1 then
+	if ALTsearchPARAMS.zpet = 1 then
 		kon = 0 : krok = -1  &apos; scour from k to 0
 	else
 		kon = max : krok = 1 &apos; scour from k to max
@@ -2324,7 +2324,7 @@ sub getNextFootnote(byval find as string, fromCur, blockCur as object, typ as st
 	end if
 
 	max = oFoot.count - 1  &apos; max index of last note
-	if AltSearchPARAMS.kcase=0 then bin = 1  &apos; bin=1 instr(,,bin) isn&apos;t case sensitive; BIN=0 is binary comparison
+	if ALTsearchPARAMS.kcase=0 then bin = 1  &apos; bin=1 instr(,,bin) isn&apos;t case sensitive; BIN=0 is binary comparison
 
 	if oFoot.count = 0 then
 		getNextFootnote = 4
@@ -2341,7 +2341,7 @@ sub getNextFootnote(byval find as string, fromCur, blockCur as object, typ as st
 znovu:
 	oVCURS.collapseToStart
 	pCur = oVCURS.text.createTextCursorByRange(oVCURS.getStart()) &apos; remembre current cursor
-	if AltSearchPARAMS.zpet = 1 then  &apos; backward search
+	if ALTsearchPARAMS.zpet = 1 then  &apos; backward search
 		runOOoIntCommand(&quot;JumpToPrevFootnote&quot;, &quot;&quot;, &quot;&quot;) &apos; JumpToNextFootnote  JumpToFootnoteOrAncho JumpToPrevFootnote
 	else
 		runOOoIntCommand(&quot;JumpToNextFootnote&quot;, &quot;&quot;, &quot;&quot;) &apos; JumpToNextFootnote  JumpToFootnoteOrAncho JumpToPrevFootnote
@@ -2376,7 +2376,7 @@ znovu:
 
 	&apos; OK, search if it is ok for conditions, from the index to starting
 	zac = k &apos; 1st index for search
-	if AltSearchPARAMS.zpet = 1 then
+	if ALTsearchPARAMS.zpet = 1 then
 		kon = 0 : krok = -1  &apos; scour from k to 0
 	else
 		kon = max : krok = 1 &apos; scour from k to max
@@ -2453,7 +2453,7 @@ sub getNextComment(byval find as string, fromCur, blockCur as object) as integer
 			if k &lt; 0 then msgbox &quot;getNextComment:  poznamka nenalezena ackoli je na ni kurzor&quot;
 
 			&apos; set 1st index for next search
-			if AltSearchPARAMS.zpet = 1 then  &apos; backward search
+			if ALTsearchPARAMS.zpet = 1 then  &apos; backward search
 				if k = 0 then : goto nenalezeno : else  k = k-1 : end if  &apos; 1st index for backward search
 			else
 				if k = max then : goto nenalezeno : else  k = k+1 : end if &apos; 1st index for forward search
@@ -2465,7 +2465,7 @@ sub getNextComment(byval find as string, fromCur, blockCur as object) as integer
 	else
 kurzorMimo:
 		&apos; cursor out of mark, find nearest next/previous
-		if AltSearchPARAMS.zpet = 1 then  &apos; backward search
+		if ALTsearchPARAMS.zpet = 1 then  &apos; backward search
 			&apos; return index of previous object for search
 			k = findPrevObj(pgno,oVCURS.start,oFoot(),TMPPOLE1())
 		else &apos; 1st index for search
@@ -2479,7 +2479,7 @@ kurzorMimo:
 
 	&apos; OK, search if it is ok for conditions, from the index to starting
 	zac = k &apos; 1st index for search
-	if AltSearchPARAMS.zpet = 1 then
+	if ALTsearchPARAMS.zpet = 1 then
 		kon = 0 : krok = -1  &apos; scour from k to 0
 	else
 		kon = max : krok = 1 &apos; scour from k to max
@@ -2563,7 +2563,7 @@ sub getNextReference(byval find as string, fromCur, blockCur as object, mode) as
 			if k &lt; 0 then msgbox &quot;getNextReference:  field not found although the cursor is on one&quot;
 
 			&apos; set 1st index for next search
-			if AltSearchPARAMS.zpet = 1 then  &apos; backward search
+			if ALTsearchPARAMS.zpet = 1 then  &apos; backward search
 				if k = 0 then : goto nenalezeno : else  k = k-1 : end if  &apos; 1st index for backward search
 			else
 				if k = max then : goto nenalezeno : else  k = k+1 : end if &apos; 1st index for forward search
@@ -2575,7 +2575,7 @@ sub getNextReference(byval find as string, fromCur, blockCur as object, mode) as
 	else
 kurzorMimo:
 		&apos; cursor out of mark, find nearest next/previous
-		if AltSearchPARAMS.zpet = 1 then  &apos; backward search
+		if ALTsearchPARAMS.zpet = 1 then  &apos; backward search
 			&apos; return index of previous object for search
 			k = findPrevObj(pgno,oVCURS.start,oFoot(),TMPPOLE1())
 		else &apos; 1st index for search
@@ -2589,7 +2589,7 @@ kurzorMimo:
 
 	&apos; OK, search if it is ok for conditions, from the index to starting
 	zac = k &apos; 1st index for search
-	if AltSearchPARAMS.zpet = 1 then
+	if ALTsearchPARAMS.zpet = 1 then
 		kon = 0 : krok = -1  &apos; scour from k to 0
 	else
 		kon = max : krok = 1 &apos; scour from k to max
@@ -2681,7 +2681,7 @@ sub getNextReferenceMark(byval find as string, fromCur, blockCur as object, inFo
 		if k &lt; 0 then msgbox &quot;getNextReferenceMark:  znacka nenalezena ackoli je na ni kurzor&quot;
 
 		&apos; set 1st index for next search
-		if AltSearchPARAMS.zpet = 1 then  &apos; backward search
+		if ALTsearchPARAMS.zpet = 1 then  &apos; backward search
 			if k = 0 then : goto nenalezeno : else  k = k-1 : end if  &apos; 1st index for backward search
 		else
 			if k = max then : goto nenalezeno : else  k = k+1 : end if &apos; 1st index for forward search
@@ -2689,7 +2689,7 @@ sub getNextReferenceMark(byval find as string, fromCur, blockCur as object, inFo
 
 	else
 		&apos; cursor out of mark, find nearest next/previous
-		if AltSearchPARAMS.zpet = 1 then  &apos; backward search
+		if ALTsearchPARAMS.zpet = 1 then  &apos; backward search
 			&apos; return index of previous object for search
 			k = findPrevObj(pgno,oVCURS.start,oFoot(),TMPPOLE1())
 		else &apos; 1st index for search
@@ -2703,7 +2703,7 @@ sub getNextReferenceMark(byval find as string, fromCur, blockCur as object, inFo
 
 	&apos; OK, search if it is ok for conditions, from the index to starting
 	zac = k &apos; 1st index for search
-	if AltSearchPARAMS.zpet = 1 then
+	if ALTsearchPARAMS.zpet = 1 then
 		kon = 0 : krok = -1  &apos; scour from k to 0
 	else
 		kon = max : krok = 1 &apos; scour from k to max
@@ -2877,7 +2877,7 @@ function getReplArray(byval nahr as string) as  tRepl
 
 	&apos;every special command of array for the replace will be run individually in the dependence on CMD
 
-	if AltSearchPARAMS.reg &lt;&gt; 1 then &apos; no regexps
+	if ALTsearchPARAMS.reg &lt;&gt; 1 then &apos; no regexps
 		pom(0).nahr = nahr
 		pom(0).cmd  = &quot;$&quot;     &apos; normally insert text
 		pom(0).smaz = 1
@@ -3228,7 +3228,7 @@ sub hlaseni(volba as integer)as integer
 	quit = 0 &apos; suppression of report  6 = yes, continue
 	&apos;next occurrence of found expression ... no found.
 
-	pom = MSG(0) &amp; &quot;  &quot;&quot;&quot; &amp; AltSearchPARAMS.find &amp; &quot;&quot;&quot;  &quot; &amp; MSG(1) &amp; pr &amp; &quot; &quot; &amp; pr &amp; &quot; &quot;
+	pom = MSG(0) &amp; &quot;  &quot;&quot;&quot; &amp; ALTsearchPARAMS.find &amp; &quot;&quot;&quot;  &quot; &amp; MSG(1) &amp; pr &amp; &quot; &quot; &amp; pr &amp; &quot; &quot;
 
 	select case volba
 	case 0 &apos; the search in block ended
@@ -3250,18 +3250,18 @@ sub hlaseni(volba as integer)as integer
 		pom = pom  &amp;  MSG(6) &amp; pr &amp; &quot; &quot;
 		i = 32
 	case 5  &apos; searched expression ...    was founs ...  ×times.
-		pom = MSG(13) &amp; &quot;  &quot;&quot;&quot; &amp; AltSearchPARAMS.find &amp; &quot;&quot;&quot;  &quot; &amp; pr &amp; pr &amp; MSG(14) &amp; cstr(nCOUNT) &amp; MSG(15)
+		pom = MSG(13) &amp; &quot;  &quot;&quot;&quot; &amp; ALTsearchPARAMS.find &amp; &quot;&quot;&quot;  &quot; &amp; pr &amp; pr &amp; MSG(14) &amp; cstr(nCOUNT) &amp; MSG(15)
 		i = 64
 		if QUITMODE then quit = 1  &apos; 1=No 6=Yes; possibility to suppress report
 	case 6  &apos; not possible to select more these objects  at once
-		pom = MSG(18) &amp; &quot;  &quot;&quot;&quot; &amp; AltSearchPARAMS.find &amp; &quot;&quot;&quot;  &quot;
+		pom = MSG(18) &amp; &quot;  &quot;&quot;&quot; &amp; ALTsearchPARAMS.find &amp; &quot;&quot;&quot;  &quot;
 		i = 64
 	case 7  &apos; this selection of all searched expressions can take longer time and can causes the interruption &apos;Highlighting&apos;, if it is used in document, without the possibility &apos;Back&apos;
 		pom = MSG(19)
 		i = 4 + 32 + 128 &apos;128= 1st button active
 		if QUITMODE then quit = 6  &apos; 1=No 6=Yes; possibility to suppress report
 	case 8  &apos; searched expression ...    was REPLACED ...  ×times.
-		pom = MSG(13) &amp; &quot;  &quot;&quot;&quot; &amp; AltSearchPARAMS.find &amp; &quot;&quot;&quot;  &quot; &amp; pr &amp; pr &amp; MSG(30) &amp; cstr(REPLCOUNT) &amp; MSG(15)
+		pom = MSG(13) &amp; &quot;  &quot;&quot;&quot; &amp; ALTsearchPARAMS.find &amp; &quot;&quot;&quot;  &quot; &amp; pr &amp; pr &amp; MSG(30) &amp; cstr(REPLCOUNT) &amp; MSG(15)
 		i = 64
 		if QUITMODE then quit = 1  &apos; 1=No 6=Yes; possibility to suppress report
 
@@ -3396,7 +3396,7 @@ end sub
 sub nastavSkupiny012(retezec, hled)
 	dim bin, i, j
 	bin = 0
-	if AltSearchPARAMS.kcase=0 then bin = 1  &apos; bin=1 instr(,,bin) isn&apos;t case sensitive; BIN=0 is binary comparison
+	if ALTsearchPARAMS.kcase=0 then bin = 1  &apos; bin=1 instr(,,bin) isn&apos;t case sensitive; BIN=0 is binary comparison
 	j = len(hled)
 	i = instr(1,retezec, hled, bin)  &apos; order of 1st found character of substring
 	if i = 0 then     &apos;substring not fount
@@ -3901,7 +3901,7 @@ sub vyhodnotHledani(i,max as long) as boolean
 		hlaseni(4)
 		exit sub
 	end if
-	if AltSearchPARAMS.zpet = 1 then  &apos; reversed bounds for backward search
+	if ALTsearchPARAMS.zpet = 1 then  &apos; reversed bounds for backward search
 		if i&lt;=0 then
 			if 6 &lt;&gt; hlaseni(1) then exit sub &apos;reached the beginning of document, continue from end?
 			i = max

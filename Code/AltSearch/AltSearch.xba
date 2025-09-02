@@ -84,7 +84,7 @@ public FOUNDbookmarkNO as long &apos; index of currently find or processed bookm
 		repl$
 	end type
 
-global AltSearchPARAMS as tVolby  &apos; variable for search options
+global ALTsearchPARAMS as tVolby  &apos; variable for search options
 
 
 Sub _AltSearch(optional batchName)   &apos; run main dialog
@@ -197,8 +197,8 @@ sub _FindBack
 	if ERRcontrol then on error goto konec
 	if ALTSlastFOUND&lt;&gt;4 then
 		if ALTsearchDIALOG_end then loadPARAMS(true) &apos; restore the options from Ini
-		AltSearchPARAMS.zpet = 1
-		if AltSearchPARAMS.find = &quot;&quot; then exit sub
+		ALTsearchPARAMS.zpet = 1
+		if ALTsearchPARAMS.find = &quot;&quot; then exit sub
 		FindDo  &apos; search
 	end if
 	exit sub
@@ -212,8 +212,8 @@ sub _FindNext
 	if ERRcontrol then on error goto konec
 	if ALTSlastFOUND&lt;&gt;4 then
 		if ALTsearchDIALOG_end then loadPARAMS(true) &apos; restore options from Ini
-		AltSearchPARAMS.zpet = 0
-		if AltSearchPARAMS.find = &quot;&quot; then exit sub
+		ALTsearchPARAMS.zpet = 0
+		if ALTsearchPARAMS.find = &quot;&quot; then exit sub
 		FindDo  &apos; search
 	end if
 	exit sub
@@ -225,13 +225,13 @@ end sub
 sub addToHistory(hl as byte,na as byte) &apos; add F or R expression to history
 	if hl = 1 then &apos;
 		&apos;add to history of Find
-		pridejDoSeznamuA(oDIAL.getcontrol(&quot;Cb_find&quot;), AltSearchPARAMS.find, 30, 0) &apos; max. 30 items
+		pridejDoSeznamuA(oDIAL.getcontrol(&quot;Cb_find&quot;), ALTsearchPARAMS.find, 30, 0) &apos; max. 30 items
 		&apos; save for next run
 		ALTsearchFIND = oDIAL.getcontrol(&quot;Cb_find&quot;).getItems
 	end  if
 	if na = 1 then &apos;
 		&apos;add to history of Replace
-		pridejDoSeznamuA(oDIAL.getcontrol(&quot;Cb_repl&quot;), AltSearchPARAMS.repl, 30, 0)  &apos; max. 30 items
+		pridejDoSeznamuA(oDIAL.getcontrol(&quot;Cb_repl&quot;), ALTsearchPARAMS.repl, 30, 0)  &apos; max. 30 items
 		&apos; save for next run
 		ALTsearchREPL = oDIAL.getcontrol(&quot;Cb_repl&quot;).getItems
 	end  if
@@ -322,26 +322,26 @@ sub BtCount
 	redim TMPPOLE() &apos; reset the array used for search the frames, notes, footnote, a text field
 	addToHistory(1,0) &apos;add to history the F&amp;R expressions
 
-	i = instr(AltSearchPARAMS.find,&quot;[::BigBlock::]&quot;)
-	if (i &gt; 0)and (AltSearchPARAMS.reg=1) then
+	i = instr(ALTsearchPARAMS.find,&quot;[::BigBlock::]&quot;)
+	if (i &gt; 0)and (ALTsearchPARAMS.reg=1) then
 		&apos;big block
 		&apos; start and final string for search the BigBlock
-		pom = left(AltSearchPARAMS.find,i-1)
+		pom = left(ALTsearchPARAMS.find,i-1)
 		HLE1() = getFindArray(pom, false) &apos; array with search without groups ()
 		&apos; final closing string for search the Bigblock
-		pom = right(AltSearchPARAMS.find,len(AltSearchPARAMS.find)-i-13) &apos; I search the end
+		pom = right(ALTsearchPARAMS.find,len(ALTsearchPARAMS.find)-i-13) &apos; I search the end
 		HLE2() = getFindArray(pom, false) &apos;array with the search without groups ()
 		HLE() = HLE1()
 		HLE(0).cmd = &quot;[::BigBlock::]&quot;
 	else
 		&apos; normal search - no big block
-		pom = AltSearchPARAMS.find
-		if (AltSearchPARAMS.reg=1) then  &apos; prepare for regexp
+		pom = ALTsearchPARAMS.find
+		if (ALTsearchPARAMS.reg=1) then  &apos; prepare for regexp
 			pom = replace_(pom,&quot;\|&quot;,&quot;\x007C&quot;)  &apos; it isn&apos;t delimiter OR but character &quot;|&quot;
 		end if
 		HLE() = getFindArray(pom, false) &apos; for presearch , WITHOUT possible groups - straight search with groups is very slow
 		i = instr(pom,&quot;||&quot;)
-		if (i &gt; 0)and (AltSearchPARAMS.reg=1) then &apos; multi replacement
+		if (i &gt; 0)and (ALTsearchPARAMS.reg=1) then &apos; multi replacement
 			&apos;arrays for partial multisearch
 			ALTsearchMFIND() = ArrayOutOfString_(pom,&quot;||&quot;)
 			HLE(0).cmd = &quot;[::MultipleSearch::]&quot;
@@ -352,7 +352,7 @@ sub BtCount
 	HledamDisp(true) &apos; not accessible during counting
 	FINDCOUNTER = 1  &apos; general counter for status figures &gt;0 cn cancel the action
 	nCOUNT = 0       &apos; counter of found expressions
-	if AltSearchPARAMS.reg &lt;&gt; 1 then
+	if ALTsearchPARAMS.reg &lt;&gt; 1 then
 		&apos; normal search without regular expressions
 		if not Pocitej(HLE(),false) then goto chyba &apos; procedure for universal counting outside the special objects
 		goto konec &apos; show reports and end
@@ -391,7 +391,7 @@ sub BtCount
 				end if
 			end select
 
-			if (AltSearchPARAMS.csele=0) and (hled = &quot;&quot;) and (mode=0) then &apos; all document
+			if (ALTsearchPARAMS.csele=0) and (hled = &quot;&quot;) and (mode=0) then &apos; all document
 				&apos; speedup for all fileds in document
 				nCOUNT = ubound(TMPPOLE()) + 1
 			else
@@ -438,9 +438,9 @@ sub BtCount
 			end if
 
 			max = oFoot.count - 1  &apos; max index of last note
-			if AltSearchPARAMS.kcase=0 then bin = 1  &apos; bin=1 instr(,,bin) ignore lower/uppercases; BIN=0 binary comparison
+			if ALTsearchPARAMS.kcase=0 then bin = 1  &apos; bin=1 instr(,,bin) ignore lower/uppercases; BIN=0 binary comparison
 
-			if (AltSearchPARAMS.csele=0) and (hled = &quot;&quot;) then &apos; all in whole document
+			if (ALTsearchPARAMS.csele=0) and (hled = &quot;&quot;) then &apos; all in whole document
 				&apos; speedup for all arrays in document
 				nCOUNT = max + 1
 				goto konec
@@ -477,7 +477,7 @@ sub BtCount
 
 			oFoot = ALTsearchDOC.Bookmarks
 			max = oFoot.count - 1  &apos; max index of last note
-			if (AltSearchPARAMS.csele=0)and (hled = &quot;&quot;) and (inFoot=0) then &apos; all in whole document
+			if (ALTsearchPARAMS.csele=0)and (hled = &quot;&quot;) and (inFoot=0) then &apos; all in whole document
 				&apos; sppedup for all arrays in document
 				nCOUNT = max + 1
 				goto konec
@@ -519,7 +519,7 @@ sub BtCount
 
 			oFoot = ALTsearchDOC.ReferenceMarks
 			max = oFoot.count - 1  &apos; max index of last mark
-			if (AltSearchPARAMS.csele=0)and (hled = &quot;&quot;) and (inFoot=0) then &apos; all in whole document
+			if (ALTsearchPARAMS.csele=0)and (hled = &quot;&quot;) and (inFoot=0) then &apos; all in whole document
 				&apos; speedup all arrays in document
 				nCOUNT = max + 1
 				goto konec
@@ -547,7 +547,7 @@ sub BtCount
 			max = getIndexTextFrame(1,0,&quot;&quot;)
 			hled = HLE(0).hled
 
-			if AltSearchPARAMS.csele=0 then &apos; whole document
+			if ALTsearchPARAMS.csele=0 then &apos; whole document
 				if hled = &quot;&quot; then
 					nCOUNT = max + 1
 				else
@@ -564,7 +564,7 @@ sub BtCount
 			else &apos; only selection
 				&apos; auxiliary array pomocné with the names of text frames
 				TMPPOLE()= ALTsearchDOC.getTextFrames.ElementNames
-				if AltSearchPARAMS.kcase=0 then bin = 1  &apos; bin=1 instr(,,bin) ignore lower/uppercases; BIN=0 binary comparison
+				if ALTsearchPARAMS.kcase=0 then bin = 1  &apos; bin=1 instr(,,bin) ignore lower/uppercases; BIN=0 binary comparison
 
 				for i = 0 to Ubound(TMPPOLE())  &apos; for all objects - array of names of frames
 					&apos; the substring is found or find all
@@ -585,7 +585,7 @@ sub BtCount
 		case &quot;[::TextTable::]&quot;
 			max = getIndexTextTable(1,0,&quot;&quot;)
 			hled = HLE(0).hled
-			if AltSearchPARAMS.csele=0 then &apos; whole document
+			if ALTsearchPARAMS.csele=0 then &apos; whole document
 				if hled = &quot;&quot; then
 					nCOUNT = max + 1
 				else
@@ -601,7 +601,7 @@ sub BtCount
 
 			else &apos; only selection
 				TMPPOLE()= ALTsearchDOC.getTextTables.ElementNames
-				if AltSearchPARAMS.kcase=0 then bin = 1  &apos; bin=1 instr(,,bin) ignore lower/uppercases; BIN=0 binary comparison
+				if ALTsearchPARAMS.kcase=0 then bin = 1  &apos; bin=1 instr(,,bin) ignore lower/uppercases; BIN=0 binary comparison
 
 				for i = 0 to Ubound(TMPPOLE())  &apos; pro all objects - array with the names of tables
 					&apos; the substring is found or find all
@@ -622,7 +622,7 @@ sub BtCount
 		case &quot;[::Picture::]&quot;
 			max = getIndexPicture(1,0,&quot;&quot;)
 			hled = HLE(0).hled
-			if AltSearchPARAMS.csele=0 then &apos; whole document
+			if ALTsearchPARAMS.csele=0 then &apos; whole document
 				if hled = &quot;&quot; then
 					nCOUNT = max + 1
 				else
@@ -638,7 +638,7 @@ sub BtCount
 
 			else &apos;only selection
 				TMPPOLE()= ALTsearchDOC.GraphicObjects.ElementNames
-				if AltSearchPARAMS.kcase=0 then bin = 1  &apos; bin=1 instr(,,bin) ignore lower/uppercases; BIN=0 binary comparison
+				if ALTsearchPARAMS.kcase=0 then bin = 1  &apos; bin=1 instr(,,bin) ignore lower/uppercases; BIN=0 binary comparison
 
 				for i = 0 to Ubound(TMPPOLE())  &apos; for all objects - array with the names of images
 					&apos; the substring is found or find all
@@ -674,7 +674,7 @@ hledejdal:
 				goto hledejdal
 			end if
 
-			if AltSearchPARAMS.zpet = 1 then  &apos; inverse bounds for backward search
+			if ALTsearchPARAMS.zpet = 1 then  &apos; inverse bounds for backward search
 				if nastavRozsah(prCURS, FO1.getEnd(),FO3.getStart()) &lt;&gt; 0 then
 					prCURS = nastavKurzor(FO1) &apos; in the case of bug of region search farther behind the FO1
 					goto hledejdal
@@ -717,27 +717,27 @@ sub BtFindAll
 	redim TMPPOLE() &apos; reset the array used for search the frames, notes, footnote, a text field
 	addToHistory(1,0) &apos; &apos;add to history the F&amp;R expressions
 
-	i = instr(AltSearchPARAMS.find,&quot;[::BigBlock::]&quot;)
-	if (i &gt; 0)and (AltSearchPARAMS.reg=1) then
+	i = instr(ALTsearchPARAMS.find,&quot;[::BigBlock::]&quot;)
+	if (i &gt; 0)and (ALTsearchPARAMS.reg=1) then
 		&apos; big block
 		&apos; start, open string for the search of big block
-		pom = left(AltSearchPARAMS.find,i-1)
+		pom = left(ALTsearchPARAMS.find,i-1)
 		HLE1() = getFindArray(pom, false) &apos; the array with the search without groups ()
 		&apos; final, close string for search of big block
-		pom = right(AltSearchPARAMS.find,len(AltSearchPARAMS.find)-i-13) &apos; search the end
+		pom = right(ALTsearchPARAMS.find,len(ALTsearchPARAMS.find)-i-13) &apos; search the end
 		HLE2() = getFindArray(pom, false) &apos; the array with the search without groups ()
 		HLE() = HLE1()
 		HLE(0).cmd = &quot;[::BigBlock::]&quot;
 	else
 		&apos; normal search - no big block
-		pom = AltSearchPARAMS.find
+		pom = ALTsearchPARAMS.find
 		&apos;test for multireplace
-		if (AltSearchPARAMS.reg=1) then  &apos; prepare for regexp
+		if (ALTsearchPARAMS.reg=1) then  &apos; prepare for regexp
 			pom = replace_(pom,&quot;\|&quot;,&quot;\x007C&quot;)  &apos; it is not delimiter OR but the character &quot;|&quot;
 		end if
 		HLE() = getFindArray(pom, false) &apos; for presearch, WITHOUT possible groups - straight search with groups is very slow
 		i = instr(pom,&quot;||&quot;)
-		if (i &gt; 0)and (AltSearchPARAMS.reg=1) then &apos; multireplacement with the regexp symbolsmultireplacement with the regexp symbols
+		if (i &gt; 0)and (ALTsearchPARAMS.reg=1) then &apos; multireplacement with the regexp symbolsmultireplacement with the regexp symbols
 			HLE1() = getFindArray(pom, false) &apos; without groups, not important, ones will be loaded onec more singly
 			&apos;the arrays for individual multisearch
 			HLE(0).cmd = &quot;[::MultipleSearch::]&quot;  &apos; the rest isn&apos;t important, it will be processed once again
@@ -754,7 +754,7 @@ sub BtFindAll
 	nCOUNT = 0       &apos; counter of found expressions
 	WARNING = true  &apos; enable the warning before the possibility of violation the highlighting
 
-	if AltSearchPARAMS.reg &lt;&gt; 1 then
+	if ALTsearchPARAMS.reg &lt;&gt; 1 then
 		&apos; normal search without regexps
 		if not Pocitej(HLE(),true) then goto chyba &apos; procedure for universal calculating outside of special objects
 		if isObject(FOUNDall) then &apos; found with accelerated search, 0 = highlight with BCOLOR
@@ -818,7 +818,7 @@ sub BtFindAll
 				end if
 			end select
 
-			if (AltSearchPARAMS.csele=0) and (hled = &quot;&quot;) and (mode=0) then &apos; whole document
+			if (ALTsearchPARAMS.csele=0) and (hled = &quot;&quot;) and (mode=0) then &apos; whole document
 				&apos; speedup for all fields in document
 				for i = 0 to ubound(TMPPOLE()) &apos; color everything
 					TMPPOLE(i).anchor.CharBackColor = BCOLOR
@@ -878,7 +878,7 @@ sub BtFindAll
 			end if
 
 			max = oFoot.count - 1  &apos; max index of last note
-			if AltSearchPARAMS.kcase=0 then bin = 1  &apos; bin=1 instr(,,bin) ignore lower/uppercases; BIN=0 binary comparison
+			if ALTsearchPARAMS.kcase=0 then bin = 1  &apos; bin=1 instr(,,bin) ignore lower/uppercases; BIN=0 binary comparison
 
 			for i = 0 to max
 				&apos; search in content of note?
@@ -931,7 +931,7 @@ sub BtFindAll
 
 			oFoot = ALTsearchDOC.ReferenceMarks
 			max = oFoot.count - 1  &apos;  max index of last note
-			if AltSearchPARAMS.kcase=0 then bin = 1  &apos; bin=1 instr(,,bin) ignore lower/uppercases; BIN=0 binary comparison
+			if ALTsearchPARAMS.kcase=0 then bin = 1  &apos; bin=1 instr(,,bin) ignore lower/uppercases; BIN=0 binary comparison
 
 			for i = 0 to max
 				&apos; search in title of mark
@@ -993,7 +993,7 @@ hledejdal:
 				goto hledejdal
 			end if
 
-			if AltSearchPARAMS.zpet = 1 then  &apos; inverse bounds for backward search
+			if ALTsearchPARAMS.zpet = 1 then  &apos; inverse bounds for backward search
 				if nastavRozsah(prCURS, FO1.getEnd(),FO3.getStart()) &lt;&gt; 0 then
 					prCURS = nastavKurzor(FO1) &apos; in the case of bug of region search farther behind the FO1
 					goto hledejdal
@@ -1069,8 +1069,8 @@ sub BtFindNext
 
 	if isSelTextRange(0) then  &apos; only for textRange
 		&apos; set the start of search if the search is only inside the block during 1st search
-		if FIRSTPASS and (AltSearchPARAMS.csele = 1) then
-			if AltSearchPARAMS.zpet = 1 then   &apos; for search from the end of block
+		if FIRSTPASS and (ALTsearchPARAMS.csele = 1) then
+			if ALTsearchPARAMS.zpet = 1 then   &apos; for search from the end of block
 				oVCURS.collapseToEnd
 			else
 				oVCURS.collapseToStart
@@ -1080,27 +1080,27 @@ sub BtFindNext
 
 	addToHistory(1,0) &apos; &apos;add to history the F&amp;R expressions
 
-	i = instr(AltSearchPARAMS.find,&quot;[::BigBlock::]&quot;)
-	if (i &gt; 0)and (AltSearchPARAMS.reg=1) then
+	i = instr(ALTsearchPARAMS.find,&quot;[::BigBlock::]&quot;)
+	if (i &gt; 0)and (ALTsearchPARAMS.reg=1) then
 		&apos; big block
 		&apos; start, open string for the search of big block
-		pom = left(AltSearchPARAMS.find,i-1)
+		pom = left(ALTsearchPARAMS.find,i-1)
 		HLE1() = getFindArray(pom, false) &apos; the array with the search without groups ()
 		&apos; final, close string for search of big block
-		pom = right(AltSearchPARAMS.find,len(AltSearchPARAMS.find)-i-13) &apos; search the end
+		pom = right(ALTsearchPARAMS.find,len(ALTsearchPARAMS.find)-i-13) &apos; search the end
 		HLE2() = getFindArray(pom, false) &apos; the array with the search without groups ()
 		HLE() = HLE1()
 		HLE(0).cmd = &quot;[::BigBlock::]&quot;
 	else
 		&apos; normal search - no big block
-		pom = AltSearchPARAMS.find
-		if (AltSearchPARAMS.reg=1) then  &apos; prepare for regexp
+		pom = ALTsearchPARAMS.find
+		if (ALTsearchPARAMS.reg=1) then  &apos; prepare for regexp
 			&apos;         pom = replace_(pom,&quot;\\&quot;,&quot;\&quot;)  &apos; substitute some special characters for hexa codes \x005C
 			pom = replace_(pom,&quot;\|&quot;,&quot;\x007C&quot;)  &apos; it is not delimiter OR but the character &quot;|&quot;
 		end if
 		i = instr(pom,&quot;||&quot;)
 
-		if (i &gt; 0)and (AltSearchPARAMS.reg=1) then &apos; multireplacement
+		if (i &gt; 0)and (ALTsearchPARAMS.reg=1) then &apos; multireplacement
 			pom = replace_(pom,&quot;||&quot;,&quot;|&quot;)  &apos; for orientatioanl looked up only with the help of | OR
 			HLE1() = getFindArray(pom, false) &apos; without groups - don&apos;t presearch
 		else
@@ -1130,7 +1130,7 @@ sub BtReplace
 
 	loadPARAMS(false) &apos; save, actualization of search options
 	addToHistory(0,1) &apos; &apos;add to history the F&amp;R expressions
-	REPL() = getReplArray(AltSearchPARAMS.repl) &apos; load the array of replacements
+	REPL() = getReplArray(ALTsearchPARAMS.repl) &apos; load the array of replacements
 
 	FO1S = &quot;&quot; :  FO2S = &quot;&quot; : FO3S = &quot;&quot;  &apos; reset of the big-blocks strings
 
@@ -1167,34 +1167,34 @@ sub BtReplaceAll
 	redim TMPPOLE() &apos; reset the array used for search the frames, notes, footnote, a text field
 	addToHistory(1,1) &apos; &apos;add to history the F&amp;R expressions
 
-	i = instr(AltSearchPARAMS.find,&quot;[::BigBlock::]&quot;)
-	if (i &gt; 0)and (AltSearchPARAMS.reg=1) then
+	i = instr(ALTsearchPARAMS.find,&quot;[::BigBlock::]&quot;)
+	if (i &gt; 0)and (ALTsearchPARAMS.reg=1) then
 		&apos; big block
 		&apos; start, open string for the search of big block
-		pom = left(AltSearchPARAMS.find,i-1)
+		pom = left(ALTsearchPARAMS.find,i-1)
 		HLE1() = getFindArray(pom, false) &apos; the array with the search without groups ()
 		&apos; final, close string for search of big block
-		pom = right(AltSearchPARAMS.find,len(AltSearchPARAMS.find)-i-13) &apos; search the end
+		pom = right(ALTsearchPARAMS.find,len(ALTsearchPARAMS.find)-i-13) &apos; search the end
 		HLE2() = getFindArray(pom, false) &apos; the array with the search without groups ()
 		HLE() = HLE1()
 		HLE(0).cmd = &quot;[::BigBlock::]&quot;
 	else
 		&apos; normal search - no big block
 		&apos;test for multireplace
-		pom = AltSearchPARAMS.find
-		if (AltSearchPARAMS.reg=1) then  &apos; prepare for regexp
+		pom = ALTsearchPARAMS.find
+		if (ALTsearchPARAMS.reg=1) then  &apos; prepare for regexp
 			&apos;         pom = replace_(pom,&quot;\\&quot;,&quot;\&quot;)  &apos; substitute some special characters to hexa codes \x005C
 			pom = replace_(pom,&quot;\|&quot;,&quot;\x007C&quot;)  &apos; it is not delimiter OR but the character &quot;|&quot;
 		end if
 		HLE() = getFindArray(pom, false) &apos; for presearch , WITHOUT possible groups - straight search with groups is very slow
 		i = instr(pom,&quot;||&quot;)
-		if (i &gt; 0)and (AltSearchPARAMS.reg=1) then &apos; multireplacement with the regexp symbols
+		if (i &gt; 0)and (ALTsearchPARAMS.reg=1) then &apos; multireplacement with the regexp symbols
 			HLE1() = getFindArray(pom, false) &apos; without groups, not important, ones will be loaded once more singly
 			&apos;the arrays for individual multisearch
 			HLE(0).cmd = &quot;[::MultipleSearch::]&quot;  &apos; the rest isn&apos;t important, it will be processed once again
 			ALTsearchMFIND() = ArrayOutOfString_(pom,&quot;||&quot;)  &apos; the array with the individual substrings for search
 			&apos; uprava nahrazovaciho retezce
-			pom = replace_(AltSearchPARAMS.repl,&quot;\\&quot;,&quot;\x005C&quot;)  &apos; substitute special characters to hexa codes
+			pom = replace_(ALTsearchPARAMS.repl,&quot;\\&quot;,&quot;\x005C&quot;)  &apos; substitute special characters to hexa codes
 			pom = replace_(pom,&quot;\|&quot;,&quot;\x007C&quot;)                 &apos; it is not delimiter OR but the character &quot;|&quot;
 			ALTsearchMREPL() = ArrayOutOfString_(pom,&quot;||&quot;)  &apos; array with single strings for replacement
 		else
@@ -1202,7 +1202,7 @@ sub BtReplaceAll
 		end if
 	end if
 
-	REPL() = getReplArray(AltSearchPARAMS.repl) &apos; load the array of replacements
+	REPL() = getReplArray(ALTsearchPARAMS.repl) &apos; load the array of replacements
 	curinit = false  &apos; refresh the cursors after found with CursorInit(true)
 	HledamDisp(true) &apos; not accessible during counting
 	ERRPROP = 0 &apos; the counter of unsuccessful settings of properties
@@ -1211,7 +1211,7 @@ sub BtReplaceAll
 	nCOUNT = 0
 	iREPLACE=0 &apos;reset the count of no-replacements (&quot;!&quot; in function ReplDo)
 
-	if AltSearchPARAMS.reg &lt;&gt; 1 then
+	if ALTsearchPARAMS.reg &lt;&gt; 1 then
 		&apos; normal search without regexps, false - without presearch, not needed there aren&apos;t regexps
 		if not Zamenuj(false) then goto chyba &apos; the procedure for EXECUTING OF ALL EXCHANGES via find -- replace
 		goto konec &apos; vypis vysledku a konec
@@ -1232,7 +1232,7 @@ sub BtReplaceAll
 			max = getIndexComment(1,0,&quot;&quot;)
 			hled = HLE(0).hled
 			&apos; helped array TMPPOLE() with the names of text frames is loaded from getIndexComment()
-			if AltSearchPARAMS.kcase=0 then bin = 1  &apos; bin=1 instr(,,bin) ignore lower/uppercases; BIN=0 binary comparison
+			if ALTsearchPARAMS.kcase=0 then bin = 1  &apos; bin=1 instr(,,bin) ignore lower/uppercases; BIN=0 binary comparison
 
 			for i = 0 to Ubound(TMPPOLE())  &apos; for all objects
 				&apos; the substring is found or find all
@@ -1271,7 +1271,7 @@ sub BtReplaceAll
 			end if
 			if hled = &quot;&quot; then mode = 0 &apos; find all
 
-			if AltSearchPARAMS.kcase=0 then bin = 1  &apos; bin=1 instr(,,bin) ignore lower/uppercases; BIN=0 binary comparison
+			if ALTsearchPARAMS.kcase=0 then bin = 1  &apos; bin=1 instr(,,bin) ignore lower/uppercases; BIN=0 binary comparison
 
 			TMPPOLE = ALTsearchDOC.Bookmarks
 			max = TMPPOLE.count - 1  &apos;  max index of last note
@@ -1330,7 +1330,7 @@ sub BtReplaceAll
 		case &quot;[::Field::]&quot;
 			max = getIndexTField(1,0,&quot;&quot;)
 			hled = HLE(0).hled
-			if AltSearchPARAMS.kcase=0 then bin = 1  &apos; bin=1 instr(,,bin) ignore lower/uppercases; BIN=0 binary comparison
+			if ALTsearchPARAMS.kcase=0 then bin = 1  &apos; bin=1 instr(,,bin) ignore lower/uppercases; BIN=0 binary comparison
 
 			for i = 0 to Ubound(TMPPOLE())  &apos; for all objects
 				&apos; the substring is found or find all
@@ -1426,7 +1426,7 @@ sub BtReplaceAll
 				TMPPOLE(i)= oFoot(i)  &apos; pole
 			next i
 
-			if AltSearchPARAMS.kcase=0 then bin = 1  &apos; bin=1 instr(,,bin) ignore lower/uppercases; BIN=0 binary comparison
+			if ALTsearchPARAMS.kcase=0 then bin = 1  &apos; bin=1 instr(,,bin) ignore lower/uppercases; BIN=0 binary comparison
 
 			for i = max to 0 step -1  &apos; backward, else during the ommiting of note will come to renumbering of next ones and undesirabled recursive deleting
 				&apos; search in content of note or in text of anchor
@@ -1485,7 +1485,7 @@ sub BtReplaceAll
 				TMPPOLE(i)= oFoot(i)  &apos; pole
 			next i
 
-			if AltSearchPARAMS.kcase=0 then bin = 1  &apos; bin=1 instr(,,bin) ignore lower/uppercases; BIN=0 binary comparison
+			if ALTsearchPARAMS.kcase=0 then bin = 1  &apos; bin=1 instr(,,bin) ignore lower/uppercases; BIN=0 binary comparison
 
 			&apos; serch if it satisfies the conditions
 			for i = 0 to max
@@ -1528,9 +1528,9 @@ sub BtReplaceAll
 		case &quot;[::TextFrame::]&quot;
 			&apos; load helped array with the names of objects (frames)
 			TMPPOLE()= ALTsearchDOC.getTextFrames.ElementNames
-			if AltSearchPARAMS.kcase=0 then bin = 1  &apos; bin=1 instr(,,bin) ignore lower/uppercases; BIN=0 binary comparison
+			if ALTsearchPARAMS.kcase=0 then bin = 1  &apos; bin=1 instr(,,bin) ignore lower/uppercases; BIN=0 binary comparison
 
-			if AltSearchPARAMS.zpet = 0 then  
+			if ALTsearchPARAMS.zpet = 0 then  
 				ReverseArray(TMPPOLE) &apos;fix: bug #59  set order of textframes https://github.com/gitxpy/libreoffice-alt-search/issues/59
 			end If
 
@@ -1566,7 +1566,7 @@ sub BtReplaceAll
 		case &quot;[::TextTable::]&quot;
 			&apos; load helped array with the names of objects (tables)
 			TMPPOLE()= ALTsearchDOC.getTextTables.ElementNames
-			if AltSearchPARAMS.kcase=0 then bin = 1  &apos; bin=1 instr(,,bin) ignore lower/uppercases; BIN=0 binary comparison
+			if ALTsearchPARAMS.kcase=0 then bin = 1  &apos; bin=1 instr(,,bin) ignore lower/uppercases; BIN=0 binary comparison
 
 			for i = 0 to Ubound(TMPPOLE())  &apos; for all objects - array with the names of tables
 				&apos; the substring is found or find all
@@ -1602,7 +1602,7 @@ sub BtReplaceAll
 			dim oTFr, names
 			oTFr = ALTsearchDOC.GraphicObjects
 			names = oTFr.ElementNames
-			if AltSearchPARAMS.kcase=0 then bin = 1  &apos; bin=1 instr(,,bin) ignore lower/uppercases; BIN=0 binary comparison
+			if ALTsearchPARAMS.kcase=0 then bin = 1  &apos; bin=1 instr(,,bin) ignore lower/uppercases; BIN=0 binary comparison
 			dim alttext
 			alttext = false
 			rest = HLE(0).hled
@@ -1667,7 +1667,7 @@ hledejdal:
 				goto hledejdal
 			end if
 
-			if AltSearchPARAMS.zpet = 1 then  &apos; inverse bounds for backward search
+			if ALTsearchPARAMS.zpet = 1 then  &apos; inverse bounds for backward search
 				if nastavRozsah(prCURS, FO1.getEnd(),FO3.getStart()) &lt;&gt; 0 then
 					prCURS = nastavKurzor(FO1) &apos; in the case of bug of region search farther behind the FO1
 					goto hledejdal
@@ -1852,7 +1852,7 @@ sub FindDo
 	FO1S = &quot;&quot; :  FO2S = &quot;&quot; : FO3S = &quot;&quot;
 	FOUNDcaseTYPE = 0
 hledejZacKon:
-	if AltSearchPARAMS.reg &lt;&gt; 1 then &apos; normal search without regexps
+	if ALTsearchPARAMS.reg &lt;&gt; 1 then &apos; normal search without regexps
 		if not isSelTextRange(1) then goto konec  &apos; non-text selection would do a bug
 		prCURS = oVCURS.text.createTextCursorByRange(oVCURS) &apos; working according to visible
 		ALTSlastFOUND = FindNextInBlock(HLE(), prCURS, ALTSiniSEL, false, false) &apos; presearch without groups
@@ -2158,7 +2158,7 @@ hledejdal:
 				goto hledejdal
 			end if
 
-			if AltSearchPARAMS.zpet = 1 then  &apos; inverse bounds for backward search
+			if ALTsearchPARAMS.zpet = 1 then  &apos; inverse bounds for backward search
 				if nastavRozsah(prCURS, FO1.getEnd(),FO3.getStart()) &lt;&gt; 0 then
 					prCURS = nastavKurzor(FO1) &apos; in the case of bug of region search farther behind the FO1
 					goto hledejdal
@@ -2184,7 +2184,7 @@ vratcurs:
 				nastavVKurzor(ALTSiniSEL, info, curinit)  &apos;set visible cursor according to working one
 				FIRSTPASS = true
 			else
-				if AltSearchPARAMS.zpet = 1 then  &apos; inverse bounds for backward search
+				if ALTsearchPARAMS.zpet = 1 then  &apos; inverse bounds for backward search
 					if 6 &lt;&gt; hlaseni(1) then goto konec &apos;start of document. Continue from the end?
 					oVCURS.gotorange(ALTsearchDOC.text.getEnd(),false) &apos; cursor to the end of document
 					goto hledejZacKon &apos; BtFindNext
@@ -2202,9 +2202,9 @@ vratcurs:
 			if not isSelTextRange(1) then goto konec  &apos; non-text selection would cause the bug
 			prCURS = oVCURS.text.createTextCursorByRange(oVCURS) &apos; working according to visible
 			ALTSlastFOUND = FindNextInBlock(HLE(), prCURS, ALTSiniSEL, false, false) &apos; presearch without groups
-			if (ALTSlastFOUND = 0)and (AltSearchPARAMS.reg=1)and not( (ubound(HLE1())=0) and ((HLE1(0).hled=&quot;$&quot;) or (HLE1(0).atr=4) ) ) then  &apos;found without groups - search again with groups, only during the regexp symbols a not during the finding of alone $ a not during the finding of character style
+			if (ALTSlastFOUND = 0)and (ALTsearchPARAMS.reg=1)and not( (ubound(HLE1())=0) and ((HLE1(0).hled=&quot;$&quot;) or (HLE1(0).atr=4) ) ) then  &apos;found without groups - search again with groups, only during the regexp symbols a not during the finding of alone $ a not during the finding of character style
 				Curs = prCURS.text.createTextCursorByRange(prCURS) &apos; helped cursor according to working one
-				if AltSearchPARAMS.zpet = 1 then
+				if ALTsearchPARAMS.zpet = 1 then
 					Curs.collapseToEnd
 				else
 					Curs.collapseToStart
@@ -2470,8 +2470,8 @@ sub KonecTm
 	ALTsearchINI(6) = oDIAL.model.Ch_zpet.state &apos; backward
 	ALTsearchINI(7) = oDIAL.model.Ch_styl.state &apos; search the styles
 	ALTsearchINI(10) = oDIAL.model.Ch_preservecap.state &apos; &apos; leave uppercases
-	ALTsearchINI(8) = AltSearchPARAMS.find
-	ALTsearchINI(9) = AltSearchPARAMS.repl
+	ALTsearchINI(8) = ALTsearchPARAMS.find
+	ALTsearchINI(9) = ALTsearchPARAMS.repl
 	ulozHistorii &apos; save the history of F&amp;R from records to global arrays
 	ALTsearchDIALOG_end = true
 	ALTsearchDOCCONTROL.removeKeyHandler(ALTsearchKBD) &apos; end handler for keyboard
@@ -2526,32 +2526,32 @@ end sub
 
 	&apos; load the options of search to work variable to prevent the potential changes in the progress of search
 sub loadPARAMS(obnov as boolean)
-	if obnov then &apos; reload the values from array ALTsearchINI - AltSearchPARAMS doesn&apos;t funct globally, probably bug
-		AltSearchPARAMS.kcase = ALTsearchINI(3) &apos; oDIAL.model.Ch_case.state &apos; case sensitive
-		AltSearchPARAMS.word = ALTsearchINI(4) &apos; oDIAL.model.Ch_word.state &apos; whole words
-		AltSearchPARAMS.reg = ALTsearchINI(5) &apos; oDIAL.model.Ch_reg.state  &apos; regexps
-		AltSearchPARAMS.zpet = ALTsearchINI(6) &apos; oDIAL.model.Ch_zpet.state &apos; backward
-		AltSearchPARAMS.styl = ALTsearchINI(7) &apos; oDIAL.model.Ch_styl.state &apos; search the styles
-		AltSearchPARAMS.preservecap = ALTsearchINI(10)  &apos; oDIAL.model.Ch_preservecap.state &apos; let uppercases
-		AltSearchPARAMS.find = ALTsearchINI(8)
-		AltSearchPARAMS.repl = ALTsearchINI(9)
+	if obnov then &apos; reload the values from array ALTsearchINI - ALTsearchPARAMS doesn&apos;t funct globally, probably bug
+		ALTsearchPARAMS.kcase = ALTsearchINI(3) &apos; oDIAL.model.Ch_case.state &apos; case sensitive
+		ALTsearchPARAMS.word = ALTsearchINI(4) &apos; oDIAL.model.Ch_word.state &apos; whole words
+		ALTsearchPARAMS.reg = ALTsearchINI(5) &apos; oDIAL.model.Ch_reg.state  &apos; regexps
+		ALTsearchPARAMS.zpet = ALTsearchINI(6) &apos; oDIAL.model.Ch_zpet.state &apos; backward
+		ALTsearchPARAMS.styl = ALTsearchINI(7) &apos; oDIAL.model.Ch_styl.state &apos; search the styles
+		ALTsearchPARAMS.preservecap = ALTsearchINI(10)  &apos; oDIAL.model.Ch_preservecap.state &apos; let uppercases
+		ALTsearchPARAMS.find = ALTsearchINI(8)
+		ALTsearchPARAMS.repl = ALTsearchINI(9)
 	else  &apos; load according to settings of dialog
-		AltSearchPARAMS.kcase = 0
-		AltSearchPARAMS.word = 0
-		AltSearchPARAMS.styl = 0
-		AltSearchPARAMS.reg = 0
-		AltSearchPARAMS.csele = 0
-		AltSearchPARAMS.zpet = 0
-		AltSearchPARAMS.preservecap = 0
-		if (oDIAL.model.Ch_case.state = 1)and(oDIAL.model.Ch_case.enabled) then AltSearchPARAMS.kcase = 1
-		if (oDIAL.model.Ch_word.state = 1)and(oDIAL.model.Ch_word.enabled) then AltSearchPARAMS.word = 1
-		if (oDIAL.model.Ch_styl.state = 1)and(oDIAL.model.Ch_styl.enabled) then AltSearchPARAMS.styl = 1
-		if (oDIAL.model.Ch_reg.state = 1)and(oDIAL.model.Ch_reg.enabled) then AltSearchPARAMS.reg = 1
-		if (oDIAL.model.Ch_preservecap.state = 1)and(oDIAL.model.Ch_preservecap.enabled) then AltSearchPARAMS.preservecap = 1
-		if (oDIAL.model.Ch_csele.state = 1)and(oDIAL.model.Ch_csele.enabled) then AltSearchPARAMS.csele = 1
-		if (oDIAL.model.Ch_zpet.state = 1)and(oDIAL.model.Ch_zpet.enabled) then AltSearchPARAMS.zpet = 1
-		AltSearchPARAMS.find = oDIAL.model.Cb_find.text
-		AltSearchPARAMS.repl = oDIAL.model.Cb_repl.text
+		ALTsearchPARAMS.kcase = 0
+		ALTsearchPARAMS.word = 0
+		ALTsearchPARAMS.styl = 0
+		ALTsearchPARAMS.reg = 0
+		ALTsearchPARAMS.csele = 0
+		ALTsearchPARAMS.zpet = 0
+		ALTsearchPARAMS.preservecap = 0
+		if (oDIAL.model.Ch_case.state = 1)and(oDIAL.model.Ch_case.enabled) then ALTsearchPARAMS.kcase = 1
+		if (oDIAL.model.Ch_word.state = 1)and(oDIAL.model.Ch_word.enabled) then ALTsearchPARAMS.word = 1
+		if (oDIAL.model.Ch_styl.state = 1)and(oDIAL.model.Ch_styl.enabled) then ALTsearchPARAMS.styl = 1
+		if (oDIAL.model.Ch_reg.state = 1)and(oDIAL.model.Ch_reg.enabled) then ALTsearchPARAMS.reg = 1
+		if (oDIAL.model.Ch_preservecap.state = 1)and(oDIAL.model.Ch_preservecap.enabled) then ALTsearchPARAMS.preservecap = 1
+		if (oDIAL.model.Ch_csele.state = 1)and(oDIAL.model.Ch_csele.enabled) then ALTsearchPARAMS.csele = 1
+		if (oDIAL.model.Ch_zpet.state = 1)and(oDIAL.model.Ch_zpet.enabled) then ALTsearchPARAMS.zpet = 1
+		ALTsearchPARAMS.find = oDIAL.model.Cb_find.text
+		ALTsearchPARAMS.repl = oDIAL.model.Cb_repl.text
 	end if
 end sub
 
@@ -3196,7 +3196,7 @@ pokracuj:
 	end if
 
 	&apos; set prCURS for next F&amp;R
-	if AltSearchPARAMS.zpet = 1 then
+	if ALTsearchPARAMS.zpet = 1 then
 		prCURS.gotoRange(Bmark, false)
 	else &apos;for now, after replace the cursor should be afer last inserted character
 		mistochyby = &quot;nastavPrCurs&quot; &apos; there was bug during use \R to notes
@@ -3235,14 +3235,14 @@ end sub
 	&apos; set prCURS in the dependence of selected block and choice of block
 sub resetPrCurs
 	&apos; set the start of search if the search is only inside the block during 1st search
-	if (AltSearchPARAMS.csele = 1) then
-		if AltSearchPARAMS.zpet = 1 then   &apos; for search from the end of block
+	if (ALTsearchPARAMS.csele = 1) then
+		if ALTsearchPARAMS.zpet = 1 then   &apos; for search from the end of block
 			prCURS = oVCURS.text.createTextCursorByRange(oVCURS.GetEnd()) &apos; working according to visible
 		else
 			prCURS = oVCURS.text.createTextCursorByRange(oVCURS.GetStart()) &apos; working according to visible
 		end if
 	else
-		if AltSearchPARAMS.zpet = 1 then   &apos; for searching from the end of document
+		if ALTsearchPARAMS.zpet = 1 then   &apos; for searching from the end of document
 			prCURS = ALTsearchDOC.text.GetEnd()
 		else
 			prCURS = ALTsearchDOC.text.GetStart()
@@ -3448,9 +3448,9 @@ sub Zamenuj(predhledani as boolean )as boolean
 	Zamenuj = true
 
 	ALTSlastFOUND = FindNextInBlock(HLE(), prCURS, ALTSiniSEL, false, false) &apos; presearch without groups
-	if (ALTSlastFOUND = 0)and (AltSearchPARAMS.reg=1) and predhledani and not( (ubound(HLE1())=0) and ((HLE1(0).hled=&quot;$&quot;) or (HLE1(0).atr=4) ) ) then  &apos;without groups was found - search again with groups, only at regexps and not at search single $ and not at search the character style
+	if (ALTSlastFOUND = 0)and (ALTsearchPARAMS.reg=1) and predhledani and not( (ubound(HLE1())=0) and ((HLE1(0).hled=&quot;$&quot;) or (HLE1(0).atr=4) ) ) then  &apos;without groups was found - search again with groups, only at regexps and not at search single $ and not at search the character style
 		Curs = prCURS.text.createTextCursorByRange(prCURS) &apos; helped cursor according to working one
-		if AltSearchPARAMS.zpet = 1 then
+		if ALTsearchPARAMS.zpet = 1 then
 			Curs.collapseToEnd
 		else
 			Curs.collapseToStart
@@ -3463,9 +3463,9 @@ sub Zamenuj(predhledani as boolean )as boolean
 		REPLCOUNT = REPLCOUNT + 1 &apos; counter of exchanges
 		ReplDo  &apos;substitute the found
 		ALTSlastFOUND = FindNextInBlock(HLE(), prCURS, ALTSiniSEL, false, false) &apos; presearch without groups
-		if (ALTSlastFOUND = 0)and (AltSearchPARAMS.reg=1) and predhledani and not( (ubound(HLE1())=0) and ((HLE1(0).hled=&quot;$&quot;) or (HLE1(0).atr=4) ) ) then  &apos;without groups was found - search again with groups, only at regexps and not at search single $ and not at search the character style
+		if (ALTSlastFOUND = 0)and (ALTsearchPARAMS.reg=1) and predhledani and not( (ubound(HLE1())=0) and ((HLE1(0).hled=&quot;$&quot;) or (HLE1(0).atr=4) ) ) then  &apos;without groups was found - search again with groups, only at regexps and not at search single $ and not at search the character style
 			Curs = prCURS.text.createTextCursorByRange(prCURS) &apos; helped cursor according to working one
-			if AltSearchPARAMS.zpet = 1 then
+			if ALTsearchPARAMS.zpet = 1 then
 				Curs.collapseToEnd
 			else
 				Curs.collapseToStart
