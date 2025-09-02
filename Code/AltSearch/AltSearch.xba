@@ -196,7 +196,7 @@ End Sub
 sub _FindBack
 	if ERRcontrol then on error goto konec
 	if ALTSlastFOUND&lt;&gt;4 then
-		if ALTsearchDIALOG_end then loadPARAMS(true) &apos; restore the options from Ini
+		if ALTsearchDIALOG_end then loadParams(true) &apos; restore the options from Ini
 		ALTsearchPARAMS.zpet = 1
 		if ALTsearchPARAMS.find = &quot;&quot; then exit sub
 		FindDo  &apos; search
@@ -211,7 +211,7 @@ end sub
 sub _FindNext
 	if ERRcontrol then on error goto konec
 	if ALTSlastFOUND&lt;&gt;4 then
-		if ALTsearchDIALOG_end then loadPARAMS(true) &apos; restore options from Ini
+		if ALTsearchDIALOG_end then loadParams(true) &apos; restore options from Ini
 		ALTsearchPARAMS.zpet = 0
 		if ALTsearchPARAMS.find = &quot;&quot; then exit sub
 		FindDo  &apos; search
@@ -318,7 +318,7 @@ sub BtCount
 	if NOT testViewCursor then exit sub &apos;test if Visible cursor isn&apos;t in Comment etc.
 	dim info, curinit, curs, i, j, max, hled, pom, bin, oTmp, oAnch, inFoot, oFoot, mode
 	info = &quot;&quot;  &apos;information filed under the inpubox Find
-	loadPARAMS(false) &apos; save options of search
+	loadParams(false) &apos; save options of search
 	redim TMPPOLE() &apos; reset the array used for search the frames, notes, footnote, a text field
 	addToHistory(1,0) &apos;add to history the F&amp;R expressions
 
@@ -713,7 +713,7 @@ sub BtFindAll
 	if NOT testViewCursor then exit sub &apos;test if Visible cursor isn&apos;t in Comment etc.
 	dim info, curinit, curs, i, j, max, hled, pom, bin, oAnch, oFoot, inFoot, mode
 	info = &quot;&quot;  &apos; information box under the Find
-	loadPARAMS(false) &apos; save the options of search
+	loadParams(false) &apos; save the options of search
 	redim TMPPOLE() &apos; reset the array used for search the frames, notes, footnote, a text field
 	addToHistory(1,0) &apos; &apos;add to history the F&amp;R expressions
 
@@ -1060,7 +1060,7 @@ sub BtFindNext
 	ALTsearchFINDLAST = &quot;&quot;
 
 	info = &quot;&quot;  &apos; information box under the Find
-	loadPARAMS(false) &apos; save the options of search
+	loadParams(false) &apos; save the options of search
 
 	if FIRSTPASS then
 		redim TMPPOLE() &apos; reset the array used for search the frames, notes, footnote, a text field
@@ -1128,7 +1128,7 @@ sub BtReplace
 	if ALTSlastFOUND&lt;&gt;0 then goto najdiDalsi
 	if ALTSlastFOUND&lt;&gt;0 then exit sub  &apos; no found, end
 
-	loadPARAMS(false) &apos; save, actualization of search options
+	loadParams(false) &apos; save, actualization of search options
 	addToHistory(0,1) &apos; &apos;add to history the F&amp;R expressions
 	REPL() = getReplArray(ALTsearchPARAMS.repl) &apos; load the array of replacements
 
@@ -1160,7 +1160,7 @@ sub BtReplaceAll
 	oUndoMgr.enterUndoContext(sUndo) &apos;set Undo manager
 	bin = 0  &apos; set the search of uppercases in substrings
 	info = &quot;&quot;  &apos; information box under the Find
-	loadPARAMS(false) &apos; save the options of search
+	loadParams(false) &apos; save the options of search
 	TEXTFIELDS = false &apos; for actualization of fields
 	FO1S = &quot;&quot; :  FO2S = &quot;&quot; : FO3S = &quot;&quot;  &apos; reset of the big-blocks strings
 
@@ -2525,14 +2525,15 @@ end sub
 
 
 	&apos; load the options of search to work variable to prevent the potential changes in the progress of search
-sub loadPARAMS(obnov as boolean)
-	if obnov then &apos; reload the values from array ALTsearchINI - ALTsearchPARAMS doesn&apos;t funct globally, probably bug
+sub loadParams(fromINI as boolean)
+	if fromINI then &apos; reload the values from array ALTsearchINI - ALTsearchPARAMS doesn&apos;t funct globally, probably bug
 		ALTsearchPARAMS.kcase = ALTsearchINI(3) &apos; oDIAL.model.Ch_case.state &apos; case sensitive
 		ALTsearchPARAMS.word = ALTsearchINI(4) &apos; oDIAL.model.Ch_word.state &apos; whole words
 		ALTsearchPARAMS.reg = ALTsearchINI(5) &apos; oDIAL.model.Ch_reg.state  &apos; regexps
 		ALTsearchPARAMS.zpet = ALTsearchINI(6) &apos; oDIAL.model.Ch_zpet.state &apos; backward
 		ALTsearchPARAMS.styl = ALTsearchINI(7) &apos; oDIAL.model.Ch_styl.state &apos; search the styles
 		ALTsearchPARAMS.preservecap = ALTsearchINI(10)  &apos; oDIAL.model.Ch_preservecap.state &apos; let uppercases
+
 		ALTsearchPARAMS.find = ALTsearchINI(8)
 		ALTsearchPARAMS.repl = ALTsearchINI(9)
 	else  &apos; load according to settings of dialog
@@ -2540,9 +2541,9 @@ sub loadPARAMS(obnov as boolean)
 		ALTsearchPARAMS.word = 0
 		ALTsearchPARAMS.styl = 0
 		ALTsearchPARAMS.reg = 0
+		ALTsearchPARAMS.preservecap = 0
 		ALTsearchPARAMS.csele = 0
 		ALTsearchPARAMS.zpet = 0
-		ALTsearchPARAMS.preservecap = 0
 		if (oDIAL.model.Ch_case.state = 1)and(oDIAL.model.Ch_case.enabled) then ALTsearchPARAMS.kcase = 1
 		if (oDIAL.model.Ch_word.state = 1)and(oDIAL.model.Ch_word.enabled) then ALTsearchPARAMS.word = 1
 		if (oDIAL.model.Ch_styl.state = 1)and(oDIAL.model.Ch_styl.enabled) then ALTsearchPARAMS.styl = 1
@@ -2550,6 +2551,7 @@ sub loadPARAMS(obnov as boolean)
 		if (oDIAL.model.Ch_preservecap.state = 1)and(oDIAL.model.Ch_preservecap.enabled) then ALTsearchPARAMS.preservecap = 1
 		if (oDIAL.model.Ch_csele.state = 1)and(oDIAL.model.Ch_csele.enabled) then ALTsearchPARAMS.csele = 1
 		if (oDIAL.model.Ch_zpet.state = 1)and(oDIAL.model.Ch_zpet.enabled) then ALTsearchPARAMS.zpet = 1
+
 		ALTsearchPARAMS.find = oDIAL.model.Cb_find.text
 		ALTsearchPARAMS.repl = oDIAL.model.Cb_repl.text
 	end if
