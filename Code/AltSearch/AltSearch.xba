@@ -1852,7 +1852,7 @@ sub FindDo
 	dim info, curinit
 	dim max,  bin, i, j, oTmp, pom, hled, rest, mode
 	
-	AltSearchVolby.find=removeZero( AltSearchVolby.find ) &apos; bug #74
+	ALTsearchPARAMS.find=removeZero( ALTsearchPARAMS.find ) &apos; bug #74
 	
 	if ERRcontrol then on error goto nejakaChyba
 	curinit = false &apos; refresh the cursors after found with CursorInit(true)
