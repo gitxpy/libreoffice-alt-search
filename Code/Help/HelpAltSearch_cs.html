@@ -217,10 +217,10 @@
 		<p class="cm2"><strong>\d</strong> - resetuje na výchozí textové atributy pouze v místě použití.</p>
 		<p class="cm4">Narozdíl od <strong>\D</strong> nemá vliv na předchozí vložený text, ale jen na následující.</p>
 		<p class="cm2"><strong>\F{Nová PP}</strong> - vloží do místa náhrady novou poznámku pod čarou obsahující text <strong>Nová PP</strong></p>
-		<p class="cm4">Uvniř závorek lze přitom použít parametry pro části nalezeného textu, např. <strong>&mp;</strong> nebo <strong>\1</strong></p>
+		<p class="cm4">Uvniř závorek lze přitom použít parametry pro části nalezeného textu, např. <strong>&amp;</strong> nebo <strong>\1</strong></p>
 		<p class="cm2"><strong>\E{Nová vysvětlivka}</strong> - vloží do místa náhrady novou vysvětlivku, podobne jako <strong>\F</strong></p>
 		<p class="cm2"><strong>\B{značka|text}</strong> - vloží text <strong>text</strong> reprezentující značku o názvu <strong>značka</strong> pro křížový okaz</p>
-		<p class="cm4">Uvniř závorek lze přitom použít parametry pro části nalezeného textu, např. <strong>&mp;</strong> nebo <strong>\1</strong></p>
+		<p class="cm4">Uvniř závorek lze přitom použít parametry pro části nalezeného textu, např. <strong>&amp;</strong> nebo <strong>\1</strong></p>
 		<p class="cm2"><strong>\L{0,0,značka}</strong> - vloží křížový odkaz (pole) o zadaných parametrech s názvem značky <strong>značka</strong></p>
 		<p class="cm4">Význam číselných parametrů (oddělených čárkou)</p>
 		<p class="cm6"><i>první číslo</i> - typ odkazu: 0 - arabské číslo stránky, 1 - číslo kapitoly, 2 - odkaz (text značky), 3 - pod/nad, 4 - číslo stránky podle stylu stránky, 5 - kategorie a číslo popisku, 6 - text popisku, 7 - číslování (popisku)</p>
@@ -249,7 +249,7 @@
 		<p class="cm2"><strong>\v</strong> - vloží do nahrazovaného výrazu obsah schránky</p>
 		<p class="cm2"><strong>\V</strong> - vloží do nahrazovaného výrazu obsah schránky jako neformátovaný text</p>
 		<p class="cm2"><strong>\f</strong> - zachovat formátování</p>
-		<p class="cm4">Pokud se v nahrazovaném výrazu vkládá i nalezený text (<strong>&mp;</strong> nebo <strong>\0</strong>) tak bude vkládán přes schránku. Pokud tedy obsahuje textová pole, poznámky, odkazy apod. měly by se vložit v&nbsp;původním stavu.</p>
+		<p class="cm4">Pokud se v nahrazovaném výrazu vkládá i nalezený text (<strong>&amp;</strong> nebo <strong>\0</strong>) tak bude vkládán přes schránku. Pokud tedy obsahuje textová pole, poznámky, odkazy apod. měly by se vložit v&nbsp;původním stavu.</p>
 		<p class="cm2"><strong>\R</strong> - přesměrování nahrazení do jiného souboru</p>
 		<p class="cm4">Volba způsobí výpis nahrazovaného výrazu do nového souboru.ODT namísto přepsání nalezeného místa. Původní soubor by měl tedy zůstat beze změny. Jméno rámu lze zadat pomoci <strong>\R{jmeno}</strong>. Pokud je třeba zapisovat do dříve uloženého otevřeného souboru, je nutno zadat přesně stejné jméno jako je v titulku okna včetně " - OpenOffice.org Writer". Záznamy se přidávají vždy na konec souboru.</p>
 		<p class="cm4">Příklad:<br>Pokud bylo hledáno např. pomocí výrazu <strong>[:::HyperLinkURL::]</strong> a nahrazovací výraz byl <strong>Odkaz \i, strana \I: &amp; (URL: \u)\p\R</strong> pak po použití <var>Nahradit&nbsp;vše</var> budou v novém souboru vypsány všechny hypertextové odkazy nalezené v původním souboru ve tvaru: <i>Odkaz 1, strana 1: textOdkazu (URL: URLadresa)</i> v&nbsp;samostatném odstavci.</p>

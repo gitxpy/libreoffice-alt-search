@@ -213,10 +213,10 @@
 		<p class="cm2"><strong>\d –</strong> setzt die Text-Attribute an dieser Stelle auf Standard.</p>
 		<p class="cm4">Im Gegensatz zu <strong>\D</strong> hat dies keine Auswirkung auf vorher eingefügten Text.</p>
 		<p class="cm2"><strong>\F{New Fußnote} –</strong> fügt eine neue Fußnote ein, die <strong>New Fußnote</strong> an der Stelle der Ersetzung enthält</p>
-		<p class="cm4">Innerhalb geschweifter Klammern können die Parameter <strong>\i</strong>, <strong>\I</strong>, <strong>&mp;</strong>, oderr <strong>\1</strong> benutzt werden</p>
+		<p class="cm4">Innerhalb geschweifter Klammern können die Parameter <strong>\i</strong>, <strong>\I</strong>, <strong>&amp;</strong>, oderr <strong>\1</strong> benutzt werden</p>
 		<p class="cm2"><strong>\E{New endnote} –</strong> fügt eine neue Endnote an der Stelle der Ersetzung ein, analog zu <strong>\F</strong></p>
 		<p class="cm2"><strong>\B{ref1|text} –</strong> fügt Text <strong>text</strong> ein, steht für Markierung namens <strong>ref1</strong> für Querverweis</p>
-		<p class="cm4">Innerhalb geschweifter Klammern können die Parameter <strong>\i</strong>, <strong>\I</strong>, <strong>&mp;</strong>, oder <strong>\1</strong> benutzt werden</p>
+		<p class="cm4">Innerhalb geschweifter Klammern können die Parameter <strong>\i</strong>, <strong>\I</strong>, <strong>&amp;</strong>, oder <strong>\1</strong> benutzt werden</p>
 		<p class="cm2"><strong>\L{0,0,ref1} –</strong> fügt Querverweis (Feld) ein mit den Parametern <strong>0,0</strong> und dem Namen der Referenz-Markierung <strong>ref1</strong></p>
 		<p class="cm4">Bedeutung numerischer Parameter</p>
 		<p class="cm6"><i>erste Ziffer</i> - Referenz-Typ: 0 - arabische Seitenzahlen, 1 - Kapitel-Nummer, 2 - Referenz-Text, 3 - oben/unten, 4 – Seiten-Nummer mit dem in der Seiten-Vorlage festgelegten Format, 5 - Kategorie und Nummer einer Beschriftung, 6 - Beschriftungs-Text, 7 - Nummer eines Aufzählungs-Feldes (Beschriftung)</p>
@@ -238,7 +238,7 @@
 		<p class="cm2"><strong>\v –</strong> fügt den Inhalt der Zwischenablage ein</p>
 		<p class="cm2"><strong>\V</strong> - fügt den Inhalt der Zwischenablage als unformatierten Text ein</p>
 		<p class="cm2"><strong>\f –</strong> behält Format bei</p>
-		<p class="cm4">Wenn im ersetzen Ausdruck <strong>&mp;</strong> oder <strong>\0</strong> verwendet werden, findet die Ersetzung über die Zwischenablage statt. Wenn der gefundene Text Text-Felder, Notizen, Referenzen usw. enthält, wird deren Formatierung beibehalten.</p>
+		<p class="cm4">Wenn im ersetzen Ausdruck <strong>&amp;</strong> oder <strong>\0</strong> verwendet werden, findet die Ersetzung über die Zwischenablage statt. Wenn der gefundene Text Text-Felder, Notizen, Referenzen usw. enthält, wird deren Formatierung beibehalten.</p>
 		<p class="cm2"><strong>\R –</strong> Umleitung von Ersetzungen in andere Text-Dateien</p>
 		<p class="cm4">Diese Option schreibt den ersetzten Ausdruck in eine neue Datei. ODT anstelle Ersetzung an der gefundenen Stelle. Die Original-Datei bleibt unverändert. Der Datei-Name wird eingegeben mit <strong>\R{jmeno}</strong>. Der Name muss exakt das Format haben wie im Writer-Fenster angezeigt, einschließlich " - LibreOffice.org Writer". Einfügung stets am Ende der Datei.</p>
 		<p class="cm4">Beispiel:<br>Wenn der Such-Begriff gesucht wurde mit Hilfe von <strong>[:::HyperLinkURL::]</strong> und mit dem Ersetzungs-Begriff <strong>Link \i, page \I: &amp; (URL: \u)\p\R</strong>, so werden nach Anwendung Schaltfläche <var>Ersetze alle</var> alle in der Original-Datei gefundenen Hyperlinks in eine neue Datei geschrieben, in folgender Form: <i>Link</i><i>1, page 1: textOfHyperlink (URL: URLaddress)</i> in jeweils eigene Absätze.</p>

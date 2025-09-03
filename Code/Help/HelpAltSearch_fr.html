@@ -212,10 +212,10 @@
 		<p><strong>\d</strong> - redéfinit les attributs de texte par défaut seulement dans les zones où il est utilisé.</p>
 		<p class="cm2">Contrairement à <strong>\D</strong> cela n'a pas d'effet sur le texte précédemment inséré</p>
 		<p><strong>\F{New footnote }</strong> - insère la nouvelle note de bas de page qui contient <strong>New Footnote</strong> au lieu de remplacer.</p>
-		<p class="cm2">À l'intérieur des accolades il 'est possible d'utiliser n'importe quels paramètres comme <strong>\i</strong>, <strong>\I</strong>, <strong>&mp;</strong>, ou <strong>\1</strong></p>
+		<p class="cm2">À l'intérieur des accolades il 'est possible d'utiliser n'importe quels paramètres comme <strong>\i</strong>, <strong>\I</strong>, <strong>&amp;</strong>, ou <strong>\1</strong></p>
 		<p><strong>\E{New endnote}</strong> - insère la nouvelle note de fin au lieu de remplacer, analogue à <strong>\F</strong></p>
 		<p class="cm2"><strong>\B{ref1|I text}</strong> – insère le texte <strong>text</strong> qui représente la marque [borne] de nom <strong>ref1</strong> pour le renvoi</p>
-		<p class="cm4">À l'intérieur des accolades il 'est possible d'utiliser n'importe quels paramètres comme <strong>\i</strong>, <strong>\I</strong>, <strong>&mp;</strong>, ou <strong>\l</strong></p>
+		<p class="cm4">À l'intérieur des accolades il 'est possible d'utiliser n'importe quels paramètres comme <strong>\i</strong>, <strong>\I</strong>, <strong>&amp;</strong>, ou <strong>\l</strong></p>
 		<p><strong>\L{0,0,ref1}</strong> – Insère un renvoi (champ) avec 0,0 paramètres et le nom de la marque de référence ref1</p>
 		<p class="cm2">Signification des paramètres numériques</p>
 		<p class="cm2"><i>premier nombre</i> - type de référence&nbsp;: 0 - les nombres arabes de la page, 1 - le nombre du chapitre, 2 - le texte de référence, 3 - au-dessus / au dessous, 4 - le nombre de page utilisant le type de numérotation défini dans le style de page, 5 - la catégorie et le nombre d'une légende, 6 - le texte de légende, 7 - le nombre d'un champ de séquence (la légende)</p>
@@ -237,7 +237,7 @@
 		<p><strong>\v</strong> - insère le contenu du presse-papiers</p>
 		<p><strong>\V</strong> - insère le contenu du presse-papiers comme texte non structuré</p>
 		<p><strong>\f</strong> - conserve le format</p>
-		<p class="cm2">Si dans l'expression remplacée est utilisé <strong>&mp;</strong> ou <strong>\0</strong>, Remplacer sera supérieur au presse-papiers. Si le texte trouvé contient des champs de texte, des notes, des références etc, ces objets seront conservés dans l'état original.</p>
+		<p class="cm2">Si dans l'expression remplacée est utilisé <strong>&amp;</strong> ou <strong>\0</strong>, Remplacer sera supérieur au presse-papiers. Si le texte trouvé contient des champs de texte, des notes, des références etc, ces objets seront conservés dans l'état original.</p>
 		<p><strong>\R</strong> - Redirige l'expression de remplacement vers un fichier texte</p>
 		<p class="cm2">Cette option provoque la sortie de l'expression remplacée vers un nouveau fichier.ODT au lieu de faire le remplacement à l'endroit trouvé. Le fichier original ne doit pas être modifié. Il est possible de saisir le nom du cadre du fichier à l'aide de <strong>R{filename}</strong>. Le nom doit avoir précisément le format comme la fenêtre de Writer l'inclut «- LibreOffice&nbsp;Writer». Les enregistrements sont toujours ajoutés à la fin du fichier.</p>
 		<p class="cm2">Exemple&nbsp;: Si l'expression de recherche a été recherchée à l'aide de <strong>[:::HyperLinkURL::]</strong> et l'expression remplacée était <strong>Link</strong><strong>\i,</strong><strong>page \I: &amp; (URL: \u)\p\R</strong>, alors après avoir utilisé le bouton <var>Remplacer tout</var> il sera imprimé dans le nouveau dossier tous les hyperliens trouvés dans le dossier original, dans la forme suivante&nbsp;: <i>Link</i><i>1, page 1: textOfHyperlink (URL: URLaddress)</i> dans des paragraphes séparés.</p>
