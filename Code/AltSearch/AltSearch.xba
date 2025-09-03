@@ -11,7 +11,7 @@ public const ERRcontrol = true &apos;false &apos;true  &apos; turn on the own se
 global ICUcompatability  &apos; = true &apos; reaction on ICU in regular expressions (International Components for Unicode): \xhhhh =&gt; \uhhhh =&gt; accepts both ways
 	dim INITerror &apos; counter of repeated bugs of initialization of cursor
 global ALTsearchINI(12)  &apos; item 0 boolean - flag it ran before = load ini values
-global const ALTSearchMaxHistory=30 &apos;maximux count of items for inputboxes Find, Replace
+global const ALTSearchMaxHistory=30 &apos;maximum number of items for combo boxes Find, Replace
 global ALTsearchFIND(0) as string  &apos; history of search
 global ALTsearchREPL(0) as string  &apos; history of replacing
 global ALTsearchDOC, ALTsearchDOCCONTROL, ALTsearchKBD, ALTsearchDIALOG  &apos; for control of service in other document windows
