@@ -46,7 +46,7 @@ ZkusZnovu:
 	problem:
 
 	if (errmisto = &quot;shell&quot;) then  &apos; file not found
-		pom = inputbox(MSG(28),MSG(11) &amp; VERZE, outPole(0))
+		pom = inputbox(MSG(28),MSG(11) &amp; VERSION, outPole(0))
 		if pom = &quot;&quot; then exit sub
 		outPole(0) = trim(pom)
 		&apos; save output array

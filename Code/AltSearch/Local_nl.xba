@@ -193,7 +193,7 @@ Sub Load_nl
 	&apos; hoofddialoogvenster
 	with oDIAL.model
 
-		.title = MSG(11) &amp; VERZE
+		.title = MSG(11) &amp; VERSION
 		oDIAL.getcontrol(&quot;Cb_replAtr&quot;).addItem(MSG(22),0)  &apos; Kies eigenschappen met knop
 
 		&apos; Pagina 1

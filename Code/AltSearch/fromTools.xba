@@ -148,5 +148,16 @@ Function OpenDocument_(DocPath as String, Args(), Optional bDisposable as Boolea
 		OpenDocument_() = StarDesktop.LoadComponentFromURL(DocPath,&quot;_default&quot;,0,Args())
 End Function
 
-
+Function F_VERSION
+ dim sv As Object, ext as variant, list as variant
+   sv = GetDefaultContext().getByName(&quot;/singletons/com.sun.star.deployment.PackageInformationProvider&quot;)
+   list = sv.getExtensionList()
+   for each ext in list
+     if  ext(0) = &quot;AltSearch-TomB.addon&quot;  then
+       F_VERSION = &quot; AltSearch &quot; &amp; ext(1)
+       Exit Function
+     end if
+   next
+   F_VERSION = &quot;AltSearch extension not found&quot; 
+End Function
 </script:module>
