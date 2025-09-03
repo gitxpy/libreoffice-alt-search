@@ -961,7 +961,7 @@ function getFindArray(byval find as string, skupiny as boolean) as  tFind
 
 	if ALTsearchPARAMS.reg &lt;&gt; 1 then &apos; no regexps
 		pom(0).hled = find
-		getFindArray() = pom()
+		getFindArray() = removeZero( pom() ) &apos; bug #74
 		exit function
 	end if
 
@@ -1144,7 +1144,7 @@ noReplace:
 	&apos; so recode back from hex to characters and end; not valid for NotDefaultCharStyleName = searchong of all character styles
 	if (pom(0).cmd &lt;&gt; &quot;&quot;) and (not skupiny) and (not (pom(0).cmd = &quot;NotDefaultCharStyleName&quot;)) then
 		pom(0).hled = prepis_hex(find)
-		getFindArray() = pom()
+		getFindArray() = removeZero( pom() ) &apos; bug #74
 		exit function
 	end if
 
@@ -1490,7 +1490,7 @@ HledatJenSamOstavec:
 	if pom(0).atr = 4 then pom(0).hled = &quot;.*&quot;
 	if pom(0).atr = 10 then pom(0).hled = &quot;.*&quot;  &apos; for the search of any index mark
 
-	getFindArray() = pom()
+	getFindArray() = removeZero( pom() ) &apos; bug #74
 end function
 
 
@@ -3528,17 +3528,37 @@ sub prepis_hex(byval vstup as string) as string
 end sub
 
 
-	&apos; add &quot;some&quot; to list (if there isn&apos;t one)
+	&apos; add &quot;neco&quot; to list &quot;seznam&quot; (if there isn&apos;t one)
 	&apos; it adds only to start positions of list given by the variable &quot;promene&quot;
 	&apos; &quot;pevne&quot; is count of items at the end of list that stay without changes
 sub pridejDoSeznamuA(seznam, neco, promene, pevne)
+	if Left(neco, 1)=&quot;&amp;&quot; then neco=sZERO &amp; neco &apos;add ZeroWidthJoiner before initial &amp; -&gt; bug #74
 	if pozvSeznamuA(seznam, neco) &gt;= 0 then exit sub &apos; it is already there, end
-	&apos; doplnit novou polozku
+	&apos; add new item
 	if seznam.itemCount &gt;= (promene+pevne) then &apos; delete last variable item
 		seznam.removeItems(promene-1,1)
 	end if
-	seznam.addItem(neco,0)
+	seznam.addItem(neco, 0)
 end sub
+
+
+&apos; bug #74   https://github.com/gitxpy/libreoffice-alt-search/issues/74
+Function removeZero(ByRef variable as variant) as variant &apos;remove zeroWidthJoiner&amp; from the starts of items in string$, normal array(), or Type tFind
+	dim i&amp;, s$, v
+	v=VarType(variable)
+	if v=8 then &apos;variable is string$
+		if Left(variable, 2)=sZEROamp then variable=Mid(variable, 2) &apos;string starts with ZeroWidthJoiner&amp; so remove ZeroWidthJoiner
+	else &apos;variable should be array() or Type tFind
+		for i=lbound(variable) to ubound(variable)
+			if v=8200 then s=variable(i) else s=variable(i).hled &apos;check if variable is normal array() or Type tFind
+			if Left(s, 2)=sZEROamp then &apos;item starts with ZeroWidthJoiner&amp;
+				s=Mid(s, 2) &apos;remove ZeroWidthJoiner
+				if v=8200 then variable(i)=s else variable(i).hled=s &apos;normal array() or Type tFind
+			end if
+		next i
+	end if
+	removeZero=variable
+End Function
 
 
 	&apos; the function find and replace in string

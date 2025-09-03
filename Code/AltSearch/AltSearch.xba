@@ -11,6 +11,7 @@ global ICUcompatability  &apos; = true &apos; reaction on ICU in regular express
 	dim INITerror &apos; counter of repeated bugs of initialization of cursor
 
 global ALTsearchINI(12)  &apos; item 0 boolean - flag it ran before = load ini values
+global const ALTSearchMaxHistory=30 &apos;maximum number of items for combo boxes Find, Replace
 global ALTsearchFIND(0) as string  &apos; history of search
 global ALTsearchREPL(0) as string  &apos; history of replacing
 global ALTsearchDOC, ALTsearchDOCCONTROL, ALTsearchKBD, ALTsearchDIALOG  &apos; for control of service in other document windows
@@ -86,11 +87,17 @@ public FOUNDbookmarkNO as long &apos; index of currently find or processed bookm
 
 global ALTsearchPARAMS as tVolby  &apos; variable for search options
 
+global sZERO$, sZEROamp$ &apos; fix of bug #74
 
 Sub _AltSearch(optional batchName)   &apos; run main dialog
-	dim oL, oKey, loc, tmp
-	dim vysl
+	dim oL, oKey, loc, tmp, vysl
+	
+	rem bug #74
+	sZERO=chr(&amp;h200D&amp;) &apos;ZeroWidthJoiner
+	sZEROamp = sZERO &amp; &quot;&amp;&quot; &apos;ZeroWidthJoiner&amp;
+	
     VERSION = fromTools.F_VERSION
+
 	ALTsearchDOC = ThisComponent
 	reset_klv   &apos; if the service of keyboard was in other window so free it
 	ALTsearchDIALOG = LoadDialog_(&quot;AltSearch&quot;, &quot;D_alts&quot;)
@@ -222,18 +229,19 @@ konec:
 end sub
 
 
-sub addToHistory(hl as byte,na as byte) &apos; add F or R expression to history
+sub addToHistory(hl as byte, na as byte) &apos; add F or R expression to history
+	dim arr() &apos;temporary array
 	if hl = 1 then &apos;
 		&apos;add to history of Find
-		pridejDoSeznamuA(oDIAL.getcontrol(&quot;Cb_find&quot;), ALTsearchPARAMS.find, 30, 0) &apos; max. 30 items
+		pridejDoSeznamuA(oDIAL.getcontrol(&quot;Cb_find&quot;), ALTsearchPARAMS.find, ALTSearchMaxHistory, 0)
 		&apos; save for next run
-		ALTsearchFIND = oDIAL.getcontrol(&quot;Cb_find&quot;).getItems
+		ALTsearchFIND = removeZero( oDIAL.getcontrol(&quot;Cb_find&quot;).getItems ) &apos;bug #74
 	end  if
 	if na = 1 then &apos;
 		&apos;add to history of Replace
-		pridejDoSeznamuA(oDIAL.getcontrol(&quot;Cb_repl&quot;), ALTsearchPARAMS.repl, 30, 0)  &apos; max. 30 items
+		pridejDoSeznamuA(oDIAL.getcontrol(&quot;Cb_repl&quot;), ALTsearchPARAMS.repl, ALTSearchMaxHistory, 0)
 		&apos; save for next run
-		ALTsearchREPL = oDIAL.getcontrol(&quot;Cb_repl&quot;).getItems
+		ALTsearchREPL = removeZero( oDIAL.getcontrol(&quot;Cb_repl&quot;).getItems ) &apos;bug #74
 	end  if
 end sub
 
@@ -1843,6 +1851,9 @@ sub FindDo
 	dim curs
 	dim info, curinit
 	dim max,  bin, i, j, oTmp, pom, hled, rest, mode
+	
+	AltSearchVolby.find=removeZero( AltSearchVolby.find ) &apos; bug #74
+	
 	if ERRcontrol then on error goto nejakaChyba
 	curinit = false &apos; refresh the cursors after found with CursorInit(true)
 	HledamDisp(true) &apos; not accessible during search
