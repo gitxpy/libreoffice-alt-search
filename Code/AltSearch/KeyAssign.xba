@@ -60,7 +60,7 @@ sub Bt_removeBasSubr
 	dim radek
 	radek = replace_(MSG(46),&quot;^^^1&quot;,cr(2) &amp; oDIALSH.model.Cb_bas.text &amp; cr(2))
 
-	if 6&lt;&gt;msgbox(radek, 4+32+128, MSG(11) &amp; VERZE) then exit sub  &apos;128= 1st buton is active, 256=2nd
+	if 6&lt;&gt;msgbox(radek, 4+32+128, MSG(11) &amp; VERSION) then exit sub  &apos;128= 1st buton is active, 256=2nd
 	&apos; for sure actualize the displayingof keyboard shortcut according to basName
 	&apos; not actualize additionally the array  Cb_name.text
 	Change_basname(false)

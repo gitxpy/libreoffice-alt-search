@@ -3270,7 +3270,7 @@ sub hlaseni(volba as integer)as integer
 	if quit&gt;0 then  &apos; there is set no for decision-making functions
 		hlaseni = quit
 	else
-		hlaseni = msgbox(pom, i, MSG(11) &amp; VERZE)
+		hlaseni = msgbox(pom, i, MSG(11) &amp; VERSION)
 		if not ALTsearchDIALOG_end then oDial.setfocus()  &apos; return focus to dialog
 	end  if
 end sub
@@ -3280,7 +3280,7 @@ end sub
 	&apos; style: 16=stop 32=? 48=! 64=info
 sub hlaseni1(styl as long, potlacitHlaseniMozno as boolean, prerusit as boolean,vypis$) &apos; style: 16=stop 32=? 48=! 64=info
 	if not (potlacitHlaseniMozno and QUITMODE) then  &apos; no suppression of report
-		msgbox(vypis, styl, MSG(11) &amp; VERZE)
+		msgbox(vypis, styl, MSG(11) &amp; VERSION)
 		if not ALTsearchDIALOG_end then oDial.setfocus()  &apos; focus to dialog
 	end  if
 end sub

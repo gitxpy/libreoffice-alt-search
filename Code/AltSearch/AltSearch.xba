@@ -5,7 +5,7 @@
 
 option explicit
 
-Global VERZE &apos;version of AltSearch that is taken with the function &apos;changes &gt; F_VERZE&apos; from the LibreOffice extension info
+Global VERSION &apos;version of AltSearch taken with &apos;fromTools &gt; F_VERSION()&apos; from the LibreOffice extension info
 public const ERRcontrol = true &apos;false &apos;true  &apos; turn on the own service of bugs: false for debugging, else must be true for proper reaction on bugs for region etc in FindNextInBlock
 global ICUcompatability  &apos; = true &apos; reaction on ICU in regular expressions (International Components for Unicode): \xhhhh =&gt; \uhhhh =&gt; accepts both ways
 	dim INITerror &apos; counter of repeated bugs of initialization of cursor
@@ -90,7 +90,7 @@ global ALTsearchPARAMS as tVolby  &apos; variable for search options
 Sub _AltSearch(optional batchName)   &apos; run main dialog
 	dim oL, oKey, loc, tmp
 	dim vysl
-    VERZE = changes.F_VERZE
+    VERSION = fromTools.F_VERSION
 	ALTsearchDOC = ThisComponent
 	reset_klv   &apos; if the service of keyboard was in other window so free it
 	ALTsearchDIALOG = LoadDialog_(&quot;AltSearch&quot;, &quot;D_alts&quot;)

@@ -193,7 +193,7 @@ Sub Load_fr
 	&apos; main dialog
 	with oDIAL.model
 
-		.title = MSG(11) &amp; VERZE
+		.title = MSG(11) &amp; VERSION
 		oDIAL.getcontrol(&quot;Cb_replAtr&quot;).addItem(MSG(22),0)  &apos; Pick properties by button
 
 		&apos; main dialog page 1
