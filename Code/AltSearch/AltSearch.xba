@@ -62,7 +62,7 @@ global INITimplNAME &apos; implem. name of selected object
 	dim FINDCOUNTER as long &apos; counter of paragraphs during search \p \m \c, for indicator of search and break the run
 global TMPPOLE(), TMPPOLE1() &apos; array for notes, footnote, a text arrays
 global LANGUAGE as string
-	dim LNG as byte &apos; index of language for batch execution - 0 Czech, 1 - English and probably also other languages
+
 	dim HELPPATH$, USERPATH$, LASTNAME as string  &apos;paths to help and user dir; last used name of batch
 	dim TEXTFIELDS as boolean   &apos; flag for the actualization of fields
 	dim NOINIT as boolean &apos; true = ban for actualization of cursor - it is hack for non-functional setFocus() of dialog
@@ -2486,52 +2486,6 @@ sub KonecTm
 	ulozHistorii &apos; save the history of F&amp;R from records to global arrays
 	ALTsearchDIALOG_end = true
 	ALTsearchDOCCONTROL.removeKeyHandler(ALTsearchKBD) &apos; end handler for keyboard
-end sub
-
-
-sub   loadlanguage  &apos; load the string for language
-	if (LANGUAGE = &quot;&quot;) or (LANGUAGE = &quot;Auto&quot;) then  LANGUAGE = GetStarOfficeLocale_().language
-	select case LANGUAGE &apos; according to set language for whole OOo
-	case &quot;cs&quot;
-		LNG = 0
-		load_cs
-
-	case &quot;sk&quot;
-		LNG = 0
-		load_cs
-
-	case &quot;ru&quot;
-		LNG = 1
-		load_ru
-
-	case &quot;es&quot;
-		LNG = 1
-		load_es
-
-	case &quot;fr&quot;
-		LNG = 1
-		load_fr
-
-	case &quot;it&quot;
-		LNG = 1
-		load_it
-
-	case &quot;de&quot;
-		LNG = 1
-		load_de
-
-	case &quot;nl&quot;
-		LNG = 1
-		load_nl
-
-&apos;    case &quot;hu&quot;
-&apos;     LNG = 1
-&apos;     load_hu
-
-	case else  &apos; en
-		LNG = 1
-		load_en   &apos;load_en
-	end select
 end sub
 
 

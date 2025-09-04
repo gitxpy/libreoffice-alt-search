@@ -6,6 +6,7 @@ public const SCRIPTfile = &quot;AltSearchScript&quot;
 public const SCRIPTeditor = &quot;AltSearchEditor.ini&quot;  &apos; the name of file from one is run the shell for the edit of batch
 Public const SUBTAB = &quot;    &quot;  &apos; replace the tabulators to spaces
 public CMD(20,1) as string  &apos; array with the commands for interpretation
+dim LNG as byte &apos; index of language for batch execution - 0 Czech, 1 - English and probably also other languages
 
 dim oDIA as object
 dim bDIRESULT as byte
