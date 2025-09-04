@@ -27,106 +27,6 @@ Sub Bt_Help &apos;open new window with Help
 End Sub
 
 
-&apos;macro to open old Help with more files
-&apos;Sub Bt_Help &apos;open new window with Help
-&apos;	Dim sNewUrl$, oDocc, oNic
-&apos;	Dim mArgs(0) as New com.sun.star.beans.PropertyValue
-&apos;	dim hled,i, HleDesc, found, pom, velikost
-&apos;	velikost = false
-&apos;	mArgs(0).Name = &quot;ReadOnly&quot;
-&apos;	mArgs(0).Value = true
-&apos;	sNewUrl =  HELPPATH &amp; &quot;HelpAltSearch_&quot; &amp; LANGUAGE &amp; &quot;.html&quot;
-&apos;	if not FileExists(sNewUrl) then
-&apos;		&apos; the file of help in current language isn&apos;t possible to open&quot;
-&apos;		&apos; try en help
-&apos;		sNewUrl =  HELPPATH &amp; &quot;HelpAltSearch_en.html&quot;
-&apos;		if FileExists(sNewUrl) then goto vypis
-&apos;		&apos; &quot;File of Help isn&apos;t possible to open&quot;
-&apos;		hlaseni1(64, true, false, &quot;Help: &quot; &amp; MSG(17) &amp; chr(10) &amp;  chr(10) &amp;  sNewUrl) &apos;  style: 16=stop 32=? 48=! 64=info; may suppress; cancel the activities
-&apos;		exit sub
-&apos;	end if
-&apos;
-&apos;vypis:
-&apos;&apos; 1. search according to Find:
-&apos;	if oDIAL.model.step = 1 then  &apos; dialog of search
-&apos;
-&apos;		i = instr(oDIAL.model.Cb_find.text,&quot;[:::&quot;)
-&apos;		if i &lt;&gt; 0 then
-&apos;			hled  = &quot;[:::&quot;
-&apos;			goto najdi
-&apos;		end if
-&apos;
-&apos;		i = instr(oDIAL.model.Cb_find.text,&quot;[::Grow&quot;)
-&apos;		if i &lt;&gt; 0 then
-&apos;			hled  = &quot;[::Grow&quot;
-&apos;			goto najdi
-&apos;		end if
-&apos;
-&apos;		&apos; search the special characters find
-&apos;		pom = oDIAL.model.Cb_find.text
-&apos;		pom = rightPast(pom,&quot;[::&quot;)
-&apos;		pom = leftTo(pom,&quot;::]&quot;)
-&apos;		if pom &lt;&gt; &quot;&quot; then
-&apos;			hled  = &quot;[::&quot; &amp; pom &amp; &quot;::]&quot;
-&apos;			goto najdi
-&apos;		end if
-&apos;
-&apos;		i = instr(oDIAL.model.Cb_find.text,&quot;||&quot;)
-&apos;		if i &lt;&gt; 0 then
-&apos;			hled  = &quot;||&quot;
-&apos;			goto najdi
-&apos;		end if
-&apos;
-&apos;		&apos; search the reg symbol from Find
-&apos;		pom = oDIAL.model.Cb_find.text  &amp;  &quot; &quot;
-&apos;		i = instr(pom,&quot;\&quot;)
-&apos;		if i &lt;&gt; 0 then
-&apos;			hled  = &quot;\&quot; &amp; mid(pom, i &amp; 1,1)
-&apos;			velikost = true
-&apos;			goto najdi
-&apos;		end if
-&apos;
-&apos;		i = instr(oDIAL.model.Cb_repl.text,&quot;||&quot;)
-&apos;		if i &lt;&gt; 0 then
-&apos;			hled  = &quot;||&quot;
-&apos;			goto najdi
-&apos;		end if
-&apos;
-&apos;		i = instr(oDIAL.model.Cb_repl.text,&quot;&amp;&quot;)
-&apos;		if i &lt;&gt; 0 then
-&apos;			hled  = &quot;&amp; &quot;
-&apos;			goto najdi
-&apos;		end if
-&apos;
-&apos;		&apos; search reg symbol from Replace
-&apos;		pom = oDIAL.model.Cb_repl.text  &amp;  &quot; &quot;
-&apos;		i = instr(pom,&quot;\&quot;)
-&apos;		if i &lt;&gt; 0 then
-&apos;			hled  = &quot;\&quot; &amp; mid(pom, i+1,1)
-&apos;			velikost = true
-&apos;			goto najdi
-&apos;		end if
-&apos;	else &apos;dialog of batches
-&apos;		hled = oDIAL.model.Bt_batch.Label  &apos; &quot;batches &gt;&gt;    - must mention in help?
-&apos;	end if
-&apos;najdi:
-&apos;	oDocc = OpenDocument_(sNewUrl,mArgs())
-&apos;	&apos; return the object of entered URL of document, or open it, or create?
-&apos;	oDocc.getCurrentController.getFrame.ContainerWindow.setFocus() &apos;fokus do dokumentu
-&apos;	&apos; wait until the current fil of help hasn&apos;t focus - else the found expression isn&apos;t displayed
-&apos;	i = 0 &apos; safeguard against the eternal cycle
-&apos;	do while not oDocc.getCurrentController.frame.isActive()
-&apos;		i = i + 1
-&apos;		if i&gt;100000 then exit do
-&apos;	loop
-&apos;	HleDesc = oDocc.createSearchDescriptor()
-&apos;	HleDesc.SearchString = hled
-&apos;	HleDesc.SearchCaseSensitive = velikost
-&apos;	found = oDocc.findFirst(HleDesc)
-&apos;	oDocc.getCurrentController.select(found)
-&apos;end sub
-
-
 	&apos; mouse released
 sub Bt_Help_mouse_release(oEvt)
 	if oEvt.Buttons = 2 then  &apos; right mouse = change of language
@@ -250,32 +150,66 @@ function getUserPath as string
 end function
 
 
-	&apos; read array of cmd for the interpretation of commands
+	&apos;  array of CMD for the interpretation of commands
 sub initCmd
-	cmd( 0,0)=&quot;[Nazev]&quot;     : cmd( 0,1)=&quot;[Name]&quot;
-	cmd( 1,0)=&quot;[Hledej]&quot;    : cmd( 1,1)=&quot;[Find]&quot;
-	cmd( 2,0)=&quot;[Nahrad]&quot;    : cmd( 2,1)=&quot;[Replace]&quot;
-	cmd( 3,0)=&quot;[Parametry]&quot; : cmd( 3,1)=&quot;[Parameters]&quot;
-	cmd( 4,0)=&quot;[Prikaz]&quot;    : cmd( 4,1)=&quot;[Command]&quot;
-	cmd( 5,0)=&quot;[Konec]&quot;     : cmd( 5,1)=&quot;[End]&quot;
-	cmd( 6,0)=&quot;Velikost&quot;      :  cmd( 6,1)=&quot;MatchCase&quot;
-	cmd( 7,0)=&quot;CelaSlova&quot;     :  cmd( 7,1)=&quot;WholeWord&quot;
-	cmd( 8,0)=&quot;StylyOdst&quot;     :  cmd( 8,1)=&quot;ParaStyles&quot;
-	cmd( 9,0)=&quot;Regularni&quot;     :  cmd( 9,1)=&quot;Regular&quot;
-	cmd(10,0)=&quot;SoucasnyVyber&quot; :  cmd(10,1)=&quot;CurrSelection&quot;
-	cmd(11,0)=&quot;Pozpatku&quot;      :  cmd(11,1)=&quot;Backwards&quot;
-	cmd(12,0)=&quot;BezHlaseni&quot;    :  cmd(12,1)=&quot;MsgOff&quot;
-	cmd(13,0)=&quot;Hledat&quot;        :  cmd(13,1)=&quot;Find&quot;
-	cmd(14,0)=&quot;HledatVse&quot;     :  cmd(14,1)=&quot;FindAll&quot;
-	cmd(15,0)=&quot;Nahradit&quot;      :  cmd(15,1)=&quot;Replace&quot;
-	cmd(16,0)=&quot;NahraditVse&quot;   :  cmd(16,1)=&quot;ReplaceAll&quot;
-	cmd(17,0)=&quot;Spocitat&quot;      :  cmd(17,1)=&quot;Count&quot;
+	CMD( 0,0)=&quot;[Nazev]&quot;     : CMD( 0,1)=&quot;[Name]&quot;
+	CMD( 1,0)=&quot;[Hledej]&quot;    : CMD( 1,1)=&quot;[Find]&quot;
+	CMD( 2,0)=&quot;[Nahrad]&quot;    : CMD( 2,1)=&quot;[Replace]&quot;
+	CMD( 3,0)=&quot;[Parametry]&quot; : CMD( 3,1)=&quot;[Parameters]&quot;
+	CMD( 4,0)=&quot;[Prikaz]&quot;    : CMD( 4,1)=&quot;[Command]&quot;
+	CMD( 5,0)=&quot;[Konec]&quot;     : CMD( 5,1)=&quot;[End]&quot;
+	CMD( 6,0)=&quot;Velikost&quot;      :  CMD( 6,1)=&quot;MatchCase&quot;
+	CMD( 7,0)=&quot;CelaSlova&quot;     :  CMD( 7,1)=&quot;WholeWord&quot;
+	CMD( 8,0)=&quot;StylyOdst&quot;     :  CMD( 8,1)=&quot;ParaStyles&quot;
+	CMD( 9,0)=&quot;Regularni&quot;     :  CMD( 9,1)=&quot;Regular&quot;
+	CMD(10,0)=&quot;SoucasnyVyber&quot; :  CMD(10,1)=&quot;CurrSelection&quot;
+	CMD(11,0)=&quot;Pozpatku&quot;      :  CMD(11,1)=&quot;Backwards&quot;
+	CMD(12,0)=&quot;BezHlaseni&quot;    :  CMD(12,1)=&quot;MsgOff&quot;
+	CMD(13,0)=&quot;Hledat&quot;        :  CMD(13,1)=&quot;Find&quot;
+	CMD(14,0)=&quot;HledatVse&quot;     :  CMD(14,1)=&quot;FindAll&quot;
+	CMD(15,0)=&quot;Nahradit&quot;      :  CMD(15,1)=&quot;Replace&quot;
+	CMD(16,0)=&quot;NahraditVse&quot;   :  CMD(16,1)=&quot;ReplaceAll&quot;
+	CMD(17,0)=&quot;Spocitat&quot;      :  CMD(17,1)=&quot;Count&quot;
 	&apos;v1.2
-	cmd(18,0)=&quot;BezSouhrnu&quot;  :  cmd(18,1)=&quot;NoSummary&quot;
+	CMD(18,0)=&quot;BezSouhrnu&quot;  :  CMD(18,1)=&quot;NoSummary&quot;
 	&apos;v1.3
-	cmd(19,0)=&quot;ZachovatVelkaPismena&quot;  :  cmd(19,1)=&quot;PreserveCapital&quot;
-	cmd(20,0)=&quot;&quot;  :  cmd(20,1)=&quot;&quot;
+	CMD(19,0)=&quot;ZachovatVelkaPismena&quot;  :  CMD(19,1)=&quot;PreserveCapital&quot;
+	CMD(20,0)=&quot;&quot;  :  CMD(20,1)=&quot;&quot;
 end sub
 
+
+sub   LoadLanguage  &apos; load the string for language
+	LNG = 1
+	if (LANGUAGE = &quot;&quot;) or (LANGUAGE = &quot;Auto&quot;) then  LANGUAGE = GetStarOfficeLocale_().language
+	select case LANGUAGE &apos; according to set language for whole OOo
+	case &quot;cs&quot;,&quot;sk&quot;
+		LNG = 0
+		load_cs
+
+	case &quot;ru&quot;
+		load_ru
+
+	case &quot;es&quot;
+		load_es
+
+	case &quot;fr&quot;
+		load_fr
+
+	case &quot;it&quot;
+		load_it
+
+	case &quot;de&quot;
+		load_de
+
+	case &quot;nl&quot;
+		load_nl
+
+&apos;    case &quot;hu&quot;
+&apos;     load_hu
+
+	case else  &apos; en
+		load_en
+	end select
+end sub
 
 </script:module>
