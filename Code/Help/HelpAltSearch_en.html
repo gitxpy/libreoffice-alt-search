@@ -240,9 +240,9 @@
 		<p class="cm2">Usage rules analogous to those for the parameter <strong>\P{}</strong> are applied. List style can be removed with <strong>\N</strong> or <strong>\N{}</strong>.</p>
 		<p class="cm2"><strong>\D</strong> - sets up the default formatting to the found text, just like using <b>Ctrl</b>+<b>Shift</b>+<b>Space</b>. Usage rules analogous to those for the parameter <strong>\C{}</strong> are applied</p>
 	        <p class="cm2"><strong>\d</strong> - resets text attributes to default only in the place of use. Differently from <strong>\D</strong> it has no effect on the previously inserted text.</p>
-		<p class="cm2"><strong>\F{New footnote}</strong> - inserts a new footnote that contains the text <strong>New footnote</strong> in the place of replacement. Inside the curly braces it is possible to use any of following parameters: <strong>\i</strong>, <strong>\I</strong>, <strong>&mp;</strong>, or <strong>\1</strong></p>
+		<p class="cm2"><strong>\F{New footnote}</strong> - inserts a new footnote that contains the text <strong>New footnote</strong> in the place of replacement. Inside the curly braces it is possible to use any of following parameters: <strong>\i</strong>, <strong>\I</strong>, <strong>&amp;</strong>, or <strong>\1</strong></p>
 		<p class="cm2"><strong>\E{New endnote}</strong> - inserts a new endnote in the place of replacement; analogous to <strong>\F</strong></p>
-		<p class="cm2"><strong>\B{ref1|text}</strong> - inserts the text <strong>text</strong> with the marker <strong>ref1</strong> for a cross-reference. Inside the curly brace its is possible to use any of following parameters: <strong>\i</strong>, <strong>\I</strong>, <strong>&mp;</strong>, or <strong>\1</strong></p>
+		<p class="cm2"><strong>\B{ref1|text}</strong> - inserts the text <strong>text</strong> with the marker <strong>ref1</strong> for a cross-reference. Inside the curly brace its is possible to use any of following parameters: <strong>\i</strong>, <strong>\I</strong>, <strong>&amp;</strong>, or <strong>\1</strong></p>
 		<p class="cm2"><strong>\L{0,0,ref1}</strong> - inserts a cross-reference (field) with the parameters 0,0 and the reference marker ref1</p>
 		<p class="cm2"><u>Meaning of numeric parameters</u>:</p>
 		<ul>
@@ -292,7 +292,7 @@
 		<p class="cm2"><strong>\v</strong> - inserts the contents of the clipboard</p>
 		<p class="cm2"><strong>\V</strong> - inserts contents of the clipboard as unformatted text</p>
 		<p class="cm2"><strong>\f</strong> - preserves format</p>
-		<p class="cm4">If <strong>&mp;</strong> or <strong>\0</strong> is used in the replace expression, itt will be achieved using the clipboard. If the found text contains text fields, notes, references etc., they will be preserved in their original state.</p>
+		<p class="cm4">If <strong>&amp;</strong> or <strong>\0</strong> is used in the replace expression, itt will be achieved using the clipboard. If the found text contains text fields, notes, references etc., they will be preserved in their original state.</p>
 		<p class="cm2"><strong>\R</strong> - redirects the replace expression to another text file</p>
 		<p class="cm4">This option causes the replace expression to be inserted into <i>new.odt</i> file instead of replacing the found text. The original file will stay as it is, without any change. To enter the name of the output file, use the format <strong>\R{filename}</strong>. The name must have the accurate Writer window title format, including the text “ - LibreOffice Writer”. New records from this redirection are always added to the end of the file.</p>
 		<p class="cm4">Example: if the searched expression was <strong>[:::HyperLinkURL::]</strong> and the replace expression is <strong>Link \i, page \I: &amp; (URL: \u)\p\R</strong>, when you click the <var>Replace all</var> button all the hyperlinks found in original file will be listed in a new file in the form <i>Link</i><i>1, page 1: textOfHyperlink (URL: URLaddress)</i> in separate paragraphs.</p>
