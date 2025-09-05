@@ -34,8 +34,9 @@ function isCmd(aCmd as String, id as integer) as Boolean
   isCmd = (aCmd= ucase( CMD(id,0))) or (aCmd = ucase( CMD(id,1)))
 end function
 
-dim oDIA as object
-dim bDIRESULT as byte
+
+dim oDIA_Choice as object &apos;  dialog asking  Append/Rename/Replace
+dim bDIRESULT$
 
 
 	&apos; open the soubor with saved changes for edit
@@ -89,17 +90,10 @@ ZkusZnovu:
 End Sub
 
 
-	&apos; appraisal of buttons of dialog rewrite/add
+	&apos; appraisal of buttons of dialog rewrite/add (D_choice)
 sub Bt_oDia(oEvt)
-  select case oEvt.source.model.tag
-    case &quot;R&quot; &apos; replace - rewrite
-      bDIRESULT = 1
-    case &quot;A&quot;  &apos; append - add
-      bDIRESULT = 2
-    case &quot;B&quot;  &apos; back - rename
-      bDIRESULT = 3
-    end select
-  oDIA.endexecute()
+  bDIRESULT = oEvt.source.model.tag
+  oDIA_Choice.endexecute()
 end sub
 
 
@@ -398,11 +392,10 @@ Sub Bt_swfind
 End Sub
 
 
-	&apos; dialog that asks if rewrite = 1, or add = 2, cancel = 0
-sub ChoiceDialog(vyzva) as byte
-	bDIRESULT = 0  &apos; it supposes esc, cancel
-	oDIA.model.Lb3.label = vyzva
-	oDIA.execute
+sub ChoiceDialog(vyzva) as String
+	bDIRESULT = &quot;&quot;  &apos; it supposes esc, cancel
+	oDIA_Choice.model.Lb3.label = vyzva
+	oDIA_Choice.execute
 	ChoiceDialog = bDIRESULT
 end sub
 
@@ -504,13 +497,13 @@ zmenit:
 	if pom = &quot;&quot; then exit sub
 	if ExistName(pom) then
 		select case ChoiceDialog(replace_(MSG(25),&quot;^^&quot;,pom))
-		case 3  &apos; save with other name
+		case &quot;Rename&quot;  &apos; save with other name
 			goto zmenit
 
-		case 2  &apos; add to end of batch
+		case &quot;Append&quot;  &apos; add to end of batch
 			saveOptionToFile(2, pom, oDIAL.model.Cb_find.text, oDIAL.model.Cb_repl.text, getOptionString, CMD(16,LNG))
 
-		case 1 &apos; rewrite existing batch
+		case &quot;Replace&quot; &apos; rewrite existing batch
 			saveOptionToFile(1, pom, oDIAL.model.Cb_find.text, oDIAL.model.Cb_repl.text, getOptionString, CMD(16,LNG))
 		end select
 	else
