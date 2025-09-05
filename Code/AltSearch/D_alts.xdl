@@ -102,7 +102,7 @@
   <dlg:button dlg:id="Bt_edit" dlg:tab-index="29" dlg:left="180" dlg:top="75" dlg:width="46" dlg:height="12" dlg:page="2" dlg:help-text="Open file with batch definitions in text editor" dlg:value="Edit">
    <script:event script:event-name="on-performaction" script:macro-name="vnd.sun.star.script:AltSearch.xBatch.Bt_edit?language=Basic&amp;location=application" script:language="Script"/>
   </dlg:button>
-  <dlg:button dlg:id="Bt_refr" dlg:tab-index="33" dlg:left="180" dlg:top="91" dlg:width="46" dlg:height="12" dlg:page="2" dlg:help-text="Refresch list of batchs" dlg:value="Refresh">
+  <dlg:button dlg:id="Bt_refr" dlg:tab-index="33" dlg:left="180" dlg:top="91" dlg:width="46" dlg:height="12" dlg:page="2" dlg:help-text="Refresh list of batchs" dlg:value="Refresh">
    <script:event script:event-name="on-performaction" script:macro-name="vnd.sun.star.script:AltSearch.xBatch.Bt_refr?language=Basic&amp;location=application" script:language="Script"/>
   </dlg:button>
   <dlg:text dlg:style-id="8" dlg:id="T_find" dlg:tab-index="34" dlg:left="4" dlg:top="12" dlg:width="38" dlg:height="10" dlg:page="1" dlg:value="Regular" dlg:align="center"/>

@@ -8,13 +8,14 @@ Public const SUBTAB = &quot;    &quot;  &apos; replace the tabulators to spaces
 public CMD(20,1) as string  &apos; array with the commands for interpretation
 dim LNG as byte &apos; index of language for batch execution - 0 Czech, 1 - English and probably also other languages
 
+ &apos;master commands
 Public Const CMD_xName = 0
 Public Const CMD_xFind = 1
 Public Const CMD_xReplace = 2
 Public Const CMD_xParameters = 3
 Public Const CMD_xCommand = 4
 Public Const CMD_xEnd = 5
-
+ &apos;Parameters
 Public Const CMD_MatchCase = 6
 Public Const CMD_WholeWord = 7
 Public Const CMD_ParaStyles = 8
@@ -22,13 +23,15 @@ Public Const CMD_Regular = 9
 Public Const CMD_CurrSelection = 10
 Public Const CMD_Backwards = 11
 Public Const CMD_MsgOff = 12
+Public Const CMD_NoSummary = 18
+Public Const CMD_PreserveCapital = 19
+ &apos;Command
 Public Const CMD_Find = 13
 Public Const CMD_FindAll = 14
 Public Const CMD_Replace = 15
 Public Const CMD_ReplaceAll = 16
 Public Const CMD_Count = 17
-Public Const CMD_NoSummary = 18
-Public Const CMD_PreserveCapital = 19
+
 
 function isCmd(aCmd as String, id as integer) as Boolean
   isCmd = (aCmd= ucase( CMD(id,0))) or (aCmd = ucase( CMD(id,1)))
@@ -187,24 +190,15 @@ Sub Bt_run(optional oEvt)
 	for n = 0 to ubound(outPole())
 		if FINDCOUNTER &lt; -99 then goto konec &apos; possibility to cancel the batch and finish
 		getCmdVal(outPole(n), prCmd, prVal, false)    &apos; load command and text behind one
+
 		select case ucase(prCmd)
-			&apos; case ucase(CMD(1,0)), ucase(CMD(1,1)) Bug OOo 2.4 linux: kind of array Ucase(CMD(1,1)) isn&apos;t evaluated
-			&apos; =&gt; all remake after one command to select-case, particularly for CZ a particularly for EN
-		case ucase(CMD(1,0))&apos;,ucase(CMD(1,1))  &apos; Find
-			oDIAL.model.Cb_find.text = prVal
-		case ucase(CMD(1,1))  &apos; Find
+		case ucase(CMD(1,0)),ucase(CMD(1,1))  &apos; Find
 			oDIAL.model.Cb_find.text = prVal
 
-		case ucase(CMD(2,0))&apos;,ucase(CMD(2,1)) &apos; Replace
-			oDIAL.model.Cb_repl.text = prVal
-		case ucase(CMD(2,1)) &apos; Replace
+		case ucase(CMD(2,0)),ucase(CMD(2,1)) &apos; Replace
 			oDIAL.model.Cb_repl.text = prVal
 
-
-		case ucase(CMD(3,0))
-			goto bugpar&apos; Parametry
-		case ucase(CMD(3,1)) &apos; Parameters
-bugpar:
+		case ucase(CMD(3,0)),ucase(CMD(3,1)) &apos; Parameters
 		&apos;cancel superfluous spaces and tabulators between commands
 		prVal = replace_(prVal,chr(9), SUBTAB)
 		prVal = trim(prVal)
@@ -226,49 +220,31 @@ bugpar:
 
 				for i = 0 to ubound(compole())
 					select case ucase(comPole(i))
-					case ucase(CMD(6,0)) &apos; Size
-						.Ch_case.state = 1
-					case ucase(CMD(6,1)) &apos; Size
+					case ucase(CMD(6,0)),ucase(CMD(6,1)) &apos; Size
 						.Ch_case.state = 1
 
-					case ucase(CMD(7,0)) &apos;  Whole words
-						.Ch_word.state = 1
-					case ucase(CMD(7,1)) &apos;  Whole words
+					case ucase(CMD(7,0)),ucase(CMD(7,1)) &apos;  Whole words
 						.Ch_word.state = 1
 
-					case ucase(CMD(8,0)) &apos; para styles
-						.Ch_styl.state = 1
-					case ucase(CMD(8,1)) &apos; para styles
+					case ucase(CMD(8,0)),ucase(CMD(8,1)) &apos; para styles
 						.Ch_styl.state = 1
 
-					case ucase(CMD(9,0)) &apos; regexp
-						.Ch_reg.state = 1
-					case ucase(CMD(9,1)) &apos; regexp
+					case ucase(CMD(9,0)),ucase(CMD(9,1)) &apos; regexp
 						.Ch_reg.state = 1
 
-					case ucase(CMD(10,0)) &apos; current selection
-						.Ch_csele.state = 1
-					case  ucase(CMD(10,1)) &apos; current selection
+					case ucase(CMD(10,0)),ucase(CMD(10,1)) &apos; current selection
 						.Ch_csele.state = 1
 
-					case ucase(CMD(11,0)) &apos; backward
-						.Ch_zpet.state = 1
-					case  ucase(CMD(11,1)) &apos; backward
+					case ucase(CMD(11,0)),ucase(CMD(11,1)) &apos; backward
 						.Ch_zpet.state = 1
 
-					case ucase(CMD(12,0)) &apos; without report
-						QUITMODE = true  &apos;suppress the report
-					case ucase(CMD(12,1)) &apos; without report
+					case ucase(CMD(12,0)),ucase(CMD(12,1)) &apos; without report
 						QUITMODE = true  &apos;suppress the report
 
-					case ucase(CMD(18,0)) &apos; without summary
-						noSummary = true  &apos;suppress the summary report at finish of batch
-					case ucase(CMD(18,1)) &apos; NoSummary
+					case ucase(CMD(18,0)),ucase(CMD(18,1)) &apos; NoSummary
 						noSummary = true
 
-					case ucase(CMD(19,0)) &apos; let case sensitivity
-						.Ch_preservecap.state = 1
-					case ucase(CMD(19,1)) &apos;
+					case ucase(CMD(19,0)),ucase(CMD(19,1)) &apos;
 						.Ch_preservecap.state = 1
 
 					case &quot;&quot;  &apos; empty - do nothing
@@ -297,29 +273,19 @@ bugcmd:
 				for i = 0 to ubound(compole())
 					if FINDCOUNTER &lt; -99 then goto konec &apos; -999 cancel the batch and end
 					select case ucase(comPole(i))
-					case ucase(CMD(13,0))&apos;, ucase(CMD(13,1)) &apos;Find
-						BtFindNext
-					case ucase(CMD(13,1)) &apos;Find
+					case ucase(CMD(13,0)), ucase(CMD(13,1)) &apos;Find
 						BtFindNext
 
-					case ucase(CMD(14,0))&apos;, ucase(CMD(14,1)) &apos; FindAll
-						BtFindAll
-					case ucase(CMD(14,1)) &apos; FindAll
+					case ucase(CMD(14,0)), ucase(CMD(14,1)) &apos; FindAll
 						BtFindAll
 
-					case ucase(CMD(15,0)) &apos;, ucase(CMD(15,1)) &apos; Replace
-						BtReplace
-					case ucase(CMD(15,1)) &apos; Replace
+					case ucase(CMD(15,0)), ucase(CMD(15,1)) &apos; Replace
 						BtReplace
 
-					case ucase(CMD(16,0))&apos;, ucase(CMD(16,1)) &apos; ReplaceAll
-						BtReplaceAll
-					case ucase(CMD(16,1)) &apos; ReplaceAll
+					case ucase(CMD(16,0)), ucase(CMD(16,1)) &apos; ReplaceAll
 						BtReplaceAll
 
-					case ucase(CMD(17,0))&apos;, ucase(CMD(17,1)) &apos; Count
-						BtCount
-					case ucase(CMD(17,1)) &apos; Count
+					case ucase(CMD(17,0)), ucase(CMD(17,1)) &apos; Count
 						BtCount
 
 					case &quot;&quot;  &apos; empty - do nothing
@@ -438,15 +404,18 @@ end sub
 sub getOptionString as string
 	dim vysl as string
 	vysl = &quot;  &quot;  &amp;  CMD(12,LNG)  &amp;  &quot;  &quot;
-	if (oDIAL.model.Ch_case.state = 1)and(oDIAL.model.Ch_case.enabled) then vysl = vysl  &amp;  CMD(6,LNG)  &amp;  &quot;  &quot;
-	if (oDIAL.model.Ch_word.state = 1)and(oDIAL.model.Ch_word.enabled) then vysl = vysl  &amp;  CMD(7,LNG)  &amp;  &quot;  &quot;
-	if (oDIAL.model.Ch_styl.state = 1)and(oDIAL.model.Ch_styl.enabled) then vysl = vysl  &amp;  CMD(8,LNG)  &amp;  &quot;  &quot;
-	if (oDIAL.model.Ch_reg.state = 1) and(oDIAL.model.Ch_reg.enabled)  then vysl = vysl  &amp;  CMD(9,LNG)  &amp;  &quot;  &quot;
+	With oDIAL.model
+	if (.Ch_case.state = 1)and(.Ch_case.enabled) then vysl = vysl  &amp;  CMD(6,LNG)  &amp;  &quot;  &quot;
+	if (.Ch_word.state = 1)and(.Ch_word.enabled) then vysl = vysl  &amp;  CMD(7,LNG)  &amp;  &quot;  &quot;
+	if (.Ch_styl.state = 1)and(.Ch_styl.enabled) then vysl = vysl  &amp;  CMD(8,LNG)  &amp;  &quot;  &quot;
+	if (.Ch_reg.state = 1) and(.Ch_reg.enabled)  then vysl = vysl  &amp;  CMD(9,LNG)  &amp;  &quot;  &quot;
 	&apos;v1.3
-	if (oDIAL.model.Ch_preservecap.state = 1) and(oDIAL.model.Ch_preservecap.enabled)  then vysl = vysl  &amp;  CMD(19,LNG)  &amp;  &quot;  &quot;
+	if (.Ch_preservecap.state = 1) and(.Ch_preservecap.enabled)  then vysl = vysl  &amp;  CMD(19,LNG)  &amp;  &quot;  &quot;
 
-	if (oDIAL.model.Ch_csele.state = 1)and(oDIAL.model.Ch_csele.enabled) then vysl = vysl  &amp;  CMD(10,LNG)  &amp;  &quot;  &quot;
-	if (oDIAL.model.Ch_zpet.state = 1)and(oDIAL.model.Ch_zpet.enabled) then vysl = vysl  &amp;  CMD(11,LNG)  &amp;  &quot;  &quot;
+	if (.Ch_csele.state = 1)and(.Ch_csele.enabled) then vysl = vysl  &amp;  CMD(10,LNG)  &amp;  &quot;  &quot;
+	if (.Ch_zpet.state = 1)and(.Ch_zpet.enabled) then vysl = vysl  &amp;  CMD(11,LNG)  &amp;  &quot;  &quot;
+	End with
+	
 	getOptionString = vysl
 end  sub
 
@@ -513,7 +482,7 @@ end sub
 
 
 	&apos; refresh list
-sub Refresch
+sub Refresh
 	dim sf, inStream, inFile
 	dim radek, prCmd$, prVal$, path as string
 
@@ -549,7 +518,7 @@ sub Refresch
 	exit sub
 problem:
 	&apos; cannot open file...
-	hlaseni1(48, false, false, &quot;Refresch:  &quot; &amp; MSG(26) &amp; chr(10) &amp; Path &amp; chr(10) &amp; &quot;l. &quot; &amp; erl &amp; &quot;:  &quot; &amp; Error$) &apos;  style: 16=stop 32=? 48=! 64=info; may suppress; cancel the activities
+	hlaseni1(48, false, false, &quot;Refresh:  &quot; &amp; MSG(26) &amp; chr(10) &amp; Path &amp; chr(10) &amp; &quot;l. &quot; &amp; erl &amp; &quot;:  &quot; &amp; Error$) &apos;  style: 16=stop 32=? 48=! 64=info; may suppress; cancel the activities
 	&apos; more complicated service of bugs for possibility to close the stream and files
 	Resume problem1
 problem1:
@@ -722,7 +691,7 @@ sub saveOptionToFile(mode as byte, byval nam$, byval find$, byval sRepl$, byval 
 	ioFile.closeOutput
 
 	&apos; if there was new name then refresh list
-	if mode = 0 then Refresch
+	if mode = 0 then Refresh
 	exit sub
 problem:
 	&apos; cannot open file...
