@@ -242,7 +242,7 @@ Sub Load_en
 		.Bt_save2.Label      =&quot;Save batch&quot;
 		.Bt_edit.HelpText    =&quot;Open file with batch definitions in text editor&quot;
 		.Bt_edit.Label       =&quot;Edit&quot;
-		.Bt_refr.HelpText    =&quot;Refresch list of batchs&quot;
+		.Bt_refr.HelpText    =&quot;Refresh list of batchs&quot;
 		.Bt_refr.Label       =&quot;Refresh&quot;
 		.Cb_swfind.Label     =&quot;&lt;&lt; Searching&quot;
 		&apos;v1.2
