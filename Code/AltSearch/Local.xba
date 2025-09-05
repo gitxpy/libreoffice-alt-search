@@ -152,12 +152,13 @@ end function
 
 	&apos;  array of CMD for the interpretation of commands
 sub initCmd
-	CMD( 0,0)=&quot;[Nazev]&quot;     : CMD( 0,1)=&quot;[Name]&quot;
-	CMD( 1,0)=&quot;[Hledej]&quot;    : CMD( 1,1)=&quot;[Find]&quot;
-	CMD( 2,0)=&quot;[Nahrad]&quot;    : CMD( 2,1)=&quot;[Replace]&quot;
-	CMD( 3,0)=&quot;[Parametry]&quot; : CMD( 3,1)=&quot;[Parameters]&quot;
-	CMD( 4,0)=&quot;[Prikaz]&quot;    : CMD( 4,1)=&quot;[Command]&quot;
-	CMD( 5,0)=&quot;[Konec]&quot;     : CMD( 5,1)=&quot;[End]&quot;
+	CMD( CMD_xName,0)=&quot;[Nazev]&quot;     : CMD( CMD_xName,1)=&quot;[Name]&quot;
+	CMD( CMD_xFind,0)=&quot;[Hledej]&quot;    : CMD( CMD_xFind,1)=&quot;[Find]&quot;
+	CMD( CMD_xReplace,0)=&quot;[Nahrad]&quot;    : CMD( CMD_xReplace,1)=&quot;[Replace]&quot;
+	CMD( CMD_xParameters,0)=&quot;[Parametry]&quot; : CMD( CMD_xParameters,1)=&quot;[Parameters]&quot;
+	CMD( CMD_xCommand,0)=&quot;[Prikaz]&quot;    : CMD( CMD_xCommand,1)=&quot;[Command]&quot;
+	CMD( CMD_xEnd,0)=&quot;[Konec]&quot;     : CMD( CMD_xEnd,1)=&quot;[End]&quot;
+
 	CMD( 6,0)=&quot;Velikost&quot;      :  CMD( 6,1)=&quot;MatchCase&quot;
 	CMD( 7,0)=&quot;CelaSlova&quot;     :  CMD( 7,1)=&quot;WholeWord&quot;
 	CMD( 8,0)=&quot;StylyOdst&quot;     :  CMD( 8,1)=&quot;ParaStyles&quot;

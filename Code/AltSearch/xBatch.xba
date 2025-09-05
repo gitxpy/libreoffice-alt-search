@@ -8,6 +8,32 @@ Public const SUBTAB = &quot;    &quot;  &apos; replace the tabulators to spaces
 public CMD(20,1) as string  &apos; array with the commands for interpretation
 dim LNG as byte &apos; index of language for batch execution - 0 Czech, 1 - English and probably also other languages
 
+Public Const CMD_xName = 0
+Public Const CMD_xFind = 1
+Public Const CMD_xReplace = 2
+Public Const CMD_xParameters = 3
+Public Const CMD_xCommand = 4
+Public Const CMD_xEnd = 5
+
+Public Const CMD_MatchCase = 6
+Public Const CMD_WholeWord = 7
+Public Const CMD_ParaStyles = 8
+Public Const CMD_Regular = 9
+Public Const CMD_CurrSelection = 10
+Public Const CMD_Backwards = 11
+Public Const CMD_MsgOff = 12
+Public Const CMD_Find = 13
+Public Const CMD_FindAll = 14
+Public Const CMD_Replace = 15
+Public Const CMD_ReplaceAll = 16
+Public Const CMD_Count = 17
+Public Const CMD_NoSummary = 18
+Public Const CMD_PreserveCapital = 19
+
+function isCmd(aCmd as String, id as integer) as Boolean
+  isCmd = (aCmd= ucase( CMD(id,0))) or (aCmd = ucase( CMD(id,1)))
+end function
+
 dim oDIA as object
 dim bDIRESULT as byte
 
@@ -107,8 +133,8 @@ Sub Bt_run(optional oEvt)
 	n = -1
 	kopiruj = false
 	jmeno = ucase(trim(replace_(LASTNAME, chr(9), SUBTAB))) &apos; cancel possible spaces and tabs
-	hl0 = ucase(CMD(0,0)) &amp; jmeno
-	hl1 = ucase(CMD(0,1)) &amp; jmeno
+	hl0 = ucase(CMD(CMD_xName,0)) &amp; jmeno
+	hl1 = ucase(CMD(CMD_xName,1)) &amp; jmeno
 
 	path = USERPATH &amp; SCRIPTfile &amp; &quot;.txt&quot;
 	if not fileexists(Path) then goto problem
@@ -126,7 +152,7 @@ Sub Bt_run(optional oEvt)
 		prVal = trim(ucase(prVal))
 
 		&apos; end if the end of batch-script is found
-		if kopiruj and ((prCmd=ucase(CMD(0,0)))or(prCmd=ucase(CMD(0,1)))or(prCmd=ucase(CMD(5,0)))or(prCmd=ucase(CMD(5,1))))  then
+		if kopiruj and ( isCmd(prCmd, CMD_xName) or isCmd(prCmd, CMD_xEnd) )  then
 			exit do &apos; end of batch
 		end if
 
@@ -136,7 +162,7 @@ Sub Bt_run(optional oEvt)
 		end if
 
 		&apos; add to array
-		if kopiruj and (prCmd&lt;&gt;&quot;&quot;) and ( not((prCmd=ucase(CMD(0,0)))or(prCmd=ucase(CMD(0,1))))  ) then
+		if kopiruj and (prCmd&lt;&gt;&quot;&quot;) and ( not( isCmd(prCmd, CMD_xName) )  ) then
 			&apos; add line to output
 			n = n +1
 			redim preserve outPole(n)  &apos; add empty record to output array
@@ -260,9 +286,7 @@ bugpar:
 				next i
 			end with
 
-		case ucase(CMD(4,0))
-			goto bugcmd &apos; command
-		case ucase(CMD(4,1)) &apos; command
+  case ucase(CMD(CMD_xCommand,0)), ucase(CMD(CMD_xCommand,1))
 bugcmd:
 		&apos; if it is activated via the button &quot;Transfer&quot; then do nothing
 		if transfer then
@@ -475,7 +499,7 @@ zmenit:
 	pom = inputbox(oDIAL.getcontrol(&quot;Lb1&quot;).AccessibleContext.text &amp; &quot;   &quot; &amp; zkratitNa(oDIAL.model.Cb_find.text,58) &amp; chr(10) _
 	&amp; oDIAL.getcontrol(&quot;T_repl&quot;).AccessibleContext.text &amp; &quot;   &quot; &amp; zkratitNa(oDIAL.model.Cb_repl.text,58) &amp; chr(10) _
 	&amp; oDIAL.getcontrol(&quot;Fr1&quot;).AccessibleContext.TitledBorderText &amp; zkratitNa(getOptionString,58) _
-	&amp; &quot;        &quot; &amp; mid(CMD(4,LNG),2, len(CMD(4,LNG))-2) &amp; &quot;:  &quot; &amp; CMD(16,LNG) , MSG(27), iniBatch())
+	&amp; &quot;        &quot; &amp; mid(CMD(CMD_xCommand,LNG),2, len(CMD(CMD_xCommand,LNG))-2) &amp; &quot;:  &quot; &amp; CMD(16,LNG) , MSG(27), iniBatch())
 
 	if pom = &quot;&quot; then exit sub
 	if ExistName(pom) then
@@ -520,7 +544,7 @@ sub Refresch
 		getCmdVal(radek, prCmd, prVal, true)    &apos; load command and text behind one
 		if prCmd &lt;&gt; &quot;&quot; then &apos; it is command
 			prCmd = Ucase(prCmd)
-			if (prCmd=ucase(CMD(0,0)))or(prCmd=ucase(CMD(0,1))) then   &apos; CMD(0,x) is the text of command [Name]
+			if ( isCmd(prCmd, CMD_xName) ) then
 				oDIAL.getControl(&quot;Lb_names&quot;).addItem(prVal,oDIAL.getControl(&quot;Lb_names&quot;).ItemCount)
 			end if
 		end if
@@ -556,11 +580,11 @@ sub saveOptionToFile(mode as byte, byval nam$, byval find$, byval sRepl$, byval 
 	CRLF = chr(13) &amp; chr(10) &apos; character of end of line for save the file
 
 	hledam = trim(replace_(nam,chr(9),SUBTAB))  &apos; text of name of batch
-	nam = &quot;&quot; &amp; CMD(0,LNG) &amp; &quot; &quot; &amp; hledam  &apos; clean the name from spaces and tabs
-	find = &quot;  &quot; &amp; CMD(1,LNG) &amp; find
-	sRepl = &quot;  &quot; &amp; CMD(2,LNG) &amp; sRepl
-	para = &quot;  &quot; &amp; CMD(3,LNG) &amp; &quot; &quot; &amp; para
-	comm = &quot;  &quot; &amp; CMD(4,LNG) &amp; &quot; &quot; &amp; comm
+	nam = &quot;&quot; &amp; CMD(CMD_xName,LNG) &amp; &quot; &quot; &amp; hledam  &apos; clean the name from spaces and tabs
+	find = &quot;  &quot; &amp; CMD(CMD_xFind,LNG) &amp; find
+	sRepl = &quot;  &quot; &amp; CMD(CMD_xReplace,LNG) &amp; sRepl
+	para = &quot;  &quot; &amp; CMD(CMD_xParameters,LNG) &amp; &quot; &quot; &amp; para
+	comm = &quot;  &quot; &amp; CMD(CMD_xCommand,LNG) &amp; &quot; &quot; &amp; comm
 
 	select case mode
 	case 0 &apos;Add before [End]
@@ -589,8 +613,8 @@ sub saveOptionToFile(mode as byte, byval nam$, byval find$, byval sRepl$, byval 
 
 	end select
 
-	hl0 = ucase(CMD(0,0)) &amp; ucase(hledam)
-	hl1 = ucase(CMD(0,1)) &amp; ucase(hledam)
+	hl0 = ucase(CMD(CMD_xName,0)) &amp; ucase(hledam)
+	hl1 = ucase(CMD(CMD_xName,1)) &amp; ucase(hledam)
 
 	on error goto problem
 	path = USERPATH &amp; SCRIPTfile &amp; &quot;.txt&quot;
@@ -628,7 +652,7 @@ sub saveOptionToFile(mode as byte, byval nam$, byval find$, byval sRepl$, byval 
 		case 1 &apos; write/jump the lines while isn&apos;t found next [name] or [end]
 			if copy1 then
 				&apos; found next command [name] or [end], so there will be the addition before one
-				if (prCmd=ucase(CMD(0,0)))or(prCmd=ucase(CMD(0,1)))or(prCmd=ucase(CMD(5,0)))or(prCmd=ucase(CMD(5,1)))  then
+				if (  isCmd(prCmd, CMD_xName) or isCmd(prCmd, CMD_xEnd)  )  then
 					bstep = 2
 					goto nextStep &apos; next step without next line
 				end if
