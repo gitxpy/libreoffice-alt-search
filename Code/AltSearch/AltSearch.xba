@@ -101,7 +101,7 @@ Sub _AltSearch(optional batchName)   &apos; run main dialog
 	ALTsearchDOC = ThisComponent
 	reset_klv   &apos; if the service of keyboard was in other window so free it
 	ALTsearchDIALOG = LoadDialog_(&quot;AltSearch&quot;, &quot;D_alts&quot;)
-	oDia = LoadDialog_(&quot;AltSearch&quot;, &quot;D_choice&quot;)  &apos; due to localization move to the initialization of main dialog
+	oDIA_Choice = LoadDialog_(&quot;AltSearch&quot;, &quot;D_choice&quot;)  &apos; due to localization move to the initialization of main dialog
 	oDIALSH = LoadDialog_(&quot;AltSearch&quot;, &quot;D_keys&quot;) &apos; dialog for keyboard shortcuts
 	oDIAL = ALTsearchDIALOG &apos; not must to rewrite the oDIAL to AltSea...
 	oDMOF = LoadDialog_(&quot;AltSearch&quot;, &quot;D_morefiles&quot;)    &apos; dialog for batch on more files
