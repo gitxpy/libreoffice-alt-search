@@ -282,22 +282,23 @@ sub Bt_loadAtr
 		pom =&quot;&quot;
 		&apos; isn&apos;t the property read only?
 		if (not((prop(i).Attributes and 16) = 16)) then
+			With com.sun.star.uno.TypeClass
 			select case prop(i).type.TypeClass
-				&apos; .type.TypeClass: 2-boolean, 3-byte, 4-short, 6-long, 10-float, 11-double, 12-string
-				&apos;                 15-constant OOo, 17-struct, 20-array []string, 22-events, index???
-			case 2,3,4,6,10,11,12,15
+
+			case .BOOLEAN, .BYTE, .SHORT, .LONG, .FLOAT, .DOUBLE, .STRING, .ENUM 
 				pom = prop(i).name &amp;  &quot; = &quot; &amp; oSe.GetPropertyValue(prop(i).name)
 				sezn.addItem(pom, sezn.ItemCount)
 
-			case 17  &apos; struct
+			case .STRUCT
 				pom = prop(i).name  &amp;  &quot;: &quot;  &amp;  getStructValues(oSe,prop(i).name)
 				sezn.addItem(pom, sezn.ItemCount)
 
-			case 20, 22  &apos; arrays, events - ignore
+			case .EXCEPTION, .ARRAY  &apos; ignore
 
 			case else  &apos; the rest - ignorovat
 
 			end  select
+			End With
 		end if
 	next i
 
@@ -3569,6 +3570,5 @@ end function
 function ALTsearchKBD_KeyReleased(oEvt) as boolean
 	ALTsearchKBD_KeyReleased = false
 end function
-
 
 </script:module>
