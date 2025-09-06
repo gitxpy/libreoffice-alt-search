@@ -1138,7 +1138,7 @@ sub BtReplace
 
 	loadParams(false) &apos; save, actualization of search options
 	addToHistory(0,1) &apos; &apos;add to history the F&amp;R expressions
-	REPL() = getReplArray(ALTsearchPARAMS.repl) &apos; load the array of replacements
+	REPL() = getReplArray( removeZero(ALTsearchPARAMS.repl) ) &apos; load the array of replacements, bug #90
 
 	FO1S = &quot;&quot; :  FO2S = &quot;&quot; : FO3S = &quot;&quot;  &apos; reset of the big-blocks strings
 
@@ -1210,7 +1210,7 @@ sub BtReplaceAll
 		end if
 	end if
 
-	REPL() = getReplArray(ALTsearchPARAMS.repl) &apos; load the array of replacements
+	REPL() = getReplArray( removeZero(ALTsearchPARAMS.repl) ) &apos; load the array of replacements, bug #90
 	curinit = false  &apos; refresh the cursors after found with CursorInit(true)
 	HledamDisp(true) &apos; not accessible during counting
 	ERRPROP = 0 &apos; the counter of unsuccessful settings of properties
