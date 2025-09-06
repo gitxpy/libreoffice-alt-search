@@ -251,7 +251,7 @@ Sub Load_nl
 	end with
 
 	&apos; keuze dialoogvenster
-	with oDia.model
+	with oDIA_choice.model
 		.Lb3.Label       =&quot;Naam van batch&quot;
 		.Bt_app.HelpText =&quot;Huidige parameters toevoegen aan einde van bestaande batch&quot;
 		.Bt_app.Label    =&quot;Toevoegen&quot;

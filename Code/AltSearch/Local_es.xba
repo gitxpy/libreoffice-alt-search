@@ -253,7 +253,7 @@ Sub Load_es
 	end with
 
 	&apos; dialog choice
-	with oDia.model
+	with oDIA_choice.model
 		.Lb3.Label           = &quot;Nombre del lote&quot;
 		.Bt_app.HelpText     = &quot;Añadir parámetros actuales al final de lote existente&quot;
 		.Bt_app.Label        = &quot;Añadir&quot;

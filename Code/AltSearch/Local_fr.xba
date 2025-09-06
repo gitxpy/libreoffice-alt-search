@@ -251,7 +251,7 @@ Sub Load_fr
 	end with
 
 	&apos; dialog choice
-	with oDia.model
+	with oDIA_choice.model
 		.Lb3.Label           = &quot;Nom du lot&quot;
 		.Bt_app.HelpText     = &quot;Ajouter les paramètres à la fin du lot existant&quot;
 		.Bt_app.Label        = &quot;Ajouter&quot;

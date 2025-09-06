@@ -252,7 +252,7 @@ Sub Load_ru
 	end with
 
 	&apos; dialog choice
-	with oDia.model
+	with oDIA_choice.model
 		.Lb3.Label           = &quot;Имя группы&quot;
 		.Bt_app.HelpText     = &quot;Добавить текущие параметры в конец существующей группы&quot;
 		.Bt_app.Label        = &quot;Добавить&quot;

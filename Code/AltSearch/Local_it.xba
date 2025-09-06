@@ -255,7 +255,7 @@ Sub Load_it
 	end with
 
 	&apos; dialog choice
-	with oDia.model
+	with oDIA_choice.model
 		.Lb3.Label       =&quot;Nome del batch&quot;
 		.Bt_app.HelpText =&quot;Aggiungi parametri correnti alla fine del batch esistente&quot;
 		.Bt_app.Label    =&quot;Aggiungi&quot;

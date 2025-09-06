@@ -253,7 +253,7 @@ Sub Load_cs
 	end with
 
 	&apos; dialog D_choice
-	with oDia.model
+	with oDIA_choice.model
 		.Lb3.Label       =&quot;Jméno skriptu&quot;
 		.Bt_app.HelpText =&quot;Připojí současné parametry hledáné na konec existující dávky&quot;
 		.Bt_app.Label    =&quot;Připojit na konec&quot;
