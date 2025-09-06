@@ -254,7 +254,7 @@ Sub Load_en
 	end with
 
 	&apos; dialog choice
-	with oDia.model
+	with oDIA_choice.model
 		.Lb3.Label       =&quot;Name of batch&quot;
 		.Bt_app.HelpText =&quot;Append current parameters to end of existing batch&quot;
 		.Bt_app.Label    =&quot;Append&quot;
