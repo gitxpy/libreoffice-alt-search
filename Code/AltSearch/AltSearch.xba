@@ -293,8 +293,6 @@ sub Bt_loadAtr
 				pom = prop(i).name  &amp;  &quot;: &quot;  &amp;  getStructValues(oSe,prop(i).name)
 				sezn.addItem(pom, sezn.ItemCount)
 
-			case .EXCEPTION, .ARRAY  &apos; ignore
-
 			case else  &apos; the rest - ignorovat
 
 			end  select
