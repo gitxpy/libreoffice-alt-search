@@ -257,9 +257,12 @@ End Sub
 sub Bt_loadAtr
 	dim prop, oSe, sezn
 	dim pom, i, ppol()
+
 	oDIAL.model.Cb_loadAtr.enabled = false  &apos; deactivate during work
 	if ERRcontrol then on error resume next   &apos; bug od property &quot;ClientMap&quot; for text Frame
+
 	sezn = oDIAL.getcontrol(&quot;Cb_replAtr&quot;)
+
 	oSe = ALTsearchDOC.getCurrentController.getSelection
 
 	select case oSe.ImplementationName
@@ -268,6 +271,7 @@ sub Bt_loadAtr
 		oSe= ALTsearchDOC.getCurrentController.getSelection.getByIndex(0)
 
 	case &quot;SwXTextGraphicObject&quot;,&quot;SwXTextFrame&quot;,&quot;SwXTextTableCursor&quot;, &quot;SwXTextEmbeddedObject&quot;
+	 &apos; ignore
 
 	case else
 		hlaseni1(32, true, false, &quot;Bt_loadAtr:  Unknown object: &quot;  &amp;  oSe.ImplementationName) &apos;16=stop 32=? 48=! 64=info; may suppress; cancel the activities
@@ -276,32 +280,27 @@ sub Bt_loadAtr
 
 	prop = oSe.PropertySetInfo.Properties
 
-	&apos; cancel the old list
-	sezn.removeItems(0, sezn.ItemCount)
+	sezn.removeItems(0, sezn.ItemCount) &apos; cancel the old list
+
 	for i = 0 to ubound(prop())  &apos; traverse all properties
-		pom =&quot;&quot;
 		&apos; isn&apos;t the property read only?
 		if (not((prop(i).Attributes and 16) = 16)) then
+			With com.sun.star.uno.TypeClass
 			select case prop(i).type.TypeClass
-				&apos; .type.TypeClass: 2-boolean, 3-byte, 4-short, 6-long, 10-float, 11-double, 12-string
-				&apos;                 15-constant OOo, 17-struct, 20-array []string, 22-events, index???
-			case 2,3,4,6,10,11,12,15
+
+			case .BOOLEAN, .BYTE, .SHORT, .LONG, .FLOAT, .DOUBLE, .STRING, .ENUM 
 				pom = prop(i).name &amp;  &quot; = &quot; &amp; oSe.GetPropertyValue(prop(i).name)
 				sezn.addItem(pom, sezn.ItemCount)
 
-			case 17  &apos; struct
+			case .STRUCT
 				pom = prop(i).name  &amp;  &quot;: &quot;  &amp;  getStructValues(oSe,prop(i).name)
 				sezn.addItem(pom, sezn.ItemCount)
 
-			case 20, 22  &apos; arrays, events - ignore
-
-			case else  &apos; the rest - ignorovat
-
 			end  select
+			End With
 		end if
 	next i
 
-	pom = &quot;&quot;
 	pom = oSe.getName()
 	if pom&lt;&gt;&quot;&quot; then sezn.addItem(&quot;Name = &quot; &amp; pom, sezn.ItemCount)
 
@@ -3569,6 +3568,5 @@ end function
 function ALTsearchKBD_KeyReleased(oEvt) as boolean
 	ALTsearchKBD_KeyReleased = false
 end function
-
 
 </script:module>
