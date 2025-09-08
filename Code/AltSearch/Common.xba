@@ -47,6 +47,10 @@
 	end type
 
 
+function isDigit_(c as String) as Boolean
+  isDigit_ = (instr(&quot;0123456789&quot;, c) &gt; 0)   &apos; TODO: use isNumeric() ?
+end function
+
 sub dbgVypisFind(pom())
 	dim i
 	for i = 0 to ubound(pom())
@@ -2751,7 +2755,7 @@ sub GetParFind0(find as string) as  tParFind
 	dim za, ko, i as integer
 	dim vysl as tParfind
 	dim pom
-	const cisla = &quot;0123456789&quot;
+
 	za = 0 &apos; the start of searched text
 	vysl.mode = 0 &apos; not include the paragraph
 	vysl.attr = &quot;&quot; &apos;without the attribute for the search
@@ -2872,7 +2876,7 @@ function getReplArray(byval nahr as string) as  tRepl
 	dim  i&amp;, n, k, nMode&amp;
 	dim kod, pomo as string
 	dim attrnames()
-	const cisla = &quot;0123456789&quot;
+
 	ALTsearchPRINTOUT = &quot;&quot;  &apos; the name of file, frame for report - empty = without report
 
 	&apos;every special command of array for the replace will be run individually in the dependence on CMD
@@ -3023,7 +3027,7 @@ function getReplArray(byval nahr as string) as  tRepl
 				pomo = &quot;&quot;
 				kod = &quot;&quot;
 				if (i+k)&lt;=(lenRepl) then pomo = mid(nahr,i+k,1) &apos; character that ensues after #
-				do while (instr(cisla,pomo) &gt; 0) and (i+k&lt;=lenRepl)   &apos;it is digit
+				do while  isDigit_(pomo) and (i+k&lt;=lenRepl)   &apos;it is digit
 					kod = kod  &amp;  pomo
 					k = k + 1
 					if k &gt; 5 then exit do &apos; max 5 digits
@@ -3669,7 +3673,6 @@ End Function
 sub replDec2hex(byval vstup as string) as string
 	dim po, od as long
 	dim zac, kon, kod, vst, hexa as string
-	const cisla = &quot;0123456789&quot;
 
 	&apos; firstly decimal because next hexa code cannot change the meaning of decimal code
 	od = 1
@@ -3682,7 +3685,7 @@ sub replDec2hex(byval vstup as string) as string
 			dim i
 			i = 0
 			kon = mid(vstup,po+2+i,1) &apos; character that ensues after #
-			do while (instr(cisla,kon) &gt; 0) and (po+i+1&lt;=len(vstup))   &apos;it is digit
+			do while isDigit_(kon) and (po+i+1&lt;=len(vstup))   &apos;it is digit
 				kod = kod  &amp;  kon
 				kon = mid(vstup,po+2+i,1)
 				i = i + 1
