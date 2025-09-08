@@ -3642,6 +3642,22 @@ Function replace_x2u(source as string) as string
 End Function
 
 
+	&apos; input must be array of sub-arrays where every sub-array must be: array(ALTCON.os.title of OS, string, find, replace)
+	&apos; function traverses these sub-arrays and returns string according to current OS that is in ALTCON.os.current
+	&apos; for example: replace4os( array( array(&quot;WNT&quot;, &quot;mystring&quot;, &quot;m&quot;, &quot;M&quot;), array(&quot;LINUX&quot;, &quot;mystring&quot;, &quot;s&quot;, &quot;S&quot;) )
+	&apos;   -&gt; will return &quot;Mystring&quot; for Windows, and &quot;myString&quot; for Linux
+Function replace4os(arr()) as string
+	dim i&amp;, p()
+	for i=lbound(arr) to ubound(arr)
+		p=arr(i)
+		if ( p(0)=ALTCON.os.current) then
+			replace4os=replace( p(1), p(2), p(3), 1, -1, true)
+			exit for
+		end if
+	next i
+End Function
+
+
 	&apos; the function find and replace in string
 	&apos; case sensitive !!!
 Function ReplaceC(Source As String, Search As String, NewPart As String) as string

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
+<script:module xmlns:script="http://openoffice.org/2000/script" script:name="AltConstants" script:language="StarBasic" script:moduleType="normal">option explicit
+
+&apos; this module is for global system of AltSearch&apos;s constants ALTCON, no for the changed variables
+&apos; let this module first for sure
+&apos; initialization of ALTCON does the function initALTCON() used in &apos;AltSearch &gt; _AltSearch&apos;
+
+
+
+	Type tTitle &apos;names of operating systems
+		win$ linux$
+	End Type
+	
+Type tOs
+	current$ &apos;currently used OS
+	title as tTitle
+End Type
+
+
+Type tStrings &apos;strings and texts
+	LF$ CR$ CRLF$
+End Type
+
+
+Type tAltcon
+	os as tOs
+	strings as tStrings
+End Type
+
+GLOBAL ALTCON as tAltcon
+
+
+Sub initALTCON &apos;fill ALTCON with constants
+	dim calc as object, sActiveSystem$
+	calc=CreateUnoService(&quot;com.sun.star.sheet.FunctionAccess&quot;)
+	ALTCON.os.current=Calc.callFunction(&quot;INFO&quot;, array(&quot;system&quot;)) &apos;detect current OS
+
+	with ALTCON.os.title &apos;constants from Calc INFO https://help.libreoffice.org/latest/en-US/text/scalc/01/04060104.html?&amp;DbPAR=BASIC#bm_id3691824
+		.win=&quot;WNT&quot;
+		.linux=&quot;LINUX&quot;
+	end with
+
+	with ALTCON.strings &apos;tStrings
+		.LF=chr(10)
+		.CR=chr(13)
+		.CRLF=.CR &amp; .LF
+	end with
+	
+End Sub
+</script:module>

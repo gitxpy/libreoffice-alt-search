@@ -90,6 +90,10 @@ global ALTsearchPARAMS as tVolby  &apos; variable for search options
 global sZERO$, sZEROamp$ &apos; fix of bug #74
 
 Sub _AltSearch(optional batchName)   &apos; run main dialog
+
+	if ALTCON.strings.LF=&quot;&quot; then initALTCON &apos; fill the ALCON with constants only for 1st run of AltSearch
+	&apos; initALTCON &apos;for debug is better to initialize ALTCON everytimes
+
 	dim oL, oKey, loc, tmp, vysl
 	
 	rem bug #74
@@ -2812,7 +2816,17 @@ stornoClipboard:
 					if HLE(0).cmd = &quot;[::BigBlock::]&quot; then  &apos; insert the middle of big-block
 						prCURS.string = replace_(FO2S,chr(13) &amp; chr(10),chr(13))   &apos; insert text #13#10 is paragraph, so there will be line break after insertion
 					else &apos; delete general block
-						prCURS.string = replace_(ALTsearchSKUP(0),chr(13) &amp; chr(10),chr(13))   &apos; insert text #13#10 is paragraph, so there will be line break after insertion
+					
+						&apos; before bug #85
+						&apos; prCURS.string = replace_(ALTsearchSKUP(0),chr(13) &amp; chr(10),chr(13))   &apos; insert text #13#10 is paragraph, so there will be line break after insertion
+					
+						rem bug #85
+						dim sPrCurs$
+						sPrCurs=ALTsearchSKUP(0)
+						prCURS.string=replace4os( array( _
+							array(ALTCON.os.title.win, sPrCurs, ALTCON.strings.CRLF, ALTCON.strings.CR), _
+							array(ALTCON.os.title.linux, sPrCurs, ALTCON.strings.LF, ALTCON.strings.CR) ) )
+							
 					end if
 					prCURS.collapseToEnd
 				end if

@@ -4,18 +4,19 @@
  <library:element library:name="Common"/>
  <library:element library:name="KeyAssign"/>
  <library:element library:name="Local"/>
- <library:element library:name="AltSearch"/>
  <library:element library:name="xBatch"/>
- <library:element library:name="Select"/>
+ <library:element library:name="AltSearch"/>
  <library:element library:name="Local_fr"/>
+ <library:element library:name="Select"/>
  <library:element library:name="ObjFind"/>
  <library:element library:name="fromTools"/>
- <library:element library:name="xMoreFiles"/>
  <library:element library:name="Local_nl"/>
+ <library:element library:name="xMoreFiles"/>
  <library:element library:name="Local_cs"/>
  <library:element library:name="Local_it"/>
  <library:element library:name="Local_es"/>
  <library:element library:name="Local_de"/>
  <library:element library:name="Local_ru"/>
  <library:element library:name="Local_en"/>
+ <library:element library:name="AltConstants"/>
 </library:library>
