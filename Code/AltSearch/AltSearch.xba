@@ -89,7 +89,14 @@ global ALTsearchPARAMS as tVolby  &apos; variable for search options
 
 global sZERO$, sZEROamp$ &apos; fix of bug #74
 
+global ALTsearchOS$ &apos;current Operation System
+
 Sub _AltSearch(optional batchName)   &apos; run main dialog
+	rem detect current OS
+	dim calc as object
+	calc=CreateUnoService(&quot;com.sun.star.sheet.FunctionAccess&quot;)
+	ALTsearchOS=calc.callFunction(&quot;INFO&quot;, array(&quot;system&quot;)) &apos;WNT=win, LINUX=linux; https://help.libreoffice.org/latest/en-US/text/scalc/01/04060104.html?&amp;DbPAR=BASIC#bm_id3691824
+	
 	dim oL, oKey, loc, tmp, vysl
 	
 	rem bug #74
@@ -2812,7 +2819,11 @@ stornoClipboard:
 					if HLE(0).cmd = &quot;[::BigBlock::]&quot; then  &apos; insert the middle of big-block
 						prCURS.string = replace_(FO2S,chr(13) &amp; chr(10),chr(13))   &apos; insert text #13#10 is paragraph, so there will be line break after insertion
 					else &apos; delete general block
-						prCURS.string = replace_(ALTsearchSKUP(0),chr(13) &amp; chr(10),chr(13))   &apos; insert text #13#10 is paragraph, so there will be line break after insertion
+						if ALTsearchOS=&quot;LINUX&quot; then
+							prCURS.string = replace_(ALTsearchSKUP(0), chr(10), chr(13) ) &apos; bug #85
+						else
+							prCURS.string = replace_(ALTsearchSKUP(0), chr(13) &amp; chr(10) , chr(13) )   &apos; insert text #13#10 is paragraph, so there will be line break after insertion
+						end if
 					end if
 					prCURS.collapseToEnd
 				end if
