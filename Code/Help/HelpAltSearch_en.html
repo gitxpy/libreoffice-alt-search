@@ -178,9 +178,17 @@
 		<p class="cm4"><strong>[::Bookmark::]</strong> will find place in the text or a block of text marked as bookmark</p>
 		<p class="cm4"><strong>[::Bookmark::]text</strong> will find <strong>text</strong> if it is inside a text block who is marked as bookmark</p>
 		<p class="cm4"><strong>[::Bookmark::]\RefHeading</strong> will find a place in the text or a block of text marked as bookmark only when the name of the bookmark contains substring RefHeading (searches substring in names of bookmarks)</p>
-		
+
 		<p><b>C.</b> List box “<b>Properties</b>”</p>
-		<p class="cm2">This enables searching according to properties (attributes) and also according to the values of these properties.<br>The search entry must begin with the string <strong>[:::</strong>, followed by the <strong>name</strong> of a property (more than one name can be separated using the <strong>|</strong> sign) and must end with the string <strong>::]</strong>. After this, the specification of some searched text can follow. On the contrary, if the value of a property is searched, then the syntax <strong>name=value</strong> should be used.</p>
+		<p class="cm2">This enables searching according to the properties (attributes) of strings and their values.<br>The search entry must begin with the string <strong>[:::</strong>, followed by the <strong>name</strong> of the property. If there is more than one property, names can be separated using <strong>|</strong>, ie the sign of <i>piping</i> and must end with the characters <strong>::]</strong>. After that, you can optionally set some specific string to be searched for. Then you can set the optional text to be searched for. On the contrary, if you need to search for the <b>value</b> of the property, then you have to use this kind of syntax: <strong>name=value</strong>.</p>
+		<p class="cm2">The list of text attributes and their values, which can be used to search for in the current selection, can be loaded by using the <var>Properties</var> button: data are shown in the dropdown menu which appears below this button.</br>You can search for many attributes of characters (font type, size, background color, character/paragraph styles etc…)</p>Below you can find a list of these attributes/proprieties:</p>
+		<p class="cm2"><strong>[:::CharFontName=Courier::]</strong> - search for characters using font type <strong>Courier</strong> in the selected block of text.</p>
+		<p class="cm2"><strong>[:::CharFontHeight=24::]</strong> - search for characters with a <strong>24 pt</strong> size in the selected block of text.<p>
+		<p class="cm2"><strong>[:::CharBackColor=&amp;HFE1410::]</strong> - search for characters with a background color which is something like <font color="red"><b>red</b></font> and whose <b>RGB</b> <b><i>hex code</i></b> is exactly <strong>FE1410</strong> in the selected block of text.</p>
+		<p class="cm2">The same color has an <b>RGB (254,20,16)</b> <b><i>decimal code</i></b>. This is also the same to say that its identification number is the result of the following mathematical operation:</br>
+		(256*256*254) + (256*20) + 16 = <b>16651280</b></br>
+		So you can find the background color also by using the expression:</p>
+		<p class="cm2"><strong>[:::CharBackColor=NNNNNNNN::]</strong> where <strong>NNNNNNNN</strong> should be substituted by <b>16651280</b> in the previous example.</p>
 		<p class="cm2"><strong>[:::ParaStyleName::]</strong> - searches for paragraph style</p>
 		<p class="cm4"><strong>[:::ParaStyleName=::]</strong> will find all whole paragraphs with paragraph style different from the <strong>Default</strong> style</p>
 		<p class="cm4"><strong>[:::ParaStyleName=Example::]</strong> will find whole paragraph with paragraph style <strong>Example</strong></p>
@@ -197,13 +205,16 @@
 		<p class="cm4"><strong>[:::HyperLinkURL::]link</strong> will find the part of the hyperlink containing the text <strong>link</strong>.</p>
 		<p class="cm4"><strong>[:::HyperLinkURL=file:///c:/pokus.odt::]</strong> will find a hyperlink in which the URL is the substring <strong>file:///c:/pokus.odt</strong>.</p>
 		<p class="cm4"><strong>[:::HyperLinkURL=file:///c:/pokus.odt::]link</strong> will find part of a hyperlink in which the URL is the substring <strong>file:///c:/pokus.odt</strong> and in which the text contains the text <strong>link</strong>.</p>
-		<p class="cm2">A list of available text attributes (with the values they have in the current selection) can be loaded using the button <var>Pick properties</var>; this is displayed in the list box next to this button. A brief description of most of these properties can be found <a href="https://api.libreoffice.org/docs/idl/ref/dir_02c10f744696785b64d031a937f6c999.html">here</a>.</p>
+		<p class="cm2">A list of available text attributes (with the values they have in the current selection) can be loaded using the button <var>Pick properties</var>: a dropdown menu appears next to that button.</p>
+		
+		<!-- A brief description of most of these properties can be found <a href="https://api.libreoffice.org/docs/idl/ref/dir_02c10f744696785b64d031a937f6c999.html">here</a>.</p>
 		<p class="cm2"><strong>Similar character attribute</strong> - this function loads any of the character attributes of the current selection that have been manually changed and searches for similarly formatted places. If e.g. the cursor is on text for which the name of the font has been manually changed, all places with a changed name of font will be found. The search box will contain e.g. <strong>[:::CharFontName::]</strong>.</p>
-		<p class="cm2"><strong>Same characters attribute</strong> - this function loads any of the character attributes of the current selection that have been manually changed and searches for identically formatted places. If e.g. the cursor is on text for which the name of the font has been manually changed, all places with a changed font name and the <b>same</b> font name will be searched for. The search box will contain e.g. <strong>[:::CharFontName=Arial::]</strong>.</p>
+		<p class="cm2"><strong>Same characters attribute</strong> - this function loads any of the character attributes of the current selection that have been manually changed and searches for identically formatted places. If e.g. the cursor is on text for which the name of the font has been manually changed, all places with a changed font name and the <b>same</b> font name will be searched for. The search box will contain e.g. <strong>[:::CharFontName=Arial::]</strong>.</p> -->
+
 		<p class="cm4"><dfn>Limitation:</dfn> The search engine in Writer does not support all the existing paragraph and character properties. Not all combinations work as might be expected.</p>
 		
 		<h3><a id="nahraditen"></a>Replacing</h3>
-		
+	
 		<p>List box “<b>Replace</b>”</p>
 		<p class="cm2"><strong>&amp; \0</strong> - both these parameters mean the same thing: on replacement they represent the whole found text</p>
 		<p class="cm4">If the expression which is searched for uses <strong>[::BigBlock::]</strong>, these parameters represent only the block of paragraphs between the start and end marks.</p>
@@ -301,6 +312,7 @@
 		<p>Button and List box “<b>Pick properties</b>”</p>
 		<p class="cm2">Using the <var>Pick properties</var> button you can update the list of (some) properties and their values for the currently selected object. Then you can browse the list and choose one from the list box next to the button.</p>
 		<p class="cm2"><strong>\A{properties=value}</strong> - sets in the replace expression the value of the specified property. Uses rules analogous to those for the parameter <strong>\C{}</strong> (see above).</p>
+		<p class="cm2">For example if the property-value which was searched for is:<br><strong>[:::CharBackColor=&HFF0000::]</strong>, ie a <font color="red"><b>red background color</b></font> and you want to replace it with a <font color="blue"><b>blue background color</b></font>,<br>then in the Replace box you must insert:<br> <strong>\A{CharBackColor=&H00FF00}</strong> (because the RGB hex code for blue is <font color="blue"><b>00FF00</b></font>).</p> 		
 		
 		<h3><a id="davkyen"></a>Batch mode</h3>
 		<p>&nbsp;</p>
