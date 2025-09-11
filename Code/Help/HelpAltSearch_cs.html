@@ -39,7 +39,7 @@
 			<p>Poznámky překladatelů</p>
 		</details>
 
-		<h3><a id="hlavnif"></a>Co nabízí toto rozšíření oproti standardnímu dialogu "Najít a&nbsp;nahradit" OOo:</h3>
+		<h3><a id="hlavnif"></a>Co nabízí toto rozšíření oproti standardnímu dialogu "Najít a&nbsp;nahradit" Writeru:</h3>
 		<ul>
 			<li>Dialog hledání a&nbsp;nahrazení bez nutnosti mačkat často tlačítko <var>Více voleb</var> pro zjištění stavu přepínačů, možnost rychlého výběru přednastavených regulárních a&nbsp;rozšířených výrazů pro hledání a nahrazení</li>
 			<li>Zjištění počtu nalezených výskytů hledaného výrazu tlačítkem <var>Spočítat</var></li>
@@ -66,20 +66,20 @@
 		</ul>
 		<p>Tip na klávesové zkratky pro zrychlení práce pro častější používání:</p>
 		<p><b>1.</b> Otevřít dialog <b>Nástroje - Přizpůsobit - Klávesnice</b></p>
-		<p><b>2.</b> V poli <b>Kategorie</b> se proklikat na Makra <b>OOo - User - AltSearch - AltSearch</b></p>
+		<p><b>2.</b> V poli <b>Kategorie</b> se proklikat na Makra <b>Moje makra - AltSearch - AltSearch</b></p>
 		<p><b>3.</b> V poli Funkce vybrat a přiřadit tlačítkem Změnit:<br>_AltSearch a přiřadit zkratku Ctrl+H (otevře dilog pro hledání);<br>_FindNext a přiřadit zkratku Ctrl+L (hledá další výskyt za kurzorem i bez otevřeného dialogu);<br>_FindBack a přiřadit zkratku Ctrl+Shift+L (hledá další výskyt před kurzorem i bez otevřeného dialogu);</p>
 		<p>Klávesové zkratky se také dají přiřadit dialogem přímo přes AltSearch - viz <a href="#davkycs">Dávkové zpracování</a></p>
 		<h3><img src="img/altsearch_main_cs.png" width="455" height="299" alt="PNG">Roletové nabídky (nad poli pro zadání hledaného a&nbsp;nahrazovaného výrazu)</h3>
 		<p>obsahují často používané nebo složité regulární výrazy nebo parametry pro nahrazení. Po výběru položky se do pole (nebo obou polí) přenesou odpovídající parametry. Ty mohou být podle situace vloženy několika způsoby: na začátek, na konec, ke kurzoru nebo původní text zcela nahradí. Zároveň je aktivován přepínač "Regulární výrazy".</p>
 		<h3 id="hledat">Hledat:</h3>
 		<p>Roleta <b>Regulární</b></p>
-		<p class="cm2">obsahuje některé vybrané regulární výrazy. Jejich popis je k&nbsp;dispozici v&nbsp;nápovědě OOo pod heslem <a href="https://help.libreoffice.org/latest/cs/text/shared/01/02100001.html?&DbPAR=WRITER"> Seznam regulárních výrazů</a>.</p>
-		<p class="cm2" id="skupiny0"><dfn>Omezení:</dfn> Syntaxe použitých regulárních výrazů <b>není</b> plně kompatabilní s původní z OOo. Problémy jsou u hledání při použití metaznaků <strong>* + ? {n,n}</strong> těsně za seskupením vymezeným závorkami (). Např. <strong>(Mi)?ster</strong> nebude nalezeno (avšak při použití <var>Spočítat</var> bude vrácen reálný počet - tato funkce používá pouze kompatabilní režim). Dále pokud se hledá seskupení typu <strong>(.*)neco</strong> nebo <strong>(.+)neco</strong> tak je vyhledána <b>nejkratší</b> vyhovující varianta oproti standardu, který naopak vyhledá nejdelší vyhovující možnost. Pokud je třeba zachovat kompatabilitu, je možno celý hledaný výraz uzavřít do dalšího páru závorek: <strong>((Mi)?ster)</strong>. Tím se ovšem pozbyde možnost odkazovat se na seskupení v nahrazovacím výrazu pomocí reference <strong>\#</strong> kde # je pořadové číslo (max. 9) seskupení. Nelze také <b>současně</b> použít referenci na seskupení (vymezené závorkami <strong>()</strong>) v hledaném i nahrazovaném výrazu. Viz také <a href="#skupiny">seskupení</a>.</p>
+		<p class="cm2">obsahuje některé vybrané regulární výrazy. Jejich popis je k&nbsp;dispozici v&nbsp;nápovědě LibreOffice pod heslem <a href="https://help.libreoffice.org/latest/cs/text/shared/01/02100001.html?&DbPAR=WRITER"> Seznam regulárních výrazů</a>.</p>
+		<p class="cm2" id="skupiny0"><dfn>Omezení:</dfn> Syntaxe použitých regulárních výrazů <b>není</b> plně kompatabilní s původními z LibreOffice. Problémy jsou u hledání při použití metaznaků <strong>* + ? {n,n}</strong> těsně za seskupením vymezeným závorkami (). Např. <strong>(Mi)?ster</strong> nebude nalezeno (avšak při použití <var>Spočítat</var> bude vrácen reálný počet - tato funkce používá pouze kompatabilní režim). Dále pokud se hledá seskupení typu <strong>(.*)neco</strong> nebo <strong>(.+)neco</strong> tak je vyhledána <b>nejkratší</b> vyhovující varianta oproti standardu, který naopak vyhledá nejdelší vyhovující možnost. Pokud je třeba zachovat kompatabilitu, je možno celý hledaný výraz uzavřít do dalšího páru závorek: <strong>((Mi)?ster)</strong>. Tím se ovšem pozbyde možnost odkazovat se na seskupení v nahrazovacím výrazu pomocí reference <strong>\#</strong> kde # je pořadové číslo (max. 9) seskupení. Nelze také <b>současně</b> použít referenci na seskupení (vymezené závorkami <strong>()</strong>) v hledaném i nahrazovaném výrazu. Viz také <a href="#skupiny">seskupení</a>.</p>
 		<p class="cm2">Další, nestandardní zástupné parametry:</p>
 		<p class="cm2"><strong>\l</strong> - reprezentuje jakékoli písmeno; totéž jako <strong>[:alpha:]{1,1}</strong>.</p>
 		<p class="cm2"><strong>\d</strong> - reprezentuje desítkovou číslici; totéž jako <strong>[0-9]</strong>.</p>
 		<p class="cm2"><strong>\p</strong> - reprezentuje znak ukončení jakéhokoliv odstavce,</p>
-		<p class="cm4">na rozdíl od v&nbsp;OOo standardního $, i&nbsp;prázdného. Lze použít metaznaky <strong>+</strong>, <strong>*</strong>, <strong>{min,max}</strong>.</p>
+		<p class="cm4">na rozdíl od v&nbsp;LibreOffisáckého standardního $, i&nbsp;prázdného. Lze použít metaznaky <strong>+</strong>, <strong>*</strong>, <strong>{min,max}</strong>.</p>
 		<p class="cm4"><strong>\p{1,}</strong> - najde nejbližší konec odstavce následovaný libovolně dlouhým blokem prázdných odstavců. Totéž co <strong>\p*</strong>.</p>
 		<p class="cm4"><strong>\p{2,4}</strong> - najde nejbližší konec odstavce následovaný minimálně jedním, maximálně 3 prázdnými odstavci, celkem tedy minimálně 2 maximálně 4 odstavce za sebou.</p>
 		<p class="cm4"><dfn>Omezení:</dfn> Pomalé při samostatném použití. Někdy problémy při zpětném hledání.</p>
@@ -173,7 +173,7 @@
 		<p class="cm2">Seznam dostupných textových atributů s jejich současnými hodnotami podle současného výběru lze načíst pomocí tlačítka <var>Načíst&nbsp;vlastnosti</var> a zobrazit v roletové nabídce vedle. Jejich stručný význam lze většinou najít <a href="https://api.libreoffice.org/docs/idl/ref/dir_02c10f744696785b64d031a937f6c999.html"> zde</a>.</p>
 		<p class="cm2"><strong>Podobné znakové atributy</strong> - tato funkce načte některé ručně změněné znakové atributy (podle současného výběru) pro vyhledání podobně formátovaných míst. Pokud je např. kurzor na ručně změněném názvu písma, budou hledána všechna místa se změněným jménem písma - bude se hledat <strong>[:::CharFontName::]</strong>.</p>
 		<p class="cm2"><strong>Stejné znakové atributy</strong> - tato funkce načte některé ručně změněné znakové atributy (podle současného výběru) pro vyhledání stejně formátovaných míst. Pokud je např. kurzor na ručně změněném názvu písma, budou hledána všechna místa se změněným a zároveň <b>stejným</b> jménem písma - bude se hledat <strong>[:::CharFontName=Arial::]</strong>.</p>
-		<p class="cm2"><dfn>Omezení:</dfn> Ne všechny existující vlastnosti odstavce a písma OOo podporuje pro hledání, ne všechny kombinace fungují podle očekávání a správně.</p>
+		<p class="cm2"><dfn>Omezení:</dfn> Ne všechny existující vlastnosti odstavce a písma jsou podporovány pro hledání, ne všechny kombinace fungují podle očekávání a správně.</p>
 		<h3 id="nahradit">Nahradit:</h3>
 		<p>Listbox <b>Nahradit</b></p>
 		<p class="cm2"><strong>&amp; \0</strong> - oba tyto zástupné znaky znamenají totéž - při nahrazení představují celý nalezený text</p>
@@ -184,8 +184,8 @@
 		<p class="cm4">Pokud byly v hledaném výrazu použity závorky (), pak <strong>\1</strong> představuje v pořadí první nalezený text, příslušný obsahu prvních (), podobně <strong>\2</strong> přísluší druhému páru () atd, maximálně <strong>\9</strong> přísluší 9. páru. Za platnou je považována pouze 1. úroveň zanoření závorek, další úrovně jsou ignorovány.</p>
 		<p class="cm4">Příklad:</p>
 		<p class="cm4">Pomocí výrazu <strong>(\d{1,2})\. *(\d{1,2})\. *\d{2,2}(\d{2,2})</strong> lze např. najít datum ve formátu 01. 12. 2007 a nahradit za 07-12-01 pomocí výrazu pro nahrazení <strong>\3-\2-\1</strong>.</p>
-		<p class="cm4">Pokud je třeba zpracování seskupení vypnout (např. z důvodu plné kompatibility regulárních výrazů ve standardu OOo) je třeba celý hledaný výraz vložit do dalšího páru ().</p>
-		<p class="cm4"><dfn>Omezení:</dfn> použití sekupení je poměrně pomalé, není plně kompatabilní s původními v OOo.</p>
+		<p class="cm4">Pokud je třeba zpracování seskupení vypnout (např. z důvodu plné kompatibility regulárních výrazů ve standardu LibreOffice) je třeba celý hledaný výraz vložit do dalšího páru ().</p>
+		<p class="cm4"><dfn>Omezení:</dfn> použití sekupení je poměrně pomalé, není plně kompatabilní s původními v LibreOfficeo.</p>
 		<p class="cm4">Nekompatabilita při hledáni kde je metznak ihned za seskupením <strong>(opak)*</strong> je dána principem postupného vyhledávání navazujících bloků textů a nijak jednoduše ji se mi ji nedaří odstranit, viz také <a href="#skupiny0">zde</a>. V těchto případech poskytují funkce <var>Spočítat</var> a <var>Najít vše</var> správné reálné počty zatímco ostatní bez zapnutí kompatability nenajdou nic. Ve složitějších případch je třeba chování vyzkoušet a zkusmo ověřit.</p>
 		<p class="cm2"><strong>\p</strong> - vloží do nahrazovaného výrazu nový odstavec</p>
 		<p class="cm2"><strong>\t</strong> - vloží do nahrazovaného výrazu tabulátor (<strong>\x0009 \#9</strong>)</p>
@@ -269,19 +269,19 @@
 		<p><b>1.</b> vybrat v prvním listboxu jméno dávky</p>
 		<p><b>2.</b> nastavit požadovanou klávesovou zkratku</p>
 		<p><b>3.</b> zmáčknout tlačítko <var>Přiřadit</var></p>
-		<p>Aby to fungovalo, je v okamžiku přiřazení vytvořena pomocná procedura v Basic modulu <code>Standard.AltSearchBatchs</code> se jménem upraveným podle syntaxe Basicu. Toto jméno je zobrazeno ve druhém poli dialogu. Spuštěním této pomocné procedury se vyvolá dialog AltSearch a ihned se automaticky provede zadaná dávka. Správná funkce je vázána na shodu jména dávky uvedenou uvnitř pomocné procedury a jména existující dávky. Pokud tedy změníte jméno dávky ke které už byla dříve přiřazena klávesová zkratka, je třeba klávesovou zkratku znovu přiřadit (starou pomocnou proceduru s původním jménem je možno smazat pomocí jejího vybrání ve druhém listboxu a vedlejším tlačítkem <var><b>x</b></var>). Jakoukoli klávesovou zkratku, která je v OOo writeru použita, je možno uvolnit pomocí dolního tlačítka <var>x</var>, proto pozor ať si nechtěně nesmažete nějakou důležitou zkratku.</p>
+		<p>Aby to fungovalo, je v okamžiku přiřazení vytvořena pomocná procedura v Basic modulu <code>Standard.AltSearchBatchs</code> se jménem upraveným podle syntaxe Basicu. Toto jméno je zobrazeno ve druhém poli dialogu. Spuštěním této pomocné procedury se vyvolá dialog AltSearch a ihned se automaticky provede zadaná dávka. Správná funkce je vázána na shodu jména dávky uvedenou uvnitř pomocné procedury a jména existující dávky. Pokud tedy změníte jméno dávky ke které už byla dříve přiřazena klávesová zkratka, je třeba klávesovou zkratku znovu přiřadit (starou pomocnou proceduru s původním jménem je možno smazat pomocí jejího vybrání ve druhém listboxu a vedlejším tlačítkem <var><b>x</b></var>). Jakoukoli klávesovou zkratku, která je ve Writeru použita, je možno uvolnit pomocí dolního tlačítka <var>x</var>, proto pozor ať si nechtěně nesmažete nějakou důležitou zkratku.</p>
 		<h3><img src="img/altsearch_multi_cs.png" width="400" height="303" alt="PNG">Vícenásobné spuštění</h3>
 		<p>Dávku vybranou ve <b>Správě dávek</b> lze spustit a aplikovat i na více právě otevřených textových souborů naráz:</p>
 		<p><b>1.</b> Vybrat kliknutím v seznamu dávku kterou chceme použít.</p>
 		<p><b>2.</b> Kliknout na tlačítko <var>Vícenásobné spuštění&gt;&gt;</var></p>
 		<p><b>3.</b> Vybrat pomocí Ctrl + klik myší soubory ze seznamu na kterých chceme vykonat dávku vybranou v bodě v bodě 1.</p>
 		<p>V seznamu jsou pouze právě otevřené soubory typu "writer".</p>
-		<p><b>4.</b> Stisknutím tlačítka <var>Start</var> se spustí provedení dávky na všech vybraných souborech. V průběhu zpracování může problikávat zobrazení - doporučiji po tuto dobu do ničeho v Ooo nezasahovat.</p>
+		<p><b>4.</b> Stisknutím tlačítka <var>Start</var> se spustí provedení dávky na všech vybraných souborech. V průběhu zpracování může problikávat zobrazení - doporučiji po tuto dobu do ničeho v LibreOffice nezasahovat.</p>
 		<p>Volba "<b>Potlačit hlášení</b>" potlačí hlášení o provedených změnách po zpracování každého z vybraných souborů ale vypíše jen závěrečné souhrnné hlášení po zpracování posledního z vybraných souborů.</p>
 		<h3 id="omezeni">Omezení:</h3>
 		<p class="cm2">pokud jsou známa, jsou uváděna většinou u popisu jednotlivých parametrů. Obecně platí:</p>
 		<ul>
-			<li>Použití regulárních výrazů není plně kompatabilní s původním z OOo, zvláště při použití <a href="#skupiny">seskupení</a>.</li>
+			<li>Použití regulárních výrazů není plně kompatabilní s těmimi z LibreOffice, zvláště při použití <a href="#skupiny">seskupení</a>.</li>
 			<li>Pokud je nastavena volba "Pouze současný výběr" tak se nevyhledají a nenahradí texty, které jsou v podřízených rámcích nebo tabulkách, i když jsou jsou uvnitř označeného bloku. Hledání uvnitř bloku je omezeno pouze na stejnou textovou oblast jako je označený blok. Vícenásobný blok není podporován.</li>
 			<li>Funkce "Najít vše" nedokáže označit značku odstavce <strong>\p</strong>, protože pro výběr textu je používána vlastnost "Zvýraznění" (barva podkladu znaku) a toto nelze použít pro samostatnou značku odstavce. Z toho také plyne omezení této funkce <b>pouze</b> na texty, kde tato vlasnost - zvýraznění - není použita. Pokud je v dokumentu zvýraznění použito a použije se tato funkce, objeví se varovný dialog.</li>
 			<li>Při nahrazování složitějšími výrazy je funkce "Zpět" (Undo) fragmentována na jednotlivé kroky nahrazení, takže se snadno stane že pak počet kroků zpět nestačí pro navrácení do původního stavu.</li>

@@ -60,6 +60,9 @@ article :is(p, h3):has(img) {overflow-x: auto;}
 
 dfn{color:rgb(213,0,38); font-weight: bold;}
 
+.bRed {color:rgb(255, 0, 0);}
+.bBlue {color:rgb(0, 0, 255);}
+
 /*button*/
 var{font-variant:normal; background:#d8d5d5; font-style: normal; padding-inline: 0.25rem; padding-block: 0.1rem; border-radius: 0.1rem; display: inline-block; vertical-align: middle; border:1px solid rgb(35,40,40);}
 
