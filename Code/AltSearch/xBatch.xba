@@ -103,7 +103,7 @@ end sub
 	&apos; actualize the list of saved scripts
 Sub Bt_refr
 	&apos; load new
-	Refresch &apos; refresh list
+	Refresh &apos; refresh list
 End Sub
 
 
@@ -436,7 +436,7 @@ sub iniBatch as string
 				zkopiruj(HELPPATH &amp; SCRIPTfile &amp; &quot;_en.txt&quot;,USERPATH &amp; SCRIPTfile &amp; &quot;.txt&quot;)
 			end if
 		end if
-		Refresch &apos; refresh list
+		Refresh &apos; refresh list
 		LASTNAME=MSG(24)
 &apos; offer the default name:
 		iniBatch = LASTNAME
