@@ -63,11 +63,11 @@
 			<li>Búsqueda por estilos de párrafo, carácter o lista, en el desplegable «Propiedades» con posibilidad de elegir un estilo desde listas</li>
 			<li>Búsqueda por similitud o coincidencia con el formato del texto bajo el cursor</li>
 			<li>Búsqueda y remplazo de Marcadores</li>
-		
+
 			<p>Sugerencias para asignar atajos de teclado de uso más frecuente:</p>
 			<ol>
-				<li>Abra el diálogo <b>Herramientas > Personalizar > Teclado</b></li>
-				<li>En el campo <b>Categoría</b> abra consecutivamente <b>Macros de la aplicación > Mis macros > AltSearch > AltSearch</b></li>
+				<li>Abra el diálogo <b>Herramientas &gt; Personalizar &gt; Teclado</b></li>
+				<li>En el campo <b>Categoría</b> abra consecutivamente <b>Macros de la aplicación &gt; Mis macros &gt; AltSearch &gt; AltSearch</b></li>
 				<li>En el campo <b>Función</b>, seleccione y <b>Asigne</b> los siguientes atajos:</li>
 			</ol>
 			<ul>
@@ -78,7 +78,7 @@
 		<p>También puede asignar atajos de teclado directamente desde el diálogo AltSearch. Consulte <a href="#lotes">Modo por lotes</a> más adelante.</p>
 
 		</ul>
-		<p class="center"></p><img src="./img/altsearch_main_es.png" alt="Diálogo principal de AltSearch" width="454" height="310"> </p>
+		<p class="center"><img src="./img/altsearch_main_es.png" alt="Diálogo principal de AltSearch" width="454" height="310"> </p>
 		<h3>Listas desplegables sobre el campos de expresiones de búsqueda («Buscar»)</h3>
 		<p>Contienen expresiones regulares sencillas, expresiones Ampliadas o parámetros de propiedades. Tras elegir una entrada los parámetros se pasan al campo de búsqueda. Se pueden insertar de varios modos: al principio, al final, en la posición del cursor o remplazando al texto del campo de búsqueda. Al mismo tiempo se activa la opción «Expresiones regulares».</p>
 		<h3 id="buscar">Buscar:</h3>
@@ -239,8 +239,8 @@
 		<p class="cm2"><strong>\D –</strong> Aplica el formato predeterminado en el texto buscado (Elimina el formato directo) (Ctrl+M)</p>
 		<p class="cm4">Se aplican reglas de uso análogas a las del parámetro <strong>\C{}</strong>.</p>
 		<p class="cm2"><strong>\d –</strong> restablece atributos de texto a los predeterminados sólo en el lugar de uso. A direrencia  de <strong>\D</strong> no tiene efecto en el texto insertado previamente.</p>
-		
-		
+
+
 		<p class="cm2"><strong>\F{Nueva nota al pie} –</strong> inserta una nueva nota al pie que contiene <strong>Nueva nota al pie</strong> en el lugar de reemplazo. Dentro de las llaves se pueden usar parámetros tales como <strong>\i</strong>, <strong>\I</strong>, <strong>&amp;</strong>, o <strong>\1</strong></p>
 		<p class="cm2"><strong>\E{Nueva nota final}</strong> - inserta nueva nota final en el lugar de reemplazo, análoga a <strong>\F</strong></p>
 		<p class="cm2"><strong>\B{ref1|texto} –</strong> inserta el texto <strong>texto</strong> con el marcador <strong>ref1</strong> para referencias cruzadas. Dentro de las llaves se pueden usar parámetros tales como <strong>\i</strong>, <strong>\I</strong>, <strong>&amp;</strong>, o <strong>\1</strong></p>
@@ -276,7 +276,7 @@
 		<p class="cm4">Si se usa <strong>&amp;</strong> o <strong>\0</strong> en la expresión de reemplazo, entonces el reemplazo se realizará sobre el portapapeles. Si el texto encontrado contiene campos de texto, notas, referencias etc, podrían ser preservados en su estado original.</p>
 		<p class="cm2"><strong>\R –</strong> Redirige la expresión de reemplazo a otro documento de texto</p>
 		<p class="cm4">Esta opción provoca la escritura de la expresión de reemplazo al nuevo archivo.ODT en lugar de de reemplazarla en el lugar en que la encuentre. El archivo original debería permanecer sin cambios. Se puede introducir el nombre del archivo con <strong>\R{Nombre_de_archivo}</strong>. El nombre debe tener el formato preciso de la ventana de terminado en « - Writer». Los registros se ańaden siempre al final del archivo.</p>
-		<p class="cm4">Ejemplo: Si en la expresión de búsqueda se utiliza <strong>[:::HyperLinkURL::]</strong> y en la expresión de reemplazo <strong>Enlace \i, página \I: &amp; (URL: \u)\p\R</strong>, tras pulsar el botón <var>Remplazar todo</var> se escribirá en un nuevo archivo todos los hiperenlaces encontrados en el archivo original, en el siguiente formato:</p> 
+		<p class="cm4">Ejemplo: Si en la expresión de búsqueda se utiliza <strong>[:::HyperLinkURL::]</strong> y en la expresión de reemplazo <strong>Enlace \i, página \I: &amp; (URL: \u)\p\R</strong>, tras pulsar el botón <var>Remplazar todo</var> se escribirá en un nuevo archivo todos los hiperenlaces encontrados en el archivo original, en el siguiente formato:</p>
 		<p class="cm4">Enlace <i>1, página 1: textoDelHiperenlace (URL: direcciónURL)</i> en párrafos separados.</p>
 		<p>Botón y Lista desplegable <b>Escoger propiedad</b></p>
 		<p class="cm2">Mediante el botón <var>Escoger propiedad</var> se puede actualizar la lista de (algunas) propiedades y sus valores del objeto recién seleccionado. Se puede hojear y elegir desde la lista desplegable lateral.</p>
@@ -287,12 +287,12 @@
 		<p><img src="./img/altsearch_script_es.png" alt="Gestor de lotes" width="454" height="309"></p>
 		<p>El modo por lotes permite guardar y cargar parámetros preestablecidos de búsqueda y reemplazo. Se pueden guardar varias búsquedas y reemplazos en orden en una única secuencia y después rápidamente cargarla y ejecutarla.</p>
 		<p>Se pueden guardar los valores actuales de todos los parámetros utilizando el botón <var>Guardar lote</var>. En el diálogo que se mostrará, se ofrece renombrar el nombre del último lote usado. Si el nombre que se introduce ya existe, se puede elegir, si reescribir el antiguo contenido o si conservarlo y ańadir el nuevo contenido al final. Se guarda el lote de modo que cuando se vuelva a ejecutar se usa la función por defecto «Reemplazar todo». Este comando puede cambiarse más adelante editando el archivo de reglas de lotes.</p>
-		<p>El botón <var>Lotes >></var> cambiará al diálogo <b>Gestor de lotes</b> donde se pueden ejecutar y editar lotes. Se puede volver al diálogo de búsqueda usando el botón <var><< Búsqueda</var>.</p>
+		<p>El botón <var>Lotes &gt;&gt;</var> cambiará al diálogo <b>Gestor de lotes</b> donde se pueden ejecutar y editar lotes. Se puede volver al diálogo de búsqueda usando el botón <var>&lt;&lt; Búsqueda</var>.</p>
 		<p>Todos los parámetros del lote se guardan en el archivo de texto <code>AltSearchScript.txt</code> dentro del perfil de usuario <a href="https://wiki.documentfoundation.org/UserProfile/es"> de LibreOffice</a>. Dicho archivo se puede abrir para su edición desde el diálogo <b>Gestor de lotes</b>, usando el botón <var>Editar</var>. Para la edición está preestablecido el editor <b>notepad,</b> sin embargo se puede establecer cualquier otro editor de texto, editando el archivo <code>AltSearchEditor.ini</code> en el mismo directorio. Tras cambiar manualmente y guardar el archivo de lotes se puede actualizar la lista de nombres de lotes con el botón <var>Actualizar</var>. La sintaxis usada en el archivo <code>AltSearchScript.txt</code> está descrita en su propio comienzo, codificado en UTF-8.</p>
 		<p>Tras hacer doble click en un elemento de la lista, o mediante el botón <var>Ejecutar</var>, se cargará la secuencia elegida, y se ejecutarán las búsquedas y reemplazos. Cuando se usen lotes en un área seleccionada se aconseja dejar al principio y tras el final de la selección uno o dos párrafos vacíos.</p>
 		<p>El botón <var>Pasar</var> se usa para transferir los parámetros de búsqueda, reemplazo y valores a el diálogo de búsqueda sin ejecutarlo realmente. Si el lote contiene una secuencia de varias búsquedas y reemplazos sólo se transferirá la última parte de la secuencia.</p>
 
-		<p><img src="./img/altsearch_shortcuts_es.png" alt="Atajos de teclado" width="396" height="273" id="PNG"></p> 
+		<p><img src="./img/altsearch_shortcuts_es.png" alt="Atajos de teclado" width="396" height="273" id="PNG"></p>
 		<p>El botón <var>Atajos de teclado</var> Abre un diálogo que le permite asignar un atajo de teclado a un lote existente,<br>Para esto:</p>
 		<ol>
 			<li>Seleccione el nombre del lote en el cuadro de listado</li>

@@ -28,10 +28,10 @@
 	</div>
 
 	<article id="en" lang="en">
-		
+
 		<h2>Alternative Find and Replace dialog box for Writer</h2>
 		<p class="menu2"><a href="#hledaten">Searching</a>&bull;<a href="#nahraditen">Replacing</a>&bull;<a href="#davkyen">Batch mode</a>&bull;<a href="#multiple">Multiple execute</a>&bull;<a href="#omezenien">Limitations</a></p>
- 
+
 		<!--
 		<details>
 			<summary>&#x2f3;&#x2f3;&#x2f3;</summary>
@@ -83,10 +83,10 @@
 			<i>AltSearch main dialog box</i>
 		</p>
 		<p>&nbsp;</p>
-		
+
 		<p><b>The List box menu (above the search string input field)</b></p>
 		<p>This contains frequently used or complicated <i>regular expressions</i> or search parameters that can be used in the search field. After choosing an entry, the corresponding parameters are transferred to the input field (or to both the search and replace fields if the second one is specified). These may be inserted in several ways: before or after the cursor or replacing the text in the input box. At the same time, the “<b>Regular expressions</b>” checkbox must be ticked.</p>
-		
+
 		<h3><a id="hledaten"></a>Searching</h3>
 		<p><b>A.</b> List box “<b>Regular</b>”</p>
 		<p class="cm2">This box contains some helpful regular expressions. They are described in the <a href="https://help.libreoffice.org/latest/en-US/text/shared/01/02100001.html?&DbPAR=WRITER"><b>LibreOffice Help</b></a> searching for <b>List of Regular Expressions</b></p>
@@ -110,7 +110,7 @@
 		<p class="cm4"><dfn>Limitation:</dfn> Slow when used separately. If subexpression <strong>()</strong> is used, the parameter <strong>\m</strong> must be at the start of the search string, and it must not be alone: i.e. <strong>\m(…)</strong> is valid but not <strong>(…)\m</strong>.</p>
 		<p class="cm2"><strong>\s</strong> - represents any space: normal space, non-breaking space, tab character or manual line break. It is the same as <strong>[\xA0\x9\xA]</strong></p>
 		<p class="cm2"><strong>\S</strong> - represents a non-breaking space (<strong>\x00A0</strong> or <strong>\#160</strong>)</p>
-		
+
 		<p><b>B.</b> List box “<b>Extended</b>”</p>
 		<p class="cm2"><strong>[::BigBlock::]</strong> - searches for a block of paragraphs (of unlimited length) delimited by some known text:</p>
 		<p class="cm4"><strong>start[::BigBlock::]end</strong> – at first, <strong>start</strong> is searched for and when it is found, <strong>end</strong> is searched for. If both are found, the whole block between them is selected.</p>
@@ -124,7 +124,7 @@
 		<p class="cm4">Search for: <strong>text1||text2||text3</strong><br>Replace: <strong>neco1||neco2||neco3</strong>.<br>
 		This will search for <strong>text1</strong> and it will be replaced by <strong>neco1</strong>, then the search continues for <strong>text2</strong> which will be replaced by <strong>neco2</strong>, etc.</p>
 		<p class="cm4"><dfn>Limitation:</dfn> you cannot use the parameter <strong>[::BigBlock::]</strong> with <strong>||</strong>, nor can you use <a href="#enskupiny">subexpressions.</a></p>
-		
+
 		<p class="cm2"><b>Searching for Objects</b></p>
 		<p class="cm2"><strong>[::Comment::]</strong> - searches comments (yellow balloons) according to their contents</p>
 		<p class="cm4"><strong>[::Comment::]</strong> - will find the next comment</p>
@@ -181,12 +181,13 @@
 
 		<p><b>C.</b> List box “<b>Properties</b>”</p>
 		<p class="cm2">This enables searching according to the properties (attributes) of strings and their values.<br>The search entry must begin with the string <strong>[:::</strong>, followed by the <strong>name</strong> of the property. If there is more than one property, names can be separated using <strong>|</strong>, ie the sign of <i>piping</i> and must end with the characters <strong>::]</strong>. After that, you can optionally set some specific string to be searched for. Then you can set the optional text to be searched for. On the contrary, if you need to search for the <b>value</b> of the property, then you have to use this kind of syntax: <strong>name=value</strong>.</p>
-		<p class="cm2">The list of text attributes and their values, which can be used to search for in the current selection, can be loaded by using the <var>Properties</var> button: data are shown in the dropdown menu which appears below this button.</br>You can search for many attributes of characters (font type, size, background color, character/paragraph styles etc…)</p>Below you can find a list of these attributes/proprieties:</p>
+		<p class="cm2">The list of text attributes and their values, which can be used to search for in the current selection, can be loaded by using the <var>Properties</var> button: data are shown in the dropdown menu which appears below this button.<br>You can search for many attributes of characters (font type, size, background color, character/paragraph styles etc…)</p>
+		<p>Below you can find a list of these attributes/proprieties:</p>
 		<p class="cm2"><strong>[:::CharFontName=Courier::]</strong> - search for characters using font type <strong>Courier</strong> in the selected block of text.</p>
-		<p class="cm2"><strong>[:::CharFontHeight=24::]</strong> - search for characters with a <strong>24 pt</strong> size in the selected block of text.<p>
-		<p class="cm2"><strong>[:::CharBackColor=&amp;HFE1410::]</strong> - search for characters with a background color which is something like <font color="red"><b>red</b></font> and whose <b>RGB</b> <b><i>hex code</i></b> is exactly <strong>FE1410</strong> in the selected block of text.</p>
-		<p class="cm2">The same color has an <b>RGB (254,20,16)</b> <b><i>decimal code</i></b>. This is also the same to say that its identification number is the result of the following mathematical operation:</br>
-		(256*256*254) + (256*20) + 16 = <b>16651280</b></br>
+		<p class="cm2"><strong>[:::CharFontHeight=24::]</strong> - search for characters with a <strong>24 pt</strong> size in the selected block of text.</p>
+		<p class="cm2"><strong>[:::CharBackColor=&amp;HFE1410::]</strong> - search for characters with a background color which is something like <b class="bRed">red</b> and whose <b>RGB</b> <b><i>hex code</i></b> is exactly <strong>FE1410</strong> in the selected block of text.</p>
+		<p class="cm2">The same color has an <b>RGB (254,20,16)</b> <b><i>decimal code</i></b>. This is also the same to say that its identification number is the result of the following mathematical operation:<br>
+		(256*256*254) + (256*20) + 16 = <b>16651280</b><br>
 		So you can find the background color also by using the expression:</p>
 		<p class="cm2"><strong>[:::CharBackColor=NNNNNNNN::]</strong> where <strong>NNNNNNNN</strong> should be substituted by <b>16651280</b> in the previous example.</p>
 		<p class="cm2"><strong>[:::ParaStyleName::]</strong> - searches for paragraph style</p>
@@ -206,22 +207,22 @@
 		<p class="cm4"><strong>[:::HyperLinkURL=file:///c:/pokus.odt::]</strong> will find a hyperlink in which the URL is the substring <strong>file:///c:/pokus.odt</strong>.</p>
 		<p class="cm4"><strong>[:::HyperLinkURL=file:///c:/pokus.odt::]link</strong> will find part of a hyperlink in which the URL is the substring <strong>file:///c:/pokus.odt</strong> and in which the text contains the text <strong>link</strong>.</p>
 		<p class="cm2">A list of available text attributes (with the values they have in the current selection) can be loaded using the button <var>Pick properties</var>: a dropdown menu appears next to that button.</p>
-		
+
 		<!-- A brief description of most of these properties can be found <a href="https://api.libreoffice.org/docs/idl/ref/dir_02c10f744696785b64d031a937f6c999.html">here</a>.</p>
 		<p class="cm2"><strong>Similar character attribute</strong> - this function loads any of the character attributes of the current selection that have been manually changed and searches for similarly formatted places. If e.g. the cursor is on text for which the name of the font has been manually changed, all places with a changed name of font will be found. The search box will contain e.g. <strong>[:::CharFontName::]</strong>.</p>
 		<p class="cm2"><strong>Same characters attribute</strong> - this function loads any of the character attributes of the current selection that have been manually changed and searches for identically formatted places. If e.g. the cursor is on text for which the name of the font has been manually changed, all places with a changed font name and the <b>same</b> font name will be searched for. The search box will contain e.g. <strong>[:::CharFontName=Arial::]</strong>.</p> -->
 
 		<p class="cm4"><dfn>Limitation:</dfn> The search engine in Writer does not support all the existing paragraph and character properties. Not all combinations work as might be expected.</p>
-		
+
 		<h3><a id="nahraditen"></a>Replacing</h3>
-	
+
 		<p>List box “<b>Replace</b>”</p>
 		<p class="cm2"><strong>&amp; \0</strong> - both these parameters mean the same thing: on replacement they represent the whole found text</p>
 		<p class="cm4">If the expression which is searched for uses <strong>[::BigBlock::]</strong>, these parameters represent only the block of paragraphs between the start and end marks.</p>
 		<p class="cm4">If the object which is searched for uses <strong>[::Comment::]</strong>, <strong>[::Field::]</strong>, <strong>[::TextFrame::]</strong>, <strong>[::Picture::]</strong>, or <strong>[::TextTable::]</strong>, these parameters represent exactly these objects (which are inserted using the clipboard).</p>
 		<p class="cm2"><strong>\b \e</strong> - If the expression which is searched for uses <strong>[::BigBlock::]</strong>, these parameters represent content of the start and end marks.</p>
 		<p class="cm4"><dfn>Limitation:</dfn> these cannot be used together with <a href="#enskupiny">subexpressions ()</a>.</p>
-		
+
 		<p><a id="enskupiny"><u>Subexpressions</u></a></p>
 		<p class="cm2"><strong>\1 \2 \3 \4 \5 \6 \7 \8 \9</strong> - content of subexpressions</p>
 		<p class="cm4">If the search expression which was searched for uses parentheses (), <strong>\1</strong> represents the content of the first pair of parentheses, <strong>\2</strong> corresponds to the content of the second pair (), etc., up to <strong>\9</strong>, which corresponds to content of the 9th pair. Only 1st level of parentheses is valid; nested levels are ignored.</p>
@@ -308,12 +309,12 @@
 		<p class="cm4">This option causes the replace expression to be inserted into <i>new.odt</i> file instead of replacing the found text. The original file will stay as it is, without any change. To enter the name of the output file, use the format <strong>\R{filename}</strong>. The name must have the accurate Writer window title format, including the text “ - LibreOffice Writer”. New records from this redirection are always added to the end of the file.</p>
 		<p class="cm4">Example: if the searched expression was <strong>[:::HyperLinkURL::]</strong> and the replace expression is <strong>Link \i, page \I: &amp; (URL: \u)\p\R</strong>, when you click the <var>Replace all</var> button all the hyperlinks found in original file will be listed in a new file in the form <i>Link</i><i>1, page 1: textOfHyperlink (URL: URLaddress)</i> in separate paragraphs.</p>
 		<p class="cm4"><i>Link1, page 1: textOfHyperlink (URL: URLaddress)</i></p>
-		
+
 		<p>Button and List box “<b>Pick properties</b>”</p>
 		<p class="cm2">Using the <var>Pick properties</var> button you can update the list of (some) properties and their values for the currently selected object. Then you can browse the list and choose one from the list box next to the button.</p>
 		<p class="cm2"><strong>\A{properties=value}</strong> - sets in the replace expression the value of the specified property. Uses rules analogous to those for the parameter <strong>\C{}</strong> (see above).</p>
-		<p class="cm2">For example if the property-value which was searched for is:<br><strong>[:::CharBackColor=&HFF0000::]</strong>, ie a <font color="red"><b>red background color</b></font> and you want to replace it with a <font color="blue"><b>blue background color</b></font>,<br>then in the Replace box you must insert:<br> <strong>\A{CharBackColor=&H00FF00}</strong> (because the RGB hex code for blue is <font color="blue"><b>00FF00</b></font>).</p> 		
-		
+		<p class="cm2">For example if the property-value which was searched for is:<br><strong>[:::CharBackColor=&amp;HFF0000::]</strong>, ie a <b class="bRed">red background color</b> and you want to replace it with a <b class="bBlue">blue background color</b>,<br>then in the Replace box you must insert:<br> <strong>\A{CharBackColor=&amp;H00FF00}</strong> (because the RGB hex code for blue is <b class="bBlue">00FF00</b>).</p>
+
 		<h3><a id="davkyen"></a>Batch mode</h3>
 		<p>&nbsp;</p>
 		<p class="center">
@@ -328,7 +329,7 @@
 		<p>All batch parameters are saved to the text file <code>AltSearchScript.txt</code> into the directory <code>…/config/</code> in <a href="https://wiki.documentfoundation.org/UserProfile">LibreOffice user profile</a>, and you can open and edit it using the <var>Edit</var> button in the <b>Batch manager</b> dialog. For editing the text, the program <b>Notepad</b> is used by default, but you can set it to use any other text editor by editing the file <code>AltSearchEditor.ini</code> in the same directory. After manual changing and saving the file using the Batch manager you can refresh the list of batch names using the <var>Refresh</var> button. The syntax used in the file <code>AltSearchScript.txt</code> is described at the beginning of the same file, using UTF-8 encoding.</p>
 		<p>When you double-click on an item of the list, or click the <var>Execute</var> button, the chosen sequence will be loaded and the search and replace operations will be executed. When using batches on selections, I advise you to leave 1-2 empty paragraphs at the beginning and the end of the selection.</p>
 		<p><var>Transfer</var> button is used for transferring the parameters of settings, searching, and replacing to the search dialog box without executing them. If the batch contains a sequence of several searches and replacements, only the last part of this sequence will be transferred.</p>
-		
+
 		<h3>Keyboard shortcuts</h3>
 		<p>The button <var>Key shortcut</var> opens a dialog box that allows you to assign a keyboard shortcut to an existing batch.</p>
 		<p>&nbsp;</p>
@@ -346,7 +347,7 @@
 			<li>Press the button <var>Assign</var></li>
 		</ol>
 		<p>In order for the shortcut to work, at the time of assignment an auxiliary procedure is created in the Basic module <code>Standard.AltSearchBatchs</code> with a name that is adjusted according to the Basic syntax. This name is displayed in the second drop-down menu box of the dialog box. When this auxiliary procedure is run, the AltSearch dialog box will be opened and the specified batch is immediately executed. A correct behavior depends on the compliance of the batch name listed inside the procedure and the name of existing batch. If you change the name of a batch which had a shortcut key previously assigned, you need to re-assign a new key shortcut (the old auxiliary procedure to the original name can be deleted by selecting it in the second drop-down box and using the side button <var> x</var>). Any keyboard shortcut that is used in Writer can be released using the lower button <var>x</var>. So be careful not to remove inadvertently an important shortcut!</p>
-		
+
 		<h3><a id="multiple"></a>Multiple execute</h3>
 		<p>&nbsp;</p>
 		<p class="center">
@@ -366,7 +367,7 @@
 					<u>WARNING</u>: while Multiple execute is running, please do nothing with Writer!</li>
 			</ol>
 		<p>Selecting “<b>Disable message</b>” suppress messages about changes after each file is executed. Anyway, as soon as processing is over, the final report will be displayed.</p>
-		
+
 		<h3><a id="omezenien"></a>Limitations</h3>
 		<p>Known limitations are mostly mentioned within the description of individual parameters.</p>
 		<p>Generally applicable:</p>
