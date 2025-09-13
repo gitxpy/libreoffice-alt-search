@@ -166,7 +166,7 @@ Sub Load_fr
 	MSG(30) = &quot;a été remplacé &quot;
 	MSG(31) = &quot;   Nombre de remplacements : &quot;
 	MSG(32) = &quot;Par défaut&quot;
-	MSG(33) = &quot;Impression des remplacements – OpenOffice.org Writer&quot;
+	MSG(33) = &quot;Impression des remplacements – Writer&quot;
 	MSG(34) = &quot;Cette fonction n&apos;est pas implémentée &quot;
 	MSG(35) = &quot;Ce lot contient plus de paramètres de recherche et de remplacement &quot;  &amp;  chr(10)  &amp;  &quot;Seuls les derniers paramètres sont pris en compte &quot;
 	MSG(36) = &quot;Mise à jour de la sélection... &quot;
