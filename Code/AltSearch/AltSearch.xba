@@ -2633,7 +2633,7 @@ sub ReplDo
 					Bmark = prCURS.getStart()
 				end if  &apos; delete text &gt;64k or object, or delete like text to 64k
 
-			else  &apos; not use &quot;&amp;&quot; - there will not be pasted cotent of textobject in replacement
+			else  &apos; not use &quot;&amp;&quot; - there will not be pasted content of textobject in replacement
 				if isBigText_Or_NonTextObject(oDOCcontrol.getViewCursor()) then &apos; is it text &gt;64k or is it object,table?
 					&apos; delete using Uno to don&apos;t block clipboard unnecessarily
 					if HLE(0).cmd = &quot;[::BigBlock::]&quot; then  &apos; delete big-block
