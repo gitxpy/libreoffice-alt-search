@@ -239,7 +239,7 @@
 ; ***** END OF THE ORIGINAL AltSearchScript_it.txt v.1.4.2 *****
 
 [Name] Testo [Tutti] Sostituzione delle virgolette di tipo “ ” con quelle di tipo « »
-  [Parametri] MsgOff
+  [Parameters] MsgOff
 
   [Find]“
   [Replace]«
@@ -257,7 +257,7 @@
 
 
 [Name] Testo [Tutto] Rimozione della virgola prima delle congiunzioni "o" & "e"
-  [Parametri] MsgOff Normale
+  [Parameters] MsgOff Normale
 
   [Find], e
   [Replace] e \C{Nessuno stile di carattere}
@@ -287,7 +287,7 @@
   [Command] ReplaceAll
 
 [Name] Tasti Mac [Tutto] Rimozione della sequenza di tasti  ⌘ e ⌥ (Mac-specifici)
-  [Parametri] MsgOff Regular
+  [Parameters] MsgOff Regular
 
   [Find]⌘
   [Replace]\C{Nessuno stile di carattere}
