@@ -134,7 +134,7 @@ Sub _AltSearch(optional batchName)   &apos; run main dialog
 		oDIAL.model.Cb_find.text = ALTsearchFIND(0)   &apos; found expression
 		tmp = oDIAL.getControl(&quot;Cb_find&quot;)
 		tmp.removeItems(0,tmp.ItemCount)
-		tmp.addItems(ALTsearchFIND(),0)
+		tmp.addItems( addZero( ALTsearchFIND() ), 0) &apos; bug #74
 
 		if ubound(ALTsearchREPL())=-1 then
 			redim ALTsearchREPL(0)
@@ -142,7 +142,7 @@ Sub _AltSearch(optional batchName)   &apos; run main dialog
 		oDIAL.model.Cb_repl.text = ALTsearchREPL(0)   &apos; replaced expression
 		tmp = oDIAL.getControl(&quot;Cb_repl&quot;)
 		tmp.removeItems(0,tmp.ItemCount)
-		tmp.addItems(ALTsearchREPL(),0)
+		tmp.addItems( addZero( ALTsearchREPL() ), 0) &apos; bug #74
 
 		oDIAL.model.Ch_case.state = ALTsearchINI(3) &apos; case sensitive
 		oDIAL.model.Ch_word.state = ALTsearchINI(4) &apos; whole words
@@ -3493,11 +3493,11 @@ sub zmenaChstyle
 		oDIAL.model.Cb_findAtr.enabled =  true
 		&apos; delete the list of style for find
 		oDIAL.getcontrol(&quot;Cb_find&quot;).removeItems(0,oDIAL.getcontrol(&quot;Cb_find&quot;).itemCount)  &apos; delete previous
-		oDIAL.getcontrol(&quot;Cb_find&quot;).addItems(ALTsearchFIND(),0)      &apos; load history
+		oDIAL.getcontrol(&quot;Cb_find&quot;).addItems( addZero( ALTsearchFIND() ), 0)      &apos; load history &apos; bug #74
 		oDIAL.model.Cb_find.text = ALTsearchFIND(0)
 		&apos; delete the list of style for replace
 		oDIAL.getcontrol(&quot;Cb_repl&quot;).removeItems(0,oDIAL.getcontrol(&quot;Cb_repl&quot;).itemCount)  &apos; delete previous
-		oDIAL.getcontrol(&quot;Cb_repl&quot;).addItems(ALTsearchREPL(),0)      &apos; load history
+		oDIAL.getcontrol(&quot;Cb_repl&quot;).addItems( addZero (ALTsearchREPL() ), 0)      &apos; load history &apos; bug #74
 		oDIAL.model.Cb_repl.text = ALTsearchREPL(0)
 	end if
 end sub

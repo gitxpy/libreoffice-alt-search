@@ -47,6 +47,21 @@
 	end type
 
 
+Function addZero(variable as variant) as variant &apos;add ZeroWidthJoiner to start of string if one started &quot;&amp;&quot;; also for the items in array bug #74
+	dim i&amp;, s$, v as variant
+	v=VarType(variable)
+	if v=8 then &apos;variable is string$
+		if Left(variable, 1)=&quot;&amp;&quot; then variable=sZERO &amp; variable
+	else &apos;variable should be array()
+		for i=lbound(variable) to ubound(variable)
+			s=variable(i)
+			if Left(s, 1)=&quot;&amp;&quot; then variable(i)=sZERO &amp; s
+		next i
+	end if
+	addZero=variable
+End Function
+
+
 function isDigit_(c as String) as Boolean
   isDigit_ = (instr(&quot;0123456789&quot;, c) &gt; 0)   &apos; TODO: use isNumeric() ?
 end function
