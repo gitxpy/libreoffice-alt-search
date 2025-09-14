@@ -213,8 +213,7 @@
 
 
 [Name] Testo [Tutti] Sostituzione della stringa "finestra di dialogo" con la stessa stringa (con distinzione di maiuscole e minuscole, singolare e plurale)
-  ; Parametri comuni a tutti quattro i comandi:
-  [Parametri] MsgOff MatchCase
+  [Parameters] MsgOff MatchCase
 
   ; Maiuscolo
   [Find] finestra di dialogo
