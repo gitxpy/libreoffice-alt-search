@@ -95,8 +95,9 @@
 		<p>Furthermore, when subexpressions like <strong>(.*)any</strong> or <strong>(.+)any</strong> are searched for, the shortest occurrence is matched, where it would normally be the longest match. If it is necessary to preserve compatibility, you can delimit the whole search expression with an extra pair of parentheses: <strong>((Mi)?ster)</strong>. But this will, of course, lose you the chance to cite the subexpression in the replace expression as a reference, i.e. <strong>\#</strong> where # is a reference number (max. 9) of the subexpressions. Besides, it is not possible to use a reference on a subexpression (determined by parentheses <strong>()</strong>) both for the searched and the replaced expression at the same time. See also <a href="#enskupiny">subexpressions</a>.</p>
 		<p>Other special wildcard parameters:</p>
 		<p class="cm2"><strong>\l</strong> - represents any alphabetic character; same as <strong>[:alpha:]</strong>.</p>
-		<p class="cm2"><strong>\p</strong> - represents the paragraph termination sign,</p>
-		<p class="cm2">in contrast to the ICU standard, $ also represents an empty paragraph. It is possible to use wildcards such as <strong>+</strong>, <strong>*</strong>, or <strong>{min,max}</strong> with <strong>$</strong>.</p>
+		<p class="cm2"><strong>\d</strong> - represents any decimal number; same as <strong>[0-9]</strong></p>		
+		<p class="cm2"><strong>\p</strong> - represents the paragraph termination sign</p>
+		<p class="cm2"><strong>$</strong> - in contrast to the ICU standard, it also represents an empty paragraph. Together to <strong>$</strong> it is also possible to use wildcards such as <strong>+</strong>, <strong>*</strong> or <strong>{min,max}</strong>.</p>
 		<p class="cm2"><strong>\p{1,}</strong> - will find the next end of paragraph followed by an unlimited block of empty paragraphs. Same as <strong>\p*</strong>.</p>
 		<p class="cm2"><strong>\p{2,4}</strong> - will find the next end of paragraph followed by at least one and at most three empty paragraphs, i.e. a total of 2-4 paragraphs one after each other.</p>
 		<p class="cm4"><dfn>Limitation:</dfn> Slow when used separately. Sometimes there are problems when searching backwards.</p>
