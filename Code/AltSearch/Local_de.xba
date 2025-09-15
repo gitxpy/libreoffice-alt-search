@@ -167,7 +167,7 @@ Sub Load_de
 	MSG(30) = &quot;ersetzt   &quot;
 	MSG(31) = &quot;   Zahl der Ersetzungen: &quot;
 	MSG(32) = &quot;Standard&quot;
-	MSG(33) = &quot;Ersetzungen ausdrucken - OpenOffice.org Writer&quot;
+	MSG(33) = &quot;Ersetzungen ausdrucken - Writer&quot;
 	MSG(34) = &quot;Diese Funktion ist nicht verfügbar.&quot;
 	MSG(35) = &quot;Batch enthält mehrere Suchen &amp; Ersetzen Parameter. &quot;  &amp;  chr(10)  &amp;  &quot;Nur die letzten Parameter wurden übertragen. &quot;
 	MSG(36) = &quot;Aktualisierung der Auswahl... &quot;

@@ -166,7 +166,7 @@ Sub Load_nl
 	MSG(30) = &quot;werd vervangen   &quot;
 	MSG(31) = &quot;   Aantal vervangingen: &quot;
 	MSG(32) = &quot;Standaard&quot;
-	MSG(33) = &quot;Afdruk van vervangingen - OpenOffice.org Writer&quot;
+	MSG(33) = &quot;Afdruk van vervangingen - Writer&quot;
 	MSG(34) = &quot;Deze functie is niet geďmplementeerd.&quot;
 	MSG(35) = &quot;Batch bevat meerdere zoeken en vervangen-parameters. &quot;  &amp;  chr(10)  &amp;  &quot;Alleen de laatste parameters werden overgedragen. &quot;
 	MSG(36) = &quot;Bijwerken van selectie... &quot;

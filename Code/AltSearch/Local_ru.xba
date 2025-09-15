@@ -168,7 +168,7 @@ Sub Load_ru
 	MSG(30) = &quot;заменен   &quot;
 	MSG(31) = &quot;   Число замен: &quot;
 	MSG(32) = &quot;По умолчанию&quot;
-	MSG(33) = &quot;Распечатка замен - OpenOffice.org Writer&quot;
+	MSG(33) = &quot;Распечатка замен - Writer&quot;
 	MSG(34) = &quot;Эта функция не применяется.&quot;
 	MSG(35) = &quot;Группа содержит слишком много параметров поиска и замены. &quot;  &amp;  chr(10)  &amp;  &quot;Были применены только последние параметры.  &quot;
 	MSG(36) = &quot;Обновление выделения... &quot;

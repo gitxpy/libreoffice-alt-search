@@ -213,8 +213,7 @@
 
 
 [Name] Text [All] Replace the string "dialog window" with the same string matching Upper and Lower case letters, singular and plurals)
-  ; Parametri comuni a tutti quattro i comandi:
-  [Parametri] MsgOff MatchCase
+  [Parameters] MsgOff MatchCase
 
   ; Uppercase
   [Find] dialog window
@@ -239,7 +238,7 @@
 ; ***** END OF THE ORIGINAL AltSearchScript_it.txt v.1.4.2 *****
 
 [Name] Text [All] Substitution of “ ” with « » quotation marks
-  [Parametri] MsgOff
+  [Parameters] MsgOff
 
   [Find]“
   [Replace]«
@@ -257,7 +256,7 @@
 
 
 [Name] Text [All] Remove comma before conjunctions "or" & "and"
-  [Parametri] MsgOff Normale
+  [Parameters] MsgOff Normale
 
   [Find], and
   [Replace] and \C{no character style}
@@ -288,7 +287,7 @@
   [Command] ReplaceAll
 
 [Name] Mac keys[All] Remove the key sequence ⌘ e ⌥ (Mac-specific)
-  [Parametri] MsgOff Regular
+  [Parameters] MsgOff Regular
 
   [Find]⌘
   [Replace]\C{No character style}

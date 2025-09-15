@@ -166,7 +166,7 @@ Sub Load_cs
 	MSG(30) = &quot;byl nahrazen   &quot;
 	MSG(31) = &quot;   Počet náhrad: &quot;
 	MSG(32) = &quot;Výchozí&quot;
-	MSG(33) = &quot;Výpis nahrazení - OpenOffice.org Writer&quot;
+	MSG(33) = &quot;Výpis nahrazení - Writer&quot;
 	MSG(34) = &quot;Tato funkce není implementována. &quot;
 	MSG(35) = &quot;Dávka obsahuje více navazujících skupin hledání a nahrazení. &quot;  &amp;  chr(10)  &amp;  &quot;Přeneseny byly jen parametry poslední skupiny. &quot;
 	MSG(36) = &quot;Aktualizuji výběr... &quot;
