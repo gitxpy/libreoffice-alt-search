@@ -3171,9 +3171,9 @@ function getReplArray(byval nahr as string) as  tRepl
 	next i
 
 	if ALTsearchPRINTOUT&lt;&gt;&quot;&quot; then &apos;get link to object of file for report of replacements
-		if trim(pom(n).nahr) = &quot;&quot; then &apos; empty brackets
-			ALTsearchPRINTOUT = MSG(33) &apos; write the replacements - Writer
-		end if
+&apos;		if trim(pom(n).nahr) = &quot;&quot; then &apos; empty brackets
+&apos;			ALTsearchPRINTOUT = MSG(33) &apos; write the replacements - Writer
+&apos;		end if
 		&apos; 1. search according to name frame.title
 		oPOFILE = getDocumentControl(ALTsearchPRINTOUT, ALTsearchDOC)
 
@@ -3714,15 +3714,6 @@ sub replDec2hex(byval vstup as string) as string
 		end if
 	loop
 	replDec2hex = vstup
-end sub
-
-
-	&apos; if file isn&apos;t saved then it must refresh the identification name after write
-sub RestoreFrameName
-	if oPOFILE.URL = &quot;&quot; then
-		oPOFILE.CurrentController.Frame.Title = ALTsearchPRINTOUT
-		oPOFILE.Title = ALTsearchPRINTOUT
-	end if
 end sub
 
 

@@ -42,27 +42,30 @@ end sub
 	&apos; for now not used
 sub Bt_Help_pressed(oEvt)
 	HELPkeyMODIF = 1
-
 end sub
 
+	&apos; match prefix* or full frame.title,
+	&apos; if not found, open new empty document in Writer and set frame.title
+	&apos; returns the document object
+function getDocumentControl(jmeno)as object
+	Dim oDocs, oDoc1 As Object
+	Dim prefix$
+ 
+   	if right(jmeno,1) = &quot;*&quot; then  prefix = left(jmeno, len(jmeno)-1)
 
-	&apos; search according the name in frame.title , if not found then open new empty file in Writer and set then name frame.title to JMENO
-	&apos; return the pointer to object of entered URL of document, or open it, or create?
-function getDocumentControl(jmeno,oOrig)as object
-	Dim oDesktop As Object, oDocs, oDoc1 As Object
-	dim typ
 	oDocs = StarDesktop.getComponents().createEnumeration()
 	Do While oDocs.hasMoreElements()
 		oDoc1 = oDocs.nextElement()
 
-		typ =  GetDocumentType1(oDoc1)
-		if (typ=&quot;swriter&quot;) then
-			if Ucase(oDoc1.CurrentController.Frame.Title)=ucase(jmeno) then
+		if oDoc1.SupportsService(&quot;com.sun.star.text.TextDocument&quot;) then
+			if (oDoc1.CurrentController.Frame.Title = jmeno) OR _
+			  (prefix &lt;&gt; &quot;&quot; AND InStr(oDoc1.CurrentController.Frame.Title, prefix) = 1) then
 				getDocumentControl=oDoc1
 				exit function
 			end if
 		end if
 	Loop
+
 on local error goto konec:
 	oDoc1=StarDesktop.loadComponentFromURL(&quot;private:factory/swriter&quot;,jmeno,0,array())
 	oDoc1.CurrentController.Frame.Title = jmeno
@@ -71,31 +74,6 @@ on local error goto konec:
 konec:
 	resume next
 end function
-
-
-Function GetDocumentType1(oDocument) as string
-	On Local Error GoTo NODOCUMENTTYPE
-	If oDocument.SupportsService(&quot;com.sun.star.sheet.SpreadsheetDocument&quot;) Then
-		GetDocumentType1 = &quot;scalc&quot;
-	ElseIf oDocument.SupportsService(&quot;com.sun.star.text.TextDocument&quot;) Then
-		GetDocumentType1 = &quot;swriter&quot;
-	ElseIf oDocument.SupportsService(&quot;com.sun.star.text.WebDocument&quot;) Then
-		GetDocumentType1 = &quot;swriterweb&quot;
-	ElseIf oDocument.SupportsService(&quot;com.sun.star.drawing.DrawingDocument&quot;) Then
-		GetDocumentType1 = &quot;sdraw&quot;
-	ElseIf oDocument.SupportsService(&quot;com.sun.star.presentation.PresentationDocument&quot;) Then
-		GetDocumentType1 = &quot;simpress&quot;
-	ElseIf oDocument.SupportsService(&quot;com.sun.star.formula.FormulaProperties&quot;) Then
-		GetDocumentType1 = &quot;smath&quot;
-	End If
-	exit function
-NODOCUMENTTYPE:
-	If Err &lt;&gt; 0 Then
-		GetDocumentType1 = &quot;&quot;
-		Resume GOON
-GOON:
-	End If
-End Function
 
 
 	&apos; return the path to help, it need set properly also the files: HelpPath.xcs and HelpPath.xcu
