@@ -69,11 +69,11 @@
 				<li>Aprire la voce di menu <b>Strumenti &gt; Personalizza… &gt; Tastiera</b></li>
 				<li>Nel campo <b>Categoria</b>, selezionare <b>Macro dell’applicazione &gt; Macro personali &gt; AltSearch &gt; AltSearch</b></li>
 				<li>Nel campo <b>Funzione</b>, selezionare e assegnare le seguenti scorciatoie (suggerite) usando il pulsante <b>Assegna</b>:</li>
-				<ul>
+					<ul>
 						<li><i>_AltSearch</i>: Ctrl+H <b>&gt;</b> Apre la finestra di ricerca AltSearch</li>
 						<li><i>_FindNext</i>: Ctrl+L <b>&gt;</b> Trova la prima occorrenza della stringa ricercata dopo il punto su cui è posizionato il cursore, senza dover aprire la finestra di dialogo</li>
 						<li><i>_FindBack</i>: Ctrl+Shift+L <b>&gt;</b> Trova la prima occorrenza della stringa ricercata prima del punto su cui è posizionato il cursore, senza dover aprire la finestra di dialogo</li>
-				</ul>
+					</ul>
 			</ol>
 		<p>È anche possibile assegnare le scorciatoie direttamente dalla finestra di dialogo AltSearch - vedi <a href="#davkyit">Modalità Batch</a></p>
 		<hr>
@@ -89,13 +89,13 @@
 
 		<h3><a id="hledatit"></a>Ricerca</h3>
 		<h4>Casella con menu a discesa “[Espressioni] <b>Regolari</b>”</h4>
-		<p class="cm2">Questo casella con menu a discesa contiene alcune utili espressioni regolari descritte nell'<a href="https://help.libreoffice.org/latest/it-IT/text/shared/01/02100001.html?&DbPAR=WRITER"><b>Aiuto di LibreOffice</b></a> cercando <b>Elenco di Espressioni Regolari</b></p>
+		<p class="cm2">Questo casella con menu a discesa contiene alcune utili espressioni regolari descritte nell'<a href="https://help.libreoffice.org/latest/it-IT/text/shared/01/02100001.html?&DbPAR=WRITER"><b>Aiuto di LibreOffice</b></a> cercando <b>Elenco Espressioni Regolari</b></p>
 		<p class="cm4" id="itskupiny0"><dfn>Limitazioni:</dfn> La sintassi utilizzata per le espressioni regolari standard non è totalmente equivalente a quella di Writer. Ci sono differenze, specialmente nell'uso dei caratteri jolly <strong>*, +, ?</strong>, o <strong>{n,n}</strong> se utilizzati subito dopo le sotto-espressioni delimitate da parentesi rotonde <b>()</b>.</p>
-		<p>Per esempio non è possibile trovare l’espressione <strong>(Mi)?ster</strong>. In ogni caso però, usando il pulsante <var>Conta</var>, viene restituito il numero reale delle occorrenze.</p>
+		<p>Per esempio non è possibile trovare l’espressione <strong>(Mi)?ster</strong>. Usando però il pulsante <var>Conta</var>, viene restituito il numero effettivo delle occorrenze.</p>
 		<p>Inoltre se si cercano sotto-espressioni come <strong>(.*)any</strong> o <strong>(.+)any</strong>, viene trovata l’occorrenza <i>più corta</i> corrispondente al criterio, mentre normalmente si troverebbe l’occorrenza <i>più lunga</i>. Se è necessario conservare la compatibilità, si può delimitare l’intera espressione da ricercare con un’ulteriore paio di parentesi: <strong>((Mi)?ster)</strong>. L’inconveniente è però che così si perde la possibilità di citare come riferimento la sotto-espressione nell’ambito dell’espressione di sostituzione; non è cioè possibile usare <strong>\#</strong> ove # è il numero di riferimento (max. 9) delle sotto-espressioni. Inoltre non è possibile usare il riferimento ad una sotto-espressione usando le parentesi <strong>()</strong> sia per l'espressione di ricerca che di sostituzione, allo stesso tempo. Si veda anche <a href="#itskupiny">Sotto-espressioni</a>.</p>
 		<p>Altri parametri speciali dei caratteri jolly:</p>
 		<p class="cm2"><strong>\l</strong> - rappresenta qualsiasi carattere alfabetico; equivale cioè a <strong>[:alpha:]</strong></p>
----		<p class="cm2"><strong>\d</strong> - rappresenta una cifra decimale; equivale cioè a <strong>[0-9]</strong></p>
+		<p class="cm2"><strong>\d</strong> - rappresenta una cifra decimale; equivale cioè a <strong>[0-9]</strong></p>
 		<p class="cm2"><strong>\p</strong> - rappresenta il segno di fine paragrafo</p>
 		<p class="cm2"><strong>$</strong> - contrariamente allo standard ICU rappresenta un paragrafo vuoto. Assieme a <strong>$</strong> è anche possibile usare caratteri jolly quali <strong>+</strong>, <strong>*</strong>, o <strong>{min,max}</strong></p>
 		<p class="cm2"><strong>\p{1,}</strong> - trova la fine del paragrafo successivo seguita da un blocco illimitato di paragrafi vuoti. Equivale a <strong>\p*</strong></p>
@@ -126,55 +126,55 @@
 		<p class="cm4"><dfn>Limitazioni:</dfn> con <strong>||</strong> non è possibile usare il parametro <strong>[::BigBlock::]</strong> né le <a href="#itskupiny">sotto-espressioni</a></p>
 
 		<p class="cm2"><b>Ricerca di Oggetti</b></p>
-		<p class="cm2"><strong>[::Comment::]</strong> - trova i Commenti al testo a seconda dei loro contenuti</p>
-		<p class="cm4"><strong>[::Comment::]</strong> - trova il Commento al testo successivo</p>
-		<p class="cm4"><strong>[::Comment::]pozn.</strong> - trova qualsiasi Commento al testo contenente la sotto-stringa <strong>pozn.</strong></p>
-		<p class="cm4"><dfn>Limitazioni:</dfn> nel contenuto dei Commenti si possono cercare solo sotto-stringhe. Non è invece possibile usare le espressioni regolari standard.</p>
-		<p class="cm2"><strong>[::Field::]</strong> - cerca nei Campi di Testo a seconda del loro contenuto</p>
-		<p class="cm4"><strong>[::Field::]</strong> - trova qualsiasi Campo di Testo normale</p>
-		<p class="cm4"><strong>[::Field::]obsah</strong> - trova quei Campi di Testo del documento in cui è visualizzato il testo <strong>obsah</strong></p>
+		<p class="cm2"><strong>[::Comment::]</strong> - trova i commenti al testo a seconda dei loro contenuti</p>
+		<p class="cm4"><strong>[::Comment::]</strong> - trova il commento successivo</p>
+		<p class="cm4"><strong>[::Comment::]pozn.</strong> - trova qualsiasi commento al testo contenente la sotto-stringa <strong>pozn.</strong></p>
+		<p class="cm4"><dfn>Limitazioni:</dfn> nel contenuto dei commenti si possono cercare solo sotto-stringhe. Non è possibile usare le espressioni regolari</p>
+		<p class="cm2"><strong>[::Field::]</strong> - cerca campi con testo in funzione del loro contenuto</p>
+		<p class="cm4"><strong>[::Field::]</strong> - trova qualsiasi campo con testo normale</p>
+		<p class="cm4"><strong>[::Field::]obsah</strong> - trova quei campi di testo del documento in cui è presente il testo <strong>obsah</strong></p>
 		<p class="cm4"><dfn>Limitazioni:</dfn> le stesse di <strong>[::Comment::]</strong> (v. sopra). Inoltre non è possibile trovare campi di tipo speciale (per es. un campo nascosto).</p>
-		<p class="cm2"><strong>[::TextFrame::]</strong> - cerca le Cornici di Testo a seconda del loro nome</p>
-		<p class="cm4"><strong>[::TextFrame::]</strong> - trova qualsiasi Cornice di Testo</p>
-		<p class="cm4"><strong>[::TextFrame::]rám1</strong> - trova quelle Cornici di Testo che contengono nel loro nome la sotto-stringa <strong>rám1</strong>.</p>
+		<p class="cm2"><strong>[::TextFrame::]</strong> - cerca le cornici di testo a seconda del loro nome</p>
+		<p class="cm4"><strong>[::TextFrame::]</strong> - trova qualsiasi cornice di testo</p>
+		<p class="cm4"><strong>[::TextFrame::]rám1</strong> - trova quelle cornici di testo che contengono nel loro nome la sotto-stringa <strong>rám1</strong>.</p>
 		<p class="cm4"><dfn>Limitazioni:</dfn></p>
 		<ol class="cm4">
-				<li>Utilizzando il pulsante <var>Trova</var> è possibile trovare la successiva cornice di testo solo se essa è selezionata o se il cursore è all’interno della cornice stessa. Se il cursore non si trova all’interno di una cornice, viene trovata la prima cornice di testo in funzione dell’elenco progressivo delle cornici del documento.<br>
+				<li>Utilizzando il pulsante <var>Trova</var> è possibile trovare la successiva cornice di testo solo se essa è selezionata o se il cursore è all’interno della cornice stessa. Se il cursore non si trova all’interno di una cornice, viene trovata la prima cornice di testo in funzione dell’elenco progressivo delle cornici nel documento.<br>
 				<b>N.B.</b>: La casella di controllo “Solo nella selezione corrente” attualmente non funziona.</li>
 				<li> Come conseguenza del punto precedente, l’utilità pratica del pulsante <var>Sostituzione</var> in questo caso è molto limitata.</li>
-				<li>L’ordine di ricerca sfortunatamente corrisponde (si spera solo provvisoriamente) all’ordine con cui le cornici di testo sono state inserite nel corso del tempo nel documento. <b>Non</b> viene cioè rispettato l’ordine “Inizio <b>&gt;</b> Fine” con cui le cornici sono presenti nel documento.</li>
+				<li>L’ordine di ricerca sfortunatamente corrisponde (si spera solo provvisoriamente) all’ordine con cui le cornici di testo sono state inserite nel documento e <b>non</b> viene rispettato l’ordine “Inizio <b>&gt;</b> Fine” con cui le cornici appaiono nel documento.</li>
 				<li>Nel nome della cornice si possono ricercare solo sotto-stringhe; non è possibile cercare espressioni regolari complete.</li>
 			</ol>
-		<p class="cm2">I pulsanti <var>Trova tutto</var> e <var>Sostituisci tutto</var> sono pienamente operativi, anche quando sono usati in associazione alla casella di controllo “Solo nella selezione corrente”</p>
-		<p class="cm2"><strong>[::Picture::]</strong> - cerca le Immagini a seconda del loro nome</p>
+		<p class="cm2">I pulsanti <var>Trova tutto</var> e <var>Sostituisci tutto</var> sono pienamente operativi, anche se sono usati in associazione alla casella di controllo “Solo nella selezione corrente”</p>
+		<p class="cm2"><strong>[::Picture::]</strong> - cerca le immagini a seconda del loro nome</p>
 		<p class="cm4"><strong>[::Picture::]</strong> - trova qualsiasi immagine</p>
 		<p class="cm4"><strong>[::Picture::]obr1</strong> - trova le immagini che contengono nel loro nome la sotto-stringa <strong>obr1</strong></p>
-		<p class="cm4"><strong>[::Picture::]\text</strong> - trova la sotto-stringa <strong>text</strong> all’interno del <b>Titolo</b> dell’immagine </p>
-		<p class="cm4"><strong>[::Picture::]\</strong> - trova le immagini il cui <b>Titolo</b> è assente</p>
-		<p class="cm4"><dfn>Limitazioni:</dfn> le stesse presenti nel caso di <strong>[::TextFrame::]</strong> (v. sopra)</p>
+		<p class="cm4"><strong>[::Picture::]\text</strong> - trova la sotto-stringa <strong>text</strong> all’interno del testo del <b>Titolo</b> dell’immagine</p>
+		<p class="cm4"><strong>[::Picture::]\</strong> - trova le immagini prive di <b>Titolo</b></p>
+		<p class="cm4"><dfn>Limitazioni:</dfn> le stesse di <strong>[::TextFrame::]</strong> (v. sopra)</p>
 		<p class="cm2"><strong>[::TextTable::]</strong> - cerca le Tabelle a seconda del loro nome</p>
 		<p class="cm4"><strong>[::TextTable::]</strong> - trova qualsiasi Tabella</p>
 		<p class="cm4"><strong>[::TextTable::]tab1</strong> - trova le Tabelle che contengono nel loro nome la sotto-stringa <strong>tab1</strong></p>
 		<p class="cm4"><dfn>Limitazioni:</dfn> le stesse di <strong>[::TextFrame::]</strong> (v. sopra)</p>
-		<p class="cm2"><strong>[::Footnote::]</strong> - cerca le <b>N</b>ote a <b>p</b>iè di <b>p</b>agina (Npp)</p>
+		<p class="cm2"><strong>[::Footnote::]</strong> - cerca nelle <b>N</b>ote a <b>p</b>iè di <b>p</b>agina (Npp)</p>
 		<p class="cm4"><strong>[::Footnote::]</strong> trova l’<i>àncora</i> di qualsiasi Npp</p>
-		<p class="cm4"><strong>[::Footnote::]5</strong> trova l’<i>àncora</i> di quelle Npp in cui è presente la sotto-stringa <strong>5</strong></p>
+		<p class="cm4"><strong>[::Footnote::]5</strong> trova l’<i>àncora</i> di quelle Npp che contengono la sotto-stringa <strong>5</strong></p>
 		<p class="cm4"><strong>[::Footnote::]\text</strong> trova l’<i>àncora</i> di quelle Npp il cui testo contiene la sotto-stringa <strong>text</strong>. Usando il pulsante <var>Trova tutto</var> verrà selezionato il testo di tutte le Npp che contengono la sotto-stringa <strong>text</strong></p>
 		<p class="cm4">Usando <strong>[::Footnote::]\</strong> e facendo clic sul pulsante <var>Trova tutto</var> verrà selezionato il testo di tutte le Npp: si tratta di un sistema comodo per assegnare uno stile di paragrafo a tutte le Npp in colpo solo</p>
 		<p class="cm2"><strong>[::Endnote::]</strong> - cerca le Note di chiusura</p>
-		<p class="cm4">L’uso dei parametri e le limitazioni sono uguali a <strong>[::Footnote::]</strong> (v. sopra)</p>
-		<p class="cm2"><strong>[::ReferenceMark::]</strong> - cerca i <b>M</b>arcatori di <b>R</b>iferimento <b>I</b>ncrociato (IRI) (<i>target marker of cross-references</i>)</p>
+		<p class="cm4">L’uso dei parametri e le limitazioni sono le stesse di <strong>[::Footnote::]</strong> (v. sopra)</p>
+		<p class="cm2"><strong>[::ReferenceMark::]</strong> - cerca i <b>M</b>arcatori per i <b>R</b>iferimenti <b>I</b>ncrociati (MRI) (<i>target marker of cross-references</i>)</p>
 		<p class="cm4"><strong>[::ReferenceMark::]</strong> trova qualsiasi testo configurato come MRI</p>
 		<p class="cm4"><strong>[::ReferenceMark::]text</strong> trova qualsiasi testo configurato come MRI contenente la sotto-stringa <strong>text</strong></p>
 		<p class="cm4"><strong>[::ReferenceMark::]\ref1</strong> trova qualsiasi testo configurato come MRI il cui nome contenga la sotto-stringa <strong>ref1</strong></p>
-		<p class="cm4"><strong>[::ReferenceMark::]\\</strong> trova qualsiasi testo configurato come MRI il cui testo sia vuoto</p>
-		<p class="cm2"><strong>[::Reference::]</strong> - cerca all’interno dei campi di testo definiti come ‛Riferimenti Incrociati’ (<i>cross-reference</i>) per mezzo dei relativi marcatori (<i>markers</i>)</p>
+		<p class="cm4"><strong>[::ReferenceMark::]\\</strong> trova qualsiasi testo configurato come MRI il cui testo è vuoto</p>
+		<p class="cm2"><strong>[::Reference::]</strong> - cerca nei campi di testo definiti come ‛Riferimenti Incrociati’ (<i>cross-reference</i>) tramite i relativi marcatori (<i>markers</i>)</p>
 		<p class="cm4"><strong>[::Reference::]</strong> trova tutti i campi di testo di tipo Riferimento Incrociato</p>
 		<p class="cm4"><strong>[::Reference::]above</strong> trova tutti i Riferimenti Incrociati che contengono la sotto-stringa <strong>above</strong></p>
 		<p class="cm4"><strong>[::Reference::]\ref1</strong> trova tutti i Riferimenti Incrociati il cui nome contiene la sotto-stringa <strong>ref1</strong></p>
 		<p class="cm4"><strong>[::Reference::]\\</strong> trova tutti i Riferimenti Incrociati il cui testo è vuoto</p>
-		<p class="cm4">Se <strong>Reference</strong> viene scelto a partire dal Menu a discesa “[Ricerca] <b>Estesa</b>” e allo stesso tempo il cursore è posizionato nell’ambito di un testo che è un MRI, il corrispondente nome di origine del riferimento incrociato viene aggiunto automaticamente alla casella di digitazione “<b>Ricerca:</b>” ed è quindi possibile effettuare delle ricerche predefinite di tipo più mirato.</p>
-		<p class="cm2"><strong>[::Bookmark::]</strong> - cerca Segnalibri</p>
+		<p class="cm4">Se <strong>Reference</strong> viene scelto a partire dal Menu a discesa “[Ricerca] <b>Estesa</b>” e allo stesso tempo il cursore è posizionato nell’ambito di un testo che è un MRI, il nome di origine del riferimento incrociato corrispondente viene aggiunto automaticamente alla casella “<b>Ricerca:</b>” ed è quindi immediatamente ricercabile.</p>
+		<p class="cm2"><strong>[::Bookmark::]</strong> - cerca i Segnalibri</p>
 		<p class="cm4"><strong>[::Bookmark::]</strong> trova il testo o il blocco di testo contrassegnato come Segnalibro</p>
 		<p class="cm4"><strong>[::Bookmark::]text</strong> trova la sotto-stringa <strong>text</strong> se questa si trova all’interno di un blocco di testo contrassegnato come Segnalibro</p>
 		<p class="cm4"><strong>[::Bookmark::]\RefHeading</strong>  trova il testo o il blocco di testo contrassegnato come Segnalibro solo se il nome del segnalibro contiene la sottostringa <strong>RefHeading</strong>. Tale sotto-stringa viene cioè cercata solo nel nome del segnalibro.</p>
