@@ -291,13 +291,13 @@
 		<p class="cm4"><strong>e</strong> - bookmark anchored at the end of text block</p>
 		<p class="cm2"><strong>\K{}</strong>, <strong>\K</strong> - remove bookmark if is present in the selected text block. It removes only the bookmark; text block remains!</p>
 		<p class="cm2"><strong>\K{w,new_name}\K</strong> - renames the bookmark - it must be found by using <strong>[::Bookmark::]</strong> or a place where the bookmark is already present</p>
-		<p class="cm2"><strong>\o</strong> - inserts the text content of the found object. If the expression was searched for by using <strong>[::Comment::]</strong>, <strong>[::Footnote::]</strong>, <strong>[::Endnote::]</strong>, <strong>[::TextFrame::]</strong>, <strong>[::Picture::]</strong>, or <strong>[::TextTable::]</strong>, the text inside this object will be inserted. Tables come out with tabs between columns and paragraphs between rows.</p>
+		<p class="cm2"><strong>\o</strong> - inserts the text content of the found object. If the expression was searched for by using <strong>[::Comment::]</strong>, <strong>[::Footnote::]</strong>, <strong>[::Endnote::]</strong>, <strong>[::TextFrame::]</strong>, <strong>[::Picture::]</strong>, <strong>[::TextTable::]</strong>, the text inside this object will be inserted. Tables come out with tabs between columns and paragraphs between rows.</p>
 		<p class="cm2">If the expression was searched for by using <strong>[::Field::]</strong>, <strong>[::Reference::]</strong> or <strong>[::ReferenceMark::]</strong> then the displayed text of the anchor or field will be inserted.</p>
 		<p class="cm4"><dfn>Limitation:</dfn> The maximum size of the whole resulting text after converting a table is limited to 64 kB.</p>
 		<p class="cm2"><strong>\O</strong> - inserts the name of the found object</p>
 		<p class="cm4">If the expression was searched for by using:</p>
 		<ul>
-			<li><strong>[::TextFrame::]</strong>, <strong>[::Picture::]</strong>, or <strong>[::TextTable::]</strong>, the name of this object will be inserted.</li>
+			<li><strong>[::TextFrame::]</strong>, <strong>[::Picture::]</strong> or <strong>[::TextTable::]</strong>, the name of this object will be inserted.</li>
 			<li><strong>[::Comment::]</strong> or <strong>[::Field::]</strong>, the type of the text field will be inserted</li>
 			<li><strong>[::Reference::]</strong> or <strong>[::ReferenceMark::]</strong>, the name of the reference mark will be inserted</li>
 			<li><strong>[::Footnote::]</strong> or <strong>[::Endnote::]</strong>, the displayed text of the anchor will be inserted</li>
@@ -308,15 +308,15 @@
 		<p class="cm4">If redirection of the replace expression to another file (<strong>\R</strong>) is used (see below), the number of the page containing the starting position of the found text is inserted in the other file.</p>
 		<p class="cm4"><dfn>Limitation:</dfn> this does not work correctly in footnotes, headers and footers.</p>
 		<p class="cm2"><strong>\v</strong> - inserts the contents of the clipboard</p>
-		<p class="cm2"><strong>\V</strong> - inserts contents of the clipboard as unformatted text</p>
+		<p class="cm2"><strong>\V</strong> - inserts the contents of the clipboard as unformatted text</p>
 		<p class="cm2"><strong>\f</strong> - preserves format</p>
-		<p class="cm4">If <strong>&amp;</strong> or <strong>\0</strong> is used in the replace expression, itt will be achieved using the clipboard. If the found text contains text fields, notes, references etc., they will be preserved in their original state.</p>
+		<p class="cm4">If <strong>&amp;</strong> or <strong>\0</strong> is used in the replace expression, it will be achieved using the clipboard. If the found text contains text fields, comments, references etc., they will be preserved in their original state.</p>
 		<p class="cm2"><strong>\R</strong> - redirects the replace expression to another text file</p>
 		<p class="cm4">This option causes the replace expression to be inserted into <i>new.odt</i> file instead of replacing the found text. The original file will stay as it is, without any change. To enter the name of the output file, use the format <strong>\R{filename}</strong>. The name must have the accurate Writer window title format, including the text “ - LibreOffice Writer”. New records from this redirection are always added to the end of the file.</p>
-		<p class="cm4">Example: if the searched expression was <strong>[:::HyperLinkURL::]</strong> and the replace expression is <strong>Link \i, page \I: &amp; (URL: \u)\p\R</strong>, when you click the <var>Replace all</var> button all the hyperlinks found in original file will be listed in a new file in the form <i>Link</i><i>1, page 1: textOfHyperlink (URL: URLaddress)</i> in separate paragraphs.</p>
+		<p class="cm4">Example: if the searched expression was <strong>[:::HyperLinkURL::]</strong> and the replace expression is <strong>Link \i, page \I: &amp; (URL: \u)\p\R</strong>, when you click the <var>Replace all</var> button all the hyperlinks found in original file will be listed in a new file in the form:</p>
 		<p class="cm4"><i>Link1, page 1: textOfHyperlink (URL: URLaddress)</i></p>
 
-		<p>Button and List box “<b>Pick properties</b>”</p>
+		<p class="cm2">Button and List box “<b>Pick properties</b>”</p>
 		<p class="cm2">Using the <var>Pick properties</var> button you can update the list of (some) properties and their values for the currently selected object. Then you can browse the list and choose one from the list box next to the button.</p>
 		<p class="cm2"><strong>\A{properties=value}</strong> - sets in the replace expression the value of the specified property. Uses rules analogous to those for the parameter <strong>\C{}</strong> (see above).</p>
 		<p class="cm2">For example if the property-value which was searched for is:<br><strong>[:::CharBackColor=&amp;HFF0000::]</strong>, ie a <b class="bRed">red background color</b> and you want to replace it with a <b class="bBlue">blue background color</b>,<br>then in the Replace box you must insert:<br> <strong>\A{CharBackColor=&amp;H00FF00}</strong> (because the RGB hex code for blue is <b class="bBlue">00FF00</b>).</p>
