@@ -268,7 +268,7 @@
 				<ol start="0">
 					<li> - Numero di pagina (senza stile)</li>
 					<li> - Capitolo</li>
-					<li> - Testo di riferimento</li>
+					<li> - Testo referenziato</li>
 					<li> - “Sopra”/“Sotto”</li>
 					<li> - Numero di pagina (con stile)</li>
 					<li> - Numero </li>
@@ -289,17 +289,17 @@
 		<p class="cm4"><strong>w</strong> - segnalibro dell’intero blocco di testo selezionato</p>
 		<p class="cm4"><strong>b</strong> - segnalibro ancorato all’inizio del blocco di testo</p>
 		<p class="cm4"><strong>e</strong> - segnalibro ancorato alla fine del blocco di testo</p>
-		<p class="cm2"><strong>\K{}</strong>, <strong>\K</strong> - rimuovono il segnalibro se presente nel blocco di testo selezionato. Rimuovono solo il segnalibro; il blocco di testo rimane!</p>
-		<p class="cm2"><strong>\K{w, new_name}\K</strong> - rinomina il segnalibro. Il segalibro deve essere stato trovato utilizzando <strong>[::Bookmark::]</strong> o deve essere già presente</p>
-		<p class="cm2"><strong>\o</strong> - inserisce il contenuto di testo dell’oggetto trovato. Se l’espressione è stata cercata con: <strong>[::Comment::]</strong>, <strong>[::Footnote::]</strong>, <strong>[::Endnote::]</strong>, <strong>[::TextFrame::]</strong>, <strong>[::Picture::]</strong>, o <strong>[::TextTable::]</strong> verrà inserito il testo all’interno dell’oggetto. In particolare, nel caso delle tabelle vengono inseriti dei caratteri di tabulazione tra le colonne e dei segni di paragrafo tra le righe.</p>
-		<p class="cm2">Se l’espressione è stata cercata con: <strong>[::Field::]</strong>, <strong>[::Reference::]</strong> o <strong>[::ReferenceMark::]</strong>, verrà inserito il campo o il testo visualizzato dell’àncora.</p>
+		<p class="cm2"><strong>\K{}</strong>, <strong>\K</strong> - rimuovono il segnalibro se presente nel blocco di testo selezionato. Rimuovono solo il segnalibro; il blocco di testo resta!</p>
+		<p class="cm2"><strong>\K{w, new_name}\K</strong> - rinomina il segnalibro. Questo deve essere trovato utilizzando <strong>[::Bookmark::]</strong> o deve essere già presente</p>
+		<p class="cm2"><strong>\o</strong> - inserisce il contenuto di testo dell’oggetto trovato. Se l’espressione è stata trovata usando <strong>[::Comment::]</strong>, <strong>[::Footnote::]</strong>, <strong>[::Endnote::]</strong>, <strong>[::TextFrame::]</strong>, <strong>[::Picture::]</strong>, <strong>[::TextTable::]</strong> verrà inserito il testo all’interno dell’oggetto. Nel caso delle tabelle in queste vengono inseriti dei caratteri di tabulazione tra le colonne e dei segni di paragrafo tra le righe.</p>
+		<p class="cm2">Se l’espressione è stata ricercata usando <strong>[::Field::]</strong>, <strong>[::Reference::]</strong> o <strong>[::ReferenceMark::]</strong>, verrà inserito il testo o il campo visualizzato dell’àncora.</p>
 		<p class="cm4"><dfn>Limitazioni:</dfn> La massima dimensione del testo derivante dalla conversione di una tabella è di 64 kB.</p>
 		<p class="cm2"><strong>\O</strong> - inserisce il nome dell’oggetto trovato</p>
 		<p class="cm4">Se l’espressione è stata cercata con:</p>
 		<ul>
-			<li><strong>[::TextFrame::]</strong>, <strong>[::Picture::]</strong> o <strong>[::TextTable::]</strong> verrà inserito il nome dell’oggetto relativo</li>
+			<li><strong>[::TextFrame::]</strong>, <strong>[::Picture::]</strong> o <strong>[::TextTable::]</strong> verrà inserito il nome dell’oggetto</li>
 			<li><strong>[::Comment::]</strong> o <strong>[::Field::]</strong> verrà inserito il tipo di campo di testo</li>
-			<li><strong>[::Reference::]</strong> o <strong>[::ReferenceMark::]</strong> verrà inserito il nome del marcatore (<i>marker</i>) di riferimento incrociato</li>
+			<li><strong>[::Reference::]</strong> o <strong>[::ReferenceMark::]</strong> verrà inserito il nome del marcatore (<i>marker</i>) del riferimento incrociato</li>
 			<li><strong>[::Footnote::]</strong> o <strong>[::Endnote::]</strong> verrà inserito il testo visualizzato dall’àncora</li>
 		</ul>
 		<p class="cm2"><strong>\i</strong> - inserisce, il numero di occorrenze dell’oggetto trovato o il conteggio delle occorrenze del testo. Quest’ultima modalità funziona solo se si usa il pulsante <var>Sostituisci tutto</var></p>
@@ -309,17 +309,16 @@
 		<p class="cm4"><dfn>Limitazioni:</dfn> non funziona correttamente nelle note a piè di pagina, nelle intestazioni e nei piè di pagina.</p>
 		<p class="cm2"><strong>\v</strong> - inserisce il contenuto degli Appunti (<i>Clipboard</i>)</p>
 		<p class="cm2"><strong>\V</strong> - inserisce il contenuto degli Appunti (<i>Clipboard</i>) come testo semplice (non formattato)</p>
-		<p class="cm2"><strong>\f</strong> - mantiene il formato</p>
-		<p class="cm4">Se nell’espressione di sostituzione si usano i parametri <strong>&amp;</strong> oppure <strong>\0</strong>, la sostituzione avviene mediante l’uso degli Appunti (<i>Clipboard</i>). Se il testo trovato contiene campi di testo, commenti, riferimenti ecc…, questi saranno conservati nel loro stato originale.</p>
+		<p class="cm2"><strong>\f</strong> - conserva il formato</p>
+		<p class="cm4">Se nell’espressione di sostituzione si usano i parametri <strong>&amp;</strong> o <strong>\0</strong>, la sostituzione avviene mediante l’uso degli Appunti (<i>Clipboard</i>). Se il testo trovato contiene campi di testo, commenti, riferimenti incrociati ecc…, questi saranno conservati nel loro stato originario.</p>
 		<p class="cm2"><strong>\R</strong> - ridirige l’espressione di sostituzione su un altro file di testo.</p>
-		<p class="cm4">Questa opzione comporta l’inserimento dell’espressione di sostituzione nel file <i>new.odt</i> invece della sostituzione del testo trovato nel file originario. Quest’ultimo rimane tal quale, senza alcuna modifica. Per assegnare il nome al nuovo file su cui viene ridiretta l’espressione di sostituzione, usare il parametro <strong>\R{filename}</strong>. Il nome del file deve avere un formato identico a quello del titolo della finestra di Writer e deve includere la stringa: “<i><b>- LibreOffice Writer</b></i>“.  Eventuali salvataggi successivi che utilizzino questa ridirezione vengono sempre aggiunti in coda al file.</p>
-		<p class="cm4">Esempio: Se l’espressione cercata è del tipo: <strong>[:::HyperLinkURL::]</strong> e l’espressione di sostituzione è <strong>Link \i, page \I: &amp; (URL: \u)\p\R</strong>, quando si fa clic sul pulsante <var>Sostituisci tutto</var> tutti i collegamenti ipertestuali (<i>hyperlink</i>) trovati nel file originale verranno inseriti in un nuovo file nella forma:</p>
-		<p class="cm4"><i>Link1, page 1: textOfHyperlink (URL: URLaddress)</i></p>
+		<p class="cm4">Questa opzione comporta l’inserimento dell’espressione di sostituzione nel file <i>new.odt</i> al posto della sostituzione del testo trovato nel file originario. Quest’ultimo rimane tal quale, senza alcuna modifica. Per assegnare il nome al nuovo file su cui viene ridiretta l’espressione di sostituzione, usare il parametro <strong>\R{filename}</strong>. Il nome del file deve avere un formato identico a quello del titolo della finestra di Writer e deve includere la stringa: “<i><b> - LibreOffice Writer</b></i>“.  Eventuali salvataggi successivi che utilizzino questa ridirezione vengono sempre accodati (non sostituiti) al file.</p>
+		<p class="cm4">Esempio: Se l’espressione cercata è <strong>[:::HyperLinkURL::]</strong> e l’espressione di sostituzione è <strong>Link \i, page \I: &amp; (URL: \u)\p\R</strong>, quando si fa clic sul pulsante <var>Sostituisci tutto</var> tutti i collegamenti ipertestuali trovati nel file originale verranno inseriti in un nuovo file in paragrafi separati aventi forma:</p>
+		<p class="cm4"><i>Link1, page 1: testo_del_link_ipertestuale (URL: URLaddress)</i></p>
 
-		<p>Menu a discesa e pulsante “<b>Scegli proprietà</b>”</p>
-		<p class="cm2">Il pulsante <b>Scegli proprietà</b> consente di aggiornare l’elenco delle proprietà e/o dei valori dell’oggetto attualmente selezionato. Si può quindi scorrere tale elenco dal menu a discesa posto a fianco del pulsante e scegliere una proprietà.</p>
-		<p class="cm2"><strong>\A{properties=value}</strong> - imposta il valore della proprietà specificata nell’espressione di sostituzione.</p>
-		<p>Utilizza regole analoghe a quelle del parametro <strong>\C{}</strong> (v. sopra).</p>
+		<p class="cm2">Menu a discesa e pulsante “<b>Scegli proprietà</b>”</p>
+		<p class="cm2">Il pulsante <b>Scegli proprietà</b> consente di aggiornare l’elenco (di alcune) delle proprietà e dei valori dell’oggetto selezionato. Si può quindi scorrere questo elenco dal menu a discesa e scegliere una proprietà dall'elenco posto a fianco del pulsante.</p>
+		<p class="cm2"><strong>\A{proprietà=valore}</strong> - imposta il valore della proprietà specificata nell’espressione di sostituzione. Utilizza regole analoghe a quelle per il parametro <strong>\C{}</strong> (v. sopra).</p>
 		<p class="cm2">Per esempio, se la coppia proprietà-valore ricercata è:<br><strong>[:::CharBackColor=&amp;HFF0000::]</strong>, cioè un <b class="bred">colore di sfondo rosso</b> e si vuole rimpiazzarlo con un <b class="bBlue">carattere di sfondo blu</b>,<br>nella casella di Sostituzione bisogna introdurre:<br> <strong>\A{CharBackColor=&amp;H00FF00}</strong> (infatti la codifica esadecimale RGB del colore blu è <b class="bBlue">00FF00</b>).</p>
 
 		<h3><a id="davkyit"></a>Modalità Batch</h3>
