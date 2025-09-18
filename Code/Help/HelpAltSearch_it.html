@@ -75,6 +75,7 @@
 						<li><i>_FindBack</i>: Ctrl+Shift+L <b>&gt;</b> Trova la prima occorrenza della stringa ricercata prima del punto su cui è posizionato il cursore, senza dover aprire la finestra di dialogo</li>
 					</ul>
 			</ol>
+
 		<p>È anche possibile assegnare le scorciatoie direttamente dalla finestra di dialogo AltSearch - vedi <a href="#davkyit">Modalità Batch</a></p>
 		<hr>
 			<p class="center">
@@ -139,8 +140,7 @@
 		<p class="cm4"><strong>[::TextFrame::]</strong> - trova qualsiasi cornice di testo</p>
 		<p class="cm4"><strong>[::TextFrame::]rám1</strong> - trova quelle cornici di testo che contengono nel loro nome la sotto-stringa <strong>rám1</strong></p>
 		<p class="cm4"><dfn>Limitazioni:</dfn></p>
-		<ol class="cm4">
-				<ul>
+		<ul>
 				<li>Utilizzando il pulsante <var>Trova</var> è possibile trovare la successiva cornice di testo solo se essa è selezionata o se il cursore è all’interno della cornice stessa. Se il cursore non si trova all’interno di una cornice, viene trovata la prima cornice di testo in funzione dell’elenco progressivo delle cornici nel documento<br>
 				<b>N.B.</b>: La casella di controllo “<i>Solo nella selezione corrente</i>” attualmente non funziona</li>
 				<li> Come conseguenza del punto precedente, l’utilità pratica del pulsante <var>Sostituzione</var> in questo caso è molto limitata</li>
@@ -182,13 +182,13 @@
 		<p class="cm4"><strong>[::Bookmark::]\RefHeading</strong>  trova il testo o il blocco di testo contrassegnato come Segnalibro solo se il nome del Segnalibro contiene la sottostringa <strong>RefHeading</strong>. Tale sotto-stringa viene cioè cercata solo nel nome del segnalibro</p>
 
 		<h4>Casella con menu a discesa “<b>Proprietà</b>”</h4>
-	
+
 		<p class="cm2">Abilita le ricerche a seconda delle proprietà (attributi) delle stringhe e dei relativi valori.<br>Nella casella di ricerca bisogna dapprima introdurre i caratteri <strong>[:::</strong> cui si fa seguire il <strong>nome</strong> della proprietà ricercata. Se vi sono più proprietà, i rispettivi nomi possono essere separati dal segno di <i>piping</i>, cioè: <strong>|</strong>. La proprietà ricercata deve necessariamente terminare  introducendo i caratteri <strong>::]</strong>. Dopo di che, opzionalmente, si può immettere il testo da ricercare. Se invece si cerca il <b>valore</b> della proprietà, bisogna usare una sintassi del tipo: <strong>name=value</strong></p>
 		<p class="cm2">L’elenco degli attributi di testo e dei rispettivi valori utilizzabili per effettuare ricerche nella selezione corrente, può essere caricato usando il pulsante <var>Proprietà</var>: i dati compaiono nel menu a discesa posto sotto tale pulsante.<br>Si può effettuare la ricerca di molti degli attributi dei caratteri (tipo, dimensione, colore di sfondo, stile dei caratteri/paragrafi ecc…)</p>
 		<p>Un elenco di questi attributi/proprietà è riportato qui sotto:</p>
 		<p class="cm2"><strong>[:::CharFontName=Courier::]</strong> - cerca, nel blocco di testo selezionato, i caratteri di tipo (<i>font</i>) <strong>Courier</strong></p>
 		<p class="cm2"><strong>[:::CharFontHeight=24::]</strong> - cerca, nel blocco di testo selezionato, i caratteri aventi dimensione di <strong>24 pt</strong></p>
-		<p class="cm2"><strong>[:::CharBackColor=&amp;HFE1410::]</strong> - cerca, nel blocco di testo selezionato, i caratteri aventi lo sfondo evidenziato con un colore all’incirca <b class="bRed">rosso</b>, la cui <b><i>codifica esadecimale</i></b> in <b>RGB</b> è appunto <strong>FE1410</strong>. Lo stesso colore, rappresentato in <b><i>codifica decimale</i></b>, è identificato dal codice: <b>RGB (254,20,16)</b> o, il che è lo stesso, il suo numero identificativo è quello risultante dalla seguente operazione matematica:<br>
+		<p class="cm2"><strong>[:::CharBackColor=&amp;HFE1410::]</strong> - cerca, nel blocco di testo selezionato, i caratteri aventi lo sfondo evidenziato con un colore all’incirca <b class="bRed">rosso</b>, la cui <b><i>codifica esadecimale</i></b> in <b>RGB</b> è appunto <strong>FE1410</strong>. Lo stesso colore, rappresentato in <b><i>codifica decimale</i></b>, è identificato dal codice: <b>RGB (254,20,16)</b> o, il che è lo stesso, il suo numero identificativo è quello risultante dalla seguente operazione matematica:</p>
 		<p class="center">(256*256*254) + (256*20) + 16 = <b>16651280</b></p>
 		<p class="cm2">Pertanto è possibile cercare il colore di background anche mediante l’espressione:</p>
 		<p class="cm2"><strong>[:::CharBackColor=NNNNNNNN::]</strong> ove ad <strong>NNNNNNNN</strong> va sostituito, nell’esempio precedentemente riportato, il valore <b>16651280</b>.</p>
@@ -232,7 +232,7 @@
 		<p class="cm2">Esempi:</p>
 			<ul>
 				<li>L’espressione <strong>(\d{2,2})(\d{2,2})-(\d{1,2})-(\d{1,2})</strong> trova le date nel formato <b>AAAA-MM-GG</b> come per esempio 2009-12-07. L’espressione <strong>\4.\3.\2</strong> le sostituisce con date nel formato <b>GG.MM.AA</b> quali, per esempio, 07.12.09</li>
-				<li>L’espressione <strong>(\d{1,2})\. *(\d{1,2})\. *(\d{2,2})(\d{2,2})</strong> trova le date nel formato <b>GG.MM.AAAA</b> come per esempio 07.12.2009. L’espressione <strong>\4-\2-\1</strong> le sostituisce con date nel formato <b>AA-MM-GG</b> quali, per esempio, 09-12-07</li>			
+				<li>L’espressione <strong>(\d{1,2})\. *(\d{1,2})\. *(\d{2,2})(\d{2,2})</strong> trova le date nel formato <b>GG.MM.AAAA</b> come per esempio 07.12.2009. L’espressione <strong>\4-\2-\1</strong> le sostituisce con date nel formato <b>AA-MM-GG</b> quali, per esempio, 09-12-07</li>
 				<li>L’espressione <strong>(\d{1,2})\. *(\d{1,2})\. *(\d{1,4})</strong> trova le date nel formato <b>GG.MM.AAAA</b> come per esempio 07.12.2009. L’espressione <strong>\3-\2-\1</strong> le sostituisce con date nel formato <b>AAAA-MM-GG</b> quali, per esempio, 2009-12-07</li>
 			</ul>
 		<p class="cm2">Se è necessario impedire la processazione delle sotto-espressioni (per esempio per conservare la compatibilità con le espressioni regolari standard ICU), bisogna porre l’intera espressione di ricerca all’interno di una coppia addizionale di parentesi rotonde. In tal modo tutti i livelli nidificati di parentesi di sostituzione saranno ignorati.</p>
