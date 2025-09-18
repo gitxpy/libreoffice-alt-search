@@ -43,6 +43,8 @@ p.menu2 a:first-child {margin-inline-start: 0;}
 p.menu2 a:last-child {margin-inline-end: 0;}
 p.menu2 a, p.menu2 a:visited {color: rgb(85, 152, 126);}
 
+p.center {text-align:center;}
+
 details {color:grey; font-style: italic;}
 
 h1 {font-size: 250%; font-weight: bold; letter-spacing: 0.1rem; color:var(--bH1); text-align:center; padding-block-end: 0.7rem; border-radius: 2rem; border-bottom: 0.2rem solid var(--bH1); border-bottom-left-radius: 40vw 6rem; border-bottom-right-radius: 40vw 6rem; padding-inline: 3rem; margin-block-start: 0; margin-block-end: 1.5rem; background-color: rgba(252,251,253,0.6);}
@@ -88,4 +90,5 @@ h1 :is(button, input, label){display:none;}
 }
 
 @media only screen and (max-width: 36rem){ /* ↕ mobile vertically */}
+
 
