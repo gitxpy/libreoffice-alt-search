@@ -49,7 +49,7 @@
 			<li>Ricerca di un blocco di paragrafi delimitato da due marcatori di testo</li>
 			<li>Una volta trovata una stringa di testo, la sua selezione può essere espansa o ridotta di uno specifico numero di caratteri</li>
 			<li>Ricerche e sostituzioni multiple in un colpo solo</li>
-			<li>Ricerca nei Commenti, Campi di Testo, Riferimenti Incrociati e Indicatori di Riferimento incrociato per nome, contenuto o come bersaglio dell’azione degli indicatori che possono anche essere aggiunti</li>
+			<li>Ricerca nei Commenti, Campi di Testo, Riferimenti Incrociati e negli Indicatori di Riferimento incrociato per nome, contenuto o come bersaglio dell’azione degli indicatori (che possono anche essere aggiunti)</li>
 			<li>Ricerca in Tabelle, Immagini e Cornici di testo in base al nome; loro sostituzione con qualsiasi testo, contenuto, nome dell’oggetto o con il contenuto degli Appunti (<i>Clipboard</i>)</li>
 			<li>Ricerca e inserimento di Note a piè di pagina e di Note di chiusura. Selezione del testo di tutte le Note a piè di pagina o di tutte le Note di chiusura contemporaneamente, assegnando loro uno stile qualsiasi</li>
 			<li>Ricerca di un testo simile o che abbia la stessa formattazione del testo su cui è posizionato il cursore</li>
@@ -57,14 +57,14 @@
 			<li>Definizione dello stile di un paragrafo, carattere e lista nonché delle proprietà del testo e dell’URL di un collegamento ipertestuale (<i>Hyperlink</i>) per effettuare una ricerca o sostituzione di testo</li>
 			<li>Sostituizione del testo trovato con il contenuto degli Appunti (<i>Clipboard</i>), con un contatore del numero di sostituzioni o con il numero di pagina nel quale è stato trovato il testo</li>
 			<li>Reindirizzamento dei risultati della sostituzione su file di testo</li>
-			<li><u>Modalità Batch</u>: i parametri di ricerca e di sostituzione possono essere salvati e caricati; parecchie operazioni di ricerca e sostituzione possono essere salvate in sequenza ed eseguite rapidamente in un tempo successivo con un unico comando. Esecuzione della Modalità Batch su più documenti di testo aperti contemporaneamente</li>
+			<li><i>Modalità Batch</i>: i parametri di ricerca e di sostituzione possono essere salvati e caricati; parecchie operazioni di ricerca e sostituzione possono essere salvate in sequenza ed eseguite rapidamente in un tempo successivo con un unico comando. Esecuzione della Modalità Batch su più documenti di testo aperti contemporaneamente</li>
 			<li>Finestra di dialogo per assegnare rapidamente delle scorciatoie da tastiera alle operazioni batch salvate</li>
 			<li>Mantenimento delle maiuscole: se il testo trovato comincia con una lettera maiuscola, anche il testo di sostituzione inizierà con una lettera maiuscola</li>
 			<li>Ricerca dello stile dei caratteri tramite un menu a discesa</li>
 			<li>Ricerca dello stile delle liste e dei paragrafi tramite la casella di riepilogo “Proprietà”</li>
 			<li>Ricerca e sostituzione di Segnalibri (<i>Bookmarks</i>)</li>
 		</ul>
-			<h3 id="shortcuts">Suggerimento di configurazione per usare frequentemente le Scorciatoie da tastiera:</h3>
+			<h3 id="shortcuts">Suggerimento di configurazione per un uso frequente delle Scorciatoie da tastiera:</h3>
 			<ol>
 				<li>Aprire la voce di menu <b>Strumenti &gt; Personalizza… &gt; Tastiera</b></li>
 				<li>Nel campo <b>Categoria</b>, selezionare <b>Macro dell’applicazione &gt; Macro personali &gt; AltSearch &gt; AltSearch</b></li>
@@ -84,158 +84,160 @@
 		</p>
 		<p>&nbsp;</p>
 
-		<h2>Caselle con menu a discesa (sopra la casella di inserimento della stringa da ricercare)</h2>
+		<h2>Caselle con menu a discesa</h2>
+		<p align="center"><b>(sopra la casella di inserimento della stringa da ricercare)</b></p>
 		<p>Contengono <i>espressioni regolari</i> frequentemente usate o complesse o dei parametri di ricerca che possono essere inseriti automaticamente nel campo di ricerca. Dopo avere selezionato una delle opzioni presenti, i relativi parametri vengono trasferiti nella casella di ricerca (ed eventualmente anche in quella di sostituzione, se specificata). Le procedure di ricerca/sostituzione possono essere eseguite in molti modi: per es. prima o dopo la posizione del cursore, con sostituzione o meno dell’espressione cercata ecc… In ogni caso è necessario che la sottostante casella di controllo “<b>Espressioni regolari</b>” sia spuntata.</p>
 
 		<h3><a id="hledatit"></a>Ricerca</h3>
 		<h4>Casella con menu a discesa “[Espressioni] <b>Regolari</b>”</h4>
-		<p class="cm2">Questo casella con menu a discesa contiene alcune utili espressioni regolari descritte nell’<a href="https://help.libreoffice.org/latest/it-IT/text/shared/01/02100001.html?&DbPAR=WRITER"><b>Aiuto di LibreOffice</b></a> cercando <b>Elenco Espressioni Regolari</b></p>
+		<p class="cm2">Questa casella con menu a discesa contiene alcune utili espressioni regolari descritte nell’<a href="https://help.libreoffice.org/latest/it-IT/text/shared/01/02100001.html?&DbPAR=WRITER"><b>Aiuto di LibreOffice</b></a> cercando <b>Elenco Espressioni Regolari</b>.</p>
 		<p class="cm4" id="itskupiny0"><dfn>Limitazioni:</dfn> La sintassi utilizzata per le espressioni regolari standard non è totalmente equivalente a quella di Writer. Ci sono differenze, specialmente nell’uso dei caratteri jolly <strong>*, +, ?</strong>, o <strong>{n,n}</strong> se utilizzati subito dopo le sotto-espressioni delimitate da parentesi rotonde <b>()</b>.</p>
 		<p>Per esempio non è possibile trovare l’espressione <strong>(Mi)?ster</strong>. Usando però il pulsante <var>Conta</var>, viene restituito il numero effettivo delle occorrenze.</p>
-		<p>Inoltre se si cercano sotto-espressioni come <strong>(.*)any</strong> o <strong>(.+)any</strong>, viene trovata l’occorrenza <i>più corta</i> corrispondente al criterio, mentre normalmente si troverebbe l’occorrenza <i>più lunga</i>. Se è necessario conservare la compatibilità, si può delimitare l’intera espressione da ricercare con un’ulteriore paio di parentesi: <strong>((Mi)?ster)</strong>. L’inconveniente è però che così si perde la possibilità di citare come riferimento la sotto-espressione nell’ambito dell’espressione di sostituzione; non è cioè possibile usare <strong>\#</strong> ove # è il numero di riferimento (max. 9) delle sotto-espressioni. Inoltre non è possibile usare il riferimento ad una sotto-espressione usando le parentesi <strong>()</strong> sia per l’espressione di ricerca che di sostituzione, allo stesso tempo. Si veda anche <a href="#itskupiny">Sotto-espressioni</a>.</p>
-		<p>Altri parametri speciali dei caratteri jolly:</p>
-		<p class="cm2"><strong>\l</strong> - rappresenta qualsiasi carattere alfabetico; equivale cioè a <strong>[:alpha:]</strong></p>
+		<p>Inoltre se si cercano sotto-espressioni come <strong>(.*)any</strong> o <strong>(.+)any</strong>, viene trovata l’occorrenza <i>più corta</i> corrispondente al criterio, mentre normalmente si troverebbe l’occorrenza <i>più lunga</i>. Se è necessario conservare la compatibilità, si può delimitare l’intera espressione da ricercare con un’ulteriore paio di parentesi: <strong>((Mi)?ster)</strong>. L’inconveniente è che in questo modo si perde la possibilità di citare come riferimento la sotto-espressione nell’ambito dell’espressione di sostituzione; non è cioè possibile usare <strong>\#</strong> ove # è il numero di riferimento (max. 9) delle sotto-espressioni. Inoltre non è possibile usare il riferimento ad una sotto-espressione usando le parentesi <strong>()</strong> sia per l’espressione di ricerca che di sostituzione, allo stesso tempo. Si veda anche <a href="#itskupiny">Sotto-espressioni</a>.</p>
+		<p>Altri parametri speciali dei <i>caratteri jolly</i>:</p>
+		<p class="cm2"><strong>\l</strong> - rappresenta qualsiasi carattere alfabetico; equivale cioè ad <strong>[:alpha:]</strong></p>
 		<p class="cm2"><strong>\d</strong> - rappresenta una cifra decimale; equivale cioè a <strong>[0-9]</strong></p>
 		<p class="cm2"><strong>\p</strong> - rappresenta il segno di fine paragrafo</p>
-		<p class="cm2"><strong>$</strong> - contrariamente allo standard ICU rappresenta un paragrafo vuoto. Assieme a <strong>$</strong> è anche possibile usare caratteri jolly quali <strong>+</strong>, <strong>*</strong>, o <strong>{min,max}</strong></p>
-		<p class="cm2"><strong>\p{1,}</strong> - trova la fine del paragrafo successivo seguita da un blocco illimitato di paragrafi vuoti. Equivale a <strong>\p*</strong></p>
-		<p class="cm2"><strong>\p{2,4}</strong> - trova la fine del paragrafo successivo seguita da almeno uno e al massimo tre paragrafi vuoti, cioè un totale di 2-4 paragrafi, uno dopo l’altro</p>
-		<p class="cm4"><dfn>Limitazioni:</dfn> Lenta se usata separatamente. Talvolta sorgeno dei problemi se la ricerca è a ritroso.</p>
+		<p class="cm2"><strong>$</strong> - contrariamente allo standard ICU rappresenta un paragrafo vuoto. Assieme a <strong>$</strong> è anche possibile usare caratteri jolly quali <strong>+</strong>, <strong>*</strong> oppure <strong>{min,max}</strong></p>
+		<p class="cm2"><strong>\p{1,}</strong> - trova la fine del paragrafo successivo seguita da un blocco illimitato di paragrafi vuoti. Equivale cioè a <strong>\p*</strong></p>
+		<p class="cm2"><strong>\p{2,4}</strong> - trova la fine del paragrafo successivo seguita da almeno uno e al massimo da tre paragrafi vuoti per un totale di 2-4 paragrafi, uno dopo l’altro</p>
+		<p class="cm4"><dfn>Limitazioni:</dfn> Procedura lenta se usata separatamente. Talvolta sorgeno dei problemi se la ricerca è a ritroso.</p>
 		<p class="cm2"><strong>\xhhhh</strong> - rappresenta un carattere in codifica esadecimale (hhhh). Per esempio <strong>\x0A</strong> è il codice che identifica l’interruzione di riga</p>
 		<p class="cm2"><strong>\#ddddd</strong> - rappresenta un carattere in codifica decimale (ddddd)</p>
-		<p class="cm4">Se il carattere successivo non è una cifra, non è necessario conservare tutte 5 le posizioni (ddddd); altrimenti bisogna riempire le posizioni vuote con degli zero (a partire da sinistra)</p>
+		<p class="cm4">Se il carattere successivo non è una cifra, non è necessario conservare tutte 5 le posizioni (ddddd); in caso contrario bisogna riempire le posizioni vuote con degli zero (a partire da sinistra)</p>
 		<p class="cm2"><strong>\c</strong> - rappresenta un’interruzione manuale di colonna</p>
-		<p class="cm4"><dfn>Limitazioni:</dfn> Lenta se usata separatamente</p>
+		<p class="cm4"><dfn>Limitazioni:</dfn> Procedura lenta se usata separatamente</p>
 		<p class="cm2"><strong>\m</strong> - rappresenta un’interruzione manuale di pagina</p>
-		<p class="cm4"><dfn>Limitazioni:</dfn> Lenta se usata separatamente. Qualora si usi anche la sotto-espressione <strong>()</strong>, il parametro <strong>\m</strong> deve trovarsi all’inizio della stringa di ricerca e non deve essere da solo. È cioè valida l’espressione <strong>\m(…)</strong> ma non <strong>(…)\m</strong>.</p>
+		<p class="cm4"><dfn>Limitazioni:</dfn> Procedura lenta se usata separatamente. Qualora si usi anche la sotto-espressione <strong>()</strong>, il parametro <strong>\m</strong> deve trovarsi all’inizio della stringa di ricerca e non deve essere da solo. È cioè valida l’espressione <strong>\m(…)</strong> ma non <strong>(…)\m</strong></p>
 		<p class="cm2"><strong>\s</strong> - rappresenta qualsiasi tipo di spazio: normale, indivisibile, determinato da un carattere di tabulazione o da un’interruzione di riga. Equivale a <strong>[\xA0\x9\xA]</strong></p>
 		<p class="cm2"><strong>\S</strong> - rappresenta uno spazio indivisibile (<strong>\x00A0</strong> o <strong>\#160</strong>)</p>
 
 		<h4>Casella con menu a discesa “[Ricerca] <b>Estesa</b>”</h4>
 		<p class="cm2"><strong>[::BigBlock::]</strong> - cerca un blocco di paragrafi (di lunghezza illimitata) delimitato da testo noto:</p>
-		<p class="cm4"><strong>start[::BigBlock::]end</strong> – viene dapprima cercata la stringa <strong>start</strong>. Una volta trovata, viene cercata <strong>end</strong>. Se vengono trovate entrambe, viene selezionato l’intero blocco di testo compreso fra di esse.</p>
-		<p class="cm4">Nella stringa di sostituzione si possono usare i parametri <strong>\b</strong>, <strong>&amp;</strong>, <strong>\e</strong> per inserire il contenuto di <strong>start</strong>, <strong>blocco di paragrafi trovato</strong> o <strong>end</strong>, rispettivamente.</p>
+		<p class="cm4"><strong>start[::BigBlock::]end</strong> – viene dapprima cercata la stringa <strong>start</strong>. Una volta trovata, viene cercata <strong>end</strong>. Se vengono trovate entrambe, viene selezionato l’intero blocco di testo compreso fra di esse</p>
+		<p class="cm4">Nella stringa di sostituzione si possono usare i parametri <strong>\b</strong>, <strong>&amp;</strong>, <strong>\e</strong> per inserire, rispettivamente, il contenuto di <strong>start</strong>, <strong>blocco di paragrafi trovato</strong>, <strong>end</strong>.</p>
 		<p class="cm4"><dfn>Limitazioni:</dfn> Nella stringa iniziale e finale non è consentito l’uso del segno <strong>||</strong> per eseguire ricerche e sostituzioni multiple (v. sotto)</p>
-		<p class="cm2"><strong>[::Grow n1,n2::]</strong> - il blocco di testo trovato viene espanso di <b>n1</b> caratteri a sinistra e di <b>n2</b> caratteri a destra</p>
-		<p class="cm4"><strong>[::Grow -1,-1::]text</strong> - se la stringa <strong>text</strong> viene trovata nel blocco di testo sotoposto a ricerca, verranno selezionati solo i caratteri che si trovano in posizione 2 e 3, cioè: <b>ex</b>.</p>
-		<p class="cm4"><dfn>Limitazioni:</dfn> è sempre necessario porre <strong>[::Grow…</strong> all’inizio; l’espressione da ricercare va posizionata dopo. Se n1 o n2 sono valori negativi, la successiva ricerca (in funzione delle dimensioni e del contenuto dell’espressione ricercata), può far insorgere un circolo vizioso (<i>loop</i>) per cui viene trovata sempre la stessa occorrenza</p>
+		<p class="cm2"><strong>[::Grow n1,n2::]</strong> - il blocco di testo trovato viene espanso di <strong>n1</strong> caratteri a sinistra e di <strong>n2</strong> caratteri a destra</p>
+		<p class="cm4"><strong>[::Grow -1,-1::]text</strong> - se la stringa <strong>text</strong> viene trovata nel blocco di testo sul quale si effettua la ricerca, verranno selezionati solo i caratteri che si trovano in posizione 2 e 3, cioè <strong>ex</strong></p>
+		<p class="cm4"><dfn>Limitazioni:</dfn> è sempre necessario porre <strong>[::Grow…</strong> all’inizio; l’espressione da ricercare va posizionata dopo. Se <b>n1</b> o <b>n2</b> sono valori negativi, la successiva ricerca (in funzione delle dimensioni e del contenuto dell’espressione ricercata), può determinare l’insorgenza di un circolo vizioso (<i>loop</i>) per cui si trova sempre la stessa occorrenza</p>
 		<p class="cm2"><strong>text1||text2||text3||…</strong> - consente un’operazione di ricerca e sostituzione multipla, in un colpo solo</p>
-		<p class="cm4">Per delimitare ricerche e sostituzioni parziali, aggiungere il segno <strong>||</strong> alla fine delle espressioni da ricercare e sostituire.</p>
-		<p class="cm4">Ricerca: <strong>text1||text2||text3</strong> - Sostituizione: <strong>neco1||neco2||neco3</strong>.<br>
-		In questo caso viene inizialmente cercata la stringa <strong>text1</strong> che viene sostituita da <strong>neco1</strong>. La ricerca prosegue per <strong>text2</strong> che viene sostituita da <strong>neco2</strong> ecc…</p>
+		<p class="cm4">Per delimitare ricerche e sostituzioni parziali, bisogna aggiungere il segno <strong>||</strong> dopo le espressioni da ricercare e sostituire.</p>
+		<p class="cm2">Ricerca: <strong>text1||text2||text3</strong> - Sostituizione: <strong>neco1||neco2||neco3</strong></p>
+		<p class="cm4">In questo caso viene inizialmente cercata la stringa <strong>text1</strong> che viene sostituita da <strong>neco1</strong>. La ricerca prosegue per <strong>text2</strong> che viene sostituita da <strong>neco2</strong> ecc…</p>
 		<p class="cm4"><dfn>Limitazioni:</dfn> con <strong>||</strong> non è possibile usare il parametro <strong>[::BigBlock::]</strong> né le <a href="#itskupiny">sotto-espressioni</a></p>
 
 		<p class="cm2"><b>Ricerca di Oggetti</b></p>
-		<p class="cm2"><strong>[::Comment::]</strong> - trova i commenti al testo a seconda dei loro contenuti</p>
+		<p class="cm2"><strong>[::Comment::]</strong> - ricerca i commenti al testo, a seconda del loro contenuto</p>
 		<p class="cm4"><strong>[::Comment::]</strong> - trova il commento successivo</p>
 		<p class="cm4"><strong>[::Comment::]pozn.</strong> - trova qualsiasi commento al testo contenente la sotto-stringa <strong>pozn.</strong></p>
 		<p class="cm4"><dfn>Limitazioni:</dfn> nel contenuto dei commenti si possono cercare solo sotto-stringhe. Non è possibile usare le espressioni regolari</p>
-		<p class="cm2"><strong>[::Field::]</strong> - cerca campi con testo in funzione del loro contenuto</p>
-		<p class="cm4"><strong>[::Field::]</strong> - trova qualsiasi campo con testo normale</p>
+		<p class="cm2"><strong>[::Field::]</strong> - ricerca i campi di testo in funzione del loro contenuto</p>
+		<p class="cm4"><strong>[::Field::]</strong> - trova qualsiasi campo di testo normale</p>
 		<p class="cm4"><strong>[::Field::]obsah</strong> - trova quei campi di testo del documento in cui è presente il testo <strong>obsah</strong></p>
-		<p class="cm4"><dfn>Limitazioni:</dfn> le stesse di <strong>[::Comment::]</strong> (v. sopra). Inoltre non è possibile trovare campi di tipo speciale (per es. un campo nascosto).</p>
-		<p class="cm2"><strong>[::TextFrame::]</strong> - cerca le cornici di testo a seconda del loro nome</p>
+		<p class="cm4"><dfn>Limitazioni:</dfn> le stesse di <strong>[::Comment::]</strong> (v. sopra). Inoltre non è possibile trovare campi di tipo speciale (per es. un campo nascosto)</p>
+		<p class="cm2"><strong>[::TextFrame::]</strong> - ricerca le cornici di testo a seconda del loro nome</p>
 		<p class="cm4"><strong>[::TextFrame::]</strong> - trova qualsiasi cornice di testo</p>
-		<p class="cm4"><strong>[::TextFrame::]rám1</strong> - trova quelle cornici di testo che contengono nel loro nome la sotto-stringa <strong>rám1</strong>.</p>
+		<p class="cm4"><strong>[::TextFrame::]rám1</strong> - trova quelle cornici di testo che contengono nel loro nome la sotto-stringa <strong>rám1</strong></p>
 		<p class="cm4"><dfn>Limitazioni:</dfn></p>
 		<ol class="cm4">
-				<li>Utilizzando il pulsante <var>Trova</var> è possibile trovare la successiva cornice di testo solo se essa è selezionata o se il cursore è all’interno della cornice stessa. Se il cursore non si trova all’interno di una cornice, viene trovata la prima cornice di testo in funzione dell’elenco progressivo delle cornici nel documento.<br>
-				<b>N.B.</b>: La casella di controllo “Solo nella selezione corrente” attualmente non funziona.</li>
-				<li> Come conseguenza del punto precedente, l’utilità pratica del pulsante <var>Sostituzione</var> in questo caso è molto limitata.</li>
-				<li>L’ordine di ricerca sfortunatamente corrisponde (si spera solo provvisoriamente) all’ordine con cui le cornici di testo sono state inserite nel documento e <b>non</b> viene rispettato l’ordine “Inizio <b>&gt;</b> Fine” con cui le cornici appaiono nel documento.</li>
-				<li>Nel nome della cornice si possono ricercare solo sotto-stringhe; non è possibile cercare espressioni regolari complete.</li>
-			</ol>
-		<p class="cm2">I pulsanti <var>Trova tutto</var> e <var>Sostituisci tutto</var> sono pienamente operativi, anche se sono usati in associazione alla casella di controllo “Solo nella selezione corrente”</p>
-		<p class="cm2"><strong>[::Picture::]</strong> - cerca le immagini a seconda del loro nome</p>
+				<ul>
+				<li>Utilizzando il pulsante <var>Trova</var> è possibile trovare la successiva cornice di testo solo se essa è selezionata o se il cursore è all’interno della cornice stessa. Se il cursore non si trova all’interno di una cornice, viene trovata la prima cornice di testo in funzione dell’elenco progressivo delle cornici nel documento<br>
+				<b>N.B.</b>: La casella di controllo “<i>Solo nella selezione corrente</i>” attualmente non funziona</li>
+				<li> Come conseguenza del punto precedente, l’utilità pratica del pulsante <var>Sostituzione</var> in questo caso è molto limitata</li>
+				<li>L’ordine di ricerca sfortunatamente corrisponde (si spera solo provvisoriamente) all’ordine con cui le cornici di testo sono state inserite nel documento e <b>non</b> viene rispettato l’ordine “Inizio <b>&gt;</b> Fine” con cui le cornici appaiono nel documento</li>
+				<li>Nel nome della cornice si possono ricercare solo sotto-stringhe; non è possibile cercare espressioni regolari complete</li>
+				</ul>
+		<p class="cm2">I pulsanti <var>Trova tutto</var> e <var>Sostituisci tutto</var> sono pienamente operativi, anche se sono usati in associazione alla casella di controllo “<i>Solo nella selezione corrente</i>”</p>
+		<p class="cm2"><strong>[::Picture::]</strong> - ricerca le immagini a seconda del loro nome</p>
 		<p class="cm4"><strong>[::Picture::]</strong> - trova qualsiasi immagine</p>
 		<p class="cm4"><strong>[::Picture::]obr1</strong> - trova le immagini che contengono nel loro nome la sotto-stringa <strong>obr1</strong></p>
 		<p class="cm4"><strong>[::Picture::]\text</strong> - trova la sotto-stringa <strong>text</strong> all’interno del testo del <b>Titolo</b> dell’immagine</p>
 		<p class="cm4"><strong>[::Picture::]\</strong> - trova le immagini prive di <b>Titolo</b></p>
 		<p class="cm4"><dfn>Limitazioni:</dfn> le stesse di <strong>[::TextFrame::]</strong> (v. sopra)</p>
-		<p class="cm2"><strong>[::TextTable::]</strong> - cerca le Tabelle a seconda del loro nome</p>
+		<p class="cm2"><strong>[::TextTable::]</strong> - ricerca le Tabelle a seconda del loro nome</p>
 		<p class="cm4"><strong>[::TextTable::]</strong> - trova qualsiasi Tabella</p>
 		<p class="cm4"><strong>[::TextTable::]tab1</strong> - trova le Tabelle che contengono nel loro nome la sotto-stringa <strong>tab1</strong></p>
 		<p class="cm4"><dfn>Limitazioni:</dfn> le stesse di <strong>[::TextFrame::]</strong> (v. sopra)</p>
-		<p class="cm2"><strong>[::Footnote::]</strong> - cerca nelle <b>N</b>ote a <b>p</b>iè di <b>p</b>agina (Npp)</p>
+		<p class="cm2"><strong>[::Footnote::]</strong> - ricerca le <b>N</b>ote a <b>p</b>iè di <b>p</b>agina (Npp)</p>
 		<p class="cm4"><strong>[::Footnote::]</strong> trova l’<i>àncora</i> di qualsiasi Npp</p>
 		<p class="cm4"><strong>[::Footnote::]5</strong> trova l’<i>àncora</i> di quelle Npp che contengono la sotto-stringa <strong>5</strong></p>
 		<p class="cm4"><strong>[::Footnote::]\text</strong> trova l’<i>àncora</i> di quelle Npp il cui testo contiene la sotto-stringa <strong>text</strong>. Usando il pulsante <var>Trova tutto</var> verrà selezionato il testo di tutte le Npp che contengono la sotto-stringa <strong>text</strong></p>
 		<p class="cm4">Usando <strong>[::Footnote::]\</strong> e facendo clic sul pulsante <var>Trova tutto</var> verrà selezionato il testo di tutte le Npp: si tratta di un sistema comodo per assegnare uno stile di paragrafo a tutte le Npp in colpo solo</p>
-		<p class="cm2"><strong>[::Endnote::]</strong> - cerca le Note di chiusura</p>
+		<p class="cm2"><strong>[::Endnote::]</strong> - ricerca le Note di chiusura</p>
 		<p class="cm4">L’uso dei parametri e le limitazioni sono le stesse di <strong>[::Footnote::]</strong> (v. sopra)</p>
-		<p class="cm2"><strong>[::ReferenceMark::]</strong> - cerca i <b>M</b>arcatori per i <b>R</b>iferimenti <b>I</b>ncrociati (MRI) (<i>target marker of cross-references</i>)</p>
+		<p class="cm2"><strong>[::ReferenceMark::]</strong> - ricerca i <b>M</b>arcatori per i <b>R</b>iferimenti <b>I</b>ncrociati (MRI) (<i>target marker of cross-references</i>)</p>
 		<p class="cm4"><strong>[::ReferenceMark::]</strong> trova qualsiasi testo configurato come MRI</p>
 		<p class="cm4"><strong>[::ReferenceMark::]text</strong> trova qualsiasi testo configurato come MRI contenente la sotto-stringa <strong>text</strong></p>
-		<p class="cm4"><strong>[::ReferenceMark::]\ref1</strong> trova qualsiasi testo configurato come MRI il cui nome contenga la sotto-stringa <strong>ref1</strong></p>
+		<p class="cm4"><strong>[::ReferenceMark::]\ref1</strong> trova qualsiasi testo configurato come MRI il cui nome contiene la sotto-stringa <strong>ref1</strong></p>
 		<p class="cm4"><strong>[::ReferenceMark::]\\</strong> trova qualsiasi testo configurato come MRI il cui testo è vuoto</p>
-		<p class="cm2"><strong>[::Reference::]</strong> - cerca nei campi di testo definiti come ‛Riferimenti Incrociati’ (<i>cross-reference</i>) tramite i relativi marcatori (<i>markers</i>)</p>
+		<p class="cm2"><strong>[::Reference::]</strong> -ricerca i campi di testo definiti come ‛Riferimenti Incrociati’ (<i>cross-reference</i>) tramite i relativi marcatori (<i>markers</i>)</p>
 		<p class="cm4"><strong>[::Reference::]</strong> trova tutti i campi di testo di tipo Riferimento Incrociato</p>
 		<p class="cm4"><strong>[::Reference::]above</strong> trova tutti i Riferimenti Incrociati che contengono la sotto-stringa <strong>above</strong></p>
 		<p class="cm4"><strong>[::Reference::]\ref1</strong> trova tutti i Riferimenti Incrociati il cui nome contiene la sotto-stringa <strong>ref1</strong></p>
 		<p class="cm4"><strong>[::Reference::]\\</strong> trova tutti i Riferimenti Incrociati il cui testo è vuoto</p>
-		<p class="cm4">Se <strong>Reference</strong> viene scelto a partire dal Menu a discesa “[Ricerca] <b>Estesa</b>” e allo stesso tempo il cursore è posizionato nell’ambito di un testo che è un MRI, il nome di origine del riferimento incrociato corrispondente viene aggiunto automaticamente alla casella “<b>Ricerca:</b>” ed è quindi immediatamente ricercabile.</p>
-		<p class="cm2"><strong>[::Bookmark::]</strong> - cerca i Segnalibri</p>
+		<p class="cm4">Se <strong>Reference</strong> viene scelto a partire dal Menu a discesa “[Ricerca] <b>Estesa</b>” e allo stesso tempo il cursore è posizionato nell’ambito di un testo che è un MRI, il nome di origine del riferimento incrociato corrispondente viene aggiunto automaticamente alla casella “<b>Ricerca:</b>” ed è quindi immediatamente ricercabile</p>
+		<p class="cm2"><strong>[::Bookmark::]</strong> - ricerca i Segnalibri</p>
 		<p class="cm4"><strong>[::Bookmark::]</strong> trova il testo o il blocco di testo contrassegnato come Segnalibro</p>
 		<p class="cm4"><strong>[::Bookmark::]text</strong> trova la sotto-stringa <strong>text</strong> se questa si trova all’interno di un blocco di testo contrassegnato come Segnalibro</p>
-		<p class="cm4"><strong>[::Bookmark::]\RefHeading</strong>  trova il testo o il blocco di testo contrassegnato come Segnalibro solo se il nome del segnalibro contiene la sottostringa <strong>RefHeading</strong>. Tale sotto-stringa viene cioè cercata solo nel nome del segnalibro.</p>
+		<p class="cm4"><strong>[::Bookmark::]\RefHeading</strong>  trova il testo o il blocco di testo contrassegnato come Segnalibro solo se il nome del Segnalibro contiene la sottostringa <strong>RefHeading</strong>. Tale sotto-stringa viene cioè cercata solo nel nome del segnalibro</p>
 
 		<h4>Casella con menu a discesa “<b>Proprietà</b>”</h4>
 	
 		<p class="cm2">Abilita le ricerche a seconda delle proprietà (attributi) delle stringhe e dei relativi valori.<br>Nella casella di ricerca bisogna dapprima introdurre i caratteri <strong>[:::</strong> cui si fa seguire il <strong>nome</strong> della proprietà ricercata. Se vi sono più proprietà, i rispettivi nomi possono essere separati dal segno di <i>piping</i>, cioè: <strong>|</strong>. La proprietà ricercata deve necessariamente terminare  introducendo i caratteri <strong>::]</strong>. Dopo di che, opzionalmente, si può immettere il testo da ricercare. Se invece si cerca il <b>valore</b> della proprietà, bisogna usare una sintassi del tipo: <strong>name=value</strong></p>
 		<p class="cm2">L’elenco degli attributi di testo e dei rispettivi valori utilizzabili per effettuare ricerche nella selezione corrente, può essere caricato usando il pulsante <var>Proprietà</var>: i dati compaiono nel menu a discesa posto sotto tale pulsante.<br>Si può effettuare la ricerca di molti degli attributi dei caratteri (tipo, dimensione, colore di sfondo, stile dei caratteri/paragrafi ecc…)</p>
 		<p>Un elenco di questi attributi/proprietà è riportato qui sotto:</p>
-		<p class="cm2"><strong>[:::CharFontName=Courier::]</strong> - cerca, nel blocco di testo selezionato, i caratteri di tipo (font) <strong>Courier</strong>.</p>
-		<p class="cm2"><strong>[:::CharFontHeight=24::]</strong> - cerca, nel blocco di testo selezionato, i caratteri aventi dimensione di <strong>24 pt</strong>.</p>
-		<p class="cm2"><strong>[:::CharBackColor=&amp;HFE1410::]</strong> - cerca, nel blocco di testo selezionato, i caratteri aventi lo sfondo evidenziato con un colore all’incirca <b class="bRed">rosso</b>, la cui <b><i>codifica esadecimale</i></b> in <b>RGB</b> è appunto <strong>FE1410</strong>.</p>
-		<p class="cm2">Lo stesso colore, rappresentato in <b><i>codifica decimale</i></b>, è identificato dal codice: <b>RGB (254,20,16)</b> o, il che è lo stesso, il suo numero identificativo è quello risultante dalla seguente operazione matematica:<br>
-		(256*256*254) + (256*20) + 16 = <b>16651280</b>.<br>
-		Pertanto è possibile trovare il colore di background anche mediante l’espressione:</p>
+		<p class="cm2"><strong>[:::CharFontName=Courier::]</strong> - cerca, nel blocco di testo selezionato, i caratteri di tipo (<i>font</i>) <strong>Courier</strong></p>
+		<p class="cm2"><strong>[:::CharFontHeight=24::]</strong> - cerca, nel blocco di testo selezionato, i caratteri aventi dimensione di <strong>24 pt</strong></p>
+		<p class="cm2"><strong>[:::CharBackColor=&amp;HFE1410::]</strong> - cerca, nel blocco di testo selezionato, i caratteri aventi lo sfondo evidenziato con un colore all’incirca <b class="bRed">rosso</b>, la cui <b><i>codifica esadecimale</i></b> in <b>RGB</b> è appunto <strong>FE1410</strong>. Lo stesso colore, rappresentato in <b><i>codifica decimale</i></b>, è identificato dal codice: <b>RGB (254,20,16)</b> o, il che è lo stesso, il suo numero identificativo è quello risultante dalla seguente operazione matematica:<br>
+		<p align="center">(256*256*254) + (256*20) + 16 = <b>16651280</b></p>
+		<p class="cm2">Pertanto è possibile cercare il colore di background anche mediante l’espressione:</p>
 		<p class="cm2"><strong>[:::CharBackColor=NNNNNNNN::]</strong> ove ad <strong>NNNNNNNN</strong> va sostituito, nell’esempio precedentemente riportato, il valore <b>16651280</b>.</p>
-		<p class="cm2"><strong>[:::ParaStyleName::]</strong> - ricerca lo stile di un paragrafo</p>
-		<p class="cm4"><strong>[:::ParaStyleName=::]</strong> trova tutti i paragrafi aventi uno stile diverso dallo stile <strong>Default</strong></p>
-		<p class="cm4"><strong>[:::ParaStyleName=Example::]</strong> trova tutti i paragrafi aventi lo stile di paragrafo <strong>Example</strong></p>
-		<p class="cm4"><strong>[:::ParaStyleName=Example::] something</strong> - trova il testo <strong>something</strong> se questo è formattato con lo stile di paragrafo <strong>Example</strong></p>
-		<p class="cm4"><dfn>Limitazioni:</dfn> Non è possibile cercare un testo di <b>lunghezza zero</b>, per esempio un paragrafo vuoto. Inoltre non si può combinare la ricerca di questo tipo di proprietà con altre proprietà del testo.</p>
 		<p class="cm2"><strong>[:::CharStyleName::]</strong> - ricerca per lo stile dei caratteri</p>
 		<p class="cm4"><strong>[:::CharStyleName=::]</strong> - trova quelle parti di testo che hanno uno stile dei caratteri diverso dallo stile <strong>Default</strong></p>
 		<p class="cm4"><strong>[:::CharStyleName=Example::]</strong> - trova quelle parti di testo che hanno lo stile dei caratteri <strong>Example</strong></p>
 		<p class="cm4"><strong>[:::CharStyleName=Example::] something</strong> - trova il testo <strong>something</strong> se questo è formattato con lo stile dei caratteri <strong>Example</strong></p>
-		<p class="cm4"><dfn>Limitazioni</dfn>: Funziona solo dalla posizione corrente del cursore in avanti - L’opzione <b>Indietro</b> non funziona (dà il messaggio: <i>Non trovato.</i><br>Non è possibile cercare un testo di lunghezza <b>zero caratteri</b>, per esempio un paragrafo vuoto.<br>Inoltre non si può combinare la ricerca di questa proprietà del testo con altre proprietà</p>
+		<p class="cm4"><dfn>Limitazioni:</dfn> Funziona solo dalla posizione corrente del cursore in avanti - L’opzione <b>Indietro</b> non funziona (dà il messaggio: <i>Non trovato</i>. Non è possibile cercare un testo avente lunghezza <b>zero caratteri</b> (per esempio un paragrafo vuoto). Inoltre non si può combinare la ricerca di questa proprietà del testo con altre proprietà</p>
+		<p class="cm2"><strong>[:::ParaStyleName::]</strong> - ricerca lo stile di un paragrafo</p>
+		<p class="cm4"><strong>[:::ParaStyleName=::]</strong> trova tutti i paragrafi aventi uno stile diverso dallo stile <strong>Default</strong></p>
+		<p class="cm4"><strong>[:::ParaStyleName=Example::]</strong> trova tutti i paragrafi aventi lo stile di paragrafo <strong>Example</strong></p>
+		<p class="cm4"><strong>[:::ParaStyleName=Example::] something</strong> - trova il testo <strong>something</strong> se questo è formattato con lo stile di paragrafo <strong>Example</strong></p>
+		<p class="cm4"><dfn>Limitazioni:</dfn> Non è possibile cercare un testo avente lunghezza <b>zero caratteri</b>, per esempio un paragrafo vuoto. Inoltre non si può combinare la ricerca di questo tipo di proprietà con altre proprietà del testo.</p>
 		<p class="cm2"><strong>[:::NumberingStyleName::]</strong> - cerca lo stile di un elenco numerato - L’uso è simile a quello della ricerca dello stile di paragrafo (v. sopra).</p>
 		<p class="cm2"><strong>[:::HyperLinkURL::]</strong> - cerca un testo avente come proprietà <strong>HyperLinkURL</strong> (collegamento ipertestuale all’URL)</p>
 		<p class="cm4"><strong>[:::HyperLinkURL::]</strong> - trova tutti i testi aventi proprietà di tipo <strong>HyperLinkURL</strong></p>
-		<p class="cm4"><strong>[:::HyperLinkURL::]link</strong> - trova quella parte del collegamento ipertestuale (<i>hyperlink</i>) che contiene il testo <strong>link</strong></p>
-		<p class="cm4"><strong>[:::HyperLinkURL=file:///c:/pokus.odt::]</strong> - cerca un collegamento ipertestuale (<i>hyperlink</i>) la cui l’URL è rappresentata dalla sotto-stringa <strong>file:///c:/pokus.odt</strong></p>
-		<p class="cm4"><strong>[:::HyperLinkURL=file:///c:/pokus.odt::]link</strong> - cerca parte di un collegamento ipertestuale (<i>hyperlink</i>) la cui l’URL è rappresentata dalla stringa <strong>file:///c:/pokus.odt</strong> e il cui il testo contiene la stringa <strong>link</strong>.</p>
-		<p class="cm2">Un elenco degli attributi del testo (con i valori presenti nella corrente selezione), può essere caricato usando il pulsante <var>Scegli proprietà</var>: al suo fianco compare un menu a discesa da cui scegliere.</p>
+		<p class="cm4"><strong>[:::HyperLinkURL::]link</strong> - trova quella parte di un collegamento ipertestuale che contiene il testo <strong>link</strong></p>
+		<p class="cm4"><strong>[:::HyperLinkURL=file:///c:/pokus.odt::]</strong> - trova il collegamento ipertestuale la cui URL è rappresentata dalla sotto-stringa <strong>file:///c:/pokus.odt</strong></p>
+		<p class="cm4"><strong>[:::HyperLinkURL=file:///c:/pokus.odt::]link</strong> - trova  quella parte di un collegamento ipertestuale la cui URL è rappresentata dalla stringa <strong>file:///c:/pokus.odt</strong> e il cui il testo contiene la stringa <strong>link</strong></p>
+		<p class="cm2">Un elenco degli attributi del testo (con i valori relativi alla corrente selezione), può essere caricato facendo dapprima clic sul pulsante <var>Scegli proprietà</var> e, successivamente, facendo clic sulla freccia verso il basso alla sua destra. Compare un menu a discesa da cui scegliere l’attributo cui si è interessati.</p>
 
-		<!-- <p><a href="https://api.libreoffice.org/docs/idl/ref/dir_02c10f744696785b64d031a937f6c999.html">Qui si può trovare una breve descrizione della maggior parte di tali proprietà</a>.</p>
-		<p class="cm2"><strong>Formato simile dei caratteri</strong> - carica qualsiasi proprietà/attribuito del carattere della corrente selezione che sia stata modificata manualmente e cerca in tutto il documento quelle parti che abbiano una formattazione <i>simile</i>. Se, per esempio, il cursore si trova su di un testo che ha subito la modifica manuale del nome del carattere (<i>font</i>), verranno trovate tutte quelle parti del documento in cui è stata effettuata una analoga modifica manuale del nome del carattere. In questo caso per esempio, la casella di ricerca conterrà <strong>[:::CharFontName::]</strong></p>
-		<p class="cm2"><strong>Identico formato dei caratteri</strong> - carica qualsiasi proprietà/attribuito del carattere della corrente selezione che sia stata modificata manualmente e cerca in tutto il documento quelle parti che abbiano una <i>identica</i> formattazione. Se, per esempio, il cursore si trova su di un testo che ha subito la modifica manuale del nome del carattere in <strong>Arial</strong>, verranno trovate tutte quelle parti del documento in cui è stata effettuata una analoga modifica manuale del nome del carattere e che abbiano anche lo <b>stesso</b> nome del carattere. Pertanto, in questo caso ad esempio, la casella di ricerca conterrà <strong>[:::CharFontName=Arial::]</strong>.</p> -->
+		<!--
+		<p class="cm2"><strong>Formato simile dei caratteri</strong> - carica qualsiasi attribuito del carattere della corrente selezione che sia stato modificato manualmente e cerca in tutto il documento quelle parti che abbiano una formattazione <i>simile</i>. Se, per esempio, il cursore si trova su di un testo che ha subito la modifica manuale del nome del carattere (<i>font</i>), verranno trovate tutte quelle parti del documento in cui è stata effettuata una analoga modifica manuale del nome del carattere. In questo caso per esempio, la casella di ricerca conterrà <strong>[:::CharFontName::]</strong></p>
+		<p class="cm2"><strong>Identico formato dei caratteri</strong> - carica qualsiasi attribuito del carattere della corrente selezione che sia stato modificato manualmente e cerca in tutto il documento quelle parti che abbiano una <i>identica</i> formattazione. Se, per esempio, il cursore si trova su di un testo che ha subito la modifica manuale del nome del carattere in <strong>Arial</strong>, verranno trovate tutte quelle parti del documento in cui è stata effettuata una analoga modifica manuale del nome del carattere e che abbiano anche lo <b>stesso</b> nome del carattere. Pertanto, in questo caso ad esempio, la casella di ricerca conterrà <strong>[:::CharFontName=Arial::]</strong>.</p>
+		-->
 
-		<p class="cm4"><dfn> Limitazioni:</dfn> Il motore di ricerca di Writer non supporta tutte le possibili proprietà dei paragrafi e dei caratteri. Inoltre non tutte le combinazioni funzionano come ci si potrebbe aspettare.</p>
+		<p class="cm4"><dfn>Limitazioni:</dfn> Il motore di ricerca di Writer non supporta tutte le possibili proprietà dei paragrafi e dei caratteri. Inoltre non tutte le combinazioni funzionano come ci si potrebbe aspettare</p>
 
 		<h3 id="nahraditit">Sostituzione</h3>
 
 		<p>Menu a discesa “<b>Sostituzione</b>”</p>
 		<p class="cm2"><strong>&amp; \0</strong> - entrambi questi parametri hanno lo stesso significato: nella sostituzione rappresentano l’intero testo trovato</p>
-		<p class="cm4">Se l’espressione che si cerca  usa <strong>[::BigBlock::]</strong>, questi parametri rappresentano solo il blocco di paragrafi compreso fra i marcatori di inizio e di fine.</p>
-		<p class="cm4">Se l’oggetto che si cerca usa <strong>[::Comment::]</strong>, <strong>[::Field::]</strong>, <strong>[::TextFrame::]</strong>, <strong>[::Picture::]</strong> o <strong>[::TextTable::]</strong>, questi parametri rappresentano esattamente tali oggetti che vengono inseriti tramite gli Appunti (<i>Clipboard</i>)</p>
-		<p class="cm2"><strong>\b \e</strong> - Se l’espressione che si cerca usa <strong>[::BigBlock::]</strong>, questi parametri rappresentano il contenuto dei marcatori di inizio e di fine blocco.</p>
-		<p class="cm4"><dfn>Limitazioni:</dfn> questi parametri non possono essere usati assieme alle <a href="#itskupiny">sotto-espressioni</a>.</p>
+		<p class="cm4">Se l’espressione che si cerca usa <strong>[::BigBlock::]</strong>, questi parametri rappresentano solo il blocco di paragrafi compreso fra i marcatori di inizio e di fine</p>
+		<p class="cm4">Se l’oggetto che si ricerca usa <strong>[::Comment::]</strong>, <strong>[::Field::]</strong>, <strong>[::TextFrame::]</strong>, <strong>[::Picture::]</strong>. <strong>[::TextTable::]</strong>, questi parametri rappresentano esattamente tali oggetti che vengono inseriti tramite gli Appunti (<i>Clipboard</i>)</p>
+		<p class="cm2"><strong>\b \e</strong> - Se l’espressione che si ricerca usa <strong>[::BigBlock::]</strong>, questi parametri rappresentano il contenuto dei marcatori di inizio e di fine blocco.</p>
+		<p class="cm4"><dfn>Limitazioni:</dfn> questi parametri non possono essere usati assieme alle <a href="#itskupiny">sotto-espressioni</a></p>
 
 		<p><a id="itskupiny"><u>Sotto-espressioni</u></a></p>
 		<p class="cm2"><strong>\1 \2 \3 \4 \5 \6 \7 \8 \9</strong> - rappresentano il possibile contenuto delle sotto-espressioni</p>
 		<p class="cm2">Se l’espressione ricercata utilizza le parentesi rotonde <b>()</b>, <strong>\1</strong> rappresenta il contenuto della prima coppia di parentesi, <strong>\2</strong> corrisponde al contenuto del secondo paio di parentesi ecc…, fino a <strong>\9</strong> che corrisponde al contenuto del nono paio. Solo il primo livello di parentesi è valido; livelli nidificati di parentesi vengono ignorati.</p>
-		<p class="cm4">Esempio:</p>
+		<p class="cm2">Esempi:</p>
 			<ul>
-				<li>L’espressione <strong>(\d{2,2})(\d{2,2})-(\d{1,2})-(\d{1,2})</strong> trova le date nel formato <b>AAAA-MM-GG</b> come per esempio 2009-12-07. L’espressione <strong>\4.\3.\2</strong> le sostituisce con date nel formato <b>GG.MM.AA</b> quali, per esempio 07.12.09</li>
-				<li>L’espressione <strong>(\d{1,2})\. *(\d{1,2})\. *(\d{2,2})(\d{2,2})</strong> trova le date nel formato <b>GG.MM.AAAA</b> come per esempio 07.12.2009. L’espressione <strong>\4-\2-\1</strong> le sostituisce con date nel formato <b>AA-MM-GG</b> quali, per esempio 09-12-07</li>			
-				<li>L’espressione <strong>(\d{1,2})\. *(\d{1,2})\. *(\d{1,4})</strong> trova le date nel formato <b>GG.MM.AAAA</b> come per esempio 07.12.2009. L’espressione <strong>\3-\2-\1</strong> le sostituisce con date nel formato <b>AAAA-MM-GG</b> quali, per esempio 2009-12-07</li>
+				<li>L’espressione <strong>(\d{2,2})(\d{2,2})-(\d{1,2})-(\d{1,2})</strong> trova le date nel formato <b>AAAA-MM-GG</b> come per esempio 2009-12-07. L’espressione <strong>\4.\3.\2</strong> le sostituisce con date nel formato <b>GG.MM.AA</b> quali, per esempio, 07.12.09</li>
+				<li>L’espressione <strong>(\d{1,2})\. *(\d{1,2})\. *(\d{2,2})(\d{2,2})</strong> trova le date nel formato <b>GG.MM.AAAA</b> come per esempio 07.12.2009. L’espressione <strong>\4-\2-\1</strong> le sostituisce con date nel formato <b>AA-MM-GG</b> quali, per esempio, 09-12-07</li>			
+				<li>L’espressione <strong>(\d{1,2})\. *(\d{1,2})\. *(\d{1,4})</strong> trova le date nel formato <b>GG.MM.AAAA</b> come per esempio 07.12.2009. L’espressione <strong>\3-\2-\1</strong> le sostituisce con date nel formato <b>AAAA-MM-GG</b> quali, per esempio, 2009-12-07</li>
 			</ul>
 		<p class="cm2">Se è necessario impedire la processazione delle sotto-espressioni (per esempio per conservare la compatibilità con le espressioni regolari standard ICU), bisogna porre l’intera espressione di ricerca all’interno di una coppia addizionale di parentesi rotonde. In tal modo tutti i livelli nidificati di parentesi di sostituzione saranno ignorati.</p>
 		<p class="cm2"><dfn>Limitazioni:</dfn> La processazione delle sotto-espressioni è relativamente lenta e non è completamente compatibile con Writer.</p>
-		<p class="cm2">C’è anche una incompatibilità nell’uso dei caratteri jolly posti immediatamente dopo una sotto-espressione - ad esempio nel caso di <strong>(opak)*</strong> - dovuta al principio della ricerca sequenziale in blocchi di testo sequanziali. Per maggiori informazioni si veda <a href="#itskupiny0">qui</a>. Tuttavia le funzioni <var>Conta</var> e <var>Trova tutto</var> sono in grado di ricavare il numero corretto di occorrenze mentre le altre funzioni non trovano nulla (a meno di non passare alla modalità compatibile). Nei casi più complicati è necessario esaminare attentamente ciò che avviene: solo sperimentando si potranno ottenere i migliori risultati</p>
+		<p class="cm4">C’è anche una incompatibilità nell’uso dei caratteri jolly posti immediatamente dopo una sotto-espressione dovuta al principio della ricerca sequenziale in blocchi di testo sequanziali, per esempio nel caso di <strong>(opak)*</strong>. Per maggiori informazioni si veda <a href="#itskupiny0">qui</a>.<br>Tuttavia le funzioni <var>Conta</var> e <var>Trova tutto</var> sono comunque in grado di ricavare il numero corretto di occorrenze, mentre le altre funzioni non trovano nulla (a meno di non passare alla modalità compatibile).<br>Nei casi più complicati è necessario esaminare attentamente ciò che avviene: solo sperimentando si potranno ottenere i migliori risultati.</p>
 		<p class="cm2"><strong>\p</strong> - inserisce un paragrafo vuoto</p>
 		<p class="cm2"><strong>\t</strong> - inserisce un carattere di tabulazione (<strong>\x0009 \#9</strong>)</p>
 		<p class="cm2"><strong>\s</strong> - inserisce uno spazio indivisibile (<strong>\x00A0 \#160</strong>)</p>
@@ -246,25 +248,25 @@
 		<p class="cm2"><strong>\r</strong> - rimuove le interruzioni manuali di colonna o di pagina nel/i paragrafo/i trovato/i</p>
 		<p class="cm2"><strong>\xhhhh</strong> - inserisce un carattere usando la codifica esadecimale simboleggiata da <i>hhhh</i></p>
 		<p class="cm2"><strong>\#ddddd</strong> - inserisce un carattere usando la codifica decimale simboleggiata da <i>ddddd</i></p>
-		<p class="cm2"><strong>\h{addressURL}</strong> - modifica il testo trovato in un collegamento ipertestuale (<i>hyperlink</i>) avente come URL <strong>addressURL</strong></p>
-		<p class="cm2"><strong>\h{}</strong>, <strong>\h</strong> - modificano il testo trovato in un collegamento ipertestuale avente per URL una stringa vuota. Hanno lo scopo di eliminare la URL del collegamento ipertestuale mantenendone il testo inalterato.</p>
-		<p class="cm2"><strong>\H{substr}</strong> - sostituisce la sotto-stringa nell’URL del collegamento ipertestuale. Va usato contemporaneamente ad una ricerca del tipo: <strong>[:::HyperLinkURL=::]</strong>. Se, per esempio, l’espressione cercata è del tipo: <strong>[:::HyperLinkURL=substr::]</strong>, verranno trovati solo quei collegamenti ipertestuali la cui URL include la sotto-stringa <strong>substr</strong>. Se nell’espressione di sostituzione viene aggiunto <strong>\H{repl}</strong> nell’URL verrà trovato il testo <strong>substr</strong> che verrà sostituito dal testo <strong>repl</strong>.</p>
+		<p class="cm2"><strong>\h{addressURL}</strong> - modifica il testo trovato in un collegamento ipertestuale avente come URL <strong>addressURL</strong></p>
+		<p class="cm2"><strong>\h{}</strong>, <strong>\h</strong> - modificano il testo trovato in un collegamento ipertestuale avente per URL una stringa vuota. Hanno lo scopo di eliminare la URL del collegamento ipertestuale mantenendo inalterato il testo</p>
+		<p class="cm2"><strong>\H{repl}</strong> - sostituisce la sotto-stringa nell’URL del collegamento ipertestuale. Va usata assieme ad una ricerca del tipo <strong>[:::HyperLinkURL=::]</strong>. Per esempio, se l’espressione ricercata è del tipo <strong>[:::HyperLinkURL=substr::]</strong>, verranno trovati solo quei collegamenti ipertestuali la cui URL include la sotto-stringa <strong>substr</strong>. Se l’espressione di sostituzione è <strong>\H{repl}</strong> il testo <strong>substr</strong> presente nell’URL verrà sostituito dal testo <strong>repl</strong></p>
 		<p class="cm2"><strong>\u</strong> - se viene trovato un collegamento ipertestuale, inserisce nell’espressione di sostituzione l’URL dell’indirizzo corrispondente al testo trovato</p>
 		<p class="cm2"><strong>\P{Text}</strong> - applica lo stile paragrafo <strong>Text</strong> al/i paragrafo/i trovato/i</p>
-		<p class="cm2">Lo stile viene applicato al paragrafo contenente il testo dell’espressione di sostituzione. Per applicare lo stile “<i>Default</i>” bisogna usare <strong>\P</strong> o <strong>\P{}</strong>. Se questo parametro viene utilizzato più volte con dei paragrafi inseriti, lo stile subirà modifiche ad ogni variazione di questo parametro e l’ultimo stile applicato resterà valido fino alla fine del paragrafo. Per esempio: se l’espressione è stata sostituita utilizzando <strong>block1\P{Subtitle}\p block2\P{Heading 1}</strong>, verrà inserito strong>block1</strong> e gli verrà assegnato lo stile <strong>Subtitle</strong>.Successivamente verrà inserito un nuovo paragrafo con testo <strong>block2</strong> e gli verrà assegnato lo stile <strong>Heading 1</strong>.</p>
+		<p class="cm2">Lo stile viene applicato al paragrafo contenente il testo dell’espressione di sostituzione. Per applicare lo stile “<i>Default</i>” bisogna usare <strong>\P</strong> o <strong>\P{}</strong>. Se questo parametro viene utilizzato più volte con dei paragrafi inseriti, lo stile subirà modifiche ad ogni variazione di questo parametro e l’ultimo stile applicato resterà valido fino alla fine del paragrafo.<br>Per esempio: se l’espressione di sostituzione è <strong>block1\P{Subtitle}\p block2\P{Heading 1}</strong>, verrà inserito <strong>block1</strong> e gli verrà assegnato lo stile <strong>Subtitle</strong>. Successivamente verrà inserito un nuovo paragrafo con testo <strong>block2</strong> e gli verrà assegnato lo stile <strong>Heading 1</strong></p>
 		<p class="cm2"><strong>\C{Quotation}</strong> - applica lo stile carattere <strong>Quotation</strong> al testo trovato</p>
-		<p class="cm2">Lo stile viene applicato all’intero testo dell’espressione di sostituzione. Se si vuole applicare lo stile “<i>Default</i>” bisogna usare <strong>\C</strong> o <strong>\C{}</strong>. Se questo parametro viene utilizzato più volte, lo stile del carattere subirà modifiche ad ogni variazione di questo parametro e l’ultimo stile applicato rimarrà valido fino alla fine dell’espressione di sostituzione. Per esempio: nel caso di una espressione di sostituzione del tipo <strong>block1\C{Quotation}block2\C{Example}</strong>, a <strong>block1</strong> verrà assegnato lo stile carattere <strong>Quotation</strong> mentre a <strong>block2</strong> verrà assegnato lo stile carattere <strong>Example</strong>.</p>
+		<p class="cm2">Lo stile viene applicato all’intero testo dell’espressione di sostituzione. Se si vuole applicare lo stile “<i>Default</i>” bisogna usare <strong>\C</strong> oppure <strong>\C{}</strong>. Se questo parametro viene utilizzato più volte, lo stile del carattere subirà modifiche ad ogni variazione di questo parametro e l’ultimo stile applicato rimarrà valido fino alla fine dell’espressione di sostituzione. Per esempio nel caso di una espressione di sostituzione del tipo <strong>block1\C{Quotation}block2\C{Example}</strong>, a <strong>block1</strong> verrà assegnato lo stile carattere <strong>Quotation</strong> mentre a <strong>block2</strong> verrà assegnato lo stile carattere <strong>Example</strong></p>
 		<p class="cm2"><strong>\N{List 3}</strong> - applica lo stile elenco <strong>List 3</strong> al(i) paragrafo(i) trovato(i)</p>
 		<p class="cm2">Vengono applicate regole d’uso analoghe a quelle del parametro <strong>\P{}</strong>. Lo stile elenco può essere rimosso con <strong>\N</strong> o <strong>\N{}</strong></p>
 		<p class="cm2"><strong>\D</strong> - applica la formattazione predefinita al testo trovato, esattamente come quando si usa la combinazione di tasti <b>Ctrl</b>+<b>Maiusc</b>+<b>Barra Spaziatrice</b>. Vengono applicate regole d’uso analoghe a quelle del parametro <strong>\C{}</strong></p>
 		<p class="cm2"><strong>\d</strong> - ripristina gli attributi del testo ai valori predefiniti solo laddove viene utilizzato. Infatti, contrariamente a <strong>\D</strong> non ha effetto sul testo inserito in precedenza.</p>
-		<p class="cm2"><strong>\F{New footnote}</strong> - inserisce una nuova Nota a piè di pagina contenente il testo <strong>New footnote</strong> laddove avviene la sostituzione. All’interno delle parentesi graffe è possibile usare uno di questi parametri: <strong>\i</strong>, <strong>\I</strong>, <strong>&amp;</strong>, <strong>\1</strong></p>
-		<p class="cm2"><strong>\E{New endnote}</strong> - inserisce una nuova Nota di chiusura dove avviene la sostituzione analogamente a <strong>\F</strong> All’interno delle parentesi graffe è possibile usare uno di questi parametri: <strong>\i</strong>, <strong>\I</strong>, <strong>&amp;</strong>, <strong>\1</strong></p>
+		<p class="cm2"><strong>\F{New footnote}</strong> - inserisce una nuova Npp contenente il testo <strong>New footnote</strong> laddove avviene la sostituzione. All’interno delle parentesi graffe è possibile usare uno di questi parametri: <strong>\i</strong>, <strong>\I</strong>, <strong>&amp;</strong>, <strong>\1</strong></p>
+		<p class="cm2"><strong>\E{New endnote}</strong> - inserisce una nuova Nota di chiusura dove avviene la sostituzione, analogamente a <strong>\F</strong>. All’interno delle parentesi graffe è possibile usare uno di questi parametri: <strong>\i</strong>, <strong>\I</strong>, <strong>&amp;</strong>, <strong>\1</strong></p>
 		<p class="cm2"><strong>\B{ref1|text}</strong> - inserisce il testo <strong>text</strong> con il marcatore <strong>ref1</strong> in un riferimento incrociato. All’interno delle parentesi graffe è possibile usare uno di questi parametri: <strong>\i</strong>, <strong>\I</strong>, <strong>&amp;</strong>, <strong>\1</strong></p>
-		<p class="cm2"><strong>\L{0,0,ref1}</strong> - inserisce un campo di riferimento incrociato con i parametri <i>0,0</i> e con marcatore (<i>marker</i>) di riferimento <i>ref1</i></p>
-		<p class="cm2"><u>Significato dei parametri numerici</u></p>
+		<p class="cm2"><strong>\L{0,0,ref1}</strong> - inserisce un campo di riferimento incrociato avente i parametri <strong>0,0</strong> e marcatore di riferimento <strong>ref1</strong></p>
+		<p class="cm2">Il significato dei parametri numerici dell’espressione di sostituzione precedente è la seguente:</p>
 		<ul>
-			<li><i>Primo numero</i> (= tipo di riferimento incrociato):</li>
+			<li><i>Primo numero</i> (= tipo di riferimento incrociato)</li>
 				<ol start="0">
 					<li> - Numero di pagina (senza stile)</li>
 					<li> - Capitolo</li>
@@ -275,7 +277,7 @@
 					<li> - Numero (nessun contesto)</li>
 					<li> - Numero (contesto completo)</li>
 				</ol>
-			<li><i>Secondo numero</i> (= tipo di origine del campo di riferimento). L’origine può essere:</li>
+			<li><i>Secondo numero</i> (= tipologia di origine del campo di riferimento)</li>
 				<ol start="0">
 					<li> - Un marcatore di riferimento</li>
 					<li> - Un campo con sequenza numerica personalizzata</li>
@@ -285,41 +287,41 @@
 				</ol>
 		</ul>
 		<p class="cm2"><strong>\K{w, bookmark_name}</strong> - inserisce il segnalibro avente nome <strong>bookmark_name</strong>.</p>
-		<p class="cm4">Il primo parametro rappresenta la modalità dell’àncora</p>
+		<p class="cm4">In tape espressione il primo parametro rappresenta la modalità dell’àncora e assume i seguenti significati:</p>
 		<p class="cm4"><strong>w</strong> - segnalibro dell’intero blocco di testo selezionato</p>
 		<p class="cm4"><strong>b</strong> - segnalibro ancorato all’inizio del blocco di testo</p>
 		<p class="cm4"><strong>e</strong> - segnalibro ancorato alla fine del blocco di testo</p>
-		<p class="cm2"><strong>\K{}</strong>, <strong>\K</strong> - rimuovono il segnalibro se presente nel blocco di testo selezionato. Rimuovono solo il segnalibro; il blocco di testo resta!</p>
-		<p class="cm2"><strong>\K{w, new_name}\K</strong> - rinomina il segnalibro. Questo deve essere trovato utilizzando <strong>[::Bookmark::]</strong> o deve essere già presente</p>
-		<p class="cm2"><strong>\o</strong> - inserisce il contenuto di testo dell’oggetto trovato. Se l’espressione è stata trovata usando <strong>[::Comment::]</strong>, <strong>[::Footnote::]</strong>, <strong>[::Endnote::]</strong>, <strong>[::TextFrame::]</strong>, <strong>[::Picture::]</strong>, <strong>[::TextTable::]</strong> verrà inserito il testo all’interno dell’oggetto. Nel caso delle tabelle in queste vengono inseriti dei caratteri di tabulazione tra le colonne e dei segni di paragrafo tra le righe.</p>
-		<p class="cm2">Se l’espressione è stata ricercata usando <strong>[::Field::]</strong>, <strong>[::Reference::]</strong> o <strong>[::ReferenceMark::]</strong>, verrà inserito il testo o il campo visualizzato dell’àncora.</p>
+		<p class="cm2"><strong>\K{}</strong>, <strong>\K</strong> - rimuovono il segnalibro, se presente nel blocco di testo selezionato. Rimuovono solo il segnalibro; il blocco di testo resta!</p>
+		<p class="cm2"><strong>\K{w, new_name}\K</strong> - rinomina il segnalibro. Questo deve essere trovato utilizzando l’espressione <strong>[::Bookmark::]</strong> o deve essere già presente</p>
+		<p class="cm2"><strong>\o</strong> - inserisce il contenuto di testo dell’oggetto trovato. Se l’espressione è stata trovata usando <strong>[::Comment::]</strong>, <strong>[::Footnote::]</strong>, <strong>[::Endnote::]</strong>, <strong>[::TextFrame::]</strong>, <strong>[::Picture::]</strong>, <strong>[::TextTable::]</strong> verrà inserito il testo all’interno dell’oggetto. In particolare, nel caso delle tabelle, vengono inseriti dei caratteri di tabulazione tra le colonne e dei segni di paragrafo tra le righe</p>
+		<p class="cm2">Se l’espressione è stata trovata usando <strong>[::Field::]</strong>, <strong>[::Reference::]</strong> oppure <strong>[::ReferenceMark::]</strong>, verrà inserito il testo o il campo visualizzato dell’àncora.</p>
 		<p class="cm4"><dfn>Limitazioni:</dfn> La massima dimensione del testo derivante dalla conversione di una tabella è di 64 kB.</p>
 		<p class="cm2"><strong>\O</strong> - inserisce il nome dell’oggetto trovato</p>
-		<p class="cm4">Se l’espressione è stata cercata con:</p>
+		<p class="cm2">Se l’espressione è stata trovata con:</p>
 		<ul>
-			<li><strong>[::TextFrame::]</strong>, <strong>[::Picture::]</strong> o <strong>[::TextTable::]</strong> verrà inserito il nome dell’oggetto</li>
-			<li><strong>[::Comment::]</strong> o <strong>[::Field::]</strong> verrà inserito il tipo di campo di testo</li>
-			<li><strong>[::Reference::]</strong> o <strong>[::ReferenceMark::]</strong> verrà inserito il nome del marcatore (<i>marker</i>) del riferimento incrociato</li>
-			<li><strong>[::Footnote::]</strong> o <strong>[::Endnote::]</strong> verrà inserito il testo visualizzato dall’àncora</li>
+			<li><strong>[::TextFrame::]</strong>, <strong>[::Picture::]</strong> oppure <strong>[::TextTable::]</strong> verrà inserito il nome dell’oggetto</li>
+			<li><strong>[::Comment::]</strong> oppure <strong>[::Field::]</strong> verrà inserito il tipo di campo di testo</li>
+			<li><strong>[::Reference::]</strong> oppure <strong>[::ReferenceMark::]</strong> verrà inserito il nome del marcatore (<i>marker</i>) del riferimento incrociato</li>
+			<li><strong>[::Footnote::]</strong> oppure <strong>[::Endnote::]</strong> verrà inserito il testo visualizzato dall’àncora</li>
 		</ul>
-		<p class="cm2"><strong>\i</strong> - inserisce, il numero di occorrenze dell’oggetto trovato o il conteggio delle occorrenze del testo. Quest’ultima modalità funziona solo se si usa il pulsante <var>Sostituisci tutto</var></p>
-		<p class="cm4"><strong>\i{start,digit}</strong> - contatore formattato. Per esempio: <strong>\i{9,4}</strong> conta a partire da 9 con 4 cifre (009, 0010, 0011 ecc…)</p>
-		<p class="cm2"><strong>\I</strong> - inserisce il numero di pagina in cui è stata trovata l’espressione cercata.</p>
-		<p class="cm4">Se si usa la ridirezione dell’espressione di sostituzione su un altro file mediante il parametro (<strong>\R</strong>) (v. sotto), in tale file viene inserito il numero di pagina che contiene la posizione <i>iniziale</i> del testo trovato.</p>
+		<p class="cm2"><strong>\i</strong> - inserisce, il numero di occorrenze dell’oggetto trovato o il conteggio delle occorrenze del testo. Ovviamente funziona solamente utilizzando il pulsante <var>Sostituisci tutto</var></p>
+		<p class="cm2"><strong>\i{start,digit}</strong> - contatore formattato. Per esempio: <strong>\i{9,4}</strong> conta a partire da 9 con 4 cifre (009, 0010, 0011 ecc…)</p>
+		<p class="cm2"><strong>\I</strong> - inserisce il numero di pagina in cui è stata trovata l’espressione cercata</p>
+		<p class="cm4">Se si usa la ridirezione dell’espressione di sostituzione su un altro file mediante il parametro (<strong>\R</strong>) (v. sotto), in tale file viene inserito il numero di pagina che contiene la posizione <i>iniziale</i> del testo trovato</p>
 		<p class="cm4"><dfn>Limitazioni:</dfn> non funziona correttamente nelle note a piè di pagina, nelle intestazioni e nei piè di pagina.</p>
 		<p class="cm2"><strong>\v</strong> - inserisce il contenuto degli Appunti (<i>Clipboard</i>)</p>
 		<p class="cm2"><strong>\V</strong> - inserisce il contenuto degli Appunti (<i>Clipboard</i>) come testo semplice (non formattato)</p>
 		<p class="cm2"><strong>\f</strong> - conserva il formato</p>
-		<p class="cm4">Se nell’espressione di sostituzione si usano i parametri <strong>&amp;</strong> o <strong>\0</strong>, la sostituzione avviene mediante l’uso degli Appunti (<i>Clipboard</i>). Se il testo trovato contiene campi di testo, commenti, riferimenti incrociati ecc…, questi saranno conservati nel loro stato originario.</p>
+		<p class="cm4">Se nell’espressione di sostituzione si usano i parametri <strong>&amp;</strong> oppure <strong>\0</strong>, la sostituzione avviene mediante l’uso degli Appunti (<i>Clipboard</i>). Se il testo trovato contiene campi di testo, commenti, riferimenti incrociati ecc…, questi saranno conservati nel loro stato originario.</p>
 		<p class="cm2"><strong>\R</strong> - ridirige l’espressione di sostituzione su un altro file di testo.</p>
-		<p class="cm4">Questa opzione comporta l’inserimento dell’espressione di sostituzione nel file <i>new.odt</i> al posto della sostituzione del testo trovato nel file originario. Quest’ultimo rimane tal quale, senza alcuna modifica. Per assegnare il nome al nuovo file su cui viene ridiretta l’espressione di sostituzione, usare il parametro <strong>\R{filename}</strong>. Il nome del file deve avere un formato identico a quello del titolo della finestra di Writer e deve includere la stringa: “<i><b> - LibreOffice Writer</b></i>“.  Eventuali salvataggi successivi che utilizzino questa ridirezione vengono sempre accodati (non sostituiti) al file.</p>
+		<p class="cm4">Questa opzione comporta l’inserimento dell’espressione di sostituzione nel file <i>new.odt</i>invece di operare la sostituzione del testo trovato nel file originario. Quest’ultimo rimane tal quale, senza alcuna modifica. Per assegnare il nome al nuovo file su cui viene ridiretta l’espressione di sostituzione, bisogna usare il parametro <strong>\R{filename}</strong>. Il nome del file deve avere un formato identico a quello del titolo della finestra di Writer e deve includere la stringa: “<i><b> - LibreOffice Writer</b></i>“.  Eventuali salvataggi successivi che utilizzino questa ridirezione accodano sempre il nuovo contenuto e non sostituiscono il contenuto originale del file.</p>
 		<p class="cm4">Esempio: Se l’espressione cercata è <strong>[:::HyperLinkURL::]</strong> e l’espressione di sostituzione è <strong>Link \i, page \I: &amp; (URL: \u)\p\R</strong>, quando si fa clic sul pulsante <var>Sostituisci tutto</var> tutti i collegamenti ipertestuali trovati nel file originale verranno inseriti in un nuovo file in paragrafi separati aventi forma:</p>
 		<p class="cm4"><i>Link1, page 1: testo_del_link_ipertestuale (URL: URLaddress)</i></p>
 
-		<p class="cm2">Menu a discesa e pulsante “<b>Scegli proprietà</b>”</p>
-		<p class="cm2">Il pulsante <b>Scegli proprietà</b> consente di aggiornare l’elenco (di alcune) delle proprietà e dei valori dell’oggetto selezionato. Si può quindi scorrere questo elenco dal menu a discesa e scegliere una proprietà dall'elenco posto a fianco del pulsante.</p>
-		<p class="cm2"><strong>\A{proprietà=valore}</strong> - imposta il valore della proprietà specificata nell’espressione di sostituzione. Utilizza regole analoghe a quelle per il parametro <strong>\C{}</strong> (v. sopra).</p>
-		<p class="cm2">Per esempio, se la coppia proprietà-valore ricercata è:<br><strong>[:::CharBackColor=&amp;HFF0000::]</strong>, cioè un <b class="bred">colore di sfondo rosso</b> e si vuole rimpiazzarlo con un <b class="bBlue">carattere di sfondo blu</b>,<br>nella casella di Sostituzione bisogna introdurre:<br> <strong>\A{CharBackColor=&amp;H00FF00}</strong> (infatti la codifica esadecimale RGB del colore blu è <b class="bBlue">00FF00</b>).</p>
+		<p class="cm2"><u>Menu a discesa e pulsante “<b>Scegli proprietà</b>”</u></p>
+		<p class="cm2">Come detto sopra, il pulsante <b>Scegli proprietà</b> consente di aggiornare l’elenco (di alcune) delle proprietà e dei valori dell’oggetto selezionato. Scorrendo l’elenco presente nel menu a discesa che compare facendo clic sulla freccia verso il basso a destra del pulsante, si può scegliere una proprietà</p>
+		<p class="cm2"><strong>\A{proprietà=valore}</strong> - imposta il valore della proprietà specificata nell’espressione di sostituzione. Utilizza regole analoghe a quelle del parametro <strong>\C{}</strong> (v. sopra)</p>
+		<p class="cm2">Per esempio, se la coppia proprietà-valore ricercata è:<br><strong>[:::CharBackColor=&amp;HFF0000::]</strong>, cioè un <b class="bred">colore di sfondo rosso</b> e si vuole rimpiazzarlo con un <b class="bBlue">carattere di sfondo blu</b>,<br>nella casella di Sostituzione bisogna introdurre:<br> <strong>\A{CharBackColor=&amp;H00FF00}</strong>. Infatti la codifica esadecimale RGB del colore blu è <b class="bBlue">00FF00</b></p>
 
 		<h3><a id="davkyit"></a>Modalità Batch</h3>
  		<p>&nbsp;</p>
@@ -330,11 +332,11 @@
 		</p>
 		<p>&nbsp;</p>
 		<p>La modalità Batch che si attiva facendo clic sul pulsante <var>Batch &gt;&gt;</var> abilita il salvataggio e il caricamento di parametri di ricerca e di sostituzione predefiniti. È anche possibile salvare parecchie operazioni di ricerca e di sostituzione in sequenza in un unico file per caricare ed eseguire l’intero gruppo di operazioni in un tempo successivo.</p>
-		<p>Si possono impostare tutti i parametri che si desiderano e poi, mediante il pulsante <var>Salva&nbsp;il&nbsp;batch</var> è possibile salvare la procedura. Compare una finestra di dialogo che propone in modo predefinito il nome utilizzato dall’ultimo batch che, comunque, è sempre possibile modificare. Se a un batch si assegna un nome già esistente, si può scegliere se si vuole che il vecchio contenuto venga sovrascritto dal nuovo o se invece lo si vuole conservare aggiungendo il nuovo contenuto in coda al vecchio. Se si decide di sovrascrivere il vecchio file si deve premere il pulsante “<i>Sostituisci</i>”. Assieme alla procedura batch viene automaticamente salvato anche il comando “<i>ReplaceAll</i>” con cui la procedura batch verrà successivamente eseguita. È anche possibile modificare manualmente il contenuto delle regole del file batch usando il pulsante <var>Modifica</var>.</p>
+		<p>Si possono impostare tutti i parametri che si desiderano e poi, mediante il pulsante <var>Salva&nbsp;il&nbsp;batch</var>, è possibile salvare la procedura. Compare una finestra di dialogo che propone in modo predefinito il nome utilizzato dall’ultimo batch che, comunque, è sempre possibile modificare. Se a un batch si assegna un nome già esistente, si può scegliere se si vuole che il vecchio contenuto venga sovrascritto dal nuovo o se invece lo si vuole conservare aggiungendo il nuovo contenuto in coda al vecchio. Se si decide di sovrascrivere il vecchio file si deve premere il pulsante “<i>Sostituisci</i>”. Assieme alla procedura batch viene automaticamente salvato anche il comando “<i>ReplaceAll</i>” con cui la procedura batch verrà successivamente eseguita. È anche possibile modificare manualmente il contenuto delle regole del file batch usando il pulsante <var>Modifica</var>.</p>
 		<p>Facendo clic sul pulsante <var>Batch &gt;&gt;</var> compare la finestra di dialogo “<b>Gestione batch</b>” che consente la modifica o l’esecuzione di procedure batch. Per tornare alla finestra di dialogo <i>Ricerca e sostituzione</i> di AltSearch bisogna fare clic sul pulsante <var>&lt;&lt; Ricerca</var>.</p>
-		<p>Tutti i parametri delle procedure batch vengono salvati nel file di testo <code>AltSearchScript.txt</code> nella cartella dell'utente <code>…/config/</code> del <a href="https://wiki.documentfoundation.org/UserProfile">profilo LibreOffice </a>.<br>Il file può essere aperto e modificato usando il pulsante <var>Modifica</var> della finestra di dialogo <b>Gestione batch</b>. Per operare le modifiche al testo in Microsoft Windows&reg; viene richiamato in maniera predefinita il programma <b>Blocco Note</b> (<i>Notepad.exe</i>). È possibile scegliere qualsiasi altro editor modificando il file <code>AltSearchEditor.ini</code> presente nella stessa directory di <code>AltSearchScript.txt</code>. Dopo avere modificato manualmente e salvato il file di batch con Gestione batch, si può aggiornare l’elenco dei nomi dei file batch usando il pulsante <var>Aggiorna</var>.<br>La sintassi utilizzata nel file <code>AltSearchScript.txt</code> è descritta all’inizio di tale file che utilizza la codifica UTF-8.</p>
+		<p>Tutti i parametri delle procedure batch vengono salvati nel file di testo <code>AltSearchScript.txt</code> nella cartella <code>…/config/</code> del <a href="https://wiki.documentfoundation.org/UserProfile">profilo LibreOffice</a> dell’utente.<br>Il file può essere aperto e modificato usando il pulsante <var>Modifica</var> della finestra di dialogo <b>Gestione batch</b>. Per operare le modifiche al testo in Microsoft Windows&reg; viene richiamato in maniera predefinita il programma <b>Blocco Note</b> (<i>Notepad.exe</i>). È possibile scegliere qualsiasi altro editor modificando il file <code>AltSearchEditor.ini</code> presente nella stessa directory di <code>AltSearchScript.txt</code>. Dopo avere modificato manualmente e salvato il file di batch con Gestione batch, si può aggiornare l’elenco dei nomi dei file batch usando il pulsante <var>Aggiorna</var>.<br>La sintassi utilizzata nel file <code>AltSearchScript.txt</code> è descritta all’inizio di tale file e utilizza la codifica UTF-8.</p>
 		<p>Quando si clicca due volte su un elemento dell’elenco delle procedure batch o quando si clicca sul pulsante <var>Esegui</var>, la sequenza scelta viene caricata e vengono eseguite le relative operazioni di ricerca e sostituzione. Se si usano delle procedure batch su delle selezioni di testo è consigliabile lasciare 1-2 paragrafi vuoti all’inizio e alla fine della selezione.</p>
-		<p>Il pulsante <var>Trasferisci</var> viene usato per trasferire i parametri di ricerca e di sostituzione e le relative definizioni nella finestra di dialogo, senza che vengano eseguiti. Se però la procedura batch è costituita da una sequenza di numerose ricerche e sostituzioni, verrà trasferita solo l’ultima parte della sequenza.</p>
+		<p>Il pulsante <var>Trasferisci</var> viene usato per trasferire i parametri di ricerca e di sostituzione e le relative definizioni nella finestra di dialogo, senza che vengano eseguiti. Se però la procedura batch è costituita da una sequenza di numerose ricerche e sostituzioni, verrà trasferita solo l’<i>ultima parte</i> della sequenza.</p>
 
 		<h3>Scorciatoie da tastiera</h3>
 		<p>Facendo clic sul pulsante <var>Scorciatoie</var> presente nella finestra di <b>Gestione batch</b> si apre una finestra di dialogo che consente di assegnare delle scorciatoie da tastiera alle procedure batch esistenti.</p>
@@ -375,8 +377,8 @@
 		<p>La selezione della casella “<b>Disattiva info</b>” impedisce la visualizzazione dei messaggi che mostrano le modifiche eseguite per ogni file processato. In questo caso, al termine di tutta la procedura, verrà comunque mostrato un rapporto completo delle modifiche effettuate a carico di tutti i file.</p>
 
 		<h3><a id="omezeniit"></a>Limitazioni</h3>
-		<p>Gran parte delle limitazioni note è menzionata nella descrizione dei parametri individuali.</p>
-		<p>Applicabili generalmente:</p>
+		<p>Gran parte delle limitazioni note è menzionata nella descrizione dei singoli parametri.</p>
+		<p>Limitazioni generalmente applicabili:</p>
 		<ul>
 			<li>Se è attiva l’opzione “Solo nella selezione corrente” non è possibile fare ricerche di testo all’interno di cornici o di tabelle anche se poste all’interno di blocchi di testo selezionati. La ricerca all’interno dei blocchi è limitata solamente all’area del blocco selezionato e non è supportata la selezione multipla del blocco di testo selezionato.</li>
 			<li>La funzione “Trova tutto” non è in grado di selezionare il marcatore di paragrafo <strong>\p</strong> perché per la selezione viene usata la proprietà “Sfondo carattere (Evidenziato)” e non è possibile usarla per evidenziare un marcatore di paragrafo. Ne consegue anche che la funzione “Trova tutto” si limita a quei testi che <b>non usano l’evidenziazione</b>. Quando si usa l’opzione “Trova tutto”, se il documento contiene delle evidenziazioni, appare una finestra di avvertimento.</li>
