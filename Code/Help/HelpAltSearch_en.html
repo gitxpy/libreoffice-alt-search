@@ -95,7 +95,7 @@
 		<p>Furthermore, when subexpressions like <strong>(.*)any</strong> or <strong>(.+)any</strong> are searched for, the shortest occurrence is matched, where it would normally be the longest match. If it is necessary to preserve compatibility, you can delimit the whole search expression with an extra pair of parentheses: <strong>((Mi)?ster)</strong>. But this will, of course, lose you the chance to cite the subexpression in the replace expression as a reference, i.e. <strong>\#</strong> where # is a reference number (max. 9) of the subexpressions. Besides, it is not possible to use a reference on a subexpression (determined by parentheses <strong>()</strong>) both for the searched and the replaced expression at the same time. See also <a href="#enskupiny">subexpressions</a>.</p>
 		<p>Other special wildcard parameters:</p>
 		<p class="cm2"><strong>\l</strong> - represents any alphabetic character; same as <strong>[:alpha:]</strong>.</p>
-		<p class="cm2"><strong>\d</strong> - represents any decimal number; same as <strong>[0-9]</strong></p>		
+		<p class="cm2"><strong>\d</strong> - represents any decimal number; same as <strong>[0-9]</strong></p>
 		<p class="cm2"><strong>\p</strong> - represents the paragraph termination sign</p>
 		<p class="cm2"><strong>$</strong> - in contrast to the ICU standard, it also represents an empty paragraph. Together to <strong>$</strong> it is also possible to use wildcards such as <strong>+</strong>, <strong>*</strong> or <strong>{min,max}</strong>.</p>
 		<p class="cm2"><strong>\p{1,}</strong> - will find the next end of paragraph followed by an unlimited block of empty paragraphs. Same as <strong>\p*</strong>.</p>
@@ -230,7 +230,7 @@
 		<p class="cm4">Examples:</p>
 			<ul>
 				<li>The expression <strong>(\d{2,2})(\d{2,2})-(\d{1,2})-(\d{1,2})</strong> finds dates in the format <b>YYYY-MM-DD</b> like 2009-12-07. The expression <strong>\4.\3.\2</strong> replaces them with dates in the format <b>DD.MM.YY</b> like 07.12.09</li>
-				<li>The expression <strong>(\d{1,2})\. *(\d{1,2})\. *(\d{2,2})(\d{2,2})</strong> finds dates in the format <b>DD.MM.YYYY</b> like 07.12.2009. The expression <strong>\4-\2-\1</strong> replaces them with dates in the format <b>YY-MM-DD</b> like 09-12-07</li>			
+				<li>The expression <strong>(\d{1,2})\. *(\d{1,2})\. *(\d{2,2})(\d{2,2})</strong> finds dates in the format <b>DD.MM.YYYY</b> like 07.12.2009. The expression <strong>\4-\2-\1</strong> replaces them with dates in the format <b>YY-MM-DD</b> like 09-12-07</li>
 				<li>The expression <strong>(\d{1,2})\. *(\d{1,2})\. *(\d{1,4})</strong> finds dates in the format <b>DD.MM.YYYY</b> like 07.12.2009. The expression <strong>\3-\2-\1</strong> replaces them with dates in the format <b>YYYY-MM-DD</b> like 2009-12-07</li>
 			</ul>
 		<p class="cm2">If you need to switch off processing of subexpressions (e.g. to preserve compatibility with the regular expressions in standard ICU), you must put the whole search expression within an additional pair of parentheses. Then all other nesting levels of parentheses for replacement will be ignored.</p>
