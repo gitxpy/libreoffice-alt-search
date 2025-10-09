@@ -44,6 +44,7 @@ p.menu2 a:last-child {margin-inline-end: 0;}
 p.menu2 a, p.menu2 a:visited {color: rgb(85, 152, 126);}
 
 p.center {text-align:center;}
+p.h2_center {text-align:center; font-weight: bold;}
 
 details {color:grey; font-style: italic;}
 
