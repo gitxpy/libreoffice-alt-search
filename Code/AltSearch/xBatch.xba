@@ -193,10 +193,10 @@ Sub Bt_run(optional oEvt)
 
 		select case ucase(prCmd)
 		case ucase(CMD(1,0)),ucase(CMD(1,1))  &apos; Find
-			oDIAL.model.Cb_find.text = prVal
+			oDIAL.getControl(&quot;Cb_find&quot;).text = prVal
 
 		case ucase(CMD(2,0)),ucase(CMD(2,1)) &apos; Replace
-			oDIAL.model.Cb_repl.text = prVal
+			oDIAL.getControl(&quot;Cb_repl&quot;).text = prVal
 
 		case ucase(CMD(3,0)),ucase(CMD(3,1)) &apos; Parameters
 		&apos;cancel superfluous spaces and tabulators between commands
@@ -458,8 +458,8 @@ sub SaveBatch(no as byte)
 	if not ISbatchINIT then initCmd &apos; if module Batch still ins&apos;t initialized then load the commands
 
 zmenit:
-	pom = inputbox(oDIAL.getcontrol(&quot;Lb1&quot;).AccessibleContext.text &amp; &quot;   &quot; &amp; zkratitNa(oDIAL.model.Cb_find.text,58) &amp; chr(10) _
-	&amp; oDIAL.getcontrol(&quot;T_repl&quot;).AccessibleContext.text &amp; &quot;   &quot; &amp; zkratitNa(oDIAL.model.Cb_repl.text,58) &amp; chr(10) _
+	pom = inputbox(oDIAL.getcontrol(&quot;Lb1&quot;).AccessibleContext.text &amp; &quot;   &quot; &amp; zkratitNa(oDIAL.getControl(&quot;Cb_find&quot;).text,58) &amp; chr(10) _
+	&amp; oDIAL.getcontrol(&quot;T_repl&quot;).AccessibleContext.text &amp; &quot;   &quot; &amp; zkratitNa(oDIAL.getControl(&quot;Cb_repl&quot;).text,58) &amp; chr(10) _
 	&amp; oDIAL.getcontrol(&quot;Fr1&quot;).AccessibleContext.TitledBorderText &amp; zkratitNa(getOptionString,58) _
 	&amp; &quot;        &quot; &amp; mid(CMD(CMD_xCommand,LNG),2, len(CMD(CMD_xCommand,LNG))-2) &amp; &quot;:  &quot; &amp; CMD(16,LNG) , MSG(27), iniBatch())
 
@@ -470,13 +470,13 @@ zmenit:
 			goto zmenit
 
 		case &quot;Append&quot;  &apos; add to end of batch
-			saveOptionToFile(2, pom, oDIAL.model.Cb_find.text, oDIAL.model.Cb_repl.text, getOptionString, CMD(16,LNG))
+			saveOptionToFile(2, pom, oDIAL.getControl(&quot;Cb_find&quot;).text, oDIAL.getControl(&quot;Cb_repl&quot;).text, getOptionString, CMD(16,LNG))
 
 		case &quot;Replace&quot; &apos; rewrite existing batch
-			saveOptionToFile(1, pom, oDIAL.model.Cb_find.text, oDIAL.model.Cb_repl.text, getOptionString, CMD(16,LNG))
+			saveOptionToFile(1, pom, oDIAL.getControl(&quot;Cb_find&quot;).text, oDIAL.getControl(&quot;Cb_repl&quot;).text, getOptionString, CMD(16,LNG))
 		end select
 	else
-		saveOptionToFile(0, pom, oDIAL.model.Cb_find.text, oDIAL.model.Cb_repl.text, getOptionString, CMD(16,LNG))
+		saveOptionToFile(0, pom, oDIAL.getControl(&quot;Cb_find&quot;).text, oDIAL.getControl(&quot;Cb_repl&quot;).text, getOptionString, CMD(16,LNG))
 	end if
 end sub
 

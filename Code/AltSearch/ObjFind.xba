@@ -398,7 +398,7 @@ sub mySetDialFocus  &apos; set focus to dialog
 		&apos; but after next click are reseted the cursors = special service in BtFindNext
 		oDIAL.setVisible(false)
 		oDIAL.setVisible(true)
-		ALTsearchFINDLAST = oDIAL.model.Cb_find.text &apos; remember last search - flag for special service in BtFindNext
+		ALTsearchFINDLAST = oDIAL.getControl(&quot;Cb_find&quot;).text &apos; remember last search - flag for special service in BtFindNext
 
 	case else
 		&apos; in Win oDIAL.SetFocus() was functional to version 2.3.1 and the cursor weren&apos;t reseted...
