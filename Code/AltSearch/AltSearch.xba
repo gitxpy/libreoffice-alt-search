@@ -120,7 +120,7 @@ Sub _AltSearch(optional batchName)   &apos; run main dialog
 	HELPPATH = GetHelpDir(&quot;name.TomBil.addon.AltSearch.HelpPath&quot;)
 	USERPATH = GetUserPath
 
-	dim oModel as object, o as object, ix&amp;, iy&amp;, iw&amp;, ih&amp;, o0 as object, ix2&amp;
+	dim oModel as object, o as object, ix&amp;, iy&amp;, iw&amp;, ih&amp;, o0 as object
 	
 	oModel=createUNOservice(&quot;stardiv.Toolkit.UnoControlComboBoxModel&quot;)
 	o=createUNOservice(&quot;stardiv.Toolkit.UnoComboBoxControl&quot;)
