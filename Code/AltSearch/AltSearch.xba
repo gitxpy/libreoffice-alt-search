@@ -120,7 +120,8 @@ Sub _AltSearch(optional batchName)   &apos; run main dialog
 	HELPPATH = GetHelpDir(&quot;name.TomBil.addon.AltSearch.HelpPath&quot;)
 	USERPATH = GetUserPath
 
-	dim oModel as object, o as object
+	dim oModel as object, o as object, ix&amp;, iy&amp;, iw&amp;, ih&amp;, o0 as object, ix2&amp;
+	
 	oModel=createUNOservice(&quot;stardiv.Toolkit.UnoControlComboBoxModel&quot;)
 	o=createUNOservice(&quot;stardiv.Toolkit.UnoComboBoxControl&quot;)
 	o.setModel(oModel)
@@ -128,7 +129,14 @@ Sub _AltSearch(optional batchName)   &apos; run main dialog
 	o.DropDownLineCount=5
 	oDIAL.addControl(&quot;Cb_find&quot;, o)
 	o=oDIAL.getControl(&quot;Cb_find&quot;)
-	o.setPosSize(10, 55, 404, 29, 15)	
+	rem get coordinates from other elements in Dialog
+	o0=oDIAL.getControl(&quot;T_find&quot;) &apos;combobox Search for: Regular
+	ix=o0.PosSize.X &apos;X
+	ih=o0.PosSize.Height + 4 &apos;height
+	iy=o0.PosSize.Y + ih + 1 &apos;Y
+	o0=oDIAL.getControl(&quot;Fr2&quot;) &apos; &quot;groupbox&quot; Searching range and direction:
+	iw=o0.PosSize.X + o0.PosSize.Width - ix &apos;width
+	o.setPosSize(ix, iy, iw, ih, 15) &apos;set coordinates
 	
 	oModel=createUNOservice(&quot;stardiv.Toolkit.UnoControlComboBoxModel&quot;)
 	o=createUNOservice(&quot;stardiv.Toolkit.UnoComboBoxControl&quot;)
@@ -137,7 +145,11 @@ Sub _AltSearch(optional batchName)   &apos; run main dialog
 	o.DropDownLineCount=5
 	oDIAL.addControl(&quot;Cb_repl&quot;, o)
 	o=oDIAL.getControl(&quot;Cb_repl&quot;)
-	o.setPosSize(10, 166, 404, 29, 15)
+	rem get coordinates from other elements in Dialog
+	o0=oDIAL.getControl(&quot;T_repl&quot;) &apos;combobox T_repl
+	ih=o0.PosSize.Height + 4 &apos;height
+	iy=o0.PosSize.Y + ih + 1 &apos;Y
+	o.setPosSize(ix, iy, iw, ih, 15) &apos;set coordinates
 
 	if ALTsearchINI(0)  then &apos; if already run then load history
 		&apos;load ini and history of F&amp;R
