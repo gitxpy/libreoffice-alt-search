@@ -131,11 +131,11 @@ Sub _AltSearch(optional batchName)   &apos; run main dialog
 	o=oDIAL.getControl(&quot;Cb_find&quot;)
 	rem get coordinates from other elements in Dialog
 	o0=oDIAL.getControl(&quot;T_find&quot;) &apos;combobox Search for: Regular
-	ix=o0.PosSize.X &apos;X
-	ih=o0.PosSize.Height + 4 &apos;height
-	iy=o0.PosSize.Y + ih + 1 &apos;Y
-	o0=oDIAL.getControl(&quot;Fr2&quot;) &apos; &quot;groupbox&quot; Searching range and direction:
-	iw=o0.PosSize.X + o0.PosSize.Width - ix &apos;width
+		ix=o0.PosSize.X &apos;X
+		ih=o0.PosSize.Height + 4 &apos;height
+		iy=o0.PosSize.Y + ih + 1 &apos;Y
+	o0=oDIAL.getControl(&quot;Bt_count&quot;) &apos; button Count
+		iw=o0.PosSize.X + o0.PosSize.Width - ix &apos;width
 	o.setPosSize(ix, iy, iw, ih, 15) &apos;set coordinates
 	
 	oModel=createUNOservice(&quot;stardiv.Toolkit.UnoControlComboBoxModel&quot;)
@@ -147,8 +147,8 @@ Sub _AltSearch(optional batchName)   &apos; run main dialog
 	o=oDIAL.getControl(&quot;Cb_repl&quot;)
 	rem get coordinates from other elements in Dialog
 	o0=oDIAL.getControl(&quot;T_repl&quot;) &apos;combobox T_repl
-	ih=o0.PosSize.Height + 4 &apos;height
-	iy=o0.PosSize.Y + ih + 1 &apos;Y
+		ih=o0.PosSize.Height + 4 &apos;height
+		iy=o0.PosSize.Y + ih + 1 &apos;Y
 	o.setPosSize(ix, iy, iw, ih, 15) &apos;set coordinates
 
 	if ALTsearchINI(0)  then &apos; if already run then load history
