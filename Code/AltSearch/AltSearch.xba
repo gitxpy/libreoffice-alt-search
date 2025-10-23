@@ -87,8 +87,6 @@ public FOUNDbookmarkNO as long &apos; index of currently find or processed bookm
 
 global ALTsearchPARAMS as tVolby  &apos; variable for search options
 
-global sZERO$, sZEROamp$ &apos; fix of bug #74
-
 global ALTsearchOS$ &apos;current Operation System
 
 Sub _AltSearch(optional batchName)   &apos; run main dialog
@@ -99,10 +97,6 @@ Sub _AltSearch(optional batchName)   &apos; run main dialog
 	
 	dim oL, oKey, loc, tmp, vysl
 	
-	rem bug #74
-	sZERO=chr(&amp;h200D&amp;) &apos;ZeroWidthJoiner
-	sZEROamp = sZERO &amp; &quot;&amp;&quot; &apos;ZeroWidthJoiner&amp;
-	
     VERSION = fromTools.F_VERSION
 
 	ALTsearchDOC = ThisComponent
@@ -110,7 +104,7 @@ Sub _AltSearch(optional batchName)   &apos; run main dialog
 	ALTsearchDIALOG = LoadDialog_(&quot;AltSearch&quot;, &quot;D_alts&quot;)
 	oDIA_Choice = LoadDialog_(&quot;AltSearch&quot;, &quot;D_choice&quot;)  &apos; due to localization move to the initialization of main dialog
 	oDIALSH = LoadDialog_(&quot;AltSearch&quot;, &quot;D_keys&quot;) &apos; dialog for keyboard shortcuts
-	oDIAL = ALTsearchDIALOG &apos; not must to rewrite the oDIAL to AltSea...
+	oDIAL = ALTsearchDIALOG &apos; not must rewrite the oDIAL to AltSea...
 	oDMOF = LoadDialog_(&quot;AltSearch&quot;, &quot;D_morefiles&quot;)    &apos; dialog for batch on more files
 	ISbatchINIT = false
 	ALTsearchFINDLAST = &quot;&quot; &apos; last expression that was found with findNext
@@ -126,23 +120,54 @@ Sub _AltSearch(optional batchName)   &apos; run main dialog
 	HELPPATH = GetHelpDir(&quot;name.TomBil.addon.AltSearch.HelpPath&quot;)
 	USERPATH = GetUserPath
 
+	dim oModel as object, o as object, ix&amp;, iy&amp;, iw&amp;, ih&amp;, o0 as object
+	
+	oModel=createUNOservice(&quot;stardiv.Toolkit.UnoControlComboBoxModel&quot;)
+	o=createUNOservice(&quot;stardiv.Toolkit.UnoComboBoxControl&quot;)
+	o.setModel(oModel)
+	o.Model.DropDown=true
+	o.DropDownLineCount=5
+	oDIAL.addControl(&quot;Cb_find&quot;, o)
+	o=oDIAL.getControl(&quot;Cb_find&quot;)
+	rem get coordinates from other elements in Dialog
+	o0=oDIAL.getControl(&quot;T_find&quot;) &apos;combobox Search for: Regular
+	ix=o0.PosSize.X &apos;X
+	ih=o0.PosSize.Height + 4 &apos;height
+	iy=o0.PosSize.Y + ih + 1 &apos;Y
+	o0=oDIAL.getControl(&quot;Fr2&quot;) &apos; &quot;groupbox&quot; Searching range and direction:
+	iw=o0.PosSize.X + o0.PosSize.Width - ix &apos;width
+	o.setPosSize(ix, iy, iw, ih, 15) &apos;set coordinates
+	
+	oModel=createUNOservice(&quot;stardiv.Toolkit.UnoControlComboBoxModel&quot;)
+	o=createUNOservice(&quot;stardiv.Toolkit.UnoComboBoxControl&quot;)
+	o.setModel(oModel)
+	o.Model.DropDown=true
+	o.DropDownLineCount=5
+	oDIAL.addControl(&quot;Cb_repl&quot;, o)
+	o=oDIAL.getControl(&quot;Cb_repl&quot;)
+	rem get coordinates from other elements in Dialog
+	o0=oDIAL.getControl(&quot;T_repl&quot;) &apos;combobox T_repl
+	ih=o0.PosSize.Height + 4 &apos;height
+	iy=o0.PosSize.Y + ih + 1 &apos;Y
+	o.setPosSize(ix, iy, iw, ih, 15) &apos;set coordinates
+
 	if ALTsearchINI(0)  then &apos; if already run then load history
 		&apos;load ini and history of F&amp;R
 		if ubound(ALTsearchFIND())=-1 then
 			redim ALTsearchFIND(0)
 		end if
-		oDIAL.model.Cb_find.text = ALTsearchFIND(0)   &apos; found expression
+		oDIAL.getControl(&quot;Cb_find&quot;).text = ALTsearchFIND(0)   &apos; found expression
 		tmp = oDIAL.getControl(&quot;Cb_find&quot;)
 		tmp.removeItems(0,tmp.ItemCount)
-		tmp.addItems( addZero( ALTsearchFIND() ), 0) &apos; bug #74
+		tmp.addItems( ALTsearchFIND(), 0) &apos; bug #74
 
 		if ubound(ALTsearchREPL())=-1 then
 			redim ALTsearchREPL(0)
 		end if
-		oDIAL.model.Cb_repl.text = ALTsearchREPL(0)   &apos; replaced expression
+		oDIAL.getControl(&quot;Cb_repl&quot;).text = ALTsearchREPL(0)   &apos; replaced expression
 		tmp = oDIAL.getControl(&quot;Cb_repl&quot;)
 		tmp.removeItems(0,tmp.ItemCount)
-		tmp.addItems( addZero( ALTsearchREPL() ), 0) &apos; bug #74
+		tmp.addItems( ALTsearchREPL(), 0)
 
 		oDIAL.model.Ch_case.state = ALTsearchINI(3) &apos; case sensitive
 		oDIAL.model.Ch_word.state = ALTsearchINI(4) &apos; whole words
@@ -153,6 +178,7 @@ Sub _AltSearch(optional batchName)   &apos; run main dialog
 
 		&apos; set the position of dialog
 		oDIAL.setPosSize ALTsearchINI(1), ALTsearchINI(2), 0, 0, 3
+		
 	else
 		ALTsearchINI(0)  = true
 	end if
@@ -168,7 +194,7 @@ Sub _AltSearch(optional batchName)   &apos; run main dialog
 	end if
 
 	&apos; set selection in inputbox Find
-	setCursorSel(&quot;Cb_find&quot;,0,len(oDIAL.model.Cb_find.text))
+	setCursorSel(&quot;Cb_find&quot;, 0, len(oDIAL.getControl(&quot;Cb_find&quot;).text))
 
 	&apos; reaction on ICU in regular expressions (International Components for Unicode): \xhhhh =&gt; \uhhhh =&gt; accepts both ways
 	ICUcompatability = getICUcomp    &apos; test the version of OOo, LibreO and set odl or new evaluation of Regexp
@@ -242,13 +268,13 @@ sub addToHistory(hl as byte, na as byte) &apos; add F or R expression to history
 		&apos;add to history of Find
 		pridejDoSeznamuA(oDIAL.getcontrol(&quot;Cb_find&quot;), ALTsearchPARAMS.find, ALTSearchMaxHistory, 0)
 		&apos; save for next run
-		ALTsearchFIND = removeZero( oDIAL.getcontrol(&quot;Cb_find&quot;).getItems ) &apos;bug #74
+		ALTsearchFIND = oDIAL.getcontrol(&quot;Cb_find&quot;).getItems
 	end  if
 	if na = 1 then &apos;
 		&apos;add to history of Replace
 		pridejDoSeznamuA(oDIAL.getcontrol(&quot;Cb_repl&quot;), ALTsearchPARAMS.repl, ALTSearchMaxHistory, 0)
 		&apos; save for next run
-		ALTsearchREPL = removeZero( oDIAL.getcontrol(&quot;Cb_repl&quot;).getItems ) &apos;bug #74
+		ALTsearchREPL = oDIAL.getcontrol(&quot;Cb_repl&quot;).getItems
 	end  if
 end sub
 
@@ -1070,7 +1096,7 @@ sub BtFindNext
 	&apos; ALTsearchFINDLAST is set during 1st load of TMPPOLE() in procedure mySelDialFocus()
 	&apos; this all is needed because of non-functional oDIAL.setFocus() after hodong of window and showing the window of file in Linux OOo minimally to version 2.2.1
 	&apos; GetGuiType  &apos; 1=Win 2=Mac 3=UNIX 4=Linux
-	if ((GetGuiType=3)or(GetGuiType=4) )and(ubound(TMPPOLE())&gt;-1)and(FIRSTPASS)and(leftTo(ALTsearchFINDLAST,&quot;::]&quot;)=leftTo(oDIAL.model.Cb_find.text,&quot;::]&quot;)) then FIRSTPASS = false
+	if ((GetGuiType=3)or(GetGuiType=4) )and(ubound(TMPPOLE())&gt;-1)and(FIRSTPASS)and(leftTo(ALTsearchFINDLAST,&quot;::]&quot;)=leftTo(oDIAL.getControl(&quot;Cb_find&quot;).text,&quot;::]&quot;)) then FIRSTPASS = false
 	ALTsearchFINDLAST = &quot;&quot;
 
 	info = &quot;&quot;  &apos; information box under the Find
@@ -1144,7 +1170,7 @@ sub BtReplace
 
 	loadParams(false) &apos; save, actualization of search options
 	addToHistory(0,1) &apos; &apos;add to history the F&amp;R expressions
-	REPL() = getReplArray( removeZero(ALTsearchPARAMS.repl) ) &apos; load the array of replacements, bug #90
+	REPL() = getReplArray( ALTsearchPARAMS.repl ) &apos; load the array of replacements, bug #90
 
 	FO1S = &quot;&quot; :  FO2S = &quot;&quot; : FO3S = &quot;&quot;  &apos; reset of the big-blocks strings
 
@@ -1216,7 +1242,7 @@ sub BtReplaceAll
 		end if
 	end if
 
-	REPL() = getReplArray( removeZero(ALTsearchPARAMS.repl) ) &apos; load the array of replacements, bug #90
+	REPL() = getReplArray( ALTsearchPARAMS.repl ) &apos; load the array of replacements, bug #90
 	curinit = false  &apos; refresh the cursors after found with CursorInit(true)
 	HledamDisp(true) &apos; not accessible during counting
 	ERRPROP = 0 &apos; the counter of unsuccessful settings of properties
@@ -1858,7 +1884,7 @@ sub FindDo
 	dim info, curinit
 	dim max,  bin, i, j, oTmp, pom, hled, rest, mode
 	
-	ALTsearchPARAMS.find=removeZero( ALTsearchPARAMS.find ) &apos; bug #74
+	ALTsearchPARAMS.find=ALTsearchPARAMS.find
 	
 	if ERRcontrol then on error goto nejakaChyba
 	curinit = false &apos; refresh the cursors after found with CursorInit(true)
@@ -2523,8 +2549,8 @@ sub loadParams(fromINI as boolean)
 		if (oDIAL.model.Ch_csele.state = 1)and(oDIAL.model.Ch_csele.enabled) then ALTsearchPARAMS.csele = 1
 		if (oDIAL.model.Ch_zpet.state = 1)and(oDIAL.model.Ch_zpet.enabled) then ALTsearchPARAMS.zpet = 1
 
-		ALTsearchPARAMS.find = oDIAL.model.Cb_find.text
-		ALTsearchPARAMS.repl = oDIAL.model.Cb_repl.text
+		ALTsearchPARAMS.find = oDIAL.getControl(&quot;Cb_find&quot;).text
+		ALTsearchPARAMS.repl = oDIAL.getControl(&quot;Cb_repl&quot;).text
 	end if
 end sub
 
@@ -3474,14 +3500,14 @@ sub zmenaChstyle
 		ulozHistorii &apos; save the history of F&amp;R from records to global arrays
 		oDIAL.getcontrol(&quot;Cb_find&quot;).removeItems(0,oDIAL.getcontrol(&quot;Cb_find&quot;).itemCount)  &apos; delete previous
 		oDIAL.getcontrol(&quot;Cb_find&quot;).addItems(pom(),0)  &apos; add
-		oDIAL.model.Cb_find.text = pom(0)
+		oDIAL.getControl(&quot;Cb_find&quot;).text = pom(0)
 		pom() = GetStyles(&quot;ParagraphStyles&quot;,false) &apos; all paragraph styles
 		oDIAL.getcontrol(&quot;Cb_repl&quot;).removeItems(0,oDIAL.getcontrol(&quot;Cb_repl&quot;).itemCount)  &apos; delete previous
 		for i = 0 to ubound(pom())
 			pom(i) = &quot;\P{&quot; &amp; pom(i) &amp; &quot;}&quot;
 		next i
 		oDIAL.getcontrol(&quot;Cb_repl&quot;).addItems(pom(),0)  &apos; add
-		oDIAL.model.Cb_repl.text = pom(0)
+		oDIAL.getControl(&quot;Cb_repl&quot;).text = pom(0)
 	else &apos;enable all
 		oDIAL.model.Ch_case.enabled =  true
 		oDIAL.model.Ch_word.enabled =  true
@@ -3492,12 +3518,12 @@ sub zmenaChstyle
 		oDIAL.model.Cb_findAtr.enabled =  true
 		&apos; delete the list of style for find
 		oDIAL.getcontrol(&quot;Cb_find&quot;).removeItems(0,oDIAL.getcontrol(&quot;Cb_find&quot;).itemCount)  &apos; delete previous
-		oDIAL.getcontrol(&quot;Cb_find&quot;).addItems( addZero( ALTsearchFIND() ), 0)      &apos; load history &apos; bug #74
-		oDIAL.model.Cb_find.text = ALTsearchFIND(0)
+		oDIAL.getcontrol(&quot;Cb_find&quot;).addItems( ALTsearchFIND(), 0)
+		oDIAL.getControl(&quot;Cb_find&quot;).text = ALTsearchFIND(0)
 		&apos; delete the list of style for replace
 		oDIAL.getcontrol(&quot;Cb_repl&quot;).removeItems(0,oDIAL.getcontrol(&quot;Cb_repl&quot;).itemCount)  &apos; delete previous
-		oDIAL.getcontrol(&quot;Cb_repl&quot;).addItems( addZero (ALTsearchREPL() ), 0)      &apos; load history &apos; bug #74
-		oDIAL.model.Cb_repl.text = ALTsearchREPL(0)
+		oDIAL.getcontrol(&quot;Cb_repl&quot;).addItems( ALTsearchREPL(), 0)      &apos; load history
+		oDIAL.getControl(&quot;Cb_repl&quot;).text = ALTsearchREPL(0)
 	end if
 end sub
 
