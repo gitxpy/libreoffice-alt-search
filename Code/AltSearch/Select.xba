@@ -112,12 +112,12 @@ sub PosunZakrytyText  &apos; if the cursor is hidden under the window of dialog 
 		ALTsearchDOC.CurrentController.restoreViewData(join(data,&quot;;&quot;))  &apos; it is not functional oftenly although it has correct data
 	end if
 
-	&apos; check if the move was successful - restoreViewData refuese to funct =&gt; move the dialog
+	&apos; check if the move was successful - restoreViewData refuse to funct =&gt; move the dialog
 	newdata() = Split(ALTsearchDOC.CurrentController.getViewData(), &quot;;&quot;)
 	if (val(olddata(4)) = val(newdata(4))) then
-		if y &lt; 0.5 then &apos; move the dialog to right and down
+		if y &lt; 0.5 then &apos; move the dialog right and down
 			oDIAL.setPosSize clng(posCo.width - posDi.width + posCo.x - 20), clng(posCo.height - posDi.height + posCo.y) , 0, 0, 3
-		else  &apos; move the dialog to right and up
+		else  &apos; move the dialog right and up
 			oDIAL.setPosSize clng(posCo.width - posDi.width + posCo.x - 20), clng(30) , 0, 0, 3
 		end if
 
