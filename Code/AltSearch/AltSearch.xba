@@ -134,8 +134,8 @@ Sub _AltSearch(optional batchName)   &apos; run main dialog
 		ix=o0.PosSize.X &apos;X
 		ih=o0.PosSize.Height + 4 &apos;height
 		iy=o0.PosSize.Y + ih + 1 &apos;Y
-	o0=oDIAL.getControl(&quot;Bt_count&quot;) &apos; button Count
-		iw=o0.PosSize.X + o0.PosSize.Width - ix &apos;width
+	o0=oDIAL.getControl(&quot;Lb1&quot;) &apos;label Seach for: (1st text at top left corner)
+		iw=o0.PosSize.Width &apos;width
 	o.setPosSize(ix, iy, iw, ih, 15) &apos;set coordinates
 	
 	oModel=createUNOservice(&quot;stardiv.Toolkit.UnoControlComboBoxModel&quot;)

@@ -24,8 +24,8 @@
   </dlg:checkbox>
   <dlg:checkbox dlg:style-id="0" dlg:id="Ch_word" dlg:tab-index="7" dlg:left="8" dlg:top="119" dlg:width="93" dlg:height="8" dlg:page="1" dlg:value="Whole words only" dlg:checked="false"/>
   <dlg:checkbox dlg:style-id="0" dlg:id="Ch_reg" dlg:tab-index="8" dlg:left="8" dlg:top="143" dlg:width="93" dlg:height="8" dlg:page="1" dlg:value="Regular expressions" dlg:checked="false"/>
-  <dlg:checkbox dlg:style-id="0" dlg:id="Ch_csele" dlg:tab-index="9" dlg:left="108" dlg:top="95" dlg:width="93" dlg:height="8" dlg:page="1" dlg:value="Current selection only" dlg:checked="false"/>
-  <dlg:checkbox dlg:style-id="0" dlg:id="Ch_zpet" dlg:tab-index="10" dlg:left="108" dlg:top="107" dlg:width="93" dlg:height="8" dlg:page="1" dlg:value="Backwards" dlg:checked="false"/>
+  <dlg:checkbox dlg:style-id="0" dlg:id="Ch_csele" dlg:tab-index="9" dlg:left="110" dlg:top="95" dlg:width="93" dlg:height="8" dlg:page="1" dlg:value="Current selection only" dlg:checked="false"/>
+  <dlg:checkbox dlg:style-id="0" dlg:id="Ch_zpet" dlg:tab-index="10" dlg:left="110" dlg:top="107" dlg:width="93" dlg:height="8" dlg:page="1" dlg:value="Backwards" dlg:checked="false"/>
   <dlg:button dlg:style-id="1" dlg:id="Bt_repl" dlg:tab-index="3" dlg:left="184" dlg:top="50" dlg:width="49" dlg:height="15" dlg:page="1" dlg:value="Replace">
    <script:event script:event-name="on-performaction" script:macro-name="vnd.sun.star.script:AltSearch.AltSearch.BtReplace?language=Basic&amp;location=application" script:language="Script"/>
   </dlg:button>
@@ -44,16 +44,16 @@
   <dlg:menulist dlg:style-id="0" dlg:id="Cb_replExt" dlg:tab-index="5" dlg:left="52" dlg:top="57" dlg:width="9" dlg:height="10" dlg:page="1" dlg:tag="rext" dlg:spin="true" dlg:linecount="22">
    <script:event script:event-name="on-itemstatechange" script:macro-name="vnd.sun.star.script:AltSearch.Common.ZapisVolbu?language=Basic&amp;location=application" script:language="Script"/>
   </dlg:menulist>
-  <dlg:button dlg:style-id="0" dlg:id="Bt_count" dlg:tab-index="13" dlg:left="136" dlg:top="40" dlg:width="43" dlg:height="12" dlg:page="1" dlg:value="Count">
+  <dlg:button dlg:style-id="0" dlg:id="Bt_count" dlg:tab-index="13" dlg:left="134" dlg:top="40" dlg:width="43" dlg:height="12" dlg:page="1" dlg:value="Count">
    <script:event script:event-name="on-performaction" script:macro-name="vnd.sun.star.script:AltSearch.AltSearch.BtCount?language=Basic&amp;location=application" script:language="Script"/>
   </dlg:button>
   <dlg:button dlg:style-id="3" dlg:id="Bt_find" dlg:tab-index="12" dlg:left="184" dlg:top="12" dlg:width="49" dlg:height="15" dlg:page="1" dlg:default="true" dlg:value="Find">
    <script:event script:event-name="on-performaction" script:macro-name="vnd.sun.star.script:AltSearch.AltSearch.BtFindNext?language=Basic&amp;location=application" script:language="Script"/>
   </dlg:button>
-  <dlg:titledbox dlg:style-id="4" dlg:id="Fr2" dlg:tab-index="15" dlg:left="107" dlg:top="87" dlg:width="98" dlg:height="30" dlg:page="1">
+  <dlg:titledbox dlg:style-id="4" dlg:id="Fr2" dlg:tab-index="15" dlg:left="106" dlg:top="87" dlg:width="100" dlg:height="30" dlg:page="1">
    <dlg:title dlg:value="Searching range and direction:"/>
   </dlg:titledbox>
-  <dlg:titledbox dlg:style-id="4" dlg:id="Fr1" dlg:tab-index="14" dlg:left="6" dlg:top="87" dlg:width="98" dlg:height="66" dlg:page="1">
+  <dlg:titledbox dlg:style-id="4" dlg:id="Fr1" dlg:tab-index="14" dlg:left="4" dlg:top="87" dlg:width="99" dlg:height="66" dlg:page="1">
    <dlg:title dlg:value="Options: "/>
   </dlg:titledbox>
   <dlg:textfield dlg:id="TextField2" dlg:tab-index="16" dlg:left="73" dlg:top="15" dlg:width="2" dlg:height="0" dlg:page="1"/>
@@ -63,7 +63,7 @@
   <dlg:menulist dlg:style-id="0" dlg:id="Cb_findAtr" dlg:tab-index="19" dlg:left="169" dlg:top="12" dlg:width="9" dlg:height="10" dlg:page="1" dlg:tag="fatr" dlg:spin="true" dlg:linecount="22">
    <script:event script:event-name="on-itemstatechange" script:macro-name="vnd.sun.star.script:AltSearch.Common.ZapisVolbu?language=Basic&amp;location=application" script:language="Script"/>
   </dlg:menulist>
-  <dlg:text dlg:style-id="4" dlg:id="Lb1" dlg:tab-index="20" dlg:left="8" dlg:top="3" dlg:width="44" dlg:height="7" dlg:page="1" dlg:value="Search for:"/>
+  <dlg:text dlg:style-id="4" dlg:id="Lb1" dlg:tab-index="20" dlg:left="4" dlg:top="3" dlg:width="173" dlg:height="7" dlg:page="1" dlg:value="Search for:"/>
   <dlg:text dlg:style-id="5" dlg:id="Lb_info" dlg:tab-index="21" dlg:left="4" dlg:top="38" dlg:width="127" dlg:height="17" dlg:page="1" dlg:multiline="true"/>
   <dlg:button dlg:style-id="0" dlg:id="CB_help" dlg:tab-index="17" dlg:left="221" dlg:top="107" dlg:width="11" dlg:height="11" dlg:help-text="Open Help file" dlg:value="?">
    <script:event script:event-name="on-performaction" script:macro-name="vnd.sun.star.script:AltSearch.Local.Bt_Help?language=Basic&amp;location=application" script:language="Script"/>
