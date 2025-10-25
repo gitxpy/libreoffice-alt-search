@@ -55,6 +55,80 @@ Function ArrayOutOfString_(BigString, Separator as String, Optional MaxIndex as 
 End Function
 
 
+Sub Bt_assign(optional oEvt) &apos;for button Assign
+	dim radek, modif, keycod,pom,filtBasName
+	dim clear as boolean
+	&apos; if it is run by the button with tag &quot;clear&quot; the cancel assignment, else change
+	if not isMissing(oEvt) then
+		if oEvt.source.model.tag = &quot;clear&quot; then clear = true
+	end if
+
+	on error goto Errorhandler
+	&apos; check if selected shortcut is already assigned, if yes then warning
+	Change_key &apos; actualise the displayed shortcut
+	if oDialSh.model.Lb5.Label = &quot;&quot; then exit sub
+	&apos; fill the record of keyboard shortcut
+	modif = 0
+	if oDialsh.model.Ch_shift.state = 1 then modif = modif + 1
+	if oDialsh.model.Ch_ctrl.state = 1 then modif = modif + 2
+	if oDialsh.model.Ch_alt.state = 1 then modif = modif + 4
+	pom = oDialsh.getcontrol(&quot;Lb_char&quot;).SelectedItemPos
+	if pom&gt;0 then
+		keycod = val(leftTo(hotkey(pom),&quot; &quot;))
+	else
+		beep
+		exit sub
+	end if
+
+	&apos; system can be mess up without the modifiers - don&apos;t allow
+	if modif = 0 then : beep : exit sub : end if
+
+	Dim aKeyEvent As New com.sun.star.awt.KeyEvent
+	With aKeyEvent
+		.Modifiers = modif
+		.KeyCode = keycod
+	End With
+
+	&apos; filtr the basic name
+	filtBasName = LatinFilter(oDialSh.model.Cb_bas.text)
+	&apos; is shortcut already used?
+	if  oDialSh.model.Lb5.Label &lt;&gt; msg(42) then
+		&apos; build report
+		radek = msg(43) &amp; chr(10) &amp; oDialSh.model.Lb5.Label &amp; cr(2)
+		if clear or (trim(oDialSh.model.Cb_bas.text) = &quot;&quot;) then
+			&apos; report for delete
+			radek = radek + msg(45)
+		else
+			radek = radek + msg(44) &amp; chr(10) &amp; oDialSh.model.Cb_bas.text + &quot; ?&quot;
+		end if
+
+		if 6&lt;&gt;msgbox(radek, 4+32+128, msg(11)+VERSION) then exit sub  &apos;128= 1st button is ative 256-2nd
+		&apos; cancel primal assignment of keyboard shortcut
+		objWriterShortCutMgr.removeKeyEvent(aKeyEvent)
+
+	end if
+
+
+	if clear or (trim(oDialSh.model.Cb_bas.text) = &quot;&quot;) then goto preskoc &apos; delete the empty field delete,  jump over the assignment that means it wiil stay empty
+
+	&apos; new keyboard shortcut
+&apos; check if the name already exists in module
+	&apos; yes - rewrite one with current function, no - add to end
+	SetBatch_to_BasicSub(oDialSh.model.Cb_name.text, filtBasName)
+
+	radek = replace_(keyCommand,&quot;^^^&quot;,filtBasName)
+	objWriterShortCutMgr.setKeyEvent( aKeyEvent, radek)
+preskoc:
+	objWriterShortCutMgr.store
+	Change_key &apos; update value
+	refresch_Cb_bas() &apos; update list
+	exit sub
+
+Errorhandler:
+	hlaseni1(48, false, false, &quot;Bt_asiign error:    l. &quot; &amp; erl &amp; &quot;:  &quot; &amp; Error$) &apos;  styl: 16=stop 32=? 48=! 64=info; can be canceled; cancel the actions
+End Sub
+
+
 	&apos; delete auxiliary procedure from module Standard.AltSearchBatchs
 sub Bt_removeBasSubr
 	dim radek
@@ -64,22 +138,22 @@ sub Bt_removeBasSubr
 	&apos; for sure actualize the displayingof keyboard shortcut according to basName
 	&apos; not actualize additionally the array  Cb_name.text
 	Change_basname(false)
-	&apos; vymazat proceduru z modulu
+	&apos; delete procedure from module
 	SetBatch_to_BasicSub(chr(13), oDIALSH.model.Cb_bas.text)
-	&apos; zrušit klávesovou zkratku
+	&apos; cancel the keyboard shortcut
 	oDIALSH.model.Cb_name.text = &quot;&quot;
-	oDIALSH.model.Cb_bas.text = &quot;&quot; &apos; melo by se smazat automaticky eventem Cange_name, ale pro jistotu...
-	Bt_assign() &apos; s prazdnymi vstupním řetezci poli uvolni zkratku
-	&apos; načte - aktualizuje listbox procedur z modulu  BATCHlibrary.BatchModul  for the keybord shortcuts of batches
+	oDIALSH.model.Cb_bas.text = &quot;&quot; &apos; it should be deleted automatically by the event Cange_name, but for sure...
+	Bt_assign() &apos; it will loosen shortcut with empty inout strings
+	&apos; load - it actualizes the listhbox of procedures from module BATCHlibrary.BatchModul  for the keybord shortcuts of batches
 	refresch_Cb_bas()
 end sub
 
 
-	&apos; dialog prirazeni klavesove zkratky
+	&apos; dialog of assignment of keyboard shortcut
 sub Bt_shortcut
 	dim i, pom
 	dim aNames()as string
-	oDIALSH.setVisible(true)  &apos; zobrazit okno drív nez se začnou změny v polich - jinak není po kliknutí okno vidět
+	oDIALSH.setVisible(true)  &apos; show windor before the changes in arrays will start - else the window isn&apos;t visible after click
 	NOFILT = false
 
 	HOTKEY = array (&quot;0  &quot;,&quot;256 Num 0&quot;,&quot;257 Num 1&quot;,&quot;258 Num 2&quot;,&quot;259 Num 3&quot;,&quot;260 Num 4&quot;,&quot;261 Num 5&quot;,&quot;262 Num 6&quot;,&quot;263 Num 7&quot;,&quot;264 Num 8&quot;,&quot;265 Num 9&quot;, _
@@ -90,18 +164,18 @@ sub Bt_shortcut
 	&quot;1024 Down&quot;,&quot;1025 Up&quot;,&quot;1026 Left&quot;,&quot;1027 Right&quot;,&quot;1028 Home&quot;,&quot;1029 End&quot;,&quot;1030 PageUp&quot;,&quot;1031 PageDown&quot;, _
 	&quot;1280 Return&quot;,&quot;1281 Escape&quot;,&quot;1182 Tab&quot;,&quot;1283 BackSpace&quot;,&quot;1284 Space&quot;,&quot;1285 Insert&quot;,&quot;1286 Delete&quot;, _
 	&quot;1287 Add&quot;,&quot;1288 Subtract&quot;,&quot;1189 Multiply&quot;,&quot;1290 Divide&quot;,&quot;1291 Point&quot;,&quot;1292 Comma&quot;,&quot;1293 Less&quot;,&quot;1294 Greater&quot;,&quot;1295 Equal&quot;)
-	&apos; načíst HOTKEY do listboxu
-	oDIALSH.getcontrol(&quot;Lb_char&quot;).removeItems(0, oDIALSH.getcontrol(&quot;Lb_char&quot;).ItemCount )   &apos; smazat stare
+	&apos; load HOTKEY to listbox
+	oDIALSH.getcontrol(&quot;Lb_char&quot;).removeItems(0, oDIALSH.getcontrol(&quot;Lb_char&quot;).ItemCount )   &apos; delete old
 	for i = lbound(HOTKEY) to ubound(HOTKEY)
 		pom = HOTKEY(i)
 		oDIALSH.getcontrol(&quot;Lb_char&quot;).addItem(rightPast(pom,&quot; &quot;),i)
 	next
 
-	&apos; načíst pole s názvy
+	&apos; load array with names
 	aNames() = oDIAL.getControl(&quot;Lb_names&quot;).getItems()
-	oDIALSH.getcontrol(&quot;Cb_name&quot;).removeItems(0, oDIALSH.getcontrol(&quot;Cb_name&quot;).ItemCount )   &apos; smazat stare
+	oDIALSH.getcontrol(&quot;Cb_name&quot;).removeItems(0, oDIALSH.getcontrol(&quot;Cb_name&quot;).ItemCount )   &apos; delete old
 	oDIALSH.getcontrol(&quot;Cb_name&quot;).addItems(aNames(),0)
-	&apos; přidat na začátek funkce zobrazení dialogu a hledej další, předchozí
+	&apos; add to the start of function the display of dialog and find next, previous
 	oDIALSH.getcontrol(&quot;Cb_name&quot;).addItem(&quot;&quot;,0)
 	oDIALSH.getcontrol(&quot;Cb_name&quot;).addItem(&quot;Altsearch - dialog&quot;,1)
 	oDIALSH.getcontrol(&quot;Cb_name&quot;).addItem(&quot;Altsearch - Find next&quot;,2)
