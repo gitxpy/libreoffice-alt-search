@@ -125,8 +125,12 @@ Sub _AltSearch(optional batchName)   &apos; run main dialog
 	oModel=createUNOservice(&quot;stardiv.Toolkit.UnoControlComboBoxModel&quot;)
 	o=createUNOservice(&quot;stardiv.Toolkit.UnoComboBoxControl&quot;)
 	o.setModel(oModel)
-	o.Model.DropDown=true
-	o.DropDownLineCount=5
+	with o.Model
+		.DropDown=true
+		.FontName=&quot;Liberation Mono&quot;
+		.FontHeight=10
+	end with
+	o.DropDownLineCount=10
 	oDIAL.addControl(&quot;Cb_find&quot;, o)
 	o=oDIAL.getControl(&quot;Cb_find&quot;)
 	rem get coordinates from other elements in Dialog
@@ -141,8 +145,12 @@ Sub _AltSearch(optional batchName)   &apos; run main dialog
 	oModel=createUNOservice(&quot;stardiv.Toolkit.UnoControlComboBoxModel&quot;)
 	o=createUNOservice(&quot;stardiv.Toolkit.UnoComboBoxControl&quot;)
 	o.setModel(oModel)
-	o.Model.DropDown=true
-	o.DropDownLineCount=5
+	with o.Model
+		.DropDown=true
+		.FontName=&quot;Liberation Mono&quot;
+		.FontHeight=10
+	end with
+	o.DropDownLineCount=10
 	oDIAL.addControl(&quot;Cb_repl&quot;, o)
 	o=oDIAL.getControl(&quot;Cb_repl&quot;)
 	rem get coordinates from other elements in Dialog
