@@ -4,9 +4,10 @@
  <dlg:styles>
   <dlg:style dlg:style-id="0" dlg:font-name="Liberation Mono" dlg:font-stylename="Běžné" dlg:font-family="modern"/>
   <dlg:style dlg:style-id="1" dlg:font-name="Liberation Sans" dlg:font-stylename="Běžné" dlg:font-family="swiss"/>
-  <dlg:style dlg:style-id="2" dlg:text-color="0xfe3d86" dlg:font-name="Liberation Sans" dlg:font-height="8" dlg:font-stylename="Běžné" dlg:font-family="swiss" dlg:font-weight="100"/>
-  <dlg:style dlg:style-id="3" dlg:font-weight="150"/>
+  <dlg:style dlg:style-id="2" dlg:text-color="0xd22d69" dlg:font-name="Liberation Sans" dlg:font-height="9" dlg:font-stylename="Běžné" dlg:font-family="swiss" dlg:font-weight="150"/>
+  <dlg:style dlg:style-id="3" dlg:font-name="Liberation Sans" dlg:font-stylename="Běžné" dlg:font-family="swiss" dlg:font-weight="100"/>
   <dlg:style dlg:style-id="4" dlg:font-name="Liberation Sans" dlg:font-height="8" dlg:font-stylename="Běžné" dlg:font-family="swiss"/>
+  <dlg:style dlg:style-id="5" dlg:font-weight="150"/>
  </dlg:styles>
  <dlg:bulletinboard>
   <dlg:combobox dlg:style-id="0" dlg:id="Cb_name" dlg:tab-index="0" dlg:left="4" dlg:top="15" dlg:width="192" dlg:height="14" dlg:spin="true" dlg:linecount="20">
@@ -28,21 +29,21 @@
   <dlg:menulist dlg:style-id="0" dlg:id="Lb_char" dlg:tab-index="4" dlg:left="104" dlg:top="74" dlg:width="30" dlg:height="14" dlg:spin="true" dlg:linecount="20">
    <script:event script:event-name="on-itemstatechange" script:macro-name="vnd.sun.star.script:AltSearch.KeyAssign.Change_key?language=Basic&amp;location=application" script:language="Script"/>
   </dlg:menulist>
-  <dlg:text dlg:id="Lb1" dlg:tab-index="10" dlg:left="4" dlg:top="3" dlg:width="184" dlg:height="10" dlg:value="1) select function or AltSearch&apos;s batch name: "/>
-  <dlg:text dlg:id="Lb2" dlg:tab-index="11" dlg:left="4" dlg:top="35" dlg:width="195" dlg:height="10" dlg:value="2) if required, change name of auxiliary subroutine for OOo Basic:"/>
-  <dlg:text dlg:id="Lb4" dlg:tab-index="8" dlg:left="6" dlg:top="89" dlg:width="94" dlg:height="10" dlg:value="Used for function:"/>
+  <dlg:text dlg:style-id="1" dlg:id="Lb1" dlg:tab-index="10" dlg:left="4" dlg:top="3" dlg:width="184" dlg:height="10" dlg:value="1) select function or AltSearch&apos;s batch name: "/>
+  <dlg:text dlg:style-id="1" dlg:id="Lb2" dlg:tab-index="11" dlg:left="4" dlg:top="35" dlg:width="195" dlg:height="10" dlg:value="2) if required, change name of auxiliary subroutine for OOo Basic:"/>
+  <dlg:text dlg:style-id="1" dlg:id="Lb4" dlg:tab-index="8" dlg:left="6" dlg:top="89" dlg:width="94" dlg:height="10" dlg:value="Used for function:"/>
   <dlg:text dlg:style-id="2" dlg:id="Lb5" dlg:tab-index="6" dlg:left="6" dlg:top="101" dlg:width="188" dlg:height="26" dlg:multiline="true" dlg:tabstop="false"/>
   <dlg:button dlg:style-id="3" dlg:id="Bt_close" dlg:tab-index="12" dlg:left="147" dlg:top="132" dlg:width="46" dlg:height="14" dlg:value="Close" dlg:valign="center" dlg:button-type="cancel"/>
   <dlg:titledbox dlg:style-id="4" dlg:id="Lb3" dlg:tab-index="7" dlg:left="2" dlg:top="63" dlg:width="194" dlg:height="66">
    <dlg:title dlg:value="3) select and assign key shortcut "/>
   </dlg:titledbox>
-  <dlg:button dlg:id="Bt_assign" dlg:tab-index="5" dlg:left="153" dlg:top="74" dlg:width="40" dlg:height="14" dlg:help-text="Assign key shortcut to selected auxiliary subroutine and to batch&apos;s name" dlg:value="Assign" dlg:valign="center">
+  <dlg:button dlg:style-id="1" dlg:id="Bt_assign" dlg:tab-index="5" dlg:left="153" dlg:top="74" dlg:width="40" dlg:height="14" dlg:help-text="Assign key shortcut to selected auxiliary subroutine and to batch&apos;s name" dlg:value="Assign" dlg:valign="center">
    <script:event script:event-name="on-performaction" script:macro-name="vnd.sun.star.script:AltSearch.KeyAssign.Bt_assign?language=Basic&amp;location=application" script:language="Script"/>
   </dlg:button>
-  <dlg:button dlg:id="Bt_clear" dlg:tab-index="13" dlg:left="138" dlg:top="74" dlg:width="12" dlg:height="14" dlg:tag="clear" dlg:help-text="Release selected key shortcut" dlg:value=" × " dlg:valign="center">
+  <dlg:button dlg:style-id="1" dlg:id="Bt_clear" dlg:tab-index="13" dlg:left="138" dlg:top="74" dlg:width="12" dlg:height="14" dlg:tag="clear" dlg:help-text="Release selected key shortcut" dlg:value=" × " dlg:valign="center">
    <script:event script:event-name="on-performaction" script:macro-name="vnd.sun.star.script:AltSearch.KeyAssign.Bt_assign?language=Basic&amp;location=application" script:language="Script"/>
   </dlg:button>
-  <dlg:button dlg:style-id="3" dlg:id="Bt_basremove" dlg:tab-index="14" dlg:left="184" dlg:top="46" dlg:width="11" dlg:height="13" dlg:help-text="Remove auxiliary BASIC subroutine for batch shortcut" dlg:value=" × " dlg:valign="center">
+  <dlg:button dlg:style-id="5" dlg:id="Bt_basremove" dlg:tab-index="14" dlg:left="184" dlg:top="46" dlg:width="11" dlg:height="13" dlg:help-text="Remove auxiliary BASIC subroutine for batch shortcut" dlg:value=" × " dlg:valign="center">
    <script:event script:event-name="on-performaction" script:macro-name="vnd.sun.star.script:AltSearch.KeyAssign.Bt_removeBasSubr?language=Basic&amp;location=application" script:language="Script"/>
   </dlg:button>
  </dlg:bulletinboard>

@@ -8,7 +8,7 @@
   <dlg:style dlg:style-id="3" dlg:font-name="Liberation Sans" dlg:font-stylename="Běžné" dlg:font-family="swiss"/>
  </dlg:styles>
  <dlg:bulletinboard>
-  <dlg:textfield dlg:style-id="0" dlg:id="Tf_selBatch" dlg:tab-index="2" dlg:left="5" dlg:top="10" dlg:width="214" dlg:height="15" dlg:readonly="true"/>
+  <dlg:textfield dlg:style-id="0" dlg:id="Tf_selBatch" dlg:tab-index="2" dlg:left="5" dlg:top="10" dlg:width="214" dlg:height="15" dlg:valign="center" dlg:readonly="true"/>
   <dlg:button dlg:style-id="1" dlg:id="Bt_start" dlg:tab-index="4" dlg:left="163" dlg:top="135" dlg:width="54" dlg:height="15" dlg:value="Start" dlg:valign="center">
    <script:event script:event-name="on-performaction" script:macro-name="vnd.sun.star.script:AltSearch.xMoreFiles.Bt_startBatch?language=Basic&amp;location=application" script:language="Script"/>
   </dlg:button>
