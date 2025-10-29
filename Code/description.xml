@@ -13,7 +13,7 @@
   
   <identifier value="AltSearch-TomB.addon" />
   <display-name> <name>AltSearch</name> </display-name>
-  <version value="1.5.1.2"/>
+  <version value="1.5.2.0"/>
 
   <simple-license  accept-by="admin" default-license-id="ID0" suppress-on-update="true" >
     <license-text xlink:href="registration/license.txt" lang="en" license-id="ID0" />
