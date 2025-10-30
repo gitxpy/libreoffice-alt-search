@@ -69,7 +69,7 @@
    <script:event script:event-name="on-performaction" script:macro-name="vnd.sun.star.script:AltSearch.Local.Bt_Help?language=Basic&amp;location=application" script:language="Script"/>
    <script:event script:event-name="on-mouseup" script:macro-name="vnd.sun.star.script:AltSearch.Local.Bt_Help_mouse_release?language=Basic&amp;location=application" script:language="Script"/>
   </dlg:button>
-  <dlg:menulist dlg:style-id="3" dlg:id="Cb_replAtr" dlg:tab-index="22" dlg:left="158" dlg:top="57" dlg:width="9" dlg:height="10" dlg:page="1" dlg:tag="ratr" dlg:spin="true" dlg:linecount="22">
+  <dlg:menulist dlg:style-id="3" dlg:id="Cb_replAtr" dlg:tab-index="22" dlg:left="159" dlg:top="57" dlg:width="9" dlg:height="10" dlg:page="1" dlg:tag="ratr" dlg:spin="true" dlg:linecount="22">
    <script:event script:event-name="on-itemstatechange" script:macro-name="vnd.sun.star.script:AltSearch.Common.ZapisVolbu?language=Basic&amp;location=application" script:language="Script"/>
   </dlg:menulist>
   <dlg:button dlg:style-id="7" dlg:id="Cb_loadAtr" dlg:tab-index="23" dlg:left="75" dlg:top="56" dlg:width="82" dlg:height="11" dlg:page="1" dlg:help-text="Load list of properties of selected object" dlg:value="Pick properties" dlg:valign="center" dlg:grab-focus="false">
