@@ -30,6 +30,7 @@ else
     SubstVersion $1 $RootExt/description.xml
 
     cd $RootExt
+    rm ../$Ext.oxt
     echo "### Compiling " $Ext
     ${ZIP_CMD} ../$Ext.oxt .
     cd ..
