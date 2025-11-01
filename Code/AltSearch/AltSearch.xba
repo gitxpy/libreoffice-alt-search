@@ -125,30 +125,38 @@ Sub _AltSearch(optional batchName)   &apos; run main dialog
 	oModel=createUNOservice(&quot;stardiv.Toolkit.UnoControlComboBoxModel&quot;)
 	o=createUNOservice(&quot;stardiv.Toolkit.UnoComboBoxControl&quot;)
 	o.setModel(oModel)
-	o.Model.DropDown=true
-	o.DropDownLineCount=5
+	with o.Model
+		.DropDown=true
+		.FontName=&quot;Liberation Mono&quot;
+		.FontHeight=10
+	end with
+	o.DropDownLineCount=10
 	oDIAL.addControl(&quot;Cb_find&quot;, o)
 	o=oDIAL.getControl(&quot;Cb_find&quot;)
 	rem get coordinates from other elements in Dialog
 	o0=oDIAL.getControl(&quot;T_find&quot;) &apos;combobox Search for: Regular
-	ix=o0.PosSize.X &apos;X
-	ih=o0.PosSize.Height + 4 &apos;height
-	iy=o0.PosSize.Y + ih + 1 &apos;Y
-	o0=oDIAL.getControl(&quot;Fr2&quot;) &apos; &quot;groupbox&quot; Searching range and direction:
-	iw=o0.PosSize.X + o0.PosSize.Width - ix &apos;width
+		ix=o0.PosSize.X &apos;X
+		ih=o0.PosSize.Height + 4 &apos;height
+		iy=o0.PosSize.Y + ih + 1 &apos;Y
+	o0=oDIAL.getControl(&quot;Lb1&quot;) &apos;label Seach for: (1st text at top left corner)
+		iw=o0.PosSize.Width &apos;width
 	o.setPosSize(ix, iy, iw, ih, 15) &apos;set coordinates
 	
 	oModel=createUNOservice(&quot;stardiv.Toolkit.UnoControlComboBoxModel&quot;)
 	o=createUNOservice(&quot;stardiv.Toolkit.UnoComboBoxControl&quot;)
 	o.setModel(oModel)
-	o.Model.DropDown=true
-	o.DropDownLineCount=5
+	with o.Model
+		.DropDown=true
+		.FontName=&quot;Liberation Mono&quot;
+		.FontHeight=10
+	end with
+	o.DropDownLineCount=10
 	oDIAL.addControl(&quot;Cb_repl&quot;, o)
 	o=oDIAL.getControl(&quot;Cb_repl&quot;)
 	rem get coordinates from other elements in Dialog
 	o0=oDIAL.getControl(&quot;T_repl&quot;) &apos;combobox T_repl
-	ih=o0.PosSize.Height + 4 &apos;height
-	iy=o0.PosSize.Y + ih + 1 &apos;Y
+		ih=o0.PosSize.Height + 4 &apos;height
+		iy=o0.PosSize.Y + ih + 1 &apos;Y
 	o.setPosSize(ix, iy, iw, ih, 15) &apos;set coordinates
 
 	if ALTsearchINI(0)  then &apos; if already run then load history
