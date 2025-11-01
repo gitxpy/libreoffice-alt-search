@@ -167,7 +167,7 @@ Sub _AltSearch(optional batchName)   &apos; run main dialog
 		oDIAL.getControl(&quot;Cb_find&quot;).text = ALTsearchFIND(0)   &apos; found expression
 		tmp = oDIAL.getControl(&quot;Cb_find&quot;)
 		tmp.removeItems(0,tmp.ItemCount)
-		tmp.addItems( ALTsearchFIND(), 0) &apos; bug #74
+		tmp.addItems( ALTsearchFIND(), 0)
 
 		if ubound(ALTsearchREPL())=-1 then
 			redim ALTsearchREPL(0)
@@ -220,6 +220,8 @@ Sub _AltSearch(optional batchName)   &apos; run main dialog
 	&apos; modal dialog - [v.1.4.2] don&apos;t show if batch is running
 	if isMissing(batchName) then oDIAL.setVisible(true)
 
+	setCheckboxes &apos; bug 130
+
 	&apos; due to possibility to restore the focus of dialog -&gt; add the listener
 	oL = createUnoListener(&quot;AltSearchDlg_&quot;,&quot;com.sun.star.awt.XTopWindowListener&quot;)
 	oDIAL.addTopWindowListener(oL)
@@ -231,6 +233,7 @@ Sub _AltSearch(optional batchName)   &apos; run main dialog
 		Bt_run()
 		KonecTm &apos;ALTsearchDIALOG_end = true &apos; then end
 	end if
+	
 
 	while not ALTsearchDIALOG_end &apos; set before
 		wait 300
@@ -3279,6 +3282,26 @@ konec:
 end sub
 
 
+Sub setCheckboxes &apos;set the check of checkboxes bug 130
+	dim oMatch as object, oPreserve as object, oWhole as object, oPara as object, oRegex as object
+	oMatch=oDIAL.Model.Ch_case &apos; Match case
+	oPreserve=oDIAL.Model.Ch_preservecap &apos; Preserve capitalization
+	oWhole=oDIAL.Model.Ch_word &apos; Whole words only
+	oPara=oDIAL.Model.Ch_styl &apos; Paragraph styles 
+	oRegex=oDIAL.Model.Ch_reg &apos; Regular expressions
+	if oPara.State=1 then
+		oMatch.Enabled=false
+		oPreserve.Enabled=false
+		oWhole.Enabled=false
+		oRegex.State=1
+	else &apos;no Paragraph styles
+		oMatch.Enabled=iif(oPreserve.State=1, false, true)
+		oPreserve.Enabled=iif(oMatch.State=1, false, true)
+		oWhole.Enabled=true
+	end if
+End Sub
+
+
 sub setPropeties(oObj as object, prop as string)as boolean
 	dim nam$, pom, valu, s$
 	if ERRcontrol then on error goto konec
@@ -3491,47 +3514,59 @@ konec:
 end sub
 
 
-	&apos; set disable access at change for search of paragraph style
+	&apos; set disable access at change for checkbox Paragraph style
 sub zmenaChstyle
 	dim i
-	dim pom()
-	if oDIAL.model.Ch_styl.state = 1 then &apos; deactivate all instead of backwards and reg symbol
-		oDIAL.model.Ch_case.enabled =  false
-		oDIAL.model.Ch_word.enabled =  false
-		oDIAL.model.Ch_reg.state =  1
-		oDIAL.model.Ch_preservecap.enabled =  false
+	dim pom(), oFind as object, oRepl as object
+	oFind=oDIAL.getcontrol(&quot;Cb_find&quot;) &apos; combobox Find
+	oRepl=oDIAL.getcontrol(&quot;Cb_repl&quot;) &apos; combobox Replace
+
+	setCheckboxes &apos; bug 130
+	
+	if oDIAL.model.Ch_styl.state = 1 then &apos;checked Paragraph styles
+		rem deactivate remaining
 		oDIAL.model.Cb_findReg.enabled =  false
 		oDIAL.model.Cb_findExt.enabled =  false
 		oDIAL.model.Cb_findAtr.enabled =  false
+		
 		&apos; load to search the list of used styles
-		pom() = GetStyles(&quot;ParagraphStyles&quot;,true) &apos; used paragraph styles
+		pom() = GetStyles(&quot;ParagraphStyles&quot;, true) &apos; used paragraph styles
 		ulozHistorii &apos; save the history of F&amp;R from records to global arrays
-		oDIAL.getcontrol(&quot;Cb_find&quot;).removeItems(0,oDIAL.getcontrol(&quot;Cb_find&quot;).itemCount)  &apos; delete previous
-		oDIAL.getcontrol(&quot;Cb_find&quot;).addItems(pom(),0)  &apos; add
-		oDIAL.getControl(&quot;Cb_find&quot;).text = pom(0)
-		pom() = GetStyles(&quot;ParagraphStyles&quot;,false) &apos; all paragraph styles
-		oDIAL.getcontrol(&quot;Cb_repl&quot;).removeItems(0,oDIAL.getcontrol(&quot;Cb_repl&quot;).itemCount)  &apos; delete previous
+		oFind.removeItems(0, oFind.itemCount)  &apos; delete previous
+		oFind.addItems(pom(), 0)  &apos; add
+		oFind.Text = pom(0)
+		pom() = GetStyles(&quot;ParagraphStyles&quot;, false) &apos; all paragraph styles
+		oRepl.removeItems(0, oRepl.itemCount)  &apos; delete previous
 		for i = 0 to ubound(pom())
 			pom(i) = &quot;\P{&quot; &amp; pom(i) &amp; &quot;}&quot;
 		next i
-		oDIAL.getcontrol(&quot;Cb_repl&quot;).addItems(pom(),0)  &apos; add
-		oDIAL.getControl(&quot;Cb_repl&quot;).text = pom(0)
-	else &apos;enable all
-		oDIAL.model.Ch_case.enabled =  true
-		oDIAL.model.Ch_word.enabled =  true
-		&apos;     oDIAL.model.Ch_reg.enabled =  true
-		oDIAL.model.Ch_preservecap.enabled =  true
+		oRepl.addItems(pom(),0)  &apos; add
+		oRepl.text = pom(0)
+	else
+		rem enable remaining
 		oDIAL.model.Cb_findReg.enabled =  true
 		oDIAL.model.Cb_findExt.enabled =  true
 		oDIAL.model.Cb_findAtr.enabled =  true
+		
 		&apos; delete the list of style for find
-		oDIAL.getcontrol(&quot;Cb_find&quot;).removeItems(0,oDIAL.getcontrol(&quot;Cb_find&quot;).itemCount)  &apos; delete previous
-		oDIAL.getcontrol(&quot;Cb_find&quot;).addItems( ALTsearchFIND(), 0)
-		oDIAL.getControl(&quot;Cb_find&quot;).text = ALTsearchFIND(0)
+		oFind.removeItems(0, oFind.itemCount)  &apos; delete previous
+		oFind.addItems( ALTsearchFIND(), 0)
+		
+		if ubound(ALTsearchFIND)=-1 then &apos; bug 129
+			oFind.Text=&quot;&quot;
+		else
+			oFind.Text=ALTsearchFIND(0)
+		end if
+		
 		&apos; delete the list of style for replace
-		oDIAL.getcontrol(&quot;Cb_repl&quot;).removeItems(0,oDIAL.getcontrol(&quot;Cb_repl&quot;).itemCount)  &apos; delete previous
-		oDIAL.getcontrol(&quot;Cb_repl&quot;).addItems( ALTsearchREPL(), 0)      &apos; load history
-		oDIAL.getControl(&quot;Cb_repl&quot;).text = ALTsearchREPL(0)
+		oRepl.removeItems(0, oRepl.itemCount)  &apos; delete previous
+		oRepl.addItems( ALTsearchREPL(), 0)      &apos; load history
+		
+		if ubound(ALTsearchREPL)=-1 then &apos; bug 129
+			oRepl.Text=&quot;&quot;
+		else
+			oRepl.Text=ALTsearchREPL(0)
+		end if
 	end if
 end sub
 
@@ -3548,24 +3583,20 @@ sub zmenaHledani(oEvt)
 end sub
 
 
-	&apos; disable access for change Uppercases
-sub zmenaMachCase
-	if oDIAL.model.Ch_case.state = 1  then
-		oDIAL.model.Ch_preservecap.enabled =  false
-	else &apos;enable access
-		oDIAL.model.Ch_preservecap.enabled =  true
-	end if
+sub zmenaMachCase &apos; checkbox Match case
+	setCheckboxes &apos; bug 130
 end sub
 
 
-	&apos; disable access for change Preservation of uppercases
-sub zmenaPreserveCap
-	if oDIAL.model.Ch_preservecap.state = 1  then
-		oDIAL.model.Ch_case.enabled =  false
-	else &apos;enable access
-		oDIAL.model.Ch_case.enabled =  true
-	end if
+sub zmenaPreserveCap &apos; checkbox Preserve capitalization
+	setCheckboxes &apos; bug 130
 end sub
+
+
+Sub zmenaRegex &apos;checkbox Regular expressions bug 130
+	setCheckboxes
+End Sub
+
 
 
 Sub AltSearchDlg_disposing(oEv)
