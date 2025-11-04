@@ -45,27 +45,27 @@
 			<li>Counting of the number of occurrences of the found expression using the <var>Count</var> button</li>
 			<li>Search or replace strings can contain one or more paragraphs</li>
 			<li>Search or replace strings can contain hexadecimal or decimal characters</li>
-			<li>Searching for manual page and column breaks; adding or removing them</li>
+			<li>Searching for manual page and column breaks, and adding or removing them</li>
 			<li>Searching for a block of paragraphs delimited by two text marks</li>
 			<li>Once text string is found, the selection can be expanded or reduced by a specified number of characters</li>
 			<li>Multiple searches and replacements can be done in one step</li>
 			<li>Searching can be done in Comments, Text fields, Cross-references and Reference marks, either for their content, their name or target marker, and these can also be inserted</li>
 			<li>Tables, Pictures and Text frames can be searched according to their name; substituting them with any text, text content, object’s name or the clipboard contents</li>
-			<li>Searching and inserting of Footnotes and Endnotes. Text selection of all footnotes or endnotes at once and their assignment to any style</li>
+			<li>Searching and inserting of Footnotes and Endnotes. Selecting the text of all footnotes or endnotes at once and to assign them any style</li>
 			<li>Searching for text that is similar to, or has the same formatting as, the text at the cursor</li>
-			<li>Subexpressions within the search string can be replaced individually by placing them inside parentheses () and referring to them in the replacement strings as \1, \2...to \9, in order</li>
+			<li>Subexpressions within the search string can be replaced individually by placing them inside parentheses () and referring to them in the replacement strings as \1, \2...to \9 in order</li>
 			<li>The paragraph style, character style, list style, text properties and Hyperlink URL can be set for the search or replace text</li>
-			<li>Found text can be replaced with clipboard contents, a counter of the number of replacements or the page number where it is found</li>
+			<li>Found text can be replaced with clipboard contents, a counter of the number of replacements, or the page number where it is found</li>
 			<li>The results of replacement can be redirected to a text file</li>
-			<li><u>Batch mode</u>: search and replace parameters can be saved and loaded; several search and replace operations can be saved in a sequence and quickly executed later in one step. Execution of the batch on more open documents together</li>
+			<li><u>Batch mode</u>: search and replace parameters can be saved and loaded; several search and replace operations can be saved in a sequence and quickly executed later in one step. Execute the batch on more open documents together</li>
 			<li>Dialog box for quick assignment of keyboard shortcuts to batch operations that have been saved</li>
 			<li>Preserve capitalization - if the text found begins with a capital letter, the replacement text will also begin with a capital letter</li>
 			<li>Searching for character style, choosen from a dropdown menu</li>
 			<li>Searching list and paragraph styles through the list box “Properties”</li>
 			<li>Search and replace of Bookmarks</li>
 		</ul>
-			<h3 id="shortcuts">Tip to setup frequently used keyboard shortcuts:</h3>
-            <ol>
+			<h3 id="shortcuts">Tip to set up keyboard shortcuts for frequent use:</h3>
+            		<ol>
 				<li>Open the dialog <b>Tools &gt; Customize… &gt; Keyboard</b></li>
 				<li>In the <b>Category</b> field, navigate to <b>Application Macros &gt; My Macros &gt; AltSearch &gt; AltSearch</b></li>
 				<li>In the <b>Function</b> field, select and assign the following (suggested) shortcuts using the <b>Assign</b> button:</li>
@@ -75,7 +75,6 @@
 						<li><i>_FindBack</i>: Ctrl+Shift+L <b>&gt;</b> finds the occurrence of the searched string before the cursor, without opening the search dialog box</li>
 					</ul>
 			</ol>
-
 		<p>You can also assign shortcuts directly from the AltSearch dialog box - see <a href="#davkyen">Batch mode</a></p>
 		<hr>
 		<p class="center">
@@ -85,54 +84,52 @@
 		</p>
 		<p>&nbsp;</p>
 
-		<h2>The Listbox menus</h2>
-		<p class="h2_center">(above the search string input field)</p>
-		<p>They contain frequently used or complicated <i>regular expressions</i> or search parameters that can be automatically entered in the search field. After choosing an entry, the corresponding parameters are transferred to the input field (or to both the search and replace fields, if the second one is specified). These may be inserted in several ways: before or after the cursor or by replacing the text in the input box. The “<b>Regular expressions</b>” checkbox must be ticked at the same time, of course</p>
+		<h2>The Listbox menus (above the search string input field)</h2>
+		<p>They contain frequently used or complicated <i>regular expressions</i> or search parameters that can be used in the search field. After choosing an entry, the corresponding parameters are transferred to the input field (or to both the search and replace fields if the second one is specified). These may be inserted in several ways: before or after the cursor or replacing the text in the input box. At the same time, the “<b>Regular expressions</b>” checkbox must be ticked.</p>
 
 		<h3><a id="hledaten"></a>Searching</h3>
 		<h4>List box “<b>Regular</b>”</h4>
-		<p class="cm2">This box contains some helpful regular expressions. They are described in the <a href="https://help.libreoffice.org/latest/en-US/text/shared/01/02100001.html?&DbPAR=WRITER"><b>LibreOffice Help</b></a> searching for <b>List of Regular Expressions</b>.</p>
-		<p class="cm4" id="enskupiny0"><dfn>Limitation:</dfn> The syntax used for regular expressions is not fully equivalent to the Writer one. There are differences especially when using the wildcards <strong>*, +, ?</strong>, or <strong>{n,n}</strong> just after subexpressions delimited by parentheses <b>()</b>.</p>
-		<p>For example <strong>(Mi)?ster</strong> will not be found. However, when using <var>Count</var> the actual count will be returned.</p>
+		<p class="cm2">This box contains some helpful regular expressions. They are described in the <a href="https://help.libreoffice.org/latest/en-US/text/shared/01/02100001.html?&DbPAR=WRITER"><b>LibreOffice Help</b></a> searching for <b>List of Regular Expressions</b></p>
+		<p class="cm4" id="enskupiny0"><dfn>Limitation:</dfn> The syntax used for regular expressions is not fully equivalent to the one in Writer. There are differences especially when using the wildcards <strong>*, +, ?</strong> or <strong>{n,n}</strong> just after subexpressions delimited by parentheses <b>()</b>.</p>
+		<p>For example <strong>(Mi)?ster</strong> will not be found, however, when using <var>Count</var> the actual count will be returned.</p>
 		<p>Furthermore, when subexpressions like <strong>(.*)any</strong> or <strong>(.+)any</strong> are searched for, the shortest occurrence is matched, where it would normally be the longest match. If it is necessary to preserve compatibility, you can delimit the whole search expression with an extra pair of parentheses: <strong>((Mi)?ster)</strong>. But this will, of course, lose you the chance to cite the subexpression in the replace expression as a reference, i.e. <strong>\#</strong> where # is a reference number (max. 9) of the subexpressions. Besides, it is not possible to use a reference on a subexpression (determined by parentheses <strong>()</strong>) both for the searched and the replaced expression at the same time. See also <a href="#enskupiny">subexpressions</a>.</p>
 		<p>Other special wildcard parameters:</p>
-		<p class="cm2"><strong>\l</strong> - represents any alphabetic character; same as <strong>[:alpha:]</strong></p>
-		<p class="cm2"><strong>\d</strong> - represents any decimal number; same as <strong>[0-9]</strong></p>
-		<p class="cm2"><strong>\p</strong> - represents the paragraph termination sign</p>
-		<p class="cm2"><strong>$</strong> - in contrast to the ICU standard, it also represents an empty paragraph. Together to <strong>$</strong> it is also possible to use wildcards such as <strong>+</strong>, <strong>*</strong> or <strong>{min,max}</strong>.</p>
+		<p class="cm2"><strong>\l</strong> - represents any alphabetic character; same as <strong>[:alpha:]</strong>.</p>
+		<p class="cm2"><strong>\p</strong> - represents the paragraph termination sign,</p>
+		<p class="cm2">in contrast to the ICU standard, $ also represents an empty paragraph. It is possible to use wildcards such as <strong>+</strong>, <strong>*</strong>, or <strong>{min,max}</strong> with <strong>$</strong>.</p>
 		<p class="cm2"><strong>\p{1,}</strong> - will find the next end of paragraph followed by an unlimited block of empty paragraphs. Same as <strong>\p*</strong>.</p>
 		<p class="cm2"><strong>\p{2,4}</strong> - will find the next end of paragraph followed by at least one and at most three empty paragraphs, i.e. a total of 2-4 paragraphs one after each other.</p>
 		<p class="cm4"><dfn>Limitation:</dfn> Slow when used separately. Sometimes there are problems when searching backwards.</p>
-		<p class="cm2"><strong>\xhhhh</strong> - represents the hexadecimal code for a character, e.g. <strong>\x0A</strong> is the code for a line break</p>
+		<p class="cm2"><strong>\xhhhh</strong> - represents the hexadecimal code for a character, e.g. <strong>\x0A</strong> is the code for a line break.</p>
 		<p class="cm2"><strong>\#ddddd</strong> - represents the decimal code of a character</p>
 		<p class="cm4">If the next character is not a digit, it is not necessary to keep of all 5 positions of ddddd. Otherwise it is necessary to fill in zeros from the left.</p>
 		<p class="cm2"><strong>\c</strong> - represents a manual column break</p>
-		<p class="cm4"><dfn>Limitation:</dfn> Slow when used separately</p>
+		<p class="cm4"><dfn>Limitation:</dfn> Slow when used separately.</p>
 		<p class="cm2"><strong>\m</strong> - represents a manual page break</p>
-		<p class="cm4"><dfn>Limitation:</dfn> Slow when used separately. If subexpression <strong>()</strong> is used, the parameter <strong>\m</strong> must be at the start of the search string and it must not be alone: i.e. <strong>\m(…)</strong> is valid, but <strong>(…)\m</strong> is not.</p>
+		<p class="cm4"><dfn>Limitation:</dfn> Slow when used separately. If subexpression <strong>()</strong> is used, the parameter <strong>\m</strong> must be at the start of the search string, and it must not be alone: i.e. <strong>\m(…)</strong> is valid, but <strong>(…)\m</strong> is not.</p>
 		<p class="cm2"><strong>\s</strong> - represents any space: normal space, non-breaking space, tab character or manual line break. Same as <strong>[\xA0\x9\xA]</strong></p>
 		<p class="cm2"><strong>\S</strong> - represents a non-breaking space (<strong>\x00A0</strong> or <strong>\#160</strong>)</p>
 
 		<h4>List box “<b>Extended</b>”</h4>
 		<p class="cm2"><strong>[::BigBlock::]</strong> - searches for a block of paragraphs (of unlimited length) delimited by some known text:</p>
 		<p class="cm4"><strong>start[::BigBlock::]end</strong> – at first, <strong>start</strong> is searched for and when it is found, <strong>end</strong> is searched for. If both are found, the whole block between them is selected.</p>
-		<p class="cm4">In the replace string you can use the parameters <strong>\b</strong>, <strong>&amp;</strong> or <strong>\e</strong> for inserting the contents of <strong>start</strong>, <strong>found block of paragraphs</strong> or <strong>end</strong>, respectively.</p>
+		<p class="cm4">In the replace string you can use the parameters <strong>\b</strong>, <strong>&amp;</strong> or <strong>\e</strong> for inserting the contents of <strong>start</strong>, <strong>found block of paragraphs</strong>, or <strong>end</strong>, respectively.</p>
 		<p class="cm4"><dfn>Limitation:</dfn> In the initial and final strings you cannot use the <strong>||</strong> sign for multiple searching and replacing (see below)</p>
-		<p class="cm2"><strong>[::Grow n1,n2::]</strong> - the found block of text will be expanded by <strong>n1</strong> characters to the left and <strong>n2</strong> characters to the right</p>
-		<p class="cm4"><strong>[::Grow -1,-1::]text</strong> - if the word <strong>text</strong> exists in the text then it will be found, but only the string <strong>ex</strong> (i.e. characters in position 2 and 3) will be selected.</p>
-		<p class="cm4"><dfn>Limitation:</dfn> it is always necessary to use <strong>[::Grow…</strong> at the beginning of the search string and put the search expression after it. If <b>n1</b> or <b>n2</b> are negative values, then (depending on size and content of the search expression) the next search may cyclically find the same place.</p>
+		<p class="cm2"><strong>[::Grow n1,n2::]</strong> - the found block of text will be expanded by n1 characters to the left and n2 characters to the right</p>
+		<p class="cm4"><strong>[::Grow -1,-1::]text</strong> - if the word <strong>text</strong> exists in the text then it will be found, but only the string <strong>ex</strong> will be selected.</p>
+		<p class="cm4"><dfn>Limitation:</dfn> it is always necessary to use <strong>[::Grow…</strong> at the beginning of the search string and put the search expression after it. If n1 or n2 are negative values, then (depending on size and content of the search expression) the next search may cyclically find the same place.</p>
 		<p class="cm2"><strong>text1||text2||text3||…</strong> - multiple search and replace operations in one step</p>
 		<p class="cm4">Add the sign <strong>||</strong> to the end of the search and replace expressions to delimit partial searches and replacements.</p>
-		<p class="cm4">Search for: <strong>text1||text2||text3</strong><br>Replace: <strong>neco1||neco2||neco3</strong><p>
-		<p class="cm4">This will search for <strong>text1</strong> and it will be replaced by <strong>neco1</strong>, then the search continues for <strong>text2</strong> which will be replaced by <strong>neco2</strong>, etc.</p>
-		<p class="cm4"><dfn>Limitation:</dfn> you cannot use the parameter <strong>[::BigBlock::]</strong> with <strong>||</strong>, nor can you use <a href="#enskupiny">subexpressions</a></p>
+		<p class="cm4">Search for: <strong>text1||text2||text3</strong><br>Replace: <strong>neco1||neco2||neco3</strong>.<br>
+		This will search for <strong>text1</strong> and it will be replaced by <strong>neco1</strong>, then the search continues for <strong>text2</strong> which will be replaced by <strong>neco2</strong>, etc.</p>
+		<p class="cm4"><dfn>Limitation:</dfn> you cannot use the parameter <strong>[::BigBlock::]</strong> with <strong>||</strong>, nor can you use <a href="#enskupiny">subexpressions.</a></p>
 
 		<p class="cm2"><b>Searching for Objects</b></p>
-		<p class="cm2"><strong>[::Comment::]</strong> - searches comments according to their contents</p>
+		<p class="cm2"><strong>[::Comment::]</strong> - searches comments (yellow balloons) according to their contents</p>
 		<p class="cm4"><strong>[::Comment::]</strong> - will find the next comment</p>
 		<p class="cm4"><strong>[::Comment::]pozn.</strong> - will find any comment containing the substring <strong>pozn.</strong></p>
-		<p class="cm4"><dfn>Limitation:</dfn> you can only search for substrings in the comments - you cannot use full regular expressions</p>
-		<p class="cm2"><strong>[::Field::]</strong> - searches text fields according to their contents</p>
+		<p class="cm4"><dfn>Limitation:</dfn> you can only search for substrings in the comments - you cannot use full regular expressions.</p>
+		<p class="cm2"><strong>[::Field::]</strong> - searches text fields according to their contents.</p>
 		<p class="cm4"><strong>[::Field::]</strong> - will find any normal text fields</p>
 		<p class="cm4"><strong>[::Field::]obsah</strong> will find text fields in the document that display the text <strong>obsah</strong></p>
 		<p class="cm4"><dfn>Limitation:</dfn> the same as for <strong>[::Comment::]</strong>; see above. Besides, any special field (e.g. hidden) cannot be found.</p>
@@ -140,28 +137,28 @@
 		<p class="cm4"><strong>[::TextFrame::]</strong> - will find any text frame</p>
 		<p class="cm4"><strong>[::TextFrame::]rám1</strong> - will find text frames containing the substring <strong>rám1</strong> in their name</p>
 		<p class="cm4"><dfn>Limitations:</dfn></p>
-		<ul>
+            	<ol class="cm4">
 					<li>When using the <var>Find</var> button, you will find the next text frame only if the frame is selected or if the cursor is inside the frame. If the cursor is a long way away in the text, then the first text frame from the internal list of frames inside the document is found.<br>
         			<b>Warning</b>: The option “Current selection only” currently doesn’t work.</li>
 					<li>As a consequence of the previous point, the use of the <var>Replace</var> button is very limited.</li>
-					<li>The order of searching unfortunately matches (I hope only provisionally) the order in which the text frames have been inserted into the document and <b>not</b> the order within the page(s) of the document from the start to the end</li>
-	        		<li>You can search only for a substring in the name of the frame - you cannot use full regular expressions</li>
-	    </ul>
-		<p class="cm2"><var>Find all</var> and <var>Replace all</var> are fully functional, including when used with the option “Current selection only”</p>
+					<li>The order of searching unfortunately matches (I hope only provisionally) the order in which the text frames have been inserted into the document and <b>not</b> the order within the page(s) of the document from the start to the end.</li>
+	        		<li>You can search only for a substring in the name of the frame - you cannot use full regular expressions.</li>
+	            </ol>
+		<p class="cm2"><var>Find all</var> and <var>Replace all</var> are fully functional, but there can be some problems with the option <q><a href="https://github.com/gitxpy/libreoffice-alt-search/issues/134" target="_blank">&#x26A0; Current selection only</a></q> sometimes!</p>
 		<p class="cm2"><strong>[::Picture::]</strong> - searches pictures according to their name</p>
 		<p class="cm4"><strong>[::Picture::]</strong> - will find any picture</p>
 		<p class="cm4"><strong>[::Picture::]obr1</strong> - will find pictures containing the substring <strong>obr1</strong> in their name</p>
-		<p class="cm4"><strong>[::Picture::]\text</strong> - will find substring <strong>text</strong> inside pictures <b>Title</b> text</p>
-		<p class="cm4"><strong>[::Picture::]\</strong> - will find all pictures with empty <b>Title</b> text.</p>
-		<p class="cm4"><dfn>Limitation:</dfn> the same as for <strong>[::TextFrame::]</strong>; see above</p>
+		<p class="cm4"><strong>[::Picture::]\text -</strong> will find substring <strong>text</strong> inside pictures <b>Title</b> text.</p>
+		<p class="cm4"><strong>[::Picture::]\ -</strong> will find all pictures with empty <b>Title</b> text.</p>
+		<p class="cm4"><dfn>Limitation:</dfn> the same as for <strong>[::TextFrame::]</strong>; see above.</p>
 		<p class="cm2"><strong>[::TextTable::]</strong> - searching tables according to their name</p>
 		<p class="cm4"><strong>[::TextTable::]</strong> - will find any table</p>
 		<p class="cm4"><strong>[::TextTable::]tab1</strong> - will find any table containing substring <strong>tab1</strong> in its name</p>
-		<p class="cm4"><dfn>Limitation:</dfn> the same as for <strong>[::TextFrame::]</strong>; see above</p>
+		<p class="cm4"><dfn>Limitation:</dfn> the same as for <strong>[::TextFrame::]</strong>; see above.</p>
 		<p class="cm2"><strong>[::Footnote::]</strong> - searches footnotes (FN)</p>
 		<p class="cm4"><strong>[::Footnote::]</strong> will find the anchor of any FN</p>
 		<p class="cm4"><strong>[::Footnote::]5</strong> will find the anchor of a FN whose anchor contains the substring <strong>5</strong></p>
-		<p class="cm4"><strong>[::Footnote::]\text</strong> will find the anchor of FN whose text contains the substring <strong>text</strong>. If the button <var>Find all</var> is used, the text of all FNs that contain the substring <strong>text</strong> will be selected</p>
+		<p class="cm4"><strong>[::Footnote::]\text</strong> will find the anchor of FN whose text contains the substring <strong>text</strong>. If the button <var>Find all</var> is used, the text of all FNs that contain the substring <strong>text</strong> will be selected.</p>
 		<p class="cm4">Using <strong>[::Footnote::]\</strong> with the button <var>Find all</var>, the text of all FNs will be selected (handy for assigning a paragraph style to all FNs at once)</p>
 		<p class="cm2"><strong>[::Endnote::]</strong> - searches endnotes</p>
 		<p class="cm4">Use of parameters and limitations are the same as for <strong>[::Footnote::]</strong>; see above.</p>
@@ -170,74 +167,69 @@
 		<p class="cm4"><strong>[::ReferenceMark::]text</strong> will find any text set as a reference marker that contains substring <strong>text</strong></p>
 		<p class="cm4"><strong>[::ReferenceMark::]\ref1</strong> will find any text set as a reference marker whose name contains the substring <strong>ref1</strong></p>
 		<p class="cm4"><strong>[::ReferenceMark::]\\</strong> will find any text set as a reference marker whose text is empty</p>
-		<p class="cm2"><strong>[::Reference::]</strong> - searches for text fields ‛cross-reference’ by their markers</p>
+		<p class="cm2"><strong>[::Reference::]</strong> - searches for text fields (cross-reference) by their markers</p>
 		<p class="cm4"><strong>[::Reference::]</strong> will find all text fields of the cross-reference type</p>
 		<p class="cm4"><strong>[::Reference::]above</strong> will find cross-references that contain the substring <strong>above</strong></p>
 		<p class="cm4"><strong>[::Reference::]\ref1</strong> will find cross-references whose name contain the substring <strong>ref1</strong></p>
 		<p class="cm4"><strong>[::Reference::]\\</strong> will find cross-references whose text is empty</p>
-		<p class="cm4">If <strong>Reference</strong> is chosen from the list box “<b>Extended</b>” and at the same time the cursor is positioned in a text that is a Reference mark, then the corresponding source name will be automatically added to the “<b>Search for</b>” input box and it is possible to search for it immediately</p>
+		<p class="cm4">If <strong>Reference</strong> is chosen from the list box “<b>Extended</b>” and at the same time the cursor is positioned in a text that is a Reference mark, then the corresponding source name will be automatically added to the “<b>Search for</b>” input box and it is possible to search for it immediately.</p>
 		<p class="cm2"><strong>[::Bookmark::]</strong> - searches for Bookmarks</p>
 		<p class="cm4"><strong>[::Bookmark::]</strong> will find place in the text or a block of text marked as bookmark</p>
-		<p class="cm4"><strong>[::Bookmark::]text</strong> will find <strong>text</strong> if it is inside a text block which is marked as bookmark</p>
+		<p class="cm4"><strong>[::Bookmark::]text</strong> will find <strong>text</strong> if it is inside a text block who is marked as bookmark</p>
 		<p class="cm4"><strong>[::Bookmark::]\RefHeading</strong> will find a place in the text or a block of text marked as bookmark only when the name of the bookmark contains substring RefHeading (searches substring in names of bookmarks)</p>
 
 		<h4>List box “<b>Properties</b>”</h4>
 
-		<p class="cm2">This enables searching according to the properties (attributes) of strings and their values.<br>The search entry must begin with the string <strong>[:::</strong>, followed by the <strong>name</strong> of the property. If there is more than one property, names can be separated using <strong>|</strong>, i.e. the sign of <i>piping</i> and must end with the characters <strong>::]</strong>. After that, you can optionally set some specific string to be searched for. On the contrary, if you need to search for the <b>value</b> of the property, then you have to use this kind of syntax: <strong>name=value</strong>.</p>
+		<p class="cm2">This enables searching according to the properties (attributes) of strings and their values.<br>The search entry must begin with the string <strong>[:::</strong>, followed by the <strong>name</strong> of the property. If there is more than one property, names can be separated using <strong>|</strong>, ie the sign of <i>piping</i> and must end with the characters <strong>::]</strong>. After that, you can optionally set some specific string to be searched for. Then you can set the optional text to be searched for. On the contrary, if you need to search for the <b>value</b> of the property, then you have to use this kind of syntax: <strong>name=value</strong>.</p>
 		<p class="cm2">The list of text attributes and their values, which can be used to search for in the current selection, can be loaded by using the <var>Properties</var> button: data are shown in the dropdown menu which appears below this button.<br>You can search for many attributes of characters (font type, size, background color, character/paragraph styles etc…)</p>
 		<p>Below you can find a list of these attributes/properties:</p>
-		<p class="cm2"><strong>[:::CharFontName=Courier::]</strong> - search for characters using font type <strong>Courier</strong> in the selected block of text</p>
-		<p class="cm2"><strong>[:::CharFontHeight=24::]</strong> - search for characters with a <strong>24 pt</strong> size in the selected block of text</p>
-		<p class="cm2"><strong>[:::CharBackColor=&amp;HFE1410::]</strong> - search for characters with a background color which is something like <b class="bRed">red</b> and whose <b>RGB</b> <b><i>hex code</i></b> is exactly <strong>FE1410</strong> in the selected block of text. The same color has an <b>RGB (254,20,16)</b> <b><i>decimal code</i></b>. This is also the same to say that its identification number is the result of the following mathematical operation:</p>
-		<p class="center">(256*256*254) + (256*20) + 16 = <b>16651280</b></p>
-		<p class="cm2">So you can find the background color also by using the expression:</p>
+		<p class="cm2"><strong>[:::CharFontName=Courier::]</strong> - search for characters using font type <strong>Courier</strong> in the selected block of text.</p>
+		<p class="cm2"><strong>[:::CharFontHeight=24::]</strong> - search for characters with a <strong>24 pt</strong> size in the selected block of text.</p>
+		<p class="cm2"><strong>[:::CharBackColor=&amp;HFE1410::]</strong> - search for characters with a background color which is something like <b class="bRed">red</b> and whose <b>RGB</b> <b><i>hex code</i></b> is exactly <strong>FE1410</strong> in the selected block of text.</p>
+		<p class="cm2">The same color has an <b>RGB (254,20,16)</b> <b><i>decimal code</i></b>. This is also the same to say that its identification number is the result of the following mathematical operation:<br>
+		(256*256*254) + (256*20) + 16 = <b>16651280</b><br>
+		So you can find the background color also by using the expression:</p>
 		<p class="cm2"><strong>[:::CharBackColor=NNNNNNNN::]</strong> where <strong>NNNNNNNN</strong> should be substituted by <b>16651280</b> in the previous example.</p>
-		<p class="cm2"><strong>[:::CharStyleName::]</strong> - searches for character style</p>
-		<p class="cm4"><strong>[:::CharStyleName=::]</strong> will find part of the text with character style different from the <strong>Default</strong> style</p>
-		<p class="cm4"><strong>[:::CharStyleName=Example::]</strong> will find part of the text with character style <strong>Example</strong></p>
-		<p class="cm4"><strong>[:::CharStyleName=Example::] something</strong> will find text <strong>something</strong> if it is formatted through character style <strong>Example</strong></p>
-		<p class="cm4"><dfn>Limitation:</dfn> It works just ahead - <b>Backward</b> switch does not work (message: not found). Not find some parts of the text with zero length, for example an empty paragraph. It cannot simultaneously combine with other text properties</p>
 		<p class="cm2"><strong>[:::ParaStyleName::]</strong> - searches for paragraph style</p>
 		<p class="cm4"><strong>[:::ParaStyleName=::]</strong> will find all whole paragraphs with paragraph style different from the <strong>Default</strong> style</p>
 		<p class="cm4"><strong>[:::ParaStyleName=Example::]</strong> will find whole paragraph with paragraph style <strong>Example</strong></p>
 		<p class="cm4"><strong>[:::ParaStyleName=Example::] something</strong> will find text <strong>something</strong> if it is formatted through paragraph style <strong>Example</strong></p>
 		<p class="cm4"><dfn>Limitation:</dfn> It doesn’t find some parts of the text with <b>zero length</b>, for example an empty paragraph. Besides, it can not simultaneously combine with other text properties.</p>
-		<p class="cm2"><strong>[:::NumberingStyleName::]</strong> - searches for a numbered or unnumbered list style - similar use to searches for paragraph style, see above.</p>
+		<p class="cm2"><strong>[:::CharStyleName::]</strong> - searches for character style</p>
+		<p class="cm4"><strong>[:::CharStyleName=::]</strong> will find part of the text with character style different from the <strong>Default</strong> style</p>
+		<p class="cm4"><strong>[:::CharStyleName=Example::]</strong> will find part of the text with character style <strong>Example</strong></p>
+		<p class="cm4"><strong>[:::CharStyleName=Example::] something</strong> will find text <strong>something</strong> if it is formatted through character style <strong>Example</strong></p>
+		<p class="cm4"><dfn>Limitation:</dfn> It works just ahead - <b>Backward</b> switch does not work (message: not found).<br>Not find some parts of the text with zero length, for example, an empty paragraph.<br>It cannot simultaneously combine with other text properties.</p>
+		<p class="cm2"><strong>[:::NumberingStyleName::]</strong> - searches for list style - similar use to searches for paragraph style, see above.</p>
 		<p class="cm2"><strong>[:::HyperLinkURL::]</strong> - searches for text with the attribute <strong>HyperLinkURL</strong></p>
 		<p class="cm4"><strong>[:::HyperLinkURL::]</strong> will find all hyperlinks</p>
-		<p class="cm4"><strong>[:::HyperLinkURL::]link</strong> will find the part of the hyperlink containing the text <strong>link</strong></p>
-		<p class="cm4"><strong>[:::HyperLinkURL=file:///c:/pokus.odt::]</strong> will find a hyperlink in which the URL is the substring <strong>file:///c:/pokus.odt</strong></p>
+		<p class="cm4"><strong>[:::HyperLinkURL::]link</strong> will find the part of the hyperlink containing the text <strong>link</strong>.</p>
+		<p class="cm4"><strong>[:::HyperLinkURL=file:///c:/pokus.odt::]</strong> will find a hyperlink in which the URL is the substring <strong>file:///c:/pokus.odt</strong>.</p>
 		<p class="cm4"><strong>[:::HyperLinkURL=file:///c:/pokus.odt::]link</strong> will find part of a hyperlink in which the URL is the substring <strong>file:///c:/pokus.odt</strong> and in which the text contains the text <strong>link</strong>.</p>
-		<p class="cm2">A list of available text attributes (with the values they have in the current selection) can be loaded using the button <var>Pick properties</var>. Next, by clicking on the arrow at its right side, a dropdown menu appears from which you can choose the attribute you are interested in.</p>
+		<p class="cm2">A list of available text attributes (with the values they have in the current selection) can be loaded using the button <var>Pick properties</var>: a dropdown menu appears next to that button.</p>
 
-		<!--
-		<p class="cm2"><strong>Similar character attribute</strong> - this function loads any of the character attributes of the current selection that have been manually changed and searches for similarly formatted places. If e.g. the cursor is on text for which the name of the font has been manually changed, all places with a changed name of font will be found. The search box will contain e.g. <strong>[:::CharFontName::]</strong></p>
-		<p class="cm2"><strong>Same characters attribute</strong> - this function loads any of the character attributes of the current selection that have been manually changed and searches for identically formatted places. If e.g. the cursor is on text for which the name of the font has been manually changed, all places with a changed font name and the <b>same</b> font name will be searched for. The search box will contain e.g. <strong>[:::CharFontName=Arial::]</strong>.</p>
-		-->
+		<!-- A brief description of most of these properties can be found <a href="https://api.libreoffice.org/docs/idl/ref/dir_02c10f744696785b64d031a937f6c999.html">here</a>.</p>
+		<p class="cm2"><strong>Similar character attribute</strong> - this function loads any of the character attributes of the current selection that have been manually changed and searches for similarly formatted places. If e.g. the cursor is on text for which the name of the font has been manually changed, all places with a changed name of font will be found. The search box will contain e.g. <strong>[:::CharFontName::]</strong>.</p>
+		<p class="cm2"><strong>Same characters attribute</strong> - this function loads any of the character attributes of the current selection that have been manually changed and searches for identically formatted places. If e.g. the cursor is on text for which the name of the font has been manually changed, all places with a changed font name and the <b>same</b> font name will be searched for. The search box will contain e.g. <strong>[:::CharFontName=Arial::]</strong>.</p> -->
 
-		<p class="cm4"><dfn>Limitation:</dfn> The search engine in Writer does not support all the existing paragraph and character properties. Not all combinations work as might be expected</p>
+		<p class="cm4"><dfn>Limitation:</dfn> The search engine in Writer does not support all the existing paragraph and character properties. Not all combinations work as might be expected.</p>
 
 		<h3><a id="nahraditen"></a>Replacing</h3>
 
 		<p>List box “<b>Replace</b>”</p>
 		<p class="cm2"><strong>&amp; \0</strong> - both these parameters mean the same thing: on replacement they represent the whole found text</p>
-		<p class="cm4">If the expression which is searched for uses <strong>[::BigBlock::]</strong>, these parameters represent only the block of paragraphs between the start and end marks</p>
-		<p class="cm4">If the object which is searched for uses <strong>[::Comment::]</strong>, <strong>[::Field::]</strong>, <strong>[::TextFrame::]</strong>, <strong>[::Picture::]</strong> or <strong>[::TextTable::]</strong>, these parameters represent exactly these objects (which are inserted using the clipboard).</p>
-		<p class="cm2"><strong>\b \e</strong> - if the expression which is searched for uses <strong>[::BigBlock::]</strong>, these parameters represent content of the start and end marks</p>
-		<p class="cm4"><dfn>Limitation:</dfn> these cannot be used together with <a href="#enskupiny">subexpressions</a></p>
+		<p class="cm4">If the expression which is searched for uses <strong>[::BigBlock::]</strong>, these parameters represent only the block of paragraphs between the start and end marks.</p>
+		<p class="cm4">If the object which is searched for uses <strong>[::Comment::]</strong>, <strong>[::Field::]</strong>, <strong>[::TextFrame::]</strong>, <strong>[::Picture::]</strong>, or <strong>[::TextTable::]</strong>, these parameters represent exactly these objects (which are inserted using the clipboard).</p>
+		<p class="cm2"><strong>\b \e</strong> - If the expression which is searched for uses <strong>[::BigBlock::]</strong>, these parameters represent content of the start and end marks.</p>
+		<p class="cm4"><dfn>Limitation:</dfn> these cannot be used together with <a href="#enskupiny">subexpressions ()</a>.</p>
 
 		<p><a id="enskupiny"><u>Subexpressions</u></a></p>
 		<p class="cm2"><strong>\1 \2 \3 \4 \5 \6 \7 \8 \9</strong> - content of subexpressions</p>
-		<p class="cm2">If the expression which was searched for uses parentheses <b>()</b>, <strong>\1</strong> represents the content of the first pair of parentheses, <strong>\2</strong> corresponds to the content of the second pair (), etc., up to <strong>\9</strong>, which corresponds to content of the 9th pair. Only 1st level of parentheses is valid; nested levels are ignored.</p>
-		<p class="cm2">Examples:</p>
-			<ul>
-				<li>The expression <strong>(\d{2,2})(\d{2,2})-(\d{1,2})-(\d{1,2})</strong> finds dates in the format <b>YYYY-MM-DD</b> like 2009-12-07. The expression <strong>\4.\3.\2</strong> replaces them with dates in the format <b>DD.MM.YY</b> like 07.12.09</li>
-				<li>The expression <strong>(\d{1,2})\. *(\d{1,2})\. *(\d{2,2})(\d{2,2})</strong> finds dates in the format <b>DD.MM.YYYY</b> like 07.12.2009. The expression <strong>\4-\2-\1</strong> replaces them with dates in the format <b>YY-MM-DD</b> like 09-12-07</li>
-				<li>The expression <strong>(\d{1,2})\. *(\d{1,2})\. *(\d{1,4})</strong> finds dates in the format <b>DD.MM.YYYY</b> like 07.12.2009. The expression <strong>\3-\2-\1</strong> replaces them with dates in the format <b>YYYY-MM-DD</b> like 2009-12-07</li>
-			</ul>
+		<p class="cm4">If the search expression which was searched for uses parentheses (), <strong>\1</strong> represents the content of the first pair of parentheses, <strong>\2</strong> corresponds to the content of the second pair (), etc., up to <strong>\9</strong>, which corresponds to content of the 9th pair. Only 1st level of parentheses is valid; nested levels are ignored.</p>
+		<p class="cm4">Example:<br>Using the expression <strong>(\d{1,2})\. *(\d{1,2})\. *\d{2,2}(\d{2,2})</strong> to find dates in the format <b>01. 12. 2007</b> (yyyy.mm.dd) and replace them with dates in the format 07-12-01 (yy-mm-dd) using the replace expression <strong>\3-\2-\1</strong>.</p>
 		<p class="cm2">If you need to switch off processing of subexpressions (e.g. to preserve compatibility with the regular expressions in standard ICU), you must put the whole search expression within an additional pair of parentheses. Then all other nesting levels of parentheses for replacement will be ignored.</p>
 		<p class="cm2"><dfn>Limitation:</dfn> Using subexpressions is relatively slow and not fully compatible with Writer.</p>
-		<p class="cm2">There is an in incompatibility with search wildcards placed immediately after a subexpression, such as <strong>(opak)*</strong>, which is caused by the principle of the sequential searching of sequential blocks of text (see <a href="#enskupiny0">here</a>). In these cases the functions <var>Count</var> and <var>Find all</var> return the correct counts, but other functions (without switching to compatibility mode) will not find anything.<br>In more complicated cases you will need to examine what happens and experiment to get the best results.</p>
+		<p class="cm2">There is an in incompatibility with search wildcards placed immediately after a subexpression, such as <strong>(opak)*</strong>, which is caused by the principle of the sequential searching of sequential blocks of text (see <a href="#enskupiny0">here</a>). In these cases the functions <var>Count</var> and <var>Find all</var> return the correct counts, but other functions (without switching to compatibility mode) will not find anything. In more complicated cases you will need to examine what happens and experiment to get the best results.</p>
 		<p class="cm2"><strong>\p</strong> - inserts an empty paragraph</p>
 		<p class="cm2"><strong>\t</strong> - inserts a tab (<strong>\x0009 \#9</strong>)</p>
 		<p class="cm2"><strong>\s</strong> - inserts a non-breaking space (<strong>\x00A0 \#160</strong>)</p>
@@ -253,20 +245,20 @@
 		<p class="cm2"><strong>\H{substr}</strong> - replaces the substring in the hyperlink’s URL. This should be used at the same time as searching using <strong>[:::HyperLinkURL=::]</strong>. If the expression was searched using for example <strong>[:::HyperLinkURL=substr::]</strong>, only hyperlinks whose URLs includes the substring <strong>substr</strong> will be found. If <strong>\H{repl}</strong> is added in the replace expression, then the text <strong>substr</strong> will be found in the URL and replaced by <strong>repl</strong>.</p>
 		<p class="cm2"><strong>\u</strong> - inserts in the replacing expression the URL address of the found text (if a hyperlink is found)</p>
 		<p class="cm2"><strong>\P{Text}</strong> - sets up Paragraph style <strong>Text</strong> to the found paragraph(s)</p>
-		<p class="cm2">The style is applied to the paragraph containing the text of the replaced expression. To setup the style to “Default”, use <strong>\P</strong> or <strong>\P{}</strong>. If this parameter is used a number of times with inserted paragraph(s), then the style will be changed with every new parameter and the last will be valid until the end of the paragraph.<br>Example: If the expression was replaced using <strong>block1\P{Subtitle}\p block2\P{Heading 1}</strong>, then <strong>block1</strong> will be inserted and the style <strong>Subtitle</strong> will be assigned to it. Afterwards a new paragraph with text <strong>block2</strong> will be inserted and the style <strong>Heading 1</strong> will be assigned to it</p>
+		<p class="cm2">The style is applied to the paragraph containing the text of the replaced expression. To set up the style to “Default”, use <strong>\P</strong> or <strong>\P{}</strong>. If this parameter is used a number of times with inserted paragraph(s), then the style will be changed with every new parameter and the last will be valid until the end of the paragraph. Example: If the expression was replaced using <strong>block1\P{Subtitle}\p block2\P{Heading 1}</strong>, then <strong>block1</strong> will be inserted and the style <strong>Subtitle</strong> will be assigned to it. Afterwards a new paragraph with text <strong>block2</strong> will be inserted and the style <strong>Heading 1</strong> will be assigned to it.</p>
 		<p class="cm2"><strong>\C{Quotation}</strong> - sets up the Character style <strong>Quotation</strong> to the found text</p>
-		<p class="cm2">The style is applied to the whole text of the replaced expression. To set up to the “Default” style, use <strong>\C</strong> or <strong>\C{}</strong>. If this parameter is used a number of times, then the character style will be changed with every new parameter and the last will be valid until the end of replacing expression. Example: If the expression was replaced using <strong>block1\C{Quotation}block2\C{Example}</strong>, then <strong>block1</strong> will be inserted with the character style <strong>Quotation</strong>. Afterwards <strong>block2</strong> will be inserted and the character style <strong>Example</strong> will be assigned to it</p>
+		<p class="cm2">The style is applied to the whole text of the replaced expression. To set up to the “Default” style, use <strong>\C</strong> or <strong>\C{}</strong>. If this parameter is used a number of times, then the character style will be changed with every new parameter, and the last will be valid until the end of replacing expression. Example: If the expression was replaced using <strong>block1\C{Quotation}block2\C{Example}</strong>, then <strong>block1</strong> will be inserted with the character style <strong>Quotation</strong>. Afterwards <strong>block2</strong> will be inserted and the character style <strong>Example</strong> will be assigned to it.</p>
 		<p class="cm2"><strong>\N{List 3}</strong> - sets up List style <strong>List 3</strong> to the found paragraph(s)</p>
-		<p class="cm2">Usage rules analogous to those for the parameter <strong>\P{}</strong> are applied. List style can be removed with <strong>\N</strong> or <strong>\N{}</strong></p>
+		<p class="cm2">Usage rules analogous to those for the parameter <strong>\P{}</strong> are applied. List style can be removed with <strong>\N</strong> or <strong>\N{}</strong>.</p>
 		<p class="cm2"><strong>\D</strong> - sets up the default formatting to the found text, just like using <b>Ctrl</b>+<b>Shift</b>+<b>Space</b>. Usage rules analogous to those for the parameter <strong>\C{}</strong> are applied</p>
-	    <p class="cm2"><strong>\d</strong> - resets text attributes to default only in the place of use. Differently from <strong>\D</strong> it has no effect on the previously inserted text.</p>
-		<p class="cm2"><strong>\F{New footnote}</strong> - inserts a new footnote that contains the text <strong>New footnote</strong> in the place of replacement. Inside the curly braces, the following parameters can be used: <strong>\i</strong>, <strong>\I</strong>, <strong>&amp;</strong> or <strong>\1</strong></p>
-		<p class="cm2"><strong>\E{New endnote}</strong> - inserts a new endnote in the place of replacement; analogous to <strong>\F</strong>. Inside the curly braces, the following parameters can be used: <strong>\i</strong>, <strong>\I</strong>, <strong>&amp;</strong>, <strong>\1</strong></p>
-		<p class="cm2"><strong>\B{ref1|text}</strong> - inserts the text <strong>text</strong> with the marker <strong>ref1</strong> for a cross-reference. Inside the curly braces, the following parameters can be used: <strong>\i</strong>, <strong>\I</strong>, <strong>&amp;</strong> or <strong>\1</strong></p>
-		<p class="cm2"><strong>\L{0,0,ref1}</strong> - inserts a cross-reference (field) with the parameters <strong>0,0</strong> and the reference marker  <strong>ref1</strong></p>
-		<p class="cm2">The meaning of numeric parameters in the previous replacement expression is:</p>
+	        <p class="cm2"><strong>\d</strong> - resets text attributes to default only in the place of use. Differently from <strong>\D</strong> it has no effect on the previously inserted text.</p>
+		<p class="cm2"><strong>\F{New footnote}</strong> - inserts a new footnote that contains the text <strong>New footnote</strong> in the place of replacement. Inside the curly braces, the following parameters can be used: <strong>\i</strong>, <strong>\I</strong>, <strong>&amp;</strong>, or <strong>\1</strong></p>
+		<p class="cm2"><strong>\E{New endnote}</strong> - inserts a new endnote in the place of replacement; analogous to <strong>\F</strong></p>
+		<p class="cm2"><strong>\B{ref1|text}</strong> - inserts the text <strong>text</strong> with the marker <strong>ref1</strong> for a cross-reference. Inside the curly braces, the following parameters can be used: <strong>\i</strong>, <strong>\I</strong>, <strong>&amp;</strong>, or <strong>\1</strong></p>
+		<p class="cm2"><strong>\L{0,0,ref1}</strong> - inserts a cross-reference (field) with the parameters 0,0 and the reference marker ref1</p>
+		<p class="cm2"><u>Meaning of numeric parameters</u>:</p>
 		<ul>
-			<li><i>First number</i> (= type of reference)</li>
+			<li><i>First number</i> (= type of reference):</li>
 				<ol start="0">
 				<li> - Page number (unstyled) </li>
 				<li> - Chapter</li>
@@ -286,42 +278,42 @@
 			    <li> - An endnote</li>
 			    </ol>
 	        </ul>
-		<p class="cm2"><strong>\K{w, bookmark_name}</strong> - insert the bookmark named <strong>bookmark_name</strong>.</p>
-		<p class="cm4">First parameter is the mode of anchor and has the following meanings:</p>
+		<p class="cm2"><strong>\K{w,bookmark_name}</strong> - insert bookmark named <strong>bookmark_name</strong>.</p>
+		<p class="cm4">First parameter is the mode of anchor</p>
 		<p class="cm4"><strong>w</strong> - bookmark on whole selected text block</p>
 		<p class="cm4"><strong>b</strong> - bookmark anchored at the start of text block</p>
 		<p class="cm4"><strong>e</strong> - bookmark anchored at the end of text block</p>
-		<p class="cm2"><strong>\K{}</strong>, <strong>\K</strong> - remove bookmark, if is present in the selected text block. It removes only the bookmark; text block remains!</p>
+		<p class="cm2"><strong>\K{}</strong>, <strong>\K</strong> - remove bookmark if is present in the selected text block. It removes only the bookmark; text block remains!</p>
 		<p class="cm2"><strong>\K{w,new_name}\K</strong> - renames the bookmark - it must be found by using <strong>[::Bookmark::]</strong> or a place where the bookmark is already present</p>
-		<p class="cm2"><strong>\o</strong> - inserts the text content of the found object. If the expression was searched for by using <strong>[::Comment::]</strong>, <strong>[::Footnote::]</strong>, <strong>[::Endnote::]</strong>, <strong>[::TextFrame::]</strong>, <strong>[::Picture::]</strong>, <strong>[::TextTable::]</strong>, the text inside this object will be inserted. Tables come out with tabs between columns and paragraphs between rows</p>
+		<p class="cm2"><strong>\o</strong> - inserts the text content of the found object. If the expression was searched for by using <strong>[::Comment::]</strong>, <strong>[::Footnote::]</strong>, <strong>[::Endnote::]</strong>, <strong>[::TextFrame::]</strong>, <strong>[::Picture::]</strong>, or <strong>[::TextTable::]</strong>, the text inside this object will be inserted. Tables come out with tabs between columns and paragraphs between rows.</p>
 		<p class="cm2">If the expression was searched for by using <strong>[::Field::]</strong>, <strong>[::Reference::]</strong> or <strong>[::ReferenceMark::]</strong> then the displayed text of the anchor or field will be inserted.</p>
 		<p class="cm4"><dfn>Limitation:</dfn> The maximum size of the whole resulting text after converting a table is limited to 64 kB.</p>
 		<p class="cm2"><strong>\O</strong> - inserts the name of the found object</p>
 		<p class="cm4">If the expression was searched for by using:</p>
 		<ul>
-			<li><strong>[::TextFrame::]</strong>, <strong>[::Picture::]</strong> or <strong>[::TextTable::]</strong>, the name of this object will be inserted</li>
+			<li><strong>[::TextFrame::]</strong>, <strong>[::Picture::]</strong>, or <strong>[::TextTable::]</strong>, the name of this object will be inserted.</li>
 			<li><strong>[::Comment::]</strong> or <strong>[::Field::]</strong>, the type of the text field will be inserted</li>
 			<li><strong>[::Reference::]</strong> or <strong>[::ReferenceMark::]</strong>, the name of the reference mark will be inserted</li>
 			<li><strong>[::Footnote::]</strong> or <strong>[::Endnote::]</strong>, the displayed text of the anchor will be inserted</li>
 		</ul>
 		<p class="cm2"><strong>\i</strong> - inserts the number of occurrences of the found object or the count of the occurrences of the text found. This works only if the button <var>Replace all</var> is used</p>
-		<p class="cm2"><strong>\i{start,digit}</strong> - formatted counter. For example: <strong>\i{9,4}</strong> counts starting from 9, for 4 digits (0009, 0010, 0011…)</p>
+		<p class="cm4"><strong>\i{start,digit}</strong> - formatted counter. For example: <strong>\i{9,4}</strong> counts starting from 9, for 4 digits (0009, 0010, 0011…)</p>
 		<p class="cm2"><strong>\I</strong> - inserts the number of the page on which the search expression was found</p>
-		<p class="cm4">If redirection of the replace expression to another file (<strong>\R</strong>) is used (see below), the number of the page containing the starting position of the found text is inserted in the other file</p>
+		<p class="cm4">If redirection of the replace expression to another file (<strong>\R</strong>) is used (see below), the number of the page containing the starting position of the found text is inserted in the other file.</p>
 		<p class="cm4"><dfn>Limitation:</dfn> this does not work correctly in footnotes, headers and footers.</p>
 		<p class="cm2"><strong>\v</strong> - inserts the contents of the clipboard</p>
-		<p class="cm2"><strong>\V</strong> - inserts the contents of the clipboard as unformatted text</p>
+		<p class="cm2"><strong>\V</strong> - inserts contents of the clipboard as unformatted text</p>
 		<p class="cm2"><strong>\f</strong> - preserves format</p>
-		<p class="cm4">If <strong>&amp;</strong> or <strong>\0</strong> is used in the replace expression, it will be achieved using the clipboard. If the found text contains text fields, comments, references etc., they will be preserved in their original state.</p>
-		<p class="cm2"><strong>\R</strong> - redirects the replace expression to another text file.</p>
+		<p class="cm4">If <strong>&amp;</strong> or <strong>\0</strong> is used in the replace expression, itt will be achieved using the clipboard. If the found text contains text fields, notes, references etc., they will be preserved in their original state.</p>
+		<p class="cm2"><strong>\R</strong> - redirects the replace expression to another text file</p>
 		<p class="cm4">This option causes the replace expression to be inserted into <i>new.odt</i> file instead of replacing the found text. The original file will stay as it is, without any change. To enter the name of the output file, use the format <strong>\R{filename}</strong>. The name must have the accurate Writer window title format, including the text “ - LibreOffice Writer”. New records from this redirection are always added to the end of the file.</p>
-		<p class="cm4">Example: if the searched expression was <strong>[:::HyperLinkURL::]</strong> and the replace expression is <strong>Link \i, page \I: &amp; (URL: \u)\p\R</strong>, when you click the <var>Replace all</var> button all the hyperlinks found in original file will be listed in a new file in the form:</p>
+		<p class="cm4">Example: if the searched expression was <strong>[:::HyperLinkURL::]</strong> and the replace expression is <strong>Link \i, page \I: &amp; (URL: \u)\p\R</strong>, when you click the <var>Replace all</var> button all the hyperlinks found in original file will be listed in a new file in the form <i>Link</i><i>1, page 1: textOfHyperlink (URL: URLaddress)</i> in separate paragraphs.</p>
 		<p class="cm4"><i>Link1, page 1: textOfHyperlink (URL: URLaddress)</i></p>
 
-		<p class="cm2">Button and List box “<b>Pick properties</b>”</p>
-		<p class="cm2">Clicking on the <var>Pick properties</var> button, you can update the list of (some) properties and their values of the currently selected object. For making this to happen, you need to click on the arrow at the right side of the button. A dropdown menu appears from which you can choose the attribute you are interested in</p>
-		<p class="cm2"><strong>\A{properties=value}</strong> - sets the value of the specified property in the replace expression. It uses rules analogous to those for the parameter <strong>\C{}</strong> (see above)</p>
-		<p class="cm2">For example if the property-value which was searched for is:<br><strong>[:::CharBackColor=&amp;HFF0000::]</strong>, i.e. a <b class="bRed">red background color</b> and you want to replace it with a <b class="bBlue">blue background color</b>, then in the Replace box you must insert:<br><strong>\A{CharBackColor=&amp;H00FF00}</strong> (because the RGB hex code for blue is <b class="bBlue">00FF00</b>)</p>
+		<p>Button and List box “<b>Pick properties</b>”</p>
+		<p class="cm2">Using the <var>Pick properties</var> button you can update the list of (some) properties and their values for the currently selected object. Then you can browse the list and choose one from the list box next to the button.</p>
+		<p class="cm2"><strong>\A{properties=value}</strong> - sets in the replace expression the value of the specified property. Uses rules analogous to those for the parameter <strong>\C{}</strong> (see above).</p>
+		<p class="cm2">For example if the property-value which was searched for is:<br><strong>[:::CharBackColor=&amp;HFF0000::]</strong>, ie a <b class="bRed">red background color</b> and you want to replace it with a <b class="bBlue">blue background color</b>,<br>then in the Replace box you must insert:<br> <strong>\A{CharBackColor=&amp;H00FF00}</strong> (because the RGB hex code for blue is <b class="bBlue">00FF00</b>).</p>
 
 		<h3><a id="davkyen"></a>Batch mode</h3>
 		<p>&nbsp;</p>
@@ -331,11 +323,11 @@
 			<i>Batch mode dialog box</i>
 		</p>
 		<p>&nbsp;</p>
-		<p>Batch mode enables saving and loading of some preset search and replace parameters. Several search and replace operations can be saved to a single sequence and then quickly loaded and executed</p>
+		<p>Batch mode enables saving and loading of some preset search and replace parameters. Several search and replace operations can be saved to a single sequence, and then quickly loaded and executed.</p>
 		<p>You can set all parameters and save them using the <var>Save&nbsp;batch</var> button. In the dialog box that is shown, you will be offered the name used for the last batch which you can rename. If you enter a name that already exists, you can choose whether the old content will be overwritten or preserved. In this case the new content will be appended to the end of the old file. If you decide to overwrite the old file, then you have to press the “<i>Replace</i>” button and the new procedure will be automatically saved. Together to the batch file it is also automatically saved the command “<i>ReplaceAll</i>” allowing you to subsequently execute the batch. You can also modify the content of the procedure by manually editing the batch rule file using the <var>Modify</var> button.</p>
 		<p>The button <var>Batch&nbsp;&gt;&gt;</var> switches to “<b>Batch manager</b>” dialog box, where you can run and edit batches. To go back to the search dialog, use the <var>&lt;&lt;&nbsp;Searching</var> button.</p>
-		<p>All batch parameters are saved to the text file <code>AltSearchScript.txt</code> into the directory <code>…/config/</code> of the <a href="https://wiki.documentfoundation.org/UserProfile">LibreOffice user profile</a> and you can open and edit it using the <var>Edit</var> button of the <b>Batch manager</b> dialog. For editing the text, the program <b>Notepad</b> is used by default, but you can set it to use any other text editor by editing the file <code>AltSearchEditor.ini</code> in the same directory. After manual changing and saving the file using the Batch manager you can refresh the list of batch names using the <var>Refresh</var> button. The syntax used in the file <code>AltSearchScript.txt</code> is described at the beginning of the same file, using UTF-8 encoding.</p>
-		<p>When you double-click on an item of the list or click the <var>Execute</var> button, the chosen sequence will be loaded and the search and replace operations will be executed. When using batches on selections, I advise you to leave 1-2 empty paragraphs at the beginning and the end of the selection.</p>
+		<p>All batch parameters are saved to the text file <code>AltSearchScript.txt</code> into the directory <code>…/config/</code> in <a href="https://wiki.documentfoundation.org/UserProfile">LibreOffice user profile</a>, and you can open and edit it using the <var>Edit</var> button in the <b>Batch manager</b> dialog. For editing the text, the program <b>Notepad</b> is used by default, but you can set it to use any other text editor by editing the file <code>AltSearchEditor.ini</code> in the same directory. After manual changing and saving the file using the Batch manager you can refresh the list of batch names using the <var>Refresh</var> button. The syntax used in the file <code>AltSearchScript.txt</code> is described at the beginning of the same file, using UTF-8 encoding.</p>
+		<p>When you double-click on an item of the list, or click the <var>Execute</var> button, the chosen sequence will be loaded and the search and replace operations will be executed. When using batches on selections, I advise you to leave 1-2 empty paragraphs at the beginning and the end of the selection.</p>
 		<p><var>Transfer</var> button is used for transferring the parameters of settings, searching, and replacing to the search dialog box without executing them. If the batch contains a sequence of several searches and replacements, only the last part of this sequence will be transferred.</p>
 
 		<h3>Keyboard shortcuts</h3>
@@ -349,12 +341,12 @@
 		<p>&nbsp;</p>
 		<p>To use this button you need:</p>
 		<ol>
-			<li>Select the name of batch from the dropdown menu box</li>
+			<li>Select the name of batch from the drop-down menu box</li>
 			<li>If it is required, change the name of the Basic auxiliary subroutine</li>
 			<li>Set the desired keyboard shortcut</li>
 			<li>Press the button <var>Assign</var></li>
 		</ol>
-		<p>In order for the shortcut to work, at the time of assignment an auxiliary procedure is created in the Basic module <code>Standard.AltSearchBatchs</code> with a name that is adjusted according to the Basic syntax. This name is displayed in the second dropdown menu box of the dialog box. When this auxiliary procedure is run, the AltSearch dialog box will be opened and the specified batch is immediately executed. A correct behavior depends on the compliance of the batch name listed inside the procedure and the name of existing batch. If you change the name of a batch which had a shortcut key previously assigned, you need to re-assign a new key shortcut (the old auxiliary procedure to the original name can be deleted by selecting it in the second dropdown box and using the side button <var> x</var>). Any keyboard shortcut that is used in Writer can be released using the lower button <var>x</var>. So be careful not to remove inadvertently an important shortcut!</p>
+		<p>In order for the shortcut to work, at the time of assignment an auxiliary procedure is created in the Basic module <code>Standard.AltSearchBatchs</code> with a name that is adjusted according to the Basic syntax. This name is displayed in the second drop-down menu box of the dialog box. When this auxiliary procedure is run, the AltSearch dialog box will be opened and the specified batch is immediately executed. A correct behavior depends on the compliance of the batch name listed inside the procedure and the name of existing batch. If you change the name of a batch which had a shortcut key previously assigned, you need to re-assign a new key shortcut (the old auxiliary procedure to the original name can be deleted by selecting it in the second drop-down box and using the side button <var> x</var>). Any keyboard shortcut that is used in Writer can be released using the lower button <var>x</var>. So be careful not to remove inadvertently an important shortcut!</p>
 
 		<h3><a id="multiple"></a>Multiple execute</h3>
 		<p>&nbsp;</p>
@@ -364,13 +356,13 @@
 			<i>Multiple execute</i>
 		</p>
 		<p>&nbsp;</p>
-		<p>A selected batch in the <b>Batch manager</b> dialog box can be applied to several currently opened text files at once:</p>
+		<p>A selected batch in the Batch manager dialog box can be applied to several currently opened text files at once:</p>
 		<p>In order to do that, you need to:</p>
 			<ol>
 			 	<li>Select <b>Batch</b> in the Batch manager dialog box</li>
 				<li>Click on the button <var>Multiple execute</var></li>
 				<li>Select files for a multiple execution from the list using Ctrl + left button mouse click.<br>
-					<u>WARNING</u>: The list shows only the currently opened files of the <b>Writer</b> type</li>
+					<u>WARNING</u>: The list shows only the currently opened files of the "Writer" type.</li>
 				<li>Press button <var>Start</var> for beginning the execution<br>
 					<u>WARNING</u>: while Multiple execute is running, please do nothing with Writer!</li>
 			</ol>
