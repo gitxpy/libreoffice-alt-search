@@ -221,6 +221,7 @@ Sub _AltSearch(optional batchName)   &apos; run main dialog
 	if isMissing(batchName) then oDIAL.setVisible(true)
 
 	setCheckboxes &apos; bug 130
+	checkboxCurrentSelectionOnly
 
 	&apos; due to possibility to restore the focus of dialog -&gt; add the listener
 	oL = createUnoListener(&quot;AltSearchDlg_&quot;,&quot;com.sun.star.awt.XTopWindowListener&quot;)
@@ -1805,6 +1806,90 @@ Function BubbleSortList_(ByVal SortList()) &apos;,optional sort2ndValue as Boole
 End Function
 
 
+Sub checkboxCurrentSelectionOnly
+	dim oCheck as object, s$, sWarning$
+	sWarning=chr(&amp;h26A0&amp;)
+	oCheck=oDIAL.Model.Ch_csele
+	s=oCheck.Label
+	if oCheck.State=1 then &apos;checked, add character Warning to label
+		if Left(s, 1)&lt;&gt;sWarning then oCheck.Label=sWarning + &quot; &quot; + oCheck.Label
+	else &apos;unchecked, remove character Warning from label
+		if Left(s, 1)=sWarning then oCheck.Label=Mid(oCheck.Label, 3)
+	end if
+End Sub
+
+
+sub checkboxMatchCase
+	setCheckboxes &apos; bug 130
+end sub
+
+
+sub checkboxParagraphStyle
+	dim i
+	dim pom(), oFind as object, oRepl as object
+	oFind=oDIAL.getcontrol(&quot;Cb_find&quot;) &apos; combobox Find
+	oRepl=oDIAL.getcontrol(&quot;Cb_repl&quot;) &apos; combobox Replace
+
+	setCheckboxes &apos; bug 130
+	
+	if oDIAL.model.Ch_styl.state = 1 then &apos;checked Paragraph styles
+		rem deactivate remaining
+		oDIAL.model.Cb_findReg.enabled =  false
+		oDIAL.model.Cb_findExt.enabled =  false
+		oDIAL.model.Cb_findAtr.enabled =  false
+		
+		&apos; load to search the list of used styles
+		pom() = GetStyles(&quot;ParagraphStyles&quot;, true) &apos; used paragraph styles
+		ulozHistorii &apos; save the history of F&amp;R from records to global arrays
+		oFind.removeItems(0, oFind.itemCount)  &apos; delete previous
+		oFind.addItems(pom(), 0)  &apos; add
+		oFind.Text = pom(0)
+		pom() = GetStyles(&quot;ParagraphStyles&quot;, false) &apos; all paragraph styles
+		oRepl.removeItems(0, oRepl.itemCount)  &apos; delete previous
+		for i = 0 to ubound(pom())
+			pom(i) = &quot;\P{&quot; &amp; pom(i) &amp; &quot;}&quot;
+		next i
+		oRepl.addItems(pom(),0)  &apos; add
+		oRepl.text = pom(0)
+	else
+		rem enable remaining
+		oDIAL.model.Cb_findReg.enabled =  true
+		oDIAL.model.Cb_findExt.enabled =  true
+		oDIAL.model.Cb_findAtr.enabled =  true
+		
+		&apos; delete the list of style for find
+		oFind.removeItems(0, oFind.itemCount)  &apos; delete previous
+		oFind.addItems( ALTsearchFIND(), 0)
+		
+		if ubound(ALTsearchFIND)=-1 then &apos; bug 129
+			oFind.Text=&quot;&quot;
+		else
+			oFind.Text=ALTsearchFIND(0)
+		end if
+		
+		&apos; delete the list of style for replace
+		oRepl.removeItems(0, oRepl.itemCount)  &apos; delete previous
+		oRepl.addItems( ALTsearchREPL(), 0)      &apos; load history
+		
+		if ubound(ALTsearchREPL)=-1 then &apos; bug 129
+			oRepl.Text=&quot;&quot;
+		else
+			oRepl.Text=ALTsearchREPL(0)
+		end if
+	end if
+end sub
+
+
+sub checkboxPreserveCapitalization
+	setCheckboxes &apos; bug 130
+end sub
+
+
+Sub checkboxRegularExpressions 
+	setCheckboxes &apos;bug 130
+End Sub
+
+
 sub CursorInit(vynutit as boolean) &apos; initialization of positions of cursor and block
 	if (FINDCOUNTER &gt;= 0)and not vynutit then  exit sub &apos; not actualize if the search
 	if NOINIT then exit sub  &apos; hard ban of initialization
@@ -3295,8 +3380,8 @@ Sub setCheckboxes &apos;set the check of checkboxes bug 130
 		oWhole.Enabled=false
 		oRegex.State=1
 	else &apos;no Paragraph styles
-		oMatch.Enabled=iif(oPreserve.State=1, false, true)
-		oPreserve.Enabled=iif(oMatch.State=1, false, true)
+		oMatch.Enabled = (oPreserve.State &lt;&gt; 1)
+		oPreserve.Enabled = (oMatch.State &lt;&gt; 1)
 		oWhole.Enabled=true
 	end if
 End Sub
@@ -3514,63 +3599,6 @@ konec:
 end sub
 
 
-	&apos; set disable access at change for checkbox Paragraph style
-sub zmenaChstyle
-	dim i
-	dim pom(), oFind as object, oRepl as object
-	oFind=oDIAL.getcontrol(&quot;Cb_find&quot;) &apos; combobox Find
-	oRepl=oDIAL.getcontrol(&quot;Cb_repl&quot;) &apos; combobox Replace
-
-	setCheckboxes &apos; bug 130
-	
-	if oDIAL.model.Ch_styl.state = 1 then &apos;checked Paragraph styles
-		rem deactivate remaining
-		oDIAL.model.Cb_findReg.enabled =  false
-		oDIAL.model.Cb_findExt.enabled =  false
-		oDIAL.model.Cb_findAtr.enabled =  false
-		
-		&apos; load to search the list of used styles
-		pom() = GetStyles(&quot;ParagraphStyles&quot;, true) &apos; used paragraph styles
-		ulozHistorii &apos; save the history of F&amp;R from records to global arrays
-		oFind.removeItems(0, oFind.itemCount)  &apos; delete previous
-		oFind.addItems(pom(), 0)  &apos; add
-		oFind.Text = pom(0)
-		pom() = GetStyles(&quot;ParagraphStyles&quot;, false) &apos; all paragraph styles
-		oRepl.removeItems(0, oRepl.itemCount)  &apos; delete previous
-		for i = 0 to ubound(pom())
-			pom(i) = &quot;\P{&quot; &amp; pom(i) &amp; &quot;}&quot;
-		next i
-		oRepl.addItems(pom(),0)  &apos; add
-		oRepl.text = pom(0)
-	else
-		rem enable remaining
-		oDIAL.model.Cb_findReg.enabled =  true
-		oDIAL.model.Cb_findExt.enabled =  true
-		oDIAL.model.Cb_findAtr.enabled =  true
-		
-		&apos; delete the list of style for find
-		oFind.removeItems(0, oFind.itemCount)  &apos; delete previous
-		oFind.addItems( ALTsearchFIND(), 0)
-		
-		if ubound(ALTsearchFIND)=-1 then &apos; bug 129
-			oFind.Text=&quot;&quot;
-		else
-			oFind.Text=ALTsearchFIND(0)
-		end if
-		
-		&apos; delete the list of style for replace
-		oRepl.removeItems(0, oRepl.itemCount)  &apos; delete previous
-		oRepl.addItems( ALTsearchREPL(), 0)      &apos; load history
-		
-		if ubound(ALTsearchREPL)=-1 then &apos; bug 129
-			oRepl.Text=&quot;&quot;
-		else
-			oRepl.Text=ALTsearchREPL(0)
-		end if
-	end if
-end sub
-
-
 	&apos; if the text of search is changed and the object is searched, in need reset and actualize TMPPOLE()
 	&apos; assigned to the event input field changed
 sub zmenaHledani(oEvt)
@@ -3581,21 +3609,6 @@ sub zmenaHledani(oEvt)
 		end if
 	end if
 end sub
-
-
-sub zmenaMachCase &apos; checkbox Match case
-	setCheckboxes &apos; bug 130
-end sub
-
-
-sub zmenaPreserveCap &apos; checkbox Preserve capitalization
-	setCheckboxes &apos; bug 130
-end sub
-
-
-Sub zmenaRegex &apos;checkbox Regular expressions bug 130
-	setCheckboxes
-End Sub
 
 
 

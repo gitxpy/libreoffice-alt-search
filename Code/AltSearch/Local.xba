@@ -189,6 +189,8 @@ sub   LoadLanguage  &apos; load the string for language
 	case else  &apos; en
 		load_en
 	end select
+	
+	checkboxCurrentSelectionOnly &apos; bug 133
 end sub
 
 </script:module>
