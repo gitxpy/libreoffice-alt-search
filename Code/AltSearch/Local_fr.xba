@@ -225,7 +225,7 @@ Sub Load_fr
 		.Ch_styl.Label       = &quot;Styles de paragraphes&quot;
 		.Ch_reg.Label        = &quot;Expressions régulières&quot;
 		.Fr2.Label           = &quot;Sens de la recherche&quot;
-		.Ch_csele.Label      = &quot;Sélection actuelle uniquement&quot;
+		.Ch_csele.Label      = &quot;Sélection actuelle seulement&quot;
 		.Ch_zpet.Label       = &quot;Recherche en arrière&quot;
 		&apos;v1.3
 		.Ch_preservecap.HelpText= &quot;If found text begins with a capital letter, also the text replacement will begin with a capital letter&quot;  &apos; &quot;Pokud nalezený text začíná velkým písmenem, bude velkým písmenem začínat i text nahrazený
