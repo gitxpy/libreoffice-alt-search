@@ -37,9 +37,9 @@
 ;
 ;********************************************************************
   
-[Name] **********************   Texto  ***************************** 
+[Name]   *************** Texto  ***************************** 
 
-[Name] Texto [Sel.]	Junta parrafos en uno solo
+[Name] Texto [Sel.] Junta parrafos en uno solo
  ; bloque de párrafos vacios se reemplazan por un párrafo vacio 
   [Find]\p{2,}
   [Replace]\p\p
@@ -68,29 +68,29 @@
   
 
 
-[Name] Texto [Sel.]    Divide las frases en párrafos ¡¡¡ELimina 1º letra 1er parrafo!!
+[Name] Texto [Sel.] Divide las frases en párrafos ¡¡¡ELimina 1º letra 1er parrafo!!
   [Find]^.[::BigBlock::]\.
   [Replace]\f&\e\p
 ; ******   El modificador \f indica portapapeles, sin el no se obtiene el texto del bloque de texto. ******
   [Parameters]   MsgOff  Regular  CurrSelection  
   [Command] ReplaceAll
 
-[Name] Texto [Sel.]    Añade un parrafo vacío de Separación entre  parrafos
+[Name] Texto [Sel.] Añade un parrafo vacío de Separación entre  parrafos
   [Find]^.+$
   [Replace]&\p
   [Parameters]  MsgOff Regular CurrSelection
   [Command] ReplaceAll
 
 
-[Name]*********************** Objetos ****************************** 
-[Name] Hyperenlaces [Todos]    Copia Los Hiperenlaces en un archivo nuevo
+[Name]  **************** Objetos ****************************** 
+[Name] Hyperenlaces [Todos] Copia Los Hiperenlaces en un archivo nuevo
   [Find][:::HyperLinkURL::]
   [Replace]\P{Text body}Enlace \i, en página \I: \D\C{Emphasis}\h&\h{\u}\C{}\n(URL:  \C{Emphasis}\u\C{})\h\p \R
   [Parameters]  MsgOff Regular  
   [Command] ReplaceAll
 
 
-[Name] Comentarios [Todos]  Copia los comentarios en un archivo nuevo
+[Name] Comentarios [Todos] Copia los comentarios en un archivo nuevo
   [Find][::Comment::]
   [Replace]\P{Text body}Comentario \i, en página \I, Contenido:\C{Emphasis}\n\o\C{Strong Emphasis}\p\R
   [Parameters]  MsgOff Regular  
@@ -103,22 +103,22 @@
   [Command] ReplaceAll
 
 
-[Name] Tablas [Todas]  Copia las Tablas en un archivo nuevo
+[Name] Tablas [Todas] Copia las Tablas en un archivo nuevo
   [Find][::TextTable::]
   [Replace]\P{Text body}Tabla \i, en página \I, Nombre de tabla: \C{Emphasis}\O\C{Strong Emphasis}\p&\p\p\R
   [Parameters]  MsgOff Regular
   [Command] ReplaceAll
 
 
-[Name] Marcos [Todos]  Copia los Marcos de texto en un archivo nuevo
+[Name] Marcos [Todos] Copia los Marcos de texto en un archivo nuevo
   [Find][::TextFrame::]
   [Replace]\P{Text body}Marco \i, en página \I, Nombre del Marco:\C{Emphasis} \O\C{Strong Emphasis}\p&\C{}\p\R
   [Parameters]  MsgOff Regular
   [Command] ReplaceAll
   
-[Name]**********************   Otros  ****************************** 
+[Name]  **************** Otros  ****************************** 
 
-[Name] Html [Sel.]	Convierte etiquetas antiguas a las nuevas Html
+[Name] Html [Sel.] Convierte etiquetas antiguas a las nuevas Html
 ; los mismos parámetros para todo
   [Parameters] MsgOff Regular CurrSelection
 
@@ -153,7 +153,7 @@
   [Command] ReplaceAll
  
 
-[Name] BBCode [Sel.]	Convierte texto seleccionado en código BBcode
+[Name] BBCode [Sel.] Convierte texto seleccionado en código BBcode
   ; (Lenguaje de etiquetas de muchos foros)
   ; Los mismos parámetros para todas las ordenes 
   [Parameters] MsgOff Regular CurrSelection
@@ -216,28 +216,27 @@
   [Command] ReplaceAll
 
 
-[Name]*********************** Fechas ******************************* 
+[Name]  **************** Fechas ******************************* 
 
 
-[Name] Fecha [Todas]    De  YYYY-MM-DD  a  DD.MM.YYYY
+[Name] Fecha [Todas] De YYYY-MM-DD a DD.MM.YYYY
   [Find](\d{1,4})-(\d{1,2})-(\d{1,4})
   [Replace]\3.\2.\1
   [Parameters]   MsgOff  Regular  
   [Command] ReplaceAll
 
 
-[Name] Fecha [Todas]    De  DD.MM.YYYY  a  YYYY-MM-DD
+[Name] Fecha [Todas] De DD.MM.YYYY a YYYY-MM-DD
   [Find](\d{1,2})\. *(\d{1,2})\. *(\d{1,4})
   [Replace]\3-\2-\1
   [Parameters]   MsgOff  Regular  
   [Command] ReplaceAll
 
 
-[Name] Fecha [Todas]    De  YYYY-MM-DD  a  DD.MM.YY
+[Name] Fecha [Todas] De YYYY-MM-DD a DD.MM.YY
   [Find](\d{2,2})(\d{2,2})-(\d{1,2})-(\d{1,2})
   [Replace]\4.\3.\2
   [Parameters]   MsgOff  Regular  
   [Command] ReplaceAll
 
 [End]
-

@@ -44,8 +44,7 @@
 
 ************************************************************
 
-[Name] Html [Sel.]	Primitieve conversie naar Html-tags voor het geselecteerde blok
-    	 
+[Name] Html [Sel.] Primitieve conversie naar Html-tags voor het geselecteerde blok
   ; dezelfde parameters voor alles 
   [Parameters] MsgOff Regular CurrSelection
 
@@ -80,7 +79,7 @@
   [Command] ReplaceAll
 
 
-[Name] Text [Sel.]	Converteren geselecteerd blok op de BBcode
+[Name] Text [Sel.] Converteren geselecteerd blok op de BBcode
    ; dezelfde parameters voor alles 
   [Parameters] MsgOff Regular CurrSelection
 
@@ -143,7 +142,7 @@
 
  
   
-[Name] Text [Sel.]	Aaneengesloten alinea's, niet gescheiden door lege alinea's
+[Name] Text [Sel.] Aaneengesloten alinea's, niet gescheiden door lege alinea's
  ; blok lege alinea's vervangen door één lege alinea 
   [Find]\p{2,}
   [Replace]\p\p
@@ -166,7 +165,7 @@
   [Command] ReplaceAll
 
 
-[Name] Text [Sel.]    Scheidt niet-lege alinea's door een lege alinea
+[Name] Text [Sel.] Scheidt niet-lege alinea's door een lege alinea
   [Find]^.+$
   [Replace]&\p
   [Parameters]  MsgOff Regular CurrSelection
@@ -176,53 +175,50 @@
 ; scheidingsteken
 [Name] 
 
-[Name] Text [All]	Converteer datum van  jjjj-mm-dd  naar  dd-mm-jj
+[Name] Text [All] Converteer datum van  jjjj-mm-dd  naar  dd-mm-jj
   [Find](\d{2,2})(\d{2,2})-(\d{1,2})-(\d{1,2})
   [Replace]\4.\3.\2
   [Parameters]   MsgOff  Regular  
   [Command] ReplaceAll
 
 
-[Name] Text [All]	Converteer datum van  dd-mm-jjjj  naar  jj-mm-dd
+[Name] Text [All] Converteer datum van  dd-mm-jjjj  naar  jj-mm-dd
   [Find](\d{1,2})\.  *(\d{1,2})\. *(\d{2,2})(\d{2,2})
   [Replace]\4-\2-\1
   [Parameters]   MsgOff  Regular  
   [Command] ReplaceAll
 
 
-[Name] Text [All]	Schrijf alle hyperlinks weg naar een nieuw bestand
+[Name] Text [All] Schrijf alle hyperlinks weg naar een nieuw bestand
   [Find][:::HyperLinkURL::]
   [Replace]Link \i, op pagina \I: \D\C{Voorbeeld}\h&\h{\u}\C (URL: \C{Voorbeeld}\u\C)\C{Voorbeeld}\p\h\R
   [Parameters]   MsgOff  Regular  
   [Command] ReplaceAll
 
 
-[Name] Text [All]	Schrijf alle notities weg naar een nieuw bestand
+[Name] Text [All] Schrijf alle notities weg naar een nieuw bestand
   [Find][::Comment::]
   [Replace]Comment &\i, on pagina \I,  Inhoud:\D\C{Voorbeeld}\C\n\o\p\p\R
   [Parameters]   MsgOff  Regular  
   [Command] ReplaceAll
 
-[Name] Text [All]    Schrijf alle afbeeldingen weg naar een nieuw bestand
+[Name] Text [All] Schrijf alle afbeeldingen weg naar een nieuw bestand
   [Find][::Picture::]
   [Replace]Picture \i, op pagina \I, Naam van afbeelding: \C\O\C{Voorbeeld}&\p\p\C\R
   [Parameters]   MsgOff  Regular  
   [Command] ReplaceAll
 
-[Name] Text [All]    Schrijf alle tabellen weg naar een nieuw bestand
+[Name] Text [All] Schrijf alle tabellen weg naar een nieuw bestand
   [Find][::TextTable::]
   [Replace]Table \i, op pagina \I, Naam van de tabel: \C\O\C{Example}\p&\p\p\C\R
   [Parameters]   MsgOff  Regular  
   [Command] ReplaceAll
 
-[Name] Text [All]    Schrijf alle tekstframes weg naar een nieuw bestand
+[Name] Text [All] Schrijf alle tekstframes weg naar een nieuw bestand
   [Find][::TextFrame::]
   [Replace]Frame \i, op pagina \I, Naam van tekstframe: \C\O\C{Voorbeeld}\p&\p\p\C\R
   [Parameters]   MsgOff  Regular  
   [Command] ReplaceAll
-
-
-
 
 [End]  
   

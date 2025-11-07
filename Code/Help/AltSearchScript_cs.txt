@@ -37,7 +37,7 @@
 
 ************************************************************
 
-[Nazev] Html [Výběr]	Jednoduchý převod na Html tagy označeného bloku textu   	 
+[Nazev] Html [Výběr] Jednoduchý převod na Html tagy označeného bloku textu   	 
   ; parametry stejné pro všechna hledání a náhrady 
   [Parametry] BezHlaseni Regularni SoucasnyVyber
 
@@ -71,7 +71,7 @@
   [Nahrad]
   [Prikaz] NahraditVse
  
-[Nazev] Text [Výběr]	Převod bloku textu na BBcode
+[Nazev] Text [Výběr] Převod bloku textu na BBcode
   [Hledej][:::CharWeight::]
   [Nahrad][b]&[/b]
   [Parametry]   BezHlaseni  Regularni  SoucasnyVyber  
@@ -131,7 +131,7 @@
 
   
   
-[Nazev] Text [Výběr]	Spojit odstavce neoddělené prázdnými řádky
+[Nazev] Text [Výběr] Spojit odstavce neoddělené prázdnými řádky
  ; blok prázdných odstavců zaměnit za jeden prázdný 
   [Hledej]\p{2,}
   [Nahrad]\p\p
@@ -154,14 +154,14 @@
   [Prikaz] NahraditVse
 
 
-[Nazev] Text [Výběr]    Oddělit neprázdné odstavce prázdným řádkem
+[Nazev] Text [Výběr] Oddělit neprázdné odstavce prázdným řádkem
   [Hledej]^.+$
   [Nahrad]&\p
   [Parametry]  BezHlaseni Regularni SoucasnyVyber
   [Prikaz] NahraditVse
 
 
-[Nazev] Text [Výběr]	Zrušit českou dakritiku
+[Nazev] Text [Výběr] Zrušit českou dakritiku
   ;áÁčČďĎéÉěĚíÍľĽňŇóÓřŘšŠťŤúÚůŮýÝžŽüÜëËöÖ
   ;aAcCdDeEeEiIlLnNoOrRsStTuUuUyYzZuUeEoO
   ; hezké ale dost pomalé  	
@@ -171,7 +171,7 @@
   [Prikaz] NahraditVse
 
 
-[Nazev] Text [Výběr]	Jednopísmenné spojky a předložky svázat pevnou mezerou
+[Nazev] Text [Výběr] Jednopísmenné spojky a předložky svázat pevnou mezerou
   ; hezké ale dost pomalé  	
   [Hledej](\<a|\<v|\<i|\<o|\<ó|\<u|\<s) +
   [Nahrad]\1\S
@@ -181,46 +181,46 @@
 ; separátor
 [Nazev] 
 
-[Nazev] Text [Celý]	Konvertovat datum z formátu  yyyy-mm-dd  na  dd.mm.yy
+[Nazev] Text [Celý] Konvertovat datum z formátu  yyyy-mm-dd  na  dd.mm.yy
   [Hledej](\d{2,2})(\d{2,2})-(\d{1,2})-(\d{1,2})
   [Nahrad]\4.\3.\2
   [Parametry]   BezHlaseni  Regularni  
   [Prikaz] NahraditVse
 
 
-[Nazev] Text [Celý]	Konvertovat datum z formátu  dd.mm.yyyy  na  yy-mm-dd
+[Nazev] Text [Celý] Konvertovat datum z formátu  dd.mm.yyyy  na  yy-mm-dd
   [Hledej](\d{1,2})\. *(\d{1,2})\. *(\d{2,2})(\d{2,2})
   [Nahrad]\4-\2-\1
   [Parametry]   BezHlaseni  Regularni  
   [Prikaz] NahraditVse
 
 
-[Nazev] Text [Celý]	Vypsat všechny Hypertextové odkazy do souboru
+[Nazev] Text [Celý] Vypsat všechny Hypertextové odkazy do souboru
   [Hledej][:::HyperLinkURL::]
   [Nahrad]Odkaz č. \i, na stránce \I: \D\C{Example}\h&\h{\u}\C (URL: \C{Example}\u\C)\C{Example}\p\h\R
   [Parametry]   BezHlaseni  Regularni  
   [Prikaz] NahraditVse
 
 
-[Nazev] Text [Celý]	Vypsat všechny  Poznámky do souboru 
+[Nazev] Text [Celý] Vypsat všechny  Poznámky do souboru 
   [Hledej][::Comment::]
   [Nahrad]Poznámka &č.\i, na stránce \I,  Obsah poznámky:\D\C{Example}\C\n\o\p\p\R
   [Parametry]   BezHlaseni  Regularni  
   [Prikaz] NahraditVse
 
-[Nazev] Text [Celý]    Vypsat všechny  Obrázky do souboru
+[Nazev] Text [Celý] Vypsat všechny  Obrázky do souboru
   [Hledej][::Picture::]
   [Nahrad]Obrázek č. \i, na stránce \I, Název of pictute: \C\O\C{Example}&\p\p\C\R
   [Parametry]   BezHlaseni  Regularni  
   [Prikaz] NahraditVse
 
-[Nazev] Text [Celý]    Vypsat všechny Tabulky do souboru
+[Nazev] Text [Celý] Vypsat všechny Tabulky do souboru
   [Hledej][::TextTable::]
   [Nahrad]Tabulka č. \i, na stránce \I, Název tabulky: \C\O\C{Example}\p&\p\p\C\R
   [Parametry]   BezHlaseni  Regularni  
   [Prikaz] NahraditVse
 
-[Nazev] Text [Celý]    Vypsat všechny Textové Rámce do souboru
+[Nazev] Text [Celý] Vypsat všechny Textové Rámce do souboru
   [Hledej][::TextFrame::]
   [Nahrad]Textový rámec č. \i, na stránce \I, Název: \C\O\C{Example}\p&\p\p\C\R
   [Parametry]   BezHlaseni  Regularni  

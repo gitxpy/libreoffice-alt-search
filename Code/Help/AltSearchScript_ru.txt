@@ -43,7 +43,7 @@
 
 ************************************************************
 
-[Name] HTML [Sel.]	Primitive conversion to HTML tags for selected block    	 
+[Name] HTML [Sel.] Primitive conversion to HTML tags for selected block    	 
   ; the same parameters for all 
   [Parameters] MsgOff Regular CurrSelection
 
@@ -78,7 +78,7 @@
   [Command] ReplaceAll
 
 
-[Name] Text [Sel.]	Convert selected block into BBcode
+[Name] Text [Sel.] Convert selected block into BBcode
    ; the same parameters for all 
   [Parameters] MsgOff Regular CurrSelection
 
@@ -141,7 +141,7 @@
 
  
   
-[Name] Text [Sel.]	Join paragraphs non separated by empty paragraphs
+[Name] Text [Sel.] Join paragraphs non separated by empty paragraphs
  ; block of empty paragraphs replace by one empty par 
   [Find]\p{2,}
   [Replace]\p\p
@@ -164,7 +164,7 @@
   [Command] ReplaceAll
 
 
-[Name] Text [Sel.]    Separate non empty paragraphs by empty paragraphs
+[Name] Text [Sel.] Separate non empty paragraphs by empty paragraphs
   [Find]^.+$
   [Replace]&\p
   [Parameters]  MsgOff Regular CurrSelection
@@ -174,53 +174,50 @@
 ; separator
 [Name] 
 
-[Name] Text [All]	Convert date from  yyyy-mm-dd  to  dd.mm.yy
+[Name] Text [All] Convert date from  yyyy-mm-dd  to  dd.mm.yy
   [Find](\d{2,2})(\d{2,2})-(\d{1,2})-(\d{1,2})
   [Replace]\4.\3.\2
   [Parameters]   MsgOff  Regular  
   [Command] ReplaceAll
 
 
-[Name] Text [All]	Convert date from  dd.mm.yyyy  to  yy-mm-dd
+[Name] Text [All] Convert date from  dd.mm.yyyy  to  yy-mm-dd
   [Find](\d{1,2})\. *(\d{1,2})\. *(\d{2,2})(\d{2,2})
   [Replace]\4-\2-\1
   [Parameters]   MsgOff  Regular  
   [Command] ReplaceAll
 
 
-[Name] Text [All]	Write out all Hyperlinks to a new file
+[Name] Text [All] Write out all Hyperlinks to a new file
   [Find][:::HyperLinkURL::]
   [Replace]Link \i, on page \I: \D\C{Example}\h&\h{\u}\C (URL: \C{Example}\u\C)\C{Example}\p\h\R
   [Parameters]   MsgOff  Regular  
   [Command] ReplaceAll
 
 
-[Name] Text [All]	Write out all Comments to a new file
+[Name] Text [All] Write out all Comments to a new file
   [Find][::Comment::]
   [Replace]Comment &\i, on page \I,  Content:\D\C{Example}\C\n\o\p\p\R
   [Parameters]   MsgOff  Regular  
   [Command] ReplaceAll
 
-[Name] Text [All]    Write out all Pictures to a new file
+[Name] Text [All] Write out all Pictures to a new file
   [Find][::Picture::]
   [Replace]Picture \i, on page \I, Name of picture: \C\O\C{Example}&\p\p\C\R
   [Parameters]   MsgOff  Regular  
   [Command] ReplaceAll
 
-[Name] Text [All]    Write out all Tables to a new file
+[Name] Text [All] Write out all Tables to a new file
   [Find][::TextTable::]
   [Replace]Table \i, on page \I, Name of table: \C\O\C{Example}\p&\p\p\C\R
   [Parameters]   MsgOff  Regular  
   [Command] ReplaceAll
 
-[Name] Text [All]    Write out all Text Frames to a new file
+[Name] Text [All] Write out all Text Frames to a new file
   [Find][::TextFrame::]
   [Replace]Frame \i, on page \I, Name of Text Frame: \C\O\C{Example}\p&\p\p\C\R
   [Parameters]   MsgOff  Regular  
   [Command] ReplaceAll
-
-
-
 
 [End]  
   

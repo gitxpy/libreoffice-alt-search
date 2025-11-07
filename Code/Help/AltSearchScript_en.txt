@@ -191,7 +191,7 @@
   [Command] ReplaceAll
 
 
-[Name] Text [All]  Write out all Pictures to new file
+[Name] Text [All] Write out all Pictures to new file
   [Find][::Picture::]
   [Replace]\P{Text body}Immagine \i, on page \I\n- Name of the picture: \C{Emphasis}\O\C{Strong Emphasis}\n- Alt Text: \C{Emphasis}\o\C{Strong Emphasis}\p & \p\R
   [Parameters] MsgOff Regular Backwards

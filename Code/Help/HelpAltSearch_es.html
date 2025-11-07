@@ -39,7 +39,7 @@
 			<p>Nota del traductor - Los modificadores de formato -- explicados en la ayuda: \C{ejemplo} etc... pueden ocasionar errores. Úselos con precaución)</p>
 		</details>
 
-		<h3 id="ofrece">Qué ofrece esta extensión en comparación con el diálogo estándar de Búsqueda de Writer:</h3>
+		<h3><a id="ofrece"></a>Qué ofrece esta extensión en comparación con el diálogo estándar de Búsqueda de Writer:</h3>
 		<ul>
 			<li>Selección rápida de expresiones regulares (sencillas y complejas) ya preestablecidas</li>
 			<li>Cómputo de ocurrencias de la expresión buscada con el botón <var>Contar</var></li>
@@ -63,7 +63,7 @@
 			<li>Búsqueda por estilos de párrafo, carácter o lista, en el desplegable «Propiedades» con posibilidad de elegir un estilo desde listas</li>
 			<li>Búsqueda por similitud o coincidencia con el formato del texto bajo el cursor</li>
 			<li>Búsqueda y remplazo de Marcadores</li>
-
+<hr>
 			<p>Sugerencias para asignar atajos de teclado de uso más frecuente:</p>
 			<ol>
 				<li>Abra el diálogo <b>Herramientas &gt; Personalizar &gt; Teclado</b></li>
@@ -76,14 +76,14 @@
 				<li>_FindBack Ctrl+Mayús+H (buscar anterior ocurrencia de la última búsqueda (diálogo cerrado)</li>
 			</ul>
 		<p>También puede asignar atajos de teclado directamente desde el diálogo AltSearch. Consulte <a href="#lotes">Modo por lotes</a> más adelante.</p>
-
+<hr>
 		</ul>
-		<p class="center"><img src="./img/altsearch_main_es.png" alt="Diálogo principal de AltSearch" width="454" height="310"> </p>
-		<h3>Listas desplegables sobre el campos de expresiones de búsqueda («Buscar»)</h3>
-		<p>Contienen expresiones regulares sencillas, expresiones Ampliadas o parámetros de propiedades. Tras elegir una entrada los parámetros se pasan al campo de búsqueda. Se pueden insertar de varios modos: al principio, al final, en la posición del cursor o remplazando al texto del campo de búsqueda. Al mismo tiempo se activa la opción «Expresiones regulares».</p>
-		<h3 id="buscar">Buscar:</h3>
+		<h3><u>Listas desplegables sobre el campos de expresiones de búsqueda («Buscar»)</u></h3>
 
-		<p><b>A.</b> Lista desplegable <b>«Normal»</b></p>
+		<p class="center"><img src="./img/altsearch_main_es.png"width="480" height="348" alt="Diálogo principal de AltSearch" > </br>Diálogo principal de AltSearch</p>
+
+		<p>Contienen expresiones regulares sencillas, expresiones Ampliadas o parámetros de propiedades. Tras elegir una entrada los parámetros se pasan al campo de búsqueda. Se pueden insertar de varios modos: al principio, al final, en la posición del cursor o remplazando al texto del campo de búsqueda. Al mismo tiempo se activa la opción «Expresiones regulares».</p>
+		<p id="buscar"><u><b>A.</b> Lista desplegable <b>«Normal»</b></u></p>
 		<p class="cm2">Contiene algunas expresiones regulares útiles. Puede encontrar su descripción en la ayuda de LibreOffice <a href="https://help.libreoffice.org/latest/es/text/shared/01/02100001.html"> Lista de Expresiones Regulares.</a></p>
 		<p class="cm4" id="limitacion"><dfn>Limitaciones:</dfn> La sintaxis usada en expresiones regulares no es totalmente compatible con la original de OpenOffice/LibreOffice. Los problemas surgen especialmente con búsquedas, al usar comodines <strong>* + ? {n,n}</strong> justo después de expresiones entre paréntesis ().</p>
 		<p>Por ejemplo, <strong>(Mi)?ster</strong> no se encontrará (sin embargo, cuando se usa <var>Contar</var> devolverá la cuenta correcta - esta función sólo está usando el modo compatible).</p>
@@ -92,7 +92,7 @@
 		<p class="cm2"><strong>\l</strong> - representa cualquier carácter alfabético; es lo mismo que <strong>[:alpha:]{1,1}</strong>.</p>
 		<p class="cm2"><strong>\d</strong> - representa cualquier dígito; es lo mismo que <strong>[0-9]</strong>.</p>
 		<p class="cm2"><strong>\p</strong> - representa la marca de final de párrafo,</p>
-		<p class="cm4">en contraste con la búsqueda extándard de Writer $, también representa un párrafo vacío. Se pueden usar los comodines <strong>+</strong>, <strong>*</strong>, <strong>{min,max}</strong> con <strong>$</strong>.</p>
+		<p class="cm4">en contraste con la búsqueda extándard de Writer <strong>$</strong>, también representa un párrafo vacío. Se pueden usar los comodines <strong>+</strong>, <strong>*</strong>, <strong>{min,max}</strong> con <strong>$</strong>.</p>
 		<p class="cm2"><strong>\p{1,}</strong> - buscará el final de párrafo más cercano seguido de un bloque ilimitado de párrafos vacíos. Es lo mismo que <strong>\p*</strong>.</p>
 		<p class="cm2"><strong>\p{2,4} –</strong> buscará el final de párrafo más cercano seguido de al menos uno, máximo tres párrafos vacíos; entonces serán en total como mínimo 2 y como máximo 4 párrafos uno tras otro.</p>
 		<p class="cm4"><dfn> Limitación:</dfn> Lento al usarse por separado. Algunas veces hay problemas al buscar hacia atrás.</p>
@@ -106,7 +106,7 @@
 		<p class="cm2"><strong>\s</strong> - representa cualquier espacio: espacio, espacio de no separación, tabulador o salto de linea manual. Es lo mismo que <strong>[\xA0\x9\xA]</strong>.</p>
 		<p class="cm2"><strong>\S –</strong> representa un espacio de no separación (<strong>\x00A0</strong> o <strong>\#160</strong> )</p>
 
-		<p><b>B.</b> Lista desplegable <b>«Ampliado»</b></p>
+		<p><u><b>B.</b> Lista desplegable <b>«Ampliado»</b></u></p>
 		<p class="cm2"><strong>[::BigBlock::]</strong> - busca bloques de párrafos (longitud ilimitada), delimitados por algún texto conocido</p>
 		<p class="cm4"><strong>inicio[::BigBlock::]fin</strong> - en primer lugar busca <strong>inicio</strong> y tras encontrarlo busca <strong>fin</strong>. Si encuentra ambos, se selecciona el bloque completo.</p>
 		<p class="cm4">En la cadena de reemplazo se pueden usar los parámetros <strong>\b</strong>, <strong>&amp;</strong>, <strong>\e</strong> para insertar el contenido de <strong>inicio</strong>, <strong>bloque de párrafos encontrado</strong>, o <strong>fin</strong></p>
@@ -132,17 +132,17 @@
 		<p class="cm4"><strong>[::TextFrame::]</strong> - busca cualquier marco de texto</p>
 		<p class="cm4"><strong>[::TextFrame::]marco1</strong> - busca marcos de texto con la cadena <strong>marco1</strong> en el nombre</p>
 		<p class="cm4"><dfn> Limitaciónes:</dfn></p>
-			<ol class="cm4">
+			<ul class="cm4">
 				<li>Al usar el botón <var>Buscar</var>, encontrará el siguiente marco de texto sólo si el marco está seleccionado o el cursor está dentro del marco. Si el cursor está muy lejos en el texto, encuentra primero el marco de texto de la lista interna de marcos.
 				<br>La opción «Sólo selección actual» no funciona.</li>
 				<li>La utilidad del botón <var>Reemplazar</var> es muy limitada, en consecuencia con el punto 1.</li>
 				<li>El orden de las coincidencias de búsqueda (desafortunada y provisionalmente, espero) es el orden de inserción de los marcos de texto en el documento y <b>no</b> el orden en las páginas del documento desde el principio hasta el final,</li>
 				<li>Solo se pueden buscar cadenas en el nombre del marco - no se pueden usar expresiones regulares completas.</li>
-			</ol>
-		<p class="cm2">El uso de <var>Buscar todos</var> y <var>Reemplazar todos</var> es completamente funcional, incluso cuando con la opción «Solo selección actual».</p>
+			</ul>
+		<p class="cm2">El uso de <var>Buscar todos</var> y <var>Reemplazar todos</var> es completamente funcional, aunque en algunas ocasiones falla cuando se utiliza la opción <a href="https://github.com/gitxpy/libreoffice-alt-search/issues/134" target="_blank"> «&#x26A0; Solo selección actual» </a></p>
 		<p class="cm2"><strong>[::Picture::]</strong> - búsqueda de imágenes por su nombre</p>
 		<p class="cm4"><strong>[::Picture::]</strong> - busca cualquier imagen</p>
-		<p class="cm4"><strong>[::Picture::]obra1</strong> - busca imagenes con la cadena <strong>Ima</strong> en su nombre</p>
+		<p class="cm4"><strong>[::Picture::]Ima</strong> - busca imagenes con la cadena <strong>Ima</strong> en su nombre</p>
 		<p class="cm4"><strong>[::Picture::]\texto -</strong> busca la cadena <strong>texto</strong> en la propiedad <b>Alternativa textual</b> de las imágenes.</p>
 		<p class="cm4"><strong>[::Picture::]\ -</strong> busca todas las imágenes con la propiedad <b>Alternativa textual</b> vacía.</p>
 		<p class="cm4"><dfn> Limitaciónes:</dfn> Las mismas que para <strong>[::TextFrame::]</strong>.</p>
@@ -174,7 +174,7 @@
 		<p class="cm4"><strong>[::Bookmark::]texto</strong> - busca <strong>texto</strong> si está dentro de un bloque de texto que está marcado como marcador</p>
 		<p class="cm4"><strong>[::Bookmark::]\RefHeading</strong> - busca un lugar en el texto o un bloque de texto marcado como marcador solo cuando el nombre del marcador contenga la subcadena RefHeading (busca subcadenas en los nombres de los marcadores)</p>
 
-		<p><b>C.</b> Lista desplegable <b>«Propiedades»</b></p>
+		<p><u><b>C.</b> Lista desplegable <b>«Propiedades»</b></u></p>
 		<p class="cm2">Activa la búsqueda en función de propiedades (atributos), y también de los valores de esas propiedades.<br>la sintaxis en el cuadro de búsqueda, debe comenzar por la cadena <strong>[:::</strong>, seguida de <strong>nombre</strong> de la propiedad (se pueden espedcificar varios nombres separandolos por el signo <strong>|</strong> ) y la cadena final <strong>::]</strong>. Tras ella puede seguir un texto a buscar. Si quiere buscar el valor concreto de una propiedad, se debe usar la construcción <strong>nombre=valor</strong>.</p>
 		<p class="cm2"><strong>[:::ParaStyleName::]</strong> - búsqueda estilo de párrafo</p>
 		<p class="cm4"><strong>[:::ParaStyleName=::]</strong> - busca los parrafos de texto con un estilo distinto del estilo <strong>Predeteminado</strong></p>
@@ -185,7 +185,7 @@
 		<p class="cm4"><strong>[:::CharStyleName=::]</strong> - busca partes de texto con estilo de carácter distinto del estilo <strong>Predeterminado</strong></p>
 		<p class="cm4"><strong>[:::CharStyleName=Ejemplo::]</strong> buscará partes de texto con estilo de carácter <strong>Ejemplo</strong></p>
 		<p class="cm4"><strong>[:::CharStyleName=Ejemplo::] algo</strong> - busca el texto <strong>algo</strong> si está formateado con el estilo de cáracter <strong>Ejemplo</strong></p>
-		<p class="cm4"><dfn> Limitaciones</dfn><dfn>:</dfn> funciona bien cuando se busca hacea adelante - <b>Hacia atrás</b> no funciona (mensaje: no encontrado).<br>No encuenta algunas partes de texto con longitud cero, por ejemplo en párrafos vacíos.<br>No se puede buscar simultaneamente con otras propiedades de texto</p>
+		<p class="cm4"><dfn> Limitaciones</dfn><dfn>:</dfn> funciona bien cuando se busca hacia adelante - <b>Hacia atrás</b> no funciona (mensaje: no encontrado).<br>No encuenta algunas partes de texto con longitud cero, por ejemplo en párrafos vacíos.<br>No se puede buscar simultaneamente con otras propiedades de texto</p>
 		<p class="cm2"><strong>[:::NumberingStyleName::]</strong> - búsqueda de estilos de listas - se utiliza de la misma manera que la búsqueda de estilos de párrafo.</p>
 		<p class="cm2"><strong>[:::HyperLinkURL::]</strong> - busca dentro del texto aquella parte con el atributo <strong>HyperLinkURL</strong></p>
 		<p class="cm4"><strong>[:::HyperLinkURL::]</strong> - encontrará todos los hiperenlaces</p>
@@ -197,8 +197,9 @@
 		<p class="cm2"><strong>Mismo formato de carácter</strong> - esta función carga cualquier atributo de carácter en formato directo (en la posición del cursor) para buscar texto formateados del mismo modo. Si por ejemplo, el cursor está en un lugar cuyo nombre de tipo de letra se ha cambiado a mano (Arial) , buscará los fragmentos de texto con el <b>mismo</b> nombre de tipo de letra cambiado a mano. Ej. <strong>[:::CharFontName=Arial::]</strong>.</p>
 		<p class="cm2"><dfn> Limitación:</dfn> EL motor de búsqueda de Writer no soporta todas las propiedades de carácter. No todas las combinaciones funcionan como deberían.</p>
 
+<hr>
 		<h3 id="reemplazar">Listas desplegables sobre el campos de expresiones de reemplazo («Reemplazar:»)</h3>
-		<p>Lista desplegable <b>«Reemplazar»</b></p>
+		<p><b>A.</b> Lista desplegable <b>«Reemplazar»</b></p>
 		<p class="cm2"><strong>&amp; \0 –</strong> ambos parámetros significan lo mismo – representan el texto completo encontrado</p>
 		<p class="cm4">Si la expresión se buscó usando <strong>[::BigBlock::]</strong> estos parámetros representan sólo el bloque de párrafos entre las marcas inicial y final.</p>
 		<p class="cm4">Si el objeto se buscó usando <strong>[::Comment::]</strong>, <strong>[::Field::]</strong>, <strong>[::TextFrame::]</strong>, <strong>[::Picture::]</strong>, <strong>[::TextTable::]</strong> estos parámetros representan directamente estos objetos (introducidos mediante el portapapeles).</p>
@@ -207,7 +208,7 @@
 
 		<p><a id="subexpresiones"><u>Subexpresiones</u></a></p>
 	    <p class="cm2"><strong>\1 \2 \3 \4 \5 \6 \7 \8 \9 –</strong> contenido de subexpresiones</p>
-		<p class="cm4">Si la expresión de búsqueda se utilizó usando paréntesis (), entonces <strong>\1</strong> representa el contenido correspondiente a el primer par de paréntesis, de modo similar <strong>\2</strong> corresponde a el segundo par () etc., hasta <strong>\9</strong> que se corresponde conel 9º par. Sólo es valido un 1er nivel de paréntesis, los niveles anidados se ignorarán.</p>
+		<p class="cm4">Si la expresión de búsqueda se utilizó usando paréntesis (), entonces <strong>\1</strong> representa el contenido correspondiente al primer par de paréntesis, de modo similar <strong>\2</strong> corresponde al segundo par () etc., hasta <strong>\9</strong> que se corresponde conel 9º par. Sólo es valido un 1er nivel de paréntesis, los niveles anidados se ignorarán.</p>
 		<p class="cm4">Ejemplo:<br>Mediante de la expresión <strong>(\d{1,2})\. *(\d{1,2})\. *\d{2,2}(\d{2,2})</strong> se puede encontrar fecha en formato <b>01.12.2007</b> y reemplazar con <b>07-12-01</b> mediante la expresión de reemplazo <strong>\3-\2-\1</strong>.</p>
 		<p class="cm4">Si se tiene que desactivar el procesado de subexpresiones (p.e. por compatibilidad con expresiones regulares en ICU estándar) es necesario insertar la expresión completa de búsqueda en un par de paréntesis adicionales (). Todos los demás niveles de paréntesis anidados se ignorarán.</p>
 		<p class="cm4"><dfn> Limitación:</dfn> El uso de subexpresiones es relativamente lento y no es completamente compatible con la búsqueda original de Writer.</p>
@@ -239,7 +240,6 @@
 		<p class="cm2"><strong>\D –</strong> Aplica el formato predeterminado en el texto buscado (Elimina el formato directo) (Ctrl+M)</p>
 		<p class="cm4">Se aplican reglas de uso análogas a las del parámetro <strong>\C{}</strong>.</p>
 		<p class="cm2"><strong>\d –</strong> restablece atributos de texto a los predeterminados sólo en el lugar de uso. A direrencia  de <strong>\D</strong> no tiene efecto en el texto insertado previamente.</p>
-
 
 		<p class="cm2"><strong>\F{Nueva nota al pie} –</strong> inserta una nueva nota al pie que contiene <strong>Nueva nota al pie</strong> en el lugar de reemplazo. Dentro de las llaves se pueden usar parámetros tales como <strong>\i</strong>, <strong>\I</strong>, <strong>&amp;</strong>, o <strong>\1</strong></p>
 		<p class="cm2"><strong>\E{Nueva nota final}</strong> - inserta nueva nota final en el lugar de reemplazo, análoga a <strong>\F</strong></p>
@@ -278,40 +278,50 @@
 		<p class="cm4">Esta opción provoca la escritura de la expresión de reemplazo al nuevo archivo.ODT en lugar de de reemplazarla en el lugar en que la encuentre. El archivo original debería permanecer sin cambios. Se puede introducir el nombre del archivo con <strong>\R{Nombre_de_archivo}</strong>. El nombre debe tener el formato preciso de la ventana de terminado en « - Writer». Los registros se ańaden siempre al final del archivo.</p>
 		<p class="cm4">Ejemplo: Si en la expresión de búsqueda se utiliza <strong>[:::HyperLinkURL::]</strong> y en la expresión de reemplazo <strong>Enlace \i, página \I: &amp; (URL: \u)\p\R</strong>, tras pulsar el botón <var>Remplazar todo</var> se escribirá en un nuevo archivo todos los hiperenlaces encontrados en el archivo original, en el siguiente formato:</p>
 		<p class="cm4">Enlace <i>1, página 1: textoDelHiperenlace (URL: direcciónURL)</i> en párrafos separados.</p>
-		<p>Botón y Lista desplegable <b>Escoger propiedad</b></p>
-		<p class="cm2">Mediante el botón <var>Escoger propiedad</var> se puede actualizar la lista de (algunas) propiedades y sus valores del objeto recién seleccionado. Se puede hojear y elegir desde la lista desplegable lateral.</p>
+
+
+		<p><b>B.</b> Botón y Lista desplegable <b>Escoger propiedad</b></p>
+		<p class="cm2">Mediante el botón <var>Escoger propiedad</var> se actualizar la lista de propiedades y sus valores de un objeto seleccionado. Se puede inspeccionar y utilizar la lista para pasar al campo Remplazar y allí modificar el valor deseado.</p>
 		<p class="cm2"><strong>\A{propiedad=valor}</strong> – establece en la expresión de reemplazo el valor de la propiedad especificada.</p>
 		<p class="cm4">Se aplica el uso de reglas análogas a las del parámetro <strong>\C{}</strong>.</p>
-		<h3 id="lotes"> Uso del modo por lotes: <var>Lotes &gt;&gt;</var></h3>
+		<p class="cm2">Por ejemplo, si la propiedad que está buscando es:</p>
+		<p class="cm4"><strong>[:::CharBackColor=&amp;HFF0000::]</strong> <b class="bRed">un color de fondo rojo</b> y quiere reemplazarla con un <b class="bBlue">color de fondo azul</b>,
+		<p class="cm2">En el cuadro Reemplazar, debe escribir:</p>
+		<p class="cm4"><strong>\A{CharBackColor=&amp;H00FF00}</strong> (por que la notación RGB de azul en hexadecimal es:  <b class="bBlue">00FF00</b>).</p>
 
-		<p><img src="./img/altsearch_script_es.png" alt="Gestor de lotes" width="454" height="309"></p>
+<hr>
+		<h3 id="lotes"> Uso del modo por lotes: <var>Lotes &gt;&gt;</var></h3>
+		<p class="center"><img src="./img/altsearch_script_es.png"  width="480" height="348" alt="Gestor de lotes"></br>Gestor de lotes</p>
 		<p>El modo por lotes permite guardar y cargar parámetros preestablecidos de búsqueda y reemplazo. Se pueden guardar varias búsquedas y reemplazos en orden en una única secuencia y después rápidamente cargarla y ejecutarla.</p>
 		<p>Se pueden guardar los valores actuales de todos los parámetros utilizando el botón <var>Guardar lote</var>. En el diálogo que se mostrará, se ofrece renombrar el nombre del último lote usado. Si el nombre que se introduce ya existe, se puede elegir, si reescribir el antiguo contenido o si conservarlo y ańadir el nuevo contenido al final. Se guarda el lote de modo que cuando se vuelva a ejecutar se usa la función por defecto «Reemplazar todo». Este comando puede cambiarse más adelante editando el archivo de reglas de lotes.</p>
 		<p>El botón <var>Lotes &gt;&gt;</var> cambiará al diálogo <b>Gestor de lotes</b> donde se pueden ejecutar y editar lotes. Se puede volver al diálogo de búsqueda usando el botón <var>&lt;&lt; Búsqueda</var>.</p>
 		<p>Todos los parámetros del lote se guardan en el archivo de texto <code>AltSearchScript.txt</code> dentro del perfil de usuario <a href="https://wiki.documentfoundation.org/UserProfile/es"> de LibreOffice</a>. Dicho archivo se puede abrir para su edición desde el diálogo <b>Gestor de lotes</b>, usando el botón <var>Editar</var>. Para la edición está preestablecido el editor <b>notepad,</b> sin embargo se puede establecer cualquier otro editor de texto, editando el archivo <code>AltSearchEditor.ini</code> en el mismo directorio. Tras cambiar manualmente y guardar el archivo de lotes se puede actualizar la lista de nombres de lotes con el botón <var>Actualizar</var>. La sintaxis usada en el archivo <code>AltSearchScript.txt</code> está descrita en su propio comienzo, codificado en UTF-8.</p>
 		<p>Tras hacer doble click en un elemento de la lista, o mediante el botón <var>Ejecutar</var>, se cargará la secuencia elegida, y se ejecutarán las búsquedas y reemplazos. Cuando se usen lotes en un área seleccionada se aconseja dejar al principio y tras el final de la selección uno o dos párrafos vacíos.</p>
-		<p>El botón <var>Pasar</var> se usa para transferir los parámetros de búsqueda, reemplazo y valores a el diálogo de búsqueda sin ejecutarlo realmente. Si el lote contiene una secuencia de varias búsquedas y reemplazos sólo se transferirá la última parte de la secuencia.</p>
-
-		<p><img src="./img/altsearch_shortcuts_es.png" alt="Atajos de teclado" width="396" height="273" id="PNG"></p>
-		<p>El botón <var>Atajos de teclado</var> Abre un diálogo que le permite asignar un atajo de teclado a un lote existente,<br>Para esto:</p>
+		<p>El botón <var>Pasar</var> se usa para transferir los parámetros de búsqueda, reemplazo y valores al diálogo de búsqueda sin ejecutarlo realmente. Si el lote contiene una secuencia de varias búsquedas y reemplazos sólo se transferirá la última parte de la secuencia.</p>
+<hr>
+		<h3>Atajos de teclado</h3>
+		<p>El botón <var>Atajos de teclado</var> Abre un diálogo que le permite asignar un atajo de teclado a un lote existente</p>
+		<p class="center"><img src="./img/altsearch_shortcuts_es.png" width="402" height="328"  alt="Atajos de teclado"></br>Atajos de teclado</p>
+		<p>Para esto:</p>
 		<ol>
-			<li>Seleccione el nombre del lote en el cuadro de listado</li>
+			<li>Seleccione el nombre del lote en el cuadro de lista</li>
 			<li>Si lo prefiere cambie el nombre de la subrutina auxiliar para Basic</li>
 			<li>Establezca el atajo de teclado deseado</li>
 			<li>Finalmente, pulse el botón <var>Asignar</var>.</li>
 		</ol>
 		<p>Para que el atajo de teclado funcione, en el momento de la asignación, se crea un procedimiento en el módulo Basic <code>Standard.AltSearchBatchs</code> con un nombre que se ajusta a la sintáxis Basic, este es el nombre que se muestra en el segundo listado del diálogo. Cuando este procedimiento auxiliar se ejecuta, el diálogo AltSearchBatch se abrirá e inmediatamente se ejecutará el lote especificado. El funcionamiento correcto depende de la coincidencia del nombre que figura en el procedimiento y del nombre dellote existente. Si cambia el nombre del lote al que se asignó previamente un atajo de teclado, deberá reasignarle un atajo de teclado. <br>El antiguo procedimiento auxiliar se puede eliminar seleccionándolo en el segundo menú desplegable y usando el botón eliminar <var>X</var>. Mediante este procedimiento también se pueden eliminar los atajos de teclado de LibreOffice.<br><b>Tenga cuidado para no eliminar atajos de teclado importantes de LibreOffice inadvertidamente</b>.</p>
-		<p><img src="./img/altsearch_multi_es.png" alt="Ejecución Múltiple" width="454" height="310"></p>
-
+<hr>
 		<h3>Ejecución múltiple:</h3>
+		<p class="center"><img src="./img/altsearch_multi_es.png" width="452" height="342" alt="Ejecución Múltiple"></br>Ejecución Múltiple</p>
 		<p>El lote seleccionado en el diálogo «Gestión de lotes» se puede aplicar a varios archivos abiertos</p>
 		<ol>
 			<li>Seleccione el lote en el diálogo «Gestión de lotes»</li>
 			<li>Haga clic en el botón <var>Ejecución Múltiple &gt;&gt;</var></li>
-			<li>Seleccione los archivos de la lista en los que quiere aplicar la ejecución múltiple (usando Ctrl+Clic con el ratón). La lista mostrará los archivos Writer abiertos</li>
+			<li>Seleccione los archivos de la lista en los que quiere aplicar la ejecución múltiple (usando Ctrl+Clic con el ratón). La lista muestra los archivos abiertos en Writer.</li>
 			<li>Pulse el botón <var>Ejecutar</var> para iniciar el proceso.<b> Importante</b>: Durante el proceso no debe hacer nada más en Writer</li>
 		</ol>
 		<p>La casilla de selección «<b>Sin mensajes</b>» elimina los mensajes de los cambios realizados en cada archivo tan pronto como se acaba de procesar un archivo, pero se mostrará el informe final.</p>
+<hr>
 		<h3 id="limitaciones">Limitaciones:</h3>
 		<p>Si las limitaciones ya se conocen, en su mayoría se citan cerca de la descripción de parámetros individuales. Generalmente se aplica:</p>
 		<ul>
