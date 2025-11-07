@@ -39,7 +39,7 @@
 			<p>Nota del traductor - Los modificadores de formato -- explicados en la ayuda: \C{ejemplo} etc... pueden ocasionar errores. Úselos con precaución)</p>
 		</details>
 
-		<h3><a id="ofrece"></a>Qué ofrece esta extensión en comparación con el diálogo estándar de Búsqueda de Writer:</h3>
+		<h3 id="ofrece">Qué ofrece esta extensión en comparación con el diálogo estándar de Búsqueda de Writer:</h3>
 		<ul>
 			<li>Selección rápida de expresiones regulares (sencillas y complejas) ya preestablecidas</li>
 			<li>Cómputo de ocurrencias de la expresión buscada con el botón <var>Contar</var></li>
@@ -80,7 +80,7 @@
 		</ul>
 		<h3><u>Listas desplegables sobre el campos de expresiones de búsqueda («Buscar»)</u></h3>
 
-		<p class="center"><img src="./img/altsearch_main_es.png"width="480" height="348" alt="Diálogo principal de AltSearch" > </br>Diálogo principal de AltSearch</p>
+		<p class="center"><img src="./img/altsearch_main_es.png" width="480" height="348" alt="Diálogo principal de AltSearch" > <br>Diálogo principal de AltSearch</p>
 
 		<p>Contienen expresiones regulares sencillas, expresiones Ampliadas o parámetros de propiedades. Tras elegir una entrada los parámetros se pasan al campo de búsqueda. Se pueden insertar de varios modos: al principio, al final, en la posición del cursor o remplazando al texto del campo de búsqueda. Al mismo tiempo se activa la opción «Expresiones regulares».</p>
 		<p id="buscar"><u><b>A.</b> Lista desplegable <b>«Normal»</b></u></p>
@@ -285,13 +285,13 @@
 		<p class="cm2"><strong>\A{propiedad=valor}</strong> – establece en la expresión de reemplazo el valor de la propiedad especificada.</p>
 		<p class="cm4">Se aplica el uso de reglas análogas a las del parámetro <strong>\C{}</strong>.</p>
 		<p class="cm2">Por ejemplo, si la propiedad que está buscando es:</p>
-		<p class="cm4"><strong>[:::CharBackColor=&amp;HFF0000::]</strong> <b class="bRed">un color de fondo rojo</b> y quiere reemplazarla con un <b class="bBlue">color de fondo azul</b>,
+		<p class="cm4"><strong>[:::CharBackColor=&amp;HFF0000::]</strong> <b class="bRed">un color de fondo rojo</b> y quiere reemplazarla con un <b class="bBlue">color de fondo azul</b>,</p>
 		<p class="cm2">En el cuadro Reemplazar, debe escribir:</p>
 		<p class="cm4"><strong>\A{CharBackColor=&amp;H00FF00}</strong> (por que la notación RGB de azul en hexadecimal es:  <b class="bBlue">00FF00</b>).</p>
 
 <hr>
 		<h3 id="lotes"> Uso del modo por lotes: <var>Lotes &gt;&gt;</var></h3>
-		<p class="center"><img src="./img/altsearch_script_es.png"  width="480" height="348" alt="Gestor de lotes"></br>Gestor de lotes</p>
+		<p class="center"><img src="./img/altsearch_script_es.png"  width="480" height="348" alt="Gestor de lotes"><br>Gestor de lotes</p>
 		<p>El modo por lotes permite guardar y cargar parámetros preestablecidos de búsqueda y reemplazo. Se pueden guardar varias búsquedas y reemplazos en orden en una única secuencia y después rápidamente cargarla y ejecutarla.</p>
 		<p>Se pueden guardar los valores actuales de todos los parámetros utilizando el botón <var>Guardar lote</var>. En el diálogo que se mostrará, se ofrece renombrar el nombre del último lote usado. Si el nombre que se introduce ya existe, se puede elegir, si reescribir el antiguo contenido o si conservarlo y ańadir el nuevo contenido al final. Se guarda el lote de modo que cuando se vuelva a ejecutar se usa la función por defecto «Reemplazar todo». Este comando puede cambiarse más adelante editando el archivo de reglas de lotes.</p>
 		<p>El botón <var>Lotes &gt;&gt;</var> cambiará al diálogo <b>Gestor de lotes</b> donde se pueden ejecutar y editar lotes. Se puede volver al diálogo de búsqueda usando el botón <var>&lt;&lt; Búsqueda</var>.</p>
@@ -301,7 +301,7 @@
 <hr>
 		<h3>Atajos de teclado</h3>
 		<p>El botón <var>Atajos de teclado</var> Abre un diálogo que le permite asignar un atajo de teclado a un lote existente</p>
-		<p class="center"><img src="./img/altsearch_shortcuts_es.png" width="402" height="328"  alt="Atajos de teclado"></br>Atajos de teclado</p>
+		<p class="center"><img src="./img/altsearch_shortcuts_es.png" width="402" height="328"  alt="Atajos de teclado"><br>Atajos de teclado</p>
 		<p>Para esto:</p>
 		<ol>
 			<li>Seleccione el nombre del lote en el cuadro de lista</li>
@@ -312,7 +312,7 @@
 		<p>Para que el atajo de teclado funcione, en el momento de la asignación, se crea un procedimiento en el módulo Basic <code>Standard.AltSearchBatchs</code> con un nombre que se ajusta a la sintáxis Basic, este es el nombre que se muestra en el segundo listado del diálogo. Cuando este procedimiento auxiliar se ejecuta, el diálogo AltSearchBatch se abrirá e inmediatamente se ejecutará el lote especificado. El funcionamiento correcto depende de la coincidencia del nombre que figura en el procedimiento y del nombre dellote existente. Si cambia el nombre del lote al que se asignó previamente un atajo de teclado, deberá reasignarle un atajo de teclado. <br>El antiguo procedimiento auxiliar se puede eliminar seleccionándolo en el segundo menú desplegable y usando el botón eliminar <var>X</var>. Mediante este procedimiento también se pueden eliminar los atajos de teclado de LibreOffice.<br><b>Tenga cuidado para no eliminar atajos de teclado importantes de LibreOffice inadvertidamente</b>.</p>
 <hr>
 		<h3>Ejecución múltiple:</h3>
-		<p class="center"><img src="./img/altsearch_multi_es.png" width="452" height="342" alt="Ejecución Múltiple"></br>Ejecución Múltiple</p>
+		<p class="center"><img src="./img/altsearch_multi_es.png" width="452" height="342" alt="Ejecución Múltiple"><br>Ejecución Múltiple</p>
 		<p>El lote seleccionado en el diálogo «Gestión de lotes» se puede aplicar a varios archivos abiertos</p>
 		<ol>
 			<li>Seleccione el lote en el diálogo «Gestión de lotes»</li>
