@@ -275,5 +275,15 @@ Sub Load_ru
 		.title           = MSG(41)
 		.Bt_close.Label  = oDIAL.model.Bt_close.Label
 	end with
+
+	&apos; dialog D_morefiles  &apos;v1.4
+	with oDMOF.model
+		.Title                 = MSG(50)  &amp;  &quot;:&quot;
+		.Lb1.Label             =&quot;the batch will be execute on the selected documents:&quot;
+		.Bt_selectAll.Label    =&quot;Select all&quot;
+		.Bt_start.Label        =&quot;Start&quot;
+		.Cb_DisabRepBatch.Helptext=&quot;Disable messages after processing of each document, but leaves the final report.&quot;
+		.Cb_DisabRepBatch.Label=&quot;Disable messages&quot;
+	end with
 End Sub
 </script:module>
