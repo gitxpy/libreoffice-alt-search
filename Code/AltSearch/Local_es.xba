@@ -33,8 +33,8 @@ Sub Load_es
 
 	oDIAL.getcontrol(&quot;Cb_findReg&quot;).addItems(FINDREG,0)
 
-	FINDEXT = array(&quot; Series de párrafos (delimitados por marcas de inicio y final)&quot; &amp; chr(160) &amp; &quot;[::BigBlock::]&quot;, _
-	&quot; Expande selección encontrada un caracter a ambos lados&quot; &amp; chr(160) &amp; &quot;[::Grow 1,1::]&quot;, _
+	FINDEXT = array(&quot; Bloque de texto (delimitado por marcas inicio y final)&quot; &amp; chr(160) &amp; &quot;[::BigBlock::]&quot;, _
+	&quot; Expande texto encontrado un caracter a ambos lados&quot; &amp; chr(160) &amp; &quot;[::Grow 1,1::]&quot;, _
 	&quot; Añade marca || para reemplazo múltiple (en un único paso)&quot; &amp; chr(160) &amp; &quot;||&quot;, _
 	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
 	&quot; Texto entre ( ) (dentro de un párrafo)&quot; &amp; chr(160) &amp; &quot;(\(([^\)])+\))&quot;, _
@@ -52,11 +52,11 @@ Sub Load_es
 	&quot; Marco de texto (tipo leyenda) - busca cadenas en Nombres de marcos&quot; &amp; chr(160) &amp; &quot;[::TextFrame::]&quot;, _
 	&quot; Tabla - busca cadenas en Nombres de tablas&quot; &amp; chr(160) &amp; &quot;[::TextTable::]&quot;, _
 	&quot; Imagen - busca cadenas en Nombres de imágenes&quot; &amp; chr(160) &amp; &quot;[::Picture::]&quot;, _
-	&quot; Nota al pie - texto del ancla; añade \\ para buscar en notas al pie&quot; &amp; chr(160) &amp; &quot;[::Footnote::]&quot;, _
-	&quot; Nota final - texto del ancla; añade \\ para buscar en notas finales&quot; &amp; chr(160) &amp; &quot;[::Endnote::]&quot;, _
-	&quot; Marcador de referencia cruzada (texto); \\ para buscar en Nombre; \\\\ para buscar texto vacio&quot; &amp; chr(160) &amp; &quot;[::ReferenceMark::]&quot;, _
-	&quot; Referencia cruzada (texto); \\ para buscar en N. de marcador; \\\\ para buscar texto vacio&quot; &amp; chr(160) &amp; &quot;[::Reference::]&quot;, _
-	&quot; Marcadores - busca cadenas en el texto de los Marcadores;  \\ para buscar en Nombres&quot; &amp; chr(160) &amp; &quot;[::Bookmark::]&quot;, _
+	&quot; Nota al pie - texto del ancla (usa \\ para buscar en notas al pie)&quot; &amp; chr(160) &amp; &quot;[::Footnote::]&quot;, _
+	&quot; Nota final - texto del ancla (usa \\ para buscar en notas finales)&quot; &amp; chr(160) &amp; &quot;[::Endnote::]&quot;, _
+	&quot; Marcador de referencia cruzada (texto)(\\ para buscar en Nombre, \\\\ para buscar texto vacio)&quot; &amp; chr(160) &amp; &quot;[::ReferenceMark::]&quot;, _
+	&quot; Referencia cruzada (texto) (\\ para buscar en N. de marcador, \\\\ para buscar texto vacio)&quot; &amp; chr(160) &amp; &quot;[::Reference::]&quot;, _
+	&quot; Marcadores - busca en el texto de  Marcadores (\\ para buscar en Nombres)&quot; &amp; chr(160) &amp; &quot;[::Bookmark::]&quot;, _
 	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;)
 
 	for i = lbound(FINDEXT) to ubound(FINDEXT)
@@ -93,41 +93,41 @@ Sub Load_es
 		oDIAL.getcontrol(&quot;Cb_findAtr&quot;).addItem(pom,0)
 	next i
 
-	REPLEXT = array(&quot; Texto completo encontrado            &quot; &amp; chr(160) &amp; &quot;&amp;&quot;, _
-	&quot; Contenido de marca de inicio (\b) o marca de final (\e), que delimita series de párrafos&quot; &amp; chr(160) &amp; &quot;\b\e&quot;, _
-	&quot; Contenido de 1er grupo, encontrado dentro de ( ) en expresión de búsqueda (max. \9)     &quot; &amp; chr(160) &amp; &quot;\1&quot;, _
+	REPLEXT = array(&quot; Texto de marca de inicio final (\b \e) que delimita bloques de texto &quot; &amp; chr(160) &amp; &quot;\b\e&quot;, _
+	&quot; Texto de 1er grupo, entre () en la expresión de búsqueda (max.\9)     &quot; &amp; chr(160) &amp; &quot;\1&quot;, _
+	&quot; Texto completo encontrado                            &quot; &amp; chr(160) &amp; &quot;&amp;&quot;, _	
 	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Fin de párrafo (nuevo párrafo)                        &quot; &amp; chr(160) &amp; &quot;\p&quot;, _
-	&quot; Tabulador                                             &quot; &amp; chr(160) &amp; &quot;\t&quot;, _
-	&quot; Espacio de no separación                              &quot; &amp; chr(160) &amp; &quot;\S&quot;, _
-	&quot; Salto de linea manual                                 &quot; &amp; chr(160) &amp; &quot;\n&quot;, _
-	&quot; Salto de columna manual anterior                      &quot; &amp; chr(160) &amp; &quot;\c&quot;, _
-	&quot; Salto de página manual anterior (posterior \M)        &quot; &amp; chr(160) &amp; &quot;\m&quot;, _
-	&quot; Anular salto de página o columna manual               &quot; &amp; chr(160) &amp; &quot;\r&quot;, _
-	&quot; Letra A en cod. Hex. (decimal \#65)                   &quot; &amp; chr(160) &amp; &quot;\x0041&quot;, _
+	&quot; Fin de párrafo (nuevo párrafo)                       &quot; &amp; chr(160) &amp; &quot;\p&quot;, _
+	&quot; Tabulador                                            &quot; &amp; chr(160) &amp; &quot;\t&quot;, _
+	&quot; Espacio de no separación                             &quot; &amp; chr(160) &amp; &quot;\S&quot;, _
+	&quot; Salto de linea manual                                &quot; &amp; chr(160) &amp; &quot;\n&quot;, _
+	&quot; Salto de columna manual anterior                     &quot; &amp; chr(160) &amp; &quot;\c&quot;, _
+	&quot; Salto de página manual anterior (posterior \M)       &quot; &amp; chr(160) &amp; &quot;\m&quot;, _
+	&quot; Anular salto de página o columna manual              &quot; &amp; chr(160) &amp; &quot;\r&quot;, _
+	&quot; Letra A en cod. Hex. (decimal \#65)                  &quot; &amp; chr(160) &amp; &quot;\x0041&quot;, _
 	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Establecer URL de hiperenlace                         &quot; &amp; chr(160) &amp; &quot;\h{file///C:...}&quot;, _
-	&quot; Reemplazar cadena encontrada por &apos;cadena&apos; en URL      &quot; &amp; chr(160) &amp; &quot;\H{subst}&quot;, _
-	&quot; Devuelve hiperenlace de URL del enlace encontrado     &quot; &amp; chr(160) &amp; &quot;\u&quot;, _
-	&quot; Estilo de párrafo                                     &quot; &amp; chr(160) &amp; &quot;\P{Text}&quot;, _
-	&quot; Estilo de caracter                                    &quot; &amp; chr(160) &amp; &quot;\C{Quotation}&quot;, _
-	&quot; Estilo de lista                                       &quot; &amp; chr(160) &amp; &quot;\N{List 3}&quot;, _
-	&quot; Establecer propiedad de objeto a valor                &quot; &amp; chr(160) &amp; &quot;\A{CharBackColor=&amp;Hffcc00}&quot;, _
-	&quot; Aplicar estilo de carácter predeterminado             &quot; &amp; chr(160) &amp; &quot;\D&quot;, _
-	&quot; Reinicia Atributos en lugar de uso                    &quot; &amp; chr(160) &amp; &quot;\d&quot;, _
-	&quot; Insertar Nota al pie                                  &quot; &amp; chr(160) &amp; &quot;\F{}&quot;, _
-	&quot; Insertar Nota final                                   &quot; &amp; chr(160) &amp; &quot;\E{}&quot;, _
-	&quot; Insertar marcador+texto para referencia cruzada       &quot; &amp; chr(160) &amp; &quot;\B{ref1|text}&quot;, _
-	&quot; Insertar referencia cruzada a marcador                &quot; &amp; chr(160) &amp; &quot;\L{0,0,ref1}&quot;, _
-	&quot; Insertar Marcador (w,b,e - Bloque,m. inicio,m.final)  &quot; &amp; chr(160) &amp; &quot;\K{w,BookmName}&quot;, _
+	&quot; Establecer URL de hiperenlace                        &quot; &amp; chr(160) &amp; &quot;\h{file///C:...}&quot;, _
+	&quot; Reemplazar cadena encontrada por &apos;cadena&apos; en URL     &quot; &amp; chr(160) &amp; &quot;\H{subst}&quot;, _
+	&quot; Devuelve hiperenlace de URL del enlace encontrado    &quot; &amp; chr(160) &amp; &quot;\u&quot;, _
+	&quot; Estilo de párrafo                                    &quot; &amp; chr(160) &amp; &quot;\P{Text}&quot;, _
+	&quot; Estilo de caracter                                   &quot; &amp; chr(160) &amp; &quot;\C{Quotation}&quot;, _
+	&quot; Estilo de lista                                      &quot; &amp; chr(160) &amp; &quot;\N{List 3}&quot;, _
+	&quot; Establecer propiedad de objeto a valor               &quot; &amp; chr(160) &amp; &quot;\A{CharBackColor=&amp;Hffcc00}&quot;, _
+	&quot; Aplicar estilo de carácter predeterminado            &quot; &amp; chr(160) &amp; &quot;\D&quot;, _
+	&quot; Reinicia Atributos en lugar de uso                   &quot; &amp; chr(160) &amp; &quot;\d&quot;, _
+	&quot; Insertar Nota al pie                                 &quot; &amp; chr(160) &amp; &quot;\F{}&quot;, _
+	&quot; Insertar Nota final                                  &quot; &amp; chr(160) &amp; &quot;\E{}&quot;, _
+	&quot; Insertar marcador+texto para referencia cruzada      &quot; &amp; chr(160) &amp; &quot;\B{ref1|text}&quot;, _
+	&quot; Insertar referencia cruzada a marcador               &quot; &amp; chr(160) &amp; &quot;\L{0,0,ref1}&quot;, _
+	&quot; Insertar Marcador (w,b,e - Bloque,m. inicio,m.final) &quot; &amp; chr(160) &amp; &quot;\K{w,BookmName}&quot;, _
 	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Contenido de texto en objeto (marco, tabla…)          &quot; &amp; chr(160) &amp; &quot;\o&quot;, _
-	&quot; Nombre de objeto (marco, tabla, imagen… )             &quot; &amp; chr(160) &amp; &quot;\O&quot;, _
-	&quot; Pegar contenido del portapapeles (\V texto sin formato)&quot; &amp; chr(160) &amp; &quot;\v&quot;, _
-	&quot; Conservar formato (reemplazar &amp; por portapapeles)  &quot; &amp; chr(160) &amp; &quot;\f&quot;, _
-	&quot; Insertar contador de reemplazos (al &quot;&quot;Reemplazar todo&quot;&quot;)   &quot; &amp; chr(160) &amp; &quot;\i{1,3}&quot;, _
-	&quot; Insertar número de página                              &quot; &amp; chr(160) &amp; &quot;\I&quot;, _
-	&quot; Redirigir la expresión de reemplazo a otro archivo     &quot; &amp; chr(160) &amp; &quot;\R&quot;, _
+	&quot; Contenido de texto en objeto (marco, tabla…)            &quot; &amp; chr(160) &amp; &quot;\o&quot;, _
+	&quot; Nombre de objeto (marco, tabla, imagen… )               &quot; &amp; chr(160) &amp; &quot;\O&quot;, _
+	&quot; Pegar contenido del portapapeles (\V texto sin formato) &quot; &amp; chr(160) &amp; &quot;\v&quot;, _
+	&quot; Conservar formato (reemplazar &amp; por portapapeles)       &quot; &amp; chr(160) &amp; &quot;\f&quot;, _
+	&quot; Insertar contador de reemplazos (al &quot;&quot;Reemplazar todo&quot;&quot;)  &quot; &amp; chr(160) &amp; &quot;\i{1,3}&quot;, _
+	&quot; Insertar número de página                               &quot; &amp; chr(160) &amp; &quot;\I&quot;, _
+	&quot; Redirigir la expresión de reemplazo a otro archivo      &quot; &amp; chr(160) &amp; &quot;\R&quot;, _
 	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;)
 
 	oDIAL.getcontrol(&quot;Cb_replExt&quot;).addItems(REPLEXT,0)

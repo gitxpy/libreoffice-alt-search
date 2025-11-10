@@ -73,7 +73,10 @@
 		<p><b>2.</b> Zoek in het veld <b>Categorie</b> door te navigeren naar <b>OpenOffice.org macro's - Gebruiker - AltSearch - AltSearch</b></p>
 		<p><b>3.</b> Selecteer in het veld <b>Functie</b> en wijs de volgende (voorgestelde) sneltoetsen toe door middel van de knop <b>Aanpassen</b>:<br>_AltSearch: Ctrl+H (openen van het dialoogvenster Zoeken);<br>_FindNext: Ctrl+L (vinden van de volgende entiteit van de zoekreeks na het cursorpunt, zonder geopend dialoogvenster Zoeken);<br>_FindBack: Ctrl+Shift+L (vinden van de vorige entiteit van de zoekreeks vóór het cursorpunt, zonder geopend dialoogvenster Zoeken).</p>
 		<p>Kunt u ook sneltoetsen direct toewijzen, via het dialoogvenster Alternatief Zoeken - zie <a href="#davkynl">Batchmodus</a></p>
-		<h3><img src="img/altsearch_main_nl.png" width="455" height="299" alt="PNG">Het menu Keuzelijst (boven het invoerveld voor het instellen van de zoek- en vervangingsuitdrukking)</h3>
+
+		<p class="center"><img src="img/altsearch_main_nl.png" width="480" height="348" alt="Dialoogvenster van AltSearch"><br>Dialoogvenster van AltSearch</p>
+		<h3>Het menu Keuzelijst (boven het invoerveld voor het instellen van de zoek- en vervangingsuitdrukking)</h3>
+
 		<p>Dit bevat vaak gebruikte of gecompliceerde reguliere uitdrukkingen of zoekparameters die kunnen worden gebruikt in het zoekveld. Na het kiezen van het item worden de corresponderende parameters overgebracht naar het invoerveld (of naar zowel het zoek- als vervangingsveld indien dat is gespecificeerd). Zij kunnen op verschillende manieren worden ingevoerd: voor of na de cursorpositie of de tekst in het invoerveld vervangen. Tegelijkertijd wordt het keuzevak "Reguliere uitdrukkingen" ingeschakeld.</p>
 		<h3><a id="hledatnl"></a>Zoeken</h3>
 		<p>Keuzelijst '<b>Regulier'</b></p>
@@ -262,15 +265,24 @@
 		<p class="cm2"><strong>\A{eigenschappen=waarde}</strong> - stelt in de vervangingsuitdrukking de waarde van de gespecificeerde eigenschap in.</p>
 		<p class="cm4">Voor het toepassen gelden dezelfde regels als voor parameter <strong>\C{}</strong>.</p>
 		<h3><a id="davkynl"></a>Batchmodus gebruiken: <var>Batch &gt;&gt;</var></h3>
-		<p><img src="img/altsearch_script_nl.png" width="455" height="299" alt="PNG">Batchmodus maakt het mogelijk vooraf ingestelde parameters voor zoeken en vervangen op te slaan en te laden. Het is mogelijk om verscheidene zoek- en vervangingsacties in een serie op te slaan als één enkele reeks en die daarna als geheel snel te laden en uit te voeren.</p>
+
+		<p class="center"><img src="img/altsearch_script_nl.png" width="480" height="348" alt="Batchmodus"><br>Batchmodus</p>
+		<p>Batchmodus maakt het mogelijk vooraf ingestelde parameters voor zoeken en vervangen op te slaan en te laden. Het is mogelijk om verscheidene zoek- en vervangingsacties in een serie op te slaan als één enkele reeks en die daarna als geheel snel te laden en uit te voeren.</p>
+
 		<p>U kunt alle parameters instellen met behulp van de knop <var>Sla batch op</var>. In het dialoogvenster dat dan wordt weergegeven, wordt u de naam aangeboden die is gebruikt voor de laatste batch, welke kan worden gewijzigd. Als u een al bestaande naam invoert, kunt u kiezen of de oude inhoud moet worden overschreven, of moet worden behouden en dat de nieuwe inhoud aan het einde moet worden toegevoegd. Tegelijkertijd zal automatisch de opdracht "AllesVervangen" worden opgeslagen waarmee de batch aansluitend zal worden uitgevoerd. Deze opdracht kan later handmatig worden gewijzigd door het bestand met batchdefinities te bewerken.</p>
 		<p>De knop <var>Batch &gt;&gt;</var> schakelt naar het dialoogvenster '<b>Batchbeheer'</b>, waar u batches kunt bewerken en uitvoeren. Terugkeren naar het dialoogvenster Zoeken is mogelijk met de knop <var>&lt; &lt; Zoeken</var></p>
 		<p>Alle batchparameters worden opgeslagen in het tekstbestand <code>AltSearchScript.txt</code> in de gebruikersmap <code>&hellip;/OpenOffice.org3/user/config/</code>, u kunt het openen en bewerken met behulp van de knop <var>Bewerken</var>, in het dialoogvenster<b>Batchbeheer</b>. Voor het bewerken van de tekst is vooraf standaard het programma <b>notepad</b> ingesteld<b>,</b>maar u kunt elke andere tekstbewerker instellen om te gebruiken door het bestand <code>AltSearchEditor.ini</code> in dezelfde map te bewerken. Na handmatige wijzigingen en opslaan van het bestand met batchbeheer is het mogelijk om de lijst met batchnamen te vernieuwen met behulp van de knop <var>Vernieuwen</var>. De in het bestand <code>AltSearchScript.txt</code> gebruikte syntaxis wordt beschreven aan het begin daarvan, gebruik codering UTF-8 (vanaf v1.1.1).</p>
 		<p>Na het dubbelklikken op een item uit de lijst, of klikken op de knop <var>Uitvoeren</var>, zal de gekozen reeks worden geladen en zullen de zoekacties en vervangingen worden uitgevoerd. Bij het gebruiken van batches op geselecteerde gebieden raad ik u aan om aan het begin en einde van de selectie 1 - 2 lege alinea's te laten.</p>
-		<p><img src="img/altsearch_shortcuts_nl.png" width="396" height="273" alt="PNG">De knop <var>Overdragen</var> wordt gebruikt voor het overdragen van de parameters van zoeken, vervangen en het instellen van het dialoogvenster Zoeken, zonder echte uitvoering. Als de batch een reeks van verschillende zoek- en vervangingsacties bevat zal alleen het laatste deel van de reeks worden overgedragen.</p>
+
+		<p class="center"><img src="img/altsearch_shortcuts_nl.png" width="402" height="328" alt="Sneltoetsen"><br>Sneltoetsen</p>
+
+		<p>De knop <var>Overdragen</var> wordt gebruikt voor het overdragen van de parameters van zoeken, vervangen en het instellen van het dialoogvenster Zoeken, zonder echte uitvoering. Als de batch een reeks van verschillende zoek- en vervangingsacties bevat zal alleen het laatste deel van de reeks worden overgedragen.</p>
 		<p>De knop <var>Sneltoets</var> opent een dialoogvenster dat het u mogelijk maakt een sneltoets aan een bestaande batch toe te wijzen. Gebruik dit als volgt:<br><b>1e:</b> Selecteer eerst de naam van de batch uit de keuzelijst<br><b>2e:</b> indien gewenst, wijzig de naam van de hulp-subroutine voor OOo BASIC<br><b>3e:</b> stel de gewenste sneltoets in<br><b>4e:</b> druk op de knop <var>Toewijzen</var></p>
 		<p>Op het moment van toewijzen wordt, om alles te laten functioneren, een hulpprocedure gemaakt in de BASIC-module <code>Standard.AltSearchBatchs</code> met een aangepaste naam die aansluit bij de BASIC-syntaxis. Deze naam wordt weergegeven in de tweede keuzelijst van het dialoogvenster. Als deze hulpprocedure wordt uitgevoerd zal een dialoogvenster AltSearch openen en deze gespecificeerde batch zal onmiddellijk worden uitgevoerd. De juiste functie wordt geregeld door het toepassen van de naam die is opgenomen binnen de procedure en de naam van de bestaande batch. Indien u de naam van de batch, waaraan de sneltoets eerder was toegewezen, wijzigt, is het noodzakelijk om de sneltoets opnieuw toe te wijzen (de oude hulpprocedure voor de originele naam kan worden verwijderd door die te selecteren in de tweede keuzelijst en de knop <var> x</var>) daarnaast). Elke sneltoets, die wordt gebruikt in OOo Writer, kan worden opgeheven met de onderste knop <var>x</var>. Wees dus voorzichtig om niet onbedoeld een belangrijke sneltoets te verwijderen.</p>
-		<h3><img src="img/altsearch_multi_nl.png" width="400" height="303" alt="PNG">Meervoudig uitvoeren</h3>
+
+		<p class="center"><img src="img/altsearch_multi_nl.png" width="452" height="342" alt="Meervoudig uitvoeren"><br>Meervoudig uitvoeren</p>
+
+		<h3>Meervoudig uitvoeren</h3>
 		<p>De geselecteerde batch in het dialoogvenster Batchbeheer kan in één keer worden toegepast op verschillende tegelijkertijd geopende tekstbestanden:</p>
 		<p><b>1ste</b> Selecteer Batch in het dialoogvenster Batchbeheer</p>
 		<p><b>2e</b> Klik op de knop <var>Meervoudig uitvoeren &gt;&gt;</var></p>

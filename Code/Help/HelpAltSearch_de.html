@@ -49,13 +49,11 @@
 			<li>Suche nach Absatzblöcken zwischen zwei Text-Markierungen</li>
 			<li>Ausweitung oder Verringerung des gefundenen Text-Blocks auf eine vorgegebene Zahl von Buchstaben</li>
 			<li>Multiples Suchen und Ersetzen in einem Schritt</li>
-		</ul>
-		<ul>
+
 			<li>Suche: Notizen, Textfelder, Querverweise und Referenz-Markierungen nach Inhalt, Name oder Platzierung der Markierung</li>
 			<li>Suche von Objekten (Tabellen, Bilder und Text-Rahmen) nach dem Namen; Ersetzung durch Text, Objekt-Namen oder Inhalt der Zwischenablage möglich</li>
 			<li>Suchen und Einfügen von Fuß- und Endnoten. Es ist möglich, in einem Schritt alle Fuß- und Endnoten auszuwählen und ihnen jeden gewünschten Stil zuzuweisen</li>
-		</ul>
-		<ul>
+
 			<li>Suche nach ähnlich oder gleich formatierten Textteilen, bezogen auf die Cursor-Position</li>
 			<li>Verwendung von Zeichenketten innerhalb von Klammern () als Referenz \# in ersetztem Text</li>
 			<li>Möglichkeit, in gefundenem oder ersetztem Text Änderungen vorzunehmen: Absatzformat, Zeichenformat, Listenvorlagen, Hyperlink URL und Text-Eigenschaften</li>
@@ -82,7 +80,10 @@
 		<p><b>1.</b> Dialog <b>Extras</b><b>- Anpassen - Tastatur</b> öffnen</p>
 		<p><b>2.</b> Im Feld <b>Bereich</b> im unteren Teil des Feldes <b>App. Makros</b><b>- user - AltSearch – AltSearch</b> anklicken</p>
 		<p><b>3.</b> Im Feld <b>Funktion</b> die im Folgenden genannten Funktionen wählen, im Feld <b>Tastenkombinationen</b> das genannte Tastatur-Kürzel markieren und mit <b>Speichern</b> bestätigen:<br><i>_AltSearch</i> und Tastatur-Kürzel <i>Ctrl+H</i> zuordnen (Such-Dialog öffnen);<br><i>_FindNext</i> und Tastatur-Kürzel <i>Ctrl+L</i> zuordnen (nächster Fund des Suchbegriffs <b>nach</b> der Cursor-Position, ohne Öffnen des Dialogs);<br><i>_FindBack</i> und Tastatur-Kürzel <i>Ctrl+Shift+L</i> zuordnen (nächster Fund des Suchbegriffs <b>vor</b> der Cursor-Position, ohne Öffnen des Dialogs);</p>
-		<h3><img src="img/altsearch_main_de.png" width="476" height="342" alt="PNG">Auswahlfeld Menü (über dem Eingabefeld Suchen &amp; Ersetzen)</h3>
+
+		<p class="center"><img src="img/altsearch_main_de.png" width="480" height="348" alt="AltSearch-Hauptdialog"><br>AltSearch-Hauptdialog</p>
+
+		<h3>Auswahlfeld Menü (über dem Eingabefeld Suchen &amp; Ersetzen)</h3>
 		<p>Enthält oft benutzte oder komplizierte reguläre Ausdrücke oder Parameter für die Eingabe. Nach Auswahl eines Eintrags werden die zugehörigen Parameter in das Eingabefeld (oder in beide Felder) übertragen. Sie können auf verschiedene Wiese eingefügt werden: an Anfang oder Ende, an die Cursor-Position oder anstelle des gesamten Original-Textes. Gleichzeitig ist der Schalter "Regulärer Ausdruck" aktiviert.</p>
 		<h3><a id="hledatde"></a>Suchen:</h3>
 		<p>Auswahlfeld <b>Regulär</b></p>
@@ -248,7 +249,10 @@
 		<p class="cm4">Bei Anwendung gelten dieselben Regeln wie für den Parameter <strong>\C{}</strong>.</p>
 		<p class="cm4"><br></p>
 		<h3><a id="davkyde"></a>Verwendung einer Batch-Datei: <var>Batch &gt;&gt;</var></h3>
-		<p><img src="img/altsearch_script_de.png" width="358" height="257" alt="PNG">Der Batch-Modus ermöglicht das Speichern und Laden voreingestellter Parameters für Suche und Ersetzung. Es ist möglich, mehrere Such- bzw. Ersetzungs-Vorgänge zu verbinden und schnell zu laden und auszuführen.</p>
+
+		<p class="center"><img src="img/altsearch_script_de.png" width="480" height="348" alt="Batch-Datei"><br>Batch-Datei</p>
+
+		<p>Der Batch-Modus ermöglicht das Speichern und Laden voreingestellter Parameters für Suche und Ersetzung. Es ist möglich, mehrere Such- bzw. Ersetzungs-Vorgänge zu verbinden und schnell zu laden und auszuführen.</p>
 		<p>Aktuelle Parameter-Kombinationen können mit Hilfe der Schaltfläche <var>Batch&nbsp;speichern</var> gespeichert werden. In dem sich öffnenden Dialog wird für die Benennung der zuletzt verwendete Batch-Name angeboten. Bei Eingabe eines bereits existierenden Namens kann man wählen, ob der alte Inhalt überschrieben werden soll oder ob er erhalten bleibt und der neue Inhalt am Ende angefügt wird. Ebenso wird der Befehl „Ersetze alle“ automatisch mit der Batch-Datei gespeichert und ausgeführt. Dies kann durch manuelles Bearbeiten der Batch-Datei geändert werden.</p>
 		<p>Die Schaltfläche <var>Batch&nbsp;&gt;&gt;</var> öffnet den Dialog <b>Batch-Manager.</b> Hier können Batch-Dateien aktiviert oder bearbeitet werden. Die Schaltfläche <var>&lt;&lt;&nbsp;Suche</var> führt zurück in den Such-Dialog.</p>
 		<p>Alle Batch-Parameter werden in der Text-Datei <code>AltSearchScript.txt</code> im User-Verzeichnis <code>&hellip;/OpenOffice.org2/user/config/gesichert.</code> Diese Datei kann mit Hilfe der schaltflläche <var>Bearbeiten</var> im Dialog <b>Batch-Manager</b> geöffnet und bearbeitet werden. Für die Bearbeitung ist der Text-Editor <b>Notepad</b> voreingestellt (Betriebssystem Windows, bei Linux <b>Kwrite</b>) andere Text-Editoren können in der Datei <code>AltSearchEditor.ini</code> im selben Verzeichnis eingestellt werden. Nach manuellen Änderungen und Speichern der Batch-Datei wird die Batch-Liste mit der Schaltfläche <var>Aktualisiere</var> neu aufgebaut. Die in der Datei <code>AltSearchScript.txt</code> verwendete Syntax wird am Anfang der Datei beschrieben, die Codierung ist UTF-8 (ab v1.1.1).</p>

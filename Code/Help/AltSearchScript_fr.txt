@@ -40,7 +40,7 @@
 
 ************************************************************
 
-[Name] Html [Sel.]	Première transformation en balises HTML pour les blocs sélectionnés    	 
+[Name] Html [Sel.] Première transformation en balises HTML pour les blocs sélectionnés    	 
   ; the same parameters for all 
   [Parameters] MsgOff Regular CurrSelection
 
@@ -76,7 +76,7 @@
   
 
 
-[Name] Text [Sel.]	Convert selected block on the BBcode
+[Name] Text [Sel.] Convert selected block on the BBcode
    ; the same parameters for all 
   [Parameters] MsgOff Regular CurrSelection
 
@@ -139,7 +139,7 @@
 
  
   
-[Name] Text [Sel.]	Rassembler les paragraphes non séparés par un vide
+[Name] Text [Sel.] Rassembler les paragraphes non séparés par un vide
  ; block of empty paragraphs replace by one empty par 
   [Find]\p{2,}
   [Replace]\p\p
@@ -162,7 +162,7 @@
   [Command] ReplaceAll
 
 
-[Name] Text [Sel.]    Séparer les paragraphes par un vide
+[Name] Text [Sel.] Séparer les paragraphes par un vide
   [Find]^.+$
   [Replace]&\p
   [Parameters]  MsgOff Regular CurrSelection
@@ -173,46 +173,46 @@
 [Name] 
 
 
-[Name] Text [All]	Convertir format date  JJJJ-MM-AA en AA.MM.JJ
+[Name] Text [All] Convertir format date  JJJJ-MM-AA en AA.MM.JJ
   [Find](\d{2,2})(\d{2,2})-(\d{1,2})-(\d{1,2})
   [Replace]\4.\3.\2
   [Parameters]   MsgOff  Regular  
   [Command] ReplaceAll
 
 
-[Name] Text [All]	Convertir format date  AA.MM.JJJJ en JJ.MM.AA
+[Name] Text [All] Convertir format date  AA.MM.JJJJ en JJ.MM.AA
   [Find](\d{1,2})\. *(\d{1,2})\. *(\d{2,2})(\d{2,2})
   [Replace]\4-\2-\1
   [Parameters]   MsgOff  Regular  
   [Command] ReplaceAll
 
 
-[Name] Text [All]	Recopier tous les hyperliens dans le nouveau fichier
+[Name] Text [All] Recopier tous les hyperliens dans le nouveau fichier
   [Find][:::HyperLinkURL::]
   [Replace]Link \i, on page \I: \D\C{Example}\h&\h{\u}\C (URL: \C{Example}\u\C)\C{Example}\p\h\R
   [Parameters]   MsgOff  Regular  
   [Command] ReplaceAll
 
 
-[Name] Text [All]	Recopier tous les commentaires dans le nouveau fichier
+[Name] Text [All] Recopier tous les commentaires dans le nouveau fichier
   [Find][::Comment::]
   [Replace]Comment &\i, on page \I,  Content:\D\C{Example}\C\n\o\p\p\R
   [Parameters]   MsgOff  Regular  
   [Command] ReplaceAll
 
-[Name] Text [All]	Recopier toutes les images dans le nouveau fichier
+[Name] Text [All] Recopier toutes les images dans le nouveau fichier
   [Find][::Picture::]
   [Replace]Picture \i, on page \I, Name of picture: \C\O\C{Example}&\p\p\C\R
   [Parameters]   MsgOff  Regular  
   [Command] ReplaceAll
 
-[Name] Text [All]	Recopier toutes les tables dans le nouveau fichier
+[Name] Text [All] Recopier toutes les tables dans le nouveau fichier
   [Find][::TextTable::]
   [Replace]Table \i, on page \I, Name of table: \C\O\C{Example}\p&\p\p\C\R
   [Parameters]   MsgOff  Regular  
   [Command] ReplaceAll
 
-[Name] Text [All]	Recopier tous les textes de cadre dans le nouveau fichier
+[Name] Text [All] Recopier tous les textes de cadre dans le nouveau fichier
   [Find][::TextFrame::]
   [Replace]Frame \i, on page \I, Name of Text Frame: \C\O\C{Example}\p&\p\p\C\R
   [Parameters]   MsgOff  Regular  

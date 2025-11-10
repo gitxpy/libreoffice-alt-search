@@ -79,7 +79,7 @@
 		<p>You can also assign shortcuts directly from the AltSearch dialog box - see <a href="#davkyen">Batch mode</a></p>
 		<hr>
 		<p class="center">
-			<img src="img/altsearch_main_en.png" width="455" height="299" alt="Main dialog box of AltSearch">
+			<img src="img/altsearch_main_en.png" width="480" height="348" alt="Main dialog box of AltSearch">
 	                	<br>
 			<i>AltSearch main dialog box</i>
 		</p>
@@ -123,7 +123,7 @@
 		<p class="cm4"><dfn>Limitation:</dfn> it is always necessary to use <strong>[::Grow…</strong> at the beginning of the search string and put the search expression after it. If <b>n1</b> or <b>n2</b> are negative values, then (depending on size and content of the search expression) the next search may cyclically find the same place.</p>
 		<p class="cm2"><strong>text1||text2||text3||…</strong> - multiple search and replace operations in one step</p>
 		<p class="cm4">Add the sign <strong>||</strong> to the end of the search and replace expressions to delimit partial searches and replacements.</p>
-		<p class="cm4">Search for: <strong>text1||text2||text3</strong><br>Replace: <strong>neco1||neco2||neco3</strong><p>
+		<p class="cm4">Search for: <strong>text1||text2||text3</strong><br>Replace: <strong>neco1||neco2||neco3</strong></p>
 		<p class="cm4">This will search for <strong>text1</strong> and it will be replaced by <strong>neco1</strong>, then the search continues for <strong>text2</strong> which will be replaced by <strong>neco2</strong>, etc.</p>
 		<p class="cm4"><dfn>Limitation:</dfn> you cannot use the parameter <strong>[::BigBlock::]</strong> with <strong>||</strong>, nor can you use <a href="#enskupiny">subexpressions</a></p>
 
@@ -326,55 +326,49 @@
 		<h3><a id="davkyen"></a>Batch mode</h3>
 		<p>&nbsp;</p>
 		<p class="center">
-			<img src="img/altsearch_script_en.png" width="455" height="360" alt="Batch Mode">
+			<img src="img/altsearch_script_en.png" width="480" height="348" alt="Batch Mode">
 			<br>
 			<i>Batch mode dialog box</i>
 		</p>
 		<p>&nbsp;</p>
 		<p>Batch mode enables saving and loading of some preset search and replace parameters. Several search and replace operations can be saved to a single sequence and then quickly loaded and executed</p>
-		<p>You can set all parameters and save them using the <var>Save&nbsp;batch</var> button. In the dialog box that is shown, you will be offered the name used for the last batch which you can rename. If you enter a name that already exists, you can choose whether the old content will be overwritten or preserved. In this case the new content will be appended to the end of the old file. If you decide to overwrite the old file, then you have to press the “<i>Replace</i>” button and the new procedure will be automatically saved. Together to the batch file it is also automatically saved the command “<i>ReplaceAll</i>” allowing you to subsequently execute the batch. You can also modify the content of the procedure by manually editing the batch rule file using the <var>Modify</var> button.</p>
+		<p>You can set all parameters and save them using the <var>Save&nbsp;batch</var> button. In the dialog box that is shown, you will be offered the name used for the last batch which you can <var>Rename</var>. If you enter a name that already exists, you can choose whether the old content will be overwritten or preserved. In this case the new content will be appended to the end of the old file. If you decide to overwrite the old file, then you have to press the <var>Replace</var> button and the new procedure will be automatically saved. Together to the batch file it is also automatically saved the command “<i>ReplaceAll</i>” allowing you to subsequently execute the batch. You can also modify the content of the procedure by manually editing the batch file using the <var>Edit</var> button.</p>
 		<p>The button <var>Batch&nbsp;&gt;&gt;</var> switches to “<b>Batch manager</b>” dialog box, where you can run and edit batches. To go back to the search dialog, use the <var>&lt;&lt;&nbsp;Searching</var> button.</p>
-		<p>All batch parameters are saved to the text file <code>AltSearchScript.txt</code> into the directory <code>…/config/</code> of the <a href="https://wiki.documentfoundation.org/UserProfile">LibreOffice user profile</a> and you can open and edit it using the <var>Edit</var> button of the <b>Batch manager</b> dialog. For editing the text, the program <b>Notepad</b> is used by default, but you can set it to use any other text editor by editing the file <code>AltSearchEditor.ini</code> in the same directory. After manual changing and saving the file using the Batch manager you can refresh the list of batch names using the <var>Refresh</var> button. The syntax used in the file <code>AltSearchScript.txt</code> is described at the beginning of the same file, using UTF-8 encoding.</p>
-		<p>When you double-click on an item of the list or click the <var>Execute</var> button, the chosen sequence will be loaded and the search and replace operations will be executed. When using batches on selections, I advise you to leave 1-2 empty paragraphs at the beginning and the end of the selection.</p>
-		<p><var>Transfer</var> button is used for transferring the parameters of settings, searching, and replacing to the search dialog box without executing them. If the batch contains a sequence of several searches and replacements, only the last part of this sequence will be transferred.</p>
+		<p>All batch parameters are saved to the text file <code>AltSearchScript.txt</code> into the directory <code>…/config/</code> of the <a href="https://wiki.documentfoundation.org/UserProfile">LibreOffice user profile</a> and you can open and edit it using the <var>Edit</var> button. The default editor (<i>Notepad</i> on Windows), can be defined in the file <code>AltSearchEditor.ini</code> in the same directory. After manual changing the file, you can refresh the list of batch names using the <var>Refresh</var> button. The syntax used in the file <code>AltSearchScript.txt</code> is described at the top of the file, using UTF-8 encoding.</p>
+		<p>When you double-click on an item of the list or click the <var>Execute</var> button, the chosen sequence will be loaded and the search and replace operations will be executed. When using batches on selections, leave 1 or 2 empty paragraphs before and after the selection.</p>
+		<p>The <var>Transfer</var> button is used for transferring the parameters of settings, searching, and replacing to the search dialog box without executing them. If the batch contains a sequence of several searches and replacements, only the last part of this sequence will be transferred.</p>
 
-		<h3>Keyboard shortcuts</h3>
+		<h3><a id="k-shorcut">Keyboard shortcuts</h3>
 		<p>The button <var>Key shortcut</var> opens a dialog box that allows you to assign a keyboard shortcut to an existing batch.</p>
-		<p>&nbsp;</p>
 		<p class="center">
-			<img src="img/altsearch_shortcuts_en.png" width="396" height="273" alt="Keyboard shortcuts">
-			<br>
-			<i>Dialog box to assign keyboard shortcuts</i>
+			<img src="img/altsearch_shortcuts_en.png" width="402" height="328" alt="Keyboard shortcuts">
+			<br> Dialog box to assign keyboard shortcuts
 		</p>
-		<p>&nbsp;</p>
-		<p>To use this button you need:</p>
+		<p>To use this button you need to:</p>
 		<ol>
 			<li>Select the name of batch from the dropdown menu box</li>
 			<li>If it is required, change the name of the Basic auxiliary subroutine</li>
 			<li>Set the desired keyboard shortcut</li>
 			<li>Press the button <var>Assign</var></li>
 		</ol>
-		<p>In order for the shortcut to work, at the time of assignment an auxiliary procedure is created in the Basic module <code>Standard.AltSearchBatchs</code> with a name that is adjusted according to the Basic syntax. This name is displayed in the second dropdown menu box of the dialog box. When this auxiliary procedure is run, the AltSearch dialog box will be opened and the specified batch is immediately executed. A correct behavior depends on the compliance of the batch name listed inside the procedure and the name of existing batch. If you change the name of a batch which had a shortcut key previously assigned, you need to re-assign a new key shortcut (the old auxiliary procedure to the original name can be deleted by selecting it in the second dropdown box and using the side button <var> x</var>). Any keyboard shortcut that is used in Writer can be released using the lower button <var>x</var>. So be careful not to remove inadvertently an important shortcut!</p>
+		<p>In order for the shortcut to work, at the time of assignment an auxiliary procedure is created in the Basic module <code>Standard.AltSearchBatchs</code> with a name that is adjusted according to the Basic syntax. This name is displayed in the second dropdown menu box of the dialog box. When this auxiliary procedure is run, the <i>AltSearch</i> dialog box will be opened and the specified batch is executed.</p>
+		<p>A correct behavior relies on the compliance of the batch name listed inside the procedure and the name of the batch. If you change the name of a batch which had a shortcut key assigned, you need to re-assign a new shortcut (the old auxiliary procedure to the original name can be deleted by selecting it in the second dropdown box and using the side button <var> x</var>). Any shortcut used in Writer can be released using the lower button <var>x</var>. So, do not remove inadvertently an important shortcut!</p>
 
 		<h3><a id="multiple"></a>Multiple execute</h3>
-		<p>&nbsp;</p>
 		<p class="center">
-			 <img src="img/altsearch_multi_en.png" width="400" height="303" alt="Multiple execute">
-	 	<br>
-			<i>Multiple execute</i>
+			 <img src="img/altsearch_multi_en.png" width="452" height="342" alt="Multiple execute">
+	 	<br> Multiple execute
 		</p>
-		<p>&nbsp;</p>
-		<p>A selected batch in the <b>Batch manager</b> dialog box can be applied to several currently opened text files at once:</p>
-		<p>In order to do that, you need to:</p>
+		<p>A selected batch can be applied to several opened documents at once. To do so, you need to:</p>
 			<ol>
-			 	<li>Select <b>Batch</b> in the Batch manager dialog box</li>
-				<li>Click on the button <var>Multiple execute</var></li>
-				<li>Select files for a multiple execution from the list using Ctrl + left button mouse click.<br>
-					<u>WARNING</u>: The list shows only the currently opened files of the <b>Writer</b> type</li>
-				<li>Press button <var>Start</var> for beginning the execution<br>
-					<u>WARNING</u>: while Multiple execute is running, please do nothing with Writer!</li>
+				<li>Select a <i>batch</i> in the <b>Batch manager</b> dialog box</li>
+				<li>Click the button <var>Multiple execute</var></li>
+				<li>Select the documents from the list using Ctrl or Shift+mouse click.<br>
+					<u>WARNING</u>: The list shows only the currently opened documents in <b>Writer</b></li>
+				<li>Press <var>Start</var> to start the execution<br>
+					<u>WARNING</u>: while Multiple execute is running, please do not interact with Writer!</li>
 			</ol>
-		<p>Selecting “<b>Disable message</b>” suppress messages about changes after each file is executed. Anyway, as soon as processing is over, the final report will be displayed.</p>
+		<p>Ticking “<b>Disable message</b>” suppress messages about changes after each document execution. Upon completion of all executions, the final report is displayed.</p>
 
 		<h3><a id="omezenien"></a>Limitations</h3>
 		<p>Known limitations are mostly mentioned within the description of individual parameters.</p>

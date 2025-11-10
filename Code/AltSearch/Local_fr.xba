@@ -175,18 +175,18 @@ Sub Load_fr
 	MSG(39) = &quot;Erreur sur la marque de renvoi – la marque doit être unique. &quot;
 	MSG(40) = &quot;Chargement, tri de la liste des champs : &quot;
 	&apos;v1.2
-	MSG(41) = &quot;Key shortcuts assign&quot;
+	MSG(41) = &quot;Raccourcis clavier&quot;
 	MSG(42) = &quot;Void&quot;
-	MSG(43) = &quot;Selected key shortcut is already used for function: &quot;
-	MSG(44) = &quot;Do you really want to reassign shortcut to function: &quot;
-	MSG(45) = &quot;Do you really want to remove key shortcut for that function?&quot;
-	MSG(46) = &quot;Do you really want to remove auxiliary subroutine: ^^^1 from module:   Standard.AltSearchBatchs ?&quot;
+	MSG(43) = &quot;Raccourci déjà utilisé pour la fonction: &quot;
+	MSG(44) = &quot;Voulez-vous vraiment redéfinir le raccourci pour la fonction: &quot;
+	MSG(45) = &quot;Voulez-vous vraiment supprimer le raccourci pour cette fonction?&quot;
+	MSG(46) = &quot;Voulez-vous vraiment supprimer la procédure: ^^^1 from module:   Standard.AltSearchBatchs ?&quot;
 	&apos;v1.3
 	MSG(47) = &quot; Choisissez le style&quot;
 	&apos;v1.4
-	MSG(48) = &quot;Batch is not selected - select from the list!&quot;
-	MSG(49) = &quot;No selected documents - select from the list!&quot;
-	MSG(50) = &quot;Execute the selected batch with more opened text documents&quot;
+	MSG(48) = &quot;Sélectionner un lot dans la liste!&quot;
+	MSG(49) = &quot;Sélectionner des documents dans la liste!&quot;
+	MSG(50) = &quot;Exécuter le lot sélectionné sur plus de documents ouverts&quot;
 	&apos;Sub testViewCursor
 	MSG(51) = &quot;Le curseur est situé dans un objet non supporté (par ex. Commentaire), veuillez cliquer dans le texte.&quot;
 
@@ -273,6 +273,16 @@ Sub Load_fr
 		.Bt_basremove.HelpText=&quot;Supprimer la procédure auxiliaire pour le raccourci&quot;
 		.title           = MSG(41)
 		.Bt_close.Label  = oDIAL.model.Bt_close.Label
+	end with
+
+	&apos; dialog D_morefiles  &apos;v1.4
+	with oDMOF.model
+		.Title                 = MSG(50)  &amp;  &quot;:&quot;
+		.Lb1.Label             =&quot;le lot va être exécuté sur les documents sélectionnés:&quot;
+		.Bt_selectAll.Label    =&quot;Sélectionner tout&quot;
+		.Bt_start.Label        =&quot;Démarrer&quot;
+		.Cb_DisabRepBatch.Helptext=&quot;Désactiver les messages après chaque document, mais conserver le rapport final.&quot;
+		.Cb_DisabRepBatch.Label=&quot;Désactiver messages&quot;
 	end with
 End Sub
 </script:module>

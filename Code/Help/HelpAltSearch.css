@@ -57,8 +57,7 @@ h6{color:#1c0ee9;}
 
 img {display: table; margin-inline: auto;}
 :is(p, h3):has(img) {text-align: center; font-style: italic;}
-article img:hover {transform: scale(1.3); background-color:white;}
-
+article img:hover {transform: scale(1.2); background-color:white;}
 article :is(p, h3):has(img) {overflow-x: auto;}
 
 dfn{color:rgb(213,0,38); font-weight: bold;}

@@ -30,8 +30,8 @@
 	<article id="fr" lang="fr">
 		<h2>Alternative pour la boite de dialogue Rechercher &amp; Remplacer pour Writer</h2>
 
-		<p class="menu2"><a href="#hledatfr">Rechercher</a>&bull;<a href="#nahraditfr">Remplacer</a>&bull;<a href="#davkyfr">Traitement par lot</a>&bull;<a href="#omezenifr">Limitations</a></p>
-
+		<p class="menu2"><a href="#hledatfr">Rechercher</a>&bull;<a href="#nahraditfr">Remplacer</a>&bull;<a href="#davkyfr">Traitement&nbsp;par&nbsp;lot</a> &bull;<a href="#multiple">Exécution&nbsp;Multiple</a> &bull;<a href="#omezenifr">Limitations</a></p>
+		
 			<!--
 		<details>
 			<summary>&#x2f3;&#x2f3;&#x2f3;</summary>
@@ -77,10 +77,10 @@
 		</ol>
 
 		<hr>
-		<p><img src="img/altsearch_main_fr.png" width="455" height="289" alt="PNG"></p>
+		<p class="center"><img src="img/altsearch_main_fr.png" width="480" height="348" alt="Boîte de dialogue principale AltSearch"><br>Boîte de dialogue principale AltSearch</p>
+
 		<h2>Listes déroulantes (au-dessus du champ Chercher)</h2>
 		<p>Elles contiennent des expressions régulières ou des paramètres, fréquemment utilisés ou compliqués. Après avoir choisi les paramètres correspondants, ils sont copiés dans le.s champ.s d'entrée, de plusieurs façons possibles&nbsp;: au début, à la fin, à l'endroit du curseur ou remplaçant entièrement le texte original. En même temps la case à cocher «&nbsp;Expressions Régulières&nbsp;» doit être cochée.</p>
-
 		<h3 id="hledatfr">Rechercher</h3>
 		<h4>Liste déroulante « Exp. régulières »</h4>
 		<p>Contient quelques expressions régulières utiles. Leur description est disponible dans l'aide de LibreOffice, sous <a href="https://help.libreoffice.org/latest/fr/text/shared/01/02100001.html?&DbPAR=WRITER"> Liste des Expressions Régulières</a>.</p>
@@ -249,16 +249,44 @@
 		<p>À l'aide du bouton <var>Propriétés de la sélection</var>, il est possible de mettre à jour la liste des propriétés et de leurs valeurs des objets sélectionnés. Il est possible de naviguer et de sélectionner dans la zone de liste située à côté.</p>
 		<p><strong>\A{properties=value}</strong> - Dans l'expression remplacée, paramètre la valeur de la propriété spécifiée.</p>
 		<p>Applique des règles d'usage analogues au&nbsp;paramètre <strong>\C{}</strong>.</p>
-		<h3><a id="davkyfr"></a>L'utilisation du mode de Traitement par Lot: <var>Lot &gt;&gt;</var></h3>
-		<p><img src="img/altsearch_script_fr.png" width="455" height="289" alt="PNG">Le mode de traitement par lot permet la sauvegarde et le chargement des paramètres préfixés de recherche et de remplacement. Il est possible de sauvegarder plusieurs recherche et remplacement en une seule séquence et cela rapidement après chargement et exécution.</p>
-		<p>La définition de tous paramètres peut être sauvegardée avec l'aide du bouton <var>Enregistrer le lot</var>.</p>
-		<p>Dans la fenêtre, qui s'affiche, il est possible de renommer le dernier nom utilisé de Traitement par lot. Si vous saisissez un nom déjà existant, vous pourrez choisir, si l'ancien nom sera réécrit, ou sera conservé et le nouveau nom sera ajouté à la fin. En même temps, la commande 'Tout remplacer' sera automatiquement sauvegardée et elle sera subséquemment exécutée par lot. Cette commande pourra être modifiée ultiérieurement par l'édition manuelle du fichier de règle des lots.[</p>
-		<p>Bouton <var>lot&gt;&gt;</var> basculera vers la fenêtre Gestionnaire des traitements par lot où il est possible de Exécuter et Éditer des traitements par lot. Pour revenir à Rechercher &amp; remplacer Alternatif il suffit de cliquer sur le bouton <var>&lt;&lt;Rech. en cours</var>.</p>
+		<h3><a id="davkyfr"></a>Traitement par Lot</var></h3>
+
+		<p class="center"><img src="img/altsearch_script_fr.png" width="480" height="348" alt="Traitement par Lot"><br>Traitement par Lot</p>
+		<p>Le mode de traitement par lot permet la sauvegarde et le chargement des paramètres préfixés de recherche et de remplacement. Il est possible de sauvegarder plusieurs recherche et remplacement en une seule séquence et cela rapidement après chargement et exécution.</p>
+
+		<p>La définition de tous paramètres peut être sauvegardée à l'aide du bouton <var>Enregistrer le lot</var>.</p>
+		<p>Dans la fenêtre, qui s'affiche, il est possible de renommer le dernier nom utilisé. Si vous saisissez un nom déjà existant, vous pourrez choisir, si le contenu sera écrasé ou conservé et ajouté à la fin. En même temps, la commande '<i>ReplaceAll</i>' sera automatiquement sauvegardée pour pouvoir exécuter le lot. Cette commande pourra être modifiée ultiérieurement par l'édition manuelle du fichier des lots via la bouton <var>Editer</var>.</p>
+		<p>Bouton <var>lot&gt;&gt;</var> bascule vers la fenêtre <b>Traitements par lot</b> où il est possible d'exécuter et d'éditer des lots. Pour revenir au dialogue <i>Rechercher &amp; remplacer</i>, cliquer sur le bouton <var>&lt;&lt;Rech. en cours</var>.</p>
 		<p>Tous les paramètres de traitement par lot sont sauvés dans le fichier <code>AltSearchScript.txt</code> dans le dossier <code>&hellip;/config/</code> du <a href="https://wiki.documentfoundation.org/UserProfile/fr">profil utilisateur LibreOffice</a>,
-		qu'il est possible d'ouvrir et d'éditer avec le bouton <var>Editer</var> dans la fenêtre Gestionnaire de traitement par lot.
+		qu'il est possible d'ouvrir et d'éditer avec le bouton <var>Editer</var>.
 		<code>Notepad</code> est paramétré d'origine, il est cependant possible de mettre tout autre éditeur de texte, en éditant le fichier <code>AltSearchEditor.ini</code> dans le même dossier. Après les changements manuels et la sauvegarde du lot, il est possible de rafraichir la liste de noms de lot avec le  bouton <var>Rafraîchir</var>. La syntaxe à utiliser dans le fichier <code>AltSearchScript.txt</code> est décrite à son tout début, codé en UTF-8.</p>
 		<p>Après le double clic sur un article de la liste, ou par le bouton <var>Exécuter</var>, la séquence choisie sera chargée, et les recherches et remplacements seront exécutés. En utilisant des traitements par lot sur une partie choisie, il est conseillé de laisser avant et après la sélection 1 - 2 paragraphes vides.</p>
-		<p><img src="img/altsearch_shortcuts_fr.png" width="396" height="273" alt="PNG"><br>Le bouton <var>Transférer</var> est utilisé pour transférer les paramètres de Rechercher Remplacer et mise en place vers le dialogue de Rechercher sans exécution réelle. Si le traitement contient une séquence de plusieurs Rechercher et remplacer seule la dernière partie de la séquence sera transférée.</p>
+		<p>Le bouton <var>Transférer</var> permet de transférer les paramètres vers le dialogue de <i>Rechercher</i>, sans exécution. Si le lot contient une séquence de plusieurs Rechercher et remplacer, seule la dernière partie de la séquence sera transférée.</p>
+
+    <h3><a id="k-shorcut">Raccourcis clavier</h3>
+    <p>Le bouton <var>Raccourcis</var> ouvre une boite de dialogue qui permet d'associer un raccourci clavier à un lot.</p>
+		<p class="center"><img src="img/altsearch_shortcuts_fr.png" width="402" height="328" alt="Raccourcis clavier">
+		<br>Raccourcis clavier</p>
+
+		<p>Pour qu'un raccourci fonctionne, une procédure auxiliaire est créee dans le module Basic  <code>Standard.AltSearchBatchs</code> avec un nom normalisé pour la syntaxe Basic. Ce nom s'affiche dans le second menu déroulant du dialogue. Quand la procédure est lancée, le dialogue <i>AltSearch</i> s'ouvre et le lot spécifié est  exécuté.</p>
+		<p>Le fonctionnement correct repose sur une conformité entre le nom du lot et celui référencé dans la procédure. Si le nom d'un lot référencé est modifié, il faut redéfinir un nouveau raccourci (l'ancienne procédure auxiliaire peut être supprimée en la sélectionnant dans le second menu déroulant et en cliquant sur le bouton <var> x</var>). Tout raccourci utilisé dans Writer peut être supprimé en utilisant le bouton <var>x</var>. Donc ne supprimez pas par inadvertance un raccourci important!</p>
+
+		<h3><a id="multiple"></a>Exécution Multiple</h3>
+		<p class="center"><img src="img/altsearch_multi_fr.png" width="452" height="342" alt="Exécution multiple">
+		<br>Exécution multiple
+		</p>
+		<p>Un traitement par lot peut être appliqué en une fois sur plusieurs documents ouverts. Pour cela il faut:</p>
+                        <ol>
+				<li>Sélectionner un <i>Batch</i> dans le dialogue <b>Traitement par Lot</b></li>
+                                <li>Cliquer sur <var>Exécution Multiple</var></li>
+                                <li>Selectionner des documents dans la liste en utilisant Ctrl ou Maj+bouton de la souris.<br>
+                                        <u>ATTENTION</u>: La liste contient seulement les fichiers ouverts dans <b>Writer</b></li>
+                                <li>Cliquer <var>Start</var> pour lancer l'exécution<br>
+                                        <u>ATTENTION</u>: pendant l'Exécution Multiple, ne pas interagir dans Writer!</li>
+                        </ol>
+                <p>Sélectionner “<b>Désactiver messages</b>” pour éviter un message après chaque fichier. A la fin des traitements, un rapport final sera affiché.</p>
+
+
 		<h3><a id="omezenifr"></a>Limitations</h3>
 		<p>Les limitations connues sont notées dans la description des paramètres individuels. S'applique généralement :</p>
 		<ul>
@@ -269,5 +297,4 @@
 	</article>
 
 </body>
-
 </html>

@@ -38,7 +38,7 @@
 
 ************************************************************
 
-[Name] Html [Sel.]	Einfache Umwandlung in Html-Tags für Auswahl    	 
+[Name] Html [Sel.] Einfache Umwandlung in Html-Tags für Auswahl    	 
   ; the same parameters for all 
   [Parameters] MsgOff Regular CurrSelection
 
@@ -74,7 +74,7 @@
 
 
 
-[Name] Text [Sel.]	Convert selected block on the BBcode
+[Name] Text [Sel.] Convert selected block on the BBcode
    ; the same parameters for all 
   [Parameters] MsgOff Regular CurrSelection
 
@@ -137,7 +137,7 @@
 
  
   
-[Name] Text [Sel.]	Verbinde nicht durch leere Absätze getrennte Absätze
+[Name] Text [Sel.] Verbinde nicht durch leere Absätze getrennte Absätze
  ; block of empty paragraphs replace by one empty par 
   [Find]\p{2,}
   [Replace]\p\p
@@ -160,7 +160,7 @@
   [Command] ReplaceAll
 
 
-[Name] Text [Sel.]    Leere von nicht leeren Absätzen trennen
+[Name] Text [Sel.] Leere von nicht leeren Absätzen trennen
   [Find]^.+$
   [Replace]&\p
   [Parameters]  MsgOff Regular CurrSelection
@@ -170,53 +170,50 @@
 ; separator
 [Name] 
 
-[Name] Text [Alles]	Konvertiere Datum von  yyyy-mm-dd  zu  dd.mm.yy
+[Name] Text [Alles] Konvertiere Datum von  yyyy-mm-dd  zu  dd.mm.yy
   [Find](\d{2,2})(\d{2,2})-(\d{1,2})-(\d{1,2})
   [Replace]\4.\3.\2
   [Parameters]   MsgOff  Regular  
   [Command] ReplaceAll
 
 
-[Name] Text [Alles]	Konvertiere Datum von  dd.mm.yyyy  zu  yy-mm-dd
+[Name] Text [Alles] Konvertiere Datum von  dd.mm.yyyy  zu  yy-mm-dd
   [Find](\d{1,2})\. *(\d{1,2})\. *(\d{2,2})(\d{2,2})
   [Replace]\4-\2-\1
   [Parameters]   MsgOff  Regular  
   [Command] ReplaceAll
 
 
-[Name] Text [Alles]	Alle Hyperlinks in neue Datei schreiben
+[Name] Text [Alles] Alle Hyperlinks in neue Datei schreiben
   [Find][:::HyperLinkURL::]
   [Replace]Link \i, on page \I: \D\C{Example}\h&\h{\u}\C (URL: \C{Example}\u\C)\C{Example}\p\h\R
   [Parameters]   MsgOff  Regular  
   [Command] ReplaceAll
 
 
-[Name] Text [Alles]	Alle Kommatare in neue Datei schreiben
+[Name] Text [Alles] Alle Kommatare in neue Datei schreiben
   [Find][::Comment::]
   [Replace]Comment &\i, on page \I,  Content:\D\C{Example}\C\n\o\p\p\R
   [Parameters]   MsgOff  Regular  
   [Command] ReplaceAll
 
-[Name] Text [Alles]    Alle Bilder in neue Datei schreiben
+[Name] Text [Alles] Alle Bilder in neue Datei schreiben
   [Find][::Picture::]
   [Replace]Picture \i, on page \I, Name of picture: \C\O\C{Example}&\p\p\C\R
   [Parameters]   MsgOff  Regular  
   [Command] ReplaceAll
 
-[Name] Text [Alles]    Alle Tabellen in neue Datei schreiben
+[Name] Text [Alles] Alle Tabellen in neue Datei schreiben
   [Find][::TextTable::]
   [Replace]Table \i, on page \I, Name of table: \C\O\C{Example}\p&\p\p\C\R
   [Parameters]   MsgOff  Regular  
   [Command] ReplaceAll
 
-[Name] Text [Alles]    Alle Textrahmen in neue Datei schreiben
+[Name] Text [Alles] Alle Textrahmen in neue Datei schreiben
   [Find][::TextFrame::]
   [Replace]Frame \i, on page \I, Name of Text Frame: \C\O\C{Example}\p&\p\p\C\R
   [Parameters]   MsgOff  Regular  
   [Command] ReplaceAll
-
-
-
 
 [End]  
   

@@ -180,7 +180,7 @@ Sub Load_en
 	MSG(42) = &quot;Void&quot;
 	MSG(43) = &quot;Selected key shortcut is already used for function: &quot;
 	MSG(44) = &quot;Do you really want to reassign shortcut to function: &quot;
-	MSG(45) = &quot;Do you really want to remove key shortcut for that function?&quot;
+	MSG(45) = &quot;Do you really want to remove key shortcut for this function?&quot;
 	MSG(46) = &quot;Do you really want to remove auxiliary subroutine: ^^^1 from module:   Standard.AltSearchBatchs ?&quot;
 	&apos;v1.3
 	MSG(47) = &quot; Select style&quot;
