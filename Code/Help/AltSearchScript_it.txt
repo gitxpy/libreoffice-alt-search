@@ -2,7 +2,7 @@
 ; Fa parte dell'estensione AltSearch.oxt per Writer
 ; Charset: UTF-8
 ;
-; v. 1.5.2 modificato  2025-08-29
+; v. 1.5.2 modificato  2025-11-10
 ;
 ; Sintassi:
 ; Le righe che non iniziano con un comando principale vengono ignorate.
@@ -158,61 +158,61 @@
 ; separator
 [Name]
 
-[Name] Data [Tutto] Conversione della data da AAAA-MM-GG in GG.MM.AA
+[Name] Testo [Tutto] Conversione della data da AAAA-MM-GG in GG.MM.AA
   [Find](\d{2,2})(\d{2,2})-(\d{1,2})-(\d{1,2})
   [Replace]\4.\3.\2
   [Parameters] MsgOff Regular  
   [Command] ReplaceAll
 
-[Name] Data [Tutto] Conversione della data da GG.MM.AAAA in AA-MM-GG
+[Name] Testo [Tutto] Conversione della data da GG.MM.AAAA in AA-MM-GG
   [Find](\d{1,2})\. *(\d{1,2})\. *(\d{2,2})(\d{2,2})
   [Replace]\4-\2-\1
   [Parameters]   MsgOff  Regular  
   [Command] ReplaceAll
 
-[Name] Data [Tutto] Conversione della data da GG.MM.AAAA in AAAA-MM-GG
+[Name] Testo [Tutto] Conversione della data da GG.MM.AAAA in AAAA-MM-GG
   [Find](\d{1,2})\. *(\d{1,2})\. *(\d{1,4})
   [Replace]\3-\2-\1
   [Parameters]   MsgOff  Regular  
   [Command] ReplaceAll
 
 
-[Name] Hyperlink [Tutti] Reindirizzamento degli hyperlink in un nuovo file
+[Name] Testo [Tutto] Reindirizzamento degli hyperlink in un nuovo file
   [Find][:::HyperLinkURL::]
   [Replace]\P{Text body}Collegamento \i, a pagina \I: \D\C{Emphasis}\h&\h{\u}\C{}\n(URL: \C{Emphasis}\u\C{})\h\p \R
   [Parameters] MsgOff Regular
   [Command] ReplaceAll
 
 
-[Name] Commento [Tutti] Reindirizzamento dei Commenti in un nuovo file
+[Name] Testo [Tutto] Reindirizzamento dei Commenti in un nuovo file
   [Find][::Comment::]
   [Replace]\P{Text body}Commento \i, a pagina \I, Contenuto:\C{Emphasis}\n\o\C{Strong Emphasis}\p\R
   [Parameters] MsgOff Regular  
   [Command] ReplaceAll
 
 
-[Name] Immagini [Tutte] Reindirizzamento di tutte le Immagini in un nuovo file
+[Name] Testoi [Tutto] Reindirizzamento di tutte le Immagini in un nuovo file
   [Find][::Picture::]
   [Replace]\P{Text body}Immagine \i, a pagina \I\n- Nome dell'immagine: \C{Emphasis}\O\C{Strong Emphasis}\n- Testo alternativo: \C{Emphasis}\o\C{Strong Emphasis}\p &\p\R
   [Parameters] MsgOff Regular Backwards
   [Command] ReplaceAll
 
 
-[Name] Tabelle [Tutte] Reindirizzamento di tutte le Tabelle in un nuovo file
+[Name] Testo [Tutto] Reindirizzamento di tutte le Tabelle in un nuovo file
   [Find][::TextTable::]
   [Replace]\P{Text body}Tabella \i, a pagina \I, Nome della tabella: \C{Emphasis}\O\C{Strong Emphasis}\p&\p\p\R
   [Parameters] MsgOff Regular
   [Command] ReplaceAll
 
 
-[Name] Cornici [Tutte] Reindirizzamento di tutte le Cornici di testo in un nuovo file
+[Name] Testo [Tutto] Reindirizzamento di tutte le Cornici di testo in un nuovo file
   [Find][::TextFrame::]
   [Replace]\P{Text body}Cornice \i, a pagina \I, Nome della Cornice:\C{Emphasis} \O\C{Strong Emphasis}\p&\C{}\p\R
   [Parameters] MsgOff Regular
   [Command] ReplaceAll
 
 
-[Name] Testo [Tutti] Sostituzione della stringa "finestra di dialogo" con la stessa stringa (con distinzione di maiuscole e minuscole, singolare e plurale)
+[Name] Testo [Tutto] Sostituzione della stringa "finestra di dialogo" con la stessa stringa (con distinzione di maiuscole e minuscole, singolare e plurale)
   [Parameters] MsgOff MatchCase
 
   ; Maiuscolo
@@ -237,7 +237,7 @@
 
 ; ***** END OF THE ORIGINAL AltSearchScript_it.txt v.1.4.2 *****
 
-[Name] Testo [Tutti] Sostituzione delle virgolette di tipo “ ” con quelle di tipo « »
+[Name] Testo [Tutto] Sostituzione delle virgolette di tipo “ ” con quelle di tipo « »
   [Parameters] MsgOff
 
   [Find]“
@@ -267,7 +267,7 @@
   [Command] ReplaceAll
 
 
-[Name] Spazio unificatore [Tutto] Trasformazione dello spazio standard che segue la stringa "figura" in uno "spazio unificatore" (non-breaking space) legato alle stringa successiva
+[Name] Testo [Tutto] Trasformazione dello spazio standard che segue la stringa "figura" in uno "spazio unificatore" (non-breaking space) legato alle stringa successiva
   [Parameters] MsgOff MatchCase
 
   [Find](figura 
@@ -278,7 +278,8 @@
   [Replace] figura 
   [Command] ReplaceAll
 
-[Name] Spazio unificatore [Tutto] Trasformazione dello spazio standard che segue la stringa "Capitolo" in uno "spazio unificatore" (non-breaking space) legato alle stringa successiva
+
+[Name] Testo [Tutto] Trasformazione dello spazio standard che segue la stringa "Capitolo" in uno "spazio unificatore" (non-breaking space) legato alle stringa successiva
   [Parameters] MsgOff MatchCase Regular
 
   [Find]Capitolo 
