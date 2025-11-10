@@ -2,7 +2,7 @@
 ; for extension AltSearch.oxt for Writer
 ; Charset: UTF-8 
 ;
-;  1.5.2 last modified 2025-08-29
+;  1.5.2 last modified 2025-11-10
 ;
 ; Syntax:
 ; Lines which do not begin with some master command will be ignored.

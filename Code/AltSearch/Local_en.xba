@@ -53,8 +53,8 @@ Sub Load_en
 	&quot; Text frame - searches substring in Names of frames&quot; &amp; chr(160) &amp; &quot;[::TextFrame::]&quot;, _
 	&quot; Table - searches substring in Names of tables&quot; &amp; chr(160) &amp; &quot;[::TextTable::]&quot;, _
 	&quot; Picture - searches substring in Names of pictures&quot; &amp; chr(160) &amp; &quot;[::Picture::]&quot;, _
-	&quot; Footnote - text of anchor; add \\ for searches in content of footnotes&quot; &amp; chr(160) &amp; &quot;[::Footnote::]&quot;, _
-	&quot; Endnote - text of anchor; add \\ for searches in content of Endnootes&quot; &amp; chr(160) &amp; &quot;[::Endnote::]&quot;, _
+	&quot; Footnote - text of anchor; add \\ for searches in content of Footnotes&quot; &amp; chr(160) &amp; &quot;[::Footnote::]&quot;, _
+	&quot; Endnote - text of anchor; add \\ for searches in content of Endnotes&quot; &amp; chr(160) &amp; &quot;[::Endnote::]&quot;, _
 	&quot; Cross-ref. marker (text); \\ for search in Name; \\\\ for search of empty text&quot; &amp; chr(160) &amp; &quot;[::ReferenceMark::]&quot;, _
 	&quot; Cross-reference (text); \\ for search in N. of marker; \\\\ for s. of empty text&quot; &amp; chr(160) &amp; &quot;[::Reference::]&quot;, _
 	&quot; Bookmark - searches substring in text of Bookmarks; add \\ for searches in Names&quot; &amp; chr(160) &amp; &quot;[::Bookmark::]&quot;, _
@@ -108,8 +108,8 @@ Sub Load_en
 	&quot; A inserted by hex code   (decimal \#65) &quot; &amp; chr(160) &amp; &quot;\x0041&quot;, _
 	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
 	&quot; Set up of hyperlink&apos;s URL               &quot; &amp; chr(160) &amp; &quot;\h{file///C:...}&quot;, _
-	&quot; Replace found substr. by &apos;subst&apos; in URL&quot; &amp; chr(160) &amp; &quot;\H{subst}&quot;, _
-	&quot; Returns hyperlink&apos;s URL of found link &quot; &amp; chr(160) &amp; &quot;\u&quot;, _
+	&quot; Replace found substr. by &apos;subst&apos; in URL &quot; &amp; chr(160) &amp; &quot;\H{subst}&quot;, _
+	&quot; Returns hyperlink&apos;s URL of found link   &quot; &amp; chr(160) &amp; &quot;\u&quot;, _
 	&quot; Paragraph style                         &quot; &amp; chr(160) &amp; &quot;\P{Text}&quot;, _
 	&quot; Character style                         &quot; &amp; chr(160) &amp; &quot;\C{Quotation}&quot;, _
 	&quot; List style                              &quot; &amp; chr(160) &amp; &quot;\N{List 3}&quot;, _
