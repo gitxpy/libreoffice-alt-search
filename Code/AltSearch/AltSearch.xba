@@ -762,6 +762,7 @@ end sub
 
 	&apos;button find all
 sub BtFindAll
+	if oDIAL.getControl(&quot;Cb_find&quot;).Text=&quot;&quot; then exit sub &apos; no search if Find: is empty, bug 141
 	if NOT testViewCursor then exit sub &apos;test if Visible cursor isn&apos;t in Comment etc.
 	dim info, curinit, curs, i, j, max, hled, pom, bin, oAnch, oFoot, inFoot, mode
 	info = &quot;&quot;  &apos; information box under the Find
@@ -1103,6 +1104,8 @@ end sub
 sub BtFindNext
 	if NOT testViewCursor then exit sub &apos;test if Visible cursor isn&apos;t in Comment etc.
 	dim info, curs,i, pom
+	if oDIAL.getControl(&quot;Cb_find&quot;).Text=&quot;&quot; then exit sub &apos; no search if Find: is empty, bug 141
+	
 	&apos; problem in Linux - unwanted actualization of cursor after 1st search of objects
 	&apos; if there is loaded TMPPOLE and there is set unempty string ALTsearchFINDLAST, then is supposed it isn&apos;t 1st passing
 	&apos; ALTsearchFINDLAST is set during 1st load of TMPPOLE() in procedure mySelDialFocus()
