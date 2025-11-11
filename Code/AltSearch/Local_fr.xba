@@ -147,7 +147,7 @@ Sub Load_fr
 	MSG(11) = &quot;Rechercher &amp; remplacer Alternatif pour Writer &quot;
 	MSG(12) = &quot;Erreur de sélection – non supportée &quot;
 	MSG(13) = &quot;Expression recherchée &quot;
-	MSG(14) = &quot;a été trouvée  &quot;
+	MSG(14) = &quot;trouvée  &quot;
 	MSG(15) = &quot;  fois &quot;
 	MSG(16) = &quot;   trouvé: &quot;
 	MSG(17) = &quot;Fichier d&apos; Aide impossible à ouvrir &quot;

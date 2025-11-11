@@ -457,27 +457,33 @@ sub SaveBatch(no as byte)
 	dim pom  as string
 	if not ISbatchINIT then initCmd &apos; if module Batch still ins&apos;t initialized then load the commands
 
-zmenit:
-	pom = inputbox(oDIAL.getcontrol(&quot;Lb1&quot;).AccessibleContext.text &amp; &quot;   &quot; &amp; zkratitNa(oDIAL.getControl(&quot;Cb_find&quot;).text,58) &amp; chr(10) _
-	&amp; oDIAL.getcontrol(&quot;T_repl&quot;).AccessibleContext.text &amp; &quot;   &quot; &amp; zkratitNa(oDIAL.getControl(&quot;Cb_repl&quot;).text,58) &amp; chr(10) _
-	&amp; oDIAL.getcontrol(&quot;Fr1&quot;).AccessibleContext.TitledBorderText &amp; zkratitNa(getOptionString,58) _
-	&amp; &quot;        &quot; &amp; mid(CMD(CMD_xCommand,LNG),2, len(CMD(CMD_xCommand,LNG))-2) &amp; &quot;:  &quot; &amp; CMD(16,LNG) , MSG(27), iniBatch())
+start:
+  const maxLen = 58
 
+  with oDIAL
+	  if .getControl(&quot;Cb_find&quot;).text = &quot;&quot; then exit sub   &apos;TODO.  disable button or alert msgbox
+	
+	pom = inputbox(.getcontrol(&quot;Lb1&quot;).AccessibleContext.text &amp; &quot;   &quot; &amp; truncNa(.getControl(&quot;Cb_find&quot;).text,maxLen) &amp; chr(10) _
+	&amp; .getcontrol(&quot;T_repl&quot;).AccessibleContext.text &amp; &quot;   &quot; &amp; truncNa(.getControl(&quot;Cb_repl&quot;).text,maxLen) &amp; chr(10) _
+	&amp; .getcontrol(&quot;Fr1&quot;).AccessibleContext.TitledBorderText &amp; truncNa(getOptionString,maxLen) _
+	&amp; &quot;        &quot; &amp; mid(CMD(CMD_xCommand,LNG),2, len(CMD(CMD_xCommand,LNG))-2) &amp; &quot;:  &quot; &amp; CMD(16,LNG) , MSG(27), iniBatch())
+  
 	if pom = &quot;&quot; then exit sub
 	if ExistName(pom) then
-		select case ChoiceDialog(replace_(MSG(25),&quot;^^&quot;,pom))
+	    Dim mode$ 
+	    mode = ChoiceDialog(replace_(MSG(25),&quot;^^&quot;,pom) )
+
+		select case mode
 		case &quot;Rename&quot;  &apos; save with other name
-			goto zmenit
+			goto start
 
-		case &quot;Append&quot;  &apos; add to end of batch
-			saveOptionToFile(2, pom, oDIAL.getControl(&quot;Cb_find&quot;).text, oDIAL.getControl(&quot;Cb_repl&quot;).text, getOptionString, CMD(16,LNG))
-
-		case &quot;Replace&quot; &apos; rewrite existing batch
-			saveOptionToFile(1, pom, oDIAL.getControl(&quot;Cb_find&quot;).text, oDIAL.getControl(&quot;Cb_repl&quot;).text, getOptionString, CMD(16,LNG))
+		case &quot;Append&quot;,&quot;Replace&quot;
+			saveOptionToFile(mode, pom, .getControl(&quot;Cb_find&quot;).text, .getControl(&quot;Cb_repl&quot;).text, getOptionString, CMD(16,LNG))
 		end select
 	else
-		saveOptionToFile(0, pom, oDIAL.getControl(&quot;Cb_find&quot;).text, oDIAL.getControl(&quot;Cb_repl&quot;).text, getOptionString, CMD(16,LNG))
+		saveOptionToFile(&quot;Init&quot;, pom, .getControl(&quot;Cb_find&quot;).text, .getControl(&quot;Cb_repl&quot;).text, getOptionString, CMD(16,LNG))
 	end if
+  end with
 end sub
 
 
@@ -529,12 +535,12 @@ end sub
 
 
 	&apos; save the parameters of search to file named NAM
-sub saveOptionToFile(mode as byte, byval nam$, byval find$, byval sRepl$, byval para$, byval comm$)
+sub saveOptionToFile(mode as string, byval nam$, byval find$, byval sRepl$, byval para$, byval comm$)
 	dim radek, path, tmp as string
 	dim prCmd as string, prVal as string &apos; work variables returned the main command (for example [Find]) and the value
 	dim outPole(), n as long  &apos; array of lines for save to file, count of records
 	dim bstep as integer  &apos; step of execution: 0 ; 1=copy1 2=insCmd 3=insCont 4=copy2
-	dim copy1 as boolean, copy1skip as boolean, insCmd as boolean, insCont as boolean, copy2 as boolean
+	dim copy1 as boolean, copy1skip as boolean, insCmd as boolean
 	dim hledam, hl0, hl1  as string
 	dim sf, ioStream, ioFile
 	dim CRLF
@@ -549,30 +555,26 @@ sub saveOptionToFile(mode as byte, byval nam$, byval find$, byval sRepl$, byval 
 	comm = &quot;  &quot; &amp; CMD(CMD_xCommand,LNG) &amp; &quot; &quot; &amp; comm
 
 	select case mode
-	case 0 &apos;Add before [End]
+	case &quot;Init&quot; &apos;Add before [End]
 		hledam = &quot;&quot;        &apos; if there is &quot;&quot; the the name isn&apos;t found but up to [end]
 		copy1 = false       &apos; make the content after found [Name]
 		copy1skip = false  &apos; jump the rewrite to output
 		insCmd = true     &apos; insert the name of command
-		insCont = true     &apos; put the content of saved parameters
-		copy2 = true       &apos; rewrite the rest to the end of file
 
-	case 1 &apos; rewrite - save content after found name
+	case &quot;Append&quot; &apos; rewrite - save content after found name
 		&apos;     hledam = &quot;&quot;       &apos; if there is &quot;&quot; the the name isn&apos;t found but up to end
 		copy1 = true       &apos; make the content after found [Name]
 		copy1skip = true   &apos; jump the rewrite to output
 		insCmd = false     &apos; insert the name of command
-		insCont = true     &apos; put the content of saved parameters
-		copy2 = true       &apos; rewrite the rest to the end of file
 
-	case 2 &apos; find the name of existed batch and save content to its end
+	case &quot;Replace&quot; &apos; find the name of existing batch and save content to its end
 		&apos;     hledam = &quot;&quot;       &apos; if there is &quot;&quot; the the name isn&apos;t found but up to end
 		copy1 = true       &apos; make the content after found [Name]
 		copy1skip = false  &apos; jump the rewrite to output
 		insCmd = false     &apos; insert the name of command
-		insCont = true     &apos; put the content of saved parameters
-		copy2 = true       &apos; rewrite the rest to the end of file
 
+	case else  &apos; no way
+		 goto problem
 	end select
 
 	hl0 = ucase(CMD(CMD_xName,0)) &amp; ucase(hledam)
@@ -608,7 +610,7 @@ sub saveOptionToFile(mode as byte, byval nam$, byval find$, byval sRepl$, byval 
 			if (prCmd &amp; prVal=hl0)or(prCmd &amp; prVal=hl1)or(prCmd=ucase(CMD(5,0)))or(prCmd=ucase(CMD(5,1))) then  &apos; CMD(5,x)=[end]
 				bstep = 1
 				&apos; if the new batch is added before end then redelete [end]
-				if mode=0 then goto nextStep &apos; next step without next line
+				if mode=&quot;Init&quot; then goto nextStep &apos; next step without next line
 			end if
 
 		case 1 &apos; write/jump the lines while isn&apos;t found next [name] or [end]
@@ -632,7 +634,7 @@ sub saveOptionToFile(mode as byte, byval nam$, byval find$, byval sRepl$, byval 
 
 		case 2  &apos; insert command [Name] + text of name
 			if InsCmd then
-				if mode=0 then
+				if mode=&quot;Init&quot; then
 					outPole(n) = nam
 				else
 					&apos; add line to output
@@ -646,7 +648,7 @@ sub saveOptionToFile(mode as byte, byval nam$, byval find$, byval sRepl$, byval 
 			goto nextStep &apos; next step eithout the reading of line
 
 		case 3  &apos; insert content
-			if InsCont then
+
 				&apos; add line to output
 				n = n+5 &apos;  lines
 				redim preserve outPole(n)  &apos; add empty lines to output array
@@ -657,17 +659,16 @@ sub saveOptionToFile(mode as byte, byval nam$, byval find$, byval sRepl$, byval 
 				outPole(n-1) = comm
 				outPole(n) = &quot;&quot;
 
-			end if
 			bstep = 4
 			goto nextStep &apos; next step eithout the reading of line
 
 		case 4  &apos; copy the rest of file
-			if copy2 then
+
 				&apos; add line to output
 				n = n +1
 				redim preserve outPole(n)  &apos; add empty record to output array
 				outPole(n) = radek
-			end if
+
 		end select
 
 	wend &apos; cycle for all lines
@@ -691,7 +692,7 @@ sub saveOptionToFile(mode as byte, byval nam$, byval find$, byval sRepl$, byval 
 	ioFile.closeOutput
 
 	&apos; if there was new name then refresh list
-	if mode = 0 then Refresh
+	if mode = &quot;Init&quot; then Refresh
 	exit sub
 problem:
 	&apos; cannot open file...
