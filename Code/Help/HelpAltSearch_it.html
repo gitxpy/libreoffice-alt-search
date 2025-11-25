@@ -140,15 +140,14 @@
 		<p class="cm4"><strong>[::TextFrame::]</strong> - trova qualsiasi cornice di testo</p>
 		<p class="cm4"><strong>[::TextFrame::]rám1</strong> - trova quelle cornici di testo che contengono nel loro nome la sotto-stringa <strong>rám1</strong></p>
 		<p class="cm4"><dfn>Limitazioni:</dfn></p>
-		<ul>
+			<ul>
 				<li>Utilizzando il pulsante <var>Trova</var> è possibile trovare la successiva cornice di testo solo se essa è selezionata o se il cursore è all’interno della cornice stessa. Se il cursore non si trova all’interno di una cornice, viene trovata la prima cornice di testo in funzione dell’elenco progressivo delle cornici nel documento<br>
 				<b>N.B.</b>: La casella di controllo “<i>Solo nella selezione corrente</i>” attualmente non funziona</li>
 				<li> Come conseguenza del punto precedente, l’utilità pratica del pulsante <var>Sostituzione</var> in questo caso è molto limitata</li>
 				<li>L’ordine di ricerca sfortunatamente corrisponde (si spera solo provvisoriamente) all’ordine con cui le cornici di testo sono state inserite nel documento e <b>non</b> viene rispettato l’ordine “Inizio <b>&gt;</b> Fine” con cui le cornici appaiono nel documento</li>
 				<li>Nel nome della cornice si possono ricercare solo sotto-stringhe; non è possibile cercare espressioni regolari complete</li>
-				</ul>
+			</ul>
 		<p class="cm2">I pulsanti <var>Trova tutto</var> e <var>Sostituisci tutto</var> sono pienamente operativi, anche se possono esserci talvolta dei problemi con l'opzione <q><a href="https://github.com/gitxpy/libreoffice-alt-search/issues/134" target="_blank">&#x26A0; “<i>Solo nella selezione corrente</i>”</a></q>!</p>
-
 		<p class="cm2"><strong>[::Picture::]</strong> - ricerca le immagini a seconda del loro nome</p>
 		<p class="cm4"><strong>[::Picture::]</strong> - trova qualsiasi immagine</p>
 		<p class="cm4"><strong>[::Picture::]obr1</strong> - trova le immagini che contengono nel loro nome la sotto-stringa <strong>obr1</strong></p>
@@ -332,22 +331,19 @@
 			<i>Finestra della modalità Batch</i>
 		</p>
 		<p>&nbsp;</p>
-		<p>La modalità Batch che si attiva facendo clic sul pulsante <var>Batch &gt;&gt;</var> abilita il salvataggio e il caricamento di parametri di ricerca e di sostituzione predefiniti. È anche possibile salvare parecchie operazioni di ricerca e di sostituzione in sequenza in un unico file per caricare ed eseguire l’intero gruppo di operazioni in un tempo successivo.</p>
-		<p>Si possono impostare tutti i parametri che si desiderano e poi, mediante il pulsante <var>Salva&nbsp;il&nbsp;batch</var>, è possibile salvare la procedura. Compare una finestra di dialogo che propone in modo predefinito il nome utilizzato dall’ultimo batch che, comunque, è sempre possibile modificare. Se a un batch si assegna un nome già esistente, si può scegliere se si vuole che il vecchio contenuto venga sovrascritto dal nuovo o se invece lo si vuole conservare aggiungendo il nuovo contenuto in coda al vecchio. Se si decide di sovrascrivere il vecchio file si deve premere il pulsante “<i>Sostituisci</i>”. Assieme alla procedura batch viene automaticamente salvato anche il comando “<i>ReplaceAll</i>” con cui la procedura batch verrà successivamente eseguita. È anche possibile modificare manualmente il contenuto delle regole del file batch usando il pulsante <var>Modifica</var>.</p>
+		<p>La modalità Batch che si attiva facendo clic sul pulsante <var>Batch &gt;&gt;</var> abilita il salvataggio e il caricamento di parametri di ricerca e sostituzione preimpostati. Si possono salvare parecchie operazioni di ricerca e sostituzione da caricare ed eseguire rapidamente in un tempo successivo.</p>
+		<p>Si possono impostare tutti i parametri che si desiderano e salvarli usando il pulsante <var>Salva&nbsp;il&nbsp;batch</var>. Compare una finestra di dialogo che propone in modo predefinito il nome utilizzato dall’ultimo batch che è sempre possibile <var>Rinominare</var>. Se si assegna un nome già esistente, si può scegliere se si vuole che il vecchio contenuto venga sovrascritto dal nuovo o se lo si vuole conservare. In quest'ultimo caso, il nuovo contenuto viene aggiunto alla fine del vecchio file. Se si decide di sovrascrivere il vecchio file, si deve premere il pulsante “<i>Sostituisci</i>” e la nuova procedura viene automaticamente salvata. Assieme alla procedura batch viene automaticamente salvato anche il comando batch “<i>ReplaceAll</i>” con cui la procedura verrà successivamente eseguita. È anche possibile modificare manualmente le procedure presenti nel file batch usando il pulsante <var>Modifica</var>.</p>
 		<p>Facendo clic sul pulsante <var>Batch&nbsp;&gt;&gt;</var> compare la finestra di dialogo “<b>Gestione batch</b>” che consente la modifica o l’esecuzione di procedure batch. Per tornare alla finestra di dialogo <i>Ricerca e sostituzione</i> di AltSearch bisogna fare clic sul pulsante <var>&lt;&lt;&nbsp;Ricerca</var>.</p>
-		<p>Tutti i parametri delle procedure batch vengono salvati nel file di testo <code>AltSearchScript.txt</code> nella cartella <code>…/config/</code> del <a href="https://wiki.documentfoundation.org/UserProfile">profilo LibreOffice</a> dell’utente.<br>Il file può essere aperto e modificato usando il pulsante <var>Modifica</var> della finestra di dialogo <b>Gestione batch</b>. Per operare le modifiche al testo in Microsoft Windows&reg; viene richiamato in maniera predefinita il programma <b>Blocco Note</b> (<i>Notepad.exe</i>). È possibile scegliere qualsiasi altro editor modificando il file <code>AltSearchEditor.ini</code> presente nella stessa directory di <code>AltSearchScript.txt</code>. Dopo avere modificato manualmente e salvato il file di batch con Gestione batch, si può aggiornare l’elenco dei nomi dei file batch usando il pulsante <var>Aggiorna</var>.<br>La sintassi utilizzata nel file <code>AltSearchScript.txt</code> è descritta all’inizio di tale file e utilizza la codifica UTF-8.</p>
-		<p>Quando si clicca due volte su un elemento dell’elenco delle procedure batch o quando si clicca sul pulsante <var>Esegui</var>, la sequenza scelta viene caricata e vengono eseguite le relative operazioni di ricerca e sostituzione. Se si usano delle procedure batch su delle selezioni di testo è consigliabile lasciare 1-2 paragrafi vuoti all’inizio e alla fine della selezione.</p>
-		<p>Il pulsante <var>Trasferisci</var> viene usato per trasferire i parametri di ricerca e di sostituzione e le relative definizioni nella finestra di dialogo, senza che vengano eseguiti. Se però la procedura batch è costituita da una sequenza di numerose ricerche e sostituzioni, verrà trasferita solo l’<i>ultima parte</i> della sequenza.</p>
+		<p>Tutti i parametri delle procedure batch vengono salvati nel file di testo <code>AltSearchScript.txt</code> che si trova nella cartella <code>…/config/</code> del <a href="https://wiki.documentfoundation.org/UserProfile">profilo LibreOffice</a> dell’utente.<br>Il file può essere aperto e modificato usando il pulsante <var>Modifica</var>. L'editor predefinito in Microsoft Windows&reg; è <b>Blocco Note</b> (<i>Notepad.exe</i>). È però possibile scegliere qualsiasi altro editor modificando il file <code>AltSearchEditor.ini</code> che si trova nella stessa directory di <code>AltSearchScript.txt</code>. Dopo avere modificato manualmente e salvato il file batch, l’elenco dei nomi dei file batch viene aggiornato facendo clic sul pulsante <var>Aggiorna</var>.<br>La sintassi utilizzata nel file <code>AltSearchScript.txt</code> è descritta all’inizio di tale file e utilizza la codifica UTF-8.</p>
+		<p>Facendo un doppio clic su un elemento dell’elenco delle procedure batch o quando si fa clic sul pulsante <var>Esegui</var>, la sequenza selezionata viene caricata e vengono eseguite le relative operazioni di ricerca e sostituzione. Quando si usano delle procedure batch su delle selezioni di testo è consigliabile lasciare 1-2 paragrafi vuoti prima e dopo la selezione.</p>
+		<p>Il pulsante <var>Trasferisci</var> viene usato per trasferire i parametri di configurazione, ricerca e sostituzione nella finestra di dialogo, senza che vengano eseguiti. Se però la procedura batch è costituita da una sequenza di numerose ricerche e sostituzioni, verrà trasferita solo l’<i>ultima parte</i> della sequenza.</p>
 
-		<h3>Scorciatoie da tastiera</h3>
+		<h3 id="k-shorcut">Scorciatoie da tastiera</h3>
 		<p>Facendo clic sul pulsante <var>Scorciatoie</var> presente nella finestra di <b>Gestione batch</b> si apre una finestra di dialogo che consente di assegnare delle scorciatoie da tastiera alle procedure batch esistenti.</p>
-		<p>&nbsp;</p>
 		<p class="center">
-			<img src="img/altsearch_shortcuts_it.png" width="402" height="328" alt="Scorciatoie">
-				<br>
+			<img src="img/altsearch_shortcuts_it.png" width="402" height="328" alt="Scorciatoie da tastiera">
 			<i>Finestra di assegnazione delle scorciatoie da tastiera</i>
 		</p>
-		<p>&nbsp;</p>
 		<p>Per usare tale pulsante bisogna:</p>
 		<ol>
 			<li>Selezionare il nome della procedura batch dalla casella di menu a discesa</li>
@@ -355,27 +351,24 @@
 			<li>Impostare la combinazione di tasti desiderata</li>
 			<li>Premere il pulsante <var>Assegna</var></li>
 		</ol>
-		<p>Perché la scorciatoia funzioni, all’atto della sua creazione viene contemporaneamente creata anche una funzione ausiliaria nel modulo Basic denominata <code>Standard.AltSearchBatchs</code> il cui nome, adattato alla sintassi del Basic, viene visualizzato nella seconda casella di menu a discesa della finestra di dialogo. Quando viene lanciata questa procedura ausiliaria, si apre la finestra di dialogo AltSearch e viene immediatamente eseguita la procedura batch specificata. Il funzionamento corretto dipende dalla conformità dei nomi di batch elencati all’interno della procedura e dal nome dei batch esistenti. Se si modifica il nome del batch al quale era stata precedentemente assegnata una scorciatoia, è ovviamente necessario riassegnarla. La vecchia procedura ausiliaria può essere cancellata selezionandola nella seconda casella di menu a discesa facendo clic sul pulsante <var>x</var> posto a fianco di essa. Qualsiasi scorciatoia da tastiera definita in Writer può essere resa disponibile e riassegnata utilizzando il pulsante <var>x</var> posizionato più sotto. Pertanto si faccia molta attenzione a non rimuovere inavvertitamente delle scorciatoie importanti!</p>
+		<p>Perché la scorciatoia funzioni, all’atto della sua creazione viene contemporaneamente creata anche una funzione ausiliaria nel modulo Basic <code>Standard.AltSearchBatchs</code> il cui nome si adegua alla sintassi del Basic. Esso viene visualizzato nella seconda casella del menu a discesa nella finestra di dialogo. Quando viene lanciata questa procedura ausiliaria, si apre la finestra di dialogo <i>AltSearch</i> e viene immediatamente eseguita la procedura batch specificata.</p>
+		<p>Il comportamento corretto dipende dalla conformità dei nomi di batch elencati all’interno della procedura e dal nome dei batch esistenti. Se si modifica il nome del batch al quale era stata precedentemente assegnata una scorciatoia, è ovviamente necessario riassegnarla. La vecchia procedura ausiliaria può essere cancellata selezionandola nella seconda casella del menu a discesa facendo clic sul pulsante <var>x</var> posto a fianco di essa. Qualsiasi scorciatoia da tastiera definita in Writer può essere resa disponibile e riassegnata utilizzando il pulsante <var>x</var> posizionato più sotto. Pertanto si faccia molta attenzione a non rimuovere inavvertitamente delle scorciatoie importanti!</p>
 
 		<h3><a id="multiple"></a>Esecuzione multipla</h3>
-		<p>&nbsp;</p>
 		<p class="center">
-			<img src="img/altsearch_multi_it.png" width="452" height="342" alt="Esecuzione multipla">
-				<br>
-			<i>Esecuzione multipla</i>
+			<img src="img/altsearch_multi_it.png" width="452" height="352" alt="Esecuzione multipla">
+			<br><i>Esecuzione multipla</i>
 		</p>
-		<p>&nbsp;</p>
-		<p>Un batch file selezionato nella finestra di dialogo <b>Gestione Batch</b> può essere applicato contemporaneamente a parecchi file di testo che però debbono essere aperti.</p>
-		<p>Per far questo bisogna:</p>
+		<p>Un file batch selezionato nella finestra di dialogo <b>Gestione Batch</b> può essere applicato a parecchi documenti aperti immediatamente. Per poter far ciò bisogna:</p>
 			<ol>
-				<li>Selezionare <b>Batch</b> nella finestra di dialogo Gestione Batch</li>
+				<li>Selezionare un <b>batch</b> nella finestra di dialogo Gestione Batch</li>
 				<li>Fare clic sul pulsante <var>Esecuzione multipla</var></li>
-				<li>Selezionare dall’elenco i file da utilizzare in tale processo. Per effettuare la selezione usare il tasto CTRL + clic sul pulsante sinistro del mouse<br>
-				<u>ATTENZIONE</u>: La lista presenta solo i file di tipo <b>Writer</b> che in quel momento sono aperti</li>
+				<li>Selezionare i documenti dall’elenco usando il tasto CTRL e facendo clic sul pulsante sinistro del mouse<br>
+					<u>ATTENZIONE</u>: l'elenco mostra solo quei documenti <b>Writer</b> che sono correntemente aperti</li>
 				<li>Premere il pulsante <var>Avvia</var> per iniziare l’esecuzione<br>
-				<u>ATTENZIONE</u>: durante l’esecuzione della procedura, NON fare nulla in Writer!</li>
+					<u>ATTENZIONE</u>: mentre Esecuzione multipla è in esecuzione, NON non interagire con Writer!</li>
 			</ol>
-		<p>La selezione della casella “<b>Disattiva info</b>” impedisce la visualizzazione dei messaggi che mostrano le modifiche eseguite per ogni file processato. In questo caso, al termine di tutta la procedura, verrà comunque mostrato un rapporto completo delle modifiche effettuate a carico di tutti i file.</p>
+		<p>Selezionando la casella “<b>Disattiva info</b>” si impedisce la visualizzazione dei messaggi che riepilogano le modifiche eseguite al termine di ogni documento processato. Una volta completata tutta la procedura, verrà comunque mostrato un rapporto completo delle modifiche effettuate a carico di tutti i documenti.</p>
 
 		<h3><a id="omezeniit"></a>Limitazioni</h3>
 		<p>Gran parte delle limitazioni note è menzionata nella descrizione dei singoli parametri.</p>
