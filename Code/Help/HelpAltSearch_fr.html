@@ -31,7 +31,7 @@
 		<h2>Alternative pour la boite de dialogue Rechercher &amp; Remplacer pour Writer</h2>
 
 		<p class="menu2"><a href="#hledatfr">Rechercher</a>&bull;<a href="#nahraditfr">Remplacer</a>&bull;<a href="#davkyfr">Traitement&nbsp;par&nbsp;lot</a> &bull;<a href="#multiple">Exécution&nbsp;Multiple</a> &bull;<a href="#omezenifr">Limitations</a></p>
-		
+
 			<!--
 		<details>
 			<summary>&#x2f3;&#x2f3;&#x2f3;</summary>
@@ -39,7 +39,7 @@
 		</details>
 			-->
 
-		<h3><a id="hlavniffr"></a>Extensions par rapport à la boîte de dialogue standard de Writer :</h3>
+		<h3 id="hlavniffr">Extensions par rapport à la boîte de dialogue standard de Writer :</h3>
 		<ul>
 			<li>Expressions régulières étendues prédéfinies.</li>
 			<li>Compter les occurences trouvées par le bouton <var>Nombre</var></li>
@@ -176,7 +176,7 @@
 		<p><strong>L'attribut de caractère similaire</strong> - cette fonction charge n'importe quels attributs du caractère modifiés manuellement (selon la sélection actuelle) pour chercher des zones formatées de façon similaires. Si par exemple le curseur est sur un nom dont le jeu de caractères a été changé manuellement, tous les endroits avec le nom dont le jeu de caractères a été changé seront cherchés - <strong>[:::CharFontName::]</strong>.</p>
 		<p><strong>L'attribut mêmes caractères</strong> - cette fonction charge n'importe quels attributs du caractère manuellement changés (selon la sélection actuelle) pour chercher les zones formatées de la même façon. Si par exemple le curseur est sur un nom dont le jeu de caractères a été changé manuellement, tous les endroits avec le nom dont le jeu de caractères a été changé seront cherchés <strong>[:::CharFontName=Arial::]</strong>.</p>
 		<p class="cm2"><dfn>Limitation&nbsp;:</dfn> Le moteur de recherche de Writer ne convient pas pour toutes les propriétés de paragraphes et de caractère existants. Leur combinaison ne fonctionne pas comme attendu et correctement.</p>
-		<h3><a id="nahraditfr"></a><b>Remplacer</b></h3>
+		<h3 id="nahraditfr"><b>Remplacer</b></h3>
 		<p>La liste déroulante <b>Remplacer</b></p>
 		<p><strong>&amp; \0</strong> - ces deux paramètres signifient la même chose - au remplacement ils représentent tout le texte&nbsp;trouvé.</p>
 		<p>Si l'expression a été recherchée à l'aide de <strong>[::BigBlock::]</strong> alors ces paramètres représentent seulement un bloc de paragraphes entre les marques de début et de fin.</p>
@@ -249,7 +249,7 @@
 		<p>À l'aide du bouton <var>Propriétés de la sélection</var>, il est possible de mettre à jour la liste des propriétés et de leurs valeurs des objets sélectionnés. Il est possible de naviguer et de sélectionner dans la zone de liste située à côté.</p>
 		<p><strong>\A{properties=value}</strong> - Dans l'expression remplacée, paramètre la valeur de la propriété spécifiée.</p>
 		<p>Applique des règles d'usage analogues au&nbsp;paramètre <strong>\C{}</strong>.</p>
-		<h3><a id="davkyfr"></a>Traitement par Lot</var></h3>
+		<h3 id="davkyfr">Traitement par Lot</h3>
 
 		<p class="center"><img src="img/altsearch_script_fr.png" width="480" height="348" alt="Traitement par Lot"><br>Traitement par Lot</p>
 		<p>Le mode de traitement par lot permet la sauvegarde et le chargement des paramètres préfixés de recherche et de remplacement. Il est possible de sauvegarder plusieurs recherche et remplacement en une seule séquence et cela rapidement après chargement et exécution.</p>
@@ -263,7 +263,7 @@
 		<p>Après le double clic sur un article de la liste, ou par le bouton <var>Exécuter</var>, la séquence choisie sera chargée, et les recherches et remplacements seront exécutés. En utilisant des traitements par lot sur une partie choisie, il est conseillé de laisser avant et après la sélection 1 - 2 paragraphes vides.</p>
 		<p>Le bouton <var>Transférer</var> permet de transférer les paramètres vers le dialogue de <i>Rechercher</i>, sans exécution. Si le lot contient une séquence de plusieurs Rechercher et remplacer, seule la dernière partie de la séquence sera transférée.</p>
 
-    <h3><a id="k-shorcut">Raccourcis clavier</h3>
+    <h3 id="k-shorcut">Raccourcis clavier</h3>
     <p>Le bouton <var>Raccourcis</var> ouvre une boite de dialogue qui permet d'associer un raccourci clavier à un lot.</p>
 		<p class="center"><img src="img/altsearch_shortcuts_fr.png" width="402" height="328" alt="Raccourcis clavier">
 		<br>Raccourcis clavier</p>
@@ -271,7 +271,7 @@
 		<p>Pour qu'un raccourci fonctionne, une procédure auxiliaire est créee dans le module Basic  <code>Standard.AltSearchBatchs</code> avec un nom normalisé pour la syntaxe Basic. Ce nom s'affiche dans le second menu déroulant du dialogue. Quand la procédure est lancée, le dialogue <i>AltSearch</i> s'ouvre et le lot spécifié est  exécuté.</p>
 		<p>Le fonctionnement correct repose sur une conformité entre le nom du lot et celui référencé dans la procédure. Si le nom d'un lot référencé est modifié, il faut redéfinir un nouveau raccourci (l'ancienne procédure auxiliaire peut être supprimée en la sélectionnant dans le second menu déroulant et en cliquant sur le bouton <var> x</var>). Tout raccourci utilisé dans Writer peut être supprimé en utilisant le bouton <var>x</var>. Donc ne supprimez pas par inadvertance un raccourci important!</p>
 
-		<h3><a id="multiple"></a>Exécution Multiple</h3>
+		<h3 id="multiple">Exécution Multiple</h3>
 		<p class="center"><img src="img/altsearch_multi_fr.png" width="452" height="342" alt="Exécution multiple">
 		<br>Exécution multiple
 		</p>
@@ -287,7 +287,7 @@
                 <p>Sélectionner “<b>Désactiver messages</b>” pour éviter un message après chaque fichier. A la fin des traitements, un rapport final sera affiché.</p>
 
 
-		<h3><a id="omezenifr"></a>Limitations</h3>
+		<h3 id="omezenifr">Limitations</h3>
 		<p>Les limitations connues sont notées dans la description des paramètres individuels. S'applique généralement :</p>
 		<ul>
 			<li>Si l'option «&nbsp;Sélection actuelle seulement&nbsp;» est active, alors aucun texte ne sera trouvé dans les cadres ou dans les tableaux même si ce sont des blocs sélectionnés. La recherche à l'intérieur d'un bloc est délimitée seulement à la même zone de texte que le bloc sélectionné. Le choix multiple de bloc n'est pas implémenté.</li>
