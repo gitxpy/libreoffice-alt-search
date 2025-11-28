@@ -32,7 +32,7 @@
 	<article id="de" lang="de">
 		<h2>Suchen &amp; Ersetzen-Alternative für Writer</h2>
 
-		<p class="menu2"><a href="#hledatde">Suche</a>&bull;<a href="#nahraditde">Ersetzen</a>&bull;<a href="#davkyde">Verwendung einer Batch-Datei</a>&bull;<a href="#omezenide">Einschränkungen</a></p>
+		<p class="menu2"><a href="#find">Suche</a>&bull;<a href="#replace">Ersetzen</a>&bull;<a href="#batch">Verwendung einer Batch-Datei</a>&bull;<a href="#limitations">Einschränkungen</a></p>
 
 		<details>
 			<summary>&#x2f3;&#x2f3;&#x2f3;</summary>
@@ -85,7 +85,7 @@
 
 		<h3>Auswahlfeld Menü (über dem Eingabefeld Suchen &amp; Ersetzen)</h3>
 		<p>Enthält oft benutzte oder komplizierte reguläre Ausdrücke oder Parameter für die Eingabe. Nach Auswahl eines Eintrags werden die zugehörigen Parameter in das Eingabefeld (oder in beide Felder) übertragen. Sie können auf verschiedene Wiese eingefügt werden: an Anfang oder Ende, an die Cursor-Position oder anstelle des gesamten Original-Textes. Gleichzeitig ist der Schalter "Regulärer Ausdruck" aktiviert.</p>
-		<h3 id="hledatde">Suchen:</h3>
+		<h3 id="find">Suchen:</h3>
 		<p>Auswahlfeld <b>Regulär</b></p>
 		<p class="cm2">Enthält hilfreiche reguläre Ausdrücke. Ihre Beschreibung findet sich in der LibreOffice-Hilfe unter der Bezeichnung <a href="https://help.libreoffice.org/latest/de/text/shared/01/02100001.html?&DbPAR=WRITER"> Liste der regulären Ausdrücke</a>.</p>
 		<p class="cm2" id="deskupiny0"><dfn>Einschränkungen:</dfn> Syntax der verwendeten regulären Ausdrücke ist nicht voll kompatibel mit der von Writer benutzten. Probleme gibt es vor Allem bei der Suche, bei Verwendung von Platzhaltern wie <strong>* + ? {n,n}</strong> nach Zeichenketten in Klammern ().<br>Z.B. <strong>(Mi)?ster</strong> wird nicht gefunden (wenngleich mit der Schaltfläche <var>Zählen</var> die korrekte Anzahl ausgegeben wird). Wird nach <strong>(.*)any</strong> oder <strong>(.+)any</strong> gesucht, so wird die jüngste passende Entsprechung gefunden, im Gegensatz zum Writer-Standard, der nach der ältesten sucht.</p>
@@ -174,7 +174,7 @@
 		<p class="cm2"><strong>Similar character attribute –</strong> diese Funktion lädt alle manuell geänderten Zeichen-Attribute (bezogen auf die aktuelle Auswahl) zur Suche nach ähnlichen Formatierungen. Wenn z.B. der Cursor auf einen manuell geänderten Font-Namen gesetzt ist, werden alle Stellen mit geändertem Font-Namen gefunden – gesucht wird nach <strong>[:::CharFontName::]</strong>.</p>
 		<p class="cm2"><strong>Same characters attribute</strong> - diese Funktion lädt alle manuell geänderten Zeichen-Attribute (bezogen auf die aktuelle Auswahl) zur Suche nach genau gleichen Formatierungen. Wenn z.B. der Cursor auf einen manuell geänderten Font-Namen gesetzt ist, werden alle Stellen mit geändertem Font-Namen und <b>genau demselben</b> Font-Namen gefunden - gesucht wird nach <strong>[:::CharFontName=Arial::]</strong>.</p>
 		<p class="cm2"><dfn>Einschränkungen:</dfn> Nicht alle Absätze und Absatz-Eigenschaften werden von der Writer-Such-Funktion unterstützt. Nicht alle Kombinationen funktionieren erwartungsgemäß und zufriedenstellend.</p>
-		<h3 id="nahraditde">Ersetzen:</h3>
+		<h3 id="replace">Ersetzen:</h3>
 		<p>Auswahlfeld <b>Ersetze</b></p>
 		<p class="cm2"><strong>&amp; \0 –</strong> beide Parameter haben dieselbe Bedeutung – nach Ersetzung repräsentieren sie den gesamten gefundenen Text</p>
 		<p class="cm4">Wenn der Ausdruck mit Hilfe von <strong>[::BigBlock::]</strong> gesucht hat, repräsentieren diese Parameter</p>
@@ -248,7 +248,7 @@
 		<p class="cm2"><strong>\A{properties=value}</strong> – aktualisiert im ersetzten Ausdruck den Wert der angegebenen Eigenschaft.</p>
 		<p class="cm4">Bei Anwendung gelten dieselben Regeln wie für den Parameter <strong>\C{}</strong>.</p>
 		<p class="cm4"><br></p>
-		<h3 id="davkyde">Verwendung einer Batch-Datei: <var>Batch &gt;&gt;</var></h3>
+		<h3 id="batch">Verwendung einer Batch-Datei: <var>Batch &gt;&gt;</var></h3>
 
 		<p class="center"><img src="img/altsearch_script_de.png" width="480" height="348" alt="Batch-Datei"><br>Batch-Datei</p>
 
@@ -258,7 +258,7 @@
 		<p>Alle Batch-Parameter werden in der Text-Datei <code>AltSearchScript.txt</code> im User-Verzeichnis <code>&hellip;/OpenOffice.org2/user/config/gesichert.</code> Diese Datei kann mit Hilfe der schaltflläche <var>Bearbeiten</var> im Dialog <b>Batch-Manager</b> geöffnet und bearbeitet werden. Für die Bearbeitung ist der Text-Editor <b>Notepad</b> voreingestellt (Betriebssystem Windows, bei Linux <b>Kwrite</b>) andere Text-Editoren können in der Datei <code>AltSearchEditor.ini</code> im selben Verzeichnis eingestellt werden. Nach manuellen Änderungen und Speichern der Batch-Datei wird die Batch-Liste mit der Schaltfläche <var>Aktualisiere</var> neu aufgebaut. Die in der Datei <code>AltSearchScript.txt</code> verwendete Syntax wird am Anfang der Datei beschrieben, die Codierung ist UTF-8 (ab v1.1.1).</p>
 		<p>Durch Doppel-Klick auf einen Eintrag der Liste oder mit der Schaltfläche <var>Ausführen</var> wird die gewählte Abfolge geladen und ausgeführt. Bei Anwendung einer Batch auf eine Auswahl ist es empfehlenswert, wenn am Anfang und am Ende der Auswahl jeweils 2 – 2 leere Absätze eingefügt werden.</p>
 		<p>Mit der Schaltfläche <var>Übernehmen</var> werden die gespeicherten Parameter in den Such-Dialog übertragen, aber nicht sofort ausgeführt. Wenn die Batch-Datei mehrer Suchen- und Ersetzen-Abläufe enthält, wird lediglich der letzte Teil übernommen.</p>
-		<h3 id="omezenide">Einschränkungen:</h3>
+		<h3 id="limitations">Einschränkungen:</h3>
 		<p class="cm2">Bekannte Einschränkungen werden im Allgemeinen bei der Beschreibung der betreffenden Parameter erwähnt. Generell gilt:</p>
 		<ul>
 			<li>Wenn die Option "Nur aktuelle Auswahl" aktiviert ist, so werden Texte innerhalb von Textrahmen oder Tabellen nicht gefunden, selbst wenn sie sich innerhalb eines markierten Blocks befinden. Die Suche innerhalb von Blöcken beschränkt sich auf einen Text-Bereich, z.B. die markierte Auswahl. Mehrfach-Selektion von Blöcken wird nicht unterstützt.</li>

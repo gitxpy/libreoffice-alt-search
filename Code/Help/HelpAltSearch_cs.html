@@ -32,7 +32,7 @@
 	<article id="cs" lang="cs">
 		<h2>Alternativní dialog pro hledání a nahrazení ve Writeru</h2>
 
-		<p class="menu2"><a href="#hledat">Hledání</a>&bull;<a href="#nahradit">Nahrazení</a>&bull;<a href="#davkycs">Dávkové zpracování</a>&bull;<a href="#omezeni">Omezení</a></p>
+		<p class="menu2"><a href="#find">Hledání</a>&bull;<a href="#replace">Nahrazení</a>&bull;<a href="#batch">Dávkové zpracování</a>&bull;<a href="#multiple">Vícenásobné spuštění</a>&bull;<a href="#limitations">Omezení</a></p>
 
 		<details>
 			<summary>&#x2f3;&#x2f3;&#x2f3;</summary>
@@ -68,13 +68,13 @@
 		<p><b>1.</b> Otevřít dialog <b>Nástroje - Přizpůsobit - Klávesnice</b></p>
 		<p><b>2.</b> V poli <b>Kategorie</b> se proklikat na Makra <b>Moje makra - AltSearch - AltSearch</b></p>
 		<p><b>3.</b> V poli Funkce vybrat a přiřadit tlačítkem Změnit:<br>_AltSearch a přiřadit zkratku Ctrl+H (otevře dilog pro hledání);<br>_FindNext a přiřadit zkratku Ctrl+L (hledá další výskyt za kurzorem i bez otevřeného dialogu);<br>_FindBack a přiřadit zkratku Ctrl+Shift+L (hledá další výskyt před kurzorem i bez otevřeného dialogu);</p>
-		<p>Klávesové zkratky se také dají přiřadit dialogem přímo přes AltSearch - viz <a href="#davkycs">Dávkové zpracování</a></p>
+		<p>Klávesové zkratky se také dají přiřadit dialogem přímo přes AltSearch - viz <a href="#batch">Dávkové zpracování</a></p>
 
 		<p class="center"><img src="img/altsearch_main_cs.png" width="480" height="348" alt="Hlavní dialogové okno AltSearch"><br>Hlavní dialogové okno AltSearch</p>
 
 		<h3>Roletové nabídky (nad poli pro zadání hledaného a&nbsp;nahrazovaného výrazu)</h3>
 		<p>obsahují často používané nebo složité regulární výrazy nebo parametry pro nahrazení. Po výběru položky se do pole (nebo obou polí) přenesou odpovídající parametry. Ty mohou být podle situace vloženy několika způsoby: na začátek, na konec, ke kurzoru nebo původní text zcela nahradí. Zároveň je aktivován přepínač "Regulární výrazy".</p>
-		<h3 id="hledat">Hledat:</h3>
+		<h3 id="find">Hledat:</h3>
 		<p>Roleta <b>Regulární</b></p>
 		<p class="cm2">obsahuje některé vybrané regulární výrazy. Jejich popis je k&nbsp;dispozici v&nbsp;nápovědě LibreOffice pod heslem <a href="https://help.libreoffice.org/latest/cs/text/shared/01/02100001.html?&DbPAR=WRITER"> Seznam regulárních výrazů</a>.</p>
 		<p class="cm2" id="skupiny0"><dfn>Omezení:</dfn> Syntaxe použitých regulárních výrazů <b>není</b> plně kompatabilní s původními z LibreOffice. Problémy jsou u hledání při použití metaznaků <strong>* + ? {n,n}</strong> těsně za seskupením vymezeným závorkami (). Např. <strong>(Mi)?ster</strong> nebude nalezeno (avšak při použití <var>Spočítat</var> bude vrácen reálný počet - tato funkce používá pouze kompatabilní režim). Dále pokud se hledá seskupení typu <strong>(.*)neco</strong> nebo <strong>(.+)neco</strong> tak je vyhledána <b>nejkratší</b> vyhovující varianta oproti standardu, který naopak vyhledá nejdelší vyhovující možnost. Pokud je třeba zachovat kompatabilitu, je možno celý hledaný výraz uzavřít do dalšího páru závorek: <strong>((Mi)?ster)</strong>. Tím se ovšem pozbyde možnost odkazovat se na seskupení v nahrazovacím výrazu pomocí reference <strong>\#</strong> kde # je pořadové číslo (max. 9) seskupení. Nelze také <b>současně</b> použít referenci na seskupení (vymezené závorkami <strong>()</strong>) v hledaném i nahrazovaném výrazu. Viz také <a href="#skupiny">seskupení</a>.</p>
@@ -177,7 +177,7 @@
 		<p class="cm2"><strong>Podobné znakové atributy</strong> - tato funkce načte některé ručně změněné znakové atributy (podle současného výběru) pro vyhledání podobně formátovaných míst. Pokud je např. kurzor na ručně změněném názvu písma, budou hledána všechna místa se změněným jménem písma - bude se hledat <strong>[:::CharFontName::]</strong>.</p>
 		<p class="cm2"><strong>Stejné znakové atributy</strong> - tato funkce načte některé ručně změněné znakové atributy (podle současného výběru) pro vyhledání stejně formátovaných míst. Pokud je např. kurzor na ručně změněném názvu písma, budou hledána všechna místa se změněným a zároveň <b>stejným</b> jménem písma - bude se hledat <strong>[:::CharFontName=Arial::]</strong>.</p>
 		<p class="cm2"><dfn>Omezení:</dfn> Ne všechny existující vlastnosti odstavce a písma jsou podporovány pro hledání, ne všechny kombinace fungují podle očekávání a správně.</p>
-		<h3 id="nahradit">Nahradit:</h3>
+		<h3 id="replace">Nahradit:</h3>
 		<p>Listbox <b>Nahradit</b></p>
 		<p class="cm2"><strong>&amp; \0</strong> - oba tyto zástupné znaky znamenají totéž - při nahrazení představují celý nalezený text</p>
 		<p class="cm4">Pokud se hledalo pomocí <strong>[::BigBlock::]</strong> tak představují jen blok odstavců mezi značkami začátku a konce.</p>
@@ -261,7 +261,7 @@
 		<p class="cm2"><strong>\A{vlastnost=hodnota}</strong> - nastaví v nahrazovaném výrazu hodnotu zadané vlastnosti</p>
 		<p class="cm4">Platí obdobná pravidla použití jako pro parametr <strong>\C{}</strong>. Více vlastností naráz (pro stejnou část textu) lze nastavit jejich uvedením za sebou - <strong>\A{v1=h1}\A{v2=h2}...</strong></p>
 		<p class="cm4"><br></p>
-		<h3 id="davkycs">Dávkové zpracování: <var>Dávky &gt;&gt;</var></h3>
+		<h3 id="batch">Dávkové zpracování: <var>Dávky &gt;&gt;</var></h3>
 
 		<p class="center"><img src="img/altsearch_script_cs.png" width="480" height="348" alt="Dávkové zpracování"><br>Dávkové zpracování</p>
 
@@ -281,7 +281,7 @@
 		<p><b>3.</b> zmáčknout tlačítko <var>Přiřadit</var></p>
 		<p>Aby to fungovalo, je v okamžiku přiřazení vytvořena pomocná procedura v Basic modulu <code>Standard.AltSearchBatchs</code> se jménem upraveným podle syntaxe Basicu. Toto jméno je zobrazeno ve druhém poli dialogu. Spuštěním této pomocné procedury se vyvolá dialog AltSearch a ihned se automaticky provede zadaná dávka. Správná funkce je vázána na shodu jména dávky uvedenou uvnitř pomocné procedury a jména existující dávky. Pokud tedy změníte jméno dávky ke které už byla dříve přiřazena klávesová zkratka, je třeba klávesovou zkratku znovu přiřadit (starou pomocnou proceduru s původním jménem je možno smazat pomocí jejího vybrání ve druhém listboxu a vedlejším tlačítkem <var><b>x</b></var>). Jakoukoli klávesovou zkratku, která je ve Writeru použita, je možno uvolnit pomocí dolního tlačítka <var>x</var>, proto pozor ať si nechtěně nesmažete nějakou důležitou zkratku.</p>
 
-		<h3>Vícenásobné spuštění</h3>
+		<h3 id="multiple">Vícenásobné spuštění</h3>
 
 		<p class="center"><img src="img/altsearch_multi_cs.png" width="452" height="342" alt="Vícenásobné spuštění"><br>Vícenásobné spuštění</p>
 
@@ -292,7 +292,7 @@
 		<p>V seznamu jsou pouze právě otevřené soubory typu "writer".</p>
 		<p><b>4.</b> Stisknutím tlačítka <var>Start</var> se spustí provedení dávky na všech vybraných souborech. V průběhu zpracování může problikávat zobrazení - doporučiji po tuto dobu do ničeho v LibreOffice nezasahovat.</p>
 		<p>Volba "<b>Potlačit hlášení</b>" potlačí hlášení o provedených změnách po zpracování každého z vybraných souborů ale vypíše jen závěrečné souhrnné hlášení po zpracování posledního z vybraných souborů.</p>
-		<h3 id="omezeni">Omezení:</h3>
+		<h3 id="limitations">Omezení:</h3>
 		<p class="cm2">pokud jsou známa, jsou uváděna většinou u popisu jednotlivých parametrů. Obecně platí:</p>
 		<ul>
 			<li>Použití regulárních výrazů není plně kompatabilní s těmimi z LibreOffice, zvláště při použití <a href="#skupiny">seskupení</a>.</li>
