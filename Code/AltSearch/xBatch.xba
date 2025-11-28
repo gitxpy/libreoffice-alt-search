@@ -645,7 +645,7 @@ sub saveOptionToFile(mode as string, byval nam$, byval find$, byval sRepl$, byva
 				end if
 			end if
 			bstep = 3
-			goto nextStep &apos; next step eithout the reading of line
+			goto nextStep &apos; next step without the reading of line
 
 		case 3  &apos; insert content
 
