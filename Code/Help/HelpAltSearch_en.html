@@ -30,7 +30,7 @@
 	<article id="en" lang="en">
 
 		<h2>Alternative Find and Replace dialog box for Writer</h2>
-		<p class="menu2"><a href="#hledaten">Searching</a>&bull;<a href="#nahraditen">Replacing</a>&bull;<a href="#davkyen">Batch mode</a>&bull;<a href="#multiple">Multiple execute</a>&bull;<a href="#omezenien">Limitations</a></p>
+		<p class="menu2"><a href="#find">Searching</a>&bull;<a href="#replace">Replacing</a>&bull;<a href="#davkyen">Batch mode</a>&bull;<a href="#multiple">Multiple execute</a>&bull;<a href="#limitations">Limitations</a></p>
 
 		<!--
 		<details>
@@ -89,7 +89,7 @@
 		<p class="h2_center">(above the search string input field)</p>
 		<p>They contain frequently used or complicated <i>regular expressions</i> or search parameters that can be automatically entered in the search field. After choosing an entry, the corresponding parameters are transferred to the input field (or to both the search and replace fields, if the second one is specified). These may be inserted in several ways: before or after the cursor or by replacing the text in the input box. The “<b>Regular expressions</b>” checkbox must be ticked at the same time, of course</p>
 
-		<h3><a id="hledaten"></a>Searching</h3>
+		<h3><a id="find"></a>Searching</h3>
 		<h4>List box “<b>Regular</b>”</h4>
 		<p class="cm2">This box contains some helpful regular expressions. They are described in the <a href="https://help.libreoffice.org/latest/en-US/text/shared/01/02100001.html?&DbPAR=WRITER"><b>LibreOffice Help</b></a> searching for <b>List of Regular Expressions</b>.</p>
 		<p class="cm4" id="enskupiny0"><dfn>Limitation:</dfn> The syntax used for regular expressions is not fully equivalent to the Writer one. There are differences especially when using the wildcards <strong>*, +, ?</strong>, or <strong>{n,n}</strong> just after subexpressions delimited by parentheses <b>()</b>.</p>
@@ -217,7 +217,7 @@
 
 		<p class="cm4"><dfn>Limitation:</dfn> The search engine in Writer does not support all the existing paragraph and character properties. Not all combinations work as might be expected</p>
 
-		<h3><a id="nahraditen"></a>Replacing</h3>
+		<h3><a id="replace"></a>Replacing</h3>
 
 		<p>List box “<b>Replace</b>”</p>
 		<p class="cm2"><strong>&amp; \0</strong> - both these parameters mean the same thing: on replacement they represent the whole found text</p>
@@ -370,7 +370,7 @@
 			</ol>
 		<p>Ticking “<b>Disable message</b>” suppress messages about changes after each document execution. Upon completion of all executions, the final report is displayed.</p>
 
-		<h3><a id="omezenien"></a>Limitations</h3>
+		<h3><a id="limitations"></a>Limitations</h3>
 		<p>Known limitations are mostly mentioned within the description of individual parameters.</p>
 		<p>Generally applicable:</p>
 		<ul>
