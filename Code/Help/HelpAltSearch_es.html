@@ -32,7 +32,7 @@
 	<article id="es" lang="es">
 		<h2>Diálogo buscar y reemplazar alternativo para Writer</h2>
 
-		<p class="menu2"><a href="#buscar">Buscar</a>&bull;<a href="#reemplazar">Reemplazar</a>&bull;<a href="#lotes">Modo por lotes</a>&bull;<a href="#multiple">Ejecución múltiple</a>&bull;<a href="#limitaciones">Limitaciones</a></p>
+		<p class="menu2"><a href="#find">Buscar</a>&bull;<a href="#replace">Reemplazar</a>&bull;<a href="#batch">Modo por lotes</a>&bull;<a href="#multiple">Ejecución múltiple:</a>&bull;<a href="#limitations">Limitaciones</a></p>
 
 		<details>
 			<summary>&#x2f3;&#x2f3;&#x2f3;</summary>
@@ -75,15 +75,15 @@
 				<li>_FindNext Ctrl+Alt+H (buscar siguiente ocurrencia de la última búsqueda (diálogo cerrado)</li>
 				<li>_FindBack Ctrl+Mayús+H (buscar anterior ocurrencia de la última búsqueda (diálogo cerrado)</li>
 			</ul>
-		<p>También puede asignar atajos de teclado directamente desde el diálogo AltSearch. Consulte <a href="#lotes">Modo por lotes</a> más adelante.</p>
+		<p>También puede asignar atajos de teclado directamente desde el diálogo AltSearch. Consulte <a href="#batch">Modo por lotes</a> más adelante.</p>
 <hr>
 		</ul>
-		<h3><u>Listas desplegables sobre el campos de expresiones de búsqueda («Buscar»)</u></h3>
+		<h3 id="find"><u>Listas desplegables sobre el campos de expresiones de búsqueda («Buscar»)</u></h3>
 
 		<p class="center"><img src="./img/altsearch_main_es.png" width="480" height="348" alt="Diálogo principal de AltSearch" > <br>Diálogo principal de AltSearch</p>
 
 		<p>Contienen expresiones regulares sencillas, expresiones Ampliadas o parámetros de propiedades. Tras elegir una entrada los parámetros se pasan al campo de búsqueda. Se pueden insertar de varios modos: al principio, al final, en la posición del cursor o remplazando al texto del campo de búsqueda. Al mismo tiempo se activa la opción «Expresiones regulares».</p>
-		<p id="buscar"><u><b>A.</b> Lista desplegable <b>«Normal»</b></u></p>
+		<p><u><b>A.</b> Lista desplegable <b>«Normal»</b></u></p>
 		<p class="cm2">Contiene algunas expresiones regulares útiles. Puede encontrar su descripción en la ayuda de LibreOffice <a href="https://help.libreoffice.org/latest/es/text/shared/01/02100001.html"> Lista de Expresiones Regulares.</a></p>
 		<p class="cm4" id="limitacion"><dfn>Limitaciones:</dfn> La sintaxis usada en expresiones regulares no es totalmente compatible con la original de OpenOffice/LibreOffice. Los problemas surgen especialmente con búsquedas, al usar comodines <strong>* + ? {n,n}</strong> justo después de expresiones entre paréntesis ().</p>
 		<p>Por ejemplo, <strong>(Mi)?ster</strong> no se encontrará (sin embargo, cuando se usa <var>Contar</var> devolverá la cuenta correcta - esta función sólo está usando el modo compatible).</p>
@@ -198,7 +198,7 @@
 		<p class="cm2"><dfn> Limitación:</dfn> EL motor de búsqueda de Writer no soporta todas las propiedades de carácter. No todas las combinaciones funcionan como deberían.</p>
 
 <hr>
-		<h3 id="reemplazar">Listas desplegables sobre el campos de expresiones de reemplazo («Reemplazar:»)</h3>
+		<h3 id="replace">Listas desplegables sobre el campos de expresiones de reemplazo («Reemplazar:»)</h3>
 		<p><b>A.</b> Lista desplegable <b>«Reemplazar»</b></p>
 		<p class="cm2"><strong>&amp; \0 –</strong> ambos parámetros significan lo mismo – representan el texto completo encontrado</p>
 		<p class="cm4">Si la expresión se buscó usando <strong>[::BigBlock::]</strong> estos parámetros representan sólo el bloque de párrafos entre las marcas inicial y final.</p>
@@ -290,7 +290,7 @@
 		<p class="cm4"><strong>\A{CharBackColor=&amp;H00FF00}</strong> (por que la notación RGB de azul en hexadecimal es:  <b class="bBlue">00FF00</b>).</p>
 
 <hr>
-		<h3 id="lotes"> Uso del modo por lotes: <var>Lotes &gt;&gt;</var></h3>
+		<h3 id="batch"> Uso del modo por lotes: <var>Lotes &gt;&gt;</var></h3>
 		<p class="center"><img src="./img/altsearch_script_es.png"  width="480" height="348" alt="Gestor de lotes"><br>Gestor de lotes</p>
 		<p>El modo por lotes permite guardar y cargar parámetros preestablecidos de búsqueda y reemplazo. Se pueden guardar varias búsquedas y reemplazos en orden en una única secuencia y después rápidamente cargarla y ejecutarla.</p>
 		<p>Se pueden guardar los valores actuales de todos los parámetros utilizando el botón <var>Guardar lote</var>. En el diálogo que se mostrará, se ofrece renombrar el nombre del último lote usado. Si el nombre que se introduce ya existe, se puede elegir, si reescribir el antiguo contenido o si conservarlo y ańadir el nuevo contenido al final. Se guarda el lote de modo que cuando se vuelva a ejecutar se usa la función por defecto «Reemplazar todo». Este comando puede cambiarse más adelante editando el archivo de reglas de lotes.</p>
@@ -322,7 +322,7 @@
 		</ol>
 		<p>La casilla de selección «<b>Sin mensajes</b>» elimina los mensajes de los cambios realizados en cada archivo tan pronto como se acaba de procesar un archivo, pero se mostrará el informe final.</p>
 <hr>
-		<h3 id="limitaciones">Limitaciones:</h3>
+		<h3 id="limitations">Limitaciones:</h3>
 		<p>Si las limitaciones ya se conocen, en su mayoría se citan cerca de la descripción de parámetros individuales. Generalmente se aplica:</p>
 		<ul>
 			<li>Si está activada la opción “Sólo selección actual”, no se encontrarán textos que estén dentro de marcos o tablas, incluso si estuvieran dentro de los bloques seleccionados. La búsqueda dentro de bloques está limitada solo dentro del mismo área de texto que el bloque seleccionado. La selección múltiple de bloques no está soportada.</li>
