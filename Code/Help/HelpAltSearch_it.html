@@ -30,7 +30,7 @@
 	<article id="it" lang="it">
 
 		<h2>Finestra di dialogo alternativa a Trova e Sostituisci… di Writer</h2>
-		<p class="menu2"><a href="#hledatit">Ricerca</a>&bull;<a href="#nahraditit">Sostituzione</a>&bull;<a href="#davkyit">Modalità Batch</a>&bull;<a href="#multiple">Esecuzione multipla</a>&bull;<a href="#omezeniit">Limitazioni</a></p>
+		<p class="menu2"><a href="#find">Ricerca</a>&bull;<a href="#replace">Sostituzione</a>&bull;<a href="#batch">Modalità Batch</a>&bull;<a href="#multiple">Esecuzione multipla</a>&bull;<a href="#limitations">Limitazioni</a></p>
 
 		<!--
 		<details>
@@ -39,7 +39,7 @@
 		</details>
 		-->
 
-		<h3><a id="hlavnifit"></a>Miglioramenti rispetto alla finestra di dialogo Trova e Sostituisci… di Writer:</h3>
+		<h3 id="hlavnifit">Miglioramenti rispetto alla finestra di dialogo Trova e Sostituisci… di Writer:</h3>
 		<ul>
 			<li>Selezione rapida di espressioni regolari predefinite e complesse</li>
 			<li>Conteggio del numero di occorrenze delle espressioni trovate mediante il pulsante <var>Conta</var></li>
@@ -76,7 +76,7 @@
 					</ul>
 			</ol>
 
-		<p>È anche possibile assegnare le scorciatoie direttamente dalla finestra di dialogo AltSearch - vedi <a href="#davkyit">Modalità Batch</a></p>
+		<p>È anche possibile assegnare le scorciatoie direttamente dalla finestra di dialogo AltSearch - vedi <a href="#batch">Modalità Batch</a></p>
 		<hr>
 			<p class="center">
 			<img src="img/altsearch_main_it.png" width="480" height="348" alt="Finestra principale di AltSearch">
@@ -89,7 +89,7 @@
 		<p class="h2_center"><b>(sopra la casella di inserimento della stringa da ricercare)</b></p>
 		<p>Contengono <i>espressioni regolari</i> frequentemente usate o complesse o dei parametri di ricerca che possono essere inseriti automaticamente nel campo di ricerca. Dopo avere selezionato una delle opzioni presenti, i relativi parametri vengono trasferiti nella casella di ricerca (ed eventualmente anche in quella di sostituzione, se specificata). Le procedure di ricerca/sostituzione possono essere eseguite in molti modi: per es. prima o dopo la posizione del cursore, con sostituzione o meno dell’espressione cercata ecc… In ogni caso è necessario che la sottostante casella di controllo “<b>Espressioni regolari</b>” sia spuntata.</p>
 
-		<h3><a id="hledatit"></a>Ricerca</h3>
+		<h3 id="find">Ricerca</h3>
 		<h4>Casella con menu a discesa “[Espressioni] <b>Regolari</b>”</h4>
 		<p class="cm2">Questa casella con menu a discesa contiene alcune utili espressioni regolari descritte nell’<a href="https://help.libreoffice.org/latest/it-IT/text/shared/01/02100001.html?&DbPAR=WRITER"><b>Aiuto di LibreOffice</b></a> cercando <b>Elenco Espressioni Regolari</b>.</p>
 		<p class="cm4" id="itskupiny0"><dfn>Limitazioni:</dfn> La sintassi utilizzata per le espressioni regolari standard non è totalmente equivalente a quella di Writer. Ci sono differenze, specialmente nell’uso dei caratteri jolly <strong>*, +, ?</strong>, o <strong>{n,n}</strong> se utilizzati subito dopo le sotto-espressioni delimitate da parentesi rotonde <b>()</b>.</p>
@@ -217,7 +217,7 @@
 
 		<p class="cm4"><dfn>Limitazioni:</dfn> Il motore di ricerca di Writer non supporta tutte le possibili proprietà dei paragrafi e dei caratteri. Inoltre non tutte le combinazioni funzionano come ci si potrebbe aspettare</p>
 
-		<h3 id="nahraditit">Sostituzione</h3>
+		<h3 id="replace">Sostituzione</h3>
 
 		<p>Menu a discesa “<b>Sostituzione</b>”</p>
 		<p class="cm2"><strong>&amp; \0</strong> - entrambi questi parametri hanno lo stesso significato: nella sostituzione rappresentano l’intero testo trovato</p>
@@ -323,7 +323,7 @@
 		<p class="cm2"><strong>\A{proprietà=valore}</strong> - imposta il valore della proprietà specificata nell’espressione di sostituzione. Utilizza regole analoghe a quelle del parametro <strong>\C{}</strong> (v. sopra)</p>
 		<p class="cm2">Per esempio, se la coppia proprietà-valore ricercata è:<br><strong>[:::CharBackColor=&amp;HFF0000::]</strong>, cioè un <b class="bred">colore di sfondo rosso</b> e si vuole rimpiazzarlo con un <b class="bBlue">carattere di sfondo blu</b>, nella casella di Sostituzione bisogna introdurre:<br> <strong>\A{CharBackColor=&amp;H00FF00}</strong>. Infatti la codifica esadecimale RGB del colore blu è <b class="bBlue">00FF00</b></p>
 
-		<h3><a id="davkyit"></a>Modalità Batch</h3>
+		<h3 id="batch">Modalità Batch</h3>
  		<p>&nbsp;</p>
 		<p class="center">
 			<img src="img/altsearch_script_it.png" width="480" height="348" alt="Modalità Batch">
@@ -354,7 +354,7 @@
 		<p>Perché la scorciatoia funzioni, all’atto della sua creazione viene contemporaneamente creata anche una funzione ausiliaria nel modulo Basic <code>Standard.AltSearchBatchs</code> il cui nome si adegua alla sintassi del Basic. Esso viene visualizzato nella seconda casella del menu a discesa nella finestra di dialogo. Quando viene lanciata questa procedura ausiliaria, si apre la finestra di dialogo <i>AltSearch</i> e viene immediatamente eseguita la procedura batch specificata.</p>
 		<p>Il comportamento corretto dipende dalla conformità dei nomi di batch elencati all’interno della procedura e dal nome dei batch esistenti. Se si modifica il nome del batch al quale era stata precedentemente assegnata una scorciatoia, è ovviamente necessario riassegnarla. La vecchia procedura ausiliaria può essere cancellata selezionandola nella seconda casella del menu a discesa facendo clic sul pulsante <var>x</var> posto a fianco di essa. Qualsiasi scorciatoia da tastiera definita in Writer può essere resa disponibile e riassegnata utilizzando il pulsante <var>x</var> posizionato più sotto. Pertanto si faccia molta attenzione a non rimuovere inavvertitamente delle scorciatoie importanti!</p>
 
-		<h3><a id="multiple"></a>Esecuzione multipla</h3>
+		<h3 id="multiple">Esecuzione multipla</h3>
 		<p class="center">
 			<img src="img/altsearch_multi_it.png" width="452" height="352" alt="Esecuzione multipla">
 			<br><i>Esecuzione multipla</i>
@@ -370,7 +370,7 @@
 			</ol>
 		<p>Selezionando la casella “<b>Disattiva info</b>” si impedisce la visualizzazione dei messaggi che riepilogano le modifiche eseguite al termine di ogni documento processato. Una volta completata tutta la procedura, verrà comunque mostrato un rapporto completo delle modifiche effettuate a carico di tutti i documenti.</p>
 
-		<h3><a id="omezeniit"></a>Limitazioni</h3>
+		<h3 id="limitations">Limitazioni</h3>
 		<p>Gran parte delle limitazioni note è menzionata nella descrizione dei singoli parametri.</p>
 		<p>Limitazioni generalmente applicabili:</p>
 		<ul>

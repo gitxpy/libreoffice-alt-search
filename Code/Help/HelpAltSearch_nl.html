@@ -32,14 +32,14 @@
 	<article id="nl" lang="nl">
 		<h2>Alternatief dialoogvenster Zoeken&amp;vervangen voor Writer</h2>
 
-		<p class="menu2"><a href="#hledatnl">Zoeken</a>&bull;<a href="#nahraditnl">Vervangen</a>&bull;<a href="#davkynl">Batchmodus</a>&bull; <a href="#omezeninl">Beperkingen</a></p>
+		<p class="menu2"><a href="#find">Zoeken</a>&bull;<a href="#replace">Vervangen</a>&bull;<a href="#batch">Batchmodus</a>&bull; <a href="#limitations">Beperkingen</a></p>
 
 		<details>
 			<summary>&#x2f3;&#x2f3;&#x2f3;</summary>
 			<p>De versie van het Helpbestand is bewerkt door Anna Sharman 2008.</p>
 		</details>
 
-		<h3><a id="hlavnifnl"></a>Wat deze extensie biedt in vergelijking met het standaard dialoogvenster van Writer</h3>
+		<h3 id="hlavnifnl">Wat deze extensie biedt in vergelijking met het standaard dialoogvenster van Writer</h3>
 		<ul>
 			<li>De mogelijkheid om vooraf ingestelde reguliere en uitgebreide uitdrukkingen te selecteren</li>
 			<li>Tellen van het gevonden aantal gezochte uitdrukkingen met de knop <var>Tellen</var></li>
@@ -72,13 +72,13 @@
 		<p><b>1.</b> Open het dialoogvenster <b>Extra - Aanpassen... - Toetsenbord</b></p>
 		<p><b>2.</b> Zoek in het veld <b>Categorie</b> door te navigeren naar <b>OpenOffice.org macro's - Gebruiker - AltSearch - AltSearch</b></p>
 		<p><b>3.</b> Selecteer in het veld <b>Functie</b> en wijs de volgende (voorgestelde) sneltoetsen toe door middel van de knop <b>Aanpassen</b>:<br>_AltSearch: Ctrl+H (openen van het dialoogvenster Zoeken);<br>_FindNext: Ctrl+L (vinden van de volgende entiteit van de zoekreeks na het cursorpunt, zonder geopend dialoogvenster Zoeken);<br>_FindBack: Ctrl+Shift+L (vinden van de vorige entiteit van de zoekreeks vóór het cursorpunt, zonder geopend dialoogvenster Zoeken).</p>
-		<p>Kunt u ook sneltoetsen direct toewijzen, via het dialoogvenster Alternatief Zoeken - zie <a href="#davkynl">Batchmodus</a></p>
+		<p>Kunt u ook sneltoetsen direct toewijzen, via het dialoogvenster Alternatief Zoeken - zie <a href="#batch">Batchmodus</a></p>
 
 		<p class="center"><img src="img/altsearch_main_nl.png" width="480" height="348" alt="Dialoogvenster van AltSearch"><br>Dialoogvenster van AltSearch</p>
 		<h3>Het menu Keuzelijst (boven het invoerveld voor het instellen van de zoek- en vervangingsuitdrukking)</h3>
 
 		<p>Dit bevat vaak gebruikte of gecompliceerde reguliere uitdrukkingen of zoekparameters die kunnen worden gebruikt in het zoekveld. Na het kiezen van het item worden de corresponderende parameters overgebracht naar het invoerveld (of naar zowel het zoek- als vervangingsveld indien dat is gespecificeerd). Zij kunnen op verschillende manieren worden ingevoerd: voor of na de cursorpositie of de tekst in het invoerveld vervangen. Tegelijkertijd wordt het keuzevak "Reguliere uitdrukkingen" ingeschakeld.</p>
-		<h3><a id="hledatnl"></a>Zoeken</h3>
+		<h3 id="find">Zoeken</h3>
 		<p>Keuzelijst '<b>Regulier'</b></p>
 		<p class="cm2">Dit vak bevat enkele handige reguliere uitdrukkingen. Hun beschrijving is beschikbaar in de Help van OOo onder de titel <a href="https://help.libreoffice.org/latest/nl/text/shared/01/02100001.html?&DbPAR=WRITER"> Lijst met reguliere uitdrukkingen</a>.</p>
 		<p class="cm2" id="nlskupiny0"><dfn>Beperking:</dfn> De gebruikte syntaxis in reguliere expressies is niet volledig compatibel met originele OOo. Problemen treden specifiek op bij het zoeken met behulp van het jokerteken <strong>* + ? of {n,n}</strong> net na een opgegeven subuitdrukking die wordt bepaald door haakjes ().<br>Bijvoorbeeld: <strong>(Mi)?ster</strong> zal niet worden gevonden (bij gebruik echter van <var>Tellen</var> zal het juiste aantal worden weergegeven - deze functie werkt alleen in de compatibel modus). Verder wordt, als de gezochte subuitdrukking van het type <strong>(.*)any</strong> of <strong>(.+)any</strong> is, de kortst mogelijk passende entiteit gevonden, in tegenstelling tot de standaard zoekactie van OOo, dat de langst mogelijke entiteit zal vinden. Indien het nodig is de compatibiliteit te bewaren, is het mogelijk om de gehele gezochte expressie te begrenzen met een extra paar haakjes: <strong>((Mi)?ster)</strong>. Hierdoor verliest u natuurlijk de kans om de subuitdrukking als verwijzing op te nemen in de vervangingsuitdrukking, d.i. <strong>\#</strong> waar # een getal voor de verwijzing is (max. 9) van de subuitdrukking. Het is ook niet mogelijk om tegelijkertijd de verwijzing naar de subuitdrukking (bepaald door haakjes <strong>()</strong>) in zowel de zoek- als de vervangingsuitdrukking te gebruiken. Zie ook <a href="#nlskupiny">subuitdrukkingen</a>.</p>
@@ -184,7 +184,7 @@
 		<p class="cm2"><strong>Soortgelijk tekenattribuut</strong> - deze functie laadt elk van de handmatig gewijzigde tekenattributen van de huidige selectie en zoekt naar soortgelijk opgemaakte plaatsen. Als bijvoorbeeld de cursor op tekst staat waar van de naam van het lettertype handmatig gewijzigd is, zullen alle plaatsen met die gewijzigde naam van het lettertype worden gevonden. Het vak Zoeken naar zal bijvoorbeeld bevatten <strong>[:::CharFontName::]</strong>.</p>
 		<p class="cm2"><strong>Hetzelfde tekenattribuut</strong> - deze functie laadt elk tekenattribuut van de huidige selectie dat handmatig gewijzigd is en zoekt naar hetzelfde opgemaakte plaatsen. Alsbijvoorbeeld de cursor op tekst staat waarvan de naam van het lettertype handmatig gewijzigd is, zullen alle plaatsen met de gewijzigde naam van het lettertype en <b>dezelfde</b> naam van het lettertype worden gezocht.. Het vak Zoeken naar zal bijvoorbeeld bevatten <strong>[:::CharFontName=Arial::]</strong>.</p>
 		<p class="cm2"><dfn> Beperking:</dfn> Niet alle bestaande alinea- en tekeneigenschappen worden door OOo's zoekmogelijkheid ondersteund. Niet alle combinaties werken zoals verwacht.</p>
-		<h3><a id="nahraditnl"></a>Vervangen</h3>
+		<h3 id="replace">Vervangen</h3>
 		<p>Keuzelijst '<b>Vervangen door'</b></p>
 		<p class="cm2"><strong>&amp; \0</strong> - deze beide parameters betekenen hetzelfde: tijdens vervangingen vertegenwoordigen zij de gehele gevonden tekst</p>
 		<p class="cm4">Als de uitdrukking werd gezocht met behulp van <strong>[::BigBlock::]</strong> vertegenwoordigen deze parameters alleen het blok alinea's tussen de begin- en eindemarkering.</p>
@@ -264,7 +264,7 @@
 		<p class="cm2">Met behulp van de knop <var>Eigenschappen kiezen</var> is het mogelijk om de lijst van (sommige) eigenschappen en hun waarden bij te werken voor het huidige geselecteerde object. Dan kunt u door de lijst bladeren en er één kiezen in het keuzevak naast de knop.</p>
 		<p class="cm2"><strong>\A{eigenschappen=waarde}</strong> - stelt in de vervangingsuitdrukking de waarde van de gespecificeerde eigenschap in.</p>
 		<p class="cm4">Voor het toepassen gelden dezelfde regels als voor parameter <strong>\C{}</strong>.</p>
-		<h3><a id="davkynl"></a>Batchmodus gebruiken: <var>Batch &gt;&gt;</var></h3>
+		<h3 id="batch">Batchmodus gebruiken: <var>Batch &gt;&gt;</var></h3>
 
 		<p class="center"><img src="img/altsearch_script_nl.png" width="480" height="348" alt="Batchmodus"><br>Batchmodus</p>
 		<p>Batchmodus maakt het mogelijk vooraf ingestelde parameters voor zoeken en vervangen op te slaan en te laden. Het is mogelijk om verscheidene zoek- en vervangingsacties in een serie op te slaan als één enkele reeks en die daarna als geheel snel te laden en uit te voeren.</p>
@@ -289,7 +289,7 @@
 		<p><b>3e</b> Selecteer de bestanden voor het meervoudig uitvoeren uit de lijst (met behulp van Ctrl + muisklik). De lijst geeft alleen de huidige geopende bestanden van het type "Writer" weer.</p>
 		<p><b>4e</b> Druk op de knop [Start] om het uitvoeren te beginnen. Aanbeveling: Doe, gedurende de verwerking in OOo, helemaal niets.</p>
 		<p>Het vak "<b>Berichten uitschakelen</b>" onderdrukt berichten over uitgevoerde wijzigingen na elk bestand. Zodra de verwerking is voltooid, zal het uiteindelijke rapport worden weergegeven.</p>
-		<h3><a id="omezeninl"></a>Beperkingen:</h3>
+		<h3 id="limitations">Beperkingen:</h3>
 		<p>Als er beperkingen bekend zijn worden deze meestal beschreven na de omschrijving van de individuele parameters. In het algemeen geldt:</p>
 		<ul>
 			<li>Als de optie "Alleen huidige selectie" actief is, zullen geen teksten worden gevonden die zich binnen frames of tabellen bevinden, zelfs niet indien zij binnen geselecteerde blokken staan. Zoeken binnen een blok wordt alleen begrensd binnen hetzelfde tekstgebied zoals geselecteerd blok. Meervoudig selecteren van blokken wordt niet ondersteund.</li>
