@@ -4077,13 +4077,13 @@ End Sub
 
 
 	&apos; truncate the string from right to entered count of characters, possibly replenish ...
-sub zkratitNa(byval ret$, poc)as string
+sub truncNa(byval ret$, poc)as string
 	dim le&amp;
 	le = len(ret)
 	if le&gt;poc then
 		ret = left(ret,poc-3) &amp; &quot;...&quot;
 	end if
-	zkratitNa = ret
+	truncNa = ret
 end sub
 
 </script:module>

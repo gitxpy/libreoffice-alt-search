@@ -367,6 +367,8 @@ End Sub
 
 	&apos; count the occurences
 sub BtCount
+    if oDIAL.getControl(&quot;Cb_find&quot;).Text=&quot;&quot; then exit sub &apos; bug 141
+
 	if NOT testViewCursor then exit sub &apos;test if Visible cursor isn&apos;t in Comment etc.
 	dim info, curinit, curs, i, j, max, hled, pom, bin, oTmp, oAnch, inFoot, oFoot, mode
 	info = &quot;&quot;  &apos;information filed under the inpubox Find
@@ -1943,35 +1945,6 @@ problem:
 
 	INITerror = INITerror + 1 &apos; counter of repeat bugs of area, after 3 end the dialog
 	if INITerror &gt; 2 then KonecTm &apos; end the dialog
-end sub
-
-
-	&apos; set visible cursor according to range
-sub dbgVcursor(zac,kon, msg1)
-	on error goto chyba
-	&apos; set visible cursor according to unvisible
-	oVCURS.gotoRange(zac,false)
-	oVCURS.gotoRange(kon,true)
-	msgbox msg1
-	exit sub
-chyba:
-	msgbox &quot;dbgVcursor:  Asi chyba regionu, kurzoru.&quot;
-end sub
-
-
-	&apos; show the array with groups
-sub dbgVypisSkupiny
-	dim i , ms
-	ms = &quot;&quot;
-	for i = 0 to ubound(ALTsearchSKUP())
-		ms = ms &amp; i &amp; &quot;:  &gt;&quot; &amp; ALTsearchSKUP(i) &amp; &quot;&lt; &quot; &amp; chr(10)
-	next i
-	msgbox ms
-end sub
-
-
-sub evDialogKeypress(oEvt)
-	beep
 end sub
 
 
@@ -3657,6 +3630,7 @@ end function
 
 	&apos; key released
 function ALTsearchKBD_KeyReleased(oEvt) as boolean
+
 	ALTsearchKBD_KeyReleased = false
 end function
 
