@@ -1111,30 +1111,8 @@ function getFindArray(byval find as string, skupiny as boolean) as  tFind
 	if 1 = instr(cmd,&quot;[::&quot;) then goto noReplace &apos;there is searching of [::SomeObject::]
 	
 preskocAtr:
-	&apos; find = replace_(find,&quot;\\&quot;,&quot;\x005C&quot;)  &apos; substitute the special character to hexa codes
-	&apos; find = replace_(find,&quot;\\&quot;,&quot;\&quot;)  &apos; substitute the special character to hexa codes
-	find = replace_(find,&quot;\(&quot;,&quot;\x0028&quot;)  &apos; normal brackets, not for groups ()
-	find = replace_(find,&quot;\)&quot;,&quot;\x0029&quot;)  &apos; normal brackets, not for groups ()
-	find = replace_(find,&quot;\^&quot;,&quot;\x005E&quot;)  &apos; character ^
-	find = replace_(find,&quot;\+&quot;,&quot;\x002B&quot;)  &apos; character +
-	find = replace_(find,&quot;\*&quot;,&quot;\x002A&quot;)  &apos; character *
-	find = replace_(find,&quot;\|&quot;,&quot;\x007C&quot;)  &apos; separator OR
-	find = replaceC(find,&quot;\S&quot;,chr(160))   &apos; nbsp
-	find = replaceC(find,&quot;\s&quot;,&quot;[ \xA0\x09\x0A]&quot;)   &apos;white spaces: tabulator,line-break, space, nbsp
-	find = replace_(find,&quot;\[&quot;,&quot;\x005B&quot;)   &apos; left bracket [
-	find = replaceC(find,&quot;\d&quot;,&quot;[0-9]&quot;)&apos; abbreviation for search of numbers
-	find = replaceC(find,&quot;\l&quot;,&quot;[:alpha:]{1,1}&quot;)   &apos;abbreviation for some letter
-
-	find = replDec2hex(find) &apos; substitution dec of assignment \d
-	&apos;\n Line Break and \t tabulator don&apos;t need OOo does it automatically
-	find = replaceC(find,&quot;\x000D&quot;,chr(13))   &apos; character of paragraph
-	find = replaceC(find,&quot;\x000d&quot;,chr(13))   &apos; character of paragraph
-	find = replaceC(find,&quot;\p&quot;,chr(13))   &apos; character the paragraph
-
-	&apos; hook - already some years there isn&apos;t possible to search \x00AD (\#173) = soft hyphen
-	&apos; replace directly with character - it was functional for now
-	&apos; not possible to fix - if the regexps are active then it doesn&apos;t find nor \xAD, \u00AD, chr(173)
-	&apos; find = replaceC(find,&quot;\x00AD&quot;,chr(173))
+    mapExpression(find)
+    
 
 noReplace:
 
@@ -1497,6 +1475,53 @@ HledatJenSamOstavec:
 	getFindArray() = pom()
 end function
 
+sub mapExpression(byRef find as String)
+	&apos; find = replace_(find,&quot;\\&quot;,&quot;\x005C&quot;)  &apos; substitute the special character to hexa codes
+	&apos; find = replace_(find,&quot;\\&quot;,&quot;\&quot;)  &apos; substitute the special character to hexa codes
+	find = replace_(find,&quot;\(&quot;,&quot;\x0028&quot;)  &apos; normal brackets, not for groups ()
+	find = replace_(find,&quot;\)&quot;,&quot;\x0029&quot;)  &apos; normal brackets, not for groups ()
+	find = replace_(find,&quot;\^&quot;,&quot;\x005E&quot;)  &apos; character ^
+	find = replace_(find,&quot;\+&quot;,&quot;\x002B&quot;)  &apos; character +
+	find = replace_(find,&quot;\*&quot;,&quot;\x002A&quot;)  &apos; character *
+	find = replace_(find,&quot;\|&quot;,&quot;\x007C&quot;)  &apos; separator OR
+	 replaceC(find,&quot;\S&quot;,chr(160))   &apos; nbsp
+	 replaceC(find,&quot;\s&quot;,&quot;[ \xA0\x09\x0A]&quot;)   &apos;white spaces: tabulator,line-break, space, nbsp
+	find = replace_(find,&quot;\[&quot;,&quot;\x005B&quot;)   &apos; left bracket [
+	 replaceC(find,&quot;\d&quot;,&quot;[0-9]&quot;)&apos; abbreviation for search of numbers
+	 replaceC(find,&quot;\l&quot;,&quot;[:alpha:]{1,1}&quot;)   &apos;abbreviation for some letter
+
+	find = replDec2hex(find) &apos; substitution dec of assignment \d
+	&apos;\n Line Break and \t tabulator don&apos;t need OOo does it automatically
+	 replaceC(find,&quot;\x000D&quot;,chr(13))   &apos; character of paragraph
+	 replaceC(find,&quot;\x000d&quot;,chr(13))   &apos; character of paragraph
+	 replaceC(find,&quot;\p&quot;,chr(13))   &apos; character the paragraph
+
+	addinMapExpression(find)
+
+	&apos; hook - already some years there isn&apos;t possible to search \x00AD (\#173) = soft hyphen
+	&apos; replace directly with character - it was functional for now
+	&apos; not possible to fix - if the regexps are active then it doesn&apos;t find nor \xAD, \u00AD, chr(173)
+	&apos;  replaceC(find,&quot;\x00AD&quot;,chr(173))
+end sub
+
+
+sub addinMapExpression(byRef find as String) &apos; see Issue #128
+
+	const y$ = &quot;\x0020\x00A0\x2009\x202F&quot;
+	replaceC(find, &quot;\y&quot;, &quot;[&quot;&amp; y &amp;&quot;]&quot;)
+	replaceC(find, &quot;\Y&quot;, &quot;[&quot;&amp; y &amp; &quot;\x200A\x200B\x200C\x200D\x2060&quot;  &amp;&quot;]&quot;)
+	
+	const j$ = &quot;\x002D\x2010\x2011\x2012\x2013\x2014\x2212&quot;
+	replaceC(find, &quot;\j&quot;, &quot;[&quot;&amp; j &amp;&quot;]&quot;)
+	replaceC(find, &quot;\J&quot;, &quot;[&quot;&amp; j &amp; &quot;\x00AD]&quot;)
+
+	const o$ = &quot;\x0027\x2018\x2019\x201A\x201B\x2039\x203A\xFF07\x300C\x300D&quot;
+	const oo$ = &quot;\x0022\x00AB\x00BB\x201C\x201D\x201E\x201F\x2E42\x301D\x301E\x301F\xFF02\x300E\x300F&quot;
+
+	replaceC(find, &quot;\o&quot;, &quot;[&quot;&amp; o &amp;&quot;]&quot;)
+	replaceC(find, &quot;\O&quot;, &quot;[&quot;&amp; oo &amp;&quot;]&quot;)
+	replaceC(find, &quot;\q&quot;, &quot;[&quot;&amp; o &amp; oo &amp;&quot;]&quot;)
+end sub
 
 	&apos; the dialog lets choose from the field of values
 sub getFromList(caption$, pole1(), x&amp;, y&amp;, xx&amp;, yy&amp;) as string
@@ -3624,17 +3649,16 @@ End Function
 
 	&apos; the function find and replace in string
 	&apos; case sensitive !!!
-Function ReplaceC(Source As String, Search As String, NewPart As String) as string
+sub ReplaceC(byRef Source As String, Search As String, NewPart As String)
 	Dim Result As String
 	Dim StartPos As Long
 	Dim CurrentPos As Long
 	Result = &quot;&quot;
 	StartPos = 1
 	CurrentPos = 1
-	If Search = &quot;&quot; Then
-		Result = Source
-	Else
-		Do While CurrentPos &lt;&gt; 0
+	If Search = &quot;&quot; Then Exit sub
+		
+	Do While CurrentPos &lt;&gt; 0
 			CurrentPos = InStr(StartPos, Source, Search,0)  &apos; case sensitive!!!
 			If CurrentPos &lt;&gt; 0 Then
 				Result = Result  &amp;  Mid(Source, StartPos, CurrentPos - StartPos)
@@ -3643,10 +3667,9 @@ Function ReplaceC(Source As String, Search As String, NewPart As String) as stri
 			Else
 				Result = Result  &amp;  Mid(Source, StartPos, Len(Source))
 			End If &apos; Position &lt;&gt; 0
-		Loop
-	End If
-	ReplaceC = Result
-End Function
+	Loop
+	Source = Result
+End sub
 
 
 	&apos; swap the codes that are decimal hexadecimal to characters
