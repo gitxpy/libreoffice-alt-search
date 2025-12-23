@@ -27,6 +27,14 @@ Sub Load_ru
 	&quot; Мягкие переносы               &quot; &amp;__SEP &amp; &quot;\x00AD&quot;, _
 	&quot; Неразрывный дефис             &quot; &amp;__SEP &amp; &quot;\x2011&quot;, _
 	&quot; А в десятиричном виде         &quot; &amp;__SEP &amp; &quot;\#65&quot;, _
+	__SEPARATOR, _
+	&quot; Visible spaces only        &quot; &amp;__SEP &amp; &quot;\y&quot;, _
+	&quot; Common spaces, zero-width  &quot; &amp;__SEP &amp; &quot;\Y&quot;, _
+	&quot; Common hyphens/dashes      &quot; &amp;__SEP &amp; &quot;\j&quot;, _
+	&quot; All hyphens/dashes         &quot; &amp;__SEP &amp; &quot;\J&quot;, _
+	&quot; Single quotes              &quot; &amp;__SEP &amp; &quot;\o&quot;, _
+	&quot; Double quotes              &quot; &amp;__SEP &amp; &quot;\O&quot;, _
+	&quot; All quotes                 &quot; &amp;__SEP &amp; &quot;\q&quot;, _
 	 __SEPARATOR, _
 	&quot; Точка                         &quot; &amp;__SEP &amp; &quot;\.&quot;, _
 	&quot; Круглые скобки     ()         &quot; &amp;__SEP &amp; &quot;\(\)&quot;, _

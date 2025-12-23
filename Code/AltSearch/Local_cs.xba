@@ -24,6 +24,14 @@ Sub Load_cs
 	&quot; Volitelné rozdělení          &quot; &amp;__SEP &amp; &quot;\x00AD&quot;, _
 	&quot; Nezlomitelné rozdělení       &quot; &amp;__SEP &amp; &quot;\x2011&quot;, _
 	&quot; Dekadicky zadaný znak A      &quot; &amp;__SEP &amp; &quot;\#65&quot;, _
+	__SEPARATOR, _
+	&quot; Visible spaces only        &quot; &amp;__SEP &amp; &quot;\y&quot;, _
+	&quot; Common spaces, zero-width  &quot; &amp;__SEP &amp; &quot;\Y&quot;, _
+	&quot; Common hyphens/dashes      &quot; &amp;__SEP &amp; &quot;\j&quot;, _
+	&quot; All hyphens/dashes         &quot; &amp;__SEP &amp; &quot;\J&quot;, _
+	&quot; Single quotes              &quot; &amp;__SEP &amp; &quot;\o&quot;, _
+	&quot; Double quotes              &quot; &amp;__SEP &amp; &quot;\O&quot;, _
+	&quot; All quotes                 &quot; &amp;__SEP &amp; &quot;\q&quot;, _
 	 __SEPARATOR, _
 	&quot; Tečka                        &quot; &amp;__SEP &amp; &quot;\.&quot;, _
 	&quot; Závorky kulaté   ()          &quot; &amp;__SEP &amp; &quot;\(\)&quot;, _

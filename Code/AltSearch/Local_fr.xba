@@ -25,6 +25,14 @@ Sub Load_fr
 	&quot; Tiret utilisateur                       &quot; &amp;__SEP &amp; &quot;\x00AD&quot;, _
 	&quot; Tiret insécable                         &quot; &amp;__SEP &amp; &quot;\x2011&quot;, _
 	&quot; A inséré en code décimal                &quot; &amp;__SEP &amp; &quot;\#65&quot;, _
+	__SEPARATOR, _
+	&quot; Espaces visibles                        &quot; &amp;__SEP &amp; &quot;\y&quot;, _
+	&quot; Espaces usuels et largeur nulle         &quot; &amp;__SEP &amp; &quot;\Y&quot;, _
+	&quot; Tirets usuels                           &quot; &amp;__SEP &amp; &quot;\j&quot;, _
+	&quot; Tous tirets                             &quot; &amp;__SEP &amp; &quot;\J&quot;, _
+	&quot; Simple quotes                           &quot; &amp;__SEP &amp; &quot;\o&quot;, _
+	&quot; Double quotes                           &quot; &amp;__SEP &amp; &quot;\O&quot;, _
+	&quot; Toutes quotes                           &quot; &amp;__SEP &amp; &quot;\q&quot;, _
 	 __SEPARATOR, _
 	&quot; Point                                   &quot; &amp;__SEP &amp; &quot;\.&quot;, _
 	&quot; Parenthèses  ()                         &quot; &amp;__SEP &amp; &quot;\(\)&quot;, _
