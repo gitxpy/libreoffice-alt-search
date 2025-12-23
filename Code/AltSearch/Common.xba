@@ -4000,18 +4000,22 @@ if REPLCOUNT&gt;0 then pom = pom &amp; MSG(31) &amp; REPLCOUNT  &apos; Count of 
 end sub
 
 
+function separateCommand(str as string) as string
+	separateCommand = right(str, len(str) - instr(str, __SEP) )
+end function
+
 	&apos; rewrite the choice to the array according the tag
 Sub ZapisVolbu(oEvt)
 	dim pom
-	pom = oEvt.source.getSelectedItem
-	pom = right(pom,len(pom)-instr(pom,chr(160)))
+	pom = separateCommand(oEvt.source.getSelectedItem)
+
 	select case oEvt.source.model.tag
 	case &quot;freg&quot;   &apos; find-regular options
 		InsertTextTuCursor(&quot;Cb_find&quot;,pom,0)
 
 	case &quot;fext&quot;   &apos; find-extend options
-		pom = FINDEXT(oEvt.source.getSelectedItemPos())
-		pom = right(pom,len(pom)-instr(pom,chr(160))) &apos; separate the command
+		pom = separateCommand(FINDEXT(oEvt.source.getSelectedItemPos()))
+
 		select case left(pom,4)
 		case &quot;[::G&quot; &apos; insert the widening of selection to cursor
 			InsertTextTuCursor(&quot;Cb_find&quot;,pom,1)
@@ -4038,8 +4042,8 @@ Sub ZapisVolbu(oEvt)
 		end select
 
 	case &quot;fatr&quot;   &apos; find-attributes options
-		pom = FINDATR(oEvt.source.getSelectedItemPos())
-		pom = right(pom,len(pom)-instr(pom,chr(160))) &apos; separate the command
+		pom = separateCommand(FINDATR(oEvt.source.getSelectedItemPos()))
+
 		select case pom
 		case &quot;[:::p::]&quot;  &apos; find similar
 			if not ALTsearchDOC.getCurrentController().getSelection().supportsService(&quot;com.sun.star.text.TextRanges&quot;) then goto problem

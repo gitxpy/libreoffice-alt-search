@@ -5,131 +5,131 @@ Sub Load_de
 	dim i as long
 	dim pom as string
 	on error resume next
-	FINDREG = array(&quot; Erstes Zeichen eines Absatzes  &quot; &amp; chr(160) &amp; &quot;^.&quot;, _
-	&quot; Ende eines Absatzes            &quot; &amp; chr(160) &amp; &quot;$&quot;, _
-	&quot; Leerer Absatz                  &quot; &amp; chr(160) &amp; &quot;^$&quot;, _
-	&quot; Jeder Text in einem Absatz     &quot; &amp; chr(160) &amp; &quot;.*&quot;, _
-	&quot; Jeder Buchstabe  [:alpha:]{1,1}&quot; &amp; chr(160) &amp; &quot;\l&quot;, _
-	&quot; Jede Dezimalziffer  [0-9]      &quot; &amp; chr(160) &amp; &quot;\d&quot;, _
-	&quot; Anfang eines Wortes            &quot; &amp; chr(160) &amp; &quot;\&lt;&quot;, _
-	&quot; Ende eines Wortes              &quot; &amp; chr(160) &amp; &quot;\&gt;&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Absatz (Endpunkt)              &quot; &amp; chr(160) &amp; &quot;\p&quot;, _
-	&quot; Folge leerer Absätze           &quot; &amp; chr(160) &amp; &quot;^$\p*&quot;, _
-	&quot; Tabulator                      &quot; &amp; chr(160) &amp; &quot;\t&quot;, _
-	&quot; Manueller Zeilenumbruch        &quot; &amp; chr(160) &amp; &quot;\n&quot;, _
-	&quot; Manueller Spaltenumbruch       &quot; &amp; chr(160) &amp; &quot;\c&quot;, _
-	&quot; Manueller Seitenumbruch        &quot; &amp; chr(160) &amp; &quot;\m&quot;, _
-	&quot; Jedes Leerzeichen [ \xA0\x9\xA]&quot; &amp; chr(160) &amp; &quot;\s&quot;, _
-	&quot; Geschütztes Leerzeichen (\xA0) &quot; &amp; chr(160) &amp; &quot;\S&quot;, _
-	&quot; Manuelle Trennung              &quot; &amp; chr(160) &amp; &quot;\x00AD&quot;, _
-	&quot; Geschützter Gedankenstrich     &quot; &amp; chr(160) &amp; &quot;\x2011&quot;, _
-	&quot; Durch Dezimal Code eingefügt   &quot; &amp; chr(160) &amp; &quot;\#65&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Punkt                          &quot; &amp; chr(160) &amp; &quot;\.&quot;, _
-	&quot; Runde Klammern  ()             &quot; &amp; chr(160) &amp; &quot;\(\)&quot;, _
-	&quot; Eckige Klammern []             &quot; &amp; chr(160) &amp; &quot;\[\]&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;         &quot;)
+	FINDREG = array(&quot; Erstes Zeichen eines Absatzes  &quot; &amp;__SEP &amp; &quot;^.&quot;, _
+	&quot; Ende eines Absatzes            &quot; &amp;__SEP &amp; &quot;$&quot;, _
+	&quot; Leerer Absatz                  &quot; &amp;__SEP &amp; &quot;^$&quot;, _
+	&quot; Jeder Text in einem Absatz     &quot; &amp;__SEP &amp; &quot;.*&quot;, _
+	&quot; Jeder Buchstabe  [:alpha:]{1,1}&quot; &amp;__SEP &amp; &quot;\l&quot;, _
+	&quot; Jede Dezimalziffer  [0-9]      &quot; &amp;__SEP &amp; &quot;\d&quot;, _
+	&quot; Anfang eines Wortes            &quot; &amp;__SEP &amp; &quot;\&lt;&quot;, _
+	&quot; Ende eines Wortes              &quot; &amp;__SEP &amp; &quot;\&gt;&quot;, _
+	 __SEPARATOR, _
+	&quot; Absatz (Endpunkt)              &quot; &amp;__SEP &amp; &quot;\p&quot;, _
+	&quot; Folge leerer Absätze           &quot; &amp;__SEP &amp; &quot;^$\p*&quot;, _
+	&quot; Tabulator                      &quot; &amp;__SEP &amp; &quot;\t&quot;, _
+	&quot; Manueller Zeilenumbruch        &quot; &amp;__SEP &amp; &quot;\n&quot;, _
+	&quot; Manueller Spaltenumbruch       &quot; &amp;__SEP &amp; &quot;\c&quot;, _
+	&quot; Manueller Seitenumbruch        &quot; &amp;__SEP &amp; &quot;\m&quot;, _
+	&quot; Jedes Leerzeichen [ \xA0\x9\xA]&quot; &amp;__SEP &amp; &quot;\s&quot;, _
+	&quot; Geschütztes Leerzeichen (\xA0) &quot; &amp;__SEP &amp; &quot;\S&quot;, _
+	&quot; Manuelle Trennung              &quot; &amp;__SEP &amp; &quot;\x00AD&quot;, _
+	&quot; Geschützter Gedankenstrich     &quot; &amp;__SEP &amp; &quot;\x2011&quot;, _
+	&quot; Durch Dezimal Code eingefügt   &quot; &amp;__SEP &amp; &quot;\#65&quot;, _
+	 __SEPARATOR, _
+	&quot; Punkt                          &quot; &amp;__SEP &amp; &quot;\.&quot;, _
+	&quot; Runde Klammern  ()             &quot; &amp;__SEP &amp; &quot;\(\)&quot;, _
+	&quot; Eckige Klammern []             &quot; &amp;__SEP &amp; &quot;\[\]&quot;, _
+	&quot; &quot; &amp;__SEP &amp; &quot;         &quot;)
 
 	oDIAL.getcontrol(&quot;Cb_findReg&quot;).addItems(FINDREG,0)
 
-	FINDEXT = array(&quot; Folge von Absätzen (begrenzt durch Anfangs- und Endpunkt) &quot; &amp; chr(160) &amp; &quot;[::BigBlock::]&quot;, _
-	&quot; Suche wird um ein Zeichen nach beiden Seiten erweitert &quot; &amp; chr(160) &amp; &quot;[::Grow 1,1::]&quot;, _
-	&quot; Fügt Zeichen || für Mehrfachersetzung hinzu  &quot; &amp; chr(160) &amp; &quot;||&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Text zwischen () (in einem Absatz)&quot; &amp; chr(160) &amp; &quot;(\(([^\)])+\))&quot;, _
-	&quot; Text zwischen [] (in einem Absatz )&quot; &amp; chr(160) &amp; &quot;(\[([^\]])+\])&quot;, _
-	&quot; Text zwischen {} (in einem Absatz)&quot; &amp; chr(160) &amp; &quot;({([^}])+})&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; E-Mail-Addresse&quot; &amp; chr(160) &amp; &quot;[a-zA-Z0-9_][-._a-zA-Z0-9_]*[a-zA-Z0-9_].?@[a-zA-Z0-9_][-._a-zA-Z0-9_]*[a-zA-Z0-9_]\.[a-zA-Z0-9_]{2,4}&quot;, _
-	&quot; Internet, URL, www-Addresse&quot; &amp; chr(160) &amp; &quot;(((news|http|ftp|https|file):\/\/|www\.)[a-zA-Z0-9_]+((\.[a-zA-Z0-9_]+)+)(([a-zA-Z0-9_\-\.,@?^=%&amp;:/~\+#]*[a-zA-Z0-9_\-\@?^=%&amp;/~\+#])?))&quot;, _
-	&quot; HTML-Tag&quot; &amp; chr(160) &amp; &quot;(&lt;(&quot;&quot;[^&quot;&quot;]*&quot;&quot;|&apos;[^&apos;]*&apos;|[^&apos;&quot;&quot;&gt;])*&gt;)&quot;, _
-	&quot; HTML-Tag öffnen&quot; &amp; chr(160) &amp; &quot;&lt;[^/][^&gt;]+&gt;&quot;, _
-	&quot; HTML-Tag schließen&quot; &amp; chr(160) &amp; &quot;&lt;/[^&gt;]+&gt;&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Notizen (gelbe Felder) – sucht Zeichenfolge in Notizen&quot; &amp; chr(160) &amp; &quot;[::Comment::]&quot;, _
-	&quot; Text-Felder - sucht Zeichenfolge in Feldern&quot; &amp; chr(160) &amp; &quot;[::Field::]&quot;, _
-	&quot; Text-Rahmen - sucht Zeichenfolge in Namen von Rahmen&quot; &amp; chr(160) &amp; &quot;[::TextFrame::]&quot;, _
-	&quot; Tabelle - sucht Zeichenfolge in Namen von Tabellen&quot; &amp; chr(160) &amp; &quot;[::TextTable::]&quot;, _
-	&quot; Bild - sucht Zeichenfolge in Namen von Bildern&quot; &amp; chr(160) &amp; &quot;[::Picture::]&quot;, _
-	&quot; Fußnote - Text des Ankers; fügt \\ für die Suche in Fußnoten hinzu&quot; &amp; chr(160) &amp; &quot;[::Footnote::]&quot;, _
-	&quot; Endnote - Text des Ankers; fügt \\ für die Suche in Endnoten hinzu&quot; &amp; chr(160) &amp; &quot;[::Endnote::]&quot;, _
-	&quot; Querverweis-Markierung (Text); \\ für Suche im Namen; \\\\ für Suche nach leerem Text&quot; &amp; chr(160) &amp; &quot;[::ReferenceMark::]&quot;, _
-	&quot; Querverweis (Text); \\ f. Suche im N. Der Mark.; \\\\ f. S. Nach leerem Text&quot; &amp; chr(160) &amp; &quot;[::Reference::]&quot;, _
-	&quot; Bookmark - searches substring in text of Bookmarks; add \\ for searches in Names&quot; &amp; chr(160) &amp; &quot;[::Bookmark::]&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;)
+	FINDEXT = array(&quot; Folge von Absätzen (begrenzt durch Anfangs- und Endpunkt) &quot; &amp;__SEP &amp; &quot;[::BigBlock::]&quot;, _
+	&quot; Suche wird um ein Zeichen nach beiden Seiten erweitert &quot; &amp;__SEP &amp; &quot;[::Grow 1,1::]&quot;, _
+	&quot; Fügt Zeichen || für Mehrfachersetzung hinzu  &quot; &amp;__SEP &amp; &quot;||&quot;, _
+	 __SEPARATOR, _
+	&quot; Text zwischen () (in einem Absatz)&quot; &amp;__SEP &amp; &quot;(\(([^\)])+\))&quot;, _
+	&quot; Text zwischen [] (in einem Absatz )&quot; &amp;__SEP &amp; &quot;(\[([^\]])+\])&quot;, _
+	&quot; Text zwischen {} (in einem Absatz)&quot; &amp;__SEP &amp; &quot;({([^}])+})&quot;, _
+	 __SEPARATOR, _
+	&quot; E-Mail-Addresse&quot; &amp;__SEP &amp; &quot;[a-zA-Z0-9_][-._a-zA-Z0-9_]*[a-zA-Z0-9_].?@[a-zA-Z0-9_][-._a-zA-Z0-9_]*[a-zA-Z0-9_]\.[a-zA-Z0-9_]{2,4}&quot;, _
+	&quot; Internet, URL, www-Addresse&quot; &amp;__SEP &amp; &quot;(((news|http|ftp|https|file):\/\/|www\.)[a-zA-Z0-9_]+((\.[a-zA-Z0-9_]+)+)(([a-zA-Z0-9_\-\.,@?^=%&amp;:/~\+#]*[a-zA-Z0-9_\-\@?^=%&amp;/~\+#])?))&quot;, _
+	&quot; HTML-Tag&quot; &amp;__SEP &amp; &quot;(&lt;(&quot;&quot;[^&quot;&quot;]*&quot;&quot;|&apos;[^&apos;]*&apos;|[^&apos;&quot;&quot;&gt;])*&gt;)&quot;, _
+	&quot; HTML-Tag öffnen&quot; &amp;__SEP &amp; &quot;&lt;[^/][^&gt;]+&gt;&quot;, _
+	&quot; HTML-Tag schließen&quot; &amp;__SEP &amp; &quot;&lt;/[^&gt;]+&gt;&quot;, _
+	 __SEPARATOR, _
+	&quot; Notizen (gelbe Felder) – sucht Zeichenfolge in Notizen&quot; &amp;__SEP &amp; &quot;[::Comment::]&quot;, _
+	&quot; Text-Felder - sucht Zeichenfolge in Feldern&quot; &amp;__SEP &amp; &quot;[::Field::]&quot;, _
+	&quot; Text-Rahmen - sucht Zeichenfolge in Namen von Rahmen&quot; &amp;__SEP &amp; &quot;[::TextFrame::]&quot;, _
+	&quot; Tabelle - sucht Zeichenfolge in Namen von Tabellen&quot; &amp;__SEP &amp; &quot;[::TextTable::]&quot;, _
+	&quot; Bild - sucht Zeichenfolge in Namen von Bildern&quot; &amp;__SEP &amp; &quot;[::Picture::]&quot;, _
+	&quot; Fußnote - Text des Ankers; fügt \\ für die Suche in Fußnoten hinzu&quot; &amp;__SEP &amp; &quot;[::Footnote::]&quot;, _
+	&quot; Endnote - Text des Ankers; fügt \\ für die Suche in Endnoten hinzu&quot; &amp;__SEP &amp; &quot;[::Endnote::]&quot;, _
+	&quot; Querverweis-Markierung (Text); \\ für Suche im Namen; \\\\ für Suche nach leerem Text&quot; &amp;__SEP &amp; &quot;[::ReferenceMark::]&quot;, _
+	&quot; Querverweis (Text); \\ f. Suche im N. Der Mark.; \\\\ f. S. Nach leerem Text&quot; &amp;__SEP &amp; &quot;[::Reference::]&quot;, _
+	&quot; Bookmark - searches substring in text of Bookmarks; add \\ for searches in Names&quot; &amp;__SEP &amp; &quot;[::Bookmark::]&quot;, _
+	 __SEPARATOR)
 
 	for i = lbound(FINDEXT) to ubound(FINDEXT)
 		pom = FINDEXT(ubound(FINDEXT)-i)
-		pom = left(pom,instr(pom,chr(160)))
+		pom = left(pom,instr(pom,__SEP))
 		oDIAL.getcontrol(&quot;Cb_findExt&quot;).addItem(pom,0)
 	next i
 
-	FINDATR = array(&quot; Absatzformatvorlage&quot; &amp; chr(160) &amp; &quot;[:::ps::]&quot;, _
-	&quot; Zeichenformatvorlage&quot; &amp; chr(160) &amp; &quot;[:::chs::]&quot;, _
-	&quot; Listenformatvorlage&quot; &amp; chr(160) &amp; &quot;[:::ns::]&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Hyperlink&quot; &amp; chr(160) &amp; &quot;[:::HyperLinkURL::]&quot;, _
-	&quot; Hyperlink - Zeichenkette in URL &quot; &amp; chr(160) &amp; &quot;[:::HyperLinkURL=file:///::]&quot;,_
-	&quot; Kursiv&quot; &amp; chr(160) &amp; &quot;[:::CharPosture::]&quot;, _
-	&quot; Fett&quot; &amp; chr(160) &amp; &quot;[:::CharWeight::]&quot;, _
-	&quot; Fett-Kursiv&quot; &amp; chr(160) &amp; &quot;[:::CharPosture|CharWeight::]&quot;, _
-	&quot; Font-Name (manuell geändert)&quot; &amp; chr(160) &amp; &quot;[:::CharFontName::]&quot;, _
-	&quot; Zeichen-Größe&quot; &amp; chr(160) &amp; &quot;[:::CharHeight::]&quot;, _
-	&quot; Zeichen-Farbe&quot; &amp; chr(160) &amp; &quot;[:::CharColor::]&quot;, _
-	&quot; Zeichen-Hintergrund (markiert)&quot; &amp; chr(160) &amp; &quot;[:::CharBackColor::]&quot;, _
-	&quot; Unterstrichen&quot; &amp; chr(160) &amp; &quot;[:::CharUnderline::]&quot;, _
-	&quot; Index (alle)&quot; &amp; chr(160) &amp; &quot;[:::CharEscapement::]&quot;, _
-	&quot; Indizierung (Auto) &quot; &amp; chr(160) &amp; &quot;[:::CharAutoEscapement=true|CharEscapementHeight=58|CharEscapement=-101::]&quot;, _
-	&quot; Indizierung (Auto) &quot; &amp; chr(160) &amp; &quot;[:::CharAutoEscapement=true|CharEscapementHeight=58|CharEscapement=101::]&quot;, _
-	&quot; Index (Zeichen-Größe und -Abstand &quot; &amp; chr(160) &amp; &quot;[:::CharEscapementHeight=70|CharEscapement=30::]&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Ähnliches Zeichen-Format (Cursor-Position)&quot; &amp; chr(160) &amp; &quot;[:::p::]&quot;, _
-	&quot; Identisches Zeichen-Format (Cursor-Position)&quot; &amp; chr(160) &amp; &quot;[:::s::]&quot;)
+	FINDATR = array(&quot; Absatzformatvorlage&quot; &amp;__SEP &amp; &quot;[:::ps::]&quot;, _
+	&quot; Zeichenformatvorlage&quot; &amp;__SEP &amp; &quot;[:::chs::]&quot;, _
+	&quot; Listenformatvorlage&quot; &amp;__SEP &amp; &quot;[:::ns::]&quot;, _
+	 __SEPARATOR, _
+	&quot; Hyperlink&quot; &amp;__SEP &amp; &quot;[:::HyperLinkURL::]&quot;, _
+	&quot; Hyperlink - Zeichenkette in URL &quot; &amp;__SEP &amp; &quot;[:::HyperLinkURL=file:///::]&quot;,_
+	&quot; Kursiv&quot; &amp;__SEP &amp; &quot;[:::CharPosture::]&quot;, _
+	&quot; Fett&quot; &amp;__SEP &amp; &quot;[:::CharWeight::]&quot;, _
+	&quot; Fett-Kursiv&quot; &amp;__SEP &amp; &quot;[:::CharPosture|CharWeight::]&quot;, _
+	&quot; Font-Name (manuell geändert)&quot; &amp;__SEP &amp; &quot;[:::CharFontName::]&quot;, _
+	&quot; Zeichen-Größe&quot; &amp;__SEP &amp; &quot;[:::CharHeight::]&quot;, _
+	&quot; Zeichen-Farbe&quot; &amp;__SEP &amp; &quot;[:::CharColor::]&quot;, _
+	&quot; Zeichen-Hintergrund (markiert)&quot; &amp;__SEP &amp; &quot;[:::CharBackColor::]&quot;, _
+	&quot; Unterstrichen&quot; &amp;__SEP &amp; &quot;[:::CharUnderline::]&quot;, _
+	&quot; Index (alle)&quot; &amp;__SEP &amp; &quot;[:::CharEscapement::]&quot;, _
+	&quot; Indizierung (Auto) &quot; &amp;__SEP &amp; &quot;[:::CharAutoEscapement=true|CharEscapementHeight=58|CharEscapement=-101::]&quot;, _
+	&quot; Indizierung (Auto) &quot; &amp;__SEP &amp; &quot;[:::CharAutoEscapement=true|CharEscapementHeight=58|CharEscapement=101::]&quot;, _
+	&quot; Index (Zeichen-Größe und -Abstand &quot; &amp;__SEP &amp; &quot;[:::CharEscapementHeight=70|CharEscapement=30::]&quot;, _
+	 __SEPARATOR, _
+	&quot; Ähnliches Zeichen-Format (Cursor-Position)&quot; &amp;__SEP &amp; &quot;[:::p::]&quot;, _
+	&quot; Identisches Zeichen-Format (Cursor-Position)&quot; &amp;__SEP &amp; &quot;[:::s::]&quot;)
 
 	for i = lbound(FINDATR) to ubound(FINDATR)
 		pom = FINDATR(ubound(FINDATR)-i)
-		pom = left(pom,instr(pom,chr(160)))
+		pom = left(pom,instr(pom,__SEP))
 		oDIAL.getcontrol(&quot;Cb_findAtr&quot;).addItem(pom,0)
 	next i
 
 
-	REPLEXT = array(&quot; Gefundener Text                          &quot; &amp; chr(160) &amp; &quot;&amp;&quot;, _
-	&quot; Inhalt von Start-Mark. (\b) bis End-Mark. (\e), die eine Absatz-Folge definieren &quot; &amp; chr(160) &amp; &quot;\b\e&quot;, _
-	&quot; Inhalt der 1. Gruppe innerhalb () im Suchausdruck (max. \9)                      &quot; &amp; chr(160) &amp; &quot;\1&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Absatz-Ende (neuer Absatz)               &quot; &amp; chr(160) &amp; &quot;\p&quot;, _
-	&quot; Tabulator                                &quot; &amp; chr(160) &amp; &quot;\t&quot;, _
-	&quot; Geschütztes Leerzeichen                  &quot; &amp; chr(160) &amp; &quot;\S&quot;, _
-	&quot; Manueller Zeilenumbruch                  &quot; &amp; chr(160) &amp; &quot;\n&quot;, _
-	&quot; Manueller Spaltenumbruch                 &quot; &amp; chr(160) &amp; &quot;\c&quot;, _
-	&quot; Manueller Seitenumbruch (nach \M)        &quot; &amp; chr(160) &amp; &quot;\m&quot;, _
-	&quot; Manuellen Seiten-/Spaltenumbruch löschen &quot; &amp; chr(160) &amp; &quot;\r&quot;, _
-	&quot; Durch Hexa-Code eingefügt, (dezimal \#65)&quot; &amp; chr(160) &amp; &quot;\x0041&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Konfiguration der Hyperlink URL          &quot; &amp; chr(160) &amp; &quot;\h{file///C:...}&quot;, _
-	&quot; Zeichenkette durch Kette in URL ersetzen &quot; &amp; chr(160) &amp; &quot;\H{subst}&quot;, _
-	&quot; Gefundene Hyperlink URL zurückgeben      &quot; &amp; chr(160) &amp; &quot;\u&quot;, _
-	&quot; Absatz-Format                            &quot; &amp; chr(160) &amp; &quot;\P{Text}&quot;, _
-	&quot; Schrifttyp                               &quot; &amp; chr(160) &amp; &quot;\C{Quotation}&quot;, _
-	&quot; Listen-Format                            &quot; &amp; chr(160) &amp; &quot;\N{List 3}&quot;, _
-	&quot; Eigenschaft des Objekts als Wert         &quot; &amp; chr(160) &amp; &quot;\A{CharBackColor=&amp;Hffcc00}&quot;, _
-	&quot; Standard-Zeichen-Format                  &quot; &amp; chr(160) &amp; &quot;\D&quot;, _
-	&quot; Attribute zurücksetzen                   &quot; &amp; chr(160) &amp; &quot;\d&quot;, _
-	&quot; Fußnote einfügen                         &quot; &amp; chr(160) &amp; &quot;\F{}&quot;, _
-	&quot; Endnote einfügen                         &quot; &amp; chr(160) &amp; &quot;\E{}&quot;, _
-	&quot; Markierung+Text des Querverweises        &quot; &amp; chr(160) &amp; &quot;\B{ref1|text}&quot;, _
-	&quot; Querverweis an Markierung einfügen       &quot; &amp; chr(160) &amp; &quot;\L{0,0,ref1}&quot;, _
-	&quot; Insert Bookmark (w, b,e - Block, to Start, to End)       &quot; &amp; chr(160) &amp; &quot;\K{w,BookmName}&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Text-Inhalt des Objekts (Rahmen, Tabelle, )              &quot; &amp; chr(160) &amp; &quot;\o&quot;, _
-	&quot; Name des Objekt (Rahmen, Tabelle, Bild, )                &quot; &amp; chr(160) &amp; &quot;\O&quot;, _
-	&quot; Zwischenablage einfügen (\V nur unformatieter Text)      &quot; &amp; chr(160) &amp; &quot;\v&quot;, _
-	&quot; Formatiert ersetzen (über Zwischenablage)                &quot; &amp; chr(160) &amp; &quot;\f&quot;, _
-	&quot; Anzahl der Ersetzungen einfügen (nur mit &apos;Ersetze alle&apos;) &quot; &amp; chr(160) &amp; &quot;\i{1,3}&quot;, _
-	&quot; Seitennummer einfügen                                    &quot; &amp; chr(160) &amp; &quot;\I&quot;, _
-	&quot; Ersetzten Ausdruck inandere Datei umleiten               &quot; &amp; chr(160) &amp; &quot;\R&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;)
+	REPLEXT = array(&quot; Gefundener Text                          &quot; &amp;__SEP &amp; &quot;&amp;&quot;, _
+	&quot; Inhalt von Start-Mark. (\b) bis End-Mark. (\e), die eine Absatz-Folge definieren &quot; &amp;__SEP &amp; &quot;\b\e&quot;, _
+	&quot; Inhalt der 1. Gruppe innerhalb () im Suchausdruck (max. \9)                      &quot; &amp;__SEP &amp; &quot;\1&quot;, _
+	 __SEPARATOR, _
+	&quot; Absatz-Ende (neuer Absatz)               &quot; &amp;__SEP &amp; &quot;\p&quot;, _
+	&quot; Tabulator                                &quot; &amp;__SEP &amp; &quot;\t&quot;, _
+	&quot; Geschütztes Leerzeichen                  &quot; &amp;__SEP &amp; &quot;\S&quot;, _
+	&quot; Manueller Zeilenumbruch                  &quot; &amp;__SEP &amp; &quot;\n&quot;, _
+	&quot; Manueller Spaltenumbruch                 &quot; &amp;__SEP &amp; &quot;\c&quot;, _
+	&quot; Manueller Seitenumbruch (nach \M)        &quot; &amp;__SEP &amp; &quot;\m&quot;, _
+	&quot; Manuellen Seiten-/Spaltenumbruch löschen &quot; &amp;__SEP &amp; &quot;\r&quot;, _
+	&quot; Durch Hexa-Code eingefügt, (dezimal \#65)&quot; &amp;__SEP &amp; &quot;\x0041&quot;, _
+	 __SEPARATOR, _
+	&quot; Konfiguration der Hyperlink URL          &quot; &amp;__SEP &amp; &quot;\h{file///C:...}&quot;, _
+	&quot; Zeichenkette durch Kette in URL ersetzen &quot; &amp;__SEP &amp; &quot;\H{subst}&quot;, _
+	&quot; Gefundene Hyperlink URL zurückgeben      &quot; &amp;__SEP &amp; &quot;\u&quot;, _
+	&quot; Absatz-Format                            &quot; &amp;__SEP &amp; &quot;\P{Text}&quot;, _
+	&quot; Schrifttyp                               &quot; &amp;__SEP &amp; &quot;\C{Quotation}&quot;, _
+	&quot; Listen-Format                            &quot; &amp;__SEP &amp; &quot;\N{List 3}&quot;, _
+	&quot; Eigenschaft des Objekts als Wert         &quot; &amp;__SEP &amp; &quot;\A{CharBackColor=&amp;Hffcc00}&quot;, _
+	&quot; Standard-Zeichen-Format                  &quot; &amp;__SEP &amp; &quot;\D&quot;, _
+	&quot; Attribute zurücksetzen                   &quot; &amp;__SEP &amp; &quot;\d&quot;, _
+	&quot; Fußnote einfügen                         &quot; &amp;__SEP &amp; &quot;\F{}&quot;, _
+	&quot; Endnote einfügen                         &quot; &amp;__SEP &amp; &quot;\E{}&quot;, _
+	&quot; Markierung+Text des Querverweises        &quot; &amp;__SEP &amp; &quot;\B{ref1|text}&quot;, _
+	&quot; Querverweis an Markierung einfügen       &quot; &amp;__SEP &amp; &quot;\L{0,0,ref1}&quot;, _
+	&quot; Insert Bookmark (w, b,e - Block, to Start, to End)       &quot; &amp;__SEP &amp; &quot;\K{w,BookmName}&quot;, _
+	 __SEPARATOR, _
+	&quot; Text-Inhalt des Objekts (Rahmen, Tabelle, )              &quot; &amp;__SEP &amp; &quot;\o&quot;, _
+	&quot; Name des Objekt (Rahmen, Tabelle, Bild, )                &quot; &amp;__SEP &amp; &quot;\O&quot;, _
+	&quot; Zwischenablage einfügen (\V nur unformatieter Text)      &quot; &amp;__SEP &amp; &quot;\v&quot;, _
+	&quot; Formatiert ersetzen (über Zwischenablage)                &quot; &amp;__SEP &amp; &quot;\f&quot;, _
+	&quot; Anzahl der Ersetzungen einfügen (nur mit &apos;Ersetze alle&apos;) &quot; &amp;__SEP &amp; &quot;\i{1,3}&quot;, _
+	&quot; Seitennummer einfügen                                    &quot; &amp;__SEP &amp; &quot;\I&quot;, _
+	&quot; Ersetzten Ausdruck inandere Datei umleiten               &quot; &amp;__SEP &amp; &quot;\R&quot;, _
+	 __SEPARATOR)
 
 	oDIAL.getcontrol(&quot;Cb_replExt&quot;).addItems(REPLEXT,0)
 

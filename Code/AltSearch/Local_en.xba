@@ -6,130 +6,131 @@ Sub Load_en
 	dim i as long
 	dim pom as string
 	on error resume next
-	FINDREG = array(&quot; First char of a paragraph  &quot; &amp; chr(160) &amp; &quot;^.&quot;, _
-	&quot; End of a paragraph         &quot; &amp; chr(160) &amp; &quot;$&quot;, _
-	&quot; Empty paragraph            &quot; &amp; chr(160) &amp; &quot;^$&quot;, _
-	&quot; Any text in one paragraph  &quot; &amp; chr(160) &amp; &quot;.*&quot;, _
-	&quot; Any letter  [:alpha:]{1,1} &quot; &amp; chr(160) &amp; &quot;\l&quot;, _
-	&quot; Any decimal digit  [0-9]   &quot; &amp; chr(160) &amp; &quot;\d&quot;, _
-	&quot; Beginning of a word        &quot; &amp; chr(160) &amp; &quot;\&lt;&quot;, _
-	&quot; End of a word              &quot; &amp; chr(160) &amp; &quot;\&gt;&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Paragraph (ending mark)    &quot; &amp; chr(160) &amp; &quot;\p&quot;, _
-	&quot; Series of empty paragraphs &quot; &amp; chr(160) &amp; &quot;^$\p*&quot;, _
-	&quot; Tabulator                  &quot; &amp; chr(160) &amp; &quot;\t&quot;, _
-	&quot; Manual line break          &quot; &amp; chr(160) &amp; &quot;\n&quot;, _
-	&quot; Manual column break        &quot; &amp; chr(160) &amp; &quot;\c&quot;, _
-	&quot; Manual page break          &quot; &amp; chr(160) &amp; &quot;\m&quot;, _
-	&quot; Any space   [ \xA0\x9\xA]  &quot; &amp; chr(160) &amp; &quot;\s&quot;, _
-	&quot; Non-breaking space (\xA0)  &quot; &amp; chr(160) &amp; &quot;\S&quot;, _
-	&quot; Custom hyphens             &quot; &amp; chr(160) &amp; &quot;\x00AD&quot;, _
-	&quot; Non-breaking dash          &quot; &amp; chr(160) &amp; &quot;\x2011&quot;, _
-	&quot; A inserted by decimal code &quot; &amp; chr(160) &amp; &quot;\#65&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Dot                        &quot; &amp; chr(160) &amp; &quot;\.&quot;, _
-	&quot; Parentheses     ()         &quot; &amp; chr(160) &amp; &quot;\(\)&quot;, _
-	&quot; Square brackets []         &quot; &amp; chr(160) &amp; &quot;\[\]&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;            &quot;)
+	
+	FINDREG = array(&quot; First char of a paragraph  &quot; &amp;__SEP &amp; &quot;^.&quot;, _
+	&quot; End of a paragraph         &quot; &amp;__SEP &amp; &quot;$&quot;, _
+	&quot; Empty paragraph            &quot; &amp;__SEP &amp; &quot;^$&quot;, _
+	&quot; Any text in one paragraph  &quot; &amp;__SEP &amp; &quot;.*&quot;, _
+	&quot; Any letter  [:alpha:]{1,1} &quot; &amp;__SEP &amp; &quot;\l&quot;, _
+	&quot; Any decimal digit  [0-9]   &quot; &amp;__SEP &amp; &quot;\d&quot;, _
+	&quot; Beginning of a word        &quot; &amp;__SEP &amp; &quot;\&lt;&quot;, _
+	&quot; End of a word              &quot; &amp;__SEP &amp; &quot;\&gt;&quot;, _
+	__SEPARATOR, _
+	&quot; Paragraph (ending mark)    &quot; &amp;__SEP &amp; &quot;\p&quot;, _
+	&quot; Series of empty paragraphs &quot; &amp;__SEP &amp; &quot;^$\p*&quot;, _
+	&quot; Tabulator                  &quot; &amp;__SEP &amp; &quot;\t&quot;, _
+	&quot; Manual line break          &quot; &amp;__SEP &amp; &quot;\n&quot;, _
+	&quot; Manual column break        &quot; &amp;__SEP &amp; &quot;\c&quot;, _
+	&quot; Manual page break          &quot; &amp;__SEP &amp; &quot;\m&quot;, _
+	&quot; Any space   [ \xA0\x9\xA]  &quot; &amp;__SEP &amp; &quot;\s&quot;, _
+	&quot; Non-breaking space (\xA0)  &quot; &amp;__SEP &amp; &quot;\S&quot;, _
+	&quot; Custom hyphens             &quot; &amp;__SEP &amp; &quot;\x00AD&quot;, _
+	&quot; Non-breaking dash          &quot; &amp;__SEP &amp; &quot;\x2011&quot;, _
+	&quot; A inserted by decimal code &quot; &amp;__SEP &amp; &quot;\#65&quot;, _
+	__SEPARATOR, _
+	&quot; Dot                        &quot; &amp;__SEP &amp; &quot;\.&quot;, _
+	&quot; Parentheses     ()         &quot; &amp;__SEP &amp; &quot;\(\)&quot;, _
+	&quot; Square brackets []         &quot; &amp;__SEP &amp; &quot;\[\]&quot;, _
+	&quot; &quot; &amp;__SEP &amp; &quot;            &quot;)
 
 	oDIAL.getcontrol(&quot;Cb_findReg&quot;).addItems(FINDREG,0)
 
-	FINDEXT = array(&quot; Series of paragraphs (limited between start and end marks) &quot; &amp; chr(160) &amp; &quot;[::BigBlock::]&quot;, _
-	&quot; Expands found selection about one char to both sides &quot; &amp; chr(160) &amp; &quot;[::Grow 1,1::]&quot;, _
-	&quot; Append mark || for multiple replace (in one step)  &quot; &amp; chr(160) &amp; &quot;||&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Text between () (inside of one paragraph)&quot; &amp; chr(160) &amp; &quot;(\(([^\)])+\))&quot;, _
-	&quot; Text between [] (inside of one paragraph)&quot; &amp; chr(160) &amp; &quot;(\[([^\]])+\])&quot;, _
-	&quot; Text between {} (inside of one paragraph)&quot; &amp; chr(160) &amp; &quot;({([^}])+})&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; e-mail address&quot; &amp; chr(160) &amp; &quot;[a-zA-Z0-9_][-._a-zA-Z0-9_]*[a-zA-Z0-9_].?@[a-zA-Z0-9_][-._a-zA-Z0-9_]*[a-zA-Z0-9_]\.[a-zA-Z0-9_]{2,4}&quot;, _
-	&quot; Internet, URL, www address&quot; &amp; chr(160) &amp; &quot;(((news|http|ftp|https|file):\/\/|www\.)[a-zA-Z0-9_]+((\.[a-zA-Z0-9_]+)+)(([a-zA-Z0-9_\-\.,@?^=%&amp;:/~\+#]*[a-zA-Z0-9_\-\@?^=%&amp;/~\+#])?))&quot;, _
-	&quot; HTML tag&quot; &amp; chr(160) &amp; &quot;(&lt;(&quot;&quot;[^&quot;&quot;]*&quot;&quot;|&apos;[^&apos;]*&apos;|[^&apos;&quot;&quot;&gt;])*&gt;)&quot;, _
-	&quot; Opening HTML tag&quot; &amp; chr(160) &amp; &quot;&lt;[^/][^&gt;]+&gt;&quot;, _
-	&quot; Closing HTML tag&quot; &amp; chr(160) &amp; &quot;&lt;/[^&gt;]+&gt;&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Comments (yellow balloons) - searches substring in contents of comments&quot; &amp; chr(160) &amp; &quot;[::Comment::]&quot;, _
-	&quot; Text fields - searches substring in contents of fields&quot; &amp; chr(160) &amp; &quot;[::Field::]&quot;, _
-	&quot; Text frame - searches substring in Names of frames&quot; &amp; chr(160) &amp; &quot;[::TextFrame::]&quot;, _
-	&quot; Table - searches substring in Names of tables&quot; &amp; chr(160) &amp; &quot;[::TextTable::]&quot;, _
-	&quot; Picture - searches substring in Names of pictures&quot; &amp; chr(160) &amp; &quot;[::Picture::]&quot;, _
-	&quot; Footnote - text of anchor; add \\ for searches in content of Footnotes&quot; &amp; chr(160) &amp; &quot;[::Footnote::]&quot;, _
-	&quot; Endnote - text of anchor; add \\ for searches in content of Endnotes&quot; &amp; chr(160) &amp; &quot;[::Endnote::]&quot;, _
-	&quot; Cross-ref. marker (text); \\ for search in Name; \\\\ for search of empty text&quot; &amp; chr(160) &amp; &quot;[::ReferenceMark::]&quot;, _
-	&quot; Cross-reference (text); \\ for search in N. of marker; \\\\ for s. of empty text&quot; &amp; chr(160) &amp; &quot;[::Reference::]&quot;, _
-	&quot; Bookmark - searches substring in text of Bookmarks; add \\ for searches in Names&quot; &amp; chr(160) &amp; &quot;[::Bookmark::]&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;)
+	FINDEXT = array(&quot; Series of paragraphs (limited between start and end marks) &quot; &amp;__SEP &amp; &quot;[::BigBlock::]&quot;, _
+	&quot; Expands found selection about one char to both sides &quot; &amp;__SEP &amp; &quot;[::Grow 1,1::]&quot;, _
+	&quot; Append mark || for multiple replace (in one step)  &quot; &amp;__SEP &amp; &quot;||&quot;, _
+	 __SEPARATOR, _
+	&quot; Text between () (inside of one paragraph)&quot; &amp;__SEP &amp; &quot;(\(([^\)])+\))&quot;, _
+	&quot; Text between [] (inside of one paragraph)&quot; &amp;__SEP &amp; &quot;(\[([^\]])+\])&quot;, _
+	&quot; Text between {} (inside of one paragraph)&quot; &amp;__SEP &amp; &quot;({([^}])+})&quot;, _
+	__SEPARATOR, _
+	&quot; e-mail address&quot; &amp;__SEP &amp; &quot;[a-zA-Z0-9_][-._a-zA-Z0-9_]*[a-zA-Z0-9_].?@[a-zA-Z0-9_][-._a-zA-Z0-9_]*[a-zA-Z0-9_]\.[a-zA-Z0-9_]{2,4}&quot;, _
+	&quot; Internet, URL, www address&quot; &amp;__SEP &amp; &quot;(((news|http|ftp|https|file):\/\/|www\.)[a-zA-Z0-9_]+((\.[a-zA-Z0-9_]+)+)(([a-zA-Z0-9_\-\.,@?^=%&amp;:/~\+#]*[a-zA-Z0-9_\-\@?^=%&amp;/~\+#])?))&quot;, _
+	&quot; HTML tag&quot; &amp;__SEP &amp; &quot;(&lt;(&quot;&quot;[^&quot;&quot;]*&quot;&quot;|&apos;[^&apos;]*&apos;|[^&apos;&quot;&quot;&gt;])*&gt;)&quot;, _
+	&quot; Opening HTML tag&quot; &amp;__SEP &amp; &quot;&lt;[^/][^&gt;]+&gt;&quot;, _
+	&quot; Closing HTML tag&quot; &amp;__SEP &amp; &quot;&lt;/[^&gt;]+&gt;&quot;, _
+	__SEPARATOR, _
+	&quot; Comments (yellow balloons) - searches substring in contents of comments&quot; &amp;__SEP &amp; &quot;[::Comment::]&quot;, _
+	&quot; Text fields - searches substring in contents of fields&quot; &amp;__SEP &amp; &quot;[::Field::]&quot;, _
+	&quot; Text frame - searches substring in Names of frames&quot; &amp;__SEP &amp; &quot;[::TextFrame::]&quot;, _
+	&quot; Table - searches substring in Names of tables&quot; &amp;__SEP &amp; &quot;[::TextTable::]&quot;, _
+	&quot; Picture - searches substring in Names of pictures&quot; &amp;__SEP &amp; &quot;[::Picture::]&quot;, _
+	&quot; Footnote - text of anchor; add \\ for searches in content of Footnotes&quot; &amp;__SEP &amp; &quot;[::Footnote::]&quot;, _
+	&quot; Endnote - text of anchor; add \\ for searches in content of Endnotes&quot; &amp;__SEP &amp; &quot;[::Endnote::]&quot;, _
+	&quot; Cross-ref. marker (text); \\ for search in Name; \\\\ for search of empty text&quot; &amp;__SEP &amp; &quot;[::ReferenceMark::]&quot;, _
+	&quot; Cross-reference (text); \\ for search in N. of marker; \\\\ for s. of empty text&quot; &amp;__SEP &amp; &quot;[::Reference::]&quot;, _
+	&quot; Bookmark - searches substring in text of Bookmarks; add \\ for searches in Names&quot; &amp;__SEP &amp; &quot;[::Bookmark::]&quot;, _
+	 __SEPARATOR)
 
 	for i = lbound(FINDEXT) to ubound(FINDEXT)
 		pom = FINDEXT(ubound(FINDEXT)-i)
-		pom = left(pom,instr(pom,chr(160)))
+		pom = left(pom,instr(pom,__SEP))
 		oDIAL.getcontrol(&quot;Cb_findExt&quot;).addItem(pom,0)
 	next i
 
-	FINDATR = array(&quot; Paragraph style&quot; &amp; chr(160) &amp; &quot;[:::ps::]&quot;, _
-	&quot; Charcter style&quot; &amp; chr(160) &amp; &quot;[:::chs::]&quot;, _
-	&quot; List style&quot; &amp; chr(160) &amp; &quot;[:::ns::]&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Hyperlink&quot; &amp; chr(160) &amp; &quot;[:::HyperLinkURL::]&quot;, _
-	&quot; Hyperlink - substring in URL &quot; &amp; chr(160) &amp; &quot;[:::HyperLinkURL=file:///::]&quot;,_
-	&quot; Italic&quot; &amp; chr(160) &amp; &quot;[:::CharPosture::]&quot;, _
-	&quot; Bold&quot; &amp; chr(160) &amp; &quot;[:::CharWeight::]&quot;, _
-	&quot; Bold Italic&quot; &amp; chr(160) &amp; &quot;[:::CharPosture|CharWeight::]&quot;, _
-	&quot; Font Name (manual changed name)&quot; &amp; chr(160) &amp; &quot;[:::CharFontName::]&quot;, _
-	&quot; Font Size&quot; &amp; chr(160) &amp; &quot;[:::CharHeight::]&quot;, _
-	&quot; Font Color&quot; &amp; chr(160) &amp; &quot;[:::CharColor::]&quot;, _
-	&quot; Font background (Highlighting)&quot; &amp; chr(160) &amp; &quot;[:::CharBackColor::]&quot;, _
-	&quot; Underline&quot; &amp; chr(160) &amp; &quot;[:::CharUnderline::]&quot;, _
-	&quot; Index (any)&quot; &amp; chr(160) &amp; &quot;[:::CharEscapement::]&quot;, _
-	&quot; Subscript (Auto) &quot; &amp; chr(160) &amp; &quot;[:::CharAutoEscapement=true|CharEscapementHeight=58|CharEscapement=-101::]&quot;, _
-	&quot; Superscript (Auto) &quot; &amp; chr(160) &amp; &quot;[:::CharAutoEscapement=true|CharEscapementHeight=58|CharEscapement=101::]&quot;, _
-	&quot; Index defined by font size and escapement &quot; &amp; chr(160) &amp; &quot;[:::CharEscapementHeight=70|CharEscapement=30::]&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Similar format of characters (based on cursor)&quot; &amp; chr(160) &amp; &quot;[:::p::]&quot;, _
-	&quot; Same format of characters (based on cursor)&quot; &amp; chr(160) &amp; &quot;[:::s::]&quot;)
+	FINDATR = array(&quot; Paragraph style&quot; &amp;__SEP &amp; &quot;[:::ps::]&quot;, _
+	&quot; Charcter style&quot; &amp;__SEP &amp; &quot;[:::chs::]&quot;, _
+	&quot; List style&quot; &amp;__SEP &amp; &quot;[:::ns::]&quot;, _
+	__SEPARATOR, _
+	&quot; Hyperlink&quot; &amp;__SEP &amp; &quot;[:::HyperLinkURL::]&quot;, _
+	&quot; Hyperlink - substring in URL &quot; &amp;__SEP &amp; &quot;[:::HyperLinkURL=file:///::]&quot;,_
+	&quot; Italic&quot; &amp;__SEP &amp; &quot;[:::CharPosture::]&quot;, _
+	&quot; Bold&quot; &amp;__SEP &amp; &quot;[:::CharWeight::]&quot;, _
+	&quot; Bold Italic&quot; &amp;__SEP &amp; &quot;[:::CharPosture|CharWeight::]&quot;, _
+	&quot; Font Name (manual changed name)&quot; &amp;__SEP &amp; &quot;[:::CharFontName::]&quot;, _
+	&quot; Font Size&quot; &amp;__SEP &amp; &quot;[:::CharHeight::]&quot;, _
+	&quot; Font Color&quot; &amp;__SEP &amp; &quot;[:::CharColor::]&quot;, _
+	&quot; Font background (Highlighting)&quot; &amp;__SEP &amp; &quot;[:::CharBackColor::]&quot;, _
+	&quot; Underline&quot; &amp;__SEP &amp; &quot;[:::CharUnderline::]&quot;, _
+	&quot; Index (any)&quot; &amp;__SEP &amp; &quot;[:::CharEscapement::]&quot;, _
+	&quot; Subscript (Auto) &quot; &amp;__SEP &amp; &quot;[:::CharAutoEscapement=true|CharEscapementHeight=58|CharEscapement=-101::]&quot;, _
+	&quot; Superscript (Auto) &quot; &amp;__SEP &amp; &quot;[:::CharAutoEscapement=true|CharEscapementHeight=58|CharEscapement=101::]&quot;, _
+	&quot; Index defined by font size and escapement &quot; &amp;__SEP &amp; &quot;[:::CharEscapementHeight=70|CharEscapement=30::]&quot;, _
+	__SEPARATOR, _
+	&quot; Similar format of characters (based on cursor)&quot; &amp;__SEP &amp; &quot;[:::p::]&quot;, _
+	&quot; Same format of characters (based on cursor)&quot; &amp;__SEP &amp; &quot;[:::s::]&quot;)
 
 	for i = lbound(FINDATR) to ubound(FINDATR)
 		pom = FINDATR(ubound(FINDATR)-i)
-		pom = left(pom,instr(pom,chr(160)))
+		pom = left(pom,instr(pom,__SEP))
 		oDIAL.getcontrol(&quot;Cb_findAtr&quot;).addItem(pom,0)
 	next i
 
-	REPLEXT = array(&quot; Whole found text                        &quot; &amp; chr(160) &amp; &quot;&amp;&quot;, _
-	&quot; Content of start mark (\b) or end mark (\e), delimiting series of paragraphs &quot; &amp; chr(160) &amp; &quot;\b\e&quot;, _
-	&quot; Content of 1st group, found inside () in search expression (max. \9) &quot; &amp; chr(160) &amp; &quot;\1&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; End of paragraph (new paragraph)        &quot; &amp; chr(160) &amp; &quot;\p&quot;, _
-	&quot; Tabulator                               &quot; &amp; chr(160) &amp; &quot;\t&quot;, _
-	&quot; Non-breaking space                      &quot; &amp; chr(160) &amp; &quot;\S&quot;, _
-	&quot; Manual line break                       &quot; &amp; chr(160) &amp; &quot;\n&quot;, _
-	&quot; Manual column break before              &quot; &amp; chr(160) &amp; &quot;\c&quot;, _
-	&quot; Manual page break before (after \M)     &quot; &amp; chr(160) &amp; &quot;\m&quot;, _
-	&quot; Dissolve manual page or column break    &quot; &amp; chr(160) &amp; &quot;\r&quot;, _
-	&quot; A inserted by hex code   (decimal \#65) &quot; &amp; chr(160) &amp; &quot;\x0041&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Set up of hyperlink&apos;s URL               &quot; &amp; chr(160) &amp; &quot;\h{file///C:...}&quot;, _
-	&quot; Replace found substr. by &apos;subst&apos; in URL &quot; &amp; chr(160) &amp; &quot;\H{subst}&quot;, _
-	&quot; Returns hyperlink&apos;s URL of found link   &quot; &amp; chr(160) &amp; &quot;\u&quot;, _
-	&quot; Paragraph style                         &quot; &amp; chr(160) &amp; &quot;\P{Text}&quot;, _
-	&quot; Character style                         &quot; &amp; chr(160) &amp; &quot;\C{Quotation}&quot;, _
-	&quot; List style                              &quot; &amp; chr(160) &amp; &quot;\N{List 3}&quot;, _
-	&quot; Set up property of object to value      &quot; &amp; chr(160) &amp; &quot;\A{CharBackColor=&amp;Hffcc00}&quot;, _
-	&quot; Set up default formatting by char style &quot; &amp; chr(160) &amp; &quot;\D&quot;, _
-	&quot; Reset Attributes in place of those used &quot; &amp; chr(160) &amp; &quot;\d&quot;, _
-	&quot; Insert Footnote                         &quot; &amp; chr(160) &amp; &quot;\F{}&quot;, _
-	&quot; Insert Endnote                          &quot; &amp; chr(160) &amp; &quot;\E{}&quot;, _
-	&quot; Insert marker+text for cross-reference  &quot; &amp; chr(160) &amp; &quot;\B{ref1|text}&quot;, _
-	&quot; Insert cross-reference to marker        &quot; &amp; chr(160) &amp; &quot;\L{0,0,ref1}&quot;, _
-	&quot; Insert Bookmark (w, b,e - Block, to Start, to End)         &quot; &amp; chr(160) &amp; &quot;\K{w,BookmName}&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Text content of object (frame, table… )                    &quot; &amp; chr(160) &amp; &quot;\o&quot;, _
-	&quot; Name of object (frame, table, picture… )                   &quot; &amp; chr(160) &amp; &quot;\O&quot;, _
-	&quot; Paste content of clipboard (\V paste unformatted text only)&quot; &amp; chr(160) &amp; &quot;\v&quot;, _
-	&quot; Preserve formatting with replace (replace &amp; by clipboard)  &quot; &amp; chr(160) &amp; &quot;\f&quot;, _
-	&quot; Insert counter of replace (with Replace all only)          &quot; &amp; chr(160) &amp; &quot;\i{1,3}&quot;, _
-	&quot; Insert page number                                         &quot; &amp; chr(160) &amp; &quot;\I&quot;, _
-	&quot; Redirect of replacing expression to another file           &quot; &amp; chr(160) &amp; &quot;\R&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;)
+	REPLEXT = array(&quot; Whole found text                        &quot; &amp;__SEP &amp; &quot;&amp;&quot;, _
+	&quot; Content of start mark (\b) or end mark (\e), delimiting series of paragraphs &quot; &amp;__SEP &amp; &quot;\b\e&quot;, _
+	&quot; Content of 1st group, found inside () in search expression (max. \9) &quot; &amp;__SEP &amp; &quot;\1&quot;, _
+	 __SEPARATOR, _
+	&quot; End of paragraph (new paragraph)        &quot; &amp;__SEP &amp; &quot;\p&quot;, _
+	&quot; Tabulator                               &quot; &amp;__SEP &amp; &quot;\t&quot;, _
+	&quot; Non-breaking space                      &quot; &amp;__SEP &amp; &quot;\S&quot;, _
+	&quot; Manual line break                       &quot; &amp;__SEP &amp; &quot;\n&quot;, _
+	&quot; Manual column break before              &quot; &amp;__SEP &amp; &quot;\c&quot;, _
+	&quot; Manual page break before (after \M)     &quot; &amp;__SEP &amp; &quot;\m&quot;, _
+	&quot; Dissolve manual page or column break    &quot; &amp;__SEP &amp; &quot;\r&quot;, _
+	&quot; A inserted by hex code   (decimal \#65) &quot; &amp;__SEP &amp; &quot;\x0041&quot;, _
+	 __SEPARATOR, _
+	&quot; Set up of hyperlink&apos;s URL               &quot; &amp;__SEP &amp; &quot;\h{file///C:...}&quot;, _
+	&quot; Replace found substr. by &apos;subst&apos; in URL &quot; &amp;__SEP &amp; &quot;\H{subst}&quot;, _
+	&quot; Returns hyperlink&apos;s URL of found link   &quot; &amp;__SEP &amp; &quot;\u&quot;, _
+	&quot; Paragraph style                         &quot; &amp;__SEP &amp; &quot;\P{Text}&quot;, _
+	&quot; Character style                         &quot; &amp;__SEP &amp; &quot;\C{Quotation}&quot;, _
+	&quot; List style                              &quot; &amp;__SEP &amp; &quot;\N{List 3}&quot;, _
+	&quot; Set up property of object to value      &quot; &amp;__SEP &amp; &quot;\A{CharBackColor=&amp;Hffcc00}&quot;, _
+	&quot; Set up default formatting by char style &quot; &amp;__SEP &amp; &quot;\D&quot;, _
+	&quot; Reset Attributes in place of those used &quot; &amp;__SEP &amp; &quot;\d&quot;, _
+	&quot; Insert Footnote                         &quot; &amp;__SEP &amp; &quot;\F{}&quot;, _
+	&quot; Insert Endnote                          &quot; &amp;__SEP &amp; &quot;\E{}&quot;, _
+	&quot; Insert marker+text for cross-reference  &quot; &amp;__SEP &amp; &quot;\B{ref1|text}&quot;, _
+	&quot; Insert cross-reference to marker        &quot; &amp;__SEP &amp; &quot;\L{0,0,ref1}&quot;, _
+	&quot; Insert Bookmark (w, b,e - Block, to Start, to End)         &quot; &amp;__SEP &amp; &quot;\K{w,BookmName}&quot;, _
+	__SEPARATOR, _
+	&quot; Text content of object (frame, table… )                    &quot; &amp;__SEP &amp; &quot;\o&quot;, _
+	&quot; Name of object (frame, table, picture… )                   &quot; &amp;__SEP &amp; &quot;\O&quot;, _
+	&quot; Paste content of clipboard (\V paste unformatted text only)&quot; &amp;__SEP &amp; &quot;\v&quot;, _
+	&quot; Preserve formatting with replace (replace &amp; by clipboard)  &quot; &amp;__SEP &amp; &quot;\f&quot;, _
+	&quot; Insert counter of replace (with Replace all only)          &quot; &amp;__SEP &amp; &quot;\i{1,3}&quot;, _
+	&quot; Insert page number                                         &quot; &amp;__SEP &amp; &quot;\I&quot;, _
+	&quot; Redirect of replacing expression to another file           &quot; &amp;__SEP &amp; &quot;\R&quot;, _
+	 __SEPARATOR)
 	&apos;Pravděpodobný
 	oDIAL.getcontrol(&quot;Cb_replExt&quot;).addItems(REPLEXT,0)
 

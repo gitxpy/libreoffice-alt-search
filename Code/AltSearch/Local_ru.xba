@@ -7,130 +7,130 @@ Sub Load_ru
 	dim i as long
 	dim pom as string
 	on error resume next
-	FINDREG = array(&quot; Первый символ абзаца          &quot; &amp; chr(160) &amp; &quot;^.&quot;, _
-	&quot; Конец абзаца                  &quot; &amp; chr(160) &amp; &quot;$&quot;, _
-	&quot; Пустой абзац                  &quot; &amp; chr(160) &amp; &quot;^$&quot;, _
-	&quot; Любой текст в 1 абзаце        &quot; &amp; chr(160) &amp; &quot;.*&quot;, _
-	&quot; Любая буква [:alpha:]{1,1}    &quot; &amp; chr(160) &amp; &quot;\l&quot;, _
-	&quot; Любая цифра  [0-9]            &quot; &amp; chr(160) &amp; &quot;\d&quot;, _
-	&quot; Начало слова                  &quot; &amp; chr(160) &amp; &quot;\&lt;&quot;, _
-	&quot; Конец слова                   &quot; &amp; chr(160) &amp; &quot;\&gt;&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Абзац (знак конца)            &quot; &amp; chr(160) &amp; &quot;\p&quot;, _
-	&quot; Блок пустых абзацев           &quot; &amp; chr(160) &amp; &quot;^$\p*&quot;, _
-	&quot; Табуляция                     &quot; &amp; chr(160) &amp; &quot;\t&quot;, _
-	&quot; Принудительный разрыв строки  &quot; &amp; chr(160) &amp; &quot;\n&quot;, _
-	&quot; Принудительный разрыв колонки &quot; &amp; chr(160) &amp; &quot;\c&quot;, _
-	&quot; Принудительный разрыв страницы&quot; &amp; chr(160) &amp; &quot;\m&quot;, _
-	&quot; Любой пробел   [ \xA0\x9\xA]  &quot; &amp; chr(160) &amp; &quot;\s&quot;, _
-	&quot; Неразрывный пробел (\xA0)     &quot; &amp; chr(160) &amp; &quot;\S&quot;, _
-	&quot; Мягкие переносы               &quot; &amp; chr(160) &amp; &quot;\x00AD&quot;, _
-	&quot; Неразрывный дефис             &quot; &amp; chr(160) &amp; &quot;\x2011&quot;, _
-	&quot; А в десятиричном виде         &quot; &amp; chr(160) &amp; &quot;\#65&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Точка                         &quot; &amp; chr(160) &amp; &quot;\.&quot;, _
-	&quot; Круглые скобки     ()         &quot; &amp; chr(160) &amp; &quot;\(\)&quot;, _
-	&quot; Квадратные скобки  []         &quot; &amp; chr(160) &amp; &quot;\[\]&quot;, _
-	&quot;                               &quot; &amp; chr(160) &amp; &quot;            &quot;)
+	FINDREG = array(&quot; Первый символ абзаца          &quot; &amp;__SEP &amp; &quot;^.&quot;, _
+	&quot; Конец абзаца                  &quot; &amp;__SEP &amp; &quot;$&quot;, _
+	&quot; Пустой абзац                  &quot; &amp;__SEP &amp; &quot;^$&quot;, _
+	&quot; Любой текст в 1 абзаце        &quot; &amp;__SEP &amp; &quot;.*&quot;, _
+	&quot; Любая буква [:alpha:]{1,1}    &quot; &amp;__SEP &amp; &quot;\l&quot;, _
+	&quot; Любая цифра  [0-9]            &quot; &amp;__SEP &amp; &quot;\d&quot;, _
+	&quot; Начало слова                  &quot; &amp;__SEP &amp; &quot;\&lt;&quot;, _
+	&quot; Конец слова                   &quot; &amp;__SEP &amp; &quot;\&gt;&quot;, _
+	 __SEPARATOR, _
+	&quot; Абзац (знак конца)            &quot; &amp;__SEP &amp; &quot;\p&quot;, _
+	&quot; Блок пустых абзацев           &quot; &amp;__SEP &amp; &quot;^$\p*&quot;, _
+	&quot; Табуляция                     &quot; &amp;__SEP &amp; &quot;\t&quot;, _
+	&quot; Принудительный разрыв строки  &quot; &amp;__SEP &amp; &quot;\n&quot;, _
+	&quot; Принудительный разрыв колонки &quot; &amp;__SEP &amp; &quot;\c&quot;, _
+	&quot; Принудительный разрыв страницы&quot; &amp;__SEP &amp; &quot;\m&quot;, _
+	&quot; Любой пробел   [ \xA0\x9\xA]  &quot; &amp;__SEP &amp; &quot;\s&quot;, _
+	&quot; Неразрывный пробел (\xA0)     &quot; &amp;__SEP &amp; &quot;\S&quot;, _
+	&quot; Мягкие переносы               &quot; &amp;__SEP &amp; &quot;\x00AD&quot;, _
+	&quot; Неразрывный дефис             &quot; &amp;__SEP &amp; &quot;\x2011&quot;, _
+	&quot; А в десятиричном виде         &quot; &amp;__SEP &amp; &quot;\#65&quot;, _
+	 __SEPARATOR, _
+	&quot; Точка                         &quot; &amp;__SEP &amp; &quot;\.&quot;, _
+	&quot; Круглые скобки     ()         &quot; &amp;__SEP &amp; &quot;\(\)&quot;, _
+	&quot; Квадратные скобки  []         &quot; &amp;__SEP &amp; &quot;\[\]&quot;, _
+	&quot;                               &quot; &amp;__SEP &amp; &quot;            &quot;)
 
 	oDIAL.getcontrol(&quot;Cb_findReg&quot;).addItems(FINDREG,0)
 
-	FINDEXT = array(&quot; Блок абзацев (ограниченный знаками начала и конца)&quot; &amp; chr(160) &amp; &quot;[::BigBlock::]&quot;, _
-	&quot; Расширяет текущее выделение на один символ в обе стороны&quot; &amp; chr(160) &amp; &quot;[::Grow 1,1::]&quot;, _
-	&quot; Добавляет знак || для массовой замены (в один шаг)&quot; &amp; chr(160) &amp; &quot;||&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Текст между () (внутри одного абзаца)&quot; &amp; chr(160) &amp; &quot;(\(([^\)])+\))&quot;, _
-	&quot; Текст между [] (внутри одного абзаца)&quot; &amp; chr(160) &amp; &quot;(\[([^\]])+\])&quot;, _
-	&quot; Текст между {} (внутри одного абзаца)&quot; &amp; chr(160) &amp; &quot;({([^}])+})&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; адрес электронной почты&quot; &amp; chr(160) &amp; &quot;[a-zA-Z0-9_][-._a-zA-Z0-9_]*[a-zA-Z0-9_].?@[a-zA-Z0-9_][-._a-zA-Z0-9_]*[a-zA-Z0-9_]\.[a-zA-Z0-9_]{2,4}&quot;, _
-	&quot; адрес в Интернете, URL&quot; &amp; chr(160) &amp; &quot;(((news|http|ftp|https|file):\/\/|www\.)[a-zA-Z0-9_]+((\.[a-zA-Z0-9_]+)+)(([a-zA-Z0-9_\-\.,@?^=%&amp;:/~\+#]*[a-zA-Z0-9_\-\@?^=%&amp;/~\+#])?))&quot;, _
-	&quot; Тэг HTML&quot; &amp; chr(160) &amp; &quot;(&lt;(&quot;&quot;[^&quot;&quot;]*&quot;&quot;|&apos;[^&apos;]*&apos;|[^&apos;&quot;&quot;&gt;])*&gt;)&quot;, _
-	&quot; Открывающий тэг HTML&quot; &amp; chr(160) &amp; &quot;&lt;[^/][^&gt;]+&gt;&quot;, _
-	&quot; Закрывающий тэг HTML&quot; &amp; chr(160) &amp; &quot;&lt;/[^&gt;]+&gt;&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Примечания (желтые выноски) - ищет строку в содержимом примечаний&quot; &amp; chr(160) &amp; &quot;[::Comment::]&quot;, _
-	&quot; Текстовые поля - ищет строку в содержимом полей&quot; &amp; chr(160) &amp; &quot;[::Field::]&quot;, _
-	&quot; Текстовая врезка – ищет строку в названиях врезок&quot; &amp; chr(160) &amp; &quot;[::TextFrame::]&quot;, _
-	&quot; Таблица – ищет строку в названиях таблиц&quot; &amp; chr(160) &amp; &quot;[::TextTable::]&quot;, _
-	&quot; Рисунок - ищет строку в названиях рисунков&quot; &amp; chr(160) &amp; &quot;[::Picture::]&quot;, _
-	&quot; Сноска - текст привязки; добавляет \\ для поиска в содержимом сносок&quot; &amp; chr(160) &amp; &quot;[::Footnote::]&quot;, _
-	&quot; Концевые сноски - текст привязки; добавляет \\ для поиска в содержимом концевых сносок&quot; &amp; chr(160) &amp; &quot;[::Endnote::]&quot;, _
-	&quot; Знак перекрестной ссылки (текст); \\ для поиска в названии; \\\\ для поиска пустого текста&quot; &amp; chr(160) &amp; &quot;[::ReferenceMark::]&quot;, _
-	&quot; Перекрестная ссылка (текст); \\ для поиска в названии знака; \\\\ для поиска пустого текста&quot; &amp; chr(160) &amp; &quot;[::Reference::]&quot;, _
-	&quot; Bookmark - searches substring in text of Bookmarks; add \\ for searches in Names&quot; &amp; chr(160) &amp; &quot;[::Bookmark::]&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;)
+	FINDEXT = array(&quot; Блок абзацев (ограниченный знаками начала и конца)&quot; &amp;__SEP &amp; &quot;[::BigBlock::]&quot;, _
+	&quot; Расширяет текущее выделение на один символ в обе стороны&quot; &amp;__SEP &amp; &quot;[::Grow 1,1::]&quot;, _
+	&quot; Добавляет знак || для массовой замены (в один шаг)&quot; &amp;__SEP &amp; &quot;||&quot;, _
+	 __SEPARATOR, _
+	&quot; Текст между () (внутри одного абзаца)&quot; &amp;__SEP &amp; &quot;(\(([^\)])+\))&quot;, _
+	&quot; Текст между [] (внутри одного абзаца)&quot; &amp;__SEP &amp; &quot;(\[([^\]])+\])&quot;, _
+	&quot; Текст между {} (внутри одного абзаца)&quot; &amp;__SEP &amp; &quot;({([^}])+})&quot;, _
+	 __SEPARATOR, _
+	&quot; адрес электронной почты&quot; &amp;__SEP &amp; &quot;[a-zA-Z0-9_][-._a-zA-Z0-9_]*[a-zA-Z0-9_].?@[a-zA-Z0-9_][-._a-zA-Z0-9_]*[a-zA-Z0-9_]\.[a-zA-Z0-9_]{2,4}&quot;, _
+	&quot; адрес в Интернете, URL&quot; &amp;__SEP &amp; &quot;(((news|http|ftp|https|file):\/\/|www\.)[a-zA-Z0-9_]+((\.[a-zA-Z0-9_]+)+)(([a-zA-Z0-9_\-\.,@?^=%&amp;:/~\+#]*[a-zA-Z0-9_\-\@?^=%&amp;/~\+#])?))&quot;, _
+	&quot; Тэг HTML&quot; &amp;__SEP &amp; &quot;(&lt;(&quot;&quot;[^&quot;&quot;]*&quot;&quot;|&apos;[^&apos;]*&apos;|[^&apos;&quot;&quot;&gt;])*&gt;)&quot;, _
+	&quot; Открывающий тэг HTML&quot; &amp;__SEP &amp; &quot;&lt;[^/][^&gt;]+&gt;&quot;, _
+	&quot; Закрывающий тэг HTML&quot; &amp;__SEP &amp; &quot;&lt;/[^&gt;]+&gt;&quot;, _
+	 __SEPARATOR, _
+	&quot; Примечания (желтые выноски) - ищет строку в содержимом примечаний&quot; &amp;__SEP &amp; &quot;[::Comment::]&quot;, _
+	&quot; Текстовые поля - ищет строку в содержимом полей&quot; &amp;__SEP &amp; &quot;[::Field::]&quot;, _
+	&quot; Текстовая врезка – ищет строку в названиях врезок&quot; &amp;__SEP &amp; &quot;[::TextFrame::]&quot;, _
+	&quot; Таблица – ищет строку в названиях таблиц&quot; &amp;__SEP &amp; &quot;[::TextTable::]&quot;, _
+	&quot; Рисунок - ищет строку в названиях рисунков&quot; &amp;__SEP &amp; &quot;[::Picture::]&quot;, _
+	&quot; Сноска - текст привязки; добавляет \\ для поиска в содержимом сносок&quot; &amp;__SEP &amp; &quot;[::Footnote::]&quot;, _
+	&quot; Концевые сноски - текст привязки; добавляет \\ для поиска в содержимом концевых сносок&quot; &amp;__SEP &amp; &quot;[::Endnote::]&quot;, _
+	&quot; Знак перекрестной ссылки (текст); \\ для поиска в названии; \\\\ для поиска пустого текста&quot; &amp;__SEP &amp; &quot;[::ReferenceMark::]&quot;, _
+	&quot; Перекрестная ссылка (текст); \\ для поиска в названии знака; \\\\ для поиска пустого текста&quot; &amp;__SEP &amp; &quot;[::Reference::]&quot;, _
+	&quot; Bookmark - searches substring in text of Bookmarks; add \\ for searches in Names&quot; &amp;__SEP &amp; &quot;[::Bookmark::]&quot;, _
+	 __SEPARATOR)
 
 	for i = lbound(FINDEXT) to ubound(FINDEXT)
 		pom = FINDEXT(ubound(FINDEXT)-i)
-		pom = left(pom,instr(pom,chr(160)))
+		pom = left(pom,instr(pom,__SEP))
 		oDIAL.getcontrol(&quot;Cb_findExt&quot;).addItem(pom,0)
 	next i
 
-	FINDATR = array(&quot; Стиль абзаца&quot; &amp; chr(160) &amp; &quot;[:::ps::]&quot;, _
-	&quot; Стил символа&quot; &amp; chr(160) &amp; &quot;[:::chs::]&quot;, _
-	&quot; Стиль списка&quot; &amp; chr(160) &amp; &quot;[:::ns::]&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Гиперссылка&quot; &amp; chr(160) &amp; &quot;[:::HyperLinkURL::]&quot;, _
-	&quot; Гиперссылка - строка в URL&quot; &amp; chr(160) &amp; &quot;[:::HyperLinkURL=file:///::]&quot;,_
-	&quot; Курсивный&quot; &amp; chr(160) &amp; &quot;[:::CharPosture::]&quot;, _
-	&quot; Полужирный&quot; &amp; chr(160) &amp; &quot;[:::CharWeight::]&quot;, _
-	&quot; Полужирный курсив&quot; &amp; chr(160) &amp; &quot;[:::CharPosture|CharWeight::]&quot;, _
-	&quot; Шрифт (смена названия шрифта)&quot; &amp; chr(160) &amp; &quot;[:::CharFontName::]&quot;, _
-	&quot; Размер шрифта&quot; &amp; chr(160) &amp; &quot;[:::CharHeight::]&quot;, _
-	&quot; Цвет шрифта&quot; &amp; chr(160) &amp; &quot;[:::CharColor::]&quot;, _
-	&quot; Фон под шрифтом (Выделение)&quot; &amp; chr(160) &amp; &quot;[:::CharBackColor::]&quot;, _
-	&quot; Подчеркивание&quot; &amp; chr(160) &amp; &quot;[:::CharUnderline::]&quot;, _
-	&quot; Индекс (любой)&quot; &amp; chr(160) &amp; &quot;[:::CharEscapement::]&quot;, _
-	&quot; Нижний индекс (Авто)&quot; &amp; chr(160) &amp; &quot;[:::CharAutoEscapement=true|CharEscapementHeight=58|CharEscapement=-101::]&quot;, _
-	&quot; Верхний индекс (Авто)&quot; &amp; chr(160) &amp; &quot;[:::CharAutoEscapement=true|CharEscapementHeight=58|CharEscapement=101::]&quot;, _
-	&quot; Индекс задаваемый размером шрифта и смещением&quot; &amp; chr(160) &amp; &quot;[:::CharEscapementHeight=70|CharEscapement=30::]&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Подобные атрибуты символов (в месторасположении курсора)&quot; &amp; chr(160) &amp; &quot;[:::p::]&quot;, _
-	&quot; Одинаковые атрибуты символов (в месторасположении курсора)&quot; &amp; chr(160) &amp; &quot;[:::s::]&quot;)
+	FINDATR = array(&quot; Стиль абзаца&quot; &amp;__SEP &amp; &quot;[:::ps::]&quot;, _
+	&quot; Стил символа&quot; &amp;__SEP &amp; &quot;[:::chs::]&quot;, _
+	&quot; Стиль списка&quot; &amp;__SEP &amp; &quot;[:::ns::]&quot;, _
+	 __SEPARATOR, _
+	&quot; Гиперссылка&quot; &amp;__SEP &amp; &quot;[:::HyperLinkURL::]&quot;, _
+	&quot; Гиперссылка - строка в URL&quot; &amp;__SEP &amp; &quot;[:::HyperLinkURL=file:///::]&quot;,_
+	&quot; Курсивный&quot; &amp;__SEP &amp; &quot;[:::CharPosture::]&quot;, _
+	&quot; Полужирный&quot; &amp;__SEP &amp; &quot;[:::CharWeight::]&quot;, _
+	&quot; Полужирный курсив&quot; &amp;__SEP &amp; &quot;[:::CharPosture|CharWeight::]&quot;, _
+	&quot; Шрифт (смена названия шрифта)&quot; &amp;__SEP &amp; &quot;[:::CharFontName::]&quot;, _
+	&quot; Размер шрифта&quot; &amp;__SEP &amp; &quot;[:::CharHeight::]&quot;, _
+	&quot; Цвет шрифта&quot; &amp;__SEP &amp; &quot;[:::CharColor::]&quot;, _
+	&quot; Фон под шрифтом (Выделение)&quot; &amp;__SEP &amp; &quot;[:::CharBackColor::]&quot;, _
+	&quot; Подчеркивание&quot; &amp;__SEP &amp; &quot;[:::CharUnderline::]&quot;, _
+	&quot; Индекс (любой)&quot; &amp;__SEP &amp; &quot;[:::CharEscapement::]&quot;, _
+	&quot; Нижний индекс (Авто)&quot; &amp;__SEP &amp; &quot;[:::CharAutoEscapement=true|CharEscapementHeight=58|CharEscapement=-101::]&quot;, _
+	&quot; Верхний индекс (Авто)&quot; &amp;__SEP &amp; &quot;[:::CharAutoEscapement=true|CharEscapementHeight=58|CharEscapement=101::]&quot;, _
+	&quot; Индекс задаваемый размером шрифта и смещением&quot; &amp;__SEP &amp; &quot;[:::CharEscapementHeight=70|CharEscapement=30::]&quot;, _
+	 __SEPARATOR, _
+	&quot; Подобные атрибуты символов (в месторасположении курсора)&quot; &amp;__SEP &amp; &quot;[:::p::]&quot;, _
+	&quot; Одинаковые атрибуты символов (в месторасположении курсора)&quot; &amp;__SEP &amp; &quot;[:::s::]&quot;)
 
 	for i = lbound(FINDATR) to ubound(FINDATR)
 		pom = FINDATR(ubound(FINDATR)-i)
-		pom = left(pom,instr(pom,chr(160)))
+		pom = left(pom,instr(pom,__SEP))
 		oDIAL.getcontrol(&quot;Cb_findAtr&quot;).addItem(pom,0)
 	next i
 
-	REPLEXT = array(&quot; Весь найденный текст                                                       &quot; &amp; chr(160) &amp; &quot;&amp;&quot;, _
-	&quot; Содержимое знаков начала (\b) и конца (\e), ограничивающих блок абзацев    &quot; &amp; chr(160) &amp; &quot;\b\e&quot;, _
-	&quot; Содержимое 1-й группы, найденное внутри () в поисковом выражении (макс. \9)&quot; &amp; chr(160) &amp; &quot;\1&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Конец абзаца (новый абзац)                           &quot; &amp; chr(160) &amp; &quot;\p&quot;, _
-	&quot; Табуляция                                            &quot; &amp; chr(160) &amp; &quot;\t&quot;, _
-	&quot; Неразрывный пробел                                   &quot; &amp; chr(160) &amp; &quot;\S&quot;, _
-	&quot; Принудительный разрыв строки перед                   &quot; &amp; chr(160) &amp; &quot;\n&quot;, _
-	&quot; Принудительный разрыв колонки перед                  &quot; &amp; chr(160) &amp; &quot;\c&quot;, _
-	&quot; Принудительный разрыв страницы перед (после \М)      &quot; &amp; chr(160) &amp; &quot;\m&quot;, _
-	&quot; Удалить принудительный разрыв страницы или колонки   &quot; &amp; chr(160) &amp;  &quot;\r&quot;, _
-	&quot; А в шестнадцатиричном  виде                          &quot; &amp; chr(160) &amp; &quot;\x0041&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Установить гиперссылку                               &quot; &amp; chr(160) &amp; &quot;\h{file///C:...}&quot;, _
-	&quot; Заменить найденную строку в гиперссылке              &quot; &amp; chr(160) &amp; &quot;\H{subst}&quot;, _
-	&quot; Возвращает URL найденной гиперссылки                 &quot; &amp; chr(160) &amp; &quot;\u&quot;, _
-	&quot; Стиль абзаца                                         &quot; &amp; chr(160) &amp; &quot;\P{Text}&quot;, _
-	&quot; Стиль символа                                        &quot; &amp; chr(160) &amp; &quot;\C{Quotation}&quot;, _
-	&quot; Стиль списка                                         &quot; &amp; chr(160) &amp; &quot;\N{List 3}&quot;, _
-	&quot; Установить свойства объекта к значению               &quot; &amp; chr(160) &amp; &quot;\A{CharBackColor=&amp;Hffcc00}&quot;, _
-	&quot; Установить стиль символов по умолчанию               &quot; &amp; chr(160) &amp; &quot;\D&quot;, _
-	&quot; Восстановить атрибуты в месте применения             &quot; &amp; chr(160) &amp; &quot;\d&quot;, _
-	&quot; Вставить сноску                                      &quot; &amp; chr(160) &amp; &quot;\F{}&quot;, _
-	&quot; Вставить концевую сноску                             &quot; &amp; chr(160) &amp; &quot;\E{}&quot;, _
-	&quot; Вставить знак и текст перекрестной ссылки            &quot; &amp; chr(160) &amp; &quot;\B{ref1|text}&quot;, _
-	&quot; Вставить перекрестную ссылку к знаку                 &quot; &amp; chr(160) &amp; &quot;\L{0,0,ref1}&quot;, _
-	&quot; Insert Bookmark (w, b,e - Block, to Start, to End)   &quot; &amp; chr(160) &amp; &quot;\K{w,BookmName}&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Текстовое содержимое объекта (врезка, таблица...)                       &quot; &amp; chr(160) &amp; &quot;\o&quot;, _
-	&quot; Название объекта (врезка, таблица, рисунок...)                          &quot; &amp; chr(160) &amp; &quot;\O&quot;, _
-	&quot; Вставить из буфера обмена (\V вставляет только неформатированный текст) &quot; &amp; chr(160) &amp; &quot;\v&quot;, _
-	&quot; Сохранить форматирование при замене (замена из буфера обмена)           &quot; &amp; chr(160) &amp; &quot;\f&quot;, _
-	&quot; Вставить счетчик замен (только для Заменить все)                        &quot; &amp; chr(160) &amp; &quot;\i{1,3}&quot;, _
-	&quot; Вставить номер страницы                                                 &quot; &amp; chr(160) &amp; &quot;\I&quot;, _
-	&quot; Перенаправить выражение замены на другой файл                           &quot; &amp; chr(160) &amp; &quot;\R&quot;, _
-	&quot;                                                                         &quot; &amp; chr(160) &amp; &quot;    &quot;)
+	REPLEXT = array(&quot; Весь найденный текст                                                       &quot; &amp;__SEP &amp; &quot;&amp;&quot;, _
+	&quot; Содержимое знаков начала (\b) и конца (\e), ограничивающих блок абзацев    &quot; &amp;__SEP &amp; &quot;\b\e&quot;, _
+	&quot; Содержимое 1-й группы, найденное внутри () в поисковом выражении (макс. \9)&quot; &amp;__SEP &amp; &quot;\1&quot;, _
+	 __SEPARATOR, _
+	&quot; Конец абзаца (новый абзац)                           &quot; &amp;__SEP &amp; &quot;\p&quot;, _
+	&quot; Табуляция                                            &quot; &amp;__SEP &amp; &quot;\t&quot;, _
+	&quot; Неразрывный пробел                                   &quot; &amp;__SEP &amp; &quot;\S&quot;, _
+	&quot; Принудительный разрыв строки перед                   &quot; &amp;__SEP &amp; &quot;\n&quot;, _
+	&quot; Принудительный разрыв колонки перед                  &quot; &amp;__SEP &amp; &quot;\c&quot;, _
+	&quot; Принудительный разрыв страницы перед (после \М)      &quot; &amp;__SEP &amp; &quot;\m&quot;, _
+	&quot; Удалить принудительный разрыв страницы или колонки   &quot; &amp;__SEP &amp;  &quot;\r&quot;, _
+	&quot; А в шестнадцатиричном  виде                          &quot; &amp;__SEP &amp; &quot;\x0041&quot;, _
+	 __SEPARATOR, _
+	&quot; Установить гиперссылку                               &quot; &amp;__SEP &amp; &quot;\h{file///C:...}&quot;, _
+	&quot; Заменить найденную строку в гиперссылке              &quot; &amp;__SEP &amp; &quot;\H{subst}&quot;, _
+	&quot; Возвращает URL найденной гиперссылки                 &quot; &amp;__SEP &amp; &quot;\u&quot;, _
+	&quot; Стиль абзаца                                         &quot; &amp;__SEP &amp; &quot;\P{Text}&quot;, _
+	&quot; Стиль символа                                        &quot; &amp;__SEP &amp; &quot;\C{Quotation}&quot;, _
+	&quot; Стиль списка                                         &quot; &amp;__SEP &amp; &quot;\N{List 3}&quot;, _
+	&quot; Установить свойства объекта к значению               &quot; &amp;__SEP &amp; &quot;\A{CharBackColor=&amp;Hffcc00}&quot;, _
+	&quot; Установить стиль символов по умолчанию               &quot; &amp;__SEP &amp; &quot;\D&quot;, _
+	&quot; Восстановить атрибуты в месте применения             &quot; &amp;__SEP &amp; &quot;\d&quot;, _
+	&quot; Вставить сноску                                      &quot; &amp;__SEP &amp; &quot;\F{}&quot;, _
+	&quot; Вставить концевую сноску                             &quot; &amp;__SEP &amp; &quot;\E{}&quot;, _
+	&quot; Вставить знак и текст перекрестной ссылки            &quot; &amp;__SEP &amp; &quot;\B{ref1|text}&quot;, _
+	&quot; Вставить перекрестную ссылку к знаку                 &quot; &amp;__SEP &amp; &quot;\L{0,0,ref1}&quot;, _
+	&quot; Insert Bookmark (w, b,e - Block, to Start, to End)   &quot; &amp;__SEP &amp; &quot;\K{w,BookmName}&quot;, _
+	 __SEPARATOR, _
+	&quot; Текстовое содержимое объекта (врезка, таблица...)                       &quot; &amp;__SEP &amp; &quot;\o&quot;, _
+	&quot; Название объекта (врезка, таблица, рисунок...)                          &quot; &amp;__SEP &amp; &quot;\O&quot;, _
+	&quot; Вставить из буфера обмена (\V вставляет только неформатированный текст) &quot; &amp;__SEP &amp; &quot;\v&quot;, _
+	&quot; Сохранить форматирование при замене (замена из буфера обмена)           &quot; &amp;__SEP &amp; &quot;\f&quot;, _
+	&quot; Вставить счетчик замен (только для Заменить все)                        &quot; &amp;__SEP &amp; &quot;\i{1,3}&quot;, _
+	&quot; Вставить номер страницы                                                 &quot; &amp;__SEP &amp; &quot;\I&quot;, _
+	&quot; Перенаправить выражение замены на другой файл                           &quot; &amp;__SEP &amp; &quot;\R&quot;, _
+	&quot;                                                                         &quot; &amp;__SEP &amp; &quot;    &quot;)
 
 	oDIAL.getcontrol(&quot;Cb_replExt&quot;).addItems(REPLEXT,0)
 
