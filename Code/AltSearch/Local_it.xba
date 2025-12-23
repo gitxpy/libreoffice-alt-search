@@ -31,8 +31,8 @@ Sub Load_it
 	&quot; Quasiasi Spazio, anche invisibile&quot; &amp;__SEP &amp; &quot;\Y&quot;, _
 	&quot; Trattini e lineette più usati    &quot; &amp;__SEP &amp; &quot;\j&quot;, _
 	&quot; Qualsiasi trattino o lineetta    &quot; &amp;__SEP &amp; &quot;\J&quot;, _
-	&quot; Virgolette doppie                &quot; &amp;__SEP &amp; &quot;\o&quot;, _
-	&quot; Virgolette singole               &quot; &amp;__SEP &amp; &quot;\O&quot;, _
+	&quot; Virgolette singole               &quot; &amp;__SEP &amp; &quot;\o&quot;, _
+	&quot; Virgolette doppie                &quot; &amp;__SEP &amp; &quot;\O&quot;, _
 	&quot; Qualsiasi virgoletta e apostrofo &quot; &amp;__SEP &amp; &quot;\q&quot;, _
 	 __SEPARATOR, _
 	&quot; Punto                            &quot; &amp;__SEP &amp; &quot;\.&quot;, _
