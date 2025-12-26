@@ -4,6 +4,7 @@
 
 Global __SEPARATOR$
 Global __SEP$
+Private LANGUAGES()
 
 Sub Bt_Help &apos;open new window with Help
 	dim sv as object, sUrl$, oPath as object, oUrlService as object, sDirTemp$, sDir$, sLang$
@@ -29,14 +30,11 @@ Sub Bt_Help &apos;open new window with Help
 
 End Sub
 
-
 	&apos; mouse released
+	&apos;menu load langue
 sub Bt_Help_mouse_release(oEvt)
 	if oEvt.Buttons = 2 then  &apos; right mouse = change of language
-		&apos;menu load langue
-		dim pom()
-		pom() =  array (&quot;Auto&quot;,&quot;cs&quot;,&quot;de&quot;,&quot;en&quot;,&quot;es&quot;,&quot;fr&quot;,&quot;it&quot;,&quot;nl&quot;,&quot;ru&quot;)&apos; true = only used, else all paragraph styles or
-		LANGUAGE = getFromList(&quot;Language:&quot;,pom,350,50,100,150)
+		LANGUAGE = getFromList(&quot;Language:&quot;, LANGUAGES,350,50,100,150)
 		LoadLanguage
 	end if
 end sub
@@ -165,9 +163,11 @@ sub   LoadLanguage  &apos; load the string for language
 	__SEP = chr(160)
 	__SEPARATOR = &quot; &quot; &amp; __SEP &amp; &quot;&quot;
 
+	if ubound(LANGUAGES) &lt; 1 then LANGUAGES() = array(&quot;Auto&quot;,&quot;cs&quot;,&quot;de&quot;,&quot;en&quot;,&quot;es&quot;,&quot;fr&quot;,&quot;it&quot;,&quot;nl&quot;,&quot;ru&quot;,&quot;sk&quot;)
+
 	LNG = 1
 	if (LANGUAGE = &quot;&quot;) or (LANGUAGE = &quot;Auto&quot;) then  LANGUAGE = GetStarOfficeLocale_().language
-	select case LANGUAGE &apos; according to set language for whole OOo
+	select case LANGUAGE
 	case &quot;cs&quot;,&quot;sk&quot;
 		LNG = 0
 		load_cs
@@ -189,9 +189,6 @@ sub   LoadLanguage  &apos; load the string for language
 
 	case &quot;nl&quot;
 		load_nl
-
-&apos;    case &quot;hu&quot;
-&apos;     load_hu
 
 	case else  &apos; en
 		load_en
