@@ -197,6 +197,7 @@ Sub Load_fr
 	MSG(50) = &quot;Exécuter le lot sélectionné sur plus de documents ouverts&quot;
 	&apos;Sub testViewCursor
 	MSG(51) = &quot;Le curseur est situé dans un objet non supporté (par ex. Commentaire), veuillez cliquer dans le texte.&quot;
+	MSG(52) = &quot;Trop d&apos;objets. Ignorer les suivants.&quot;
 
 	&apos; main dialog
 	with oDIAL.model

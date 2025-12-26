@@ -197,6 +197,7 @@ Sub Load_nl
 	MSG(50) = &quot;Voer de geselecteerde batch uit met meerdere geopende tekstdocumenten&quot;
 	&apos;Sub testViewCursor
 	MSG(51) = &quot;The cursor is located in an unsupported object (like Comment), please click in the text.&quot;
+	MSG(52) = &quot;Too many objects. Ignoring the rest.&quot;
 
 	&apos; hoofddialoogvenster
 	with oDIAL.model

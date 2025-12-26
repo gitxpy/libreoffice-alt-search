@@ -197,6 +197,7 @@ Sub Load_es
 	MSG(50) = &quot;Ejecutar Lote seleccionado en los documentos abiertos&quot;
 	&apos;Sub testViewCursor
 	MSG(51) = &quot;El cursor está en un objeto (ej. en un comentario).&quot;&amp; Chr(10) &amp; &quot;Coloca el cursor en texto del documento.&quot;
+	MSG(52) = &quot;Too many objects. Ignoring the rest.&quot;
 
 	&apos; main dialog
 	with oDIAL.model

@@ -199,6 +199,7 @@ Sub Load_ru
 	MSG(50) = &quot;Execute the selected batch with more opened text documents&quot;
 	&apos;Sub testViewCursor
 	MSG(51) = &quot;The cursor is located in an unsupported object (like Comment), please click in the text.&quot;
+	MSG(52) = &quot;Too many objects. Ignoring the rest.&quot;
 
 	&apos; main dialog
 	with oDIAL.model

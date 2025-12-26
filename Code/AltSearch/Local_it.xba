@@ -198,6 +198,7 @@ Sub Load_it
 	MSG(50) = &quot;Esegui il Batch selezionato avendo più documenti di testo aperti&quot;
 	&apos;Sub testViewCursor
 	MSG(51) = &quot;Il cursore è posizionato su un oggetto non supportato (per esempio: su un Commento): fare clic sul testo.&quot;
+	MSG(52) = &quot;Too many objects. Ignoring the rest.&quot;
 
 	&apos; main dialog
 	with oDIAL.model
