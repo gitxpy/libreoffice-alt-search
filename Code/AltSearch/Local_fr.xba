@@ -269,7 +269,7 @@ Sub Load_fr
 
 	&apos; dialog D_keys  &apos;v1.2
 	with oDIALSH.model
-		.Lb1.Label            =&quot;1. Selectionner le nome du lot dans le menu déroulant&quot;
+		.Lb1.Label            =&quot;1. Selectionner le nom du lot dans le menu déroulant&quot;
 		.Lb2.Label            =&quot;2. si besoin, changer le nom de la procédure auxiliaire Basic&quot;
 		.Lb3.Label            =&quot;3. définir le raccourci clavier &quot;
 		.Lb4.Label            =&quot;Utilisé comme fonction:&quot;
@@ -277,7 +277,7 @@ Sub Load_fr
 		.Cb_bas.HelpText      =&quot;Seulement permis : _ A..Z a..z 0..9. Ne doit pas commencer par un chiffre&quot;
 		.Bt_assign.HelpText   =&quot;Assigner un raccourci à la procédure auxiliaire et au nom du lot&quot;
 		.Bt_assign.Label      =&quot;Assigner&quot;
-		.Bt_clear.HelpText    =&quot;Release raccourci sélectionné&quot;
+		.Bt_clear.HelpText    =&quot;Supprimer le raccourci sélectionné&quot;
 		.Bt_basremove.HelpText=&quot;Supprimer la procédure auxiliaire pour le raccourci&quot;
 		.title           = MSG(41)
 		.Bt_close.Label  = oDIAL.model.Bt_close.Label
