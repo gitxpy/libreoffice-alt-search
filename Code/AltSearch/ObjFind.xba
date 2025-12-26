@@ -213,8 +213,8 @@ zapocitej:
 			vypisFoundInfo(MSG(40) &amp; &quot;  &quot; &amp; count)
 			if FINDCOUNTER &lt; 0 then : sort = false : pol(0)=-1 : end if &apos; not sort, end
 		end if
-		if i&gt;65000 then
-			hlaseni1(64, true, false, &quot;getSortFields:  Je použito více jak 65000 polí, poznámek nebo poznámek pod čarou. Zbytek ignoruji. &quot;) &apos; style: 16=stop 32=? 48=! 64=info; may suppress; cancel the activities
+		if i&gt;MAXOBJ then
+			hlaseni1(64, true, false, &quot;getSortFields(&quot;&amp; MAXOBJ &amp; &quot;): &quot; &amp; MSG(52))
 			goto konec
 		end if
 
@@ -274,8 +274,8 @@ sub getSortRefMarks(pol1(), pol(), sort as boolean )
 			vypisFoundInfo(MSG(40) &amp; &quot;  &quot; &amp; count)
 			if FINDCOUNTER &lt; 0 then : sort = false : pol(0)=-1 : end if &apos; not sort, end
 		end if
-		if i&gt;65000 then
-			hlaseni1(64, true, false, &quot;getSortFields:  Je použito více jak 65000 značek pro reference. Zbytek ignoruji. &quot;) &apos;  style: 16=stop 32=? 48=! 64=info; may suppress; cancel the activities
+		if i&gt;MAXOBJ then
+			hlaseni1(64, true, false, &quot;getSortFields(&quot;&amp; MAXOBJ &amp; &quot;): &quot; &amp; MSG(52))
 			goto konec
 		end if
 preskoc:

@@ -51,28 +51,6 @@ function isDigit_(c as String) as Boolean
   isDigit_ = (instr(&quot;0123456789&quot;, c) &gt; 0)   &apos; TODO: use isNumeric() ?
 end function
 
-sub dbgVypisFind(pom())
-	dim i
-	for i = 0 to ubound(pom())
-		msgbox &quot;Find: &quot; &amp; pom(i).hled &amp; &quot;   Cmd: &quot; &amp; pom(i).cmd &amp; chr(10) &amp; _
-		&quot;Grow: &quot; &amp; pom(i).lgrw &amp; &quot;  &quot; &amp; pom(i).rgrw &amp; chr(10) &amp; _
-		&quot;pmode:  &quot; &amp; pom(i).pmode &amp; &quot;  min: &quot; &amp; pom(i).pmin &amp; &quot;  max: &quot; &amp; pom(i).pmax &amp; &quot;  uMode: &quot; &amp; pom(i).umode &amp; &quot;  nMode: &quot; &amp; pom(i).nmode &amp; chr(10) &amp; _
-		&quot;pgBreak:&quot; &amp; pom(i).pgBreak &amp; &quot;  Atr: &quot; &amp; pom(i).atr &amp; &quot;  Skupina(): &quot; &amp; pom(i).skup &amp; chr(10) &amp; _
-		&quot;pstyl:  &quot; &amp; pom(i).pstyl &amp; &quot;  chstyl: &quot; &amp; pom(i).chstyl, 0 , &quot;Index: &quot; &amp; i
-	next i
-end sub
-
-
-sub dbgVypisRepl(pom())
-	dim i
-	for i = 0 to ubound(pom())
-		msgbox &quot;Repl: &quot; &amp; pom(i).nahr &amp; chr(10) &amp; _
-		&quot;Cmd: &quot; &amp; pom(i).cmd &amp;  chr(10) &amp; _
-		&quot;Smaz: &quot; &amp; pom(i).smaz &amp; &quot;  Vloz: &quot; &amp; pom(i).vloz &amp; &quot;  Form: &quot; &amp; pom(i).form &amp; &quot;  TextObsah: &quot; &amp; pom(i).textobs , 0 , &quot;Index: &quot; &amp; i
-	next i
-end sub
-
-
 	&apos; the function try to find for parts all items of array FIND() in dependence of its parameters and parameters of searching from oDialog
 	&apos; it starts search from FROMcur, in potentially block defined by cursor BLOCKcur.
 	&apos;&apos; lgrow, rgrow increase/decrease found area: for example -1/+1 the move of start or end of selection about one character to left/right
@@ -1669,8 +1647,8 @@ sub getIndexComment(mode as integer, idx, rest as string) as long
 				redim preserve TMPPOLE(count)
 				TMPPOLE(count)=oTF
 				count= count+1
-				if i&gt;65000 then
-					hlaseni1(64, true, false, &quot;getIndexComment:  There is used more than 65000 arrays, notes or special footnotes. The rest is ignored.&quot;) &apos;  16=stop 32=? 48=! 64=info; may suppress; cancel the activities
+				if i&gt;MAXOBJ then
+					hlaseni1(64, true, false, &quot;getIndexComment(&quot;&amp; MAXOBJ &amp; &quot;): &quot; &amp; MSG(52)) &apos;  16=stop 32=? 48=! 64=info; may suppress; cancel the activities
 					exit do
 				end if
 			end if
@@ -2015,8 +1993,8 @@ sub getIndexTField(mode as integer, idx, rest as string) as long
 				TMPPOLE(count)=oTF
 				count= count+1
 				&apos;	     end if
-				if i&gt;65000 then
-					hlaseni1(64, true, false, &quot;getIndexTField: There is used more than 65000 arrays, notes or special footnotes. The rest is ignored.&quot;) &apos;  16=stop 32=? 48=! 64=info; may suppress; cancel the activities
+				if i&gt;MAXOBJ then
+					hlaseni1(64, true, false, &quot;getIndexTField(&quot;&amp; MAXOBJ &amp; &quot;): &quot; &amp; MSG(52))
 					exit do
 				end if
 			end if

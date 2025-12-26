@@ -6,6 +6,7 @@
  <library:element library:name="Local"/>
  <library:element library:name="AltSearch"/>
  <library:element library:name="xBatch"/>
+ <library:element library:name="xDebug"/>
  <library:element library:name="Select"/>
  <library:element library:name="Local_fr"/>
  <library:element library:name="ObjFind"/>

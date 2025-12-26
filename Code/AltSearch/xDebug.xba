@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
+<script:module xmlns:script="http://openoffice.org/2000/script" script:name="xDebug" script:language="StarBasic" script:moduleType="normal">REM  *****  BASIC  *****
+
+sub dbgVypisFind(pom())
+	dim i
+	for i = 0 to ubound(pom())
+		msgbox &quot;Find: &quot; &amp; pom(i).hled &amp; &quot;   Cmd: &quot; &amp; pom(i).cmd &amp; chr(10) &amp; _
+		&quot;Grow: &quot; &amp; pom(i).lgrw &amp; &quot;  &quot; &amp; pom(i).rgrw &amp; chr(10) &amp; _
+		&quot;pmode:  &quot; &amp; pom(i).pmode &amp; &quot;  min: &quot; &amp; pom(i).pmin &amp; &quot;  max: &quot; &amp; pom(i).pmax &amp; &quot;  uMode: &quot; &amp; pom(i).umode &amp; &quot;  nMode: &quot; &amp; pom(i).nmode &amp; chr(10) &amp; _
+		&quot;pgBreak:&quot; &amp; pom(i).pgBreak &amp; &quot;  Atr: &quot; &amp; pom(i).atr &amp; &quot;  Skupina(): &quot; &amp; pom(i).skup &amp; chr(10) &amp; _
+		&quot;pstyl:  &quot; &amp; pom(i).pstyl &amp; &quot;  chstyl: &quot; &amp; pom(i).chstyl, 0 , &quot;Index: &quot; &amp; i
+	next i
+end sub
+
+sub dbgVypisRepl(pom())
+	dim i
+	for i = 0 to ubound(pom())
+		msgbox &quot;Repl: &quot; &amp; pom(i).nahr &amp; chr(10) &amp; _
+		&quot;Cmd: &quot; &amp; pom(i).cmd &amp;  chr(10) &amp; _
+		&quot;Smaz: &quot; &amp; pom(i).smaz &amp; &quot;  Vloz: &quot; &amp; pom(i).vloz &amp; &quot;  Form: &quot; &amp; pom(i).form &amp; &quot;  TextObsah: &quot; &amp; pom(i).textobs , 0 , &quot;Index: &quot; &amp; i
+	next i
+end sub
+
+</script:module>
