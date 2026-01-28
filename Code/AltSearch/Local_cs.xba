@@ -4,131 +4,139 @@
 Sub Load_cs
 	dim i as long
 	dim pom as string
-	FINDREG = array(&quot; První znak odstavce          &quot; &amp; chr(160) &amp; &quot;^.&quot;, _
-	&quot; Konec odstavce               &quot; &amp; chr(160) &amp; &quot;$&quot;, _
-	&quot; Prázdný odstavec (jeden)     &quot; &amp; chr(160) &amp; &quot;^$&quot;, _
-	&quot; Jakýkoli text v 1 odstavci   &quot; &amp; chr(160) &amp; &quot;.*&quot;, _
-	&quot; Písmeno     [:alpha:]{1,1}   &quot; &amp; chr(160) &amp; &quot;\l&quot;, _
-	&quot; Číslo       [0-9]            &quot; &amp; chr(160) &amp; &quot;\d&quot;, _
-	&quot; Začátek slova                &quot; &amp; chr(160) &amp; &quot;\&lt;&quot;, _
-	&quot; Konec slova                  &quot; &amp; chr(160) &amp; &quot;\&gt;&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Odstavec (značka konce)      &quot; &amp; chr(160) &amp; &quot;\p&quot;, _
-	&quot; Blok prázdných odstavců      &quot; &amp; chr(160) &amp; &quot;^$\p*&quot;, _
-	&quot; Tabulátor                    &quot; &amp; chr(160) &amp; &quot;\t&quot;, _
-	&quot; Ruční zalomení řádku         &quot; &amp; chr(160) &amp; &quot;\n&quot;, _
-	&quot; Ruční zalomení sloupce       &quot; &amp; chr(160) &amp; &quot;\c&quot;, _
-	&quot; Ruční zalomení stránky       &quot; &amp; chr(160) &amp; &quot;\m&quot;, _
-	&quot; Nějaká mezera  [ \xA0\x9\xA] &quot; &amp; chr(160) &amp; &quot;\s&quot;, _
-	&quot; Pevná mezera   (\xA0)        &quot; &amp; chr(160) &amp; &quot;\S&quot;, _
-	&quot; Volitelné rozdělení          &quot; &amp; chr(160) &amp; &quot;\x00AD&quot;, _
-	&quot; Nezlomitelné rozdělení       &quot; &amp; chr(160) &amp; &quot;\x2011&quot;, _
-	&quot; Dekadicky zadaný znak A      &quot; &amp; chr(160) &amp; &quot;\#65&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Tečka                        &quot; &amp; chr(160) &amp; &quot;\.&quot;, _
-	&quot; Závorky kulaté   ()          &quot; &amp; chr(160) &amp; &quot;\(\)&quot;, _
-	&quot; Závorky hranaté  []          &quot; &amp; chr(160) &amp; &quot;\[\]&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;            &quot;)
+	FINDREG = array(&quot; První znak odstavce          &quot; &amp; __SEP &amp; &quot;^.&quot;, _
+	&quot; Konec odstavce               &quot; &amp;__SEP &amp; &quot;$&quot;, _
+	&quot; Prázdný odstavec (jeden)     &quot; &amp;__SEP &amp; &quot;^$&quot;, _
+	&quot; Jakýkoli text v 1 odstavci   &quot; &amp;__SEP &amp; &quot;.*&quot;, _
+	&quot; Písmeno     [:alpha:]{1,1}   &quot; &amp;__SEP &amp; &quot;\l&quot;, _
+	&quot; Číslo       [0-9]            &quot; &amp;__SEP &amp; &quot;\d&quot;, _
+	&quot; Začátek slova                &quot; &amp;__SEP &amp; &quot;\&lt;&quot;, _
+	&quot; Konec slova                  &quot; &amp;__SEP &amp; &quot;\&gt;&quot;, _
+	 __SEPARATOR, _
+	&quot; Odstavec (značka konce)      &quot; &amp;__SEP &amp; &quot;\p&quot;, _
+	&quot; Blok prázdných odstavců      &quot; &amp;__SEP &amp; &quot;^$\p*&quot;, _
+	&quot; Tabulátor                    &quot; &amp;__SEP &amp; &quot;\t&quot;, _
+	&quot; Ruční zalomení řádku         &quot; &amp;__SEP &amp; &quot;\n&quot;, _
+	&quot; Ruční zalomení sloupce       &quot; &amp;__SEP &amp; &quot;\c&quot;, _
+	&quot; Ruční zalomení stránky       &quot; &amp;__SEP &amp; &quot;\m&quot;, _
+	&quot; Nějaká mezera  [ \xA0\x9\xA] &quot; &amp;__SEP &amp; &quot;\s&quot;, _
+	&quot; Pevná mezera   (\xA0)        &quot; &amp;__SEP &amp; &quot;\S&quot;, _
+	&quot; Volitelné rozdělení          &quot; &amp;__SEP &amp; &quot;\x00AD&quot;, _
+	&quot; Nezlomitelné rozdělení       &quot; &amp;__SEP &amp; &quot;\x2011&quot;, _
+	&quot; Dekadicky zadaný znak A      &quot; &amp;__SEP &amp; &quot;\#65&quot;, _
+	__SEPARATOR, _
+	&quot; Visible spaces only        &quot; &amp;__SEP &amp; &quot;\y&quot;, _
+	&quot; Common spaces, zero-width  &quot; &amp;__SEP &amp; &quot;\Y&quot;, _
+	&quot; Common hyphens/dashes      &quot; &amp;__SEP &amp; &quot;\j&quot;, _
+	&quot; All hyphens/dashes         &quot; &amp;__SEP &amp; &quot;\J&quot;, _
+	&quot; Single quotes              &quot; &amp;__SEP &amp; &quot;\o&quot;, _
+	&quot; Double quotes              &quot; &amp;__SEP &amp; &quot;\O&quot;, _
+	&quot; All quotes                 &quot; &amp;__SEP &amp; &quot;\q&quot;, _
+	 __SEPARATOR, _
+	&quot; Tečka                        &quot; &amp;__SEP &amp; &quot;\.&quot;, _
+	&quot; Závorky kulaté   ()          &quot; &amp;__SEP &amp; &quot;\(\)&quot;, _
+	&quot; Závorky hranaté  []          &quot; &amp;__SEP &amp; &quot;\[\]&quot;, _
+	&quot; &quot; &amp;__SEP &amp; &quot;            &quot;)
 
 	oDIAL.getcontrol(&quot;Cb_findReg&quot;).addItems(FINDREG,0)
 
-	FINDEXT = array(&quot; Blok odstavců (uzavřený mezi značkami začátku a konce)&quot; &amp; chr(160) &amp; &quot;[::BigBlock::]&quot;, _
-	&quot; Rozšíření nalezeného bloku textu o 1 znak na obě strany &quot; &amp; chr(160) &amp; &quot;[::Grow 1,1::]&quot;, _
-	&quot; Přidat značky || pro vícenásobné nahrazování v jednom kroku &quot; &amp; chr(160) &amp; &quot;||&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Text mezi () (uvnitř jednoho odstavce)&quot; &amp; chr(160) &amp; &quot;(\(([^\)])+\))&quot;, _
-	&quot; Text mezi [] (uvnitř jednoho odstavce)&quot; &amp; chr(160) &amp; &quot;(\[([^\]])+\])&quot;, _
-	&quot; Text mezi {} (uvnitř jednoho odstavce)&quot; &amp; chr(160) &amp; &quot;({([^}])+})&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; e-mailovou adresu&quot; &amp; chr(160) &amp; &quot;[a-zA-Z0-9_][-._a-zA-Z0-9_]*[a-zA-Z0-9_].?@[a-zA-Z0-9_][-._a-zA-Z0-9_]*[a-zA-Z0-9_]\.[a-zA-Z0-9_]{2,4}&quot;, _
-	&quot; Internetovou, URL adresu&quot; &amp; chr(160) &amp; &quot;(((news|http|ftp|https|file):\/\/|www\.)[a-zA-Z0-9_]+((\.[a-zA-Z0-9_]+)+)(([a-zA-Z0-9_\-\.,@?^=%&amp;:/~\+#]*[a-zA-Z0-9_\-\@?^=%&amp;/~\+#])?))&quot;, _
-	&quot; HTML tag&quot; &amp; chr(160) &amp; &quot;(&lt;(&quot;&quot;[^&quot;&quot;]*&quot;&quot;|&apos;[^&apos;]*&apos;|[^&apos;&quot;&quot;&gt;])*&gt;)&quot;, _
-	&quot; Otevírací HTML tag&quot; &amp; chr(160) &amp; &quot;&lt;[^/][^&gt;]+&gt;&quot;, _
-	&quot; Uzavírací HTML tag&quot; &amp; chr(160) &amp; &quot;&lt;/[^&gt;]+&gt;&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Poznámku (žluté bubliny) - hledá se podřetězec v jejím obsahu&quot; &amp; chr(160) &amp; &quot;[::Comment::]&quot;, _
-	&quot; Textové pole - hledá se podřetězec v obsahu pole&quot; &amp; chr(160) &amp; &quot;[::Field::]&quot;, _
-	&quot; Textový rámec - hledá se podřetězec v názvu rámce&quot; &amp; chr(160) &amp; &quot;[::TextFrame::]&quot;, _
-	&quot; Tabulku - hledá se podřetězec v názvu tabulky&quot; &amp; chr(160) &amp; &quot;[::TextTable::]&quot;, _
-	&quot; Obrázek - hledá se podřetězec v názvu obrázku; přidejte \\ pro hled. Alt. textu&quot; &amp; chr(160) &amp; &quot;[::Picture::]&quot;, _
-	&quot; Poznámku pod čarou - hledá text kotvy; přidejte \\ pro hled. v obsahu pozn.  &quot; &amp; chr(160) &amp; &quot;[::Footnote::]&quot;, _
-	&quot; Vysvětlivku - hledá text kotvy; přidejte \\ pro hled. v obsahu vysvětlivky   &quot; &amp; chr(160) &amp; &quot;[::Endnote::]&quot;, _
-	&quot; Značku pro referenci (text); \\ pro hledání v Názvu; \\\\ najít prázdný text &quot; &amp; chr(160) &amp; &quot;[::ReferenceMark::]&quot;, _
-	&quot; Křížovou referenci (text); \\ pro hl. v Názvu značky; \\\\ najít prázd. text &quot; &amp; chr(160) &amp; &quot;[::Reference::]&quot;, _
-	&quot; Záložku - hledá v textu záložek; přidejte \\ pro hledání v Názvech záložek   &quot; &amp; chr(160) &amp; &quot;[::Bookmark::]&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;)
+	FINDEXT = array(&quot; Blok odstavců (uzavřený mezi značkami začátku a konce)&quot; &amp;__SEP &amp; &quot;[::BigBlock::]&quot;, _
+	&quot; Rozšíření nalezeného bloku textu o 1 znak na obě strany &quot; &amp;__SEP &amp; &quot;[::Grow 1,1::]&quot;, _
+	&quot; Přidat značky || pro vícenásobné nahrazování v jednom kroku &quot; &amp;__SEP &amp; &quot;||&quot;, _
+	 __SEPARATOR, _
+	&quot; Text mezi () (uvnitř jednoho odstavce)&quot; &amp;__SEP &amp; &quot;(\(([^\)])+\))&quot;, _
+	&quot; Text mezi [] (uvnitř jednoho odstavce)&quot; &amp;__SEP &amp; &quot;(\[([^\]])+\])&quot;, _
+	&quot; Text mezi {} (uvnitř jednoho odstavce)&quot; &amp;__SEP &amp; &quot;({([^}])+})&quot;, _
+	 __SEPARATOR, _
+	&quot; e-mailovou adresu&quot; &amp;__SEP &amp; &quot;[a-zA-Z0-9_][-._a-zA-Z0-9_]*[a-zA-Z0-9_].?@[a-zA-Z0-9_][-._a-zA-Z0-9_]*[a-zA-Z0-9_]\.[a-zA-Z0-9_]{2,4}&quot;, _
+	&quot; Internetovou, URL adresu&quot; &amp;__SEP &amp; &quot;(((news|http|ftp|https|file):\/\/|www\.)[a-zA-Z0-9_]+((\.[a-zA-Z0-9_]+)+)(([a-zA-Z0-9_\-\.,@?^=%&amp;:/~\+#]*[a-zA-Z0-9_\-\@?^=%&amp;/~\+#])?))&quot;, _
+	&quot; HTML tag&quot; &amp;__SEP &amp; &quot;(&lt;(&quot;&quot;[^&quot;&quot;]*&quot;&quot;|&apos;[^&apos;]*&apos;|[^&apos;&quot;&quot;&gt;])*&gt;)&quot;, _
+	&quot; Otevírací HTML tag&quot; &amp;__SEP &amp; &quot;&lt;[^/][^&gt;]+&gt;&quot;, _
+	&quot; Uzavírací HTML tag&quot; &amp;__SEP &amp; &quot;&lt;/[^&gt;]+&gt;&quot;, _
+	 __SEPARATOR, _
+	&quot; Poznámku (žluté bubliny) - hledá se podřetězec v jejím obsahu&quot; &amp;__SEP &amp; &quot;[::Comment::]&quot;, _
+	&quot; Textové pole - hledá se podřetězec v obsahu pole&quot; &amp;__SEP &amp; &quot;[::Field::]&quot;, _
+	&quot; Textový rámec - hledá se podřetězec v názvu rámce&quot; &amp;__SEP &amp; &quot;[::TextFrame::]&quot;, _
+	&quot; Tabulku - hledá se podřetězec v názvu tabulky&quot; &amp;__SEP &amp; &quot;[::TextTable::]&quot;, _
+	&quot; Obrázek - hledá se podřetězec v názvu obrázku; přidejte \\ pro hled. Alt. textu&quot; &amp;__SEP &amp; &quot;[::Picture::]&quot;, _
+	&quot; Poznámku pod čarou - hledá text kotvy; přidejte \\ pro hled. v obsahu pozn.  &quot; &amp;__SEP &amp; &quot;[::Footnote::]&quot;, _
+	&quot; Vysvětlivku - hledá text kotvy; přidejte \\ pro hled. v obsahu vysvětlivky   &quot; &amp;__SEP &amp; &quot;[::Endnote::]&quot;, _
+	&quot; Značku pro referenci (text); \\ pro hledání v Názvu; \\\\ najít prázdný text &quot; &amp;__SEP &amp; &quot;[::ReferenceMark::]&quot;, _
+	&quot; Křížovou referenci (text); \\ pro hl. v Názvu značky; \\\\ najít prázd. text &quot; &amp;__SEP &amp; &quot;[::Reference::]&quot;, _
+	&quot; Záložku - hledá v textu záložek; přidejte \\ pro hledání v Názvech záložek   &quot; &amp;__SEP &amp; &quot;[::Bookmark::]&quot;, _
+	 __SEPARATOR)
 
 	for i = lbound(FINDEXT) to ubound(FINDEXT)
 		pom = FINDEXT(ubound(FINDEXT)-i)
-		pom = left(pom,instr(pom,chr(160)))
+		pom = left(pom,instr(pom,__SEP))
 		oDIAL.getcontrol(&quot;Cb_findExt&quot;).addItem(pom,0)
 	next i
 
-	FINDATR = array(&quot; Odstavcový styl&quot; &amp; chr(160) &amp; &quot;[:::ps::]&quot;, _
-	&quot; Znakový styl&quot; &amp; chr(160) &amp; &quot;[:::chs::]&quot;, _
-	&quot; Seznamový styl&quot; &amp; chr(160) &amp; &quot;[:::ns::]&quot;, _
-	&quot; Položku rejstříku&quot; &amp; chr(160) &amp; &quot;[:::DocumentIndexMark=::]&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Hypertextový odkaz&quot; &amp; chr(160) &amp; &quot;[:::HyperLinkURL::]&quot;, _
-	&quot; Hypertextový odkaz - podřetězec v URL &quot; &amp; chr(160) &amp; &quot;[:::HyperLinkURL=file:///::]&quot;,_
-	&quot; Kurzívu&quot; &amp; chr(160) &amp; &quot;[:::CharPosture::]&quot;, _
-	&quot; Tučné&quot; &amp; chr(160) &amp; &quot;[:::CharWeight::]&quot;, _
-	&quot; Tučnou kurzívu&quot; &amp; chr(160) &amp; &quot;[:::CharPosture|CharWeight::]&quot;, _
-	&quot; Písmo (změna názvu fontu)&quot; &amp; chr(160) &amp; &quot;[:::CharFontName::]&quot;, _
-	&quot; Velikost písma&quot; &amp; chr(160) &amp; &quot;[:::CharHeight::]&quot;, _
-	&quot; Barvu písma&quot; &amp; chr(160) &amp; &quot;[:::CharColor::]&quot;, _
-	&quot; Barvu pozadí písma (zvýraznění)&quot; &amp; chr(160) &amp; &quot;[:::CharBackColor::]&quot;, _
-	&quot; Podtržené&quot; &amp; chr(160) &amp; &quot;[:::CharUnderline::]&quot;, _
-	&quot; Indexy (jakýkoli)&quot; &amp; chr(160) &amp; &quot;[:::CharEscapement::]&quot;, _
-	&quot; Index spodní (Auto) &quot; &amp; chr(160) &amp; &quot;[:::CharAutoEscapement=true|CharEscapementHeight=58|CharEscapement=-101::]&quot;, _
-	&quot; Index horní (Auto) &quot; &amp; chr(160) &amp; &quot;[:::CharAutoEscapement=true|CharEscapementHeight=58|CharEscapement=101::]&quot;, _
-	&quot; Index zadný velikostí písma a posunem &quot; &amp; chr(160) &amp; &quot;[:::CharEscapementHeight=70|CharEscapement=30::]&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Podobné znakové atributy (dle kurzoru)&quot; &amp; chr(160) &amp; &quot;[:::p::]&quot;, _
-	&quot; Stejné znakové atributy (dle kurzoru)&quot; &amp; chr(160) &amp; &quot;[:::s::]&quot;)
+	FINDATR = array(&quot; Odstavcový styl&quot; &amp;__SEP &amp; &quot;[:::ps::]&quot;, _
+	&quot; Znakový styl&quot; &amp;__SEP &amp; &quot;[:::chs::]&quot;, _
+	&quot; Seznamový styl&quot; &amp;__SEP &amp; &quot;[:::ns::]&quot;, _
+	&quot; Položku rejstříku&quot; &amp;__SEP &amp; &quot;[:::DocumentIndexMark=::]&quot;, _
+	 __SEPARATOR, _
+	&quot; Hypertextový odkaz&quot; &amp;__SEP &amp; &quot;[:::HyperLinkURL::]&quot;, _
+	&quot; Hypertextový odkaz - podřetězec v URL &quot; &amp;__SEP &amp; &quot;[:::HyperLinkURL=file:///::]&quot;,_
+	&quot; Kurzívu&quot; &amp;__SEP &amp; &quot;[:::CharPosture::]&quot;, _
+	&quot; Tučné&quot; &amp;__SEP &amp; &quot;[:::CharWeight::]&quot;, _
+	&quot; Tučnou kurzívu&quot; &amp;__SEP &amp; &quot;[:::CharPosture|CharWeight::]&quot;, _
+	&quot; Písmo (změna názvu fontu)&quot; &amp;__SEP &amp; &quot;[:::CharFontName::]&quot;, _
+	&quot; Velikost písma&quot; &amp;__SEP &amp; &quot;[:::CharHeight::]&quot;, _
+	&quot; Barvu písma&quot; &amp;__SEP &amp; &quot;[:::CharColor::]&quot;, _
+	&quot; Barvu pozadí písma (zvýraznění)&quot; &amp;__SEP &amp; &quot;[:::CharBackColor::]&quot;, _
+	&quot; Podtržené&quot; &amp;__SEP &amp; &quot;[:::CharUnderline::]&quot;, _
+	&quot; Indexy (jakýkoli)&quot; &amp;__SEP &amp; &quot;[:::CharEscapement::]&quot;, _
+	&quot; Index spodní (Auto) &quot; &amp;__SEP &amp; &quot;[:::CharAutoEscapement=true|CharEscapementHeight=58|CharEscapement=-101::]&quot;, _
+	&quot; Index horní (Auto) &quot; &amp;__SEP &amp; &quot;[:::CharAutoEscapement=true|CharEscapementHeight=58|CharEscapement=101::]&quot;, _
+	&quot; Index zadný velikostí písma a posunem &quot; &amp;__SEP &amp; &quot;[:::CharEscapementHeight=70|CharEscapement=30::]&quot;, _
+	 __SEPARATOR, _
+	&quot; Podobné znakové atributy (dle kurzoru)&quot; &amp;__SEP &amp; &quot;[:::p::]&quot;, _
+	&quot; Stejné znakové atributy (dle kurzoru)&quot; &amp;__SEP &amp; &quot;[:::s::]&quot;)
 
 	for i = lbound(FINDATR) to ubound(FINDATR)
 		pom = FINDATR(ubound(FINDATR)-i)
-		pom = left(pom,instr(pom,chr(160)))
+		pom = left(pom,instr(pom,__SEP))
 		oDIAL.getcontrol(&quot;Cb_findAtr&quot;).addItem(pom,0)
 	next i
 
-	REPLEXT = array(&quot; Nalezený text                           &quot; &amp; chr(160) &amp; &quot;&amp;&quot;, _
-	&quot; Obsah značek začátku (\b), konce (\e)  bloku odstavců &quot; &amp; chr(160) &amp; &quot;\b\e&quot;, _
-	&quot; Obsah 1. skupiny, nalezené mezi () v hledaném výrazu (max. \9) &quot; &amp; chr(160) &amp; &quot;\1&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Značka konce odstavce                   &quot; &amp; chr(160) &amp; &quot;\p&quot;, _
-	&quot; Tabulátor                               &quot; &amp; chr(160) &amp; &quot;\t&quot;, _
-	&quot; Pevná mezera                            &quot; &amp; chr(160) &amp; &quot;\S&quot;, _
-	&quot; Ruční zalomení řádku                    &quot; &amp; chr(160) &amp; &quot;\n&quot;, _
-	&quot; Ruční zalomení sloupce před             &quot; &amp; chr(160) &amp; &quot;\c&quot;, _
-	&quot; Ruční zalomení stránky před (za \M)     &quot; &amp; chr(160) &amp; &quot;\m&quot;, _
-	&quot; Zrušit zalomení stránky, sloupce        &quot; &amp; chr(160) &amp; &quot;\r&quot;, _
-	&quot; Hexadecim. zadání &apos;A&apos;, (dekadicky \#65) &quot; &amp; chr(160) &amp; &quot;\x0041&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Nastavit URL hypertextového odkazu      &quot; &amp; chr(160) &amp; &quot;\h{file///C:...}&quot;, _
-	&quot; Nahradit nalezený podřetězec v URL      &quot; &amp; chr(160) &amp; &quot;\H{subst}&quot;, _
-	&quot; URL nalezeného hypertextového odkazu    &quot; &amp; chr(160) &amp; &quot;\u&quot;, _
-	&quot; Nastavit styl odstavce                  &quot; &amp; chr(160) &amp; &quot;\P{Text}&quot;, _
-	&quot; Nastavit styl znaků                     &quot; &amp; chr(160) &amp; &quot;\C{Výchozí}&quot;, _
-	&quot; Nastavit styl seznamu                   &quot; &amp; chr(160) &amp; &quot;\N{Seznam 3}&quot;, _
-	&quot; Nastavit vlastnost objektu na hodnotu   &quot; &amp; chr(160) &amp; &quot;\A{CharBackColor=&amp;Hffcc00}&quot;, _
-	&quot; Nastavit výchozí formátování bloku znaků&quot; &amp; chr(160) &amp; &quot;\D&quot;, _
-	&quot; Reset znak. vlastností od místa užití   &quot; &amp; chr(160) &amp; &quot;\d&quot;, _
-	&quot; Vložit poznámku pod čarou               &quot; &amp; chr(160) &amp; &quot;\F{}&quot;, _
-	&quot; Vložit vysvětlivku                      &quot; &amp; chr(160) &amp; &quot;\E{}&quot;, _
-	&quot; Vložit značku a text pro křížový odkaz  &quot; &amp; chr(160) &amp; &quot;\B{ref1|text}&quot;, _
-	&quot; Vložit referenci na značku (číslo strny)&quot; &amp; chr(160) &amp; &quot;\L{0,0,ref1}&quot;, _
-	&quot; Vložit záložku (w,b,e - blok, na začátek, na konec)        &quot; &amp; chr(160) &amp; &quot;\K{w,BookmName}&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Textový obsah objektu (rámce,tabulky...)                   &quot; &amp; chr(160) &amp; &quot;\o&quot;, _
-	&quot; Název objektu (rámce, tabulky...)                          &quot; &amp; chr(160) &amp; &quot;\O&quot;, _
-	&quot; Vložit obsah schránky (\V vloží bez formátu, jen text)     &quot; &amp; chr(160) &amp; &quot;\v&quot;, _
-	&quot; Zachovat formát při nahrazování (nahrazovat přes schránku) &quot; &amp; chr(160) &amp; &quot;\f&quot;, _
-	&quot; Vložit počitadlo nahrazení (jen pro Nahradit vše)          &quot; &amp; chr(160) &amp; &quot;\i{1,3}&quot;, _
-	&quot; Vložit číslo stránky                                       &quot; &amp; chr(160) &amp; &quot;\I&quot;, _
-	&quot; Přesměrovat nahrazovací výraz do jiného souboru            &quot; &amp; chr(160) &amp; &quot;\R&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;)
+	REPLEXT = array(&quot; Nalezený text                           &quot; &amp;__SEP &amp; &quot;&amp;&quot;, _
+	&quot; Obsah značek začátku (\b), konce (\e)  bloku odstavců &quot; &amp;__SEP &amp; &quot;\b\e&quot;, _
+	&quot; Obsah 1. skupiny, nalezené mezi () v hledaném výrazu (max. \9) &quot; &amp;__SEP &amp; &quot;\1&quot;, _
+	 __SEPARATOR, _
+	&quot; Značka konce odstavce                   &quot; &amp;__SEP &amp; &quot;\p&quot;, _
+	&quot; Tabulátor                               &quot; &amp;__SEP &amp; &quot;\t&quot;, _
+	&quot; Pevná mezera                            &quot; &amp;__SEP &amp; &quot;\S&quot;, _
+	&quot; Ruční zalomení řádku                    &quot; &amp;__SEP &amp; &quot;\n&quot;, _
+	&quot; Ruční zalomení sloupce před             &quot; &amp;__SEP &amp; &quot;\c&quot;, _
+	&quot; Ruční zalomení stránky před (za \M)     &quot; &amp;__SEP &amp; &quot;\m&quot;, _
+	&quot; Zrušit zalomení stránky, sloupce        &quot; &amp;__SEP &amp; &quot;\r&quot;, _
+	&quot; Hexadecim. zadání &apos;A&apos;, (dekadicky \#65) &quot; &amp;__SEP &amp; &quot;\x0041&quot;, _
+	 __SEPARATOR, _
+	&quot; Nastavit URL hypertextového odkazu      &quot; &amp;__SEP &amp; &quot;\h{file///C:...}&quot;, _
+	&quot; Nahradit nalezený podřetězec v URL      &quot; &amp;__SEP &amp; &quot;\H{subst}&quot;, _
+	&quot; URL nalezeného hypertextového odkazu    &quot; &amp;__SEP &amp; &quot;\u&quot;, _
+	&quot; Nastavit styl odstavce                  &quot; &amp;__SEP &amp; &quot;\P{Text}&quot;, _
+	&quot; Nastavit styl znaků                     &quot; &amp;__SEP &amp; &quot;\C{Výchozí}&quot;, _
+	&quot; Nastavit styl seznamu                   &quot; &amp;__SEP &amp; &quot;\N{Seznam 3}&quot;, _
+	&quot; Nastavit vlastnost objektu na hodnotu   &quot; &amp;__SEP &amp; &quot;\A{CharBackColor=&amp;Hffcc00}&quot;, _
+	&quot; Nastavit výchozí formátování bloku znaků&quot; &amp;__SEP &amp; &quot;\D&quot;, _
+	&quot; Reset znak. vlastností od místa užití   &quot; &amp;__SEP &amp; &quot;\d&quot;, _
+	&quot; Vložit poznámku pod čarou               &quot; &amp;__SEP &amp; &quot;\F{}&quot;, _
+	&quot; Vložit vysvětlivku                      &quot; &amp;__SEP &amp; &quot;\E{}&quot;, _
+	&quot; Vložit značku a text pro křížový odkaz  &quot; &amp;__SEP &amp; &quot;\B{ref1|text}&quot;, _
+	&quot; Vložit referenci na značku (číslo strny)&quot; &amp;__SEP &amp; &quot;\L{0,0,ref1}&quot;, _
+	&quot; Vložit záložku (w,b,e - blok, na začátek, na konec)        &quot; &amp;__SEP &amp; &quot;\K{w,BookmName}&quot;, _
+	 __SEPARATOR, _
+	&quot; Textový obsah objektu (rámce,tabulky...)                   &quot; &amp;__SEP &amp; &quot;\o&quot;, _
+	&quot; Název objektu (rámce, tabulky...)                          &quot; &amp;__SEP &amp; &quot;\O&quot;, _
+	&quot; Vložit obsah schránky (\V vloží bez formátu, jen text)     &quot; &amp;__SEP &amp; &quot;\v&quot;, _
+	&quot; Zachovat formát při nahrazování (nahrazovat přes schránku) &quot; &amp;__SEP &amp; &quot;\f&quot;, _
+	&quot; Vložit počitadlo nahrazení (jen pro Nahradit vše)          &quot; &amp;__SEP &amp; &quot;\i{1,3}&quot;, _
+	&quot; Vložit číslo stránky                                       &quot; &amp;__SEP &amp; &quot;\I&quot;, _
+	&quot; Přesměrovat nahrazovací výraz do jiného souboru            &quot; &amp;__SEP &amp; &quot;\R&quot;, _
+	 __SEPARATOR)
 
 	oDIAL.getcontrol(&quot;Cb_replExt&quot;).addItems(REPLEXT,0)
 
@@ -189,6 +197,7 @@ Sub Load_cs
 	MSG(50) = &quot;Spuštění dávky na vybraných otevřených textových dokumentech&quot;
 	&apos;Sub testViewCursor
 	MSG(51) = &quot;Viditelný kurzor je v nepodporovaném objetku (např. Komentáři), klikni kurzor do textu v dokumentu.&quot;
+	MSG(52) = &quot;Too many objects. Ignoring the rest.&quot;
 
 	&apos; main dialog
 	with oDIAL.model

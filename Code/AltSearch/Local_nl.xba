@@ -5,130 +5,138 @@ Sub Load_nl
 	REM test: ěščřžýáíé юертыъшчщжі
 	dim i as long
 	dim pom as string
-	FINDREG = array(&quot; Eerste teken van een alinea       &quot; &amp; chr(160) &amp; &quot;^.&quot;, _
-	&quot; Einde van een alinea              &quot; &amp; chr(160) &amp; &quot;$&quot;, _
-	&quot; Lege alinea                       &quot; &amp; chr(160) &amp; &quot;^$&quot;, _
-	&quot; Willekeurige tekst in één alinea  &quot; &amp; chr(160) &amp; &quot;.*&quot;, _
-	&quot; Willekeurige letter [:alpha:]{1,1}&quot; &amp; chr(160) &amp; &quot;\l&quot;, _
-	&quot; Willekeurig decimaal getal  [0-9] &quot; &amp; chr(160) &amp; &quot;\d&quot;, _
-	&quot; Begin van een woord               &quot; &amp; chr(160) &amp; &quot;\&lt;&quot;, _
-	&quot; Einde van een woord               &quot; &amp; chr(160) &amp; &quot;\&gt;&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Alinea (eindemarkering)   &quot; &amp; chr(160) &amp; &quot;\p&quot;, _
-	&quot; Reeks lege alinea&apos;s       &quot; &amp; chr(160) &amp; &quot;^$\p*&quot;, _
-	&quot; Tabulator                 &quot; &amp; chr(160) &amp; &quot;\t&quot;, _
-	&quot; Handmatig regeleinde      &quot; &amp; chr(160) &amp; &quot;\n&quot;, _
-	&quot; Handmatig kolomeinde      &quot; &amp; chr(160) &amp; &quot;\c&quot;, _
-	&quot; Handmatig pagina-einde    &quot; &amp; chr(160) &amp; &quot;\m&quot;, _
-	&quot; Willekeurige witruimte [ \xA0\x9\xA]   &quot; &amp; chr(160) &amp; &quot;\s&quot;, _
-	&quot; Niet-afbrekende spatie (\xA0)          &quot; &amp; chr(160) &amp; &quot;\S&quot;, _
-	&quot; Gebruikergedefinieerde afbreekstreepjes&quot; &amp; chr(160) &amp; &quot;\x00AD&quot;, _
-	&quot; Niet-afbrekend streepje                &quot; &amp; chr(160) &amp; &quot;\x2011&quot;, _
-	&quot; A ingevoegd met decimale code          &quot; &amp; chr(160) &amp; &quot;\#65&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Punt                 &quot; &amp; chr(160) &amp; &quot;\.&quot;, _
-	&quot; Haakjes     ()       &quot; &amp; chr(160) &amp; &quot;\(\)&quot;, _
-	&quot; Vierkante haakjes [] &quot; &amp; chr(160) &amp; &quot;\[\]&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;)
+	FINDREG = array(&quot; Eerste teken van een alinea       &quot; &amp;__SEP &amp; &quot;^.&quot;, _
+	&quot; Einde van een alinea              &quot; &amp;__SEP &amp; &quot;$&quot;, _
+	&quot; Lege alinea                       &quot; &amp;__SEP &amp; &quot;^$&quot;, _
+	&quot; Willekeurige tekst in één alinea  &quot; &amp;__SEP &amp; &quot;.*&quot;, _
+	&quot; Willekeurige letter [:alpha:]{1,1}&quot; &amp;__SEP &amp; &quot;\l&quot;, _
+	&quot; Willekeurig decimaal getal  [0-9] &quot; &amp;__SEP &amp; &quot;\d&quot;, _
+	&quot; Begin van een woord               &quot; &amp;__SEP &amp; &quot;\&lt;&quot;, _
+	&quot; Einde van een woord               &quot; &amp;__SEP &amp; &quot;\&gt;&quot;, _
+	 __SEPARATOR, _
+	&quot; Alinea (eindemarkering)   &quot; &amp;__SEP &amp; &quot;\p&quot;, _
+	&quot; Reeks lege alinea&apos;s       &quot; &amp;__SEP &amp; &quot;^$\p*&quot;, _
+	&quot; Tabulator                 &quot; &amp;__SEP &amp; &quot;\t&quot;, _
+	&quot; Handmatig regeleinde      &quot; &amp;__SEP &amp; &quot;\n&quot;, _
+	&quot; Handmatig kolomeinde      &quot; &amp;__SEP &amp; &quot;\c&quot;, _
+	&quot; Handmatig pagina-einde    &quot; &amp;__SEP &amp; &quot;\m&quot;, _
+	&quot; Willekeurige witruimte [ \xA0\x9\xA]   &quot; &amp;__SEP &amp; &quot;\s&quot;, _
+	&quot; Niet-afbrekende spatie (\xA0)          &quot; &amp;__SEP &amp; &quot;\S&quot;, _
+	&quot; Gebruikergedefinieerde afbreekstreepjes&quot; &amp;__SEP &amp; &quot;\x00AD&quot;, _
+	&quot; Niet-afbrekend streepje                &quot; &amp;__SEP &amp; &quot;\x2011&quot;, _
+	&quot; A ingevoegd met decimale code          &quot; &amp;__SEP &amp; &quot;\#65&quot;, _
+	__SEPARATOR, _
+	&quot; Visible spaces only        &quot; &amp;__SEP &amp; &quot;\y&quot;, _
+	&quot; Common spaces, zero-width  &quot; &amp;__SEP &amp; &quot;\Y&quot;, _
+	&quot; Common hyphens/dashes      &quot; &amp;__SEP &amp; &quot;\j&quot;, _
+	&quot; All hyphens/dashes         &quot; &amp;__SEP &amp; &quot;\J&quot;, _
+	&quot; Single quotes              &quot; &amp;__SEP &amp; &quot;\o&quot;, _
+	&quot; Double quotes              &quot; &amp;__SEP &amp; &quot;\O&quot;, _
+	&quot; All quotes                 &quot; &amp;__SEP &amp; &quot;\q&quot;, _
+	 __SEPARATOR, _
+	&quot; Punt                 &quot; &amp;__SEP &amp; &quot;\.&quot;, _
+	&quot; Haakjes     ()       &quot; &amp;__SEP &amp; &quot;\(\)&quot;, _
+	&quot; Vierkante haakjes [] &quot; &amp;__SEP &amp; &quot;\[\]&quot;, _
+	 __SEPARATOR)
 
 	oDIAL.getcontrol(&quot;Cb_findReg&quot;).addItems(FINDREG,0)
 
-	FINDEXT = array(&quot; Reeks alinea&apos;s (begrensd tussen begin- en eindemarkering) &quot; &amp; chr(160) &amp; &quot;[::BigBlock::]&quot;, _
-	&quot; Breidt de gevonden selectie één teken naar beide zijden uit &quot; &amp; chr(160) &amp; &quot;[::Grow 1,1::]&quot;, _
-	&quot; Voeg teken || toe voor meerdere vervangingen (in één stap)  &quot; &amp; chr(160) &amp; &quot;||&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Tekst tussen () (binnen één alinea)&quot; &amp; chr(160) &amp; &quot;(\(([^\)])+\))&quot;, _
-	&quot; Tekst tussen [] (binnen één alinea)&quot; &amp; chr(160) &amp; &quot;(\[([^\]])+\])&quot;, _
-	&quot; Tekst tussen {} (binnen één alinea)&quot; &amp; chr(160) &amp; &quot;({([^}])+})&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; emailadres&quot; &amp; chr(160) &amp; &quot;[a-zA-Z0-9_][-._a-zA-Z0-9_]*[a-zA-Z0-9_].?@[a-zA-Z0-9_][-._a-zA-Z0-9_]*[a-zA-Z0-9_]\.[a-zA-Z0-9_]{2,4}&quot;, _
-	&quot; Internet, URL, www-adres&quot; &amp; chr(160) &amp; &quot;(((news|http|ftp|https|file):\/\/|www\.)[a-zA-Z0-9_]+((\.[a-zA-Z0-9_]+)+)(([a-zA-Z0-9_\-\.,@?^=%&amp;:/~\+#]*[a-zA-Z0-9_\-\@?^=%&amp;/~\+#])?))&quot;, _
-	&quot; HTML-tag&quot; &amp; chr(160) &amp; &quot;(&lt;(&quot;&quot;[^&quot;&quot;]*&quot;&quot;|&apos;[^&apos;]*&apos;|[^&apos;&quot;&quot;&gt;])*&gt;)&quot;, _
-	&quot; HTML-tag (openen)&quot; &amp; chr(160) &amp; &quot;&lt;[^/][^&gt;]+&gt;&quot;, _
-	&quot; HTML-tag (sluiten) &quot; &amp; chr(160) &amp; &quot;&lt;/[^&gt;]+&gt;&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Notities (gele ballonnen) - zoekt subtekenreeks in inhoud van notities&quot; &amp; chr(160) &amp; &quot;[::Comment::]&quot;, _
-	&quot; Tekstvelden - zoekt subtekenreeks in inhoud van velden&quot; &amp; chr(160) &amp; &quot;[::Field::]&quot;, _
-	&quot; Tekstframe - zoekt subtekenreeks in namen van frames&quot; &amp; chr(160) &amp; &quot;[::TextFrame::]&quot;, _
-	&quot; Tabel - zoekt subtekenreeks in namen van tabellen&quot; &amp; chr(160) &amp; &quot;[::TextTable::]&quot;, _
-	&quot; Afbeelding - zoekt subtekenreeks in namen van afbeeldingen&quot; &amp; chr(160) &amp; &quot;[::Picture::]&quot;, _
-	&quot; Voetnoot - tekst van anker; voeg \\ toe voor het zoeken in de inhoud van voetnoten&quot; &amp; chr(160) &amp; &quot;[::Footnote::]&quot;, _
-	&quot; Eindnoten - tekst van anker; voeg \\ toe voor het zoeken in de inhoud van eindnoten&quot; &amp; chr(160) &amp; &quot;[::Endnote::]&quot;, _
-	&quot; Markering kruisverwijzing (tekst); \\ voor zoeken in naam; \\\\ voor zoeken naar lege tekst&quot; &amp; chr(160) &amp; &quot;[::ReferenceMark::]&quot;, _
-	&quot; Kruisverwijzing (tekst); \\ voor zoeken in naam markering; \\\\ voor zoeken naar lege tekst&quot; &amp; chr(160) &amp; &quot;[::Reference::]&quot;, _
-	&quot; Bladwijzer - zoekt subtekenreeks in tekst van Bladwijzers; voeg \\ toe om te zoeken in namen&quot; &amp; chr(160) &amp; &quot;[::Bookmark::]&quot;,_
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;)
+	FINDEXT = array(&quot; Reeks alinea&apos;s (begrensd tussen begin- en eindemarkering) &quot; &amp;__SEP &amp; &quot;[::BigBlock::]&quot;, _
+	&quot; Breidt de gevonden selectie één teken naar beide zijden uit &quot; &amp;__SEP &amp; &quot;[::Grow 1,1::]&quot;, _
+	&quot; Voeg teken || toe voor meerdere vervangingen (in één stap)  &quot; &amp;__SEP &amp; &quot;||&quot;, _
+	 __SEPARATOR, _
+	&quot; Tekst tussen () (binnen één alinea)&quot; &amp;__SEP &amp; &quot;(\(([^\)])+\))&quot;, _
+	&quot; Tekst tussen [] (binnen één alinea)&quot; &amp;__SEP &amp; &quot;(\[([^\]])+\])&quot;, _
+	&quot; Tekst tussen {} (binnen één alinea)&quot; &amp;__SEP &amp; &quot;({([^}])+})&quot;, _
+	 __SEPARATOR, _
+	&quot; emailadres&quot; &amp;__SEP &amp; &quot;[a-zA-Z0-9_][-._a-zA-Z0-9_]*[a-zA-Z0-9_].?@[a-zA-Z0-9_][-._a-zA-Z0-9_]*[a-zA-Z0-9_]\.[a-zA-Z0-9_]{2,4}&quot;, _
+	&quot; Internet, URL, www-adres&quot; &amp;__SEP &amp; &quot;(((news|http|ftp|https|file):\/\/|www\.)[a-zA-Z0-9_]+((\.[a-zA-Z0-9_]+)+)(([a-zA-Z0-9_\-\.,@?^=%&amp;:/~\+#]*[a-zA-Z0-9_\-\@?^=%&amp;/~\+#])?))&quot;, _
+	&quot; HTML-tag&quot; &amp;__SEP &amp; &quot;(&lt;(&quot;&quot;[^&quot;&quot;]*&quot;&quot;|&apos;[^&apos;]*&apos;|[^&apos;&quot;&quot;&gt;])*&gt;)&quot;, _
+	&quot; HTML-tag (openen)&quot; &amp;__SEP &amp; &quot;&lt;[^/][^&gt;]+&gt;&quot;, _
+	&quot; HTML-tag (sluiten) &quot; &amp;__SEP &amp; &quot;&lt;/[^&gt;]+&gt;&quot;, _
+	 __SEPARATOR, _
+	&quot; Notities (gele ballonnen) - zoekt subtekenreeks in inhoud van notities&quot; &amp;__SEP &amp; &quot;[::Comment::]&quot;, _
+	&quot; Tekstvelden - zoekt subtekenreeks in inhoud van velden&quot; &amp;__SEP &amp; &quot;[::Field::]&quot;, _
+	&quot; Tekstframe - zoekt subtekenreeks in namen van frames&quot; &amp;__SEP &amp; &quot;[::TextFrame::]&quot;, _
+	&quot; Tabel - zoekt subtekenreeks in namen van tabellen&quot; &amp;__SEP &amp; &quot;[::TextTable::]&quot;, _
+	&quot; Afbeelding - zoekt subtekenreeks in namen van afbeeldingen&quot; &amp;__SEP &amp; &quot;[::Picture::]&quot;, _
+	&quot; Voetnoot - tekst van anker; voeg \\ toe voor het zoeken in de inhoud van voetnoten&quot; &amp;__SEP &amp; &quot;[::Footnote::]&quot;, _
+	&quot; Eindnoten - tekst van anker; voeg \\ toe voor het zoeken in de inhoud van eindnoten&quot; &amp;__SEP &amp; &quot;[::Endnote::]&quot;, _
+	&quot; Markering kruisverwijzing (tekst); \\ voor zoeken in naam; \\\\ voor zoeken naar lege tekst&quot; &amp;__SEP &amp; &quot;[::ReferenceMark::]&quot;, _
+	&quot; Kruisverwijzing (tekst); \\ voor zoeken in naam markering; \\\\ voor zoeken naar lege tekst&quot; &amp;__SEP &amp; &quot;[::Reference::]&quot;, _
+	&quot; Bladwijzer - zoekt subtekenreeks in tekst van Bladwijzers; voeg \\ toe om te zoeken in namen&quot; &amp;__SEP &amp; &quot;[::Bookmark::]&quot;,_
+	 __SEPARATOR)
 
 	for i = lbound(FINDEXT) to ubound(FINDEXT)
 		pom = FINDEXT(ubound(FINDEXT)-i)
-		pom = left(pom,instr(pom,chr(160)))
+		pom = left(pom,instr(pom,__SEP))
 		oDIAL.getcontrol(&quot;Cb_findExt&quot;).addItem(pom,0)
 	next i
 
-	FINDATR = array(&quot; Alineaopmaakprofiel&quot; &amp; chr(160) &amp; &quot;[:::ps::]&quot;, _
-	&quot; Tekenopmaakprofiel&quot; &amp; chr(160) &amp; &quot;[:::chs::]&quot;, _
-	&quot; Lijstopmaakprofiel&quot; &amp; chr(160) &amp; &quot;[:::ns::]&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Hyperlink&quot; &amp; chr(160) &amp; &quot;[:::HyperLinkURL::]&quot;, _
-	&quot; Hyperlink - subtekenreeks in URL &quot; &amp; chr(160) &amp; &quot;[:::HyperLinkURL=file:///::]&quot;,_
-	&quot; Cursief&quot; &amp; chr(160) &amp; &quot;[:::CharPosture::]&quot;, _
-	&quot; Vet&quot; &amp; chr(160) &amp; &quot;[:::CharWeight::]&quot;, _
-	&quot; Vet cursief&quot; &amp; chr(160) &amp; &quot;[:::CharPosture|CharWeight::]&quot;, _
-	&quot; Lettertype Naam (manual changed name)&quot; &amp; chr(160) &amp; &quot;[:::CharFontName::]&quot;, _
-	&quot; Lettertype Grootte&quot; &amp; chr(160) &amp; &quot;[:::CharHeight::]&quot;, _
-	&quot; Lettertype Kleur&quot; &amp; chr(160) &amp; &quot;[:::CharColor::]&quot;, _
-	&quot; Lettertype achtergrond (accentuering)&quot; &amp; chr(160) &amp; &quot;[:::CharBackColor::]&quot;, _
-	&quot; Onderstreept&quot; &amp; chr(160) &amp; &quot;[:::CharUnderline::]&quot;, _
-	&quot; Index (elke)&quot; &amp; chr(160) &amp; &quot;[:::CharEscapement::]&quot;, _
-	&quot; Subscript (Auto) &quot; &amp; chr(160) &amp; &quot;[:::CharAutoEscapement=true|CharEscapementHeight=58|CharEscapement=-101::]&quot;, _
-	&quot; Superscript (Auto) &quot; &amp; chr(160) &amp; &quot;[:::CharAutoEscapement=true|CharEscapementHeight=58|CharEscapement=101::]&quot;, _
-	&quot; Index gedefinieerd door lettergrootte en escapement &quot; &amp; chr(160) &amp; &quot;[:::CharEscapementHeight=70|CharEscapement=30::]&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Soortgelijke opmaak van tekens (gebaseerd op cursorpositie)&quot; &amp; chr(160) &amp; &quot;[:::p::]&quot;, _
-	&quot; Dezelfde opmaak van tekens (gebaseerd op cursorpositie)&quot; &amp; chr(160) &amp; &quot;[:::s::]&quot;)
+	FINDATR = array(&quot; Alineaopmaakprofiel&quot; &amp;__SEP &amp; &quot;[:::ps::]&quot;, _
+	&quot; Tekenopmaakprofiel&quot; &amp;__SEP &amp; &quot;[:::chs::]&quot;, _
+	&quot; Lijstopmaakprofiel&quot; &amp;__SEP &amp; &quot;[:::ns::]&quot;, _
+	 __SEPARATOR, _
+	&quot; Hyperlink&quot; &amp;__SEP &amp; &quot;[:::HyperLinkURL::]&quot;, _
+	&quot; Hyperlink - subtekenreeks in URL &quot; &amp;__SEP &amp; &quot;[:::HyperLinkURL=file:///::]&quot;,_
+	&quot; Cursief&quot; &amp;__SEP &amp; &quot;[:::CharPosture::]&quot;, _
+	&quot; Vet&quot; &amp;__SEP &amp; &quot;[:::CharWeight::]&quot;, _
+	&quot; Vet cursief&quot; &amp;__SEP &amp; &quot;[:::CharPosture|CharWeight::]&quot;, _
+	&quot; Lettertype Naam (manual changed name)&quot; &amp;__SEP &amp; &quot;[:::CharFontName::]&quot;, _
+	&quot; Lettertype Grootte&quot; &amp;__SEP &amp; &quot;[:::CharHeight::]&quot;, _
+	&quot; Lettertype Kleur&quot; &amp;__SEP &amp; &quot;[:::CharColor::]&quot;, _
+	&quot; Lettertype achtergrond (accentuering)&quot; &amp;__SEP &amp; &quot;[:::CharBackColor::]&quot;, _
+	&quot; Onderstreept&quot; &amp;__SEP &amp; &quot;[:::CharUnderline::]&quot;, _
+	&quot; Index (elke)&quot; &amp;__SEP &amp; &quot;[:::CharEscapement::]&quot;, _
+	&quot; Subscript (Auto) &quot; &amp;__SEP &amp; &quot;[:::CharAutoEscapement=true|CharEscapementHeight=58|CharEscapement=-101::]&quot;, _
+	&quot; Superscript (Auto) &quot; &amp;__SEP &amp; &quot;[:::CharAutoEscapement=true|CharEscapementHeight=58|CharEscapement=101::]&quot;, _
+	&quot; Index gedefinieerd door lettergrootte en escapement &quot; &amp;__SEP &amp; &quot;[:::CharEscapementHeight=70|CharEscapement=30::]&quot;, _
+	 __SEPARATOR, _
+	&quot; Soortgelijke opmaak van tekens (gebaseerd op cursorpositie)&quot; &amp;__SEP &amp; &quot;[:::p::]&quot;, _
+	&quot; Dezelfde opmaak van tekens (gebaseerd op cursorpositie)&quot; &amp;__SEP &amp; &quot;[:::s::]&quot;)
 
 	for i = lbound(FINDATR) to ubound(FINDATR)
 		pom = FINDATR(ubound(FINDATR)-i)
-		pom = left(pom,instr(pom,chr(160)))
+		pom = left(pom,instr(pom,__SEP))
 		oDIAL.getcontrol(&quot;Cb_findAtr&quot;).addItem(pom,0)
 	next i
 
-	REPLEXT = array(&quot; Gehele gevonden tekst                              &quot; &amp; chr(160) &amp; &quot;&amp;&quot;, _
-	&quot; Inhoud van beginmarkering (\b) of eindmarkering (\e), begrensde reeks alinea&apos;s &quot; &amp; chr(160) &amp; &quot;\b\e&quot;, _
-	&quot; Inhoud van 1ste groep, gevonden binnen () in zoekuitdrukking (max. \9)         &quot; &amp; chr(160) &amp; &quot;\1&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Einde van alinea (nieuwe alinea)                   &quot; &amp; chr(160) &amp; &quot;\p&quot;, _
-	&quot; Tabulator                                          &quot; &amp; chr(160) &amp; &quot;\t&quot;, _
-	&quot; Niet-afbrekende spatie                             &quot; &amp; chr(160) &amp; &quot;\S&quot;, _
-	&quot; Handmatig regeleinde                               &quot; &amp; chr(160) &amp; &quot;\n&quot;, _
-	&quot; Handmatig kolomeinde vóór                          &quot; &amp; chr(160) &amp; &quot;\c&quot;, _
-	&quot; Handmatig regeleinde vóór (na \M)                  &quot; &amp; chr(160) &amp; &quot;\m&quot;, _
-	&quot; Verwijder handmatig pagina- of kolomeinde          &quot; &amp; chr(160) &amp; &quot;\r&quot;, _
-	&quot; A ingevoegd met hexadecimale code, (decimaal \#65) &quot; &amp; chr(160) &amp; &quot;\x0041&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Instelling van URL van hyperlink&apos;s                 &quot; &amp; chr(160) &amp; &quot;\h{file///C:...}&quot;, _
-	&quot; Vervangen van gevonden subtekenreeks door &apos;subtekenreeks&apos; in URL&quot; &amp; chr(160) &amp; &quot;\H{subst}&quot;, _
-	&quot; Geeft de URL van de hyperlink van de gevonden koppeling &quot; &amp; chr(160) &amp; &quot;\u&quot;, _
-	&quot; Alinea-opmaakprofiel                               &quot; &amp; chr(160) &amp; &quot;\P{Text}&quot;, _
-	&quot; Tekenopmaakprofiel                                 &quot; &amp; chr(160) &amp; &quot;\C{Quotation}&quot;, _
-	&quot; Lijstopmaakprofiel                                 &quot; &amp; chr(160) &amp; &quot;\N{List 3}&quot;, _
-	&quot; Instellen van eigenschap object naar waarde        &quot; &amp; chr(160) &amp; &quot;\A{CharBackColor=&amp;Hffcc00}&quot;, _
-	&quot; Instellen standaardopmaak door tekenopmaakprofiel  &quot; &amp; chr(160) &amp; &quot;\D&quot;, _
-	&quot; ResetAttributes op de gebruikte plaats             &quot; &amp; chr(160) &amp; &quot;\d&quot;, _
-	&quot; Voetnoot invoegen                                  &quot; &amp; chr(160) &amp; &quot;\F{}&quot;, _
-	&quot; Eindnoot invoegen                                  &quot; &amp; chr(160) &amp; &quot;\E{}&quot;, _
-	&quot; Markering+tekst invoegen voor kruisverwijzing      &quot; &amp; chr(160) &amp; &quot;\B{ref1|text}&quot;, _
-	&quot; Kruisverwijzing voor markering invoegen            &quot; &amp; chr(160) &amp; &quot;\L{0,0,ref1}&quot;, _
-	&quot; Bladwijzer invoegen (w, b,e - blok, begin, einde)  &quot; &amp; chr(160) &amp; &quot;\K{w,BladwNaam}&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Tekstinhoud van object (frame, tabel, )            &quot; &amp; chr(160) &amp; &quot;\o&quot;, _
-	&quot; Naam van object (frame, tabel, afbeelding, )       &quot; &amp; chr(160) &amp; &quot;\O&quot;, _
-	&quot; Plak inhoud van Klembord (\V plakt alleen niet-opgemaakte tekst) &quot; &amp; chr(160) &amp; &quot;\v&quot;, _
-	&quot; Behoudt opmaak bij vervangen (vervangen &amp; via Klembord)          &quot; &amp; chr(160) &amp; &quot;\f&quot;, _
-	&quot; Telling van vervangingen invoegen (alleen met Alles vervangen)   &quot; &amp; chr(160) &amp; &quot;\i{1,3}&quot;, _
-	&quot; Paginanummer invoegen                                            &quot; &amp; chr(160) &amp; &quot;\I&quot;, _
-	&quot; Verplaatsen van vervangingsuitdrukking naar een ander bestand    &quot; &amp; chr(160) &amp; &quot;\R&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;)
+	REPLEXT = array(&quot; Gehele gevonden tekst                              &quot; &amp;__SEP &amp; &quot;&amp;&quot;, _
+	&quot; Inhoud van beginmarkering (\b) of eindmarkering (\e), begrensde reeks alinea&apos;s &quot; &amp;__SEP &amp; &quot;\b\e&quot;, _
+	&quot; Inhoud van 1ste groep, gevonden binnen () in zoekuitdrukking (max. \9)         &quot; &amp;__SEP &amp; &quot;\1&quot;, _
+	 __SEPARATOR, _
+	&quot; Einde van alinea (nieuwe alinea)                   &quot; &amp;__SEP &amp; &quot;\p&quot;, _
+	&quot; Tabulator                                          &quot; &amp;__SEP &amp; &quot;\t&quot;, _
+	&quot; Niet-afbrekende spatie                             &quot; &amp;__SEP &amp; &quot;\S&quot;, _
+	&quot; Handmatig regeleinde                               &quot; &amp;__SEP &amp; &quot;\n&quot;, _
+	&quot; Handmatig kolomeinde vóór                          &quot; &amp;__SEP &amp; &quot;\c&quot;, _
+	&quot; Handmatig regeleinde vóór (na \M)                  &quot; &amp;__SEP &amp; &quot;\m&quot;, _
+	&quot; Verwijder handmatig pagina- of kolomeinde          &quot; &amp;__SEP &amp; &quot;\r&quot;, _
+	&quot; A ingevoegd met hexadecimale code, (decimaal \#65) &quot; &amp;__SEP &amp; &quot;\x0041&quot;, _
+	 __SEPARATOR, _
+	&quot; Instelling van URL van hyperlink&apos;s                 &quot; &amp;__SEP &amp; &quot;\h{file///C:...}&quot;, _
+	&quot; Vervangen van gevonden subtekenreeks door &apos;subtekenreeks&apos; in URL&quot; &amp;__SEP &amp; &quot;\H{subst}&quot;, _
+	&quot; Geeft de URL van de hyperlink van de gevonden koppeling &quot; &amp;__SEP &amp; &quot;\u&quot;, _
+	&quot; Alinea-opmaakprofiel                               &quot; &amp;__SEP &amp; &quot;\P{Text}&quot;, _
+	&quot; Tekenopmaakprofiel                                 &quot; &amp;__SEP &amp; &quot;\C{Quotation}&quot;, _
+	&quot; Lijstopmaakprofiel                                 &quot; &amp;__SEP &amp; &quot;\N{List 3}&quot;, _
+	&quot; Instellen van eigenschap object naar waarde        &quot; &amp;__SEP &amp; &quot;\A{CharBackColor=&amp;Hffcc00}&quot;, _
+	&quot; Instellen standaardopmaak door tekenopmaakprofiel  &quot; &amp;__SEP &amp; &quot;\D&quot;, _
+	&quot; ResetAttributes op de gebruikte plaats             &quot; &amp;__SEP &amp; &quot;\d&quot;, _
+	&quot; Voetnoot invoegen                                  &quot; &amp;__SEP &amp; &quot;\F{}&quot;, _
+	&quot; Eindnoot invoegen                                  &quot; &amp;__SEP &amp; &quot;\E{}&quot;, _
+	&quot; Markering+tekst invoegen voor kruisverwijzing      &quot; &amp;__SEP &amp; &quot;\B{ref1|text}&quot;, _
+	&quot; Kruisverwijzing voor markering invoegen            &quot; &amp;__SEP &amp; &quot;\L{0,0,ref1}&quot;, _
+	&quot; Bladwijzer invoegen (w, b,e - blok, begin, einde)  &quot; &amp;__SEP &amp; &quot;\K{w,BladwNaam}&quot;, _
+	 __SEPARATOR, _
+	&quot; Tekstinhoud van object (frame, tabel, )            &quot; &amp;__SEP &amp; &quot;\o&quot;, _
+	&quot; Naam van object (frame, tabel, afbeelding, )       &quot; &amp;__SEP &amp; &quot;\O&quot;, _
+	&quot; Plak inhoud van Klembord (\V plakt alleen niet-opgemaakte tekst) &quot; &amp;__SEP &amp; &quot;\v&quot;, _
+	&quot; Behoudt opmaak bij vervangen (vervangen &amp; via Klembord)          &quot; &amp;__SEP &amp; &quot;\f&quot;, _
+	&quot; Telling van vervangingen invoegen (alleen met Alles vervangen)   &quot; &amp;__SEP &amp; &quot;\i{1,3}&quot;, _
+	&quot; Paginanummer invoegen                                            &quot; &amp;__SEP &amp; &quot;\I&quot;, _
+	&quot; Verplaatsen van vervangingsuitdrukking naar een ander bestand    &quot; &amp;__SEP &amp; &quot;\R&quot;, _
+	 __SEPARATOR)
 
 	oDIAL.getcontrol(&quot;Cb_replExt&quot;).addItems(REPLEXT,0)
 
@@ -189,6 +197,7 @@ Sub Load_nl
 	MSG(50) = &quot;Voer de geselecteerde batch uit met meerdere geopende tekstdocumenten&quot;
 	&apos;Sub testViewCursor
 	MSG(51) = &quot;The cursor is located in an unsupported object (like Comment), please click in the text.&quot;
+	MSG(52) = &quot;Too many objects. Ignoring the rest.&quot;
 
 	&apos; hoofddialoogvenster
 	with oDIAL.model

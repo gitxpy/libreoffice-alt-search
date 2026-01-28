@@ -5,130 +5,138 @@ Sub Load_fr
 	dim i as long
 	dim pom as string
 	on error resume next
-	FINDREG = array(&quot; Premier caractère d&apos;un paragraphe       &quot; &amp; chr(160) &amp; &quot;^.&quot;, _
-	&quot; Fin d&apos;un paragraphe                     &quot; &amp; chr(160) &amp; &quot;$&quot;, _
-	&quot; Paragraphe vide                         &quot; &amp; chr(160) &amp; &quot;^$&quot;, _
-	&quot; N&apos;importe quel texte dans un paragraphe &quot; &amp; chr(160) &amp; &quot;.*&quot;, _
-	&quot; N&apos;importe quelle lettre [:alpha:]{1,1}  &quot; &amp; chr(160) &amp; &quot;\l&quot;, _
-	&quot; N&apos;importe quel chiffre [0-9]            &quot; &amp; chr(160) &amp; &quot;\d&quot;, _
-	&quot; Début d&apos;un mot                          &quot; &amp; chr(160) &amp; &quot;\&lt;&quot;, _
-	&quot; Fin d&apos;un mot                            &quot; &amp; chr(160) &amp; &quot;\&gt;&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Paragraphe (marque de fin)              &quot; &amp; chr(160) &amp; &quot;\p&quot;, _
-	&quot; Série de paragraphes vides              &quot; &amp; chr(160) &amp; &quot;^$\p*&quot;, _
-	&quot; Tabulation                              &quot; &amp; chr(160) &amp; &quot;\t&quot;, _
-	&quot; Saut de ligne manuel                    &quot; &amp; chr(160) &amp; &quot;\n&quot;, _
-	&quot; Saut de colonne manuel                  &quot; &amp; chr(160) &amp; &quot;\c&quot;, _
-	&quot; Saut de page manuel                     &quot; &amp; chr(160) &amp; &quot;\m&quot;, _
-	&quot; N&apos;importe quel  espace [\xA0\x9\xA]     &quot; &amp; chr(160) &amp; &quot;\s&quot;, _
-	&quot; Espace insécable                        &quot; &amp; chr(160) &amp; &quot;\S&quot;, _
-	&quot; Tiret utilisateur                       &quot; &amp; chr(160) &amp; &quot;\x00AD&quot;, _
-	&quot; Tiret insécable                         &quot; &amp; chr(160) &amp; &quot;\x2011&quot;, _
-	&quot; A inséré en code décimal                &quot; &amp; chr(160) &amp; &quot;\#65&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Point                                   &quot; &amp; chr(160) &amp; &quot;\.&quot;, _
-	&quot; Parenthèses  ()                         &quot; &amp; chr(160) &amp; &quot;\(\)&quot;, _
-	&quot; Crochets []                             &quot; &amp; chr(160) &amp; &quot;\[\]&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;            &quot;)
+	FINDREG = array(&quot; Premier caractère d&apos;un paragraphe       &quot; &amp;__SEP &amp; &quot;^.&quot;, _
+	&quot; Fin d&apos;un paragraphe                     &quot; &amp;__SEP &amp; &quot;$&quot;, _
+	&quot; Paragraphe vide                         &quot; &amp;__SEP &amp; &quot;^$&quot;, _
+	&quot; Texte dans un paragraphe                &quot; &amp;__SEP &amp; &quot;.*&quot;, _
+	&quot; Lettre [:alpha:]{1,1}                   &quot; &amp;__SEP &amp; &quot;\l&quot;, _
+	&quot; Chiffre [0-9]                           &quot; &amp;__SEP &amp; &quot;\d&quot;, _
+	&quot; Début d&apos;un mot                          &quot; &amp;__SEP &amp; &quot;\&lt;&quot;, _
+	&quot; Fin d&apos;un mot                            &quot; &amp;__SEP &amp; &quot;\&gt;&quot;, _
+	 __SEPARATOR, _
+	&quot; Paragraphe (marque de fin)              &quot; &amp;__SEP &amp; &quot;\p&quot;, _
+	&quot; Série de paragraphes vides              &quot; &amp;__SEP &amp; &quot;^$\p*&quot;, _
+	&quot; Tabulation                              &quot; &amp;__SEP &amp; &quot;\t&quot;, _
+	&quot; Saut de ligne manuel                    &quot; &amp;__SEP &amp; &quot;\n&quot;, _
+	&quot; Saut de colonne manuel                  &quot; &amp;__SEP &amp; &quot;\c&quot;, _
+	&quot; Saut de page manuel                     &quot; &amp;__SEP &amp; &quot;\m&quot;, _
+	&quot; N&apos;importe quel  espace [\xA0\x9\xA]     &quot; &amp;__SEP &amp; &quot;\s&quot;, _
+	&quot; Espace insécable                        &quot; &amp;__SEP &amp; &quot;\S&quot;, _
+	&quot; Tiret utilisateur                       &quot; &amp;__SEP &amp; &quot;\x00AD&quot;, _
+	&quot; Tiret insécable                         &quot; &amp;__SEP &amp; &quot;\x2011&quot;, _
+	&quot; A inséré en code décimal                &quot; &amp;__SEP &amp; &quot;\#65&quot;, _
+	__SEPARATOR, _
+	&quot; Espaces visibles                        &quot; &amp;__SEP &amp; &quot;\y&quot;, _
+	&quot; Espaces usuels et largeur nulle         &quot; &amp;__SEP &amp; &quot;\Y&quot;, _
+	&quot; Tirets usuels                           &quot; &amp;__SEP &amp; &quot;\j&quot;, _
+	&quot; Tous tirets                             &quot; &amp;__SEP &amp; &quot;\J&quot;, _
+	&quot; Simple quotes                           &quot; &amp;__SEP &amp; &quot;\o&quot;, _
+	&quot; Double quotes                           &quot; &amp;__SEP &amp; &quot;\O&quot;, _
+	&quot; Toutes quotes                           &quot; &amp;__SEP &amp; &quot;\q&quot;, _
+	 __SEPARATOR, _
+	&quot; Point                                   &quot; &amp;__SEP &amp; &quot;\.&quot;, _
+	&quot; Parenthèses  ()                         &quot; &amp;__SEP &amp; &quot;\(\)&quot;, _
+	&quot; Crochets []                             &quot; &amp;__SEP &amp; &quot;\[\]&quot;, _
+	&quot; &quot; &amp;__SEP &amp; &quot;            &quot;)
 
 	oDIAL.getcontrol(&quot;Cb_findReg&quot;).addItems(FINDREG,0)
 
-	FINDEXT = array(&quot; Série de paragraphes (limités par les marques de début et de fin)&quot; &amp; chr(160) &amp; &quot;[::BigBlock::]&quot;, _
-	&quot; Étendre la sélection trouvée à un caractère de chaque côté&quot; &amp; chr(160) &amp; &quot;[::Grow 1,1::]&quot;, _
-	&quot; Ajout de || pour remplacement multiple (en une seule étape)&quot; &amp; chr(160) &amp; &quot;||&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Texte entre () (à l&apos;intérieur d&apos;un paragraphe)&quot; &amp; chr(160) &amp; &quot;(\(([^\)])+\))&quot;, _
-	&quot; Texte entre [] (à l&apos;intérieur d&apos;un paragraphe)&quot; &amp; chr(160) &amp; &quot;(\[([^\]])+\])&quot;, _
-	&quot; Texte entre {} (à l&apos;intérieur d&apos;un paragraphe)&quot; &amp; chr(160) &amp; &quot;({([^}])+})&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Adresse e-mail&quot; &amp; chr(160) &amp; &quot;[a-zA-Z0-9_][-._a-zA-Z0-9_]*[a-zA-Z0-9_].?@[a-zA-Z0-9_][-._a-zA-Z0-9_]*[a-zA-Z0-9_]\.[a-zA-Z0-9_]{2,4}&quot;, _
-	&quot; Internet, URL, adresse web&quot; &amp; chr(160) &amp; &quot;(((news|http|ftp|https|file):\/\/|www\.)[a-zA-Z0-9_]+((\.[a-zA-Z0-9_]+)+)(([a-zA-Z0-9_\-\.,@?^=%&amp;:/~\+#]*[a-zA-Z0-9_\-\@?^=%&amp;/~\+#])?))&quot;, _
-	&quot; Balise HTML&quot; &amp; chr(160) &amp; &quot;(&lt;(&quot;&quot;[^&quot;&quot;]*&quot;&quot;|&apos;[^&apos;]*&apos;|[^&apos;&quot;&quot;&gt;])*&gt;)&quot;, _
-	&quot; Ouverture d&apos;une balise HTML&quot; &amp; chr(160) &amp; &quot;&lt;[^/][^&gt;]+&gt;&quot;, _
-	&quot; Fermeture d&apos;une balise HTML&quot; &amp; chr(160) &amp; &quot;&lt;/[^&gt;]+&gt;&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Commentaires (bulles jaunes) – recherche sous-chaîne dans le contenu des commentaires.&quot; &amp; chr(160) &amp; &quot;[::Comment::]&quot;, _
-	&quot; Champ texte – Recherche sous-chaîne dans le contenu des champs)&quot; &amp; chr(160) &amp; &quot;[::Field::]&quot;, _
-	&quot; Champ cadre – Recherche sous-chaine dans le contenu des cadres)&quot; &amp; chr(160) &amp; &quot;[::TextFrame::]&quot;, _
-	&quot; Tableau – Recherche sous chaines dans les noms des tableaux&quot; &amp; chr(160) &amp; &quot;[::TextTable::]&quot;, _
-	&quot; Image - Recherche sous chaines dans les noms des images&quot; &amp; chr(160) &amp; &quot;[::Picture::]&quot;, _
-	&quot; Note bas de page – Texte de l&apos;ancre ; ajouter \\  pour rechercher dans les notes de bas de pages&quot; &amp; chr(160) &amp; &quot;[::Footnote::]&quot;, _
-	&quot; Note de fin - Texte de l&apos;ancre ; ajouter \\  pour rechercher dans les notes de fin&quot; &amp; chr(160) &amp; &quot;[::Endnote::]&quot;, _
-	&quot; Marque de renvoi (texte); \\pour rechercher dans les noms; \\\ pour rechercher un texte vide&quot; &amp; chr(160) &amp; &quot;[::ReferenceMark::]&quot;, _
-	&quot; Renvoi (texte); \\pour rechercher dans les noms de référence; \\\ pour rechercher un texte vide&quot; &amp; chr(160) &amp; &quot;[::Reference::]&quot;, _
-	&quot; Bookmark - searches substring in text of Bookmarks; add \\ for searches in Names&quot; &amp; chr(160) &amp; &quot;[::Bookmark::]&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;)
+	FINDEXT = array(&quot; Série de paragraphes (limités par les marques de début et de fin)&quot; &amp;__SEP &amp; &quot;[::BigBlock::]&quot;, _
+	&quot; Étendre la sélection trouvée à un caractère de chaque côté&quot; &amp;__SEP &amp; &quot;[::Grow 1,1::]&quot;, _
+	&quot; Ajout de || pour remplacement multiple (en une seule étape)&quot; &amp;__SEP &amp; &quot;||&quot;, _
+	 __SEPARATOR, _
+	&quot; Texte entre () (à l&apos;intérieur d&apos;un paragraphe)&quot; &amp;__SEP &amp; &quot;(\(([^\)])+\))&quot;, _
+	&quot; Texte entre [] (à l&apos;intérieur d&apos;un paragraphe)&quot; &amp;__SEP &amp; &quot;(\[([^\]])+\])&quot;, _
+	&quot; Texte entre {} (à l&apos;intérieur d&apos;un paragraphe)&quot; &amp;__SEP &amp; &quot;({([^}])+})&quot;, _
+	 __SEPARATOR, _
+	&quot; Adresse e-mail&quot; &amp;__SEP &amp; &quot;[a-zA-Z0-9_][-._a-zA-Z0-9_]*[a-zA-Z0-9_].?@[a-zA-Z0-9_][-._a-zA-Z0-9_]*[a-zA-Z0-9_]\.[a-zA-Z0-9_]{2,4}&quot;, _
+	&quot; Internet, URL, adresse web&quot; &amp;__SEP &amp; &quot;(((news|http|ftp|https|file):\/\/|www\.)[a-zA-Z0-9_]+((\.[a-zA-Z0-9_]+)+)(([a-zA-Z0-9_\-\.,@?^=%&amp;:/~\+#]*[a-zA-Z0-9_\-\@?^=%&amp;/~\+#])?))&quot;, _
+	&quot; Balise HTML&quot; &amp;__SEP &amp; &quot;(&lt;(&quot;&quot;[^&quot;&quot;]*&quot;&quot;|&apos;[^&apos;]*&apos;|[^&apos;&quot;&quot;&gt;])*&gt;)&quot;, _
+	&quot; Ouverture d&apos;une balise HTML&quot; &amp;__SEP &amp; &quot;&lt;[^/][^&gt;]+&gt;&quot;, _
+	&quot; Fermeture d&apos;une balise HTML&quot; &amp;__SEP &amp; &quot;&lt;/[^&gt;]+&gt;&quot;, _
+	 __SEPARATOR, _
+	&quot; Commentaires (bulles jaunes) – recherche sous-chaîne dans le contenu des commentaires.&quot; &amp;__SEP &amp; &quot;[::Comment::]&quot;, _
+	&quot; Champ texte – Recherche sous-chaîne dans le contenu des champs)&quot; &amp;__SEP &amp; &quot;[::Field::]&quot;, _
+	&quot; Champ cadre – Recherche sous-chaine dans le contenu des cadres)&quot; &amp;__SEP &amp; &quot;[::TextFrame::]&quot;, _
+	&quot; Tableau – Recherche sous chaines dans les noms des tableaux&quot; &amp;__SEP &amp; &quot;[::TextTable::]&quot;, _
+	&quot; Image - Recherche sous chaines dans les noms des images&quot; &amp;__SEP &amp; &quot;[::Picture::]&quot;, _
+	&quot; Note bas de page – Texte de l&apos;ancre ; ajouter \\  pour rechercher dans les notes de bas de pages&quot; &amp;__SEP &amp; &quot;[::Footnote::]&quot;, _
+	&quot; Note de fin - Texte de l&apos;ancre ; ajouter \\  pour rechercher dans les notes de fin&quot; &amp;__SEP &amp; &quot;[::Endnote::]&quot;, _
+	&quot; Marque de renvoi (texte); \\pour rechercher dans les noms; \\\ pour rechercher un texte vide&quot; &amp;__SEP &amp; &quot;[::ReferenceMark::]&quot;, _
+	&quot; Renvoi (texte); \\pour rechercher dans les noms de référence; \\\ pour rechercher un texte vide&quot; &amp;__SEP &amp; &quot;[::Reference::]&quot;, _
+	&quot; Bookmark - searches substring in text of Bookmarks; add \\ for searches in Names&quot; &amp;__SEP &amp; &quot;[::Bookmark::]&quot;, _
+	 __SEPARATOR)
 
 	for i = lbound(FINDEXT) to ubound(FINDEXT)
 		pom = FINDEXT(ubound(FINDEXT)-i)
-		pom = left(pom,instr(pom,chr(160)))
+		pom = left(pom,instr(pom,__SEP))
 		oDIAL.getcontrol(&quot;Cb_findExt&quot;).addItem(pom,0)
 	next i
 
-	FINDATR = array(&quot; Style de Paragraphe&quot; &amp; chr(160) &amp; &quot;[:::ps::]&quot;, _
-	&quot; Style de Caractères&quot; &amp; chr(160) &amp; &quot;[:::chs::]&quot;, _
-	&quot; style de Liste&quot; &amp; chr(160) &amp; &quot;[:::ns::]&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Hyperlien&quot; &amp; chr(160) &amp; &quot;[:::HyperLinkURL::]&quot;, _
-	&quot; Hyperlien – chaine dans un URL&quot; &amp; chr(160) &amp; &quot;[:::HyperLinkURL=file:///::]&quot;,_
-	&quot; italique&quot; &amp; chr(160) &amp; &quot;[:::CharPosture::]&quot;, _
-	&quot; Gras&quot; &amp; chr(160) &amp; &quot;[:::CharWeight::]&quot;, _
-	&quot; Gras italique&quot; &amp; chr(160) &amp; &quot;[:::CharPosture|CharWeight::]&quot;, _
-	&quot; Nom de police  (nom changé manuellement)&quot; &amp; chr(160) &amp; &quot;[:::CharFontName::]&quot;, _
-	&quot; Taille de police&quot; &amp; chr(160) &amp; &quot;[:::CharHeight::]&quot;, _
-	&quot; Couleur de police&quot; &amp; chr(160) &amp; &quot;[:::CharColor::]&quot;, _
-	&quot; Couleur d&apos;arrière plan (mise en évidence)&quot; &amp; chr(160) &amp; &quot;[:::CharBackColor::]&quot;, _
-	&quot; Soulignage&quot; &amp; chr(160) &amp; &quot;[:::CharUnderline::]&quot;, _
-	&quot; Index (tous)&quot; &amp; chr(160) &amp; &quot;[:::CharEscapement::]&quot;, _
-	&quot; Indice (Auto)&quot; &amp; chr(160) &amp; &quot;[:::CharAutoEscapement=true|CharEscapementHeight=58|CharEscapement=-101::]&quot;, _
-	&quot; Exposant (Auto)&quot; &amp; chr(160) &amp; &quot;[:::CharAutoEscapement=true|CharEscapementHeight=58|CharEscapement=101::]&quot;, _
-	&quot; Index défini par la taille et l&apos;échappement de police &quot; &amp; chr(160) &amp; &quot;[:::CharEscapementHeight=70|CharEscapement=30::]&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Format semblable de caractères (basé sur le curseur)&quot; &amp; chr(160) &amp; &quot;[:::p::]&quot;, _
-	&quot; Format identique de caractères (basé sur le curseur)&quot; &amp; chr(160) &amp; &quot;[:::s::]&quot;)
+	FINDATR = array(&quot; Style de Paragraphe&quot; &amp;__SEP &amp; &quot;[:::ps::]&quot;, _
+	&quot; Style de Caractères&quot; &amp;__SEP &amp; &quot;[:::chs::]&quot;, _
+	&quot; style de Liste&quot; &amp;__SEP &amp; &quot;[:::ns::]&quot;, _
+	 __SEPARATOR, _
+	&quot; Hyperlien&quot; &amp;__SEP &amp; &quot;[:::HyperLinkURL::]&quot;, _
+	&quot; Hyperlien – chaine dans un URL&quot; &amp;__SEP &amp; &quot;[:::HyperLinkURL=file:///::]&quot;,_
+	&quot; italique&quot; &amp;__SEP &amp; &quot;[:::CharPosture::]&quot;, _
+	&quot; Gras&quot; &amp;__SEP &amp; &quot;[:::CharWeight::]&quot;, _
+	&quot; Gras italique&quot; &amp;__SEP &amp; &quot;[:::CharPosture|CharWeight::]&quot;, _
+	&quot; Nom de police  (nom changé manuellement)&quot; &amp;__SEP &amp; &quot;[:::CharFontName::]&quot;, _
+	&quot; Taille de police&quot; &amp;__SEP &amp; &quot;[:::CharHeight::]&quot;, _
+	&quot; Couleur de police&quot; &amp;__SEP &amp; &quot;[:::CharColor::]&quot;, _
+	&quot; Couleur d&apos;arrière plan (mise en évidence)&quot; &amp;__SEP &amp; &quot;[:::CharBackColor::]&quot;, _
+	&quot; Soulignage&quot; &amp;__SEP &amp; &quot;[:::CharUnderline::]&quot;, _
+	&quot; Index (tous)&quot; &amp;__SEP &amp; &quot;[:::CharEscapement::]&quot;, _
+	&quot; Indice (Auto)&quot; &amp;__SEP &amp; &quot;[:::CharAutoEscapement=true|CharEscapementHeight=58|CharEscapement=-101::]&quot;, _
+	&quot; Exposant (Auto)&quot; &amp;__SEP &amp; &quot;[:::CharAutoEscapement=true|CharEscapementHeight=58|CharEscapement=101::]&quot;, _
+	&quot; Index défini par la taille et l&apos;échappement de police &quot; &amp;__SEP &amp; &quot;[:::CharEscapementHeight=70|CharEscapement=30::]&quot;, _
+	 __SEPARATOR, _
+	&quot; Format semblable de caractères (basé sur le curseur)&quot; &amp;__SEP &amp; &quot;[:::p::]&quot;, _
+	&quot; Format identique de caractères (basé sur le curseur)&quot; &amp;__SEP &amp; &quot;[:::s::]&quot;)
 
 	for i = lbound(FINDATR) to ubound(FINDATR)
 		pom = FINDATR(ubound(FINDATR)-i)
-		pom = left(pom,instr(pom,chr(160)))
+		pom = left(pom,instr(pom,__SEP))
 		oDIAL.getcontrol(&quot;Cb_findAtr&quot;).addItem(pom,0)
 	next i
 
-	REPLEXT = array(&quot; Tout le texte trouvé                                                                              &quot; &amp; chr(160) &amp; &quot;&amp;&quot;, _
-	&quot; Contenu entre la marque de début (\b) ou de fin (\e), pour un délimitant des séries de paragraphes&quot; &amp; chr(160) &amp; &quot;\b\e&quot;, _
-	&quot; Contenu du 1er groupe, trouvé à l&apos;intérieur de () dans l&apos;expression de recherche (max.\9)         &quot; &amp; chr(160) &amp; &quot;\1&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Fin du paragraphe (Nouveau paragraphe)    &quot; &amp; chr(160) &amp; &quot;\p&quot;, _
-	&quot; Tabulation                                &quot; &amp; chr(160) &amp; &quot;\t&quot;, _
-	&quot; Espace insécable                          &quot; &amp; chr(160) &amp; &quot;\S&quot;, _
-	&quot; Saut de ligne manuel                      &quot; &amp; chr(160) &amp; &quot;\n&quot;, _
-	&quot; Saut de colonne manuel                    &quot; &amp; chr(160) &amp; &quot;\c&quot;, _
-	&quot; Saut de page manuel avant (après \M)      &quot; &amp; chr(160) &amp; &quot;\m&quot;, _
-	&quot; Suppression des sauts de pages ou colonnes&quot; &amp; chr(160) &amp; &quot;\r&quot;, _
-	&quot; &apos;A&apos; inséré par code hexa, (décimal \#65)  &quot; &amp; chr(160) &amp; &quot;\x0041&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Paramétrer l&apos;URL de l&apos;hyperlien                    &quot; &amp; chr(160) &amp; &quot;\h{file///C:...}&quot;, _
-	&quot; Remplacer substr. par &apos;sous chaine dans les URL    &quot; &amp; chr(160) &amp; &quot;\H{subst}&quot;, _
-	&quot; Renvoi l&apos;URL d&apos;hyperlien du lien trouvé            &quot; &amp; chr(160) &amp; &quot;\u&quot;, _
-	&quot; Style de paragraphe                                &quot; &amp; chr(160) &amp; &quot;\P{Text}&quot;, _
-	&quot; Style de character                                 &quot; &amp; chr(160) &amp; &quot;\C{Quotation}&quot;, _
-	&quot; Style de liste                                     &quot; &amp; chr(160) &amp; &quot;\N{List 3}&quot;, _
-	&quot; Paramétrer la propriété de l&apos;objet à évaluer       &quot; &amp; chr(160) &amp; &quot;\A{CharBackColor=&amp;Hffcc00}&quot;, _
-	&quot; Paramétrer le style de caractère par défaut        &quot; &amp; chr(160) &amp; &quot;\D&quot;, _
-	&quot; Restaurer les attributs à la place de ceux utilisés&quot; &amp; chr(160) &amp; &quot;\d&quot;, _
-	&quot; Insère une note bas de page                        &quot; &amp; chr(160) &amp; &quot;\F{}&quot;, _
-	&quot; Insère une note de fin                             &quot; &amp; chr(160) &amp; &quot;\E{}&quot;, _
-	&quot; Insérer une marque + le texte d&apos;un renvoi          &quot; &amp; chr(160) &amp; &quot;\B{ref1|text}&quot;, _
-	&quot; Insérer un renvoi à la marque                      &quot; &amp; chr(160) &amp; &quot;\L{0,0,ref1}&quot;, _
-	&quot; Insert Bookmark (w, b,e - Block, to Start, to End) &quot; &amp; chr(160) &amp; &quot;\K{w,BookmName}&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;, _
-	&quot; Contenu de texte d&apos;un objet (cadre, table,)        &quot; &amp; chr(160) &amp; &quot;\o&quot;, _
-	&quot; Nom de l&apos;objet (cadre, table, image,)              &quot; &amp; chr(160) &amp; &quot;\O&quot;, _
-	&quot; Copier le contenu du presse-papier (\V colle du texte non formatté seulement)     &quot; &amp; chr(160) &amp; &quot;\v&quot;, _
-	&quot; Conserver le formatage lors du remplacement (remplacement &amp; par le presse papier) &quot; &amp; chr(160) &amp; &quot;\f&quot;, _
-	&quot; Insérer le nombre de remplacement (seulement avec tout remplacer)                 &quot; &amp; chr(160) &amp; &quot;\i{1,3}&quot;, _
-	&quot; Insérer un numéro de page                                                         &quot; &amp; chr(160) &amp; &quot;\I&quot;, _
-	&quot; Rediriger les expressions de remplacement vers un autre fichier                   &quot; &amp; chr(160) &amp; &quot;\R&quot;, _
-	&quot; &quot; &amp; chr(160) &amp; &quot;&quot;)
+	REPLEXT = array(&quot; Tout le texte trouvé                                                                              &quot; &amp;__SEP &amp; &quot;&amp;&quot;, _
+	&quot; Contenu entre la marque de début (\b) ou de fin (\e), pour un délimitant des séries de paragraphes&quot; &amp;__SEP &amp; &quot;\b\e&quot;, _
+	&quot; Contenu du 1er groupe, trouvé à l&apos;intérieur de () dans l&apos;expression de recherche (max.\9)         &quot; &amp;__SEP &amp; &quot;\1&quot;, _
+	 __SEPARATOR, _
+	&quot; Fin du paragraphe (Nouveau paragraphe)    &quot; &amp;__SEP &amp; &quot;\p&quot;, _
+	&quot; Tabulation                                &quot; &amp;__SEP &amp; &quot;\t&quot;, _
+	&quot; Espace insécable                          &quot; &amp;__SEP &amp; &quot;\S&quot;, _
+	&quot; Saut de ligne manuel                      &quot; &amp;__SEP &amp; &quot;\n&quot;, _
+	&quot; Saut de colonne manuel                    &quot; &amp;__SEP &amp; &quot;\c&quot;, _
+	&quot; Saut de page manuel avant (après \M)      &quot; &amp;__SEP &amp; &quot;\m&quot;, _
+	&quot; Suppression des sauts de pages ou colonnes&quot; &amp;__SEP &amp; &quot;\r&quot;, _
+	&quot; &apos;A&apos; inséré par code hexa, (décimal \#65)  &quot; &amp;__SEP &amp; &quot;\x0041&quot;, _
+	 __SEPARATOR, _
+	&quot; Paramétrer l&apos;URL de l&apos;hyperlien                    &quot; &amp;__SEP &amp; &quot;\h{file///C:...}&quot;, _
+	&quot; Remplacer substr. par &apos;sous chaine dans les URL    &quot; &amp;__SEP &amp; &quot;\H{subst}&quot;, _
+	&quot; Renvoi l&apos;URL d&apos;hyperlien du lien trouvé            &quot; &amp;__SEP &amp; &quot;\u&quot;, _
+	&quot; Style de paragraphe                                &quot; &amp;__SEP &amp; &quot;\P{Text}&quot;, _
+	&quot; Style de character                                 &quot; &amp;__SEP &amp; &quot;\C{Quotation}&quot;, _
+	&quot; Style de liste                                     &quot; &amp;__SEP &amp; &quot;\N{List 3}&quot;, _
+	&quot; Paramétrer la propriété de l&apos;objet à évaluer       &quot; &amp;__SEP &amp; &quot;\A{CharBackColor=&amp;Hffcc00}&quot;, _
+	&quot; Paramétrer le style de caractère par défaut        &quot; &amp;__SEP &amp; &quot;\D&quot;, _
+	&quot; Restaurer les attributs à la place de ceux utilisés&quot; &amp;__SEP &amp; &quot;\d&quot;, _
+	&quot; Insère une note bas de page                        &quot; &amp;__SEP &amp; &quot;\F{}&quot;, _
+	&quot; Insère une note de fin                             &quot; &amp;__SEP &amp; &quot;\E{}&quot;, _
+	&quot; Insérer une marque + le texte d&apos;un renvoi          &quot; &amp;__SEP &amp; &quot;\B{ref1|text}&quot;, _
+	&quot; Insérer un renvoi à la marque                      &quot; &amp;__SEP &amp; &quot;\L{0,0,ref1}&quot;, _
+	&quot; Insert Bookmark (w, b,e - Block, to Start, to End) &quot; &amp;__SEP &amp; &quot;\K{w,BookmName}&quot;, _
+	 __SEPARATOR, _
+	&quot; Contenu de texte d&apos;un objet (cadre, table,)        &quot; &amp;__SEP &amp; &quot;\o&quot;, _
+	&quot; Nom de l&apos;objet (cadre, table, image,)              &quot; &amp;__SEP &amp; &quot;\O&quot;, _
+	&quot; Copier le contenu du presse-papier (\V colle du texte non formatté seulement)     &quot; &amp;__SEP &amp; &quot;\v&quot;, _
+	&quot; Conserver le formatage lors du remplacement (remplacement &amp; par le presse papier) &quot; &amp;__SEP &amp; &quot;\f&quot;, _
+	&quot; Insérer le nombre de remplacement (seulement avec tout remplacer)                 &quot; &amp;__SEP &amp; &quot;\i{1,3}&quot;, _
+	&quot; Insérer un numéro de page                                                         &quot; &amp;__SEP &amp; &quot;\I&quot;, _
+	&quot; Rediriger les expressions de remplacement vers un autre fichier                   &quot; &amp;__SEP &amp; &quot;\R&quot;, _
+	 __SEPARATOR)
 
 	oDIAL.getcontrol(&quot;Cb_replExt&quot;).addItems(REPLEXT,0)
 
@@ -189,6 +197,7 @@ Sub Load_fr
 	MSG(50) = &quot;Exécuter le lot sélectionné sur plus de documents ouverts&quot;
 	&apos;Sub testViewCursor
 	MSG(51) = &quot;Le curseur est situé dans un objet non supporté (par ex. Commentaire), veuillez cliquer dans le texte.&quot;
+	MSG(52) = &quot;Trop d&apos;objets. Ignorer les suivants.&quot;
 
 	&apos; main dialog
 	with oDIAL.model
@@ -261,7 +270,7 @@ Sub Load_fr
 
 	&apos; dialog D_keys  &apos;v1.2
 	with oDIALSH.model
-		.Lb1.Label            =&quot;1. Selectionner le nome du lot dans le menu déroulant&quot;
+		.Lb1.Label            =&quot;1. Selectionner le nom du lot dans le menu déroulant&quot;
 		.Lb2.Label            =&quot;2. si besoin, changer le nom de la procédure auxiliaire Basic&quot;
 		.Lb3.Label            =&quot;3. définir le raccourci clavier &quot;
 		.Lb4.Label            =&quot;Utilisé comme fonction:&quot;
@@ -269,7 +278,7 @@ Sub Load_fr
 		.Cb_bas.HelpText      =&quot;Seulement permis : _ A..Z a..z 0..9. Ne doit pas commencer par un chiffre&quot;
 		.Bt_assign.HelpText   =&quot;Assigner un raccourci à la procédure auxiliaire et au nom du lot&quot;
 		.Bt_assign.Label      =&quot;Assigner&quot;
-		.Bt_clear.HelpText    =&quot;Release raccourci sélectionné&quot;
+		.Bt_clear.HelpText    =&quot;Supprimer le raccourci sélectionné&quot;
 		.Bt_basremove.HelpText=&quot;Supprimer la procédure auxiliaire pour le raccourci&quot;
 		.title           = MSG(41)
 		.Bt_close.Label  = oDIAL.model.Bt_close.Label
