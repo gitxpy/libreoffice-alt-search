@@ -26,13 +26,13 @@ Sub Load_es
 	&quot; Guión de no separación          &quot; &amp;__SEP &amp; &quot;\x2011&quot;, _
 	&quot; letra en código decimal (A)     &quot; &amp;__SEP &amp; &quot;\#65&quot;, _
 	__SEPARATOR, _
-	&quot; Visible spaces only        &quot; &amp;__SEP &amp; &quot;\y&quot;, _
-	&quot; Common spaces, zero-width  &quot; &amp;__SEP &amp; &quot;\Y&quot;, _
-	&quot; Common hyphens/dashes      &quot; &amp;__SEP &amp; &quot;\j&quot;, _
-	&quot; All hyphens/dashes         &quot; &amp;__SEP &amp; &quot;\J&quot;, _
-	&quot; Single quotes              &quot; &amp;__SEP &amp; &quot;\o&quot;, _
-	&quot; Double quotes              &quot; &amp;__SEP &amp; &quot;\O&quot;, _
-	&quot; All quotes                 &quot; &amp;__SEP &amp; &quot;\q&quot;, _
+	&quot; Solo espacios visibles          &quot; &amp;__SEP &amp; &quot;\y&quot;, _
+	&quot; Espacios normales y ancho cero  &quot; &amp;__SEP &amp; &quot;\Y&quot;, _
+	&quot; Guiones normales y separación   &quot; &amp;__SEP &amp; &quot;\j&quot;, _
+	&quot; Todos los guioness              &quot; &amp;__SEP &amp; &quot;\J&quot;, _
+	&quot; Comillas sencillas              &quot; &amp;__SEP &amp; &quot;\o&quot;, _
+	&quot; Comillas dobles                 &quot; &amp;__SEP &amp; &quot;\O&quot;, _
+	&quot; Todas las comillas              &quot; &amp;__SEP &amp; &quot;\q&quot;, _
 	 __SEPARATOR, _
 	&quot; Punto                           &quot; &amp;__SEP &amp; &quot;\.&quot;, _
 	&quot; Paréntesis  ( )                 &quot; &amp;__SEP &amp; &quot;\(\)&quot;, _
