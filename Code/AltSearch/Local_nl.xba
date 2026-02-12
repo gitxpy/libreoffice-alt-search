@@ -5,6 +5,8 @@ Sub Load_nl
 	REM test: ěščřžýáíé юертыъшчщжі
 	dim i as long
 	dim pom as string
+	on error resume next
+
 	FINDREG = array(&quot; Eerste teken van een alinea       &quot; &amp;__SEP &amp; &quot;^.&quot;, _
 	&quot; Einde van een alinea              &quot; &amp;__SEP &amp; &quot;$&quot;, _
 	&quot; Lege alinea                       &quot; &amp;__SEP &amp; &quot;^$&quot;, _
@@ -201,7 +203,6 @@ Sub Load_nl
 
 	&apos; hoofddialoogvenster
 	with oDIAL.model
-
 		.title = MSG(11) &amp; VERSION
 		oDIAL.getcontrol(&quot;Cb_replAtr&quot;).addItem(MSG(22),0)  &apos; Kies eigenschappen met knop
 
@@ -257,6 +258,9 @@ Sub Load_nl
 		&apos;v1.2
 		.Bt_short.HelpText   =&quot;Sneltoets toewijzen aan batch&quot;
 		.Bt_short.Label      =&quot;Sneltoetsen&quot;
+
+		.Bt_moreFiles.HelpText=MSG(50)  &amp;  &quot;.&quot;
+		.Bt_moreFiles.Label   =&quot;Multiple Execute &gt;&gt;&quot;
 	end with
 
 	&apos; keuze dialoogvenster

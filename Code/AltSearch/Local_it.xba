@@ -6,6 +6,7 @@ Sub Load_it
 	dim i as long
 	dim pom as string
 	on error resume next
+
 	FINDREG = array(&quot; Primo carattere di un paragrafo  &quot; &amp;__SEP &amp; &quot;^.&quot;, _
 	&quot; Fine paragrafo                   &quot; &amp;__SEP &amp; &quot;$&quot;, _
 	&quot; Paragrafo vuoto                  &quot; &amp;__SEP &amp; &quot;^$&quot;, _
@@ -202,7 +203,6 @@ Sub Load_it
 
 	&apos; main dialog
 	with oDIAL.model
-
 		.title = MSG(11) &amp; VERSION
 		oDIAL.getcontrol(&quot;Cb_replAtr&quot;).addItem(MSG(22),0)  &apos; Pick properties by button
 

@@ -2,9 +2,11 @@
 <!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
 <script:module xmlns:script="http://openoffice.org/2000/script" script:name="Local_de" script:language="StarBasic" script:moduleType="normal">REM  *****  BASIC  *****
 Sub Load_de
+
 	dim i as long
 	dim pom as string
 	on error resume next
+
 	FINDREG = array(&quot; Erstes Zeichen eines Absatzes  &quot; &amp;__SEP &amp; &quot;^.&quot;, _
 	&quot; Ende eines Absatzes            &quot; &amp;__SEP &amp; &quot;$&quot;, _
 	&quot; Leerer Absatz                  &quot; &amp;__SEP &amp; &quot;^$&quot;, _
@@ -100,7 +102,6 @@ Sub Load_de
 		pom = left(pom,instr(pom,__SEP))
 		oDIAL.getcontrol(&quot;Cb_findAtr&quot;).addItem(pom,0)
 	next i
-
 
 	REPLEXT = array(&quot; Gefundener Text                          &quot; &amp;__SEP &amp; &quot;&amp;&quot;, _
 	&quot; Inhalt von Start-Mark. (\b) bis End-Mark. (\e), die eine Absatz-Folge definieren &quot; &amp;__SEP &amp; &quot;\b\e&quot;, _
@@ -202,7 +203,6 @@ Sub Load_de
 
 	&apos; main dialog
 	with oDIAL.model
-
 		.title = MSG(11) &amp; VERSION
 		oDIAL.getcontrol(&quot;Cb_replAtr&quot;).addItem(MSG(22),0)  &apos; Pick properties by button
 
@@ -257,7 +257,10 @@ Sub Load_de
 		.Cb_swfind.Label     =&quot;&lt;&lt; Suche ...&quot;
 		&apos;v1.2
 		.Bt_short.HelpText   =&quot;Assign key shortcut to batch&quot;
-		.Bt_short.Label      =&quot;Key shortcuts&quot; &apos;v1.2
+		.Bt_short.Label      =&quot;Key shortcuts&quot;
+
+		.Bt_moreFiles.HelpText=MSG(50)  &amp;  &quot;.&quot;
+		.Bt_moreFiles.Label   =&quot;Multiple Execute &gt;&gt;&quot;
 	end with
 
 	&apos; dialog choice
@@ -281,6 +284,7 @@ Sub Load_de
 		.Bt_assign.Label      =&quot;Assign&quot;
 		.Bt_clear.HelpText    =&quot;Release selected key shortcut&quot;
 		.Bt_basremove.HelpText=&quot;Remove auxiliary BASIC subroutine for batch shortcut&quot;
+
 		.title           = MSG(41)
 		.Bt_close.Label  = oDIAL.model.Bt_close.Label
 	end with

@@ -76,7 +76,7 @@ Sub Load_en
 	next i
 
 	FINDATR = array(&quot; Paragraph style&quot; &amp;__SEP &amp; &quot;[:::ps::]&quot;, _
-	&quot; Charcter style&quot; &amp;__SEP &amp; &quot;[:::chs::]&quot;, _
+	&quot; Character style&quot; &amp;__SEP &amp; &quot;[:::chs::]&quot;, _
 	&quot; List style&quot; &amp;__SEP &amp; &quot;[:::ns::]&quot;, _
 	__SEPARATOR, _
 	&quot; Hyperlink&quot; &amp;__SEP &amp; &quot;[:::HyperLinkURL::]&quot;, _
@@ -145,12 +145,12 @@ Sub Load_en
 	&apos; messages
 	MSG(0)  = &quot;Next occurrence of searched expression&quot;
 	MSG(1)  = &quot;not found. &quot;
-	MSG(2)  = &quot;Searching inside of selection has been finished. &quot;
+	MSG(2)  = &quot;Searching inside of selection completed. &quot;
 	MSG(3)  = &quot;End of document reached. Continue searching from start? &quot;
 	MSG(4)  = &quot;Start of document reached. Continue searching from end? &quot;
-	MSG(5)  = &quot;It is impossible to find text in this object. &quot;
-	MSG(6)  = &quot;In current document, there is no object like this. &quot;
-	MSG(7)  = &quot; (ESC in document for interrupt) - Found paragraphs/loop: &quot;
+	MSG(5)  = &quot;Impossible to find text in this object. &quot;
+	MSG(6)  = &quot;In current document, no object like this. &quot;
+	MSG(7)  = &quot; (ESC in document to interrupt) - Found paragraphs/loop: &quot;
 	MSG(8)  = &quot;Interrupt&quot;
 	MSG(9)  = &quot;Close&quot;
 	MSG(10) = &quot;Unsupported properties. &quot;
@@ -160,12 +160,12 @@ Sub Load_en
 	MSG(14) = &quot;was found  &quot;
 	MSG(15) = &quot;  times. &quot;
 	MSG(16) = &quot;   Found: &quot;
-	MSG(17) = &quot;File of Help is impossible to open. &quot;
-	MSG(18) = &quot;It is impossible to select more than one object this type &quot;
+	MSG(17) = &quot;File of Help not found.&quot;
+	MSG(18) = &quot;Iimpossible to select more than one object of this type &quot;
 	MSG(19) = &quot;Selection of all found expressions can take a long time and destroy &apos;Highlighting&apos;, if it is used in this document, with no possibility to &apos;Undo&apos;. &quot;  &amp;  chr(10)  &amp;  chr(10)  &amp;  &quot; Do you really want to use Find All? &quot;
 	MSG(20) = &quot;Style   &apos;&quot;
 	MSG(21) = &quot;&apos;   isn&apos;t included in current document. &quot;
-	MSG(22) = &quot;&lt;&lt; use button to the left for refresh this list &lt;&lt;&quot;
+	MSG(22) = &quot;&lt;&lt; use left button to refresh this list &lt;&lt;&quot;
 	MSG(23) = &quot;Count of unsuccessful setting of properties:  &quot;
 	MSG(24) = &quot;New search&quot;
 	MSG(25) = &quot;Batch &quot; &amp; chr(10) &amp;  &quot;&apos;^^&apos;&quot;  &amp; chr(10) &amp;  &quot;already exists.&quot;

@@ -2,9 +2,11 @@
 <!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
 <script:module xmlns:script="http://openoffice.org/2000/script" script:name="Local_es" script:language="StarBasic" script:moduleType="normal">REM  *****  BASIC  *****
 Sub Load_es
+
 	dim i as long
 	dim pom as string
 	on error resume next
+
 	FINDREG = array(&quot; Primer caracter del párrafo     &quot; &amp;__SEP &amp; &quot;^.&quot;, _
 	&quot; Fin de párrafo                  &quot; &amp;__SEP &amp; &quot;$&quot;, _
 	&quot; Párrafo vacio                   &quot; &amp;__SEP &amp; &quot;^$&quot;, _
@@ -282,6 +284,7 @@ Sub Load_es
 		.Bt_assign.Label      =&quot;Asignar&quot;
 		.Bt_clear.HelpText    =&quot;Quita el atajo de teclado seleccionado&quot;
 		.Bt_basremove.HelpText=&quot;Elimina la macro auxiliar para el atajo de teclado&quot;
+
 		.title           = MSG(41)
 		.Bt_close.Label  = oDIAL.model.Bt_close.Label
 	end with

@@ -2,9 +2,11 @@
 <!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
 <script:module xmlns:script="http://openoffice.org/2000/script" script:name="Local_fr" script:language="StarBasic" script:moduleType="normal">REM  *****  BASIC  *****
 Sub Load_fr
+	REM Charset: UTF-8 
 	dim i as long
 	dim pom as string
 	on error resume next
+
 	FINDREG = array(&quot; Premier caractère d&apos;un paragraphe       &quot; &amp;__SEP &amp; &quot;^.&quot;, _
 	&quot; Fin d&apos;un paragraphe                     &quot; &amp;__SEP &amp; &quot;$&quot;, _
 	&quot; Paragraphe vide                         &quot; &amp;__SEP &amp; &quot;^$&quot;, _
@@ -201,7 +203,6 @@ Sub Load_fr
 
 	&apos; main dialog
 	with oDIAL.model
-
 		.title = MSG(11) &amp; VERSION
 		oDIAL.getcontrol(&quot;Cb_replAtr&quot;).addItem(MSG(22),0)  &apos; Pick properties by button
 
@@ -256,7 +257,10 @@ Sub Load_fr
 		.Cb_swfind.Label     = &quot;&lt;&lt;Rech.en cours&quot;
 		&apos;v1.2
 		.Bt_short.HelpText   =&quot;Assigner raccourci au lot&quot;
-		.Bt_short.Label      =&quot;Raccourcis&quot; &apos;v1.2
+		.Bt_short.Label      =&quot;Raccourcis&quot;
+		
+		.Bt_moreFiles.HelpText=MSG(50)  &amp;  &quot;.&quot;
+		.Bt_moreFiles.Label   =&quot;Execution Multiple &gt;&gt;&quot;
 	end with
 
 	&apos; dialog choice
@@ -280,6 +284,7 @@ Sub Load_fr
 		.Bt_assign.Label      =&quot;Assigner&quot;
 		.Bt_clear.HelpText    =&quot;Supprimer le raccourci sélectionné&quot;
 		.Bt_basremove.HelpText=&quot;Supprimer la procédure auxiliaire pour le raccourci&quot;
+
 		.title           = MSG(41)
 		.Bt_close.Label  = oDIAL.model.Bt_close.Label
 	end with
