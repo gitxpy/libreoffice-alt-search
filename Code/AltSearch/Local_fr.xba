@@ -77,11 +77,12 @@ Sub Load_fr
 
 	FINDATR = array(&quot; Style de Paragraphe&quot; &amp;__SEP &amp; &quot;[:::ps::]&quot;, _
 	&quot; Style de Caractères&quot; &amp;__SEP &amp; &quot;[:::chs::]&quot;, _
-	&quot; style de Liste&quot; &amp;__SEP &amp; &quot;[:::ns::]&quot;, _
+	&quot; Style de Liste&quot; &amp;__SEP &amp; &quot;[:::ns::]&quot;, _
+	&quot; Marque d&apos;index&quot; &amp;__SEP &amp; &quot;[:::DocumentIndexMark=::]&quot;, _
 	 __SEPARATOR, _
 	&quot; Hyperlien&quot; &amp;__SEP &amp; &quot;[:::HyperLinkURL::]&quot;, _
 	&quot; Hyperlien – chaine dans un URL&quot; &amp;__SEP &amp; &quot;[:::HyperLinkURL=file:///::]&quot;,_
-	&quot; italique&quot; &amp;__SEP &amp; &quot;[:::CharPosture::]&quot;, _
+	&quot; Italique&quot; &amp;__SEP &amp; &quot;[:::CharPosture::]&quot;, _
 	&quot; Gras&quot; &amp;__SEP &amp; &quot;[:::CharWeight::]&quot;, _
 	&quot; Gras italique&quot; &amp;__SEP &amp; &quot;[:::CharPosture|CharWeight::]&quot;, _
 	&quot; Nom de police  (nom changé manuellement)&quot; &amp;__SEP &amp; &quot;[:::CharFontName::]&quot;, _

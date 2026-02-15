@@ -78,7 +78,7 @@ Sub Load_es
 	FINDATR = array(&quot; Estilo de Párrafo&quot; &amp;__SEP &amp; &quot;[:::ps::]&quot;, _
 	&quot; Estilo de Carácter&quot; &amp;__SEP &amp; &quot;[:::chs::]&quot;, _
 	&quot; Estilo de Lista&quot; &amp;__SEP &amp; &quot;[:::ns::]&quot;, _
-    &quot; Marca de índice&quot; &amp;__SEP &amp; &quot;[:::DocumentIndexMark=::]&quot;, _
+	&quot; Marca de índice&quot; &amp;__SEP &amp; &quot;[:::DocumentIndexMark=::]&quot;, _
 	 __SEPARATOR, _
 	&quot; Hiperenlace&quot; &amp;__SEP &amp; &quot;[:::HyperLinkURL::]&quot;, _
 	&quot; Hiperenlace - cadena en URL&quot; &amp;__SEP &amp; &quot;[:::HyperLinkURL=file:///::]&quot;,_

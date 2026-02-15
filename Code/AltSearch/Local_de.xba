@@ -78,6 +78,7 @@ Sub Load_de
 	FINDATR = array(&quot; Absatzformatvorlage&quot; &amp;__SEP &amp; &quot;[:::ps::]&quot;, _
 	&quot; Zeichenformatvorlage&quot; &amp;__SEP &amp; &quot;[:::chs::]&quot;, _
 	&quot; Listenformatvorlage&quot; &amp;__SEP &amp; &quot;[:::ns::]&quot;, _
+	&quot; Index mark&quot; &amp;__SEP &amp; &quot;[:::DocumentIndexMark=::]&quot;, _
 	 __SEPARATOR, _
 	&quot; Hyperlink&quot; &amp;__SEP &amp; &quot;[:::HyperLinkURL::]&quot;, _
 	&quot; Hyperlink - Zeichenkette in URL &quot; &amp;__SEP &amp; &quot;[:::HyperLinkURL=file:///::]&quot;,_

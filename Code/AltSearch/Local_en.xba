@@ -78,6 +78,7 @@ Sub Load_en
 	FINDATR = array(&quot; Paragraph style&quot; &amp;__SEP &amp; &quot;[:::ps::]&quot;, _
 	&quot; Character style&quot; &amp;__SEP &amp; &quot;[:::chs::]&quot;, _
 	&quot; List style&quot; &amp;__SEP &amp; &quot;[:::ns::]&quot;, _
+	&quot; Index mark&quot; &amp;__SEP &amp; &quot;[:::DocumentIndexMark=::]&quot;, _
 	__SEPARATOR, _
 	&quot; Hyperlink&quot; &amp;__SEP &amp; &quot;[:::HyperLinkURL::]&quot;, _
 	&quot; Hyperlink - substring in URL &quot; &amp;__SEP &amp; &quot;[:::HyperLinkURL=file:///::]&quot;,_
