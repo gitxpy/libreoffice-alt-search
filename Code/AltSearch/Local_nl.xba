@@ -5,6 +5,8 @@ Sub Load_nl
 	REM test: ěščřžýáíé юертыъшчщжі
 	dim i as long
 	dim pom as string
+	on error resume next
+
 	FINDREG = array(&quot; Eerste teken van een alinea       &quot; &amp;__SEP &amp; &quot;^.&quot;, _
 	&quot; Einde van een alinea              &quot; &amp;__SEP &amp; &quot;$&quot;, _
 	&quot; Lege alinea                       &quot; &amp;__SEP &amp; &quot;^$&quot;, _
@@ -76,6 +78,7 @@ Sub Load_nl
 	FINDATR = array(&quot; Alineaopmaakprofiel&quot; &amp;__SEP &amp; &quot;[:::ps::]&quot;, _
 	&quot; Tekenopmaakprofiel&quot; &amp;__SEP &amp; &quot;[:::chs::]&quot;, _
 	&quot; Lijstopmaakprofiel&quot; &amp;__SEP &amp; &quot;[:::ns::]&quot;, _
+	&quot; Index mark&quot; &amp;__SEP &amp; &quot;[:::DocumentIndexMark=::]&quot;, _
 	 __SEPARATOR, _
 	&quot; Hyperlink&quot; &amp;__SEP &amp; &quot;[:::HyperLinkURL::]&quot;, _
 	&quot; Hyperlink - subtekenreeks in URL &quot; &amp;__SEP &amp; &quot;[:::HyperLinkURL=file:///::]&quot;,_
@@ -201,7 +204,6 @@ Sub Load_nl
 
 	&apos; hoofddialoogvenster
 	with oDIAL.model
-
 		.title = MSG(11) &amp; VERSION
 		oDIAL.getcontrol(&quot;Cb_replAtr&quot;).addItem(MSG(22),0)  &apos; Kies eigenschappen met knop
 
@@ -257,6 +259,9 @@ Sub Load_nl
 		&apos;v1.2
 		.Bt_short.HelpText   =&quot;Sneltoets toewijzen aan batch&quot;
 		.Bt_short.Label      =&quot;Sneltoetsen&quot;
+
+		.Bt_moreFiles.HelpText=MSG(50)  &amp;  &quot;.&quot;
+		.Bt_moreFiles.Label   =&quot;Multiple Execute &gt;&gt;&quot;
 	end with
 
 	&apos; keuze dialoogvenster

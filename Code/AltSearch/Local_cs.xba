@@ -2,8 +2,11 @@
 <!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
 <script:module xmlns:script="http://openoffice.org/2000/script" script:name="Local_cs" script:language="StarBasic" script:moduleType="normal">REM  *****  BASIC  *****
 Sub Load_cs
+
 	dim i as long
 	dim pom as string
+	on error resume next
+
 	FINDREG = array(&quot; První znak odstavce          &quot; &amp; __SEP &amp; &quot;^.&quot;, _
 	&quot; Konec odstavce               &quot; &amp;__SEP &amp; &quot;$&quot;, _
 	&quot; Prázdný odstavec (jeden)     &quot; &amp;__SEP &amp; &quot;^$&quot;, _

@@ -6,6 +6,7 @@ Sub Load_it
 	dim i as long
 	dim pom as string
 	on error resume next
+
 	FINDREG = array(&quot; Primo carattere di un paragrafo  &quot; &amp;__SEP &amp; &quot;^.&quot;, _
 	&quot; Fine paragrafo                   &quot; &amp;__SEP &amp; &quot;$&quot;, _
 	&quot; Paragrafo vuoto                  &quot; &amp;__SEP &amp; &quot;^$&quot;, _
@@ -77,6 +78,7 @@ Sub Load_it
 	FINDATR = array(&quot; Stile paragrafo&quot; &amp;__SEP &amp; &quot;[:::ps::]&quot;, _
 	&quot; Stile carattere&quot; &amp;__SEP &amp; &quot;[:::chs::]&quot;, _
 	&quot; Stile elenco&quot; &amp;__SEP &amp; &quot;[:::ns::]&quot;, _
+	&quot; Segno di Indice&quot; &amp;__SEP &amp; &quot;[:::DocumentIndexMark=::]&quot;, _
 	 __SEPARATOR, _
 	&quot; Collegamento ipertestuale &quot; &amp;__SEP &amp; &quot;[:::HyperLinkURL::]&quot;, _
 	&quot; Collegamento ipertestuale – sottostringa nell’URL &quot; &amp;__SEP &amp; &quot;[:::HyperLinkURL=file:///::]&quot;, _
@@ -202,7 +204,6 @@ Sub Load_it
 
 	&apos; main dialog
 	with oDIAL.model
-
 		.title = MSG(11) &amp; VERSION
 		oDIAL.getcontrol(&quot;Cb_replAtr&quot;).addItem(MSG(22),0)  &apos; Pick properties by button
 

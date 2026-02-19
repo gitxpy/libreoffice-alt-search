@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
 <script:module xmlns:script="http://openoffice.org/2000/script" script:name="Local_ru" script:language="StarBasic">
-
-
 Sub Load_ru
+
 	dim i as long
 	dim pom as string
 	on error resume next
+
 	FINDREG = array(&quot; Первый символ абзаца          &quot; &amp;__SEP &amp; &quot;^.&quot;, _
 	&quot; Конец абзаца                  &quot; &amp;__SEP &amp; &quot;$&quot;, _
 	&quot; Пустой абзац                  &quot; &amp;__SEP &amp; &quot;^$&quot;, _
@@ -78,6 +78,7 @@ Sub Load_ru
 	FINDATR = array(&quot; Стиль абзаца&quot; &amp;__SEP &amp; &quot;[:::ps::]&quot;, _
 	&quot; Стил символа&quot; &amp;__SEP &amp; &quot;[:::chs::]&quot;, _
 	&quot; Стиль списка&quot; &amp;__SEP &amp; &quot;[:::ns::]&quot;, _
+	&quot; Index mark&quot; &amp;__SEP &amp; &quot;[:::DocumentIndexMark=::]&quot;, _
 	 __SEPARATOR, _
 	&quot; Гиперссылка&quot; &amp;__SEP &amp; &quot;[:::HyperLinkURL::]&quot;, _
 	&quot; Гиперссылка - строка в URL&quot; &amp;__SEP &amp; &quot;[:::HyperLinkURL=file:///::]&quot;,_
@@ -257,7 +258,10 @@ Sub Load_ru
 		.Cb_swfind.Label     = &quot;&lt;&lt; Поиск&quot;
 		&apos;v1.2
 		.Bt_short.HelpText   =&quot;Assign key shortcut to batch&quot;
-		.Bt_short.Label      =&quot;Key shortcuts&quot; &apos;v1.2
+		.Bt_short.Label      =&quot;Key shortcuts&quot;
+
+		.Bt_moreFiles.HelpText=MSG(50)  &amp;  &quot;.&quot;
+		.Bt_moreFiles.Label   =&quot;Multiple Execute &gt;&gt;&quot;
 	end with
 
 	&apos; dialog choice
@@ -281,6 +285,7 @@ Sub Load_ru
 		.Bt_assign.Label      =&quot;Assign&quot;
 		.Bt_clear.HelpText    =&quot;Release selected key shortcut&quot;
 		.Bt_basremove.HelpText=&quot;Remove auxiliary BASIC subroutine for batch shortcut&quot;
+
 		.title           = MSG(41)
 		.Bt_close.Label  = oDIAL.model.Bt_close.Label
 	end with
