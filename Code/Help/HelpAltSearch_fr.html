@@ -173,9 +173,17 @@
 		<p class="cm2"><strong>[::Reference::]\ref1</strong> trouvera le renvoie dont le nom contient la sous chaîne <i>ref1</i></p>
 		<p class="cm2"><strong>[::Reference::]\\</strong> trouvera le renvoi dont le texte est vide</p>
 		<p class="cm2">Si&nbsp;<i>Référence</i> est choisi à partir de la liste déroulante <b>Etendu</b> et qu'en même temps le curseur est dans un texte qui est une marque de référence, alors le nom de la source correspondante sera ajoutée à la boite <b>Rechercher</b> automatiquement et il&nbsp;est alors possible de procéder à la recherche immédiatement..</p>
+
 		<h4>Liste déroulante « Propriétés »</h4>
+
 		<p>Permet la recherche selon les propriétés (les attributs) et éventuellement leurs valeurs.
 		<br>L'entrée doit commencer par la chaine <strong>[:::</strong>, suit le <strong>nom</strong> de propriété (noms supplémentaires séparés à l'aide du signe <strong>|</strong> ) et la fin de chaîne&nbsp; <strong>::]</strong>. Peut suivre ensuite la spécification du texte recherché. Si la valeur propre de propriétés devait être recherchée, la construction <strong>nom=valeur</strong> sera alors utilisée.</p>
+		<p>Exemples:</p>
+				<p class="cm2"><strong>[:::CharFontName=Courier::]</strong> - cherche des caractères utilisant la police <strong>Courier</strong></p>
+		<p class="cm2"><strong>[:::CharHeight=24::]</strong> - cherche des caractères de taille <strong>24 pt</strong></p>
+
+		<p class="cm2"><strong>[:::CharBackColor=N::]</strong> - cherche des caractères avec une couleur de surbrillance <strong>N</strong>, où N peut être <i>décimal</i> ou <strong>&amp;H</strong><i>hexadécimal</i>. Par exemple, un <b class="bRed">rouge</b> peut être <b>16651280</b> ou <b>&amp;HFE1410</b></p>
+
 		<p><strong>[:::HyperLinkURL::]</strong> - Cherche la partie de texte avec un attribut <strong>HyperLinkURL</strong></p>
 		<p class="cm2"><strong>[:::HyperLinkURL::]</strong> - trouvera tout hyperlien</p>
 		<p class="cm2"><strong>[:::HyperLinkURL::]link</strong> - trouvera la partie de l'hyperlien correspondant au texte <strong>link</strong>.</p>
