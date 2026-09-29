@@ -194,13 +194,12 @@
 
 		<p class="cm2">This enables searching according to the properties (attributes) of strings and their values.<br>The search entry must begin with the string <strong>[:::</strong>, followed by the <strong>name</strong> of the property. If there is more than one property, names can be separated using <strong>|</strong>, i.e. the sign of <i>piping</i> and must end with the characters <strong>::]</strong>. After that, you can optionally set some specific string to be searched for. On the contrary, if you need to search for the <b>value</b> of the property, then you have to use this kind of syntax: <strong>name=value</strong>.</p>
 		<p class="cm2">The list of text attributes and their values, which can be used to search for in the current selection, can be loaded by using the <var>Properties</var> button: data are shown in the dropdown menu which appears below this button.<br>You can search for many attributes of characters (font type, size, background color, character/paragraph styles etc…)</p>
-		<p>Below you can find a list of these attributes/properties:</p>
+		<p>Examples of these attributes/properties:</p>
 		<p class="cm2"><strong>[:::CharFontName=Courier::]</strong> - search for characters using font type <strong>Courier</strong> in the selected block of text</p>
-		<p class="cm2"><strong>[:::CharFontHeight=24::]</strong> - search for characters with a <strong>24 pt</strong> size in the selected block of text</p>
-		<p class="cm2"><strong>[:::CharBackColor=&amp;HFE1410::]</strong> - search for characters with a background color which is something like <b class="bRed">red</b> and whose <b>RGB</b> <b><i>hex code</i></b> is exactly <strong>FE1410</strong> in the selected block of text. The same color has an <b>RGB (254,20,16)</b> <b><i>decimal code</i></b>. This is also the same to say that its identification number is the result of the following mathematical operation:</p>
-		<p class="center">(256*256*254) + (256*20) + 16 = <b>16651280</b></p>
-		<p class="cm2">So you can find the background color also by using the expression:</p>
-		<p class="cm2"><strong>[:::CharBackColor=NNNNNNNN::]</strong> where <strong>NNNNNNNN</strong> should be substituted by <b>16651280</b> in the previous example.</p>
+		<p class="cm2"><strong>[:::CharHeight=24::]</strong> - search for characters with a <strong>24 pt</strong> size in the selected block of text</p>
+
+		<p class="cm2"><strong>[:::CharBackColor=N::]</strong> - search for characters with a background color <strong>N</strong>, where N can be <i>decimal</i> or <strong>&amp;H</strong><i>hexadecimal</i>. For example, a <b class="bRed">red-ish</b> can be  <b>16651280</b> or <b>&amp;HFE1410</b>
+
 		<p class="cm2"><strong>[:::CharStyleName::]</strong> - searches for character style</p>
 		<p class="cm4"><strong>[:::CharStyleName=::]</strong> will find part of the text with character style different from the <strong>Default</strong> style</p>
 		<p class="cm4"><strong>[:::CharStyleName=Example::]</strong> will find part of the text with character style <strong>Example</strong></p>
