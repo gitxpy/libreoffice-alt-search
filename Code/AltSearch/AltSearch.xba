@@ -3347,11 +3347,13 @@ end sub
 
 Sub setCheckboxes &apos;set the check of checkboxes bug 130
 	dim oMatch as object, oPreserve as object, oWhole as object, oPara as object, oRegex as object
+
 	oMatch=oDIAL.Model.Ch_case &apos; Match case
 	oPreserve=oDIAL.Model.Ch_preservecap &apos; Preserve capitalization
 	oWhole=oDIAL.Model.Ch_word &apos; Whole words only
 	oPara=oDIAL.Model.Ch_styl &apos; Paragraph styles 
 	oRegex=oDIAL.Model.Ch_reg &apos; Regular expressions
+
 	if oPara.State=1 then
 		oMatch.Enabled=false
 		oPreserve.Enabled=false
@@ -3362,6 +3364,12 @@ Sub setCheckboxes &apos;set the check of checkboxes bug 130
 		oPreserve.Enabled = (oMatch.State &lt;&gt; 1)
 		oWhole.Enabled=true
 	end if
+
+	if oRegex.State = 1 then
+		&apos; exclusive option. same as LO itself
+		oWhole.Enabled = false
+		oWhole.State = 0
+	endif
 End Sub
 
 
